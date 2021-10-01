@@ -1,0 +1,5 @@
+var class_mongo_d_b_1_1_driver_1_1_geo_json_object_model_1_1_serializers_1_1_geo_json2_d_coordinates_serializer =
+[
+    [ "DeserializeValue", "class_mongo_d_b_1_1_driver_1_1_geo_json_object_model_1_1_serializers_1_1_geo_json2_d_coordinates_serializer.html#a6b7849a67fc7df4e1775e5de8b118d10", null ],
+    [ "SerializeValue", "class_mongo_d_b_1_1_driver_1_1_geo_json_object_model_1_1_serializers_1_1_geo_json2_d_coordinates_serializer.html#a92d4a161cb4467e3ea332f61e43809d4", null ]
+];

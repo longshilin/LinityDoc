@@ -1,0 +1,449 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: ETServer/Server/ThirdParty/MongoDBDriver/MongoDB.Driver.Core/Core/Connections/IsMasterResult.cs 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_is_master_result_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">IsMasterResult.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_is_master_result_8cs.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/* Copyright 2013-present MongoDB Inc.</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">* Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">* you may not use this file except in compliance with the License.</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">* You may obtain a copy of the License at</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">* http://www.apache.org/licenses/LICENSE-2.0</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">* Unless required by applicable law or agreed to in writing, software</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">* distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">* See the License for the specific language governing permissions and</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">* limitations under the License.</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Collections.Generic;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Linq;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Net;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_mongo_d_b.html">MongoDB</a>.<a class="code" href="namespace_mongo_d_b_1_1_bson.html">Bson</a>;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_mongo_d_b.html">MongoDB</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver.html">Driver</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core.html">Core</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_clusters.html">Clusters</a>;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_mongo_d_b.html">MongoDB</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver.html">Driver</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core.html">Core</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_misc.html">Misc</a>;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_mongo_d_b.html">MongoDB</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver.html">Driver</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core.html">Core</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_servers.html">Servers</a>;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_connections.html">MongoDB.Driver.Core.Connections</a></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;{</div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_is_master_result.html">   30</a></span>&#160;    <span class="keyword">public</span> sealed <span class="keyword">class </span><a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_is_master_result.html">IsMasterResult</a> : IEquatable&lt;IsMasterResult&gt;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    {</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <span class="comment">// fields</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <span class="keyword">private</span> readonly <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_document.html">BsonDocument</a> _wrapped;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <span class="comment">// constructors</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_is_master_result.html#a4bd575a1b669666f371c5b5574dc1248">   40</a></span>&#160;<span class="comment"></span>        <span class="keyword">public</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_is_master_result.html#a4bd575a1b669666f371c5b5574dc1248">IsMasterResult</a>(<a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_document.html">BsonDocument</a> wrapped)</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        {</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;            _wrapped = Ensure.IsNotNull(wrapped, nameof(wrapped));</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        }</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <span class="comment">// properties</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_is_master_result.html#af93b373f710a33bb0ce36e0a66444f4a">   49</a></span>&#160;<span class="comment"></span>        <span class="keyword">public</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_clusters_1_1_election_id.html">ElectionId</a> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_clusters_1_1_election_id.html">ElectionId</a></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        {</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            <span class="keyword">get</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            {</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_value.html">BsonValue</a> value;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                <span class="keywordflow">if</span> (_wrapped.TryGetValue(<span class="stringliteral">&quot;electionId&quot;</span>, out value))</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                {</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                    <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_is_master_result.html#af93b373f710a33bb0ce36e0a66444f4a">ElectionId</a>((<a class="code" href="struct_mongo_d_b_1_1_bson_1_1_object_id.html">ObjectId</a>)value);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                }</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;            }</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        }</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        </div>
+<div class="line"><a name="l00069"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_is_master_result.html#acce5b0eb428a98f84a9ff98150b8f172">   69</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_is_master_result.html#acce5b0eb428a98f84a9ff98150b8f172">HasSaslSupportedMechs</a></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        {</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            <span class="keyword">get</span> { <span class="keywordflow">return</span> _wrapped.Contains(<span class="stringliteral">&quot;saslSupportedMechs&quot;</span>); }   </div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        }</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
+<div class="line"><a name="l00080"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_is_master_result.html#ac74662fced3786886f76fd5fddc7892e">   80</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_is_master_result.html#ac74662fced3786886f76fd5fddc7892e">IsArbiter</a></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        {</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            <span class="keyword">get</span> { <span class="keywordflow">return</span> <a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_servers.html#ab59062fc6c00b89c8daf7c1390e85c05">ServerType</a> == <a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_servers.html#ab59062fc6c00b89c8daf7c1390e85c05">ServerType</a>.ReplicaSetArbiter; }</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        }</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
+<div class="line"><a name="l00091"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_is_master_result.html#ad437929597da729718d4e8b8297961bc">   91</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_is_master_result.html#ad437929597da729718d4e8b8297961bc">IsReplicaSetMember</a></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        {</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;            <span class="keyword">get</span> { <span class="keywordflow">return</span> <a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_servers.html#ab59062fc6c00b89c8daf7c1390e85c05">ServerType</a>.IsReplicaSetMember(); }</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        }</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
+<div class="line"><a name="l00102"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_is_master_result.html#a0b14d0108e3924ef67a3ac6c5dd0b700">  102</a></span>&#160;        <span class="keyword">public</span> DateTime? <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_is_master_result.html#a0b14d0108e3924ef67a3ac6c5dd0b700">LastWriteTimestamp</a></div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        {</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;            <span class="keyword">get</span></div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;            {</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;                <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_value.html">BsonValue</a> value;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;                <span class="keywordflow">if</span> (_wrapped.TryGetValue(<span class="stringliteral">&quot;lastWrite&quot;</span>, out value))</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;                {</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;                    <span class="keywordflow">return</span> value[<span class="stringliteral">&quot;lastWriteDate&quot;</span>].<a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_value.html#ae130c2391beecb54a3c2c414210720d2">ToUniversalTime</a>();</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;                }</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; </div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;            }</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        }</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160; </div>
+<div class="line"><a name="l00122"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_is_master_result.html#a8f411b9161f589274f480432aaa74922">  122</a></span>&#160;        <span class="keyword">public</span> TimeSpan? <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_is_master_result.html#a8f411b9161f589274f480432aaa74922">LogicalSessionTimeout</a></div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        {</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;            <span class="keyword">get</span></div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;            {</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;                <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_value.html">BsonValue</a> value;</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;                <span class="keywordflow">if</span> (_wrapped.TryGetValue(<span class="stringliteral">&quot;logicalSessionTimeoutMinutes&quot;</span>, out value))</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;                {</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;                    <span class="keywordflow">if</span> (value.<a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_value.html#ac4504f12687f1d4334f581312c25fb68">BsonType</a> == <a class="code" href="namespace_mongo_d_b_1_1_bson.html#a811d3d494b81b025735495a7790f9d08">BsonType</a>.Null)</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;                    {</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;                        <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;                    }</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;                    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;                    {</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;                        <span class="keywordflow">return</span> TimeSpan.FromMinutes(value.<a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_value.html#a7b6abf0f9b04f2b3a82490ec9d380638">ToDouble</a>());</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;                    }</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;                }</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160; </div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;            }</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;        }</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160; </div>
+<div class="line"><a name="l00149"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_is_master_result.html#a822ab4bca83ad7524230851b8232b422">  149</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">int</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_is_master_result.html#a822ab4bca83ad7524230851b8232b422">MaxBatchCount</a></div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;        {</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;            <span class="keyword">get</span></div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;            {</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;                <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_value.html">BsonValue</a> value;</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;                <span class="keywordflow">if</span> (_wrapped.TryGetValue(<span class="stringliteral">&quot;maxWriteBatchSize&quot;</span>, out value))</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;                {</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;                    <span class="keywordflow">return</span> value.<a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_value.html#abfdce1a538b513cd963a231df6a2c485">ToInt32</a>();</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;                }</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160; </div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;                <span class="keywordflow">return</span> 1000;</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;            }</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;        }</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160; </div>
+<div class="line"><a name="l00169"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_is_master_result.html#a3f5e5d90535c021ec45e13725189f994">  169</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">int</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_is_master_result.html#a3f5e5d90535c021ec45e13725189f994">MaxDocumentSize</a></div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;        {</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;            <span class="keyword">get</span></div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;            {</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;                <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_value.html">BsonValue</a> value;</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;                <span class="keywordflow">if</span> (_wrapped.TryGetValue(<span class="stringliteral">&quot;maxBsonObjectSize&quot;</span>, out value))</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;                {</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;                    <span class="keywordflow">return</span> value.<a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_value.html#abfdce1a538b513cd963a231df6a2c485">ToInt32</a>();</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;                }</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160; </div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;                <span class="keywordflow">return</span> 4 * 1024 * 1024;</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;            }</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;        }</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160; </div>
+<div class="line"><a name="l00189"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_is_master_result.html#abaa6c58655ef3a98aaf2e0b51217fcc7">  189</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">int</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_is_master_result.html#abaa6c58655ef3a98aaf2e0b51217fcc7">MaxMessageSize</a></div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;        {</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;            <span class="keyword">get</span></div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;            {</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;                <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_value.html">BsonValue</a> value;</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;                <span class="keywordflow">if</span> (_wrapped.TryGetValue(<span class="stringliteral">&quot;maxMessageSizeBytes&quot;</span>, out value))</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;                {</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;                    <span class="keywordflow">return</span> value.<a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_value.html#abfdce1a538b513cd963a231df6a2c485">ToInt32</a>();</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;                }</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160; </div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;                <span class="keywordflow">return</span> <a class="code" href="namespace_p_f.html#a6cf89bee2694a0f75de4233403192b07">Math</a>.Max(<a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_is_master_result.html#a3f5e5d90535c021ec45e13725189f994">MaxDocumentSize</a> + 1024, 16000000);</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;            }</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;        }</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160; </div>
+<div class="line"><a name="l00206"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_is_master_result.html#af5a495354ad7000c72c61c85b99ae098">  206</a></span>&#160;        <span class="keyword">public</span> EndPoint <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_is_master_result.html#af5a495354ad7000c72c61c85b99ae098">Me</a></div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;        {</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;            <span class="keyword">get</span></div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;            {</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;                <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_value.html">BsonValue</a> value;</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;                <span class="keywordflow">if</span> (_wrapped.TryGetValue(<span class="stringliteral">&quot;me&quot;</span>, out value))</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;                {</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;                    <span class="keywordflow">return</span> EndPointHelper.Parse((<span class="keywordtype">string</span>)value);</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;                }</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160; </div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;            }</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;        }</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160; </div>
+<div class="line"><a name="l00227"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_is_master_result.html#af7a504af7620a53ac8a12421c3a05898">  227</a></span>&#160;        <span class="keyword">public</span> IEnumerable&lt;string&gt; <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_is_master_result.html#af7a504af7620a53ac8a12421c3a05898">SaslSupportedMechs</a></div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;        {</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;            <span class="keyword">get</span> { <span class="keywordflow">return</span> _wrapped.GetValue(<span class="stringliteral">&quot;saslSupportedMechs&quot;</span>, <span class="keyword">new</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_array.html">BsonArray</a>()).AsBsonArray.Select(s =&gt; s.ToString()); }</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;        }</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160; </div>
+<div class="line"><a name="l00238"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_is_master_result.html#acb226b29711d3c1533b41ed2a7c304f3">  238</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_servers.html#ab59062fc6c00b89c8daf7c1390e85c05">ServerType</a> <a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_servers.html#ab59062fc6c00b89c8daf7c1390e85c05">ServerType</a></div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;        {</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;            <span class="keyword">get</span></div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;            {</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;                <span class="keywordflow">if</span> (!_wrapped.GetValue(<span class="stringliteral">&quot;ok&quot;</span>, <span class="keyword">false</span>).ToBoolean())</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;                {</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;                    <span class="keywordflow">return</span> <a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_servers.html#ab59062fc6c00b89c8daf7c1390e85c05">ServerType</a>.Unknown;</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;                }</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160; </div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;                <span class="keywordflow">if</span> (_wrapped.GetValue(<span class="stringliteral">&quot;isreplicaset&quot;</span>, <span class="keyword">false</span>).ToBoolean())</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;                {</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;                    <span class="keywordflow">return</span> <a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_servers.html#ab59062fc6c00b89c8daf7c1390e85c05">ServerType</a>.ReplicaSetGhost;</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;                }</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160; </div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;                <span class="keywordflow">if</span> (_wrapped.Contains(<span class="stringliteral">&quot;setName&quot;</span>))</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;                {</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;                    <span class="keywordflow">if</span> (_wrapped.GetValue(<span class="stringliteral">&quot;ismaster&quot;</span>, <span class="keyword">false</span>).ToBoolean())</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;                    {</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;                        <span class="keywordflow">return</span> <a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_servers.html#ab59062fc6c00b89c8daf7c1390e85c05">ServerType</a>.ReplicaSetPrimary;</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;                    }</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;                    <span class="keywordflow">if</span> (_wrapped.GetValue(<span class="stringliteral">&quot;hidden&quot;</span>, <span class="keyword">false</span>).ToBoolean())</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;                    {</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;                        <span class="keywordflow">return</span> <a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_servers.html#ab59062fc6c00b89c8daf7c1390e85c05">ServerType</a>.ReplicaSetOther;</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;                    }</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;                    <span class="keywordflow">if</span> (_wrapped.GetValue(<span class="stringliteral">&quot;secondary&quot;</span>, <span class="keyword">false</span>).ToBoolean())</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;                    {</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;                        <span class="keywordflow">return</span> <a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_servers.html#ab59062fc6c00b89c8daf7c1390e85c05">ServerType</a>.ReplicaSetSecondary;</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;                    }</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;                    <span class="keywordflow">if</span> (_wrapped.GetValue(<span class="stringliteral">&quot;arbiterOnly&quot;</span>, <span class="keyword">false</span>).ToBoolean())</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;                    {</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;                        <span class="keywordflow">return</span> <a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_servers.html#ab59062fc6c00b89c8daf7c1390e85c05">ServerType</a>.ReplicaSetArbiter;</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;                    }</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160; </div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;                    <span class="keywordflow">return</span> <a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_servers.html#ab59062fc6c00b89c8daf7c1390e85c05">ServerType</a>.ReplicaSetOther;</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;                }</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160; </div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;                <span class="keywordflow">if</span> ((<span class="keywordtype">string</span>)_wrapped.GetValue(<span class="stringliteral">&quot;msg&quot;</span>, <span class="keyword">null</span>) == <span class="stringliteral">&quot;isdbgrid&quot;</span>)</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;                {</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;                    <span class="keywordflow">return</span> <a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_servers.html#ab59062fc6c00b89c8daf7c1390e85c05">ServerType</a>.ShardRouter;</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;                }</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160; </div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;                <span class="keywordflow">return</span> <a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_servers.html#ab59062fc6c00b89c8daf7c1390e85c05">ServerType</a>.Standalone;</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;            }</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;        }</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160; </div>
+<div class="line"><a name="l00289"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_is_master_result.html#ac1eda4eb91a68986994f310376b1d1aa">  289</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_tag_set.html">TagSet</a> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_is_master_result.html#ac1eda4eb91a68986994f310376b1d1aa">Tags</a></div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;        {</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;            <span class="keyword">get</span></div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;            {</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;                <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_value.html">BsonValue</a> tags;</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;                <span class="keywordflow">if</span> (_wrapped.TryGetValue(<span class="stringliteral">&quot;tags&quot;</span>, out tags))</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;                {</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;                    <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_tag_set.html">TagSet</a>(tags.<a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_value.html#a5860157b3d63692706ceaa12f9e3694c">AsBsonDocument</a>.Select(e =&gt; <span class="keyword">new</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_tag.html">Tag</a>(e.Name, (<span class="keywordtype">string</span>)e.Value)));</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;                }</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160; </div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;            }</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;        }</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160; </div>
+<div class="line"><a name="l00309"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_is_master_result.html#a61285dfc8672bf1662c599b14a1b8814">  309</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">int</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_is_master_result.html#a61285dfc8672bf1662c599b14a1b8814">MaxWireVersion</a></div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;        {</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;            <span class="keyword">get</span> { <span class="keywordflow">return</span> _wrapped.GetValue(<span class="stringliteral">&quot;maxWireVersion&quot;</span>, 0).ToInt32(); }</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;        }</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160; </div>
+<div class="line"><a name="l00320"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_is_master_result.html#a5385a6a0492001f9c488c6423d71916a">  320</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">int</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_is_master_result.html#a5385a6a0492001f9c488c6423d71916a">MinWireVersion</a></div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;        {</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;            <span class="keyword">get</span> { <span class="keywordflow">return</span> _wrapped.GetValue(<span class="stringliteral">&quot;minWireVersion&quot;</span>, 0).ToInt32(); }</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;        }</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160; </div>
+<div class="line"><a name="l00331"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_is_master_result.html#a4652702a5c68097be3af3957e2c0b0ac">  331</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_document.html">BsonDocument</a> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_is_master_result.html#a4652702a5c68097be3af3957e2c0b0ac">Wrapped</a></div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;        {</div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;            <span class="keyword">get</span> { <span class="keywordflow">return</span> _wrapped; }</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;        }</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160; </div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;        <span class="comment">// methods</span></div>
+<div class="line"><a name="l00338"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_is_master_result.html#a780c9becd23b858ad93238fe33f80a7c">  338</a></span>&#160;<span class="comment"></span>        <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_is_master_result.html#a780c9becd23b858ad93238fe33f80a7c">Equals</a>(<a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_is_master_result.html">IsMasterResult</a> other)</div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;        {</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;            <span class="keywordflow">if</span> (other == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;            {</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;            }</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160; </div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;            <span class="keywordflow">return</span> _wrapped.Equals(other._wrapped);</div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;        }</div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160; </div>
+<div class="line"><a name="l00349"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_is_master_result.html#aa4c9d080b9ef687b8849784f9168f755">  349</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">bool</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_is_master_result.html#aa4c9d080b9ef687b8849784f9168f755">Equals</a>(<span class="keywordtype">object</span> obj)</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;        {</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_is_master_result.html#a780c9becd23b858ad93238fe33f80a7c">Equals</a>(obj as <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_is_master_result.html">IsMasterResult</a>);</div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;        }</div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160; </div>
+<div class="line"><a name="l00355"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_is_master_result.html#aa7e52d24842101d3e1f5a1ac0fcb5f0d">  355</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">int</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_is_master_result.html#aa7e52d24842101d3e1f5a1ac0fcb5f0d">GetHashCode</a>()</div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;        {</div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;            <span class="keywordflow">return</span> _wrapped.GetHashCode();</div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;        }</div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160; </div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;        <span class="keyword">private</span> List&lt;EndPoint&gt; GetMembers()</div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;        {</div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;            var hosts = GetMembers(<span class="stringliteral">&quot;hosts&quot;</span>);</div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;            var passives = GetMembers(<span class="stringliteral">&quot;passives&quot;</span>);</div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;            var arbiters = GetMembers(<span class="stringliteral">&quot;arbiters&quot;</span>);</div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;            <span class="keywordflow">return</span> hosts.Concat(passives).Concat(arbiters).ToList();</div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;        }</div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160; </div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;        <span class="keyword">private</span> IEnumerable&lt;EndPoint&gt; GetMembers(<span class="keywordtype">string</span> elementName)</div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;        {</div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;            <span class="keywordflow">if</span> (!_wrapped.Contains(elementName))</div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;            {</div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">new</span> EndPoint[0];</div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;            }</div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160; </div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;            <span class="keywordflow">return</span> ((<a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_array.html">BsonArray</a>)_wrapped[elementName]).Select(v =&gt; EndPointHelper.Parse((<span class="keywordtype">string</span>)v));</div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;        }</div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160; </div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;        <span class="keyword">private</span> EndPoint GetPrimary()</div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;        {</div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;            <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_value.html">BsonValue</a> primary;</div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;            <span class="keywordflow">if</span> (_wrapped.TryGetValue(<span class="stringliteral">&quot;primary&quot;</span>, out primary))</div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;            {</div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;                <span class="comment">// TODO: what does primary look like when there is no current primary (null, empty string)?</span></div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;                <span class="keywordflow">return</span> EndPointHelper.Parse((<span class="keywordtype">string</span>)primary);</div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;            }</div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160; </div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;        }</div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160; </div>
+<div class="line"><a name="l00394"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_is_master_result.html#af006eead0b5f3d18a6a45b96d9a4d9aa">  394</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_clusters_1_1_replica_set_config.html">ReplicaSetConfig</a> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_is_master_result.html#af006eead0b5f3d18a6a45b96d9a4d9aa">GetReplicaSetConfig</a>()</div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;        {</div>
+<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;            <span class="keywordflow">if</span> (!<a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_is_master_result.html#ad437929597da729718d4e8b8297961bc">IsReplicaSetMember</a>)</div>
+<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;            {</div>
+<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;            }</div>
+<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160; </div>
+<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;            var members = GetMembers();</div>
+<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;            var name = (string)_wrapped.GetValue(<span class="stringliteral">&quot;setName&quot;</span>, <span class="keyword">null</span>);</div>
+<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;            var primary = GetPrimary();</div>
+<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;            var version = _wrapped.Contains(<span class="stringliteral">&quot;setVersion&quot;</span>) ? (<span class="keywordtype">int</span>?)_wrapped[<span class="stringliteral">&quot;setVersion&quot;</span>].ToInt32() : <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160; </div>
+<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_clusters_1_1_replica_set_config.html">ReplicaSetConfig</a>(members, name, primary, version);</div>
+<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;        }</div>
+<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;    }</div>
+<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;}</div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_bson_array_html"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_bson_array.html">MongoDB.Bson.BsonArray</a></div><div class="ttdoc">Represents a BSON array.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_array_8cs_source.html#l00031">BsonArray.cs:32</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_bson_document_html"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_bson_document.html">MongoDB.Bson.BsonDocument</a></div><div class="ttdoc">Represents a BSON document.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_document_8cs_source.html#l00034">BsonDocument.cs:35</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_bson_value_html"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_bson_value.html">MongoDB.Bson.BsonValue</a></div><div class="ttdoc">Represents a BSON value (this is an abstract class, see the various subclasses).</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_value_8cs_source.html#l00028">BsonValue.cs:29</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_bson_value_html_a5860157b3d63692706ceaa12f9e3694c"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_bson_value.html#a5860157b3d63692706ceaa12f9e3694c">MongoDB.Bson.BsonValue.AsBsonDocument</a></div><div class="ttdeci">BsonDocument AsBsonDocument</div><div class="ttdoc">Casts the BsonValue to a BsonDocument (throws an InvalidCastException if the cast is not valid).</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_value_8cs_source.html#l00091">BsonValue.cs:92</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_bson_value_html_a7b6abf0f9b04f2b3a82490ec9d380638"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_bson_value.html#a7b6abf0f9b04f2b3a82490ec9d380638">MongoDB.Bson.BsonValue.ToDouble</a></div><div class="ttdeci">virtual double ToDouble()</div><div class="ttdoc">Converts this BsonValue to a Double.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_value_8cs_source.html#l01311">BsonValue.cs:1311</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_bson_value_html_abfdce1a538b513cd963a231df6a2c485"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_bson_value.html#abfdce1a538b513cd963a231df6a2c485">MongoDB.Bson.BsonValue.ToInt32</a></div><div class="ttdeci">virtual int ToInt32()</div><div class="ttdoc">Converts this BsonValue to an Int32.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_value_8cs_source.html#l01321">BsonValue.cs:1321</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_bson_value_html_ac4504f12687f1d4334f581312c25fb68"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_bson_value.html#ac4504f12687f1d4334f581312c25fb68">MongoDB.Bson.BsonValue.BsonType</a></div><div class="ttdeci">abstract BsonType BsonType</div><div class="ttdoc">Gets the BsonType of this BsonValue.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_value_8cs_source.html#l00359">BsonValue.cs:359</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_bson_value_html_ae130c2391beecb54a3c2c414210720d2"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_bson_value.html#ae130c2391beecb54a3c2c414210720d2">MongoDB.Bson.BsonValue.ToUniversalTime</a></div><div class="ttdeci">virtual DateTime ToUniversalTime()</div><div class="ttdoc">Converts this BsonValue to a DateTime in UTC.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_value_8cs_source.html#l01371">BsonValue.cs:1371</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_clusters_1_1_election_id_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_clusters_1_1_election_id.html">MongoDB.Driver.Core.Clusters.ElectionId</a></div><div class="ttdoc">An election id from the server.</div><div class="ttdef"><b>Definition:</b> <a href="_election_id_8cs_source.html#l00024">ElectionId.cs:25</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_clusters_1_1_replica_set_config_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_clusters_1_1_replica_set_config.html">MongoDB.Driver.Core.Clusters.ReplicaSetConfig</a></div><div class="ttdoc">Represents the config of a replica set (as reported by one of the members of the replica set).</div><div class="ttdef"><b>Definition:</b> <a href="_replica_set_config_8cs_source.html#l00028">ReplicaSetConfig.cs:29</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_is_master_result_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_is_master_result.html">MongoDB.Driver.Core.Connections.IsMasterResult</a></div><div class="ttdoc">Represents the result of an isMaster command.</div><div class="ttdef"><b>Definition:</b> <a href="_is_master_result_8cs_source.html#l00030">IsMasterResult.cs:31</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_is_master_result_html_a0b14d0108e3924ef67a3ac6c5dd0b700"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_is_master_result.html#a0b14d0108e3924ef67a3ac6c5dd0b700">MongoDB.Driver.Core.Connections.IsMasterResult.LastWriteTimestamp</a></div><div class="ttdeci">DateTime? LastWriteTimestamp</div><div class="ttdoc">Gets the last write timestamp.</div><div class="ttdef"><b>Definition:</b> <a href="_is_master_result_8cs_source.html#l00102">IsMasterResult.cs:103</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_is_master_result_html_a3f5e5d90535c021ec45e13725189f994"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_is_master_result.html#a3f5e5d90535c021ec45e13725189f994">MongoDB.Driver.Core.Connections.IsMasterResult.MaxDocumentSize</a></div><div class="ttdeci">int MaxDocumentSize</div><div class="ttdoc">Gets the maximum size of a document.</div><div class="ttdef"><b>Definition:</b> <a href="_is_master_result_8cs_source.html#l00169">IsMasterResult.cs:170</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_is_master_result_html_a4652702a5c68097be3af3957e2c0b0ac"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_is_master_result.html#a4652702a5c68097be3af3957e2c0b0ac">MongoDB.Driver.Core.Connections.IsMasterResult.Wrapped</a></div><div class="ttdeci">BsonDocument Wrapped</div><div class="ttdoc">Gets the wrapped result document.</div><div class="ttdef"><b>Definition:</b> <a href="_is_master_result_8cs_source.html#l00331">IsMasterResult.cs:332</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_is_master_result_html_a4bd575a1b669666f371c5b5574dc1248"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_is_master_result.html#a4bd575a1b669666f371c5b5574dc1248">MongoDB.Driver.Core.Connections.IsMasterResult.IsMasterResult</a></div><div class="ttdeci">IsMasterResult(BsonDocument wrapped)</div><div class="ttdoc">Initializes a new instance of the IsMasterResult class.</div><div class="ttdef"><b>Definition:</b> <a href="_is_master_result_8cs_source.html#l00040">IsMasterResult.cs:40</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_is_master_result_html_a5385a6a0492001f9c488c6423d71916a"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_is_master_result.html#a5385a6a0492001f9c488c6423d71916a">MongoDB.Driver.Core.Connections.IsMasterResult.MinWireVersion</a></div><div class="ttdeci">int MinWireVersion</div><div class="ttdoc">Gets the minimum wire version.</div><div class="ttdef"><b>Definition:</b> <a href="_is_master_result_8cs_source.html#l00320">IsMasterResult.cs:321</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_is_master_result_html_a61285dfc8672bf1662c599b14a1b8814"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_is_master_result.html#a61285dfc8672bf1662c599b14a1b8814">MongoDB.Driver.Core.Connections.IsMasterResult.MaxWireVersion</a></div><div class="ttdeci">int MaxWireVersion</div><div class="ttdoc">Gets the maximum wire version.</div><div class="ttdef"><b>Definition:</b> <a href="_is_master_result_8cs_source.html#l00309">IsMasterResult.cs:310</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_is_master_result_html_a780c9becd23b858ad93238fe33f80a7c"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_is_master_result.html#a780c9becd23b858ad93238fe33f80a7c">MongoDB.Driver.Core.Connections.IsMasterResult.Equals</a></div><div class="ttdeci">bool Equals(IsMasterResult other)</div><div class="ttdef"><b>Definition:</b> <a href="_is_master_result_8cs_source.html#l00338">IsMasterResult.cs:338</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_is_master_result_html_a822ab4bca83ad7524230851b8232b422"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_is_master_result.html#a822ab4bca83ad7524230851b8232b422">MongoDB.Driver.Core.Connections.IsMasterResult.MaxBatchCount</a></div><div class="ttdeci">int MaxBatchCount</div><div class="ttdoc">Gets the maximum number of documents in a batch.</div><div class="ttdef"><b>Definition:</b> <a href="_is_master_result_8cs_source.html#l00149">IsMasterResult.cs:150</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_is_master_result_html_a8f411b9161f589274f480432aaa74922"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_is_master_result.html#a8f411b9161f589274f480432aaa74922">MongoDB.Driver.Core.Connections.IsMasterResult.LogicalSessionTimeout</a></div><div class="ttdeci">TimeSpan? LogicalSessionTimeout</div><div class="ttdoc">Gets the logical session timeout.</div><div class="ttdef"><b>Definition:</b> <a href="_is_master_result_8cs_source.html#l00122">IsMasterResult.cs:123</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_is_master_result_html_aa4c9d080b9ef687b8849784f9168f755"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_is_master_result.html#aa4c9d080b9ef687b8849784f9168f755">MongoDB.Driver.Core.Connections.IsMasterResult.Equals</a></div><div class="ttdeci">override bool Equals(object obj)</div><div class="ttdef"><b>Definition:</b> <a href="_is_master_result_8cs_source.html#l00349">IsMasterResult.cs:349</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_is_master_result_html_aa7e52d24842101d3e1f5a1ac0fcb5f0d"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_is_master_result.html#aa7e52d24842101d3e1f5a1ac0fcb5f0d">MongoDB.Driver.Core.Connections.IsMasterResult.GetHashCode</a></div><div class="ttdeci">override int GetHashCode()</div><div class="ttdef"><b>Definition:</b> <a href="_is_master_result_8cs_source.html#l00355">IsMasterResult.cs:355</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_is_master_result_html_abaa6c58655ef3a98aaf2e0b51217fcc7"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_is_master_result.html#abaa6c58655ef3a98aaf2e0b51217fcc7">MongoDB.Driver.Core.Connections.IsMasterResult.MaxMessageSize</a></div><div class="ttdeci">int MaxMessageSize</div><div class="ttdoc">Gets the maximum size of a message.</div><div class="ttdef"><b>Definition:</b> <a href="_is_master_result_8cs_source.html#l00189">IsMasterResult.cs:190</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_is_master_result_html_ac1eda4eb91a68986994f310376b1d1aa"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_is_master_result.html#ac1eda4eb91a68986994f310376b1d1aa">MongoDB.Driver.Core.Connections.IsMasterResult.Tags</a></div><div class="ttdeci">TagSet Tags</div><div class="ttdoc">Gets the replica set tags.</div><div class="ttdef"><b>Definition:</b> <a href="_is_master_result_8cs_source.html#l00289">IsMasterResult.cs:290</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_is_master_result_html_ac74662fced3786886f76fd5fddc7892e"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_is_master_result.html#ac74662fced3786886f76fd5fddc7892e">MongoDB.Driver.Core.Connections.IsMasterResult.IsArbiter</a></div><div class="ttdeci">bool IsArbiter</div><div class="ttdoc">Gets a value indicating whether this instance is an arbiter.</div><div class="ttdef"><b>Definition:</b> <a href="_is_master_result_8cs_source.html#l00080">IsMasterResult.cs:81</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_is_master_result_html_acce5b0eb428a98f84a9ff98150b8f172"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_is_master_result.html#acce5b0eb428a98f84a9ff98150b8f172">MongoDB.Driver.Core.Connections.IsMasterResult.HasSaslSupportedMechs</a></div><div class="ttdeci">bool HasSaslSupportedMechs</div><div class="ttdoc">Get whether SaslSupportedMechs was part of the isMaster response.</div><div class="ttdef"><b>Definition:</b> <a href="_is_master_result_8cs_source.html#l00069">IsMasterResult.cs:70</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_is_master_result_html_ad437929597da729718d4e8b8297961bc"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_is_master_result.html#ad437929597da729718d4e8b8297961bc">MongoDB.Driver.Core.Connections.IsMasterResult.IsReplicaSetMember</a></div><div class="ttdeci">bool IsReplicaSetMember</div><div class="ttdoc">Gets a value indicating whether this instance is a replica set member.</div><div class="ttdef"><b>Definition:</b> <a href="_is_master_result_8cs_source.html#l00091">IsMasterResult.cs:92</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_is_master_result_html_af006eead0b5f3d18a6a45b96d9a4d9aa"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_is_master_result.html#af006eead0b5f3d18a6a45b96d9a4d9aa">MongoDB.Driver.Core.Connections.IsMasterResult.GetReplicaSetConfig</a></div><div class="ttdeci">ReplicaSetConfig GetReplicaSetConfig()</div><div class="ttdoc">Gets the replica set configuration.</div><div class="ttdef"><b>Definition:</b> <a href="_is_master_result_8cs_source.html#l00394">IsMasterResult.cs:394</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_is_master_result_html_af5a495354ad7000c72c61c85b99ae098"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_is_master_result.html#af5a495354ad7000c72c61c85b99ae098">MongoDB.Driver.Core.Connections.IsMasterResult.Me</a></div><div class="ttdeci">EndPoint Me</div><div class="ttdoc">Gets the endpoint the server is claiming it is known as.</div><div class="ttdef"><b>Definition:</b> <a href="_is_master_result_8cs_source.html#l00206">IsMasterResult.cs:207</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_is_master_result_html_af7a504af7620a53ac8a12421c3a05898"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_is_master_result.html#af7a504af7620a53ac8a12421c3a05898">MongoDB.Driver.Core.Connections.IsMasterResult.SaslSupportedMechs</a></div><div class="ttdeci">IEnumerable&lt; string &gt; SaslSupportedMechs</div><div class="ttdoc">Get the SaslSupportedMechs.</div><div class="ttdef"><b>Definition:</b> <a href="_is_master_result_8cs_source.html#l00227">IsMasterResult.cs:228</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_is_master_result_html_af93b373f710a33bb0ce36e0a66444f4a"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_is_master_result.html#af93b373f710a33bb0ce36e0a66444f4a">MongoDB.Driver.Core.Connections.IsMasterResult.ElectionId</a></div><div class="ttdeci">ElectionId ElectionId</div><div class="ttdoc">Gets the election identifier.</div><div class="ttdef"><b>Definition:</b> <a href="_is_master_result_8cs_source.html#l00049">IsMasterResult.cs:50</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_tag_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_tag.html">MongoDB.Driver.Tag</a></div><div class="ttdoc">Represents a replica set member tag.</div><div class="ttdef"><b>Definition:</b> <a href="_tag_8cs_source.html#l00029">Tag.cs:30</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_tag_set_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_tag_set.html">MongoDB.Driver.TagSet</a></div><div class="ttdoc">Represents a replica set member tag set.</div><div class="ttdef"><b>Definition:</b> <a href="_tag_set_8cs_source.html#l00029">TagSet.cs:30</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_bson_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_bson.html">MongoDB.Bson</a></div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_bson_constants_8cs_source.html#l00018">BsonConstants.cs:19</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_bson_html_a811d3d494b81b025735495a7790f9d08"><div class="ttname"><a href="namespace_mongo_d_b_1_1_bson.html#a811d3d494b81b025735495a7790f9d08">MongoDB.Bson.BsonType</a></div><div class="ttdeci">BsonType</div><div class="ttdoc">Represents the type of a BSON element.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_type_8cs_source.html#l00026">BsonType.cs:27</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_driver_1_1_core_1_1_clusters_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_clusters.html">MongoDB.Driver.Core.Clusters</a></div><div class="ttdef"><b>Definition:</b> <a href="_cluster_8cs_source.html#l00033">Cluster.cs:34</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_driver_1_1_core_1_1_connections_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_connections.html">MongoDB.Driver.Core.Connections</a></div><div class="ttdef"><b>Definition:</b> <a href="_binary_connection_8cs_source.html#l00035">BinaryConnection.cs:36</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_driver_1_1_core_1_1_misc_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_misc.html">MongoDB.Driver.Core.Misc</a></div><div class="ttdef"><b>Definition:</b> <a href="_array_filters_feature_8cs_source.html#l00020">ArrayFiltersFeature.cs:21</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_driver_1_1_core_1_1_servers_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_servers.html">MongoDB.Driver.Core.Servers</a></div><div class="ttdef"><b>Definition:</b> <a href="_cluster_clock_advancing_core_session_8cs_source.html#l00021">ClusterClockAdvancingCoreSession.cs:22</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_driver_1_1_core_1_1_servers_html_ab59062fc6c00b89c8daf7c1390e85c05"><div class="ttname"><a href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_servers.html#ab59062fc6c00b89c8daf7c1390e85c05">MongoDB.Driver.Core.Servers.ServerType</a></div><div class="ttdeci">ServerType</div><div class="ttdoc">Represents the server type.</div><div class="ttdef"><b>Definition:</b> <a href="_server_type_8cs_source.html#l00028">ServerType.cs:29</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_driver_1_1_core_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_driver_1_1_core.html">MongoDB.Driver.Core</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_queue_8cs_source.html#l00023">AsyncQueue.cs:24</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_driver_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_driver.html">MongoDB.Driver</a></div><div class="ttdef"><b>Definition:</b> <a href="_aggregate_bucket_auto_granularity_8cs_source.html#l00018">AggregateBucketAutoGranularity.cs:19</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_html"><div class="ttname"><a href="namespace_mongo_d_b.html">MongoDB</a></div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_bson_constants_8cs_source.html#l00018">BsonConstants.cs:19</a></div></div>
+<div class="ttc" id="anamespace_p_f_html_a6cf89bee2694a0f75de4233403192b07"><div class="ttname"><a href="namespace_p_f.html#a6cf89bee2694a0f75de4233403192b07">PF.Math</a></div><div class="ttdeci">System.Math Math</div><div class="ttdef"><b>Definition:</b> <a href="_navmesh_base_8cs_source.html#l00006">NavmeshBase.cs:6</a></div></div>
+<div class="ttc" id="anamespace_system_html"><div class="ttname"><a href="namespace_system.html">System</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_method_builder_attribute_8cs_source.html#l00001">AsyncMethodBuilderAttribute.cs:2</a></div></div>
+<div class="ttc" id="astruct_mongo_d_b_1_1_bson_1_1_object_id_html"><div class="ttname"><a href="struct_mongo_d_b_1_1_bson_1_1_object_id.html">MongoDB.Bson.ObjectId</a></div><div class="ttdoc">Represents an ObjectId (see also BsonObjectId).</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_object_id_8cs_source.html#l00030">ObjectId.cs:31</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_1e261a42b4a2e33df58a15c412684b10.html">ETServer</a></li><li class="navelem"><a class="el" href="dir_473c270c995194c5ad99131d9c901f09.html">Server</a></li><li class="navelem"><a class="el" href="dir_ce426efcf63311ff42488fb2654bd4b4.html">ThirdParty</a></li><li class="navelem"><a class="el" href="dir_a37b2b5f9c8890cc9f6f8392fb0cdff3.html">MongoDBDriver</a></li><li class="navelem"><a class="el" href="dir_3c55113864d48cf4713f3b3197e2f720.html">MongoDB.Driver.Core</a></li><li class="navelem"><a class="el" href="dir_d802212cd82500a65b6eed8667c0c3ad.html">Core</a></li><li class="navelem"><a class="el" href="dir_25313f66a320a83fdbcc854863a92088.html">Connections</a></li><li class="navelem"><a class="el" href="_is_master_result_8cs.html">IsMasterResult.cs</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:24:57 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

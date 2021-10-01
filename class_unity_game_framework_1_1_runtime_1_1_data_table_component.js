@@ -1,0 +1,28 @@
+var class_unity_game_framework_1_1_runtime_1_1_data_table_component =
+[
+    [ "Awake", "class_unity_game_framework_1_1_runtime_1_1_data_table_component.html#aabfaa48d2d822485b05b12cf30d5495d", null ],
+    [ "CreateDataTable", "class_unity_game_framework_1_1_runtime_1_1_data_table_component.html#ac92dcc4fc58db854d10116b455957aa5", null ],
+    [ "CreateDataTable", "class_unity_game_framework_1_1_runtime_1_1_data_table_component.html#a21317afcbedf0fef7b11ee51efa0e6ee", null ],
+    [ "CreateDataTable< T >", "class_unity_game_framework_1_1_runtime_1_1_data_table_component.html#a697b535902a082967b9c4cdfe898f188", null ],
+    [ "CreateDataTable< T >", "class_unity_game_framework_1_1_runtime_1_1_data_table_component.html#a2c98bece8e4fb5d0f276c38b509b1302", null ],
+    [ "DestroyDataTable", "class_unity_game_framework_1_1_runtime_1_1_data_table_component.html#a3cf5f550a9d288e20eae813d1bba929f", null ],
+    [ "DestroyDataTable", "class_unity_game_framework_1_1_runtime_1_1_data_table_component.html#acdbcd07fbfbc2d06b3bca7a9d1423662", null ],
+    [ "DestroyDataTable", "class_unity_game_framework_1_1_runtime_1_1_data_table_component.html#a2272318322d63f5bea9b1fed02158cfe", null ],
+    [ "DestroyDataTable< T >", "class_unity_game_framework_1_1_runtime_1_1_data_table_component.html#a06888fe4ff798d5e8c9ffea38095e49a", null ],
+    [ "DestroyDataTable< T >", "class_unity_game_framework_1_1_runtime_1_1_data_table_component.html#a86e9eadd0c4e76424868a3eca0bbf35e", null ],
+    [ "DestroyDataTable< T >", "class_unity_game_framework_1_1_runtime_1_1_data_table_component.html#a3130b251651311f1ea7c9138d01f407d", null ],
+    [ "EnsureCachedBytesSize", "class_unity_game_framework_1_1_runtime_1_1_data_table_component.html#aa61e3e7ef64aa6f7c83ff21ecfdcd7c4", null ],
+    [ "FreeCachedBytes", "class_unity_game_framework_1_1_runtime_1_1_data_table_component.html#a127775d4388995bd54375391ed37d389", null ],
+    [ "GetAllDataTables", "class_unity_game_framework_1_1_runtime_1_1_data_table_component.html#a37623b335ba2e4b5be52e554e815d961", null ],
+    [ "GetAllDataTables", "class_unity_game_framework_1_1_runtime_1_1_data_table_component.html#a73b88a95d9034b1d02b6bda2a97f1377", null ],
+    [ "GetDataTable", "class_unity_game_framework_1_1_runtime_1_1_data_table_component.html#a76dafe2334c5e47d4bd31607fe414786", null ],
+    [ "GetDataTable", "class_unity_game_framework_1_1_runtime_1_1_data_table_component.html#ac3dd722a02e749ba282e8016979aa108", null ],
+    [ "GetDataTable< T >", "class_unity_game_framework_1_1_runtime_1_1_data_table_component.html#ac250c9a4f84c7ae35b2d95331730633e", null ],
+    [ "GetDataTable< T >", "class_unity_game_framework_1_1_runtime_1_1_data_table_component.html#a6780c4675ce44be4f026e26a9d111b47", null ],
+    [ "HasDataTable", "class_unity_game_framework_1_1_runtime_1_1_data_table_component.html#ad0f60ae3cebe4fddeef2f38ecd47eb49", null ],
+    [ "HasDataTable", "class_unity_game_framework_1_1_runtime_1_1_data_table_component.html#aa9a16c4fc7ca3212aa90a214ee1be887", null ],
+    [ "HasDataTable< T >", "class_unity_game_framework_1_1_runtime_1_1_data_table_component.html#aa3d404b9d483f05c10b19069962dfbe1", null ],
+    [ "HasDataTable< T >", "class_unity_game_framework_1_1_runtime_1_1_data_table_component.html#a902a6349e1cd9e2e3065a7b0c0c01ae9", null ],
+    [ "CachedBytesSize", "class_unity_game_framework_1_1_runtime_1_1_data_table_component.html#a64a5dd634895b934c262a2187a6beaf1", null ],
+    [ "Count", "class_unity_game_framework_1_1_runtime_1_1_data_table_component.html#a2e6f254729be9e58ec72901cccf9601d", null ]
+];

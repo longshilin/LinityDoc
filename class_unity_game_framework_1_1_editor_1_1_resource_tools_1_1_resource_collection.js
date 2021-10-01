@@ -1,0 +1,27 @@
+var class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_resource_collection =
+[
+    [ "ResourceCollection", "class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_resource_collection.html#a66727cf7f6cf6039b14cb816e3d339bd", null ],
+    [ "AddResource", "class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_resource_collection.html#af5f9fe9907a75a1353edf0bb8256349a", null ],
+    [ "AddResource", "class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_resource_collection.html#af253ef89733d384cd06bf5bd579fec42", null ],
+    [ "AssignAsset", "class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_resource_collection.html#ad0c459ac7ac7f41139f99cc86d2eec1e", null ],
+    [ "Clear", "class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_resource_collection.html#a0fc9c7ce60b297acfef4513cdb5ed205", null ],
+    [ "GetAsset", "class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_resource_collection.html#ab9b6889b3763082b0227dc8a6dc1991f", null ],
+    [ "GetAssets", "class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_resource_collection.html#a24962c223fa57ec88d2eff5c038be212", null ],
+    [ "GetAssets", "class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_resource_collection.html#a4195ce961a2e545e575ef4481e37be99", null ],
+    [ "GetResource", "class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_resource_collection.html#adddaf447d6ff1117698d90c12de74013", null ],
+    [ "GetResources", "class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_resource_collection.html#ab4d9ef56a54cbc2c19a9887e3e4e65e3", null ],
+    [ "HasAsset", "class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_resource_collection.html#ae01a83dd80afc4f3d04e983a5aca1f50", null ],
+    [ "HasResource", "class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_resource_collection.html#abb46e64f6f6b796756a2684690d7e62a", null ],
+    [ "Load", "class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_resource_collection.html#aab334e310471b018abc9c7819c325266", null ],
+    [ "RemoveResource", "class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_resource_collection.html#a5dc0ee70dcea3cc7a3a64a3c6e73c539", null ],
+    [ "RenameResource", "class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_resource_collection.html#a8598ea1df0f3a576a3f54b30fee8fd3c", null ],
+    [ "Save", "class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_resource_collection.html#ae3c8c13598d1010ebabc0a3f68824dd4", null ],
+    [ "SetResourceLoadType", "class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_resource_collection.html#a52dead7cbdf86370e6a8e3107e9df2ab", null ],
+    [ "SetResourcePacked", "class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_resource_collection.html#a7195f093d2f1d8bb0cadb409f1a3702f", null ],
+    [ "UnassignAsset", "class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_resource_collection.html#a76c174e23e73dac70553c0bcccc3ba27", null ],
+    [ "AssetCount", "class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_resource_collection.html#ab30c451dce8d4b96ae675e428177e786", null ],
+    [ "ResourceCount", "class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_resource_collection.html#a2428f6b678106aee74bdefb95462b5ab", null ],
+    [ "OnLoadCompleted", "class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_resource_collection.html#a5301f4f9755fc30769b9269faaeef860", null ],
+    [ "OnLoadingAsset", "class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_resource_collection.html#a004c6e8776662c9d1f3dcf61532a203c", null ],
+    [ "OnLoadingResource", "class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_resource_collection.html#add84346b1ad505e7bbed390b569feddf", null ]
+];

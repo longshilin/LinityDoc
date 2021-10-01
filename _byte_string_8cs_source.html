@@ -1,0 +1,381 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: Assets/Scripts/Libraries/Google.Protobuf/ByteString.cs 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_byte_string_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">ByteString.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_byte_string_8cs.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#region Copyright notice and license</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">// Protocol Buffers - Google&#39;s data interchange format</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">// Copyright 2008 Google Inc.  All rights reserved.</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">// https://developers.google.com/protocol-buffers/</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">// Redistribution and use in source and binary forms, with or without</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">// modification, are permitted provided that the following conditions are</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">// met:</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">//     * Redistributions of source code must retain the above copyright</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">// notice, this list of conditions and the following disclaimer.</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">//     * Redistributions in binary form must reproduce the above</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">// copyright notice, this list of conditions and the following disclaimer</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">// in the documentation and/or other materials provided with the</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">// distribution.</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">//     * Neither the name of Google Inc. nor the names of its</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">// contributors may be used to endorse or promote products derived from</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">// this software without specific prior written permission.</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">// &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">// LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">// A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">// OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">// SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">// LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">// DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">// THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">// (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment">// OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#endregion</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Collections;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Collections.Generic;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.IO;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Linq;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Text;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_google.html">Google</a>.<a class="code" href="namespace_google_1_1_protobuf.html">Protobuf</a>.<a class="code" href="namespace_google_1_1_protobuf_1_1_compatibility.html">Compatibility</a>;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_mongo_d_b.html">MongoDB</a>.<a class="code" href="namespace_mongo_d_b_1_1_bson.html">Bson</a>.<a class="code" href="namespace_mongo_d_b_1_1_bson_1_1_serialization.html">Serialization</a>.<a class="code" href="namespace_mongo_d_b_1_1_bson_1_1_serialization_1_1_attributes.html">Attributes</a>;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_google_1_1_protobuf.html">Google.Protobuf</a></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;{</div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_byte_string.html">   47</a></span>&#160;    <span class="keyword">public</span> sealed <span class="keyword">class </span><a class="code" href="class_google_1_1_protobuf_1_1_byte_string.html">ByteString</a> : IEnumerable&lt;byte&gt;, IEquatable&lt;ByteString&gt;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    {</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> readonly <a class="code" href="class_google_1_1_protobuf_1_1_byte_string.html">ByteString</a> empty = <span class="keyword">new</span> <a class="code" href="class_google_1_1_protobuf_1_1_byte_string.html#a8a743819cc068944adf522153c4d6837">ByteString</a>(<span class="keyword">new</span> <span class="keywordtype">byte</span>[0]);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_byte_string.html#a965ae5e07b8f35fef667cc1fa40b7b52">   51</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">byte</span>[] <a class="code" href="class_google_1_1_protobuf_1_1_byte_string.html#a965ae5e07b8f35fef667cc1fa40b7b52">bytes</a>;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">class </span>Unsafe</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        {</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            <span class="keyword">public</span> <span class="keyword">static</span> <a class="code" href="class_google_1_1_protobuf_1_1_byte_string.html">ByteString</a> FromBytes(<span class="keywordtype">byte</span>[] <a class="code" href="class_google_1_1_protobuf_1_1_byte_string.html#a965ae5e07b8f35fef667cc1fa40b7b52">bytes</a>)</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;            {</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="class_google_1_1_protobuf_1_1_byte_string.html#a8a743819cc068944adf522153c4d6837">ByteString</a>(<a class="code" href="class_google_1_1_protobuf_1_1_byte_string.html#a965ae5e07b8f35fef667cc1fa40b7b52">bytes</a>);</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            }</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">byte</span>[] GetBuffer(<a class="code" href="class_google_1_1_protobuf_1_1_byte_string.html">ByteString</a> <a class="code" href="class_google_1_1_protobuf_1_1_byte_string.html#a965ae5e07b8f35fef667cc1fa40b7b52">bytes</a>)</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;            {</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                <span class="keywordflow">return</span> <a class="code" href="class_google_1_1_protobuf_1_1_byte_string.html#a965ae5e07b8f35fef667cc1fa40b7b52">bytes</a>.bytes;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            }</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        }</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        <span class="keyword">internal</span> <span class="keyword">static</span> <a class="code" href="class_google_1_1_protobuf_1_1_byte_string.html">ByteString</a> AttachBytes(<span class="keywordtype">byte</span>[] <a class="code" href="class_google_1_1_protobuf_1_1_byte_string.html#a965ae5e07b8f35fef667cc1fa40b7b52">bytes</a>)</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        {</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="class_google_1_1_protobuf_1_1_byte_string.html#a8a743819cc068944adf522153c4d6837">ByteString</a>(<a class="code" href="class_google_1_1_protobuf_1_1_byte_string.html#a965ae5e07b8f35fef667cc1fa40b7b52">bytes</a>);</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        }</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        </div>
+<div class="line"><a name="l00085"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_byte_string.html#a8a743819cc068944adf522153c4d6837">   85</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_google_1_1_protobuf_1_1_byte_string.html#a8a743819cc068944adf522153c4d6837">ByteString</a>()</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        {}</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
+<div class="line"><a name="l00088"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_byte_string.html#a4b164c2d8ee725cb3f1864716826ea91">   88</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_google_1_1_protobuf_1_1_byte_string.html#a4b164c2d8ee725cb3f1864716826ea91">ByteString</a>(List&lt;byte&gt; list)</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        {</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            this.bytes = list.ToArray();</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        }</div>
+<div class="line"><a name="l00096"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_byte_string.html#a6c3f433cd8ae7627d8989556d0add33d">   96</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_google_1_1_protobuf_1_1_byte_string.html#a6c3f433cd8ae7627d8989556d0add33d">ByteString</a>(<span class="keywordtype">byte</span>[] <a class="code" href="class_google_1_1_protobuf_1_1_byte_string.html#a965ae5e07b8f35fef667cc1fa40b7b52">bytes</a>)</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        {</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;            this.bytes = <a class="code" href="class_google_1_1_protobuf_1_1_byte_string.html#a965ae5e07b8f35fef667cc1fa40b7b52">bytes</a>;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        }</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
+<div class="line"><a name="l00104"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_byte_string.html#a13aee24e3f133eecf45c3cfe74cca067">  104</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <a class="code" href="class_google_1_1_protobuf_1_1_byte_string.html">ByteString</a> <a class="code" href="class_google_1_1_protobuf_1_1_byte_string.html#a13aee24e3f133eecf45c3cfe74cca067">Empty</a></div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        {</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;            <span class="keyword">get</span> { <span class="keywordflow">return</span> empty; }</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        }</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        [BsonIgnore]</div>
+<div class="line"><a name="l00113"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_byte_string.html#a68c573fdb98442fde03392e1ada52464">  113</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">int</span> <a class="code" href="class_google_1_1_protobuf_1_1_byte_string.html#a68c573fdb98442fde03392e1ada52464">Length</a></div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        {</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;            <span class="keyword">get</span> { <span class="keywordflow">return</span> <a class="code" href="class_google_1_1_protobuf_1_1_byte_string.html#a965ae5e07b8f35fef667cc1fa40b7b52">bytes</a>.Length; }</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        }</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160; </div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        [BsonIgnore]</div>
+<div class="line"><a name="l00122"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_byte_string.html#ab33a63cd9dd9212100de5f61d1cdecf4">  122</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code" href="class_google_1_1_protobuf_1_1_byte_string.html#ab33a63cd9dd9212100de5f61d1cdecf4">IsEmpty</a></div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        {</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;            <span class="keyword">get</span> { <span class="keywordflow">return</span> <a class="code" href="class_google_1_1_protobuf_1_1_byte_string.html#a68c573fdb98442fde03392e1ada52464">Length</a> == 0; }</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        }</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160; </div>
+<div class="line"><a name="l00132"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_byte_string.html#a20f88ee06c9b66f9e065297f62f92edd">  132</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">byte</span>[] <a class="code" href="class_google_1_1_protobuf_1_1_byte_string.html#a20f88ee06c9b66f9e065297f62f92edd">ToByteArray</a>()</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        {</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;            <span class="keywordflow">return</span> (<span class="keywordtype">byte</span>[]) <a class="code" href="class_google_1_1_protobuf_1_1_byte_string.html#a965ae5e07b8f35fef667cc1fa40b7b52">bytes</a>.Clone();</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;        }</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160; </div>
+<div class="line"><a name="l00141"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_byte_string.html#a7338ed9e339fb6af2a1dcd46565f1f90">  141</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">string</span> <a class="code" href="class_google_1_1_protobuf_1_1_byte_string.html#a7338ed9e339fb6af2a1dcd46565f1f90">ToBase64</a>()</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;        {</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;            <span class="keywordflow">return</span> Convert.ToBase64String(<a class="code" href="class_google_1_1_protobuf_1_1_byte_string.html#a965ae5e07b8f35fef667cc1fa40b7b52">bytes</a>);</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;        }</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160; </div>
+<div class="line"><a name="l00149"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_byte_string.html#a9c26cae42b01d53c9f30c05e8428da50">  149</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <a class="code" href="class_google_1_1_protobuf_1_1_byte_string.html">ByteString</a> <a class="code" href="class_google_1_1_protobuf_1_1_byte_string.html#a9c26cae42b01d53c9f30c05e8428da50">FromBase64</a>(<span class="keywordtype">string</span> <a class="code" href="class_google_1_1_protobuf_1_1_byte_string.html#a965ae5e07b8f35fef667cc1fa40b7b52">bytes</a>)</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;        {</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;            <span class="comment">// By handling the empty string explicitly, we not only optimize but we fix a</span></div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;            <span class="comment">// problem on CF 2.0. See issue 61 for details.</span></div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="class_google_1_1_protobuf_1_1_byte_string.html#a965ae5e07b8f35fef667cc1fa40b7b52">bytes</a> == <span class="stringliteral">&quot;&quot;</span> ? <a class="code" href="class_google_1_1_protobuf_1_1_byte_string.html#a13aee24e3f133eecf45c3cfe74cca067">Empty</a> : <span class="keyword">new</span> <a class="code" href="class_google_1_1_protobuf_1_1_byte_string.html#a8a743819cc068944adf522153c4d6837">ByteString</a>(Convert.FromBase64String(<a class="code" href="class_google_1_1_protobuf_1_1_byte_string.html#a965ae5e07b8f35fef667cc1fa40b7b52">bytes</a>));</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;        }</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160; </div>
+<div class="line"><a name="l00163"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_byte_string.html#a5d9c7617979dc97b39f0cf4baeff2595">  163</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <a class="code" href="class_google_1_1_protobuf_1_1_byte_string.html">ByteString</a> <a class="code" href="class_google_1_1_protobuf_1_1_byte_string.html#a5d9c7617979dc97b39f0cf4baeff2595">FromStream</a>(Stream stream)</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;        {</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;            ProtoPreconditions.CheckNotNull(stream, <span class="stringliteral">&quot;stream&quot;</span>);</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;            <span class="keywordtype">int</span> capacity = stream.CanSeek ? checked((<span class="keywordtype">int</span>) (stream.Length - stream.Position)) : 0;</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;            var memoryStream = <span class="keyword">new</span> MemoryStream(capacity);</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;            stream.CopyTo(memoryStream);</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160; </div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;            <span class="comment">// Avoid an extra copy if we can.</span></div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;            <span class="keywordtype">byte</span>[] <a class="code" href="class_google_1_1_protobuf_1_1_byte_string.html#a965ae5e07b8f35fef667cc1fa40b7b52">bytes</a> = memoryStream.Length == memoryStream.Capacity ? memoryStream.GetBuffer() : memoryStream.ToArray();</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160; </div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;            <span class="keywordflow">return</span> AttachBytes(<a class="code" href="class_google_1_1_protobuf_1_1_byte_string.html#a965ae5e07b8f35fef667cc1fa40b7b52">bytes</a>);</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;        }</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160; </div>
+<div class="line"><a name="l00183"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_byte_string.html#a57d1846ff6028fdf31bc7b2982ff68ca">  183</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <a class="code" href="class_google_1_1_protobuf_1_1_byte_string.html">ByteString</a> <a class="code" href="class_google_1_1_protobuf_1_1_byte_string.html#a57d1846ff6028fdf31bc7b2982ff68ca">CopyFrom</a>(params <span class="keywordtype">byte</span>[] <a class="code" href="class_google_1_1_protobuf_1_1_byte_string.html#a965ae5e07b8f35fef667cc1fa40b7b52">bytes</a>)</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;        {</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="class_google_1_1_protobuf_1_1_byte_string.html#a8a743819cc068944adf522153c4d6837">ByteString</a>((<span class="keywordtype">byte</span>[]) <a class="code" href="class_google_1_1_protobuf_1_1_byte_string.html#a965ae5e07b8f35fef667cc1fa40b7b52">bytes</a>.Clone());</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;        }</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160; </div>
+<div class="line"><a name="l00191"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_byte_string.html#a072efaae98aab8c8477ff6fa766e70f6">  191</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <a class="code" href="class_google_1_1_protobuf_1_1_byte_string.html">ByteString</a> <a class="code" href="class_google_1_1_protobuf_1_1_byte_string.html#a072efaae98aab8c8477ff6fa766e70f6">CopyFrom</a>(<span class="keywordtype">byte</span>[] <a class="code" href="class_google_1_1_protobuf_1_1_byte_string.html#a965ae5e07b8f35fef667cc1fa40b7b52">bytes</a>, <span class="keywordtype">int</span> offset, <span class="keywordtype">int</span> count)</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;        {</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;            <span class="keywordtype">byte</span>[] portion = <span class="keyword">new</span> <span class="keywordtype">byte</span>[count];</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;            ByteArray.Copy(<a class="code" href="class_google_1_1_protobuf_1_1_byte_string.html#a965ae5e07b8f35fef667cc1fa40b7b52">bytes</a>, offset, portion, 0, count);</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="class_google_1_1_protobuf_1_1_byte_string.html#a8a743819cc068944adf522153c4d6837">ByteString</a>(portion);</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;        }</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160; </div>
+<div class="line"><a name="l00202"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_byte_string.html#af17ef465c0ea170acbbd1ca69da8f014">  202</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <a class="code" href="class_google_1_1_protobuf_1_1_byte_string.html">ByteString</a> <a class="code" href="class_google_1_1_protobuf_1_1_byte_string.html#af17ef465c0ea170acbbd1ca69da8f014">CopyFrom</a>(<span class="keywordtype">string</span> text, Encoding encoding)</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;        {</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="class_google_1_1_protobuf_1_1_byte_string.html#a8a743819cc068944adf522153c4d6837">ByteString</a>(encoding.GetBytes(text));</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;        }</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160; </div>
+<div class="line"><a name="l00210"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_byte_string.html#a7ab506f4dc838dd89fd2c54a24dccc74">  210</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <a class="code" href="class_google_1_1_protobuf_1_1_byte_string.html">ByteString</a> <a class="code" href="class_google_1_1_protobuf_1_1_byte_string.html#a7ab506f4dc838dd89fd2c54a24dccc74">CopyFromUtf8</a>(<span class="keywordtype">string</span> text)</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;        {</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="class_google_1_1_protobuf_1_1_byte_string.html#a57d1846ff6028fdf31bc7b2982ff68ca">CopyFrom</a>(text, Encoding.UTF8);</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;        }</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160; </div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;        [BsonIgnore]</div>
+<div class="line"><a name="l00219"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_byte_string.html#ae415baf53dc5d4aeb30b37dd1dcc74cc">  219</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">byte</span> <span class="keyword">this</span>[<span class="keywordtype">int</span> index]</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;        {</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;            <span class="keyword">get</span> { <span class="keywordflow">return</span> <a class="code" href="class_google_1_1_protobuf_1_1_byte_string.html#a965ae5e07b8f35fef667cc1fa40b7b52">bytes</a>[index]; }</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;        }</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160; </div>
+<div class="line"><a name="l00233"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_byte_string.html#a34312693c1a26482efd2aea46d8d4902">  233</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">string</span> <a class="code" href="class_google_1_1_protobuf_1_1_byte_string.html#a34312693c1a26482efd2aea46d8d4902">ToString</a>(Encoding encoding)</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;        {</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;            <span class="keywordflow">return</span> encoding.GetString(<a class="code" href="class_google_1_1_protobuf_1_1_byte_string.html#a965ae5e07b8f35fef667cc1fa40b7b52">bytes</a>, 0, <a class="code" href="class_google_1_1_protobuf_1_1_byte_string.html#a965ae5e07b8f35fef667cc1fa40b7b52">bytes</a>.Length);</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;        }</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160; </div>
+<div class="line"><a name="l00246"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_byte_string.html#a9414bf3aaa03c17ead51660c83dd3391">  246</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">string</span> <a class="code" href="class_google_1_1_protobuf_1_1_byte_string.html#a9414bf3aaa03c17ead51660c83dd3391">ToStringUtf8</a>()</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;        {</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="class_google_1_1_protobuf_1_1_byte_string.html#a34312693c1a26482efd2aea46d8d4902">ToString</a>(Encoding.UTF8);</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;        }</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160; </div>
+<div class="line"><a name="l00255"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_byte_string.html#adbe3842d4749d8f88cfd582121e2bd6d">  255</a></span>&#160;        <span class="keyword">public</span> IEnumerator&lt;byte&gt; <a class="code" href="class_google_1_1_protobuf_1_1_byte_string.html#adbe3842d4749d8f88cfd582121e2bd6d">GetEnumerator</a>()</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;        {</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;            <span class="keywordflow">return</span> ((IEnumerable&lt;byte&gt;) <a class="code" href="class_google_1_1_protobuf_1_1_byte_string.html#a965ae5e07b8f35fef667cc1fa40b7b52">bytes</a>).GetEnumerator();</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;        }</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160; </div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;        IEnumerator IEnumerable.GetEnumerator()</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;        {</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="class_google_1_1_protobuf_1_1_byte_string.html#adbe3842d4749d8f88cfd582121e2bd6d">GetEnumerator</a>();</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;        }</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160; </div>
+<div class="line"><a name="l00272"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_byte_string.html#a6d609210cbe20b932841e5bc33f12612">  272</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_google_1_1_protobuf_1_1_coded_input_stream.html">CodedInputStream</a> <a class="code" href="class_google_1_1_protobuf_1_1_byte_string.html#a6d609210cbe20b932841e5bc33f12612">CreateCodedInput</a>()</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;        {</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;            <span class="comment">// We trust CodedInputStream not to reveal the provided byte array or modify it</span></div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="class_google_1_1_protobuf_1_1_coded_input_stream.html">CodedInputStream</a>(<a class="code" href="class_google_1_1_protobuf_1_1_byte_string.html#a965ae5e07b8f35fef667cc1fa40b7b52">bytes</a>);</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;        }</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160; </div>
+<div class="line"><a name="l00284"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_byte_string.html#a95efc955f6a7e3f0dfc14e5b3288700e">  284</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">bool</span> <a class="code" href="class_google_1_1_protobuf_1_1_byte_string.html#a95efc955f6a7e3f0dfc14e5b3288700e">operator ==</a>(<a class="code" href="class_google_1_1_protobuf_1_1_byte_string.html">ByteString</a> lhs, <a class="code" href="class_google_1_1_protobuf_1_1_byte_string.html">ByteString</a> rhs)</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;        {</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;            <span class="keywordflow">if</span> (ReferenceEquals(lhs, rhs))</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;            {</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;            }</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;            <span class="keywordflow">if</span> (ReferenceEquals(lhs, <span class="keyword">null</span>) || ReferenceEquals(rhs, <span class="keyword">null</span>))</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;            {</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;            }</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;            <span class="keywordflow">if</span> (lhs.<a class="code" href="class_google_1_1_protobuf_1_1_byte_string.html#a965ae5e07b8f35fef667cc1fa40b7b52">bytes</a>.Length != rhs.<a class="code" href="class_google_1_1_protobuf_1_1_byte_string.html#a965ae5e07b8f35fef667cc1fa40b7b52">bytes</a>.Length)</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;            {</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;            }</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; lhs.<a class="code" href="class_google_1_1_protobuf_1_1_byte_string.html#a68c573fdb98442fde03392e1ada52464">Length</a>; i++)</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;            {</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;                <span class="keywordflow">if</span> (rhs.<a class="code" href="class_google_1_1_protobuf_1_1_byte_string.html#a965ae5e07b8f35fef667cc1fa40b7b52">bytes</a>[i] != lhs.<a class="code" href="class_google_1_1_protobuf_1_1_byte_string.html#a965ae5e07b8f35fef667cc1fa40b7b52">bytes</a>[i])</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;                {</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;                    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;                }</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;            }</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;        }</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160; </div>
+<div class="line"><a name="l00314"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_byte_string.html#a4c5835b21377e1cd63735ffe26bdb509">  314</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">bool</span> <a class="code" href="class_google_1_1_protobuf_1_1_byte_string.html#a4c5835b21377e1cd63735ffe26bdb509">operator !=</a>(<a class="code" href="class_google_1_1_protobuf_1_1_byte_string.html">ByteString</a> lhs, <a class="code" href="class_google_1_1_protobuf_1_1_byte_string.html">ByteString</a> rhs)</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;        {</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;            <span class="keywordflow">return</span> !(lhs == rhs);</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;        }</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160; </div>
+<div class="line"><a name="l00324"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_byte_string.html#afa834ba1be1e731df5fb756d792ecea0">  324</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">bool</span> <a class="code" href="class_google_1_1_protobuf_1_1_byte_string.html#afa834ba1be1e731df5fb756d792ecea0">Equals</a>(<span class="keywordtype">object</span> obj)</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;        {</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">this</span> == (obj as <a class="code" href="class_google_1_1_protobuf_1_1_byte_string.html#a8a743819cc068944adf522153c4d6837">ByteString</a>);</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;        }</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160; </div>
+<div class="line"><a name="l00334"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_byte_string.html#a9db46657d41b58aff6899b5b6226c7ee">  334</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">int</span> <a class="code" href="class_google_1_1_protobuf_1_1_byte_string.html#a9db46657d41b58aff6899b5b6226c7ee">GetHashCode</a>()</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;        {</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;            <span class="keywordtype">int</span> ret = 23;</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;            <span class="keywordflow">foreach</span> (<span class="keywordtype">byte</span> b <span class="keywordflow">in</span> <a class="code" href="class_google_1_1_protobuf_1_1_byte_string.html#a965ae5e07b8f35fef667cc1fa40b7b52">bytes</a>)</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;            {</div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;                ret = (ret * 31) + b;</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;            }</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;            <span class="keywordflow">return</span> ret;</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;        }</div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160; </div>
+<div class="line"><a name="l00349"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_byte_string.html#a34dec7c1fc119af073f24e26402947f1">  349</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code" href="class_google_1_1_protobuf_1_1_byte_string.html#a34dec7c1fc119af073f24e26402947f1">Equals</a>(<a class="code" href="class_google_1_1_protobuf_1_1_byte_string.html">ByteString</a> other)</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;        {</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">this</span> == other;</div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;        }</div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160; </div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;        <span class="keyword">internal</span> <span class="keywordtype">void</span> WriteRawBytesTo(<a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html">CodedOutputStream</a> outputStream)</div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;        {</div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;            outputStream.WriteRawBytes(<a class="code" href="class_google_1_1_protobuf_1_1_byte_string.html#a965ae5e07b8f35fef667cc1fa40b7b52">bytes</a>, 0, <a class="code" href="class_google_1_1_protobuf_1_1_byte_string.html#a965ae5e07b8f35fef667cc1fa40b7b52">bytes</a>.Length);</div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;        }</div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160; </div>
+<div class="line"><a name="l00365"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_byte_string.html#a0847e0eac17c980dc8df303fd5292130">  365</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_google_1_1_protobuf_1_1_byte_string.html#a0847e0eac17c980dc8df303fd5292130">CopyTo</a>(<span class="keywordtype">byte</span>[] array, <span class="keywordtype">int</span> position)</div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;        {</div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;            ByteArray.Copy(<a class="code" href="class_google_1_1_protobuf_1_1_byte_string.html#a965ae5e07b8f35fef667cc1fa40b7b52">bytes</a>, 0, array, position, <a class="code" href="class_google_1_1_protobuf_1_1_byte_string.html#a965ae5e07b8f35fef667cc1fa40b7b52">bytes</a>.Length);</div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;        }</div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160; </div>
+<div class="line"><a name="l00373"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_byte_string.html#aa3f5eb280621a32874edeb97eab7e9e6">  373</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_google_1_1_protobuf_1_1_byte_string.html#aa3f5eb280621a32874edeb97eab7e9e6">WriteTo</a>(Stream outputStream)</div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;        {</div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;            outputStream.Write(<a class="code" href="class_google_1_1_protobuf_1_1_byte_string.html#a965ae5e07b8f35fef667cc1fa40b7b52">bytes</a>, 0, <a class="code" href="class_google_1_1_protobuf_1_1_byte_string.html#a965ae5e07b8f35fef667cc1fa40b7b52">bytes</a>.Length);</div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;        }</div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;    }</div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;}</div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_byte_string_html"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_byte_string.html">Google.Protobuf.ByteString</a></div><div class="ttdoc">Immutable array of bytes.</div><div class="ttdef"><b>Definition:</b> <a href="_byte_string_8cs_source.html#l00047">ByteString.cs:48</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_byte_string_html_a072efaae98aab8c8477ff6fa766e70f6"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_byte_string.html#a072efaae98aab8c8477ff6fa766e70f6">Google.Protobuf.ByteString.CopyFrom</a></div><div class="ttdeci">static ByteString CopyFrom(byte[] bytes, int offset, int count)</div><div class="ttdoc">Constructs a ByteString from a portion of a byte array.</div><div class="ttdef"><b>Definition:</b> <a href="_byte_string_8cs_source.html#l00191">ByteString.cs:191</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_byte_string_html_a0847e0eac17c980dc8df303fd5292130"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_byte_string.html#a0847e0eac17c980dc8df303fd5292130">Google.Protobuf.ByteString.CopyTo</a></div><div class="ttdeci">void CopyTo(byte[] array, int position)</div><div class="ttdoc">Copies the entire byte array to the destination array provided at the offset specified.</div><div class="ttdef"><b>Definition:</b> <a href="_byte_string_8cs_source.html#l00365">ByteString.cs:365</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_byte_string_html_a13aee24e3f133eecf45c3cfe74cca067"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_byte_string.html#a13aee24e3f133eecf45c3cfe74cca067">Google.Protobuf.ByteString.Empty</a></div><div class="ttdeci">static ByteString Empty</div><div class="ttdoc">Returns an empty ByteString.</div><div class="ttdef"><b>Definition:</b> <a href="_byte_string_8cs_source.html#l00104">ByteString.cs:105</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_byte_string_html_a20f88ee06c9b66f9e065297f62f92edd"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_byte_string.html#a20f88ee06c9b66f9e065297f62f92edd">Google.Protobuf.ByteString.ToByteArray</a></div><div class="ttdeci">byte[] ToByteArray()</div><div class="ttdoc">Converts this ByteString into a byte array.</div><div class="ttdef"><b>Definition:</b> <a href="_byte_string_8cs_source.html#l00132">ByteString.cs:132</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_byte_string_html_a34312693c1a26482efd2aea46d8d4902"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_byte_string.html#a34312693c1a26482efd2aea46d8d4902">Google.Protobuf.ByteString.ToString</a></div><div class="ttdeci">string ToString(Encoding encoding)</div><div class="ttdoc">Converts this ByteString into a string by applying the given encoding.</div><div class="ttdef"><b>Definition:</b> <a href="_byte_string_8cs_source.html#l00233">ByteString.cs:233</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_byte_string_html_a34dec7c1fc119af073f24e26402947f1"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_byte_string.html#a34dec7c1fc119af073f24e26402947f1">Google.Protobuf.ByteString.Equals</a></div><div class="ttdeci">bool Equals(ByteString other)</div><div class="ttdoc">Compares this byte string with another.</div><div class="ttdef"><b>Definition:</b> <a href="_byte_string_8cs_source.html#l00349">ByteString.cs:349</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_byte_string_html_a4b164c2d8ee725cb3f1864716826ea91"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_byte_string.html#a4b164c2d8ee725cb3f1864716826ea91">Google.Protobuf.ByteString.ByteString</a></div><div class="ttdeci">ByteString(List&lt; byte &gt; list)</div><div class="ttdef"><b>Definition:</b> <a href="_byte_string_8cs_source.html#l00088">ByteString.cs:88</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_byte_string_html_a4c5835b21377e1cd63735ffe26bdb509"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_byte_string.html#a4c5835b21377e1cd63735ffe26bdb509">Google.Protobuf.ByteString.operator!=</a></div><div class="ttdeci">static bool operator!=(ByteString lhs, ByteString rhs)</div><div class="ttdoc">Compares two byte strings for inequality.</div><div class="ttdef"><b>Definition:</b> <a href="_byte_string_8cs_source.html#l00314">ByteString.cs:314</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_byte_string_html_a57d1846ff6028fdf31bc7b2982ff68ca"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_byte_string.html#a57d1846ff6028fdf31bc7b2982ff68ca">Google.Protobuf.ByteString.CopyFrom</a></div><div class="ttdeci">static ByteString CopyFrom(params byte[] bytes)</div><div class="ttdoc">Constructs a ByteString from the given array. The contents are copied, so further modifications to th...</div><div class="ttdef"><b>Definition:</b> <a href="_byte_string_8cs_source.html#l00183">ByteString.cs:183</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_byte_string_html_a5d9c7617979dc97b39f0cf4baeff2595"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_byte_string.html#a5d9c7617979dc97b39f0cf4baeff2595">Google.Protobuf.ByteString.FromStream</a></div><div class="ttdeci">static ByteString FromStream(Stream stream)</div><div class="ttdoc">Constructs a ByteString from data in the given stream, synchronously.</div><div class="ttdef"><b>Definition:</b> <a href="_byte_string_8cs_source.html#l00163">ByteString.cs:163</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_byte_string_html_a68c573fdb98442fde03392e1ada52464"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_byte_string.html#a68c573fdb98442fde03392e1ada52464">Google.Protobuf.ByteString.Length</a></div><div class="ttdeci">int Length</div><div class="ttdoc">Returns the length of this ByteString in bytes.</div><div class="ttdef"><b>Definition:</b> <a href="_byte_string_8cs_source.html#l00113">ByteString.cs:114</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_byte_string_html_a6c3f433cd8ae7627d8989556d0add33d"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_byte_string.html#a6c3f433cd8ae7627d8989556d0add33d">Google.Protobuf.ByteString.ByteString</a></div><div class="ttdeci">ByteString(byte[] bytes)</div><div class="ttdoc">Constructs a new ByteString from the given byte array. The array is not copied, and must not be modif...</div><div class="ttdef"><b>Definition:</b> <a href="_byte_string_8cs_source.html#l00096">ByteString.cs:96</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_byte_string_html_a6d609210cbe20b932841e5bc33f12612"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_byte_string.html#a6d609210cbe20b932841e5bc33f12612">Google.Protobuf.ByteString.CreateCodedInput</a></div><div class="ttdeci">CodedInputStream CreateCodedInput()</div><div class="ttdoc">Creates a CodedInputStream from this ByteString's data.</div><div class="ttdef"><b>Definition:</b> <a href="_byte_string_8cs_source.html#l00272">ByteString.cs:272</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_byte_string_html_a7338ed9e339fb6af2a1dcd46565f1f90"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_byte_string.html#a7338ed9e339fb6af2a1dcd46565f1f90">Google.Protobuf.ByteString.ToBase64</a></div><div class="ttdeci">string ToBase64()</div><div class="ttdoc">Converts this ByteString into a standard base64 representation.</div><div class="ttdef"><b>Definition:</b> <a href="_byte_string_8cs_source.html#l00141">ByteString.cs:141</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_byte_string_html_a7ab506f4dc838dd89fd2c54a24dccc74"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_byte_string.html#a7ab506f4dc838dd89fd2c54a24dccc74">Google.Protobuf.ByteString.CopyFromUtf8</a></div><div class="ttdeci">static ByteString CopyFromUtf8(string text)</div><div class="ttdoc">Creates a new ByteString by encoding the specified text in UTF-8.</div><div class="ttdef"><b>Definition:</b> <a href="_byte_string_8cs_source.html#l00210">ByteString.cs:210</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_byte_string_html_a8a743819cc068944adf522153c4d6837"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_byte_string.html#a8a743819cc068944adf522153c4d6837">Google.Protobuf.ByteString.ByteString</a></div><div class="ttdeci">ByteString()</div><div class="ttdef"><b>Definition:</b> <a href="_byte_string_8cs_source.html#l00085">ByteString.cs:85</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_byte_string_html_a9414bf3aaa03c17ead51660c83dd3391"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_byte_string.html#a9414bf3aaa03c17ead51660c83dd3391">Google.Protobuf.ByteString.ToStringUtf8</a></div><div class="ttdeci">string ToStringUtf8()</div><div class="ttdoc">Converts this ByteString into a string by applying the UTF-8 encoding.</div><div class="ttdef"><b>Definition:</b> <a href="_byte_string_8cs_source.html#l00246">ByteString.cs:246</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_byte_string_html_a95efc955f6a7e3f0dfc14e5b3288700e"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_byte_string.html#a95efc955f6a7e3f0dfc14e5b3288700e">Google.Protobuf.ByteString.operator==</a></div><div class="ttdeci">static bool operator==(ByteString lhs, ByteString rhs)</div><div class="ttdoc">Compares two byte strings for equality.</div><div class="ttdef"><b>Definition:</b> <a href="_byte_string_8cs_source.html#l00284">ByteString.cs:284</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_byte_string_html_a965ae5e07b8f35fef667cc1fa40b7b52"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_byte_string.html#a965ae5e07b8f35fef667cc1fa40b7b52">Google.Protobuf.ByteString.bytes</a></div><div class="ttdeci">byte[] bytes</div><div class="ttdef"><b>Definition:</b> <a href="_byte_string_8cs_source.html#l00051">ByteString.cs:51</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_byte_string_html_a9c26cae42b01d53c9f30c05e8428da50"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_byte_string.html#a9c26cae42b01d53c9f30c05e8428da50">Google.Protobuf.ByteString.FromBase64</a></div><div class="ttdeci">static ByteString FromBase64(string bytes)</div><div class="ttdoc">Constructs a ByteString from the Base64 Encoded String.</div><div class="ttdef"><b>Definition:</b> <a href="_byte_string_8cs_source.html#l00149">ByteString.cs:149</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_byte_string_html_a9db46657d41b58aff6899b5b6226c7ee"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_byte_string.html#a9db46657d41b58aff6899b5b6226c7ee">Google.Protobuf.ByteString.GetHashCode</a></div><div class="ttdeci">override int GetHashCode()</div><div class="ttdoc">Returns a hash code for this object. Two equal byte strings will return the same hash code.</div><div class="ttdef"><b>Definition:</b> <a href="_byte_string_8cs_source.html#l00334">ByteString.cs:334</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_byte_string_html_aa3f5eb280621a32874edeb97eab7e9e6"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_byte_string.html#aa3f5eb280621a32874edeb97eab7e9e6">Google.Protobuf.ByteString.WriteTo</a></div><div class="ttdeci">void WriteTo(Stream outputStream)</div><div class="ttdoc">Writes the entire byte array to the provided stream</div><div class="ttdef"><b>Definition:</b> <a href="_byte_string_8cs_source.html#l00373">ByteString.cs:373</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_byte_string_html_ab33a63cd9dd9212100de5f61d1cdecf4"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_byte_string.html#ab33a63cd9dd9212100de5f61d1cdecf4">Google.Protobuf.ByteString.IsEmpty</a></div><div class="ttdeci">bool IsEmpty</div><div class="ttdoc">Returns true if this byte string is empty, false otherwise.</div><div class="ttdef"><b>Definition:</b> <a href="_byte_string_8cs_source.html#l00122">ByteString.cs:123</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_byte_string_html_adbe3842d4749d8f88cfd582121e2bd6d"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_byte_string.html#adbe3842d4749d8f88cfd582121e2bd6d">Google.Protobuf.ByteString.GetEnumerator</a></div><div class="ttdeci">IEnumerator&lt; byte &gt; GetEnumerator()</div><div class="ttdoc">Returns an iterator over the bytes in this ByteString.</div><div class="ttdef"><b>Definition:</b> <a href="_byte_string_8cs_source.html#l00255">ByteString.cs:255</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_byte_string_html_af17ef465c0ea170acbbd1ca69da8f014"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_byte_string.html#af17ef465c0ea170acbbd1ca69da8f014">Google.Protobuf.ByteString.CopyFrom</a></div><div class="ttdeci">static ByteString CopyFrom(string text, Encoding encoding)</div><div class="ttdoc">Creates a new ByteString by encoding the specified text with the given encoding.</div><div class="ttdef"><b>Definition:</b> <a href="_byte_string_8cs_source.html#l00202">ByteString.cs:202</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_byte_string_html_afa834ba1be1e731df5fb756d792ecea0"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_byte_string.html#afa834ba1be1e731df5fb756d792ecea0">Google.Protobuf.ByteString.Equals</a></div><div class="ttdeci">override bool Equals(object obj)</div><div class="ttdoc">Compares this byte string with another object.</div><div class="ttdef"><b>Definition:</b> <a href="_byte_string_8cs_source.html#l00324">ByteString.cs:324</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_coded_input_stream_html"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_coded_input_stream.html">Google.Protobuf.CodedInputStream</a></div><div class="ttdoc">Reads and decodes protocol message fields.</div><div class="ttdef"><b>Definition:</b> <a href="_coded_input_stream_8cs_source.html#l00054">CodedInputStream.cs:55</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_coded_output_stream_html"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_coded_output_stream.html">Google.Protobuf.CodedOutputStream</a></div><div class="ttdoc">Encodes and writes protocol message fields.</div><div class="ttdef"><b>Definition:</b> <a href="_coded_output_stream_8_compute_size_8cs_source.html#l00040">CodedOutputStream.ComputeSize.cs:41</a></div></div>
+<div class="ttc" id="anamespace_google_1_1_protobuf_1_1_compatibility_html"><div class="ttname"><a href="namespace_google_1_1_protobuf_1_1_compatibility.html">Google.Protobuf.Compatibility</a></div><div class="ttdef"><b>Definition:</b> <a href="_property_info_extensions_8cs_source.html#l00035">PropertyInfoExtensions.cs:36</a></div></div>
+<div class="ttc" id="anamespace_google_1_1_protobuf_html"><div class="ttname"><a href="namespace_google_1_1_protobuf.html">Google.Protobuf</a></div><div class="ttdef"><b>Definition:</b> <a href="_i_message_adaptor_8cs_source.html#l00010">IMessageAdaptor.cs:11</a></div></div>
+<div class="ttc" id="anamespace_google_html"><div class="ttname"><a href="namespace_google.html">Google</a></div><div class="ttdef"><b>Definition:</b> <a href="_i_message_adaptor_8cs_source.html#l00010">IMessageAdaptor.cs:11</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_bson_1_1_serialization_1_1_attributes_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_bson_1_1_serialization_1_1_attributes.html">MongoDB.Bson.Serialization.Attributes</a></div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_serialization_2_attributes_2_bson_constructor_attribute_8cs_source.html#l00018">BsonConstructorAttribute.cs:19</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_bson_1_1_serialization_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_bson_1_1_serialization.html">MongoDB.Bson.Serialization</a></div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_serialization_2_attributed_serialization_provider_8cs_source.html#l00021">AttributedSerializationProvider.cs:22</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_bson_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_bson.html">MongoDB.Bson</a></div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_bson_constants_8cs_source.html#l00018">BsonConstants.cs:19</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_html"><div class="ttname"><a href="namespace_mongo_d_b.html">MongoDB</a></div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_bson_constants_8cs_source.html#l00018">BsonConstants.cs:19</a></div></div>
+<div class="ttc" id="anamespace_system_html"><div class="ttname"><a href="namespace_system.html">System</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_method_builder_attribute_8cs_source.html#l00001">AsyncMethodBuilderAttribute.cs:2</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_84bbf7b3c7f28a5a18725745e1505219.html">Assets</a></li><li class="navelem"><a class="el" href="dir_f13b41af88cf68434578284aaf699e39.html">Scripts</a></li><li class="navelem"><a class="el" href="dir_46d134a3bf82cf4dc49ca8f728aea58c.html">Libraries</a></li><li class="navelem"><a class="el" href="dir_ee874eb5685beecfc37035b4fc9dfc0c.html">Google.Protobuf</a></li><li class="navelem"><a class="el" href="_byte_string_8cs.html">ByteString.cs</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:24:50 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

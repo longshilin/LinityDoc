@@ -1,0 +1,166 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: ETServer/Server/ThirdParty/MongoDBDriver/MongoDB.Bson/Serialization/Serializers/BsonDocumentWrapperSerializer.cs 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_e_t_server_2_server_2_third_party_2_mongo_d_b_driver_2_mongo_d_b_8_bson_2_serialization_2_seria527e8e87aa0feb18dd10c9c8eaa00b58_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">BsonDocumentWrapperSerializer.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_e_t_server_2_server_2_third_party_2_mongo_d_b_driver_2_mongo_d_b_8_bson_2_serialization_2_seria527e8e87aa0feb18dd10c9c8eaa00b58.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/* Copyright 2010-present MongoDB Inc.</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">* Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">* you may not use this file except in compliance with the License.</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">* You may obtain a copy of the License at</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">* http://www.apache.org/licenses/LICENSE-2.0</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">* Unless required by applicable law or agreed to in writing, software</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">* distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">* See the License for the specific language governing permissions and</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">* limitations under the License.</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers.html">MongoDB.Bson.Serialization.Serializers</a></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;{</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keyword">public</span> <span class="keyword">class </span>BsonDocumentWrapperSerializer : BsonValueSerializerBase&lt;BsonDocumentWrapper&gt;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    {</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <span class="comment">// private static fields</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_bson_document_wrapper_serializer.html#a34100776de247d372de5726e4a13807b">BsonDocumentWrapperSerializer</a> __instance = <span class="keyword">new</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_bson_document_wrapper_serializer.html#a34100776de247d372de5726e4a13807b">BsonDocumentWrapperSerializer</a>();</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <span class="comment">// constructors</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_bson_document_wrapper_serializer.html#a34100776de247d372de5726e4a13807b">   30</a></span>&#160;<span class="comment"></span>        <span class="keyword">public</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_bson_document_wrapper_serializer.html#a34100776de247d372de5726e4a13807b">BsonDocumentWrapperSerializer</a>()</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;            : base(<a class="code" href="namespace_mongo_d_b_1_1_bson.html#a811d3d494b81b025735495a7790f9d08">BsonType</a>.Document)</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        {</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        }</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <span class="comment">// public static properties</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment"></span>        <span class="keyword">public</span> <span class="keyword">static</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_bson_document_wrapper_serializer.html">BsonDocumentWrapperSerializer</a> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_bson_document_wrapper_serializer.html#a0abb1a6f1041d5dfc59d86d2b904d9af">Instance</a></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        {</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            <span class="keyword">get</span> { <span class="keywordflow">return</span> __instance; }</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        }</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="comment">// public methods</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_bson_document_wrapper_serializer.html#a78a20b0f89366990f9fdc23a84d9a7f2">   51</a></span>&#160;<span class="comment"></span>        <span class="keyword">public</span> <span class="keyword">override</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_document_wrapper.html">BsonDocumentWrapper</a> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_bson_document_wrapper_serializer.html#a78a20b0f89366990f9fdc23a84d9a7f2">Deserialize</a>(<a class="code" href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_bson_deserialization_context.html">BsonDeserializationContext</a> context, <a class="code" href="struct_mongo_d_b_1_1_bson_1_1_serialization_1_1_bson_deserialization_args.html">BsonDeserializationArgs</a> args)</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        {</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            <span class="keywordflow">throw</span> CreateCannotBeDeserializedException();</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        }</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <span class="comment">// protected methods</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_bson_document_wrapper_serializer.html#a12ae0695ac626dfdda1e099db86ed7cf">   63</a></span>&#160;<span class="comment"></span>        <span class="keyword">protected</span> <span class="keyword">override</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_document_wrapper.html">BsonDocumentWrapper</a> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_bson_document_wrapper_serializer.html#a12ae0695ac626dfdda1e099db86ed7cf">DeserializeValue</a>(<a class="code" href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_bson_deserialization_context.html">BsonDeserializationContext</a> context, <a class="code" href="struct_mongo_d_b_1_1_bson_1_1_serialization_1_1_bson_deserialization_args.html">BsonDeserializationArgs</a> args)</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        {</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            <span class="keywordflow">throw</span> CreateCannotBeDeserializedException();</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        }</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_bson_document_wrapper_serializer.html#a9c116126116439cc7950566803e1278f">   74</a></span>&#160;        <span class="keyword">protected</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_bson_document_wrapper_serializer.html#a9c116126116439cc7950566803e1278f">SerializeValue</a>(<a class="code" href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_bson_serialization_context.html">BsonSerializationContext</a> context, <a class="code" href="struct_mongo_d_b_1_1_bson_1_1_serialization_1_1_bson_serialization_args.html">BsonSerializationArgs</a> args, <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_document_wrapper.html">BsonDocumentWrapper</a> value)</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        {</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            value.<a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_document_wrapper.html#afd5f4dc4a2aab77ecf347eb9d522325b">Serializer</a>.Serialize(context, value.<a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_document_wrapper.html#a22566a6641c587eac61e00b387f51e07">Wrapped</a>);</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        }</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    }</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;}</div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_bson_document_wrapper_html"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_bson_document_wrapper.html">MongoDB.Bson.BsonDocumentWrapper</a></div><div class="ttdoc">Represents a BsonDocument wrapper.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_document_wrapper_8cs_source.html#l00035">BsonDocumentWrapper.cs:36</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_bson_document_wrapper_html_a22566a6641c587eac61e00b387f51e07"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_bson_document_wrapper.html#a22566a6641c587eac61e00b387f51e07">MongoDB.Bson.BsonDocumentWrapper.Wrapped</a></div><div class="ttdeci">object Wrapped</div><div class="ttdoc">Gets the wrapped value.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_document_wrapper_8cs_source.html#l00082">BsonDocumentWrapper.cs:83</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_bson_document_wrapper_html_afd5f4dc4a2aab77ecf347eb9d522325b"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_bson_document_wrapper.html#afd5f4dc4a2aab77ecf347eb9d522325b">MongoDB.Bson.BsonDocumentWrapper.Serializer</a></div><div class="ttdeci">IBsonSerializer Serializer</div><div class="ttdoc">Gets the serializer.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_document_wrapper_8cs_source.html#l00074">BsonDocumentWrapper.cs:75</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_serialization_1_1_bson_deserialization_context_html"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_bson_deserialization_context.html">MongoDB.Bson.Serialization.BsonDeserializationContext</a></div><div class="ttdoc">Represents all the contextual information needed by a serializer to deserialize a value.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_serialization_2_bson_deserialization_context_8cs_source.html#l00024">BsonDeserializationContext.cs:25</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_serialization_1_1_bson_serialization_context_html"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_bson_serialization_context.html">MongoDB.Bson.Serialization.BsonSerializationContext</a></div><div class="ttdoc">Represents all the contextual information needed by a serializer to serialize a value.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_serialization_2_bson_serialization_context_8cs_source.html#l00024">BsonSerializationContext.cs:25</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_bson_document_wrapper_serializer_html"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_bson_document_wrapper_serializer.html">MongoDB.Bson.Serialization.Serializers.BsonDocumentWrapperSerializer</a></div><div class="ttdoc">Represents a serializer for BsonDocumentWrappers.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_serialization_2_serializers_2_bsod9170198b2e14a9e4b30253dadd66dcf_source.html#l00021">BsonDocumentWrapperSerializer.cs:22</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_bson_document_wrapper_serializer_html_a0abb1a6f1041d5dfc59d86d2b904d9af"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_bson_document_wrapper_serializer.html#a0abb1a6f1041d5dfc59d86d2b904d9af">MongoDB.Bson.Serialization.Serializers.BsonDocumentWrapperSerializer.Instance</a></div><div class="ttdeci">static BsonDocumentWrapperSerializer Instance</div><div class="ttdoc">Gets an instance of the BsonDocumentWrapperSerializer class.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_serialization_2_serializers_2_bsod9170198b2e14a9e4b30253dadd66dcf_source.html#l00039">BsonDocumentWrapperSerializer.cs:40</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_bson_document_wrapper_serializer_html_a12ae0695ac626dfdda1e099db86ed7cf"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_bson_document_wrapper_serializer.html#a12ae0695ac626dfdda1e099db86ed7cf">MongoDB.Bson.Serialization.Serializers.BsonDocumentWrapperSerializer.DeserializeValue</a></div><div class="ttdeci">override BsonDocumentWrapper DeserializeValue(BsonDeserializationContext context, BsonDeserializationArgs args)</div><div class="ttdoc">Deserializes a class.</div><div class="ttdef"><b>Definition:</b> <a href="_e_t_server_2_server_2_third_party_2_mongo_d_b_driver_2_mongo_d_b_8_bson_2_serialization_2_seria527e8e87aa0feb18dd10c9c8eaa00b58_source.html#l00063">BsonDocumentWrapperSerializer.cs:63</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_bson_document_wrapper_serializer_html_a34100776de247d372de5726e4a13807b"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_bson_document_wrapper_serializer.html#a34100776de247d372de5726e4a13807b">MongoDB.Bson.Serialization.Serializers.BsonDocumentWrapperSerializer.BsonDocumentWrapperSerializer</a></div><div class="ttdeci">BsonDocumentWrapperSerializer()</div><div class="ttdoc">Initializes a new instance of the BsonDocumentWrapperSerializer class.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_serialization_2_serializers_2_bsod9170198b2e14a9e4b30253dadd66dcf_source.html#l00030">BsonDocumentWrapperSerializer.cs:30</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_bson_document_wrapper_serializer_html_a78a20b0f89366990f9fdc23a84d9a7f2"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_bson_document_wrapper_serializer.html#a78a20b0f89366990f9fdc23a84d9a7f2">MongoDB.Bson.Serialization.Serializers.BsonDocumentWrapperSerializer.Deserialize</a></div><div class="ttdeci">override BsonDocumentWrapper Deserialize(BsonDeserializationContext context, BsonDeserializationArgs args)</div><div class="ttdoc">Deserializes a class.</div><div class="ttdef"><b>Definition:</b> <a href="_e_t_server_2_server_2_third_party_2_mongo_d_b_driver_2_mongo_d_b_8_bson_2_serialization_2_seria527e8e87aa0feb18dd10c9c8eaa00b58_source.html#l00051">BsonDocumentWrapperSerializer.cs:51</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_bson_document_wrapper_serializer_html_a9c116126116439cc7950566803e1278f"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_bson_document_wrapper_serializer.html#a9c116126116439cc7950566803e1278f">MongoDB.Bson.Serialization.Serializers.BsonDocumentWrapperSerializer.SerializeValue</a></div><div class="ttdeci">override void SerializeValue(BsonSerializationContext context, BsonSerializationArgs args, BsonDocumentWrapper value)</div><div class="ttdoc">Serializes a value.</div><div class="ttdef"><b>Definition:</b> <a href="_e_t_server_2_server_2_third_party_2_mongo_d_b_driver_2_mongo_d_b_8_bson_2_serialization_2_seria527e8e87aa0feb18dd10c9c8eaa00b58_source.html#l00074">BsonDocumentWrapperSerializer.cs:74</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers.html">MongoDB.Bson.Serialization.Serializers</a></div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_serialization_2_serializers_2_abstract_class_serializer_8cs_source.html#l00022">AbstractClassSerializer.cs:23</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_bson_html_a811d3d494b81b025735495a7790f9d08"><div class="ttname"><a href="namespace_mongo_d_b_1_1_bson.html#a811d3d494b81b025735495a7790f9d08">MongoDB.Bson.BsonType</a></div><div class="ttdeci">BsonType</div><div class="ttdoc">Represents the type of a BSON element.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_type_8cs_source.html#l00026">BsonType.cs:27</a></div></div>
+<div class="ttc" id="astruct_mongo_d_b_1_1_bson_1_1_serialization_1_1_bson_deserialization_args_html"><div class="ttname"><a href="struct_mongo_d_b_1_1_bson_1_1_serialization_1_1_bson_deserialization_args.html">MongoDB.Bson.Serialization.BsonDeserializationArgs</a></div><div class="ttdoc">Represents args common to all serializers.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_serialization_2_bson_deserialization_args_8cs_source.html#l00024">BsonDeserializationArgs.cs:25</a></div></div>
+<div class="ttc" id="astruct_mongo_d_b_1_1_bson_1_1_serialization_1_1_bson_serialization_args_html"><div class="ttname"><a href="struct_mongo_d_b_1_1_bson_1_1_serialization_1_1_bson_serialization_args.html">MongoDB.Bson.Serialization.BsonSerializationArgs</a></div><div class="ttdoc">Represents args common to all serializers.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_serialization_2_bson_serialization_args_8cs_source.html#l00023">BsonSerializationArgs.cs:24</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_1e261a42b4a2e33df58a15c412684b10.html">ETServer</a></li><li class="navelem"><a class="el" href="dir_473c270c995194c5ad99131d9c901f09.html">Server</a></li><li class="navelem"><a class="el" href="dir_ce426efcf63311ff42488fb2654bd4b4.html">ThirdParty</a></li><li class="navelem"><a class="el" href="dir_a37b2b5f9c8890cc9f6f8392fb0cdff3.html">MongoDBDriver</a></li><li class="navelem"><a class="el" href="dir_198f7ac7ec0ecfbede324c1e9484bef2.html">MongoDB.Bson</a></li><li class="navelem"><a class="el" href="dir_da7326830cd0627a7af7803034884055.html">Serialization</a></li><li class="navelem"><a class="el" href="dir_7e4ba90993179adbd0a14747d3178f74.html">Serializers</a></li><li class="navelem"><a class="el" href="_e_t_server_2_server_2_third_party_2_mongo_d_b_driver_2_mongo_d_b_8_bson_2_serialization_2_seria527e8e87aa0feb18dd10c9c8eaa00b58.html">BsonDocumentWrapperSerializer.cs</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:24:54 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

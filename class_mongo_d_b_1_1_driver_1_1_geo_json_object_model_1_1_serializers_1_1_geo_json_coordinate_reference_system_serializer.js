@@ -1,0 +1,4 @@
+var class_mongo_d_b_1_1_driver_1_1_geo_json_object_model_1_1_serializers_1_1_geo_json_coordinate_reference_system_serializer =
+[
+    [ "GetActualType", "class_mongo_d_b_1_1_driver_1_1_geo_json_object_model_1_1_serializers_1_1_geo_json_coordinate_reference_system_serializer.html#ac53f2469371548b44ad3c3360e7f2370", null ]
+];

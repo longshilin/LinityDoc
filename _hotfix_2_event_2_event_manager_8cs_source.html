@@ -1,0 +1,199 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: Assets/Scripts/Hotfix/Event/EventManager.cs 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_hotfix_2_event_2_event_manager_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">EventManager.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_hotfix_2_event_2_event_manager_8cs.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">//------------------------------------------------------------</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">// Game Framework</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">// Copyright © 2013-2019 Jiang Yin. All rights reserved.</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">// Homepage: http://gameframework.cn/</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">// Feedback: mailto:jiangyin@gameframework.cn</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">//------------------------------------------------------------</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_linity_1_1_hotfix.html">Linity.Hotfix</a></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;{</div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="class_linity_1_1_hotfix_1_1_event_manager.html">   15</a></span>&#160;    <span class="keyword">public</span> sealed <span class="keyword">class </span><a class="code" href="class_linity_1_1_hotfix_1_1_event_manager.html">EventManager</a>  </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    {</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        <span class="keyword">private</span> readonly <a class="code" href="class_linity_1_1_hotfix_1_1_event_pool.html">EventPool&lt;HotfixGameEventArgs&gt;</a> m_EventPool;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="class_linity_1_1_hotfix_1_1_event_manager.html#acc7494c77bd17ab2bb09663f1bfd0480">   22</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_linity_1_1_hotfix_1_1_event_manager.html#acc7494c77bd17ab2bb09663f1bfd0480">EventManager</a>()</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        {</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;            m_EventPool = <span class="keyword">new</span> <a class="code" href="class_linity_1_1_hotfix_1_1_event_pool.html">EventPool&lt;HotfixGameEventArgs&gt;</a>(<a class="code" href="namespace_linity_1_1_hotfix.html#a6e430bfcd0b60df95069dfad2a96ab75">EventPoolMode</a>.AllowNoHandler | <a class="code" href="namespace_linity_1_1_hotfix.html#a6e430bfcd0b60df95069dfad2a96ab75">EventPoolMode</a>.AllowMultiHandler);</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        }</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="class_linity_1_1_hotfix_1_1_event_manager.html#ae86019913bb9536151d1c59ce608867a">   30</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">int</span> <a class="code" href="class_linity_1_1_hotfix_1_1_event_manager.html#ae86019913bb9536151d1c59ce608867a">EventHandlerCount</a></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        {</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;            <span class="keyword">get</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;            {</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;                <span class="keywordflow">return</span> m_EventPool.EventHandlerCount;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;            }</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        }</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="class_linity_1_1_hotfix_1_1_event_manager.html#a0bad403262f4296d5e8362ccbad8b821">   41</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">int</span> <a class="code" href="class_linity_1_1_hotfix_1_1_event_manager.html#a0bad403262f4296d5e8362ccbad8b821">EventCount</a></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        {</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;            <span class="keyword">get</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            {</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                <span class="keywordflow">return</span> m_EventPool.EventCount;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;            }</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        }</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="class_linity_1_1_hotfix_1_1_event_manager.html#abf04aa95e880a5323bdcce276760131d">   54</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_linity_1_1_hotfix_1_1_event_manager.html#abf04aa95e880a5323bdcce276760131d">Update</a>(<span class="keywordtype">float</span> elapseSeconds, <span class="keywordtype">float</span> realElapseSeconds)</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        {</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            m_EventPool.Update(elapseSeconds, realElapseSeconds);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        }</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="class_linity_1_1_hotfix_1_1_event_manager.html#adb94788fea72dbf239d4ca00782c50a0">   62</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_linity_1_1_hotfix_1_1_event_manager.html#adb94788fea72dbf239d4ca00782c50a0">Shutdown</a>()</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        {</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            m_EventPool.Shutdown();</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        }</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="class_linity_1_1_hotfix_1_1_event_manager.html#a6257c96399155244deb62ed9d2108b4d">   72</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">int</span> <a class="code" href="class_linity_1_1_hotfix_1_1_event_manager.html#a6257c96399155244deb62ed9d2108b4d">Count</a>(<span class="keywordtype">int</span> <span class="keywordtype">id</span>)</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        {</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            <span class="keywordflow">return</span> m_EventPool.Count(<span class="keywordtype">id</span>);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        }</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00083"></a><span class="lineno"><a class="line" href="class_linity_1_1_hotfix_1_1_event_manager.html#aaeb5a29a801945ff0ebc3e1786d68964">   83</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code" href="class_linity_1_1_hotfix_1_1_event_manager.html#aaeb5a29a801945ff0ebc3e1786d68964">Check</a>(<span class="keywordtype">int</span> <span class="keywordtype">id</span>, EventHandler&lt;HotfixGameEventArgs&gt; handler)</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        {</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;            <span class="keywordflow">return</span> m_EventPool.Check(<span class="keywordtype">id</span>, handler);</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        }</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
+<div class="line"><a name="l00093"></a><span class="lineno"><a class="line" href="class_linity_1_1_hotfix_1_1_event_manager.html#a2d75c5e80a370e7d9f9c7335efc9b4ef">   93</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_linity_1_1_hotfix_1_1_event_manager.html#a2d75c5e80a370e7d9f9c7335efc9b4ef">Subscribe</a>(<span class="keywordtype">int</span> <span class="keywordtype">id</span>, EventHandler&lt;HotfixGameEventArgs&gt; handler)</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        {</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;            m_EventPool.Subscribe(<span class="keywordtype">id</span>, handler);</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        }</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
+<div class="line"><a name="l00103"></a><span class="lineno"><a class="line" href="class_linity_1_1_hotfix_1_1_event_manager.html#a8fcf67c11f69727cb6ad620517639b7f">  103</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_linity_1_1_hotfix_1_1_event_manager.html#a8fcf67c11f69727cb6ad620517639b7f">Unsubscribe</a>(<span class="keywordtype">int</span> <span class="keywordtype">id</span>, EventHandler&lt;HotfixGameEventArgs&gt; handler)</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        {</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;            m_EventPool.Unsubscribe(<span class="keywordtype">id</span>, handler);</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        }</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160; </div>
+<div class="line"><a name="l00112"></a><span class="lineno"><a class="line" href="class_linity_1_1_hotfix_1_1_event_manager.html#a046c0514436e0c02ff466503bd2b636e">  112</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_linity_1_1_hotfix_1_1_event_manager.html#a046c0514436e0c02ff466503bd2b636e">SetDefaultHandler</a>(EventHandler&lt;HotfixGameEventArgs&gt; handler)</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        {</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;            m_EventPool.SetDefaultHandler(handler);</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        }</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160; </div>
+<div class="line"><a name="l00122"></a><span class="lineno"><a class="line" href="class_linity_1_1_hotfix_1_1_event_manager.html#a209079c6fe6daeb6c7856f84ab6b2a5f">  122</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_linity_1_1_hotfix_1_1_event_manager.html#a209079c6fe6daeb6c7856f84ab6b2a5f">Fire</a>(<span class="keywordtype">object</span> sender, <a class="code" href="class_linity_1_1_hotfix_1_1_hotfix_game_event_args.html">HotfixGameEventArgs</a> e)</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        {</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;            m_EventPool.Fire(sender, e);</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        }</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160; </div>
+<div class="line"><a name="l00132"></a><span class="lineno"><a class="line" href="class_linity_1_1_hotfix_1_1_event_manager.html#a315ed59cfbad8d7c3c309ecf324bb5ea">  132</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_linity_1_1_hotfix_1_1_event_manager.html#a315ed59cfbad8d7c3c309ecf324bb5ea">FireNow</a>(<span class="keywordtype">object</span> sender, <a class="code" href="class_linity_1_1_hotfix_1_1_hotfix_game_event_args.html">HotfixGameEventArgs</a> e)</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        {</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;            m_EventPool.FireNow(sender, e);</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;        }</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    }</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;}</div>
+<div class="ttc" id="aclass_linity_1_1_hotfix_1_1_event_manager_html"><div class="ttname"><a href="class_linity_1_1_hotfix_1_1_event_manager.html">Linity.Hotfix.EventManager</a></div><div class="ttdoc">事件管理器。</div><div class="ttdef"><b>Definition:</b> <a href="_hotfix_2_event_2_event_manager_8cs_source.html#l00015">EventManager.cs:16</a></div></div>
+<div class="ttc" id="aclass_linity_1_1_hotfix_1_1_event_manager_html_a046c0514436e0c02ff466503bd2b636e"><div class="ttname"><a href="class_linity_1_1_hotfix_1_1_event_manager.html#a046c0514436e0c02ff466503bd2b636e">Linity.Hotfix.EventManager.SetDefaultHandler</a></div><div class="ttdeci">void SetDefaultHandler(EventHandler&lt; HotfixGameEventArgs &gt; handler)</div><div class="ttdoc">设置默认事件处理函数。</div><div class="ttdef"><b>Definition:</b> <a href="_hotfix_2_event_2_event_manager_8cs_source.html#l00112">EventManager.cs:112</a></div></div>
+<div class="ttc" id="aclass_linity_1_1_hotfix_1_1_event_manager_html_a0bad403262f4296d5e8362ccbad8b821"><div class="ttname"><a href="class_linity_1_1_hotfix_1_1_event_manager.html#a0bad403262f4296d5e8362ccbad8b821">Linity.Hotfix.EventManager.EventCount</a></div><div class="ttdeci">int EventCount</div><div class="ttdoc">获取事件数量。</div><div class="ttdef"><b>Definition:</b> <a href="_hotfix_2_event_2_event_manager_8cs_source.html#l00041">EventManager.cs:42</a></div></div>
+<div class="ttc" id="aclass_linity_1_1_hotfix_1_1_event_manager_html_a209079c6fe6daeb6c7856f84ab6b2a5f"><div class="ttname"><a href="class_linity_1_1_hotfix_1_1_event_manager.html#a209079c6fe6daeb6c7856f84ab6b2a5f">Linity.Hotfix.EventManager.Fire</a></div><div class="ttdeci">void Fire(object sender, HotfixGameEventArgs e)</div><div class="ttdoc">抛出事件，这个操作是线程安全的，即使不在主线程中抛出，也可保证在主线程中回调事件处理函数，但事件会在抛出后的下一帧分发。</div><div class="ttdef"><b>Definition:</b> <a href="_hotfix_2_event_2_event_manager_8cs_source.html#l00122">EventManager.cs:122</a></div></div>
+<div class="ttc" id="aclass_linity_1_1_hotfix_1_1_event_manager_html_a2d75c5e80a370e7d9f9c7335efc9b4ef"><div class="ttname"><a href="class_linity_1_1_hotfix_1_1_event_manager.html#a2d75c5e80a370e7d9f9c7335efc9b4ef">Linity.Hotfix.EventManager.Subscribe</a></div><div class="ttdeci">void Subscribe(int id, EventHandler&lt; HotfixGameEventArgs &gt; handler)</div><div class="ttdoc">订阅事件处理函数。</div><div class="ttdef"><b>Definition:</b> <a href="_hotfix_2_event_2_event_manager_8cs_source.html#l00093">EventManager.cs:93</a></div></div>
+<div class="ttc" id="aclass_linity_1_1_hotfix_1_1_event_manager_html_a315ed59cfbad8d7c3c309ecf324bb5ea"><div class="ttname"><a href="class_linity_1_1_hotfix_1_1_event_manager.html#a315ed59cfbad8d7c3c309ecf324bb5ea">Linity.Hotfix.EventManager.FireNow</a></div><div class="ttdeci">void FireNow(object sender, HotfixGameEventArgs e)</div><div class="ttdoc">抛出事件立即模式，这个操作不是线程安全的，事件会立刻分发。</div><div class="ttdef"><b>Definition:</b> <a href="_hotfix_2_event_2_event_manager_8cs_source.html#l00132">EventManager.cs:132</a></div></div>
+<div class="ttc" id="aclass_linity_1_1_hotfix_1_1_event_manager_html_a6257c96399155244deb62ed9d2108b4d"><div class="ttname"><a href="class_linity_1_1_hotfix_1_1_event_manager.html#a6257c96399155244deb62ed9d2108b4d">Linity.Hotfix.EventManager.Count</a></div><div class="ttdeci">int Count(int id)</div><div class="ttdoc">获取事件处理函数的数量。</div><div class="ttdef"><b>Definition:</b> <a href="_hotfix_2_event_2_event_manager_8cs_source.html#l00072">EventManager.cs:72</a></div></div>
+<div class="ttc" id="aclass_linity_1_1_hotfix_1_1_event_manager_html_a8fcf67c11f69727cb6ad620517639b7f"><div class="ttname"><a href="class_linity_1_1_hotfix_1_1_event_manager.html#a8fcf67c11f69727cb6ad620517639b7f">Linity.Hotfix.EventManager.Unsubscribe</a></div><div class="ttdeci">void Unsubscribe(int id, EventHandler&lt; HotfixGameEventArgs &gt; handler)</div><div class="ttdoc">取消订阅事件处理函数。</div><div class="ttdef"><b>Definition:</b> <a href="_hotfix_2_event_2_event_manager_8cs_source.html#l00103">EventManager.cs:103</a></div></div>
+<div class="ttc" id="aclass_linity_1_1_hotfix_1_1_event_manager_html_aaeb5a29a801945ff0ebc3e1786d68964"><div class="ttname"><a href="class_linity_1_1_hotfix_1_1_event_manager.html#aaeb5a29a801945ff0ebc3e1786d68964">Linity.Hotfix.EventManager.Check</a></div><div class="ttdeci">bool Check(int id, EventHandler&lt; HotfixGameEventArgs &gt; handler)</div><div class="ttdoc">检查是否存在事件处理函数。</div><div class="ttdef"><b>Definition:</b> <a href="_hotfix_2_event_2_event_manager_8cs_source.html#l00083">EventManager.cs:83</a></div></div>
+<div class="ttc" id="aclass_linity_1_1_hotfix_1_1_event_manager_html_abf04aa95e880a5323bdcce276760131d"><div class="ttname"><a href="class_linity_1_1_hotfix_1_1_event_manager.html#abf04aa95e880a5323bdcce276760131d">Linity.Hotfix.EventManager.Update</a></div><div class="ttdeci">void Update(float elapseSeconds, float realElapseSeconds)</div><div class="ttdoc">事件管理器轮询。</div><div class="ttdef"><b>Definition:</b> <a href="_hotfix_2_event_2_event_manager_8cs_source.html#l00054">EventManager.cs:54</a></div></div>
+<div class="ttc" id="aclass_linity_1_1_hotfix_1_1_event_manager_html_acc7494c77bd17ab2bb09663f1bfd0480"><div class="ttname"><a href="class_linity_1_1_hotfix_1_1_event_manager.html#acc7494c77bd17ab2bb09663f1bfd0480">Linity.Hotfix.EventManager.EventManager</a></div><div class="ttdeci">EventManager()</div><div class="ttdoc">初始化事件管理器的新实例。</div><div class="ttdef"><b>Definition:</b> <a href="_hotfix_2_event_2_event_manager_8cs_source.html#l00022">EventManager.cs:22</a></div></div>
+<div class="ttc" id="aclass_linity_1_1_hotfix_1_1_event_manager_html_adb94788fea72dbf239d4ca00782c50a0"><div class="ttname"><a href="class_linity_1_1_hotfix_1_1_event_manager.html#adb94788fea72dbf239d4ca00782c50a0">Linity.Hotfix.EventManager.Shutdown</a></div><div class="ttdeci">void Shutdown()</div><div class="ttdoc">关闭并清理事件管理器。</div><div class="ttdef"><b>Definition:</b> <a href="_hotfix_2_event_2_event_manager_8cs_source.html#l00062">EventManager.cs:62</a></div></div>
+<div class="ttc" id="aclass_linity_1_1_hotfix_1_1_event_manager_html_ae86019913bb9536151d1c59ce608867a"><div class="ttname"><a href="class_linity_1_1_hotfix_1_1_event_manager.html#ae86019913bb9536151d1c59ce608867a">Linity.Hotfix.EventManager.EventHandlerCount</a></div><div class="ttdeci">int EventHandlerCount</div><div class="ttdoc">获取事件处理函数的数量。</div><div class="ttdef"><b>Definition:</b> <a href="_hotfix_2_event_2_event_manager_8cs_source.html#l00030">EventManager.cs:31</a></div></div>
+<div class="ttc" id="aclass_linity_1_1_hotfix_1_1_event_pool_html"><div class="ttname"><a href="class_linity_1_1_hotfix_1_1_event_pool.html">Linity.Hotfix.EventPool</a></div><div class="ttdoc">事件池。</div><div class="ttdef"><b>Definition:</b> <a href="_hotfix_2_event_2_event_pool_8_event_8cs_source.html#l00010">EventPool.Event.cs:11</a></div></div>
+<div class="ttc" id="aclass_linity_1_1_hotfix_1_1_hotfix_game_event_args_html"><div class="ttname"><a href="class_linity_1_1_hotfix_1_1_hotfix_game_event_args.html">Linity.Hotfix.HotfixGameEventArgs</a></div><div class="ttdef"><b>Definition:</b> <a href="_hotfix_game_event_args_8cs_source.html#l00004">HotfixGameEventArgs.cs:5</a></div></div>
+<div class="ttc" id="anamespace_linity_1_1_hotfix_html"><div class="ttname"><a href="namespace_linity_1_1_hotfix.html">Linity.Hotfix</a></div><div class="ttdef"><b>Definition:</b> <a href="_hotfix_2_base_2_variable_2_base_2_generic_variable_8cs_source.html#l00010">GenericVariable.cs:11</a></div></div>
+<div class="ttc" id="anamespace_linity_1_1_hotfix_html_a6e430bfcd0b60df95069dfad2a96ab75"><div class="ttname"><a href="namespace_linity_1_1_hotfix.html#a6e430bfcd0b60df95069dfad2a96ab75">Linity.Hotfix.EventPoolMode</a></div><div class="ttdeci">EventPoolMode</div><div class="ttdoc">事件池模式。</div><div class="ttdef"><b>Definition:</b> <a href="_hotfix_2_event_2_event_pool_mode_8cs_source.html#l00016">EventPoolMode.cs:17</a></div></div>
+<div class="ttc" id="anamespace_system_html"><div class="ttname"><a href="namespace_system.html">System</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_method_builder_attribute_8cs_source.html#l00001">AsyncMethodBuilderAttribute.cs:2</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_84bbf7b3c7f28a5a18725745e1505219.html">Assets</a></li><li class="navelem"><a class="el" href="dir_f13b41af88cf68434578284aaf699e39.html">Scripts</a></li><li class="navelem"><a class="el" href="dir_75935e138bec93c4cadb3fa5f697868b.html">Hotfix</a></li><li class="navelem"><a class="el" href="dir_461bd45b3ab410ba9d65337365a1d892.html">Event</a></li><li class="navelem"><a class="el" href="_hotfix_2_event_2_event_manager_8cs.html">EventManager.cs</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:24:45 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

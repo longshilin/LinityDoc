@@ -1,0 +1,139 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: Assets/Scripts/GameMain/Procedure/ProcedureBase.cs 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_game_main_2_procedure_2_procedure_base_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">ProcedureBase.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_game_main_2_procedure_2_procedure_base_8cs.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">//------------------------------------------------------------</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">// Game Framework</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">// Copyright © 2013-2021 Jiang Yin. All rights reserved.</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">// Homepage: https://gameframework.cn/</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">// Feedback: mailto:ellan@gameframework.cn</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">//------------------------------------------------------------</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_game_framework.html">GameFramework</a>.<a class="code" href="namespace_game_framework_1_1_fsm.html">Fsm</a>;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_game_framework.html">GameFramework</a>.<a class="code" href="namespace_game_framework_1_1_procedure.html">Procedure</a>;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_linity.html">Linity</a></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;{</div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="class_linity_1_1_procedure_base.html">   13</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">class </span><a class="code" href="class_linity_1_1_procedure_base.html">ProcedureBase</a> : <a class="code" href="namespace_game_framework.html">GameFramework</a>.Procedure.<a class="code" href="class_linity_1_1_procedure_base.html">ProcedureBase</a></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    {</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        <span class="comment">// 获取流程是否使用原生对话框</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        <span class="comment">// 在一些特殊的流程（如游戏逻辑对话框资源更新完成前的流程）中，可以考虑调用原生对话框进行消息提示行为</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="class_linity_1_1_procedure_base.html#a6ea282ffc90e5fe38681254b6cee2dbf">   17</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keywordtype">bool</span> <a class="code" href="class_linity_1_1_procedure_base.html#a6ea282ffc90e5fe38681254b6cee2dbf">UseNativeDialog</a> { <span class="keyword">get</span>; }</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="class_linity_1_1_procedure_base.html#a5cd39c9e3bf15c6e35a0839ca80d75b5">   19</a></span>&#160;        <span class="keyword">protected</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code" href="class_linity_1_1_procedure_base.html#a5cd39c9e3bf15c6e35a0839ca80d75b5">OnDestroy</a>(<a class="code" href="interface_game_framework_1_1_fsm_1_1_i_fsm.html">IFsm&lt;IProcedureManager&gt;</a> procedureOwner)</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        {</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;            base.OnDestroy(procedureOwner);</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="class_linity_1_1_game_entry.html">GameEntry</a>.<a class="code" href="class_linity_1_1_game_entry.html#ac8b97d75b1fcc04fa36e87fb0516d2f7">ILRuntime</a> != <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;            {</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;                <a class="code" href="class_linity_1_1_game_entry.html">GameEntry</a>.<a class="code" href="class_linity_1_1_game_entry.html#ac8b97d75b1fcc04fa36e87fb0516d2f7">ILRuntime</a>.<a class="code" href="class_linity_1_1_i_l_runtime_component.html#aae27eddbbebf2e2127a5595e78ef6935">OnDestroy</a>();</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;            }</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        }</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    }</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;}</div>
+<div class="ttc" id="aclass_linity_1_1_game_entry_html"><div class="ttname"><a href="class_linity_1_1_game_entry.html">Linity.GameEntry</a></div><div class="ttdoc">游戏入口。</div><div class="ttdef"><b>Definition:</b> <a href="_game_entry_8_builtin_8cs_source.html#l00016">GameEntry.Builtin.cs:17</a></div></div>
+<div class="ttc" id="aclass_linity_1_1_game_entry_html_ac8b97d75b1fcc04fa36e87fb0516d2f7"><div class="ttname"><a href="class_linity_1_1_game_entry.html#ac8b97d75b1fcc04fa36e87fb0516d2f7">Linity.GameEntry.ILRuntime</a></div><div class="ttdeci">static ILRuntimeComponent ILRuntime</div><div class="ttdoc">ILRuntime组件</div><div class="ttdef"><b>Definition:</b> <a href="_game_entry_8_custom_8cs_source.html#l00047">GameEntry.Custom.cs:48</a></div></div>
+<div class="ttc" id="aclass_linity_1_1_i_l_runtime_component_html_aae27eddbbebf2e2127a5595e78ef6935"><div class="ttname"><a href="class_linity_1_1_i_l_runtime_component.html#aae27eddbbebf2e2127a5595e78ef6935">Linity.ILRuntimeComponent.OnDestroy</a></div><div class="ttdeci">void OnDestroy()</div><div class="ttdef"><b>Definition:</b> <a href="_i_l_runtime_component_8cs_source.html#l00057">ILRuntimeComponent.cs:57</a></div></div>
+<div class="ttc" id="aclass_linity_1_1_procedure_base_html"><div class="ttname"><a href="class_linity_1_1_procedure_base.html">Linity.ProcedureBase</a></div><div class="ttdef"><b>Definition:</b> <a href="_game_main_2_procedure_2_procedure_base_8cs_source.html#l00013">ProcedureBase.cs:14</a></div></div>
+<div class="ttc" id="aclass_linity_1_1_procedure_base_html_a5cd39c9e3bf15c6e35a0839ca80d75b5"><div class="ttname"><a href="class_linity_1_1_procedure_base.html#a5cd39c9e3bf15c6e35a0839ca80d75b5">Linity.ProcedureBase.OnDestroy</a></div><div class="ttdeci">override void OnDestroy(IFsm&lt; IProcedureManager &gt; procedureOwner)</div><div class="ttdef"><b>Definition:</b> <a href="_game_main_2_procedure_2_procedure_base_8cs_source.html#l00019">ProcedureBase.cs:19</a></div></div>
+<div class="ttc" id="aclass_linity_1_1_procedure_base_html_a6ea282ffc90e5fe38681254b6cee2dbf"><div class="ttname"><a href="class_linity_1_1_procedure_base.html#a6ea282ffc90e5fe38681254b6cee2dbf">Linity.ProcedureBase.UseNativeDialog</a></div><div class="ttdeci">abstract bool UseNativeDialog</div><div class="ttdef"><b>Definition:</b> <a href="_game_main_2_procedure_2_procedure_base_8cs_source.html#l00017">ProcedureBase.cs:17</a></div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_fsm_1_1_i_fsm_html"><div class="ttname"><a href="interface_game_framework_1_1_fsm_1_1_i_fsm.html">GameFramework.Fsm.IFsm</a></div><div class="ttdoc">有限状态机接口。</div><div class="ttdef"><b>Definition:</b> <a href="_libraries_2_game_framework_2_libraries_2_game_framework-2021_805_831_2_game_framework_2_fsm_2_i_fsm_8cs_source.html#l00017">IFsm.cs:18</a></div></div>
+<div class="ttc" id="anamespace_game_framework_1_1_fsm_html"><div class="ttname"><a href="namespace_game_framework_1_1_fsm.html">GameFramework.Fsm</a></div><div class="ttdef"><b>Definition:</b> <a href="_libraries_2_game_framework_2_libraries_2_game_framework-2021_805_831_2_game_framework_2_fsm_2_fsm_8cs_source.html#l00011">Fsm.cs:12</a></div></div>
+<div class="ttc" id="anamespace_game_framework_1_1_procedure_html"><div class="ttname"><a href="namespace_game_framework_1_1_procedure.html">GameFramework.Procedure</a></div><div class="ttdef"><b>Definition:</b> <a href="_libraries_2_game_framework_2_libraries_2_game_framework-2021_805_831_2_game_framework_2_procedure_2_i_procedure_manager_8cs_source.html#l00011">IProcedureManager.cs:12</a></div></div>
+<div class="ttc" id="anamespace_game_framework_html"><div class="ttname"><a href="namespace_game_framework.html">GameFramework</a></div><div class="ttdef"><b>Definition:</b> <a href="_data_provider_8cs_source.html#l00011">DataProvider.cs:12</a></div></div>
+<div class="ttc" id="anamespace_linity_html"><div class="ttname"><a href="namespace_linity.html">Linity</a></div><div class="ttdef"><b>Definition:</b> <a href="_entity_and_u_i_form_code_generator_8cs_source.html#l00008">EntityAndUIFormCodeGenerator.cs:9</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_84bbf7b3c7f28a5a18725745e1505219.html">Assets</a></li><li class="navelem"><a class="el" href="dir_f13b41af88cf68434578284aaf699e39.html">Scripts</a></li><li class="navelem"><a class="el" href="dir_8274910eb5bb242a7532823db7176570.html">GameMain</a></li><li class="navelem"><a class="el" href="dir_f3625adb40c7f7ac1088a3cd711a7f0d.html">Procedure</a></li><li class="navelem"><a class="el" href="_game_main_2_procedure_2_procedure_base_8cs.html">ProcedureBase.cs</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:24:44 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

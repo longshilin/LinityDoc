@@ -1,0 +1,301 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: Assets/Scripts/Libraries/ET/Module/Pathfinding/AstarPathfindingProject/Modifiers/StartEndModifier.cs 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_start_end_modifier_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">StartEndModifier.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_start_end_modifier_8cs.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_unity_engine.html">UnityEngine</a>;</div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Collections.Generic;</div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_p_f.html">PF</a>;</div>
+<div class="line"><a name="l00004"></a><span class="lineno"><a class="line" href="_start_end_modifier_8cs.html#a056b29af8a3de2eeb5a1cab758c4ba93">    4</a></span>&#160;<span class="keyword">using</span> <a class="code" href="_start_end_modifier_8cs.html#a056b29af8a3de2eeb5a1cab758c4ba93">Mathf</a> = <a class="code" href="namespace_unity_engine.html">UnityEngine</a>.<a class="code" href="class_unity_engine_1_1_mathf.html">Mathf</a>;</div>
+<div class="line"><a name="l00005"></a><span class="lineno"><a class="line" href="_start_end_modifier_8cs.html#af3326292fdd04d2b384b6d781d9594f6">    5</a></span>&#160;<span class="keyword">using</span> <a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a> = <a class="code" href="namespace_unity_engine.html">UnityEngine</a>.<a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a>;</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_pathfinding.html">Pathfinding</a> {</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;        [<a class="code" href="namespace_system.html">System</a>.Serializable]</div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="class_pathfinding_1_1_start_end_modifier.html">   21</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="class_pathfinding_1_1_start_end_modifier.html">StartEndModifier</a> : <a class="code" href="class_pathfinding_1_1_path_modifier.html">PathModifier</a> {</div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="class_pathfinding_1_1_start_end_modifier.html#a5685e1fd16cb2448f7c323bc65377596">   22</a></span>&#160;                <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">int</span> <a class="code" href="class_pathfinding_1_1_start_end_modifier.html#a5685e1fd16cb2448f7c323bc65377596">Order</a> { <span class="keyword">get</span> { <span class="keywordflow">return</span> 0; } }</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="class_pathfinding_1_1_start_end_modifier.html#a52cf02c2a47183f2bca458c5934135e8">   33</a></span>&#160;                <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code" href="class_pathfinding_1_1_start_end_modifier.html#a52cf02c2a47183f2bca458c5934135e8">addPoints</a>;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="class_pathfinding_1_1_start_end_modifier.html#a22557a0062f9ca0ebadae1f966d89b6c">   38</a></span>&#160;                <span class="keyword">public</span> <a class="code" href="class_pathfinding_1_1_start_end_modifier.html#a6fc53558e2ff2516f9329a7515f37a0b">Exactness</a> <a class="code" href="class_pathfinding_1_1_start_end_modifier.html#a22557a0062f9ca0ebadae1f966d89b6c">exactStartPoint</a> = <a class="code" href="class_pathfinding_1_1_start_end_modifier.html#a6fc53558e2ff2516f9329a7515f37a0b">Exactness</a>.ClosestOnNode;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="class_pathfinding_1_1_start_end_modifier.html#a1a75266e70c393d320cb797c304e9274">   43</a></span>&#160;                <span class="keyword">public</span> <a class="code" href="class_pathfinding_1_1_start_end_modifier.html#a6fc53558e2ff2516f9329a7515f37a0b">Exactness</a> <a class="code" href="class_pathfinding_1_1_start_end_modifier.html#a1a75266e70c393d320cb797c304e9274">exactEndPoint</a> = <a class="code" href="class_pathfinding_1_1_start_end_modifier.html#a6fc53558e2ff2516f9329a7515f37a0b">Exactness</a>.ClosestOnNode;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="class_pathfinding_1_1_start_end_modifier.html#a471718926444a10b24a692e711d370f9">   50</a></span>&#160;                <span class="keyword">public</span> <a class="code" href="namespace_system.html">System</a>.Func&lt;<a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a>&gt; <a class="code" href="class_pathfinding_1_1_start_end_modifier.html#a471718926444a10b24a692e711d370f9">adjustStartPoint</a>;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="class_pathfinding_1_1_start_end_modifier.html#a6fc53558e2ff2516f9329a7515f37a0b">   58</a></span>&#160;                <span class="keyword">public</span> <span class="keyword">enum</span> <a class="code" href="class_pathfinding_1_1_start_end_modifier.html#a6fc53558e2ff2516f9329a7515f37a0b">Exactness</a> {</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                        SnapToNode,</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                        Original,</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                        Interpolate,</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                        ClosestOnNode,</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                        NodeConnection,</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                }</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
+<div class="line"><a name="l00100"></a><span class="lineno"><a class="line" href="class_pathfinding_1_1_start_end_modifier.html#af425139fdb45821c36ce517b0ea04965">  100</a></span>&#160;                <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code" href="class_pathfinding_1_1_start_end_modifier.html#af425139fdb45821c36ce517b0ea04965">useRaycasting</a>;</div>
+<div class="line"><a name="l00101"></a><span class="lineno"><a class="line" href="class_pathfinding_1_1_start_end_modifier.html#a1ee8953f802fb7e566b29f4ae2b6a9c8">  101</a></span>&#160;                <span class="keyword">public</span> LayerMask <a class="code" href="class_pathfinding_1_1_start_end_modifier.html#a1ee8953f802fb7e566b29f4ae2b6a9c8">mask</a> = -1;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
+<div class="line"><a name="l00108"></a><span class="lineno"><a class="line" href="class_pathfinding_1_1_start_end_modifier.html#a2ffb51d447b88a6ed26cceb9873dfa9e">  108</a></span>&#160;                <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code" href="class_pathfinding_1_1_start_end_modifier.html#a2ffb51d447b88a6ed26cceb9873dfa9e">useGraphRaycasting</a>;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; </div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;                List&lt;GraphNode&gt; connectionBuffer;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;                <a class="code" href="namespace_system.html">System</a>.Action&lt;<a class="code" href="class_p_f_1_1_graph_node.html">GraphNode</a>&gt; connectionBufferAddDelegate;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160; </div>
+<div class="line"><a name="l00113"></a><span class="lineno"><a class="line" href="class_pathfinding_1_1_start_end_modifier.html#a37ba9b453b418e96092de14db5a22479">  113</a></span>&#160;                <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code" href="class_pathfinding_1_1_start_end_modifier.html#a37ba9b453b418e96092de14db5a22479">Apply</a> (<a class="code" href="class_p_f_1_1_path.html">Path</a> _p) {</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;                        var p = _p as <a class="code" href="class_p_f_1_1_a_b_path.html">ABPath</a>;</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160; </div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;                        <span class="comment">// This modifier only supports ABPaths (doesn&#39;t make much sense for other paths anyway)</span></div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;                        <span class="keywordflow">if</span> (p == <span class="keyword">null</span> || p.vectorPath.Count == 0) <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160; </div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;                        <span class="keywordflow">if</span> (p.vectorPath.Count == 1 &amp;&amp; !<a class="code" href="class_pathfinding_1_1_start_end_modifier.html#a52cf02c2a47183f2bca458c5934135e8">addPoints</a>) {</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;                                <span class="comment">// Duplicate first point</span></div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;                                p.<a class="code" href="class_p_f_1_1_path.html#aaebf4b3927b0b5f972f728ad4ce57831">vectorPath</a>.Add(p.vectorPath[0]);</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;                        }</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160; </div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;                        <span class="comment">// Add instead of replacing points</span></div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;                        <span class="keywordtype">bool</span> forceAddStartPoint, forceAddEndPoint;</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160; </div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;                        <a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a> pStart = Snap(p, <a class="code" href="class_pathfinding_1_1_start_end_modifier.html#a22557a0062f9ca0ebadae1f966d89b6c">exactStartPoint</a>, <span class="keyword">true</span>, out forceAddStartPoint);</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;                        <a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a> pEnd = Snap(p, <a class="code" href="class_pathfinding_1_1_start_end_modifier.html#a1a75266e70c393d320cb797c304e9274">exactEndPoint</a>, <span class="keyword">false</span>, out forceAddEndPoint);</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160; </div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;                        <span class="comment">// Add or replace the start point</span></div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;                        <span class="comment">// Disable adding of points if the mode is SnapToNode since then</span></div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;                        <span class="comment">// the first item in vectorPath will very likely be the same as the</span></div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;                        <span class="comment">// position of the first node</span></div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;                        <span class="keywordflow">if</span> ((forceAddStartPoint || <a class="code" href="class_pathfinding_1_1_start_end_modifier.html#a52cf02c2a47183f2bca458c5934135e8">addPoints</a>) &amp;&amp; <a class="code" href="class_pathfinding_1_1_start_end_modifier.html#a22557a0062f9ca0ebadae1f966d89b6c">exactStartPoint</a> != <a class="code" href="class_pathfinding_1_1_start_end_modifier.html#a6fc53558e2ff2516f9329a7515f37a0b">Exactness</a>.SnapToNode) {</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;                                p.vectorPath.Insert(0, pStart);</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;                        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;                                p.vectorPath[0] = pStart;</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;                        }</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160; </div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;                        <span class="keywordflow">if</span> ((forceAddEndPoint || <a class="code" href="class_pathfinding_1_1_start_end_modifier.html#a52cf02c2a47183f2bca458c5934135e8">addPoints</a>) &amp;&amp; <a class="code" href="class_pathfinding_1_1_start_end_modifier.html#a1a75266e70c393d320cb797c304e9274">exactEndPoint</a> != <a class="code" href="class_pathfinding_1_1_start_end_modifier.html#a6fc53558e2ff2516f9329a7515f37a0b">Exactness</a>.SnapToNode) {</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;                                p.vectorPath.<a class="code" href="struct_unity_engine_1_1_vector3.html#ac2253c7509193ceb12b55714708f0419">Add</a>(pEnd);</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;                        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;                                p.vectorPath[p.vectorPath.Count-1] = pEnd;</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;                        }</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;                }</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160; </div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;                <a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a> Snap (<a class="code" href="class_p_f_1_1_a_b_path.html">ABPath</a> path, <a class="code" href="class_pathfinding_1_1_start_end_modifier.html#a6fc53558e2ff2516f9329a7515f37a0b">Exactness</a> mode, <span class="keywordtype">bool</span> start, out <span class="keywordtype">bool</span> forceAddPoint) {</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;                        var index = start ? 0 : path.<a class="code" href="class_p_f_1_1_path.html#af5cbb9ffba21181f539d94c465f39b43">path</a>.Count - 1;</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;                        var node = path.<a class="code" href="class_p_f_1_1_path.html#af5cbb9ffba21181f539d94c465f39b43">path</a>[index];</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;                        var nodePos = (<a class="code" href="_start_end_modifier_8cs.html#af3326292fdd04d2b384b6d781d9594f6">Vector3</a>)node.position;</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160; </div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;                        forceAddPoint = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160; </div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;                        switch (mode) {</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;                        <span class="keywordflow">case</span> <a class="code" href="class_pathfinding_1_1_start_end_modifier.html#a6fc53558e2ff2516f9329a7515f37a0b">Exactness</a>.ClosestOnNode:</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;                                <span class="keywordflow">return</span> start ? path.<a class="code" href="class_p_f_1_1_a_b_path.html#ad143f2b0d98999ecbba8d289415326b5">startPoint</a> : path.<a class="code" href="class_p_f_1_1_a_b_path.html#a3be33e549df7be09a22cadb21b1e2f3b">endPoint</a>;</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;                        <span class="keywordflow">case</span> <a class="code" href="class_pathfinding_1_1_start_end_modifier.html#a6fc53558e2ff2516f9329a7515f37a0b">Exactness</a>.SnapToNode:</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;                                <span class="keywordflow">return</span> nodePos;</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;                        <span class="keywordflow">case</span> <a class="code" href="class_pathfinding_1_1_start_end_modifier.html#a6fc53558e2ff2516f9329a7515f37a0b">Exactness</a>.Original:</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;                        <span class="keywordflow">case</span> <a class="code" href="class_pathfinding_1_1_start_end_modifier.html#a6fc53558e2ff2516f9329a7515f37a0b">Exactness</a>.Interpolate:</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;                        <span class="keywordflow">case</span> <a class="code" href="class_pathfinding_1_1_start_end_modifier.html#a6fc53558e2ff2516f9329a7515f37a0b">Exactness</a>.NodeConnection:</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;                                <a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a> relevantPoint;</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;                                <span class="keywordflow">if</span> (start) {</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;                                        relevantPoint = <a class="code" href="class_pathfinding_1_1_start_end_modifier.html#a471718926444a10b24a692e711d370f9">adjustStartPoint</a> != <span class="keyword">null</span> ? <a class="code" href="class_pathfinding_1_1_start_end_modifier.html#a471718926444a10b24a692e711d370f9">adjustStartPoint</a>().ToPFV3() : path.<a class="code" href="class_p_f_1_1_a_b_path.html#a161626ec090e459bd99a6f5849c115c3">originalStartPoint</a>;</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;                                } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;                                        relevantPoint = path.<a class="code" href="class_p_f_1_1_a_b_path.html#a0c8e812d0f8b760030d3ae22a80a50cd">originalEndPoint</a>;</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;                                }</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160; </div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;                                <span class="keywordflow">switch</span> (mode) {</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;                                <span class="keywordflow">case</span> <a class="code" href="class_pathfinding_1_1_start_end_modifier.html#a6fc53558e2ff2516f9329a7515f37a0b">Exactness</a>.Original:</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;                                        <span class="keywordflow">return</span> <a class="code" href="class_pathfinding_1_1_start_end_modifier.html#a7b95a1ce1d70ef8c12ff27a6b19c12bb">GetClampedPoint</a>(nodePos, relevantPoint, node);</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;                                <span class="keywordflow">case</span> <a class="code" href="class_pathfinding_1_1_start_end_modifier.html#a6fc53558e2ff2516f9329a7515f37a0b">Exactness</a>.Interpolate:</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;                                        <span class="comment">// Adjacent node to either the start node or the end node in the path</span></div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;                                        var adjacentNode = path.<a class="code" href="class_p_f_1_1_path.html#af5cbb9ffba21181f539d94c465f39b43">path</a>[<a class="code" href="_start_end_modifier_8cs.html#a056b29af8a3de2eeb5a1cab758c4ba93">Mathf</a>.Clamp(index + (start ? 1 : -1), 0, path.<a class="code" href="class_p_f_1_1_path.html#af5cbb9ffba21181f539d94c465f39b43">path</a>.Count-1)];</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;                                        <span class="keywordflow">return</span> VectorMath.ClosestPointOnSegment(nodePos, (<a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a>)adjacentNode.position, relevantPoint);</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;                                <span class="keywordflow">case</span> <a class="code" href="class_pathfinding_1_1_start_end_modifier.html#a6fc53558e2ff2516f9329a7515f37a0b">Exactness</a>.NodeConnection:</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;                                        <span class="comment">// This code uses some tricks to avoid allocations</span></div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;                                        <span class="comment">// even though it uses delegates heavily</span></div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;                                        <span class="comment">// The connectionBufferAddDelegate delegate simply adds whatever node</span></div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;                                        <span class="comment">// it is called with to the connectionBuffer</span></div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;                                        connectionBuffer = connectionBuffer ?? <span class="keyword">new</span> List&lt;GraphNode&gt;();</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;                                        connectionBufferAddDelegate = connectionBufferAddDelegate ?? (<a class="code" href="namespace_system.html">System</a>.Action&lt;<a class="code" href="class_p_f_1_1_graph_node.html">GraphNode</a>&gt;)connectionBuffer.Add;</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160; </div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;                                        <span class="comment">// Adjacent node to either the start node or the end node in the path</span></div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;                                        adjacentNode = path.<a class="code" href="class_p_f_1_1_path.html#af5cbb9ffba21181f539d94c465f39b43">path</a>[<a class="code" href="_start_end_modifier_8cs.html#a056b29af8a3de2eeb5a1cab758c4ba93">Mathf</a>.Clamp(index + (start ? 1 : -1), 0, path.<a class="code" href="class_p_f_1_1_path.html#af5cbb9ffba21181f539d94c465f39b43">path</a>.Count-1)];</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160; </div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;                                        <span class="comment">// Add all neighbours of #node to the connectionBuffer</span></div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;                                        node.GetConnections(connectionBufferAddDelegate);</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;                                        var bestPos = nodePos;</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;                                        var bestDist = <span class="keywordtype">float</span>.PositiveInfinity;</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160; </div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;                                        <span class="comment">// Loop through all neighbours</span></div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;                                        <span class="comment">// Do it in reverse order because the length of the connectionBuffer</span></div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;                                        <span class="comment">// will change during iteration</span></div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;                                        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = connectionBuffer.Count - 1; i &gt;= 0; i--) {</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;                                                var neighbour = connectionBuffer[i];</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160; </div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;                                                <span class="comment">// Find the closest point on the connection between the nodes</span></div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;                                                <span class="comment">// and check if the distance to that point is lower than the previous best</span></div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;                                                var closest = VectorMath.ClosestPointOnSegment(nodePos, (<a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a>)neighbour.position, relevantPoint);</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160; </div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;                                                var dist = (closest.ToUnityV3() - relevantPoint).sqrMagnitude;</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;                                                <span class="keywordflow">if</span> (dist &lt; bestDist) {</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;                                                        bestPos = closest;</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;                                                        bestDist = dist;</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160; </div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;                                                        <span class="comment">// If this node is not the adjacent node</span></div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;                                                        <span class="comment">// then the path should go through the start node as well</span></div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;                                                        forceAddPoint = neighbour != adjacentNode;</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;                                                }</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;                                        }</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160; </div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;                                        connectionBuffer.Clear();</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;                                        <span class="keywordflow">return</span> bestPos;</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;                                <span class="keywordflow">default</span>:</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;                                        <span class="keywordflow">throw</span> <span class="keyword">new</span> <a class="code" href="namespace_system.html">System</a>.ArgumentException(<span class="stringliteral">&quot;Cannot reach this point, but the compiler is not smart enough to realize that.&quot;</span>);</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;                                }</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;                        <span class="keywordflow">default</span>:</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;                                <span class="keywordflow">throw</span> <span class="keyword">new</span> <a class="code" href="namespace_system.html">System</a>.ArgumentException(<span class="stringliteral">&quot;Invalid mode&quot;</span>);</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;                        }</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;                }</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160; </div>
+<div class="line"><a name="l00223"></a><span class="lineno"><a class="line" href="class_pathfinding_1_1_start_end_modifier.html#a7b95a1ce1d70ef8c12ff27a6b19c12bb">  223</a></span>&#160;                <span class="keyword">protected</span> <a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a> <a class="code" href="class_pathfinding_1_1_start_end_modifier.html#a7b95a1ce1d70ef8c12ff27a6b19c12bb">GetClampedPoint</a> (<a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a> from, <a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a> to, <a class="code" href="class_p_f_1_1_graph_node.html">GraphNode</a> hint) {</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;                        <a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a> point = to;</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;                        RaycastHit hit;</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160; </div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;                        <span class="keywordflow">if</span> (<a class="code" href="class_pathfinding_1_1_start_end_modifier.html#af425139fdb45821c36ce517b0ea04965">useRaycasting</a> &amp;&amp; Physics.Linecast(from, to, out hit, <a class="code" href="class_pathfinding_1_1_start_end_modifier.html#a1ee8953f802fb7e566b29f4ae2b6a9c8">mask</a>)) {</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;                                point = hit.point;</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;                        }</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160; </div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;                        <span class="keywordflow">if</span> (<a class="code" href="class_pathfinding_1_1_start_end_modifier.html#a2ffb51d447b88a6ed26cceb9873dfa9e">useGraphRaycasting</a> &amp;&amp; hint != <span class="keyword">null</span>) {</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;                                var rayGraph = UnityHelper.GetGraph(hint) as <a class="code" href="interface_p_f_1_1_i_raycastable_graph.html">IRaycastableGraph</a>;</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160; </div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;                                <span class="keywordflow">if</span> (rayGraph != <span class="keyword">null</span>) {</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;                                        <a class="code" href="struct_p_f_1_1_graph_hit_info.html">GraphHitInfo</a> graphHit;</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;                                        <span class="keywordflow">if</span> (rayGraph.Linecast(from, point, hint, out graphHit)) {</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;                                                point = graphHit.<a class="code" href="struct_p_f_1_1_graph_hit_info.html#ad4b8c70c94864eac830dc1ec50cb390a">point</a>;</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;                                        }</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;                                }</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;                        }</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160; </div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;                        <span class="keywordflow">return</span> point;</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;                }</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;        }</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;}</div>
+<div class="ttc" id="a_start_end_modifier_8cs_html_a056b29af8a3de2eeb5a1cab758c4ba93"><div class="ttname"><a href="_start_end_modifier_8cs.html#a056b29af8a3de2eeb5a1cab758c4ba93">Mathf</a></div><div class="ttdeci">UnityEngine.Mathf Mathf</div><div class="ttdef"><b>Definition:</b> <a href="_start_end_modifier_8cs_source.html#l00004">StartEndModifier.cs:4</a></div></div>
+<div class="ttc" id="a_start_end_modifier_8cs_html_af3326292fdd04d2b384b6d781d9594f6"><div class="ttname"><a href="_start_end_modifier_8cs.html#af3326292fdd04d2b384b6d781d9594f6">Vector3</a></div><div class="ttdeci">UnityEngine.Vector3 Vector3</div><div class="ttdef"><b>Definition:</b> <a href="_start_end_modifier_8cs_source.html#l00005">StartEndModifier.cs:5</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_a_b_path_html"><div class="ttname"><a href="class_p_f_1_1_a_b_path.html">PF.ABPath</a></div><div class="ttdef"><b>Definition:</b> <a href="_a_b_path_8cs_source.html#l00012">ABPath.cs:12</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_a_b_path_html_a0c8e812d0f8b760030d3ae22a80a50cd"><div class="ttname"><a href="class_p_f_1_1_a_b_path.html#a0c8e812d0f8b760030d3ae22a80a50cd">PF.ABPath.originalEndPoint</a></div><div class="ttdeci">Vector3 originalEndPoint</div><div class="ttdef"><b>Definition:</b> <a href="_a_b_path_8cs_source.html#l00023">ABPath.cs:23</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_a_b_path_html_a161626ec090e459bd99a6f5849c115c3"><div class="ttname"><a href="class_p_f_1_1_a_b_path.html#a161626ec090e459bd99a6f5849c115c3">PF.ABPath.originalStartPoint</a></div><div class="ttdeci">Vector3 originalStartPoint</div><div class="ttdef"><b>Definition:</b> <a href="_a_b_path_8cs_source.html#l00020">ABPath.cs:20</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_a_b_path_html_a3be33e549df7be09a22cadb21b1e2f3b"><div class="ttname"><a href="class_p_f_1_1_a_b_path.html#a3be33e549df7be09a22cadb21b1e2f3b">PF.ABPath.endPoint</a></div><div class="ttdeci">Vector3 endPoint</div><div class="ttdef"><b>Definition:</b> <a href="_a_b_path_8cs_source.html#l00033">ABPath.cs:33</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_a_b_path_html_ad143f2b0d98999ecbba8d289415326b5"><div class="ttname"><a href="class_p_f_1_1_a_b_path.html#ad143f2b0d98999ecbba8d289415326b5">PF.ABPath.startPoint</a></div><div class="ttdeci">Vector3 startPoint</div><div class="ttdef"><b>Definition:</b> <a href="_a_b_path_8cs_source.html#l00028">ABPath.cs:28</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_graph_node_html"><div class="ttname"><a href="class_p_f_1_1_graph_node.html">PF.GraphNode</a></div><div class="ttdef"><b>Definition:</b> <a href="_graph_node_8cs_source.html#l00048">GraphNode.cs:48</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_path_html"><div class="ttname"><a href="class_p_f_1_1_path.html">PF.Path</a></div><div class="ttdef"><b>Definition:</b> <a href="_path_8cs_source.html#l00133">Path.cs:133</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_path_html_aaebf4b3927b0b5f972f728ad4ce57831"><div class="ttname"><a href="class_p_f_1_1_path.html#aaebf4b3927b0b5f972f728ad4ce57831">PF.Path.vectorPath</a></div><div class="ttdeci">List&lt; Vector3 &gt; vectorPath</div><div class="ttdef"><b>Definition:</b> <a href="_path_8cs_source.html#l00211">Path.cs:211</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_path_html_af5cbb9ffba21181f539d94c465f39b43"><div class="ttname"><a href="class_p_f_1_1_path.html#af5cbb9ffba21181f539d94c465f39b43">PF.Path.path</a></div><div class="ttdeci">List&lt; GraphNode &gt; path</div><div class="ttdef"><b>Definition:</b> <a href="_path_8cs_source.html#l00208">Path.cs:208</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_path_modifier_html"><div class="ttname"><a href="class_pathfinding_1_1_path_modifier.html">Pathfinding.PathModifier</a></div><div class="ttdef"><b>Definition:</b> <a href="_modifiers_8cs_source.html#l00018">Modifiers.cs:18</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_start_end_modifier_html"><div class="ttname"><a href="class_pathfinding_1_1_start_end_modifier.html">Pathfinding.StartEndModifier</a></div><div class="ttdef"><b>Definition:</b> <a href="_start_end_modifier_8cs_source.html#l00021">StartEndModifier.cs:21</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_start_end_modifier_html_a1a75266e70c393d320cb797c304e9274"><div class="ttname"><a href="class_pathfinding_1_1_start_end_modifier.html#a1a75266e70c393d320cb797c304e9274">Pathfinding.StartEndModifier.exactEndPoint</a></div><div class="ttdeci">Exactness exactEndPoint</div><div class="ttdef"><b>Definition:</b> <a href="_start_end_modifier_8cs_source.html#l00043">StartEndModifier.cs:43</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_start_end_modifier_html_a1ee8953f802fb7e566b29f4ae2b6a9c8"><div class="ttname"><a href="class_pathfinding_1_1_start_end_modifier.html#a1ee8953f802fb7e566b29f4ae2b6a9c8">Pathfinding.StartEndModifier.mask</a></div><div class="ttdeci">LayerMask mask</div><div class="ttdef"><b>Definition:</b> <a href="_start_end_modifier_8cs_source.html#l00101">StartEndModifier.cs:101</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_start_end_modifier_html_a22557a0062f9ca0ebadae1f966d89b6c"><div class="ttname"><a href="class_pathfinding_1_1_start_end_modifier.html#a22557a0062f9ca0ebadae1f966d89b6c">Pathfinding.StartEndModifier.exactStartPoint</a></div><div class="ttdeci">Exactness exactStartPoint</div><div class="ttdef"><b>Definition:</b> <a href="_start_end_modifier_8cs_source.html#l00038">StartEndModifier.cs:38</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_start_end_modifier_html_a2ffb51d447b88a6ed26cceb9873dfa9e"><div class="ttname"><a href="class_pathfinding_1_1_start_end_modifier.html#a2ffb51d447b88a6ed26cceb9873dfa9e">Pathfinding.StartEndModifier.useGraphRaycasting</a></div><div class="ttdeci">bool useGraphRaycasting</div><div class="ttdef"><b>Definition:</b> <a href="_start_end_modifier_8cs_source.html#l00108">StartEndModifier.cs:108</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_start_end_modifier_html_a37ba9b453b418e96092de14db5a22479"><div class="ttname"><a href="class_pathfinding_1_1_start_end_modifier.html#a37ba9b453b418e96092de14db5a22479">Pathfinding.StartEndModifier.Apply</a></div><div class="ttdeci">override void Apply(Path _p)</div><div class="ttdef"><b>Definition:</b> <a href="_start_end_modifier_8cs_source.html#l00113">StartEndModifier.cs:113</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_start_end_modifier_html_a471718926444a10b24a692e711d370f9"><div class="ttname"><a href="class_pathfinding_1_1_start_end_modifier.html#a471718926444a10b24a692e711d370f9">Pathfinding.StartEndModifier.adjustStartPoint</a></div><div class="ttdeci">System.Func&lt; Vector3 &gt; adjustStartPoint</div><div class="ttdef"><b>Definition:</b> <a href="_start_end_modifier_8cs_source.html#l00050">StartEndModifier.cs:50</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_start_end_modifier_html_a52cf02c2a47183f2bca458c5934135e8"><div class="ttname"><a href="class_pathfinding_1_1_start_end_modifier.html#a52cf02c2a47183f2bca458c5934135e8">Pathfinding.StartEndModifier.addPoints</a></div><div class="ttdeci">bool addPoints</div><div class="ttdef"><b>Definition:</b> <a href="_start_end_modifier_8cs_source.html#l00033">StartEndModifier.cs:33</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_start_end_modifier_html_a5685e1fd16cb2448f7c323bc65377596"><div class="ttname"><a href="class_pathfinding_1_1_start_end_modifier.html#a5685e1fd16cb2448f7c323bc65377596">Pathfinding.StartEndModifier.Order</a></div><div class="ttdeci">override int Order</div><div class="ttdef"><b>Definition:</b> <a href="_start_end_modifier_8cs_source.html#l00022">StartEndModifier.cs:22</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_start_end_modifier_html_a6fc53558e2ff2516f9329a7515f37a0b"><div class="ttname"><a href="class_pathfinding_1_1_start_end_modifier.html#a6fc53558e2ff2516f9329a7515f37a0b">Pathfinding.StartEndModifier.Exactness</a></div><div class="ttdeci">Exactness</div><div class="ttdef"><b>Definition:</b> <a href="_start_end_modifier_8cs_source.html#l00058">StartEndModifier.cs:58</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_start_end_modifier_html_a7b95a1ce1d70ef8c12ff27a6b19c12bb"><div class="ttname"><a href="class_pathfinding_1_1_start_end_modifier.html#a7b95a1ce1d70ef8c12ff27a6b19c12bb">Pathfinding.StartEndModifier.GetClampedPoint</a></div><div class="ttdeci">Vector3 GetClampedPoint(Vector3 from, Vector3 to, GraphNode hint)</div><div class="ttdef"><b>Definition:</b> <a href="_start_end_modifier_8cs_source.html#l00223">StartEndModifier.cs:223</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_start_end_modifier_html_af425139fdb45821c36ce517b0ea04965"><div class="ttname"><a href="class_pathfinding_1_1_start_end_modifier.html#af425139fdb45821c36ce517b0ea04965">Pathfinding.StartEndModifier.useRaycasting</a></div><div class="ttdeci">bool useRaycasting</div><div class="ttdef"><b>Definition:</b> <a href="_start_end_modifier_8cs_source.html#l00100">StartEndModifier.cs:100</a></div></div>
+<div class="ttc" id="aclass_unity_engine_1_1_mathf_html"><div class="ttname"><a href="class_unity_engine_1_1_mathf.html">UnityEngine.Mathf</a></div><div class="ttdef"><b>Definition:</b> <a href="_mathf_8cs_source.html#l00005">Mathf.cs:6</a></div></div>
+<div class="ttc" id="ainterface_p_f_1_1_i_raycastable_graph_html"><div class="ttname"><a href="interface_p_f_1_1_i_raycastable_graph.html">PF.IRaycastableGraph</a></div><div class="ttdef"><b>Definition:</b> <a href="_navmesh_base_8cs_source.html#l00058">NavmeshBase.cs:58</a></div></div>
+<div class="ttc" id="anamespace_p_f_html"><div class="ttname"><a href="namespace_p_f.html">PF</a></div><div class="ttdef"><b>Definition:</b> <a href="_array_pool_8cs_source.html#l00009">ArrayPool.cs:9</a></div></div>
+<div class="ttc" id="anamespace_pathfinding_html"><div class="ttname"><a href="namespace_pathfinding.html">Pathfinding</a></div><div class="ttdef"><b>Definition:</b> <a href="_a_i_base_editor_8cs_source.html#l00004">AIBaseEditor.cs:4</a></div></div>
+<div class="ttc" id="anamespace_system_html"><div class="ttname"><a href="namespace_system.html">System</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_method_builder_attribute_8cs_source.html#l00001">AsyncMethodBuilderAttribute.cs:2</a></div></div>
+<div class="ttc" id="anamespace_unity_engine_html"><div class="ttname"><a href="namespace_unity_engine.html">UnityEngine</a></div><div class="ttdef"><b>Definition:</b> <a href="_mathf_8cs_source.html#l00003">Mathf.cs:4</a></div></div>
+<div class="ttc" id="astruct_p_f_1_1_graph_hit_info_html"><div class="ttname"><a href="struct_p_f_1_1_graph_hit_info.html">PF.GraphHitInfo</a></div><div class="ttdef"><b>Definition:</b> <a href="_navmesh_base_8cs_source.html#l00016">NavmeshBase.cs:16</a></div></div>
+<div class="ttc" id="astruct_p_f_1_1_graph_hit_info_html_ad4b8c70c94864eac830dc1ec50cb390a"><div class="ttname"><a href="struct_p_f_1_1_graph_hit_info.html#ad4b8c70c94864eac830dc1ec50cb390a">PF.GraphHitInfo.point</a></div><div class="ttdeci">Vector3 point</div><div class="ttdef"><b>Definition:</b> <a href="_navmesh_base_8cs_source.html#l00024">NavmeshBase.cs:24</a></div></div>
+<div class="ttc" id="astruct_unity_engine_1_1_vector3_html"><div class="ttname"><a href="struct_unity_engine_1_1_vector3.html">UnityEngine.Vector3</a></div><div class="ttdef"><b>Definition:</b> <a href="_vector3_8cs_source.html#l00007">Vector3.cs:8</a></div></div>
+<div class="ttc" id="astruct_unity_engine_1_1_vector3_html_ac2253c7509193ceb12b55714708f0419"><div class="ttname"><a href="struct_unity_engine_1_1_vector3.html#ac2253c7509193ceb12b55714708f0419">UnityEngine.Vector3.Add</a></div><div class="ttdeci">static Vector3 Add(Vector3 value1, Vector3 value2)</div><div class="ttdef"><b>Definition:</b> <a href="_vector3_8cs_source.html#l00381">Vector3.cs:381</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_84bbf7b3c7f28a5a18725745e1505219.html">Assets</a></li><li class="navelem"><a class="el" href="dir_f13b41af88cf68434578284aaf699e39.html">Scripts</a></li><li class="navelem"><a class="el" href="dir_46d134a3bf82cf4dc49ca8f728aea58c.html">Libraries</a></li><li class="navelem"><a class="el" href="dir_f6df8f7e58ea5a2220a287b647108730.html">ET</a></li><li class="navelem"><a class="el" href="dir_83296929b1cb48979e134a96af9624b1.html">Module</a></li><li class="navelem"><a class="el" href="dir_7e04bdad0240fbb16a4f5f805ce44f49.html">Pathfinding</a></li><li class="navelem"><a class="el" href="dir_12c2f59e7be642934a5bea5c58ae8c1b.html">AstarPathfindingProject</a></li><li class="navelem"><a class="el" href="dir_3b65847a6d67b70504b69924fca11558.html">Modifiers</a></li><li class="navelem"><a class="el" href="_start_end_modifier_8cs.html">StartEndModifier.cs</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:24:46 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

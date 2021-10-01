@@ -1,0 +1,281 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: Assets/Scripts/Hotfix/UI/LoginForm.cs 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_login_form_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">LoginForm.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_login_form_8cs.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>;</div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Collections;</div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Collections.Generic;</div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_e_t_hotfix.html">ETHotfix</a>;</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_unity_engine.html">UnityEngine</a>;</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_unity_engine.html">UnityEngine</a>.UI;</div>
+<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="_login_form_8cs.html#a6208db3ac52d7f107a612679d0d8eca3">    7</a></span>&#160;<span class="keyword">using</span> <a class="code" href="_login_form_8cs.html#a6208db3ac52d7f107a612679d0d8eca3">Log</a> = <a class="code" href="namespace_unity_game_framework.html">UnityGameFramework</a>.<a class="code" href="namespace_unity_game_framework_1_1_runtime.html">Runtime</a>.<a class="code" href="class_unity_game_framework_1_1_runtime_1_1_log.html">Log</a>;</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_linity_1_1_hotfix.html">Linity.Hotfix</a></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;{</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <span class="keyword">public</span> <span class="keyword">partial class </span>LoginForm : HotfixUGuiForm</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    {</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        <span class="comment">//是否正在登录或注册中（避免登录请求还没响应时连续点击）</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">bool</span> IsLoginOrRegistering { <span class="keyword">get</span>; <span class="keyword">set</span>; }</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        <span class="keyword">private</span> ProcedureHotfixLogin ProcedureHotfixLogin { <span class="keyword">get</span>; <span class="keyword">set</span>; }</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        <span class="keyword">private</span> <a class="code" href="class_e_t_hotfix_1_1_login_and_register_helper.html">LoginAndRegisterHelper</a> <a class="code" href="class_e_t_hotfix_1_1_login_and_register_helper.html">LoginAndRegisterHelper</a> { <span class="keyword">get</span>; <span class="keyword">set</span>; }</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="class_linity_1_1_hotfix_1_1_login_form.html#a87cc6f854dc06d5bed303e64ffc0d9a5">   18</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code" href="class_linity_1_1_hotfix_1_1_login_form.html#a87cc6f854dc06d5bed303e64ffc0d9a5">OnInit</a>(<a class="code" href="namespace_linity.html">Linity</a>.<a class="code" href="class_linity_1_1_hotfix_u_gui_form.html">HotfixUGuiForm</a> uiFormLogic, <span class="keywordtype">object</span> userData)</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        {</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;            base.OnInit(uiFormLogic, userData);</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;            GetBindComponents(uiFormLogic.gameObject);</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;            m_CBtn_Splash.GetComponent&lt;<a class="code" href="class_linity_1_1_common_button.html">CommonButton</a>&gt;().OnClick.AddListener(OnClickStart);</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;            m_CBtn_ClickStartText.GetComponent&lt;<a class="code" href="class_linity_1_1_common_button.html">CommonButton</a>&gt;().OnClick.AddListener(OnClickStart);</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;            m_CBtn_LoginOut.GetComponent&lt;<a class="code" href="class_linity_1_1_common_button.html">CommonButton</a>&gt;().OnClick.AddListener(OnLoginOut);</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;            m_CBtn_Login.GetComponent&lt;<a class="code" href="class_linity_1_1_common_button.html">CommonButton</a>&gt;().OnClick.AddListener(OnLogin);</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;            m_CBtn_Register.GetComponent&lt;<a class="code" href="class_linity_1_1_common_button.html">CommonButton</a>&gt;().OnClick.AddListener(OnRegister);</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;            IsLoginOrRegistering = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        }</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="class_linity_1_1_hotfix_1_1_login_form.html#a2cdd4b378884e965bc94518e661af024">   32</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code" href="class_linity_1_1_hotfix_1_1_login_form.html#a2cdd4b378884e965bc94518e661af024">OnOpen</a>(<span class="keywordtype">object</span> userData)</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        {</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;            base.OnOpen(userData);</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;            <a class="code" href="class_linity_1_1_hotfix_1_1_procedure_hotfix_login.html">ProcedureHotfixLogin</a> = (<a class="code" href="class_linity_1_1_hotfix_1_1_procedure_hotfix_login.html">ProcedureHotfixLogin</a>)<a class="code" href="class_linity_1_1_hotfix_1_1_hotfix_u_gui_form.html#aee6403651cb609c27025720446db3661">m_ProcedureBase</a>;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;            HotfixGameEntry.Event.Subscribe(<a class="code" href="class_linity_1_1_hotfix_1_1_hotfix_login_and_register_event_args.html">HotfixLoginAndRegisterEventArgs</a>.<a class="code" href="class_linity_1_1_hotfix_1_1_hotfix_login_and_register_event_args.html#a2bfd7384b4a3694f54d9b3442f1aeae9">EventId</a>, LoginAndRegisterEvent);</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;            <a class="code" href="class_e_t_hotfix_1_1_login_and_register_helper.html">LoginAndRegisterHelper</a> = <span class="keyword">new</span> <a class="code" href="class_e_t_hotfix_1_1_login_and_register_helper.html">LoginAndRegisterHelper</a>();</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            var loginAccount = <a class="code" href="class_linity_1_1_game_entry.html">GameEntry</a>.<a class="code" href="class_linity_1_1_game_entry.html#a80fb1ceaf06c1bdb5c9953ec2bde72c7">Setting</a>.GetString(Constant.Setting.LoginAccount);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            var loginPassword = <a class="code" href="class_linity_1_1_game_entry.html">GameEntry</a>.<a class="code" href="class_linity_1_1_game_entry.html#a80fb1ceaf06c1bdb5c9953ec2bde72c7">Setting</a>.GetString(Constant.Setting.LoginPassword);</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;            <span class="keywordflow">if</span> (!<span class="keywordtype">string</span>.IsNullOrEmpty(loginAccount))</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;            {</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                m_Input_AccountInput.text = loginAccount;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            }</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            <span class="keywordflow">if</span> (!<span class="keywordtype">string</span>.IsNullOrEmpty(loginPassword))</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            {</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                m_Input_PasswordInput.text = loginPassword;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;            }</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            m_Obj_LoginGroup.SetActive(<span class="keyword">false</span>);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            m_CBtn_Splash.gameObject.SetActive(<span class="keyword">true</span>);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            <span class="keywordflow">if</span> (!<span class="keywordtype">string</span>.IsNullOrEmpty(loginAccount))</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            {</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                m_Obj_HasLoginAccountGroup.SetActive(<span class="keyword">true</span>);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                m_Txt_AccountName.text = loginAccount;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            }</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;            {</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                m_Obj_HasLoginAccountGroup.SetActive(<span class="keyword">false</span>);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            }</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        }</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> OnClickStart()</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        {</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            <span class="keywordflow">if</span> (!<span class="keywordtype">string</span>.IsNullOrEmpty(m_Input_AccountInput.text) &amp;&amp; !<span class="keywordtype">string</span>.IsNullOrEmpty(m_Input_PasswordInput.text))</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            {</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                <span class="comment">// login</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                OnLogin();</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            }</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            {</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                m_Obj_LoginGroup.SetActive(<span class="keyword">true</span>);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                m_CBtn_Splash.gameObject.SetActive(<span class="keyword">false</span>);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            }</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        }</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> OnLoginOut()</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        {</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            m_Obj_LoginGroup.SetActive(<span class="keyword">true</span>);</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            m_CBtn_Splash.gameObject.SetActive(<span class="keyword">false</span>);</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        }</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> OnLogin()</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        {</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;            <span class="keywordflow">if</span> (!CheckInputValidity() || IsLoginOrRegistering)</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;            {</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            }</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;            IsLoginOrRegistering = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;            m_Txt_Prompt.text = <span class="stringliteral">&quot;正在登录...&quot;</span>;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;            <a class="code" href="class_e_t_hotfix_1_1_login_and_register_helper.html">LoginAndRegisterHelper</a>.<a class="code" href="class_e_t_hotfix_1_1_login_and_register_helper.html#a5a7b0cb1479873de0c699abf1b7c3a47">OnLoginAsync</a>(m_Input_AccountInput.text, m_Input_PasswordInput.text).Coroutine();</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        }</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> OnRegister()</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        {</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;            <span class="keywordflow">if</span> (!CheckInputValidity() || IsLoginOrRegistering)</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;            {</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;                <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;            }</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;            IsLoginOrRegistering = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;            m_Txt_Prompt.text = <span class="stringliteral">&quot;正在注册...&quot;</span>;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;            <a class="code" href="class_e_t_hotfix_1_1_login_and_register_helper.html">LoginAndRegisterHelper</a>.<a class="code" href="class_e_t_hotfix_1_1_login_and_register_helper.html#aa1226e7b5faaa7e7c605512f23e68351">OnRegisterAsync</a>(m_Input_AccountInput.text, m_Input_PasswordInput.text).Coroutine();</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        }</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">bool</span> CheckInputValidity()</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        {</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;            <span class="keywordflow">if</span> (<span class="keywordtype">string</span>.IsNullOrEmpty(m_Input_AccountInput.text) ||</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;                <span class="keywordtype">string</span>.IsNullOrEmpty(m_Input_PasswordInput.text))</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;            {</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;                m_Txt_Prompt.text = <span class="stringliteral">&quot;账号或密码为空...&quot;</span>;</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;            }</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160; </div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        }</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160; </div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> LoginAndRegisterEvent(<span class="keywordtype">object</span> sender, HotfixGameEventArgs e)</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        {</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;            HotfixLoginAndRegisterEventArgs ne = (HotfixLoginAndRegisterEventArgs)e;</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160; </div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;            m_Txt_Prompt.text = ne.PromptText;</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;            <span class="keywordflow">if</span> (ne.IsSuccess)</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;            {</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;                <span class="keywordflow">switch</span> (ne.LoginAndRegisterType)</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;                {</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;                    <span class="keywordflow">case</span> <a class="code" href="namespace_linity_1_1_hotfix.html#a7ddb4a4817a460cd0166630d822c82d4">LoginAndRegisterType</a>.Login:</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;                        ProcedureHotfixLogin.<a class="code" href="class_linity_1_1_hotfix_1_1_procedure_hotfix_login.html#a076604cdf25514c9296f707557284b89">LoginSuccess</a>();</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;                        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160; </div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;                    <span class="keywordflow">case</span> <a class="code" href="namespace_linity_1_1_hotfix.html#a7ddb4a4817a460cd0166630d822c82d4">LoginAndRegisterType</a>.Register:</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;                        IsLoginOrRegistering = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;                        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;                }</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160; </div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;                GameEntry.Setting.SetString(Constant.Setting.LoginAccount, m_Input_AccountInput.text);</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;                GameEntry.Setting.SetString(Constant.Setting.LoginPassword, m_Input_PasswordInput.text);</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;                GameEntry.Setting.Save();</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;            }</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;            {</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;                m_Input_PasswordInput.text = <a class="code" href="namespace_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_p_b_x.html#a010a39856e7483cd91729e252ee88ea3a27118326006d3829667a400ad23d5d98">String</a>.Empty;</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;                IsLoginOrRegistering = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;            }</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;        }</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160; </div>
+<div class="line"><a name="l00150"></a><span class="lineno"><a class="line" href="class_linity_1_1_hotfix_1_1_login_form.html#aff06180a97e02fa78c3c5b0df060efef">  150</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code" href="class_linity_1_1_hotfix_1_1_login_form.html#aff06180a97e02fa78c3c5b0df060efef">OnClose</a>(<span class="keywordtype">bool</span> isShutdown, <span class="keywordtype">object</span> userData)</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;        {</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;            base.OnClose(isShutdown, userData);</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;            <a class="code" href="class_e_t_hotfix_1_1_login_and_register_helper.html">LoginAndRegisterHelper</a> = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;        }</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    }</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;}</div>
+<div class="ttc" id="a_login_form_8cs_html_a6208db3ac52d7f107a612679d0d8eca3"><div class="ttname"><a href="_login_form_8cs.html#a6208db3ac52d7f107a612679d0d8eca3">Log</a></div><div class="ttdeci">UnityGameFramework.Runtime.Log Log</div><div class="ttdef"><b>Definition:</b> <a href="_login_form_8cs_source.html#l00007">LoginForm.cs:7</a></div></div>
+<div class="ttc" id="aclass_e_t_hotfix_1_1_login_and_register_helper_html"><div class="ttname"><a href="class_e_t_hotfix_1_1_login_and_register_helper.html">ETHotfix.LoginAndRegisterHelper</a></div><div class="ttdef"><b>Definition:</b> <a href="_login_and_register_helper_8cs_source.html#l00008">LoginAndRegisterHelper.cs:9</a></div></div>
+<div class="ttc" id="aclass_e_t_hotfix_1_1_login_and_register_helper_html_a5a7b0cb1479873de0c699abf1b7c3a47"><div class="ttname"><a href="class_e_t_hotfix_1_1_login_and_register_helper.html#a5a7b0cb1479873de0c699abf1b7c3a47">ETHotfix.LoginAndRegisterHelper.OnLoginAsync</a></div><div class="ttdeci">async ETVoid OnLoginAsync(string account, string password)</div><div class="ttdef"><b>Definition:</b> <a href="_login_and_register_helper_8cs_source.html#l00010">LoginAndRegisterHelper.cs:10</a></div></div>
+<div class="ttc" id="aclass_e_t_hotfix_1_1_login_and_register_helper_html_aa1226e7b5faaa7e7c605512f23e68351"><div class="ttname"><a href="class_e_t_hotfix_1_1_login_and_register_helper.html#aa1226e7b5faaa7e7c605512f23e68351">ETHotfix.LoginAndRegisterHelper.OnRegisterAsync</a></div><div class="ttdeci">async ETVoid OnRegisterAsync(string account, string password)</div><div class="ttdef"><b>Definition:</b> <a href="_login_and_register_helper_8cs_source.html#l00066">LoginAndRegisterHelper.cs:66</a></div></div>
+<div class="ttc" id="aclass_linity_1_1_common_button_html"><div class="ttname"><a href="class_linity_1_1_common_button.html">Linity.CommonButton</a></div><div class="ttdef"><b>Definition:</b> <a href="_common_button_8cs_source.html#l00014">CommonButton.cs:15</a></div></div>
+<div class="ttc" id="aclass_linity_1_1_game_entry_html"><div class="ttname"><a href="class_linity_1_1_game_entry.html">Linity.GameEntry</a></div><div class="ttdoc">游戏入口。</div><div class="ttdef"><b>Definition:</b> <a href="_game_entry_8_builtin_8cs_source.html#l00016">GameEntry.Builtin.cs:17</a></div></div>
+<div class="ttc" id="aclass_linity_1_1_game_entry_html_a80fb1ceaf06c1bdb5c9953ec2bde72c7"><div class="ttname"><a href="class_linity_1_1_game_entry.html#a80fb1ceaf06c1bdb5c9953ec2bde72c7">Linity.GameEntry.Setting</a></div><div class="ttdeci">static SettingComponent Setting</div><div class="ttdoc">获取配置组件。</div><div class="ttdef"><b>Definition:</b> <a href="_game_entry_8_builtin_8cs_source.html#l00165">GameEntry.Builtin.cs:166</a></div></div>
+<div class="ttc" id="aclass_linity_1_1_hotfix_1_1_hotfix_login_and_register_event_args_html"><div class="ttname"><a href="class_linity_1_1_hotfix_1_1_hotfix_login_and_register_event_args.html">Linity.Hotfix.HotfixLoginAndRegisterEventArgs</a></div><div class="ttdef"><b>Definition:</b> <a href="_hotfix_login_and_register_event_args_8cs_source.html#l00012">HotfixLoginAndRegisterEventArgs.cs:13</a></div></div>
+<div class="ttc" id="aclass_linity_1_1_hotfix_1_1_hotfix_login_and_register_event_args_html_a2bfd7384b4a3694f54d9b3442f1aeae9"><div class="ttname"><a href="class_linity_1_1_hotfix_1_1_hotfix_login_and_register_event_args.html#a2bfd7384b4a3694f54d9b3442f1aeae9">Linity.Hotfix.HotfixLoginAndRegisterEventArgs.EventId</a></div><div class="ttdeci">static readonly int EventId</div><div class="ttdef"><b>Definition:</b> <a href="_hotfix_login_and_register_event_args_8cs_source.html#l00014">HotfixLoginAndRegisterEventArgs.cs:14</a></div></div>
+<div class="ttc" id="aclass_linity_1_1_hotfix_1_1_hotfix_u_gui_form_html_aee6403651cb609c27025720446db3661"><div class="ttname"><a href="class_linity_1_1_hotfix_1_1_hotfix_u_gui_form.html#aee6403651cb609c27025720446db3661">Linity.Hotfix.HotfixUGuiForm.m_ProcedureBase</a></div><div class="ttdeci">ProcedureBase m_ProcedureBase</div><div class="ttdef"><b>Definition:</b> <a href="_hotfix_2_u_i_2_base_2_hotfix_u_gui_form_8cs_source.html#l00014">HotfixUGuiForm.cs:14</a></div></div>
+<div class="ttc" id="aclass_linity_1_1_hotfix_1_1_login_form_html_a2cdd4b378884e965bc94518e661af024"><div class="ttname"><a href="class_linity_1_1_hotfix_1_1_login_form.html#a2cdd4b378884e965bc94518e661af024">Linity.Hotfix.LoginForm.OnOpen</a></div><div class="ttdeci">override void OnOpen(object userData)</div><div class="ttdoc">界面打开</div><div class="ttdef"><b>Definition:</b> <a href="_login_form_8cs_source.html#l00032">LoginForm.cs:32</a></div></div>
+<div class="ttc" id="aclass_linity_1_1_hotfix_1_1_login_form_html_a87cc6f854dc06d5bed303e64ffc0d9a5"><div class="ttname"><a href="class_linity_1_1_hotfix_1_1_login_form.html#a87cc6f854dc06d5bed303e64ffc0d9a5">Linity.Hotfix.LoginForm.OnInit</a></div><div class="ttdeci">override void OnInit(Linity.HotfixUGuiForm uiFormLogic, object userData)</div><div class="ttdoc">界面初始化</div><div class="ttdef"><b>Definition:</b> <a href="_login_form_8cs_source.html#l00018">LoginForm.cs:18</a></div></div>
+<div class="ttc" id="aclass_linity_1_1_hotfix_1_1_login_form_html_aff06180a97e02fa78c3c5b0df060efef"><div class="ttname"><a href="class_linity_1_1_hotfix_1_1_login_form.html#aff06180a97e02fa78c3c5b0df060efef">Linity.Hotfix.LoginForm.OnClose</a></div><div class="ttdeci">override void OnClose(bool isShutdown, object userData)</div><div class="ttdoc">界面关闭</div><div class="ttdef"><b>Definition:</b> <a href="_login_form_8cs_source.html#l00150">LoginForm.cs:150</a></div></div>
+<div class="ttc" id="aclass_linity_1_1_hotfix_1_1_procedure_hotfix_login_html"><div class="ttname"><a href="class_linity_1_1_hotfix_1_1_procedure_hotfix_login.html">Linity.Hotfix.ProcedureHotfixLogin</a></div><div class="ttdef"><b>Definition:</b> <a href="_procedure_hotfix_login_8cs_source.html#l00013">ProcedureHotfixLogin.cs:14</a></div></div>
+<div class="ttc" id="aclass_linity_1_1_hotfix_1_1_procedure_hotfix_login_html_a076604cdf25514c9296f707557284b89"><div class="ttname"><a href="class_linity_1_1_hotfix_1_1_procedure_hotfix_login.html#a076604cdf25514c9296f707557284b89">Linity.Hotfix.ProcedureHotfixLogin.LoginSuccess</a></div><div class="ttdeci">void LoginSuccess()</div><div class="ttdef"><b>Definition:</b> <a href="_procedure_hotfix_login_8cs_source.html#l00043">ProcedureHotfixLogin.cs:43</a></div></div>
+<div class="ttc" id="aclass_linity_1_1_hotfix_u_gui_form_html"><div class="ttname"><a href="class_linity_1_1_hotfix_u_gui_form.html">Linity.HotfixUGuiForm</a></div><div class="ttdoc">热更新层UGUI界面</div><div class="ttdef"><b>Definition:</b> <a href="_game_main_2_u_i_2_base_2_hotfix_u_gui_form_8cs_source.html#l00021">HotfixUGuiForm.cs:22</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_runtime_1_1_log_html"><div class="ttname"><a href="class_unity_game_framework_1_1_runtime_1_1_log.html">UnityGameFramework.Runtime.Log</a></div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_game_framework_2_scripts_2_runtime_2_utility_2_log_8cs_source.html#l00016">Log.cs:17</a></div></div>
+<div class="ttc" id="anamespace_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_p_b_x_html_a010a39856e7483cd91729e252ee88ea3a27118326006d3829667a400ad23d5d98"><div class="ttname"><a href="namespace_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_p_b_x.html#a010a39856e7483cd91729e252ee88ea3a27118326006d3829667a400ad23d5d98">ChillyRoom.UnityEditor.iOS.Xcode.PBX.TokenType.String</a></div><div class="ttdeci">@ String</div></div>
+<div class="ttc" id="anamespace_e_t_hotfix_html"><div class="ttname"><a href="namespace_e_t_hotfix.html">ETHotfix</a></div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_hotfix_2_e_t_network_2_base_2_event_2_event_id_type_8cs_source.html#l00001">EventIdType.cs:2</a></div></div>
+<div class="ttc" id="anamespace_linity_1_1_hotfix_html"><div class="ttname"><a href="namespace_linity_1_1_hotfix.html">Linity.Hotfix</a></div><div class="ttdef"><b>Definition:</b> <a href="_hotfix_2_base_2_variable_2_base_2_generic_variable_8cs_source.html#l00010">GenericVariable.cs:11</a></div></div>
+<div class="ttc" id="anamespace_linity_1_1_hotfix_html_a7ddb4a4817a460cd0166630d822c82d4"><div class="ttname"><a href="namespace_linity_1_1_hotfix.html#a7ddb4a4817a460cd0166630d822c82d4">Linity.Hotfix.LoginAndRegisterType</a></div><div class="ttdeci">LoginAndRegisterType</div><div class="ttdef"><b>Definition:</b> <a href="_hotfix_login_and_register_event_args_8cs_source.html#l00006">HotfixLoginAndRegisterEventArgs.cs:7</a></div></div>
+<div class="ttc" id="anamespace_linity_html"><div class="ttname"><a href="namespace_linity.html">Linity</a></div><div class="ttdef"><b>Definition:</b> <a href="_entity_and_u_i_form_code_generator_8cs_source.html#l00008">EntityAndUIFormCodeGenerator.cs:9</a></div></div>
+<div class="ttc" id="anamespace_system_html"><div class="ttname"><a href="namespace_system.html">System</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_method_builder_attribute_8cs_source.html#l00001">AsyncMethodBuilderAttribute.cs:2</a></div></div>
+<div class="ttc" id="anamespace_unity_engine_html"><div class="ttname"><a href="namespace_unity_engine.html">UnityEngine</a></div><div class="ttdef"><b>Definition:</b> <a href="_mathf_8cs_source.html#l00003">Mathf.cs:4</a></div></div>
+<div class="ttc" id="anamespace_unity_game_framework_1_1_runtime_html"><div class="ttname"><a href="namespace_unity_game_framework_1_1_runtime.html">UnityGameFramework.Runtime</a></div><div class="ttdef"><b>Definition:</b> <a href="_base_component_8cs_source.html#l00014">BaseComponent.cs:15</a></div></div>
+<div class="ttc" id="anamespace_unity_game_framework_html"><div class="ttname"><a href="namespace_unity_game_framework.html">UnityGameFramework</a></div><div class="ttdef"><b>Definition:</b> <a href="_base_component_inspector_8cs_source.html#l00014">BaseComponentInspector.cs:15</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_84bbf7b3c7f28a5a18725745e1505219.html">Assets</a></li><li class="navelem"><a class="el" href="dir_f13b41af88cf68434578284aaf699e39.html">Scripts</a></li><li class="navelem"><a class="el" href="dir_75935e138bec93c4cadb3fa5f697868b.html">Hotfix</a></li><li class="navelem"><a class="el" href="dir_e227979c1aa5980cb4dac06874c072f7.html">UI</a></li><li class="navelem"><a class="el" href="_login_form_8cs.html">LoginForm.cs</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:24:45 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

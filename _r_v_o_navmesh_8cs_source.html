@@ -1,0 +1,204 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: Assets/Scripts/Libraries/ET/Module/Pathfinding/AstarPathfindingProject/RVO/RVONavmesh.cs 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_r_v_o_navmesh_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">RVONavmesh.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_r_v_o_navmesh_8cs.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_unity_engine.html">UnityEngine</a>;</div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Collections.Generic;</div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_p_f.html">PF</a>;</div>
+<div class="line"><a name="l00004"></a><span class="lineno"><a class="line" href="_r_v_o_navmesh_8cs.html#af3326292fdd04d2b384b6d781d9594f6">    4</a></span>&#160;<span class="keyword">using</span> <a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a> = <a class="code" href="namespace_unity_engine.html">UnityEngine</a>.<a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a>;</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#if UNITY_5_5_OR_NEWER</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_unity_engine.html">UnityEngine</a>.Profiling;</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_pathfinding_1_1_r_v_o.html">Pathfinding.RVO</a> {</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;        <span class="keyword">using</span> <a class="code" href="namespace_pathfinding.html">Pathfinding</a>.<a class="code" href="namespace_pathfinding_1_1_util.html">Util</a>;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        [AddComponentMenu(<span class="stringliteral">&quot;Pathfinding/Local Avoidance/RVO Navmesh&quot;</span>)]</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        [HelpURL(<span class="stringliteral">&quot;http://arongranberg.com/astar/docs/class_pathfinding_1_1_r_v_o_1_1_r_v_o_navmesh.php&quot;</span>)]</div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_navmesh.html">   29</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_navmesh.html">RVONavmesh</a> : <a class="code" href="class_pathfinding_1_1_graph_modifier.html">GraphModifier</a> {</div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_navmesh.html#a3dee13fcff92e6a3fff56fdb2cb56bbb">   35</a></span>&#160;                <span class="keyword">public</span> <span class="keywordtype">float</span> <a class="code" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_navmesh.html#a3dee13fcff92e6a3fff56fdb2cb56bbb">wallHeight</a> = 5;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;                readonly List&lt;ObstacleVertex&gt; obstacles = <span class="keyword">new</span> List&lt;ObstacleVertex&gt;();</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;                <a class="code" href="class_pathfinding_1_1_r_v_o_1_1_simulator.html">Simulator</a> lastSim;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_navmesh.html#aae0ca190d794b743799647b91f856c7b">   43</a></span>&#160;                <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_navmesh.html#aae0ca190d794b743799647b91f856c7b">OnPostCacheLoad</a> () {</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                        <a class="code" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_navmesh.html#a4ff9b151b9b43d085638b845c4802d9a">OnLatePostScan</a>();</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                }</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_navmesh.html#a001389a12cccfbd3201a399fccd7284e">   47</a></span>&#160;                <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_navmesh.html#a001389a12cccfbd3201a399fccd7284e">OnGraphsPostUpdate</a> () {</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                        <a class="code" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_navmesh.html#a4ff9b151b9b43d085638b845c4802d9a">OnLatePostScan</a>();</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                }</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_navmesh.html#a4ff9b151b9b43d085638b845c4802d9a">   51</a></span>&#160;                <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_navmesh.html#a4ff9b151b9b43d085638b845c4802d9a">OnLatePostScan</a> () {</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                        <span class="keywordflow">if</span> (!Application.isPlaying) <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                        Profiler.BeginSample(<span class="stringliteral">&quot;Update RVO Obstacles From Graphs&quot;</span>);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                        <a class="code" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_navmesh.html#ae74b2de4eb2a31d2d85c160d1d45c80d">RemoveObstacles</a>();</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                        <a class="code" href="class_p_f_1_1_nav_graph.html">NavGraph</a>[] graphs = PathFindHelper.graphs;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                        <a class="code" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_simulator.html">RVOSimulator</a> rvosim = <a class="code" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_simulator.html">RVOSimulator</a>.<a class="code" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_simulator.html#a766acfdb073620134a64afc79677f08d">active</a>;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;                        <span class="keywordflow">if</span> (rvosim == <span class="keyword">null</span>) <span class="keywordflow">throw</span> <span class="keyword">new</span> <a class="code" href="namespace_system.html">System</a>.NullReferenceException(<span class="stringliteral">&quot;No RVOSimulator could be found in the scene. Please add one to any GameObject&quot;</span>);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                        <span class="comment">// Remember which simulator these obstacles were added to</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                        lastSim = rvosim.<a class="code" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_simulator.html#a2dda5c8ff9473eacf269917dda5aa181">GetSimulator</a>();</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; graphs.Length; i++) {</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                                <a class="code" href="class_p_f_1_1_recast_graph.html">RecastGraph</a> recast = graphs[i] as <a class="code" href="class_p_f_1_1_recast_graph.html">RecastGraph</a>;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                                <a class="code" href="interface_p_f_1_1_i_navmesh.html">INavmesh</a> navmesh = graphs[i] as <a class="code" href="interface_p_f_1_1_i_navmesh.html">INavmesh</a>;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                                <span class="keywordflow">if</span> (recast != <span class="keyword">null</span>) {</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                                        <span class="keywordflow">foreach</span> (var tile <span class="keywordflow">in</span> recast.<a class="code" href="class_p_f_1_1_navmesh_base.html#aa6a544e9b29c6e0cab57786f77de130b">GetTiles</a>()) {</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                                                AddGraphObstacles(lastSim, tile);</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                                        }</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                                } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (navmesh != <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                                {</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                                        AddGraphObstacles(lastSim, navmesh);</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                                }</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                        }</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                        Profiler.EndSample();</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                }</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
+<div class="line"><a name="l00078"></a><span class="lineno"><a class="line" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_navmesh.html#a5565a5d932c988cacb1527b1752fa2ea">   78</a></span>&#160;                <span class="keyword">protected</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_navmesh.html#a5565a5d932c988cacb1527b1752fa2ea">OnDisable</a> () {</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                        base.OnDisable();</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                        <a class="code" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_navmesh.html#ae74b2de4eb2a31d2d85c160d1d45c80d">RemoveObstacles</a>();</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                }</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+<div class="line"><a name="l00084"></a><span class="lineno"><a class="line" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_navmesh.html#ae74b2de4eb2a31d2d85c160d1d45c80d">   84</a></span>&#160;                <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_navmesh.html#ae74b2de4eb2a31d2d85c160d1d45c80d">RemoveObstacles</a> () {</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                        <span class="keywordflow">if</span> (lastSim != <span class="keyword">null</span>) {</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; obstacles.Count; i++) lastSim.<a class="code" href="class_pathfinding_1_1_r_v_o_1_1_simulator.html#ac866b80a1172ebad09c7c1b5316a4061">RemoveObstacle</a>(obstacles[i]);</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                                lastSim = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                        }</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                        obstacles.Clear();</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                }</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                <span class="keywordtype">void</span> AddGraphObstacles (<a class="code" href="namespace_pathfinding.html">Pathfinding</a>.<a class="code" href="namespace_pathfinding_1_1_r_v_o.html">RVO</a>.<a class="code" href="class_pathfinding_1_1_r_v_o_1_1_simulator.html">Simulator</a> simulator, <a class="code" href="interface_p_f_1_1_i_navmesh.html">INavmesh</a> navmesh) {</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                        GraphUtilities.GetContours(navmesh, (vertices, cycle) =&gt; {</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                                var verticesV3 = <span class="keyword">new</span> <a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a>[vertices.Count];</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;                                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; verticesV3.Length; i++) verticesV3[i] = (<a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a>)vertices[i];</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                                <span class="comment">// Pool the &#39;vertices&#39; list to reduce allocations</span></div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                                ListPool&lt;Int3&gt;.Release(vertices);</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;                                obstacles.<a class="code" href="struct_unity_engine_1_1_vector3.html#ac2253c7509193ceb12b55714708f0419">Add</a>(simulator.AddObstacle(verticesV3, <a class="code" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_navmesh.html#a3dee13fcff92e6a3fff56fdb2cb56bbb">wallHeight</a>, cycle));</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;                        });</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;                }</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        }</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;}</div>
+<div class="ttc" id="aclass_p_f_1_1_nav_graph_html"><div class="ttname"><a href="class_p_f_1_1_nav_graph.html">PF.NavGraph</a></div><div class="ttdef"><b>Definition:</b> <a href="_nav_graph_8cs_source.html#l00022">NavGraph.cs:22</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_navmesh_base_html_aa6a544e9b29c6e0cab57786f77de130b"><div class="ttname"><a href="class_p_f_1_1_navmesh_base.html#aa6a544e9b29c6e0cab57786f77de130b">PF.NavmeshBase.GetTiles</a></div><div class="ttdeci">NavmeshTile[] GetTiles()</div><div class="ttdef"><b>Definition:</b> <a href="_navmesh_base_8cs_source.html#l00207">NavmeshBase.cs:207</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_recast_graph_html"><div class="ttname"><a href="class_p_f_1_1_recast_graph.html">PF.RecastGraph</a></div><div class="ttdef"><b>Definition:</b> <a href="_recast_generator_8cs_source.html#l00051">RecastGenerator.cs:51</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_graph_modifier_html"><div class="ttname"><a href="class_pathfinding_1_1_graph_modifier.html">Pathfinding.GraphModifier</a></div><div class="ttdef"><b>Definition:</b> <a href="_graph_modifier_8cs_source.html#l00013">GraphModifier.cs:13</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_r_v_o_1_1_r_v_o_navmesh_html"><div class="ttname"><a href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_navmesh.html">Pathfinding.RVO.RVONavmesh</a></div><div class="ttdef"><b>Definition:</b> <a href="_r_v_o_navmesh_8cs_source.html#l00029">RVONavmesh.cs:29</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_r_v_o_1_1_r_v_o_navmesh_html_a001389a12cccfbd3201a399fccd7284e"><div class="ttname"><a href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_navmesh.html#a001389a12cccfbd3201a399fccd7284e">Pathfinding.RVO.RVONavmesh.OnGraphsPostUpdate</a></div><div class="ttdeci">override void OnGraphsPostUpdate()</div><div class="ttdef"><b>Definition:</b> <a href="_r_v_o_navmesh_8cs_source.html#l00047">RVONavmesh.cs:47</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_r_v_o_1_1_r_v_o_navmesh_html_a3dee13fcff92e6a3fff56fdb2cb56bbb"><div class="ttname"><a href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_navmesh.html#a3dee13fcff92e6a3fff56fdb2cb56bbb">Pathfinding.RVO.RVONavmesh.wallHeight</a></div><div class="ttdeci">float wallHeight</div><div class="ttdef"><b>Definition:</b> <a href="_r_v_o_navmesh_8cs_source.html#l00035">RVONavmesh.cs:35</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_r_v_o_1_1_r_v_o_navmesh_html_a4ff9b151b9b43d085638b845c4802d9a"><div class="ttname"><a href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_navmesh.html#a4ff9b151b9b43d085638b845c4802d9a">Pathfinding.RVO.RVONavmesh.OnLatePostScan</a></div><div class="ttdeci">override void OnLatePostScan()</div><div class="ttdef"><b>Definition:</b> <a href="_r_v_o_navmesh_8cs_source.html#l00051">RVONavmesh.cs:51</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_r_v_o_1_1_r_v_o_navmesh_html_a5565a5d932c988cacb1527b1752fa2ea"><div class="ttname"><a href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_navmesh.html#a5565a5d932c988cacb1527b1752fa2ea">Pathfinding.RVO.RVONavmesh.OnDisable</a></div><div class="ttdeci">override void OnDisable()</div><div class="ttdef"><b>Definition:</b> <a href="_r_v_o_navmesh_8cs_source.html#l00078">RVONavmesh.cs:78</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_r_v_o_1_1_r_v_o_navmesh_html_aae0ca190d794b743799647b91f856c7b"><div class="ttname"><a href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_navmesh.html#aae0ca190d794b743799647b91f856c7b">Pathfinding.RVO.RVONavmesh.OnPostCacheLoad</a></div><div class="ttdeci">override void OnPostCacheLoad()</div><div class="ttdef"><b>Definition:</b> <a href="_r_v_o_navmesh_8cs_source.html#l00043">RVONavmesh.cs:43</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_r_v_o_1_1_r_v_o_navmesh_html_ae74b2de4eb2a31d2d85c160d1d45c80d"><div class="ttname"><a href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_navmesh.html#ae74b2de4eb2a31d2d85c160d1d45c80d">Pathfinding.RVO.RVONavmesh.RemoveObstacles</a></div><div class="ttdeci">void RemoveObstacles()</div><div class="ttdef"><b>Definition:</b> <a href="_r_v_o_navmesh_8cs_source.html#l00084">RVONavmesh.cs:84</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_r_v_o_1_1_r_v_o_simulator_html"><div class="ttname"><a href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_simulator.html">Pathfinding.RVO.RVOSimulator</a></div><div class="ttdef"><b>Definition:</b> <a href="_r_v_o_simulator_8cs_source.html#l00030">RVOSimulator.cs:30</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_r_v_o_1_1_r_v_o_simulator_html_a2dda5c8ff9473eacf269917dda5aa181"><div class="ttname"><a href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_simulator.html#a2dda5c8ff9473eacf269917dda5aa181">Pathfinding.RVO.RVOSimulator.GetSimulator</a></div><div class="ttdeci">Simulator GetSimulator()</div><div class="ttdef"><b>Definition:</b> <a href="_r_v_o_simulator_8cs_source.html#l00092">RVOSimulator.cs:92</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_r_v_o_1_1_r_v_o_simulator_html_a766acfdb073620134a64afc79677f08d"><div class="ttname"><a href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_simulator.html#a766acfdb073620134a64afc79677f08d">Pathfinding.RVO.RVOSimulator.active</a></div><div class="ttdeci">static RVOSimulator active</div><div class="ttdef"><b>Definition:</b> <a href="_r_v_o_simulator_8cs_source.html#l00032">RVOSimulator.cs:32</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_r_v_o_1_1_simulator_html"><div class="ttname"><a href="class_pathfinding_1_1_r_v_o_1_1_simulator.html">Pathfinding.RVO.Simulator</a></div><div class="ttdef"><b>Definition:</b> <a href="_r_v_o_core_simulator_8cs_source.html#l00266">RVOCoreSimulator.cs:266</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_r_v_o_1_1_simulator_html_ac866b80a1172ebad09c7c1b5316a4061"><div class="ttname"><a href="class_pathfinding_1_1_r_v_o_1_1_simulator.html#ac866b80a1172ebad09c7c1b5316a4061">Pathfinding.RVO.Simulator.RemoveObstacle</a></div><div class="ttdeci">void RemoveObstacle(ObstacleVertex v)</div><div class="ttdef"><b>Definition:</b> <a href="_r_v_o_core_simulator_8cs_source.html#l00634">RVOCoreSimulator.cs:634</a></div></div>
+<div class="ttc" id="ainterface_p_f_1_1_i_navmesh_html"><div class="ttname"><a href="interface_p_f_1_1_i_navmesh.html">PF.INavmesh</a></div><div class="ttdef"><b>Definition:</b> <a href="_i_navmesh_8cs_source.html#l00004">INavmesh.cs:4</a></div></div>
+<div class="ttc" id="anamespace_p_f_html"><div class="ttname"><a href="namespace_p_f.html">PF</a></div><div class="ttdef"><b>Definition:</b> <a href="_array_pool_8cs_source.html#l00009">ArrayPool.cs:9</a></div></div>
+<div class="ttc" id="anamespace_pathfinding_1_1_r_v_o_html"><div class="ttname"><a href="namespace_pathfinding_1_1_r_v_o.html">Pathfinding.RVO</a></div><div class="ttdef"><b>Definition:</b> <a href="_r_v_o_controller_editor_8cs_source.html#l00004">RVOControllerEditor.cs:4</a></div></div>
+<div class="ttc" id="anamespace_pathfinding_1_1_util_html"><div class="ttname"><a href="namespace_pathfinding_1_1_util.html">Pathfinding.Util</a></div><div class="ttdef"><b>Definition:</b> <a href="_draw_8cs_source.html#l00008">Draw.cs:8</a></div></div>
+<div class="ttc" id="anamespace_pathfinding_html"><div class="ttname"><a href="namespace_pathfinding.html">Pathfinding</a></div><div class="ttdef"><b>Definition:</b> <a href="_a_i_base_editor_8cs_source.html#l00004">AIBaseEditor.cs:4</a></div></div>
+<div class="ttc" id="anamespace_system_html"><div class="ttname"><a href="namespace_system.html">System</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_method_builder_attribute_8cs_source.html#l00001">AsyncMethodBuilderAttribute.cs:2</a></div></div>
+<div class="ttc" id="anamespace_unity_engine_html"><div class="ttname"><a href="namespace_unity_engine.html">UnityEngine</a></div><div class="ttdef"><b>Definition:</b> <a href="_mathf_8cs_source.html#l00003">Mathf.cs:4</a></div></div>
+<div class="ttc" id="astruct_unity_engine_1_1_vector3_html"><div class="ttname"><a href="struct_unity_engine_1_1_vector3.html">UnityEngine.Vector3</a></div><div class="ttdef"><b>Definition:</b> <a href="_vector3_8cs_source.html#l00007">Vector3.cs:8</a></div></div>
+<div class="ttc" id="astruct_unity_engine_1_1_vector3_html_ac2253c7509193ceb12b55714708f0419"><div class="ttname"><a href="struct_unity_engine_1_1_vector3.html#ac2253c7509193ceb12b55714708f0419">UnityEngine.Vector3.Add</a></div><div class="ttdeci">static Vector3 Add(Vector3 value1, Vector3 value2)</div><div class="ttdef"><b>Definition:</b> <a href="_vector3_8cs_source.html#l00381">Vector3.cs:381</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_84bbf7b3c7f28a5a18725745e1505219.html">Assets</a></li><li class="navelem"><a class="el" href="dir_f13b41af88cf68434578284aaf699e39.html">Scripts</a></li><li class="navelem"><a class="el" href="dir_46d134a3bf82cf4dc49ca8f728aea58c.html">Libraries</a></li><li class="navelem"><a class="el" href="dir_f6df8f7e58ea5a2220a287b647108730.html">ET</a></li><li class="navelem"><a class="el" href="dir_83296929b1cb48979e134a96af9624b1.html">Module</a></li><li class="navelem"><a class="el" href="dir_7e04bdad0240fbb16a4f5f805ce44f49.html">Pathfinding</a></li><li class="navelem"><a class="el" href="dir_12c2f59e7be642934a5bea5c58ae8c1b.html">AstarPathfindingProject</a></li><li class="navelem"><a class="el" href="dir_c2bdcf3c2497bf600243a1b41485c576.html">RVO</a></li><li class="navelem"><a class="el" href="_r_v_o_navmesh_8cs.html">RVONavmesh.cs</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:24:46 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

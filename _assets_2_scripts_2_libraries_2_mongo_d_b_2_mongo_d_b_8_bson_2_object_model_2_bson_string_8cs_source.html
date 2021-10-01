@@ -1,0 +1,410 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: Assets/Scripts/Libraries/MongoDB/MongoDB.Bson/ObjectModel/BsonString.cs 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_string_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">BsonString.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_string_8cs.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/* Copyright 2010-present MongoDB Inc.</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">* Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">* you may not use this file except in compliance with the License.</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">* You may obtain a copy of the License at</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">* http://www.apache.org/licenses/LICENSE-2.0</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">* Unless required by applicable law or agreed to in writing, software</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">* distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">* See the License for the specific language governing permissions and</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">* limitations under the License.</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_mongo_d_b.html">MongoDB</a>.<a class="code" href="namespace_mongo_d_b_1_1_bson.html">Bson</a>.<a class="code" href="namespace_mongo_d_b_1_1_bson_1_1_i_o.html">IO</a>;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_mongo_d_b_1_1_bson.html">MongoDB.Bson</a></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;{</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#if NET452</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    [Serializable]</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_bson_string.html">   27</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_string.html">BsonString</a> : <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_value.html">BsonValue</a>, IComparable&lt;BsonString&gt;, IEquatable&lt;BsonString&gt;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    {</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <span class="comment">// private static fields</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_string.html">BsonString</a> __emptyInstance = <span class="keyword">new</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#a754aef25d69c9071ec2be42e0e9f0e5f">BsonString</a>(<span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <span class="comment">// private fields</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <span class="keyword">private</span> readonly <span class="keywordtype">string</span> _value;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <span class="comment">// constructors</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#a754aef25d69c9071ec2be42e0e9f0e5f">   40</a></span>&#160;<span class="comment"></span>        <span class="keyword">public</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#a754aef25d69c9071ec2be42e0e9f0e5f">BsonString</a>(<span class="keywordtype">string</span> value)</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        {</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;            <span class="keywordflow">if</span> (value == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;            {</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> ArgumentNullException(<span class="stringliteral">&quot;value&quot;</span>);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            }</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;            _value = value;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        }</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <span class="comment">// public static properties</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#aa286bd6485fca8c2ed75bc6fc3bf27fa">   53</a></span>&#160;<span class="comment"></span>        <span class="keyword">public</span> <span class="keyword">static</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_string.html">BsonString</a> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#aa286bd6485fca8c2ed75bc6fc3bf27fa">Empty</a></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        {</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            <span class="keyword">get</span> { <span class="keywordflow">return</span> __emptyInstance; }</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        }</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <span class="comment">// public properties</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#ac7a8836bdb7260ebc7fda742a68353b6">   62</a></span>&#160;<span class="comment"></span>        <span class="keyword">public</span> <span class="keyword">override</span> <a class="code" href="namespace_mongo_d_b_1_1_bson.html#a811d3d494b81b025735495a7790f9d08">BsonType</a> <a class="code" href="namespace_mongo_d_b_1_1_bson.html#a811d3d494b81b025735495a7790f9d08">BsonType</a></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        {</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            <span class="keyword">get</span> { <span class="keywordflow">return</span> <a class="code" href="namespace_mongo_d_b_1_1_bson.html#a811d3d494b81b025735495a7790f9d08">BsonType</a>.String; }</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        }</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        [Obsolete(<span class="stringliteral">&quot;Use Value instead.&quot;</span>)]</div>
+<div class="line"><a name="l00071"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#ab7dffc8ed3ec6fa1c3ed0b4646433e0d">   71</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">object</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#ab7dffc8ed3ec6fa1c3ed0b4646433e0d">RawValue</a></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        {</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            <span class="keyword">get</span> { <span class="keywordflow">return</span> _value; }</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        }</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
+<div class="line"><a name="l00079"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#a0c37104d2fdbfedcddb11aa82b8bd47a">   79</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">string</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#a0c37104d2fdbfedcddb11aa82b8bd47a">Value</a></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        {</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            <span class="keyword">get</span> { <span class="keywordflow">return</span> _value; }</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        }</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        <span class="comment">// public operators</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#a332403ba7b240500374ed66a41a0ea27">   90</a></span>&#160;<span class="comment"></span>        <span class="keyword">public</span> <span class="keyword">static</span> implicit <span class="keyword">operator</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#a754aef25d69c9071ec2be42e0e9f0e5f">BsonString</a>(<span class="keywordtype">string</span> value)</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        {</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;            <span class="keywordflow">if</span> (value != <span class="keyword">null</span> &amp;&amp; value.Length == 0)</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;            {</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                <span class="keywordflow">return</span> __emptyInstance;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;            }</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#a754aef25d69c9071ec2be42e0e9f0e5f">BsonString</a>(value);</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        }</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
+<div class="line"><a name="l00105"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#a65cc04c0ec4d76c256d366a84f6afdd5">  105</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">bool</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#a65cc04c0ec4d76c256d366a84f6afdd5">operator !=</a>(<a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_string.html">BsonString</a> lhs, <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_string.html">BsonString</a> rhs)</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        {</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;            <span class="keywordflow">return</span> !(lhs == rhs);</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        }</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; </div>
+<div class="line"><a name="l00116"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#a074f941d28b2deda282b1caebbe250fc">  116</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">bool</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#a074f941d28b2deda282b1caebbe250fc">operator ==</a>(<a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_string.html">BsonString</a> lhs, <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_string.html">BsonString</a> rhs)</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        {</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;            <span class="keywordflow">if</span> (<span class="keywordtype">object</span>.ReferenceEquals(lhs, <span class="keyword">null</span>)) { <span class="keywordflow">return</span> <span class="keywordtype">object</span>.ReferenceEquals(rhs, <span class="keyword">null</span>); }</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;            <span class="keywordflow">return</span> lhs.<a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#ade91471ec6aa14dfa32d7a4f1353bfbd">Equals</a>(rhs);</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        }</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160; </div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        <span class="comment">// public static methods</span></div>
+<div class="line"><a name="l00128"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#a2d058069b2f482c8836687e797b5c0fb">  128</a></span>&#160;<span class="comment"></span>        <span class="keyword">public</span> <span class="keyword">new</span> <span class="keyword">static</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_string.html">BsonString</a> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#a2d058069b2f482c8836687e797b5c0fb">Create</a>(<span class="keywordtype">object</span> value)</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        {</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;            <span class="keywordflow">if</span> (value == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;            {</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> ArgumentNullException(<span class="stringliteral">&quot;value&quot;</span>);</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;            }</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160; </div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;            <span class="keywordflow">return</span> (<a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_string.html">BsonString</a>)BsonTypeMapper.MapToBsonValue(value, <a class="code" href="namespace_mongo_d_b_1_1_bson.html#a811d3d494b81b025735495a7790f9d08">BsonType</a>.String);</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        }</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160; </div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;        <span class="comment">// public methods</span></div>
+<div class="line"><a name="l00144"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#af0c306e95aaf5bdad5c75945712b8465">  144</a></span>&#160;<span class="comment"></span>        <span class="keyword">public</span> <span class="keywordtype">int</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#af0c306e95aaf5bdad5c75945712b8465">CompareTo</a>(<a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_string.html">BsonString</a> other)</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;        {</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;            <span class="keywordflow">if</span> (other == <span class="keyword">null</span>) { <span class="keywordflow">return</span> 1; }</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;            <span class="keywordflow">return</span> _value.CompareTo(other.<a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#a0c37104d2fdbfedcddb11aa82b8bd47a">Value</a>);</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;        }</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160; </div>
+<div class="line"><a name="l00155"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#a7da9f73bce0d5fd11ddf352b299d399f">  155</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">int</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#a7da9f73bce0d5fd11ddf352b299d399f">CompareTo</a>(<a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_value.html">BsonValue</a> other)</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;        {</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;            <span class="keywordflow">if</span> (other == <span class="keyword">null</span>) { <span class="keywordflow">return</span> 1; }</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;            var otherString = other as <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#a754aef25d69c9071ec2be42e0e9f0e5f">BsonString</a>;</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;            <span class="keywordflow">if</span> (otherString != <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;            {</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;                <span class="keywordflow">return</span> _value.CompareTo(otherString.Value);</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;            }</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;            var otherSymbol = other as <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_symbol.html">BsonSymbol</a>;</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;            <span class="keywordflow">if</span> (otherSymbol != <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;            {</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;                <span class="keywordflow">return</span> _value.<a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_symbol.html#a66fa5dd65f62f33c8bb70932acf127be">CompareTo</a>(otherSymbol.Name);</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;            }</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_value.html#a67ccd90c0febcb5cccbbb2807d94b9f5">CompareTypeTo</a>(other);</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;        }</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160; </div>
+<div class="line"><a name="l00176"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#ade91471ec6aa14dfa32d7a4f1353bfbd">  176</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#ade91471ec6aa14dfa32d7a4f1353bfbd">Equals</a>(<a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_string.html">BsonString</a> rhs)</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;        {</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;            <span class="keywordflow">if</span> (<span class="keywordtype">object</span>.ReferenceEquals(rhs, <span class="keyword">null</span>) || GetType() != rhs.GetType()) { <span class="keywordflow">return</span> <span class="keyword">false</span>; }</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;            <span class="keywordflow">return</span> _value == rhs._value;</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;        }</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160; </div>
+<div class="line"><a name="l00187"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#ace965a47d9ae2b030d02663423e8bd2e">  187</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">bool</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#ace965a47d9ae2b030d02663423e8bd2e">Equals</a>(<span class="keywordtype">object</span> obj)</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;        {</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#ade91471ec6aa14dfa32d7a4f1353bfbd">Equals</a>(obj as <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_string.html">BsonString</a>); <span class="comment">// works even if obj is null or of a different type</span></div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;        }</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160; </div>
+<div class="line"><a name="l00196"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#a7cac105ffe926fa685baaa4fb584bf5b">  196</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">int</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#a7cac105ffe926fa685baaa4fb584bf5b">GetHashCode</a>()</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;        {</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;            <span class="comment">// see Effective Java by Joshua Bloch</span></div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;            <span class="keywordtype">int</span> hash = 17;</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;            hash = 37 * hash + <a class="code" href="namespace_mongo_d_b_1_1_bson.html#a811d3d494b81b025735495a7790f9d08">BsonType</a>.GetHashCode();</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;            hash = 37 * hash + _value.GetHashCode();</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;            <span class="keywordflow">return</span> hash;</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;        }</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160; </div>
+<div class="line"><a name="l00209"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#aefc9523218084b5267a445957fb40803">  209</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">bool</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#aefc9523218084b5267a445957fb40803">ToBoolean</a>()</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;        {</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;            <span class="keywordflow">return</span> _value != <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;        }</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160; </div>
+<div class="line"><a name="l00215"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#a9f259e82e0a8cda7886eac94e0c22b8c">  215</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> decimal <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#a9f259e82e0a8cda7886eac94e0c22b8c">ToDecimal</a>()</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;        {</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;            <span class="keywordflow">return</span> JsonConvert.ToDecimal(_value);</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;        }</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160; </div>
+<div class="line"><a name="l00221"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#a83913e9c014185401da27df9e70e5a83">  221</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <a class="code" href="struct_mongo_d_b_1_1_bson_1_1_decimal128.html">Decimal128</a> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#a83913e9c014185401da27df9e70e5a83">ToDecimal128</a>()</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;        {</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;            <span class="keywordflow">return</span> JsonConvert.ToDecimal128(_value);</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;        }</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160; </div>
+<div class="line"><a name="l00230"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#a033852776f77e5e6e43826077671be3a">  230</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">double</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#a033852776f77e5e6e43826077671be3a">ToDouble</a>()</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;        {</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;            <span class="keywordflow">return</span> JsonConvert.ToDouble(_value);</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;        }</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160; </div>
+<div class="line"><a name="l00239"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#aa313b0507db40c59ff67fba22fb7cb8e">  239</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">int</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#aa313b0507db40c59ff67fba22fb7cb8e">ToInt32</a>()</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;        {</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;            <span class="keywordflow">return</span> JsonConvert.ToInt32(_value);</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;        }</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160; </div>
+<div class="line"><a name="l00248"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#a188c94af62e7b876e56518d53faff911">  248</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">long</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#a188c94af62e7b876e56518d53faff911">ToInt64</a>()</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;        {</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;            <span class="keywordflow">return</span> JsonConvert.ToInt64(_value);</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;        }</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160; </div>
+<div class="line"><a name="l00257"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#a74eeff17b7b07e1f5f85b1f0a56acf56">  257</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">string</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#a74eeff17b7b07e1f5f85b1f0a56acf56">ToString</a>()</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;        {</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;            <span class="keywordflow">return</span> _value;</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;        }</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160; </div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;        <span class="comment">// protected methods</span></div>
+<div class="line"><a name="l00264"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#a1be1c9e2606a6d32c5cdf046257d185f">  264</a></span>&#160;<span class="comment"></span>        <span class="keyword">protected</span> <span class="keyword">override</span> TypeCode <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#a1be1c9e2606a6d32c5cdf046257d185f">IConvertibleGetTypeCodeImplementation</a>()</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;        {</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;            <span class="keywordflow">return</span> TypeCode.String;</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;        }</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160; </div>
+<div class="line"><a name="l00270"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#ad365763c72fe9003107fb647c257fa4d">  270</a></span>&#160;        <span class="keyword">protected</span> <span class="keyword">override</span> <span class="keywordtype">byte</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#ad365763c72fe9003107fb647c257fa4d">IConvertibleToByteImplementation</a>(IFormatProvider provider)</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;        {</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;            <span class="keywordflow">return</span> Convert.ToByte(_value, provider);</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;        }</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160; </div>
+<div class="line"><a name="l00276"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#aaa897cdf922c0f58ec76531f1bfe41e6">  276</a></span>&#160;        <span class="keyword">protected</span> <span class="keyword">override</span> <span class="keywordtype">bool</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#aaa897cdf922c0f58ec76531f1bfe41e6">IConvertibleToBooleanImplementation</a>(IFormatProvider provider)</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;        {</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;            <span class="keywordflow">return</span> Convert.ToBoolean(_value, provider);</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;        }</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160; </div>
+<div class="line"><a name="l00282"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#ac43edcebcc72462ac0bf82740f6c4054">  282</a></span>&#160;        <span class="keyword">protected</span> <span class="keyword">override</span> <span class="keywordtype">char</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#ac43edcebcc72462ac0bf82740f6c4054">IConvertibleToCharImplementation</a>(IFormatProvider provider)</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;        {</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;            <span class="keywordflow">return</span> Convert.ToChar(_value, provider);</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;        }</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160; </div>
+<div class="line"><a name="l00288"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#a27e4f113e1e8a30cd6554a2a9a63a565">  288</a></span>&#160;        <span class="keyword">protected</span> <span class="keyword">override</span> <a class="code" href="namespace_mongo_d_b_1_1_bson_1_1_i_o.html#ad65ee141dbc942134016ecef513f20fda8cf10d2341ed01492506085688270c1e">DateTime</a> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#a27e4f113e1e8a30cd6554a2a9a63a565">IConvertibleToDateTimeImplementation</a>(IFormatProvider provider)</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;        {</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;            <span class="keywordflow">return</span> Convert.ToDateTime(_value, provider);</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;        }</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160; </div>
+<div class="line"><a name="l00294"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#ae084bafe7099c075d90dda4affbf2def">  294</a></span>&#160;        <span class="keyword">protected</span> <span class="keyword">override</span> decimal <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#ae084bafe7099c075d90dda4affbf2def">IConvertibleToDecimalImplementation</a>(IFormatProvider provider)</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;        {</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;            <span class="keywordflow">return</span> Convert.ToDecimal(_value, provider);</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;        }</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160; </div>
+<div class="line"><a name="l00300"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#a401c8c4fa0f8e29ccf3ffedd23d1dc43">  300</a></span>&#160;        <span class="keyword">protected</span> <span class="keyword">override</span> <span class="keywordtype">double</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#a401c8c4fa0f8e29ccf3ffedd23d1dc43">IConvertibleToDoubleImplementation</a>(IFormatProvider provider)</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;        {</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;            <span class="keywordflow">return</span> Convert.ToDouble(_value, provider);</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;        }</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160; </div>
+<div class="line"><a name="l00306"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#ac0680df97b4cc40954442bb5d1f7f96c">  306</a></span>&#160;        <span class="keyword">protected</span> <span class="keyword">override</span> <span class="keywordtype">short</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#ac0680df97b4cc40954442bb5d1f7f96c">IConvertibleToInt16Implementation</a>(IFormatProvider provider)</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;        {</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;            <span class="keywordflow">return</span> Convert.ToInt16(_value, provider);</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;        }</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160; </div>
+<div class="line"><a name="l00312"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#adc4da66c0f8ac766ff486fe1c63823ac">  312</a></span>&#160;        <span class="keyword">protected</span> <span class="keyword">override</span> <span class="keywordtype">int</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#adc4da66c0f8ac766ff486fe1c63823ac">IConvertibleToInt32Implementation</a>(IFormatProvider provider)</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;        {</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;            <span class="keywordflow">return</span> Convert.ToInt32(_value, provider);</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;        }</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160; </div>
+<div class="line"><a name="l00318"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#acc53ae11d67e489eb4b6c39b86a6f706">  318</a></span>&#160;        <span class="keyword">protected</span> <span class="keyword">override</span> <span class="keywordtype">long</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#acc53ae11d67e489eb4b6c39b86a6f706">IConvertibleToInt64Implementation</a>(IFormatProvider provider)</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;        {</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;            <span class="keywordflow">return</span> Convert.ToInt64(_value, provider);</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;        }</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160; </div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;<span class="preprocessor">#pragma warning disable 3002</span></div>
+<div class="line"><a name="l00325"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#afbde9b07be6c14027c97cc847f5cbec1">  325</a></span>&#160;        <span class="keyword">protected</span> <span class="keyword">override</span> sbyte <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#afbde9b07be6c14027c97cc847f5cbec1">IConvertibleToSByteImplementation</a>(IFormatProvider provider)</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;        {</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;            <span class="keywordflow">return</span> Convert.ToSByte(_value, provider);</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;        }</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;<span class="preprocessor">#pragma warning restore</span></div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160; </div>
+<div class="line"><a name="l00332"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#ac36deea7403f3f8959e6adfa8e787f42">  332</a></span>&#160;        <span class="keyword">protected</span> <span class="keyword">override</span> <span class="keywordtype">float</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#ac36deea7403f3f8959e6adfa8e787f42">IConvertibleToSingleImplementation</a>(IFormatProvider provider)</div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;        {</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;            <span class="keywordflow">return</span> Convert.ToSingle(_value, provider);</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;        }</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160; </div>
+<div class="line"><a name="l00338"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#a573635ef37d117a3f9e271513f58ea1d">  338</a></span>&#160;        <span class="keyword">protected</span> <span class="keyword">override</span> <span class="keywordtype">string</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#a573635ef37d117a3f9e271513f58ea1d">IConvertibleToStringImplementation</a>(IFormatProvider provider)</div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;        {</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;            <span class="keywordflow">return</span> _value;</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;        }</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160; </div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;<span class="preprocessor">#pragma warning disable 3002</span></div>
+<div class="line"><a name="l00345"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#a0e99976785819e871900703cb7084feb">  345</a></span>&#160;        <span class="keyword">protected</span> <span class="keyword">override</span> ushort <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#a0e99976785819e871900703cb7084feb">IConvertibleToUInt16Implementation</a>(IFormatProvider provider)</div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;        {</div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;            <span class="keywordflow">return</span> Convert.ToUInt16(_value, provider);</div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;        }</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;<span class="preprocessor">#pragma warning restore</span></div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160; </div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;<span class="preprocessor">#pragma warning disable 3002</span></div>
+<div class="line"><a name="l00353"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#ad629d18c1fedab4ed66c6e5f096c148a">  353</a></span>&#160;        <span class="keyword">protected</span> <span class="keyword">override</span> uint <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#ad629d18c1fedab4ed66c6e5f096c148a">IConvertibleToUInt32Implementation</a>(IFormatProvider provider)</div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;        {</div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;            <span class="keywordflow">return</span> Convert.ToUInt32(_value, provider);</div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;        }</div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;<span class="preprocessor">#pragma warning restore</span></div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160; </div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;<span class="preprocessor">#pragma warning disable 3002</span></div>
+<div class="line"><a name="l00361"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#a6b9830b5b784b3996e46ec6ef4c2dd85">  361</a></span>&#160;        <span class="keyword">protected</span> <span class="keyword">override</span> ulong <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#a6b9830b5b784b3996e46ec6ef4c2dd85">IConvertibleToUInt64Implementation</a>(IFormatProvider provider)</div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;        {</div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;            <span class="keywordflow">return</span> Convert.ToUInt64(_value, provider);</div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;        }</div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;<span class="preprocessor">#pragma warning restore</span></div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;    }</div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;}</div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_bson_string_html"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_bson_string.html">MongoDB.Bson.BsonString</a></div><div class="ttdoc">Represents a BSON string value.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_string_8cs_source.html#l00027">BsonString.cs:28</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_bson_string_html_a033852776f77e5e6e43826077671be3a"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#a033852776f77e5e6e43826077671be3a">MongoDB.Bson.BsonString.ToDouble</a></div><div class="ttdeci">override double ToDouble()</div><div class="ttdoc">Converts this BsonValue to a Double.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_string_8cs_source.html#l00230">BsonString.cs:230</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_bson_string_html_a074f941d28b2deda282b1caebbe250fc"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#a074f941d28b2deda282b1caebbe250fc">MongoDB.Bson.BsonString.operator==</a></div><div class="ttdeci">static bool operator==(BsonString lhs, BsonString rhs)</div><div class="ttdoc">Compares two BsonString values.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_string_8cs_source.html#l00116">BsonString.cs:116</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_bson_string_html_a0c37104d2fdbfedcddb11aa82b8bd47a"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#a0c37104d2fdbfedcddb11aa82b8bd47a">MongoDB.Bson.BsonString.Value</a></div><div class="ttdeci">string Value</div><div class="ttdoc">Gets the value of this BsonString.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_string_8cs_source.html#l00079">BsonString.cs:80</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_bson_string_html_a0e99976785819e871900703cb7084feb"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#a0e99976785819e871900703cb7084feb">MongoDB.Bson.BsonString.IConvertibleToUInt16Implementation</a></div><div class="ttdeci">override ushort IConvertibleToUInt16Implementation(IFormatProvider provider)</div><div class="ttdoc">Implementation of the IConvertible ToUInt16 method.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_string_8cs_source.html#l00345">BsonString.cs:345</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_bson_string_html_a188c94af62e7b876e56518d53faff911"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#a188c94af62e7b876e56518d53faff911">MongoDB.Bson.BsonString.ToInt64</a></div><div class="ttdeci">override long ToInt64()</div><div class="ttdoc">Converts this BsonValue to an Int64.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_string_8cs_source.html#l00248">BsonString.cs:248</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_bson_string_html_a1be1c9e2606a6d32c5cdf046257d185f"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#a1be1c9e2606a6d32c5cdf046257d185f">MongoDB.Bson.BsonString.IConvertibleGetTypeCodeImplementation</a></div><div class="ttdeci">override TypeCode IConvertibleGetTypeCodeImplementation()</div><div class="ttdoc">Implementation of the IConvertible GetTypeCode method.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_string_8cs_source.html#l00264">BsonString.cs:264</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_bson_string_html_a27e4f113e1e8a30cd6554a2a9a63a565"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#a27e4f113e1e8a30cd6554a2a9a63a565">MongoDB.Bson.BsonString.IConvertibleToDateTimeImplementation</a></div><div class="ttdeci">override DateTime IConvertibleToDateTimeImplementation(IFormatProvider provider)</div><div class="ttdoc">Implementation of the IConvertible ToDateTime method.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_string_8cs_source.html#l00288">BsonString.cs:288</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_bson_string_html_a2d058069b2f482c8836687e797b5c0fb"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#a2d058069b2f482c8836687e797b5c0fb">MongoDB.Bson.BsonString.Create</a></div><div class="ttdeci">static new BsonString Create(object value)</div><div class="ttdoc">Creates a new BsonString.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_string_8cs_source.html#l00128">BsonString.cs:128</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_bson_string_html_a401c8c4fa0f8e29ccf3ffedd23d1dc43"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#a401c8c4fa0f8e29ccf3ffedd23d1dc43">MongoDB.Bson.BsonString.IConvertibleToDoubleImplementation</a></div><div class="ttdeci">override double IConvertibleToDoubleImplementation(IFormatProvider provider)</div><div class="ttdoc">Implementation of the IConvertible ToDouble method.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_string_8cs_source.html#l00300">BsonString.cs:300</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_bson_string_html_a573635ef37d117a3f9e271513f58ea1d"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#a573635ef37d117a3f9e271513f58ea1d">MongoDB.Bson.BsonString.IConvertibleToStringImplementation</a></div><div class="ttdeci">override string IConvertibleToStringImplementation(IFormatProvider provider)</div><div class="ttdoc">Implementation of the IConvertible ToString method.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_string_8cs_source.html#l00338">BsonString.cs:338</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_bson_string_html_a65cc04c0ec4d76c256d366a84f6afdd5"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#a65cc04c0ec4d76c256d366a84f6afdd5">MongoDB.Bson.BsonString.operator!=</a></div><div class="ttdeci">static bool operator!=(BsonString lhs, BsonString rhs)</div><div class="ttdoc">Compares two BsonString values.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_string_8cs_source.html#l00105">BsonString.cs:105</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_bson_string_html_a6b9830b5b784b3996e46ec6ef4c2dd85"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#a6b9830b5b784b3996e46ec6ef4c2dd85">MongoDB.Bson.BsonString.IConvertibleToUInt64Implementation</a></div><div class="ttdeci">override ulong IConvertibleToUInt64Implementation(IFormatProvider provider)</div><div class="ttdoc">Implementation of the IConvertible ToUInt64 method.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_string_8cs_source.html#l00361">BsonString.cs:361</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_bson_string_html_a74eeff17b7b07e1f5f85b1f0a56acf56"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#a74eeff17b7b07e1f5f85b1f0a56acf56">MongoDB.Bson.BsonString.ToString</a></div><div class="ttdeci">override string ToString()</div><div class="ttdoc">Returns a string representation of the value.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_string_8cs_source.html#l00257">BsonString.cs:257</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_bson_string_html_a754aef25d69c9071ec2be42e0e9f0e5f"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#a754aef25d69c9071ec2be42e0e9f0e5f">MongoDB.Bson.BsonString.BsonString</a></div><div class="ttdeci">BsonString(string value)</div><div class="ttdoc">Initializes a new instance of the BsonString class.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_string_8cs_source.html#l00040">BsonString.cs:40</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_bson_string_html_a7cac105ffe926fa685baaa4fb584bf5b"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#a7cac105ffe926fa685baaa4fb584bf5b">MongoDB.Bson.BsonString.GetHashCode</a></div><div class="ttdeci">override int GetHashCode()</div><div class="ttdoc">Gets the hash code.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_string_8cs_source.html#l00196">BsonString.cs:196</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_bson_string_html_a7da9f73bce0d5fd11ddf352b299d399f"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#a7da9f73bce0d5fd11ddf352b299d399f">MongoDB.Bson.BsonString.CompareTo</a></div><div class="ttdeci">override int CompareTo(BsonValue other)</div><div class="ttdoc">Compares the BsonString to another BsonValue.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_string_8cs_source.html#l00155">BsonString.cs:155</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_bson_string_html_a83913e9c014185401da27df9e70e5a83"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#a83913e9c014185401da27df9e70e5a83">MongoDB.Bson.BsonString.ToDecimal128</a></div><div class="ttdeci">override Decimal128 ToDecimal128()</div><div class="ttdoc">Converts this BsonValue to a Decimal128.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_string_8cs_source.html#l00221">BsonString.cs:221</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_bson_string_html_a9f259e82e0a8cda7886eac94e0c22b8c"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#a9f259e82e0a8cda7886eac94e0c22b8c">MongoDB.Bson.BsonString.ToDecimal</a></div><div class="ttdeci">override decimal ToDecimal()</div><div class="ttdoc">Converts this BsonValue to a Decimal.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_string_8cs_source.html#l00215">BsonString.cs:215</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_bson_string_html_aa286bd6485fca8c2ed75bc6fc3bf27fa"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#aa286bd6485fca8c2ed75bc6fc3bf27fa">MongoDB.Bson.BsonString.Empty</a></div><div class="ttdeci">static BsonString Empty</div><div class="ttdoc">Gets an instance of BsonString that represents an empty string.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_string_8cs_source.html#l00053">BsonString.cs:54</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_bson_string_html_aa313b0507db40c59ff67fba22fb7cb8e"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#aa313b0507db40c59ff67fba22fb7cb8e">MongoDB.Bson.BsonString.ToInt32</a></div><div class="ttdeci">override int ToInt32()</div><div class="ttdoc">Converts this BsonValue to an Int32.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_string_8cs_source.html#l00239">BsonString.cs:239</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_bson_string_html_aaa897cdf922c0f58ec76531f1bfe41e6"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#aaa897cdf922c0f58ec76531f1bfe41e6">MongoDB.Bson.BsonString.IConvertibleToBooleanImplementation</a></div><div class="ttdeci">override bool IConvertibleToBooleanImplementation(IFormatProvider provider)</div><div class="ttdoc">Implementation of the IConvertible ToBoolean method.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_string_8cs_source.html#l00276">BsonString.cs:276</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_bson_string_html_ab7dffc8ed3ec6fa1c3ed0b4646433e0d"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#ab7dffc8ed3ec6fa1c3ed0b4646433e0d">MongoDB.Bson.BsonString.RawValue</a></div><div class="ttdeci">override object RawValue</div><div class="ttdoc">Gets the BsonString as a string.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_string_8cs_source.html#l00071">BsonString.cs:72</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_bson_string_html_ac0680df97b4cc40954442bb5d1f7f96c"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#ac0680df97b4cc40954442bb5d1f7f96c">MongoDB.Bson.BsonString.IConvertibleToInt16Implementation</a></div><div class="ttdeci">override short IConvertibleToInt16Implementation(IFormatProvider provider)</div><div class="ttdoc">Implementation of the IConvertible ToInt16 method.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_string_8cs_source.html#l00306">BsonString.cs:306</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_bson_string_html_ac36deea7403f3f8959e6adfa8e787f42"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#ac36deea7403f3f8959e6adfa8e787f42">MongoDB.Bson.BsonString.IConvertibleToSingleImplementation</a></div><div class="ttdeci">override float IConvertibleToSingleImplementation(IFormatProvider provider)</div><div class="ttdoc">Implementation of the IConvertible ToSingle method.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_string_8cs_source.html#l00332">BsonString.cs:332</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_bson_string_html_ac43edcebcc72462ac0bf82740f6c4054"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#ac43edcebcc72462ac0bf82740f6c4054">MongoDB.Bson.BsonString.IConvertibleToCharImplementation</a></div><div class="ttdeci">override char IConvertibleToCharImplementation(IFormatProvider provider)</div><div class="ttdoc">Implementation of the IConvertible ToChar method.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_string_8cs_source.html#l00282">BsonString.cs:282</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_bson_string_html_acc53ae11d67e489eb4b6c39b86a6f706"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#acc53ae11d67e489eb4b6c39b86a6f706">MongoDB.Bson.BsonString.IConvertibleToInt64Implementation</a></div><div class="ttdeci">override long IConvertibleToInt64Implementation(IFormatProvider provider)</div><div class="ttdoc">Implementation of the IConvertible ToInt64 method.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_string_8cs_source.html#l00318">BsonString.cs:318</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_bson_string_html_ace965a47d9ae2b030d02663423e8bd2e"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#ace965a47d9ae2b030d02663423e8bd2e">MongoDB.Bson.BsonString.Equals</a></div><div class="ttdeci">override bool Equals(object obj)</div><div class="ttdoc">Compares this BsonString to another object.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_string_8cs_source.html#l00187">BsonString.cs:187</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_bson_string_html_ad365763c72fe9003107fb647c257fa4d"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#ad365763c72fe9003107fb647c257fa4d">MongoDB.Bson.BsonString.IConvertibleToByteImplementation</a></div><div class="ttdeci">override byte IConvertibleToByteImplementation(IFormatProvider provider)</div><div class="ttdoc">Implementation of the IConvertible ToByte method.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_string_8cs_source.html#l00270">BsonString.cs:270</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_bson_string_html_ad629d18c1fedab4ed66c6e5f096c148a"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#ad629d18c1fedab4ed66c6e5f096c148a">MongoDB.Bson.BsonString.IConvertibleToUInt32Implementation</a></div><div class="ttdeci">override uint IConvertibleToUInt32Implementation(IFormatProvider provider)</div><div class="ttdoc">Implementation of the IConvertible ToUInt32 method.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_string_8cs_source.html#l00353">BsonString.cs:353</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_bson_string_html_adc4da66c0f8ac766ff486fe1c63823ac"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#adc4da66c0f8ac766ff486fe1c63823ac">MongoDB.Bson.BsonString.IConvertibleToInt32Implementation</a></div><div class="ttdeci">override int IConvertibleToInt32Implementation(IFormatProvider provider)</div><div class="ttdoc">Implementation of the IConvertible ToInt32 method.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_string_8cs_source.html#l00312">BsonString.cs:312</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_bson_string_html_ade91471ec6aa14dfa32d7a4f1353bfbd"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#ade91471ec6aa14dfa32d7a4f1353bfbd">MongoDB.Bson.BsonString.Equals</a></div><div class="ttdeci">bool Equals(BsonString rhs)</div><div class="ttdoc">Compares this BsonString to another BsonString.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_string_8cs_source.html#l00176">BsonString.cs:176</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_bson_string_html_ae084bafe7099c075d90dda4affbf2def"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#ae084bafe7099c075d90dda4affbf2def">MongoDB.Bson.BsonString.IConvertibleToDecimalImplementation</a></div><div class="ttdeci">override decimal IConvertibleToDecimalImplementation(IFormatProvider provider)</div><div class="ttdoc">Implementation of the IConvertible ToDecimal method.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_string_8cs_source.html#l00294">BsonString.cs:294</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_bson_string_html_aefc9523218084b5267a445957fb40803"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#aefc9523218084b5267a445957fb40803">MongoDB.Bson.BsonString.ToBoolean</a></div><div class="ttdeci">override bool ToBoolean()</div><div class="ttdoc">Converts this BsonValue to a Boolean (using the JavaScript definition of truthiness).</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_string_8cs_source.html#l00209">BsonString.cs:209</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_bson_string_html_af0c306e95aaf5bdad5c75945712b8465"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#af0c306e95aaf5bdad5c75945712b8465">MongoDB.Bson.BsonString.CompareTo</a></div><div class="ttdeci">int CompareTo(BsonString other)</div><div class="ttdoc">Compares this BsonString to another BsonString.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_string_8cs_source.html#l00144">BsonString.cs:144</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_bson_string_html_afbde9b07be6c14027c97cc847f5cbec1"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_bson_string.html#afbde9b07be6c14027c97cc847f5cbec1">MongoDB.Bson.BsonString.IConvertibleToSByteImplementation</a></div><div class="ttdeci">override sbyte IConvertibleToSByteImplementation(IFormatProvider provider)</div><div class="ttdoc">Implementation of the IConvertible ToSByte method.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_string_8cs_source.html#l00325">BsonString.cs:325</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_bson_symbol_html"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_bson_symbol.html">MongoDB.Bson.BsonSymbol</a></div><div class="ttdoc">Represents a BSON symbol value.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_symbol_8cs_source.html#l00024">BsonSymbol.cs:25</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_bson_symbol_html_a66fa5dd65f62f33c8bb70932acf127be"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_bson_symbol.html#a66fa5dd65f62f33c8bb70932acf127be">MongoDB.Bson.BsonSymbol.CompareTo</a></div><div class="ttdeci">int CompareTo(BsonSymbol other)</div><div class="ttdoc">Compares this BsonSymbol to another BsonSymbol.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_symbol_8cs_source.html#l00116">BsonSymbol.cs:116</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_bson_value_html"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_bson_value.html">MongoDB.Bson.BsonValue</a></div><div class="ttdoc">Represents a BSON value (this is an abstract class, see the various subclasses).</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_value_8cs_source.html#l00028">BsonValue.cs:29</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_bson_value_html_a67ccd90c0febcb5cccbbb2807d94b9f5"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_bson_value.html#a67ccd90c0febcb5cccbbb2807d94b9f5">MongoDB.Bson.BsonValue.CompareTypeTo</a></div><div class="ttdeci">int CompareTypeTo(BsonValue other)</div><div class="ttdoc">Compares the type of this BsonValue to the type of another BsonValue.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_value_8cs_source.html#l01239">BsonValue.cs:1239</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_bson_1_1_i_o_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_bson_1_1_i_o.html">MongoDB.Bson.IO</a></div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_i_o_2_array_element_name_accelerator_8cs_source.html#l00018">ArrayElementNameAccelerator.cs:19</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_bson_1_1_i_o_html_ad65ee141dbc942134016ecef513f20fda8cf10d2341ed01492506085688270c1e"><div class="ttname"><a href="namespace_mongo_d_b_1_1_bson_1_1_i_o.html#ad65ee141dbc942134016ecef513f20fda8cf10d2341ed01492506085688270c1e">MongoDB.Bson.IO.JsonTokenType.DateTime</a></div><div class="ttdeci">@ DateTime</div><div class="ttdoc">A DateTime token.</div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_bson_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_bson.html">MongoDB.Bson</a></div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_bson_constants_8cs_source.html#l00018">BsonConstants.cs:19</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_bson_html_a811d3d494b81b025735495a7790f9d08"><div class="ttname"><a href="namespace_mongo_d_b_1_1_bson.html#a811d3d494b81b025735495a7790f9d08">MongoDB.Bson.BsonType</a></div><div class="ttdeci">BsonType</div><div class="ttdoc">Represents the type of a BSON element.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_type_8cs_source.html#l00026">BsonType.cs:27</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_html"><div class="ttname"><a href="namespace_mongo_d_b.html">MongoDB</a></div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_bson_constants_8cs_source.html#l00018">BsonConstants.cs:19</a></div></div>
+<div class="ttc" id="anamespace_system_html"><div class="ttname"><a href="namespace_system.html">System</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_method_builder_attribute_8cs_source.html#l00001">AsyncMethodBuilderAttribute.cs:2</a></div></div>
+<div class="ttc" id="astruct_mongo_d_b_1_1_bson_1_1_decimal128_html"><div class="ttname"><a href="struct_mongo_d_b_1_1_bson_1_1_decimal128.html">MongoDB.Bson.Decimal128</a></div><div class="ttdoc">Represents a Decimal128 value.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_decimal128_8cs_source.html#l00030">Decimal128.cs:31</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_84bbf7b3c7f28a5a18725745e1505219.html">Assets</a></li><li class="navelem"><a class="el" href="dir_f13b41af88cf68434578284aaf699e39.html">Scripts</a></li><li class="navelem"><a class="el" href="dir_46d134a3bf82cf4dc49ca8f728aea58c.html">Libraries</a></li><li class="navelem"><a class="el" href="dir_73566d0e413307016ca2f8948e23ce26.html">MongoDB</a></li><li class="navelem"><a class="el" href="dir_bf52240e991d83ea827d5d13f9c7b60c.html">MongoDB.Bson</a></li><li class="navelem"><a class="el" href="dir_4c6789a319cd36325d98ef1feb818908.html">ObjectModel</a></li><li class="navelem"><a class="el" href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_string_8cs.html">BsonString.cs</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:24:52 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

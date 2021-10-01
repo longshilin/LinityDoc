@@ -1,0 +1,6 @@
+var class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_unmixed_write_operation_emulator_base_1_1_batch_helper_1_1_batch =
+[
+    [ "OriginalIndex", "class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_unmixed_write_operation_emulator_base_1_1_batch_helper_1_1_batch.html#ade2a4e8a27c32e30efcf0d9d7f5cd221", null ],
+    [ "Request", "class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_unmixed_write_operation_emulator_base_1_1_batch_helper_1_1_batch.html#a207ba5ac7816902411e3e89113aefbb6", null ],
+    [ "Result", "class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_unmixed_write_operation_emulator_base_1_1_batch_helper_1_1_batch.html#a678842bffb12c1cc1b6a8505a8d065a6", null ]
+];

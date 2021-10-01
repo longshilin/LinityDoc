@@ -1,0 +1,425 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: Assets/Scripts/Libraries/ET/Module/Pathfinding/Recast/PathFindHelper.cs 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_path_find_helper_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">PathFindHelper.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_path_find_helper_8cs.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_unity_engine.html">UnityEngine</a>;</div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_p_f.html">PF</a></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;{</div>
+<div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="namespace_p_f.html#a38ee93e7af925fe8ecc187410f8b96ef">    6</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">enum</span> <a class="code" href="namespace_p_f.html#a38ee93e7af925fe8ecc187410f8b96ef">GraphDebugMode</a> {</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;        <a class="code" href="namespace_p_f.html#a38ee93e7af925fe8ecc187410f8b96efa7eb1f1bbaf31ea92b0c7272b2b363ee1">Areas</a>,</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;        <a class="code" href="namespace_p_f.html#a38ee93e7af925fe8ecc187410f8b96efadfcf28d0734569a6a693bc8194de62bf">G</a>,</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;        <a class="code" href="namespace_p_f.html#a38ee93e7af925fe8ecc187410f8b96efac1d9f50f86825a1a2302ec2449c17196">H</a>,</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;        <a class="code" href="namespace_p_f.html#a38ee93e7af925fe8ecc187410f8b96efa800618943025315f869e4e1f09471012">F</a>,</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;        <a class="code" href="namespace_p_f.html#a38ee93e7af925fe8ecc187410f8b96efa78676254cca7a779014dc1960efb47e2">Penalty</a>,</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        <a class="code" href="namespace_p_f.html#a38ee93e7af925fe8ecc187410f8b96efa98a2bc79c11d0cbb19f99b2b8c70e6e3">Connections</a>,</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        <a class="code" href="namespace_p_f.html#a38ee93e7af925fe8ecc187410f8b96efa189f63f277cd73395561651753563065">Tags</a></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    }</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    </div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="namespace_p_f.html#a09d32f568c66e70bbf34be278622df09">   17</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">enum</span> <a class="code" href="namespace_p_f.html#a09d32f568c66e70bbf34be278622df09">PathLog</a> {</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        None,</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <a class="code" href="namespace_p_f.html#a09d32f568c66e70bbf34be278622df09a960b44c579bc2f6818d2daaf9e4c16f0">Normal</a>,</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <a class="code" href="namespace_p_f.html#a09d32f568c66e70bbf34be278622df09af9ffe67a20da9cbff56b420fca4bd491">Heavy</a>,</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <a class="code" href="namespace_p_f.html#a09d32f568c66e70bbf34be278622df09a7f3d370e94c8b1fea09838572013d8ec">InGame</a>,</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <a class="code" href="namespace_p_f.html#a09d32f568c66e70bbf34be278622df09a40eec2d627d0e5863322c532f18b6125">OnlyErrors</a></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    }</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    </div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="namespace_p_f.html#acc0adc1f98f6e768d4bb1ae709767429">   53</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">enum</span> <a class="code" href="namespace_p_f.html#acc0adc1f98f6e768d4bb1ae709767429">Heuristic</a> {</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                <a class="code" href="namespace_p_f.html#acc0adc1f98f6e768d4bb1ae709767429a1834cdf9bf35ea1d737c15eef72e18c7">Manhattan</a>,</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                <a class="code" href="namespace_p_f.html#acc0adc1f98f6e768d4bb1ae709767429a95491120d4d72077bbdd4d8a24e09941">DiagonalManhattan</a>,</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                <a class="code" href="namespace_p_f.html#acc0adc1f98f6e768d4bb1ae709767429a3e43207685247008d9e1ae53ecf8cab3">Euclidean</a>,</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                None</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        }</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    </div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    </div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    </div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">class </span>PathFindHelper</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    {</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="preprocessor">#if !SERVER</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <a class="code" href="class_astar_path.html">AstarPath</a> GetConfig()</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        {</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="class_astar_path.html">AstarPath</a>.<a class="code" href="class_astar_path.html#a93828f3873280d7b2db847f69392b5fd">active</a>;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        }</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> AStarConfig GetConfig()</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        {</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;            <span class="keywordflow">return</span> AStarConfig.Instance;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        }</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        </div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> NNInfo GetNearest(<a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a> position)</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        {</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;            <span class="keywordflow">return</span> GetNearest(position, NNConstraint.None);</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        }</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> NNInfo GetNearest(<a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a> position, NNConstraint constraint)</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        {</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;            <span class="keywordflow">return</span> GetNearest(position, constraint, <span class="keyword">null</span>);</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        }</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160; </div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> NNInfo GetNearest(<a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a> position, NNConstraint constraint, GraphNode hint)</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        {</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;            <span class="comment">// Cache property lookup</span></div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;            var localGraphs = GetConfig().graphs;</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160; </div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;            <span class="keywordtype">float</span> minDist = <span class="keywordtype">float</span>.PositiveInfinity;</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;            NNInfoInternal nearestNode = <span class="keyword">new</span> NNInfoInternal();</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;            <span class="keywordtype">int</span> nearestGraph = -1;</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160; </div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;            <span class="keywordflow">if</span> (localGraphs != <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;            {</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; localGraphs.Length; i++)</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;                {</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;                    NavGraph graph = localGraphs[i];</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160; </div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;                    <span class="comment">// Check if this graph should be searched</span></div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;                    <span class="keywordflow">if</span> (graph == <span class="keyword">null</span> || !constraint.SuitableGraph(i, graph))</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;                    {</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;                        <span class="keywordflow">continue</span>;</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;                    }</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160; </div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;                    NNInfoInternal nnInfo;</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;                    <span class="keywordflow">if</span> (GetConfig().fullGetNearestSearch)</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;                    {</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;                        <span class="comment">// Slower nearest node search</span></div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;                        <span class="comment">// this will try to find a node which is suitable according to the constraint</span></div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;                        nnInfo = graph.GetNearestForce(position, constraint);</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;                    }</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;                    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;                    {</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;                        <span class="comment">// Fast nearest node search</span></div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;                        <span class="comment">// just find a node close to the position without using the constraint that much</span></div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;                        <span class="comment">// (unless that comes essentially &#39;for free&#39;)</span></div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;                        nnInfo = graph.GetNearest(position, constraint);</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;                    }</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160; </div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;                    GraphNode node = nnInfo.node;</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160; </div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;                    <span class="comment">// No node found in this graph</span></div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;                    <span class="keywordflow">if</span> (node == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;                    {</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;                        <span class="keywordflow">continue</span>;</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;                    }</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160; </div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;                    <span class="comment">// Distance to the closest point on the node from the requested position</span></div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;                    <span class="keywordtype">float</span> dist = ((<a class="code" href="_recast_graph_editor_8cs.html#af3326292fdd04d2b384b6d781d9594f6">Vector3</a>) nnInfo.clampedPosition - position).magnitude;</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160; </div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;                    <span class="keywordflow">if</span> (GetConfig().prioritizeGraphs &amp;&amp; dist &lt; GetConfig().prioritizeGraphsLimit)</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;                    {</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;                        <span class="comment">// The node is close enough, choose this graph and discard all others</span></div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;                        minDist = dist;</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;                        nearestNode = nnInfo;</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;                        nearestGraph = i;</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;                        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;                    }</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;                    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;                    {</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;                        <span class="comment">// Choose the best node found so far</span></div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;                        <span class="keywordflow">if</span> (dist &lt; minDist)</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;                        {</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;                            minDist = dist;</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;                            nearestNode = nnInfo;</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;                            nearestGraph = i;</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;                        }</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;                    }</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;                }</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;            }</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160; </div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;            <span class="comment">// No matches found</span></div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;            <span class="keywordflow">if</span> (nearestGraph == -1)</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;            {</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">new</span> NNInfo();</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;            }</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160; </div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;            <span class="comment">// Check if a constrained node has already been set</span></div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;            <span class="keywordflow">if</span> (nearestNode.constrainedNode != <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;            {</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;                nearestNode.node = nearestNode.constrainedNode;</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;                nearestNode.clampedPosition = nearestNode.constClampedPosition;</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;            }</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160; </div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;            <span class="keywordflow">if</span> (!GetConfig().fullGetNearestSearch &amp;&amp; nearestNode.node != <span class="keyword">null</span> &amp;&amp; !constraint.Suitable(nearestNode.node))</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;            {</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;                <span class="comment">// Otherwise, perform a check to force the graphs to check for a suitable node</span></div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;                NNInfoInternal nnInfo = localGraphs[nearestGraph].GetNearestForce(position, constraint);</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160; </div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;                <span class="keywordflow">if</span> (nnInfo.node != <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;                {</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;                    nearestNode = nnInfo;</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;                }</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;            }</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160; </div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;            <span class="keywordflow">if</span> (!constraint.Suitable(nearestNode.node) || (constraint.constrainDistance &amp;&amp;</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;                (nearestNode.clampedPosition - position).sqrMagnitude &gt; GetConfig().maxNearestNodeDistanceSqr))</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;            {</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">new</span> NNInfo();</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;            }</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160; </div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;            <span class="comment">// Convert to NNInfo which doesn&#39;t have all the internal fields</span></div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> NNInfo(nearestNode);</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;        }</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160; </div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> PathHandler debugPathData</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;        {</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;            <span class="keyword">get</span></div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;            {</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;                <span class="keywordflow">return</span> GetConfig().debugPathData;</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;            }</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;            <span class="keyword">set</span></div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;            {</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;                GetConfig().debugPathData = value;</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;            }</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;        }</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;        </div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> ushort debugPathID</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;        {</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;            <span class="keyword">get</span></div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;            {</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;                <span class="keywordflow">return</span> GetConfig().debugPathID;</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;            }</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;            <span class="keyword">set</span></div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;            {</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;                GetConfig().debugPathID = value;</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;            }</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;        }</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160; </div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> PathProcessor pathProcessor</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;        {</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;            <span class="keyword">get</span></div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;            {</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;                <span class="keywordflow">return</span> GetConfig().pathProcessor;</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;            }</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;            <span class="keyword">set</span></div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;            {</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;                GetConfig().pathProcessor = value;</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;            }</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;        }</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;        </div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">bool</span> IsUsingMultithreading {</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;            <span class="keyword">get</span> {</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;                <span class="comment">//return GetConfig().pathProcessor.IsUsingMultithreading;</span></div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;            }</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;        }</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;        </div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> NavGraph[] graphs </div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;        {</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;            <span class="keyword">get</span> {</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;                <span class="keywordflow">return</span> GetConfig().graphs;</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;            }</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;        }</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;        </div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <a class="code" href="namespace_p_f.html#acc0adc1f98f6e768d4bb1ae709767429">Heuristic</a> heuristic</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;        {</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;            <span class="keyword">get</span></div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;            {</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;                <span class="keywordflow">return</span> GetConfig().heuristic;</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;            }</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;            <span class="keyword">set</span></div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;            {</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;                GetConfig().heuristic = value;</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;            }</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;        }</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;        </div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">float</span> heuristicScale</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;        {</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;            <span class="keyword">get</span></div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;            {</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;                <span class="keywordflow">return</span> GetConfig().heuristicScale;</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;            }</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;            <span class="keyword">set</span></div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;            {</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;                GetConfig().heuristicScale = value;</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;            }</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;        }</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;        </div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> EuclideanEmbedding euclideanEmbedding</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;        {</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;            <span class="keyword">get</span></div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;            {</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;                <span class="keywordflow">return</span> GetConfig().euclideanEmbedding;</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;            }</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;            <span class="keyword">set</span></div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;            {</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;                GetConfig().euclideanEmbedding = value;</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;            }</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;        }</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;        </div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <a class="code" href="namespace_p_f.html#a09d32f568c66e70bbf34be278622df09">PathLog</a> logPathResults</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;        {</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;            <span class="keyword">get</span></div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;            {</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;                <span class="keywordflow">return</span> GetConfig().logPathResults;</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;            }</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;            <span class="keyword">set</span></div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;            {</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;                GetConfig().logPathResults = value;</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;            }</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;        }</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;        </div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">int</span> GetNewNodeIndex () {</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;            <span class="keywordflow">return</span> pathProcessor.GetNewNodeIndex();</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;        }</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;        </div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> InitializeNode (GraphNode node) {</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;            pathProcessor.InitializeNode(node);</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;        }</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;        </div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;            <span class="comment">/* Callbacks to pathfinding events.</span></div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;<span class="comment">             * These allow you to hook in to the pathfinding process.\n</span></div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;<span class="comment">             * Callbacks can be used like this:</span></div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;<span class="comment">             * \snippet MiscSnippets.cs AstarPath.Callbacks</span></div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;<span class="comment">             */</span></div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;            <span class="keyword">public</span> <span class="keyword">static</span> <a class="code" href="namespace_system.html">System</a>.Action OnAwakeSettings;</div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;    </div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;            <span class="keyword">public</span> <span class="keyword">static</span> <a class="code" href="namespace_p_f.html#a5916e0e1a39fd1ea09fdf25a70492a02">OnPathDelegate</a> OnPathPreSearch;</div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;    </div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;            <span class="keyword">public</span> <span class="keyword">static</span> <a class="code" href="namespace_p_f.html#a5916e0e1a39fd1ea09fdf25a70492a02">OnPathDelegate</a> OnPathPostSearch;</div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160; </div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;    </div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;            <span class="keyword">public</span> <span class="keyword">static</span> <a class="code" href="namespace_system.html">System</a>.Action On65KOverflow;</div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;        </div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;        </div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> ushort nextFreePathID = 1;</div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> ushort GetNextPathID () {</div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;            <span class="keywordflow">if</span> (nextFreePathID == 0) {</div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;                nextFreePathID++;</div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160; </div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;                <span class="keywordflow">if</span> (On65KOverflow != <span class="keyword">null</span>) {</div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;                    <a class="code" href="namespace_system.html">System</a>.Action tmp = On65KOverflow;</div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;                    On65KOverflow = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;                    tmp();</div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;                }</div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;            }</div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;            <span class="keywordflow">return</span> nextFreePathID++;</div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;        }</div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160; </div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> Close()</div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;        {</div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;            OnAwakeSettings         = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;            OnPathPreSearch         = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;            OnPathPostSearch        = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;            On65KOverflow           = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;        }</div>
+<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;    }</div>
+<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;}</div>
+<div class="ttc" id="a_recast_graph_editor_8cs_html_af3326292fdd04d2b384b6d781d9594f6"><div class="ttname"><a href="_recast_graph_editor_8cs.html#af3326292fdd04d2b384b6d781d9594f6">Vector3</a></div><div class="ttdeci">UnityEngine.Vector3 Vector3</div><div class="ttdef"><b>Definition:</b> <a href="_recast_graph_editor_8cs_source.html#l00005">RecastGraphEditor.cs:5</a></div></div>
+<div class="ttc" id="aclass_astar_path_html"><div class="ttname"><a href="class_astar_path.html">AstarPath</a></div><div class="ttdef"><b>Definition:</b> <a href="_astar_path_8cs_source.html#l00029">AstarPath.cs:29</a></div></div>
+<div class="ttc" id="aclass_astar_path_html_a93828f3873280d7b2db847f69392b5fd"><div class="ttname"><a href="class_astar_path.html#a93828f3873280d7b2db847f69392b5fd">AstarPath.active</a></div><div class="ttdeci">static AstarPath active</div><div class="ttdef"><b>Definition:</b> <a href="_astar_path_8cs_source.html#l00056">AstarPath.cs:56</a></div></div>
+<div class="ttc" id="anamespace_p_f_html"><div class="ttname"><a href="namespace_p_f.html">PF</a></div><div class="ttdef"><b>Definition:</b> <a href="_array_pool_8cs_source.html#l00009">ArrayPool.cs:9</a></div></div>
+<div class="ttc" id="anamespace_p_f_html_a09d32f568c66e70bbf34be278622df09"><div class="ttname"><a href="namespace_p_f.html#a09d32f568c66e70bbf34be278622df09">PF.PathLog</a></div><div class="ttdeci">PathLog</div><div class="ttdef"><b>Definition:</b> <a href="_path_find_helper_8cs_source.html#l00017">PathFindHelper.cs:17</a></div></div>
+<div class="ttc" id="anamespace_p_f_html_a09d32f568c66e70bbf34be278622df09a40eec2d627d0e5863322c532f18b6125"><div class="ttname"><a href="namespace_p_f.html#a09d32f568c66e70bbf34be278622df09a40eec2d627d0e5863322c532f18b6125">PF.PathLog.OnlyErrors</a></div><div class="ttdeci">@ OnlyErrors</div></div>
+<div class="ttc" id="anamespace_p_f_html_a09d32f568c66e70bbf34be278622df09a7f3d370e94c8b1fea09838572013d8ec"><div class="ttname"><a href="namespace_p_f.html#a09d32f568c66e70bbf34be278622df09a7f3d370e94c8b1fea09838572013d8ec">PF.PathLog.InGame</a></div><div class="ttdeci">@ InGame</div></div>
+<div class="ttc" id="anamespace_p_f_html_a09d32f568c66e70bbf34be278622df09a960b44c579bc2f6818d2daaf9e4c16f0"><div class="ttname"><a href="namespace_p_f.html#a09d32f568c66e70bbf34be278622df09a960b44c579bc2f6818d2daaf9e4c16f0">PF.PathLog.Normal</a></div><div class="ttdeci">@ Normal</div></div>
+<div class="ttc" id="anamespace_p_f_html_a09d32f568c66e70bbf34be278622df09af9ffe67a20da9cbff56b420fca4bd491"><div class="ttname"><a href="namespace_p_f.html#a09d32f568c66e70bbf34be278622df09af9ffe67a20da9cbff56b420fca4bd491">PF.PathLog.Heavy</a></div><div class="ttdeci">@ Heavy</div></div>
+<div class="ttc" id="anamespace_p_f_html_a38ee93e7af925fe8ecc187410f8b96ef"><div class="ttname"><a href="namespace_p_f.html#a38ee93e7af925fe8ecc187410f8b96ef">PF.GraphDebugMode</a></div><div class="ttdeci">GraphDebugMode</div><div class="ttdef"><b>Definition:</b> <a href="_path_find_helper_8cs_source.html#l00006">PathFindHelper.cs:6</a></div></div>
+<div class="ttc" id="anamespace_p_f_html_a38ee93e7af925fe8ecc187410f8b96efa189f63f277cd73395561651753563065"><div class="ttname"><a href="namespace_p_f.html#a38ee93e7af925fe8ecc187410f8b96efa189f63f277cd73395561651753563065">PF.GraphDebugMode.Tags</a></div><div class="ttdeci">@ Tags</div></div>
+<div class="ttc" id="anamespace_p_f_html_a38ee93e7af925fe8ecc187410f8b96efa78676254cca7a779014dc1960efb47e2"><div class="ttname"><a href="namespace_p_f.html#a38ee93e7af925fe8ecc187410f8b96efa78676254cca7a779014dc1960efb47e2">PF.GraphDebugMode.Penalty</a></div><div class="ttdeci">@ Penalty</div></div>
+<div class="ttc" id="anamespace_p_f_html_a38ee93e7af925fe8ecc187410f8b96efa7eb1f1bbaf31ea92b0c7272b2b363ee1"><div class="ttname"><a href="namespace_p_f.html#a38ee93e7af925fe8ecc187410f8b96efa7eb1f1bbaf31ea92b0c7272b2b363ee1">PF.GraphDebugMode.Areas</a></div><div class="ttdeci">@ Areas</div></div>
+<div class="ttc" id="anamespace_p_f_html_a38ee93e7af925fe8ecc187410f8b96efa800618943025315f869e4e1f09471012"><div class="ttname"><a href="namespace_p_f.html#a38ee93e7af925fe8ecc187410f8b96efa800618943025315f869e4e1f09471012">PF.GraphDebugMode.F</a></div><div class="ttdeci">@ F</div></div>
+<div class="ttc" id="anamespace_p_f_html_a38ee93e7af925fe8ecc187410f8b96efa98a2bc79c11d0cbb19f99b2b8c70e6e3"><div class="ttname"><a href="namespace_p_f.html#a38ee93e7af925fe8ecc187410f8b96efa98a2bc79c11d0cbb19f99b2b8c70e6e3">PF.GraphDebugMode.Connections</a></div><div class="ttdeci">@ Connections</div></div>
+<div class="ttc" id="anamespace_p_f_html_a38ee93e7af925fe8ecc187410f8b96efac1d9f50f86825a1a2302ec2449c17196"><div class="ttname"><a href="namespace_p_f.html#a38ee93e7af925fe8ecc187410f8b96efac1d9f50f86825a1a2302ec2449c17196">PF.GraphDebugMode.H</a></div><div class="ttdeci">@ H</div></div>
+<div class="ttc" id="anamespace_p_f_html_a38ee93e7af925fe8ecc187410f8b96efadfcf28d0734569a6a693bc8194de62bf"><div class="ttname"><a href="namespace_p_f.html#a38ee93e7af925fe8ecc187410f8b96efadfcf28d0734569a6a693bc8194de62bf">PF.GraphDebugMode.G</a></div><div class="ttdeci">@ G</div></div>
+<div class="ttc" id="anamespace_p_f_html_a5916e0e1a39fd1ea09fdf25a70492a02"><div class="ttname"><a href="namespace_p_f.html#a5916e0e1a39fd1ea09fdf25a70492a02">PF.OnPathDelegate</a></div><div class="ttdeci">delegate void OnPathDelegate(Path p)</div></div>
+<div class="ttc" id="anamespace_p_f_html_acc0adc1f98f6e768d4bb1ae709767429"><div class="ttname"><a href="namespace_p_f.html#acc0adc1f98f6e768d4bb1ae709767429">PF.Heuristic</a></div><div class="ttdeci">Heuristic</div><div class="ttdef"><b>Definition:</b> <a href="_path_find_helper_8cs_source.html#l00053">PathFindHelper.cs:53</a></div></div>
+<div class="ttc" id="anamespace_p_f_html_acc0adc1f98f6e768d4bb1ae709767429a1834cdf9bf35ea1d737c15eef72e18c7"><div class="ttname"><a href="namespace_p_f.html#acc0adc1f98f6e768d4bb1ae709767429a1834cdf9bf35ea1d737c15eef72e18c7">PF.Heuristic.Manhattan</a></div><div class="ttdeci">@ Manhattan</div></div>
+<div class="ttc" id="anamespace_p_f_html_acc0adc1f98f6e768d4bb1ae709767429a3e43207685247008d9e1ae53ecf8cab3"><div class="ttname"><a href="namespace_p_f.html#acc0adc1f98f6e768d4bb1ae709767429a3e43207685247008d9e1ae53ecf8cab3">PF.Heuristic.Euclidean</a></div><div class="ttdeci">@ Euclidean</div></div>
+<div class="ttc" id="anamespace_p_f_html_acc0adc1f98f6e768d4bb1ae709767429a95491120d4d72077bbdd4d8a24e09941"><div class="ttname"><a href="namespace_p_f.html#acc0adc1f98f6e768d4bb1ae709767429a95491120d4d72077bbdd4d8a24e09941">PF.Heuristic.DiagonalManhattan</a></div><div class="ttdeci">@ DiagonalManhattan</div></div>
+<div class="ttc" id="anamespace_system_html"><div class="ttname"><a href="namespace_system.html">System</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_method_builder_attribute_8cs_source.html#l00001">AsyncMethodBuilderAttribute.cs:2</a></div></div>
+<div class="ttc" id="anamespace_unity_engine_html"><div class="ttname"><a href="namespace_unity_engine.html">UnityEngine</a></div><div class="ttdef"><b>Definition:</b> <a href="_mathf_8cs_source.html#l00003">Mathf.cs:4</a></div></div>
+<div class="ttc" id="astruct_unity_engine_1_1_vector3_html"><div class="ttname"><a href="struct_unity_engine_1_1_vector3.html">UnityEngine.Vector3</a></div><div class="ttdef"><b>Definition:</b> <a href="_vector3_8cs_source.html#l00007">Vector3.cs:8</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_84bbf7b3c7f28a5a18725745e1505219.html">Assets</a></li><li class="navelem"><a class="el" href="dir_f13b41af88cf68434578284aaf699e39.html">Scripts</a></li><li class="navelem"><a class="el" href="dir_46d134a3bf82cf4dc49ca8f728aea58c.html">Libraries</a></li><li class="navelem"><a class="el" href="dir_f6df8f7e58ea5a2220a287b647108730.html">ET</a></li><li class="navelem"><a class="el" href="dir_83296929b1cb48979e134a96af9624b1.html">Module</a></li><li class="navelem"><a class="el" href="dir_7e04bdad0240fbb16a4f5f805ce44f49.html">Pathfinding</a></li><li class="navelem"><a class="el" href="dir_0d5e2d3313e129d955335235e3d8ffc0.html">Recast</a></li><li class="navelem"><a class="el" href="_path_find_helper_8cs.html">PathFindHelper.cs</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:24:47 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

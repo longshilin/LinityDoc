@@ -1,0 +1,534 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: Assets/Scripts/Libraries/ET/Module/Pathfinding/Recast/PathProcessor.cs 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_path_processor_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">PathProcessor.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_path_processor_8cs.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>;</div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Collections;</div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Collections.Generic;</div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_p_f.html">PF</a> {</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#if NETFX_CORE</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;        <span class="keyword">using</span> <a class="code" href="_astar_path_8cs.html#ad4502fb9bea3d7a6a0defaa48674aba5">Thread</a> = <a class="code" href="namespace_pathfinding.html">Pathfinding</a>.WindowsStore.<a class="code" href="namespace_thread.html">Thread</a>;</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="namespace_p_f.html#acafda31666869fa90e621486af7baa17">    9</a></span>&#160;        <span class="keyword">using</span> <a class="code" href="namespace_p_f.html#acafda31666869fa90e621486af7baa17">Thread</a> = <a class="code" href="namespace_system.html">System</a>.Threading.Thread;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="class_p_f_1_1_path_processor.html">   12</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="class_p_f_1_1_path_processor.html">PathProcessor</a> {</div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="class_p_f_1_1_path_processor.html#a52ec6ad1d7a33857246a22c1845b6cf1">   13</a></span>&#160;                <span class="keyword">public</span> <span class="keyword">event</span> <a class="code" href="namespace_system.html">System</a>.Action&lt;<a class="code" href="class_p_f_1_1_path.html">Path</a>&gt; <a class="code" href="class_p_f_1_1_path_processor.html#a52ec6ad1d7a33857246a22c1845b6cf1">OnPathPreSearch</a>;</div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="class_p_f_1_1_path_processor.html#ab5d5a3ed1185ef0428eb4b2017e2dbd6">   14</a></span>&#160;                <span class="keyword">public</span> <span class="keyword">event</span> <a class="code" href="namespace_system.html">System</a>.Action&lt;<a class="code" href="class_p_f_1_1_path.html">Path</a>&gt; <a class="code" href="class_p_f_1_1_path_processor.html#ab5d5a3ed1185ef0428eb4b2017e2dbd6">OnPathPostSearch</a>;</div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="class_p_f_1_1_path_processor.html#ac6abdac60e0a47bdf4c193c47e86f260">   15</a></span>&#160;                <span class="keyword">public</span> <span class="keyword">event</span> <a class="code" href="namespace_system.html">System</a>.Action <a class="code" href="class_p_f_1_1_path_processor.html#ac6abdac60e0a47bdf4c193c47e86f260">OnQueueUnblocked</a>;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;                <span class="keyword">internal</span> readonly <a class="code" href="class_p_f_1_1_thread_control_queue.html">ThreadControlQueue</a> queue;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;                readonly <a class="code" href="class_p_f_1_1_path_return_queue.html">PathReturnQueue</a> returnQueue;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;                readonly <a class="code" href="class_p_f_1_1_path_handler.html">PathHandler</a>[] pathHandlers;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;                readonly <a class="code" href="namespace_p_f.html#acafda31666869fa90e621486af7baa17">Thread</a>[] threads;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;                IEnumerator threadCoroutine;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;                <span class="keywordtype">int</span> nextNodeIndex = 1;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;                readonly Stack&lt;int&gt; nodeIndexPool = <span class="keyword">new</span> Stack&lt;int&gt;();</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                readonly List&lt;int&gt; locks = <span class="keyword">new</span> List&lt;int&gt;();</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                <span class="keywordtype">int</span> nextLockID = 0;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="class_p_f_1_1_path_processor.html#a87a62789f5ce27a8e70eeb0afec47237">   54</a></span>&#160;                <span class="keyword">public</span> <span class="keywordtype">int</span> <a class="code" href="class_p_f_1_1_path_processor.html#a87a62789f5ce27a8e70eeb0afec47237">NumThreads</a> {</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                        <span class="keyword">get</span> {</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                                <span class="keywordflow">return</span> pathHandlers.Length;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                        }</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;                }</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="class_p_f_1_1_path_processor.html#a75af2e4e128e6e67d20a619e6d709a6f">   61</a></span>&#160;                <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code" href="class_p_f_1_1_path_processor.html#a75af2e4e128e6e67d20a619e6d709a6f">IsUsingMultithreading</a> {</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                        <span class="keyword">get</span> {</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                                <span class="keywordflow">return</span> threads != <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                        }</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                }</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                <span class="keyword">internal</span> <a class="code" href="class_p_f_1_1_path_processor.html">PathProcessor</a> (<a class="code" href="class_p_f_1_1_path_return_queue.html">PathReturnQueue</a> returnQueue, <span class="keywordtype">int</span> processors, <span class="keywordtype">bool</span> multithreaded) {</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                        this.returnQueue = returnQueue;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                        <span class="keywordflow">if</span> (processors &lt; 0) {</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                                <span class="keywordflow">throw</span> <span class="keyword">new</span> <a class="code" href="namespace_system.html">System</a>.ArgumentOutOfRangeException(<span class="stringliteral">&quot;processors&quot;</span>);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                        }</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                        <span class="keywordflow">if</span> (!multithreaded &amp;&amp; processors != 1) {</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                                <span class="keywordflow">throw</span> <span class="keyword">new</span> <a class="code" href="namespace_system.html">System</a>.Exception(<span class="stringliteral">&quot;Only a single non-multithreaded processor is allowed&quot;</span>);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                        }</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                        <span class="comment">// Set up path queue with the specified number of receivers</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                        queue = <span class="keyword">new</span> ThreadControlQueue(processors);</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                        pathHandlers = <span class="keyword">new</span> PathHandler[processors];</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; processors; i++) {</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                                pathHandlers[i] = <span class="keyword">new</span> PathHandler(i, processors);</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                        }</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                        <span class="keywordflow">if</span> (multithreaded) {</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                                threads = <span class="keyword">new</span> <a class="code" href="_astar_path_8cs.html#ad4502fb9bea3d7a6a0defaa48674aba5">Thread</a>[processors];</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                                <span class="comment">// Start lots of threads</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; processors; i++) {</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                                        var pathHandler = pathHandlers[i];</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                                        threads[i] = <span class="keyword">new</span> <a class="code" href="namespace_p_f.html#acafda31666869fa90e621486af7baa17">Thread</a>(() =&gt; CalculatePathsThreaded(pathHandler));</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                                        threads[i].Name = <span class="stringliteral">&quot;Pathfinding Thread &quot;</span> + i;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                                        threads[i].IsBackground = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                                        threads[i].Start();</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                                }</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;                        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                                <span class="comment">// Start coroutine if not using multithreading</span></div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                                threadCoroutine = <a class="code" href="class_p_f_1_1_path_processor.html#abe1829f484c541ccc2ad8238ca230829">CalculatePaths</a>(pathHandlers[0]);</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;                        }</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;                }</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
+<div class="line"><a name="l00104"></a><span class="lineno"><a class="line" href="struct_p_f_1_1_path_processor_1_1_graph_update_lock.html">  104</a></span>&#160;                <span class="keyword">public</span> <span class="keyword">struct </span><a class="code" href="struct_p_f_1_1_path_processor_1_1_graph_update_lock.html">GraphUpdateLock</a> {</div>
+<div class="line"><a name="l00105"></a><span class="lineno"><a class="line" href="struct_p_f_1_1_path_processor_1_1_graph_update_lock.html#aa001eef4cfc3b314d73a7537f4b29146">  105</a></span>&#160;                        <a class="code" href="class_p_f_1_1_path_processor.html">PathProcessor</a> <a class="code" href="struct_p_f_1_1_path_processor_1_1_graph_update_lock.html#aa001eef4cfc3b314d73a7537f4b29146">pathProcessor</a>;</div>
+<div class="line"><a name="l00106"></a><span class="lineno"><a class="line" href="struct_p_f_1_1_path_processor_1_1_graph_update_lock.html#ad988814ab2facb059562cc969316c55d">  106</a></span>&#160;                        <span class="keywordtype">int</span> <a class="code" href="struct_p_f_1_1_path_processor_1_1_graph_update_lock.html#ad988814ab2facb059562cc969316c55d">id</a>;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160; </div>
+<div class="line"><a name="l00108"></a><span class="lineno"><a class="line" href="struct_p_f_1_1_path_processor_1_1_graph_update_lock.html#a3945e7f23a1cf9919e7e1ddfa5b5d2c2">  108</a></span>&#160;                        <span class="keyword">public</span> <a class="code" href="struct_p_f_1_1_path_processor_1_1_graph_update_lock.html#a3945e7f23a1cf9919e7e1ddfa5b5d2c2">GraphUpdateLock</a> (<a class="code" href="class_p_f_1_1_path_processor.html">PathProcessor</a> <a class="code" href="struct_p_f_1_1_path_processor_1_1_graph_update_lock.html#aa001eef4cfc3b314d73a7537f4b29146">pathProcessor</a>, <span class="keywordtype">bool</span> block) {</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;                                this.pathProcessor = <a class="code" href="struct_p_f_1_1_path_processor_1_1_graph_update_lock.html#aa001eef4cfc3b314d73a7537f4b29146">pathProcessor</a>;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;                                <span class="keywordtype">id</span> = <a class="code" href="struct_p_f_1_1_path_processor_1_1_graph_update_lock.html#aa001eef4cfc3b314d73a7537f4b29146">pathProcessor</a>.nextLockID++;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;                        }</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160; </div>
+<div class="line"><a name="l00116"></a><span class="lineno"><a class="line" href="struct_p_f_1_1_path_processor_1_1_graph_update_lock.html#ac6960e8df04ef80edd0bd4ec0bfed53c">  116</a></span>&#160;                        <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code" href="struct_p_f_1_1_path_processor_1_1_graph_update_lock.html#ac6960e8df04ef80edd0bd4ec0bfed53c">Held</a> {</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;                                <span class="keyword">get</span> {</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;                                        <span class="keywordflow">return</span> <a class="code" href="struct_p_f_1_1_path_processor_1_1_graph_update_lock.html#aa001eef4cfc3b314d73a7537f4b29146">pathProcessor</a> != <span class="keyword">null</span> &amp;&amp; <a class="code" href="struct_p_f_1_1_path_processor_1_1_graph_update_lock.html#aa001eef4cfc3b314d73a7537f4b29146">pathProcessor</a>.locks.Contains (<span class="keywordtype">id</span>);</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;                                }</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;                        }</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160; </div>
+<div class="line"><a name="l00123"></a><span class="lineno"><a class="line" href="struct_p_f_1_1_path_processor_1_1_graph_update_lock.html#a15cd54e7db6b48e4700caee1a9f2c4c1">  123</a></span>&#160;                        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="struct_p_f_1_1_path_processor_1_1_graph_update_lock.html#a15cd54e7db6b48e4700caee1a9f2c4c1">Release</a> () {</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;                        }</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;                }</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160; </div>
+<div class="line"><a name="l00136"></a><span class="lineno"><a class="line" href="class_p_f_1_1_path_processor.html#a35f0f43bc0e8bdbe8bcdcf8f3414501b">  136</a></span>&#160;                <span class="keyword">public</span> <a class="code" href="struct_p_f_1_1_path_processor_1_1_graph_update_lock.html">GraphUpdateLock</a> <a class="code" href="class_p_f_1_1_path_processor.html#a35f0f43bc0e8bdbe8bcdcf8f3414501b">PausePathfinding</a> (<span class="keywordtype">bool</span> block) {</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;                        <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="struct_p_f_1_1_path_processor_1_1_graph_update_lock.html">GraphUpdateLock</a>(<span class="keyword">this</span>, block);</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;                }</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160; </div>
+<div class="line"><a name="l00140"></a><span class="lineno"><a class="line" href="class_p_f_1_1_path_processor.html#a251ba31e20335c4886a71991e9abac37">  140</a></span>&#160;                <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_p_f_1_1_path_processor.html#a251ba31e20335c4886a71991e9abac37">TickNonMultithreaded</a> () {</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;                        <span class="comment">// Process paths</span></div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;                        <span class="keywordflow">if</span> (threadCoroutine != <span class="keyword">null</span>) {</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;                                <span class="keywordflow">try</span> {</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;                                        threadCoroutine.MoveNext();</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;                                } <span class="keywordflow">catch</span> (<a class="code" href="namespace_system.html">System</a>.Exception e) {</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;                                        <span class="comment">//This will kill pathfinding</span></div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;                                        threadCoroutine = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;                                        queue.PopNoBlock(<span class="keyword">false</span>);</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;                                }</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;                        }</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;                }</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160; </div>
+<div class="line"><a name="l00154"></a><span class="lineno"><a class="line" href="class_p_f_1_1_path_processor.html#abf177adeb1983aa5a4e81fd839367321">  154</a></span>&#160;                <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_p_f_1_1_path_processor.html#abf177adeb1983aa5a4e81fd839367321">JoinThreads</a> () {</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;                        <span class="keywordflow">if</span> (threads != <span class="keyword">null</span>) {</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;                                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; threads.Length; i++) {</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;<span class="preprocessor">#if UNITY_WEBPLAYER</span></div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;                                        <span class="keywordflow">if</span> (!threads[i].Join(200)) {</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;                                                <a class="code" href="_game_main_2_customs_2_custom_helpers_2_process_helper_8cs.html#a0100be52d45f14348918ea69ec09f959">Debug</a>.LogError(<span class="stringliteral">&quot;Could not terminate pathfinding thread[&quot;</span>+i+<span class="stringliteral">&quot;] in 200ms.&quot;</span> +</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;                                                        <span class="stringliteral">&quot;Not good.\nUnity webplayer does not support Thread.Abort\nHoping that it will be terminated by Unity WebPlayer&quot;</span>);</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;                                        }</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;                                        <span class="keywordflow">if</span> (!threads[i].Join(50)) {</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;<span class="preprocessor">#if !SERVER</span></div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;                                                <a class="code" href="namespace_unity_engine.html">UnityEngine</a>.Debug.LogError(<span class="stringliteral">&quot;Could not terminate pathfinding thread[&quot;</span>+i+<span class="stringliteral">&quot;] in 50ms, trying Thread.Abort&quot;</span>);</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;                                                threads[i].Abort();</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;                                        }</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;                                }</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;                        }</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;                }</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160; </div>
+<div class="line"><a name="l00175"></a><span class="lineno"><a class="line" href="class_p_f_1_1_path_processor.html#a93064c56e712e17165c633144742b5c1">  175</a></span>&#160;                <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_p_f_1_1_path_processor.html#a93064c56e712e17165c633144742b5c1">AbortThreads</a> () {</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;<span class="preprocessor">#if !UNITY_WEBPLAYER</span></div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;                        <span class="keywordflow">if</span> (threads == <span class="keyword">null</span>) <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;                        <span class="comment">// Unity webplayer does not support Abort (even though it supports starting threads). Hope that UnityPlayer aborts the threads</span></div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;                        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; threads.Length; i++) {</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;                                <span class="keywordflow">if</span> (threads[i] != <span class="keyword">null</span> &amp;&amp; threads[i].IsAlive) threads[i].Abort();</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;                        }</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;                }</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160; </div>
+<div class="line"><a name="l00188"></a><span class="lineno"><a class="line" href="class_p_f_1_1_path_processor.html#a0186f64682d568e5f9cf0eb0e31b4511">  188</a></span>&#160;                <span class="keyword">public</span> <span class="keywordtype">int</span> <a class="code" href="class_p_f_1_1_path_processor.html#a0186f64682d568e5f9cf0eb0e31b4511">GetNewNodeIndex</a> () {</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;                        <span class="keywordflow">return</span> nodeIndexPool.Count &gt; 0 ? nodeIndexPool.Pop() : nextNodeIndex++;</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;                }</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160; </div>
+<div class="line"><a name="l00195"></a><span class="lineno"><a class="line" href="class_p_f_1_1_path_processor.html#a1d07abc78ceacccff79d9b50d98ff600">  195</a></span>&#160;                <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_p_f_1_1_path_processor.html#a1d07abc78ceacccff79d9b50d98ff600">InitializeNode</a> (<a class="code" href="class_p_f_1_1_graph_node.html">GraphNode</a> node) {</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;                        <span class="comment">// 单线程不考虑</span></div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;                        <span class="comment">//if (!queue.AllReceiversBlocked) {</span></div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;                        <span class="comment">//      throw new System.Exception(&quot;Trying to initialize a node when it is not safe to initialize any nodes. Must be done during a graph update. See http://arongranberg.com/astar/docs/graph-updates.php#direct&quot;);</span></div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;                        <span class="comment">//}</span></div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160; </div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;                        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; pathHandlers.Length; i++) {</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;                                pathHandlers[i].InitializeNode(node);</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;                        }</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;                }</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160; </div>
+<div class="line"><a name="l00212"></a><span class="lineno"><a class="line" href="class_p_f_1_1_path_processor.html#a2c6051d5b7d780d83943288da3790c1a">  212</a></span>&#160;                <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_p_f_1_1_path_processor.html#a2c6051d5b7d780d83943288da3790c1a">DestroyNode</a> (<a class="code" href="class_p_f_1_1_graph_node.html">GraphNode</a> node) {</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;                        <span class="keywordflow">if</span> (node.<a class="code" href="class_p_f_1_1_graph_node.html#a69254da9d7e128daa325d0208a93f8bb">NodeIndex</a> == -1) <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160; </div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;                        nodeIndexPool.Push(node.<a class="code" href="class_p_f_1_1_graph_node.html#a69254da9d7e128daa325d0208a93f8bb">NodeIndex</a>);</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160; </div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;                        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; pathHandlers.Length; i++) {</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;                                pathHandlers[i].DestroyNode(node);</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;                        }</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;                }</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160; </div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;                <span class="keywordtype">void</span> CalculatePathsThreaded (<a class="code" href="class_p_f_1_1_path_handler.html">PathHandler</a> pathHandler) {</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;<span class="preprocessor">#if !ASTAR_FAST_BUT_NO_EXCEPTIONS</span></div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;                        <span class="keywordflow">try</span> {</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160; </div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;                        <span class="comment">// Max number of ticks we are allowed to continue working in one run.</span></div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;                        <span class="comment">// One tick is 1/10000 of a millisecond.</span></div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;                        <span class="comment">// We need to check once in a while if the thread should be stopped.</span></div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;                        <span class="keywordtype">long</span> maxTicks = (long)(10*10000);</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;                        <span class="keywordtype">long</span> targetTick = <a class="code" href="namespace_system.html">System</a>.DateTime.UtcNow.Ticks + maxTicks;</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160; </div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;                        <span class="keywordflow">while</span> (<span class="keyword">true</span>) {</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;                                <span class="comment">// The path we are currently calculating</span></div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;                                <a class="code" href="class_p_f_1_1_path.html">Path</a> path = queue.Pop();</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;                                <span class="comment">// Access the internal implementation methods</span></div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;                                IPathInternals ipath = (IPathInternals)path;</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160; </div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;                                ipath.<a class="code" href="class_p_f_1_1_path.html#ab3ef9e16e98287c9a6be8a5943b9f72a">PrepareBase</a>(pathHandler);</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160; </div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;                                <span class="comment">// Now processing the path</span></div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;                                <span class="comment">// Will advance to Processing</span></div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;                                ipath.AdvanceState(<a class="code" href="namespace_p_f.html#a41e3ae15d352e3d178227e2eca48c8a7">PathState</a>.Processing);</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160; </div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;                                <span class="comment">// Call some callbacks</span></div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;                                <span class="keywordflow">if</span> (<a class="code" href="class_p_f_1_1_path_processor.html#a52ec6ad1d7a33857246a22c1845b6cf1">OnPathPreSearch</a> != <span class="keyword">null</span>) {</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;                                        <a class="code" href="class_p_f_1_1_path_processor.html#a52ec6ad1d7a33857246a22c1845b6cf1">OnPathPreSearch</a>(path);</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;                                }</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160; </div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;                                <span class="comment">// Tick for when the path started, used for calculating how long time the calculation took</span></div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;                                <span class="keywordtype">long</span> startTicks = <a class="code" href="namespace_system.html">System</a>.DateTime.UtcNow.Ticks;</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160; </div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;                                <span class="comment">// Prepare the path</span></div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;                                ipath.Prepare();</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160; </div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;                                <span class="keywordflow">if</span> (!path.<a class="code" href="class_p_f_1_1_path.html#a7657c9088a0b86ce2d75707adbd410fd">IsDone</a>()) {</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;                                        <span class="comment">// For visualization purposes, we set the last computed path to p, so we can view debug info on it in the editor (scene view).</span></div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;                                        PathFindHelper.debugPathData = ipath.PathHandler;</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;                                        PathFindHelper.debugPathID = path.pathID;</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160; </div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160; </div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;                                        <span class="comment">// Initialize the path, now ready to begin search</span></div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;                                        ipath.Initialize();</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160; </div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160; </div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;                                        <span class="comment">// Loop while the path has not been fully calculated</span></div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;                                        <span class="keywordflow">while</span> (!path.<a class="code" href="class_p_f_1_1_path.html#a7657c9088a0b86ce2d75707adbd410fd">IsDone</a>()) {</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;                                                <span class="comment">// Do some work on the path calculation.</span></div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;                                                <span class="comment">// The function will return when it has taken too much time</span></div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;                                                <span class="comment">// or when it has finished calculation</span></div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;                                                ipath.CalculateStep(targetTick);</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160; </div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;                                                targetTick = <a class="code" href="namespace_system.html">System</a>.DateTime.UtcNow.Ticks + maxTicks;</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160; </div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;                                        }</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160; </div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;                                        path.duration = (<a class="code" href="namespace_system.html">System</a>.DateTime.UtcNow.Ticks - startTicks)*0.0001F;</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160; </div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;<span class="preprocessor">#if ProfileAstar</span></div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;                                        <a class="code" href="namespace_system.html">System</a>.Threading.Interlocked.Increment(ref <a class="code" href="class_astar_path.html">AstarPath</a>.PathsCompleted);</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;                                        <a class="code" href="namespace_system.html">System</a>.Threading.Interlocked.Add(ref <a class="code" href="class_astar_path.html">AstarPath</a>.TotalSearchTime, <a class="code" href="namespace_system.html">System</a>.DateTime.UtcNow.Ticks - startTicks);</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;                                }</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160; </div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;                                <span class="comment">// Cleans up node tagging and other things</span></div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;                                ipath.Cleanup();</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160; </div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160; </div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;                                <span class="keywordflow">if</span> (path.<a class="code" href="class_p_f_1_1_path.html#a03e7ea692a82d514fecfef011b9e5757">immediateCallback</a> != <span class="keyword">null</span>) path.<a class="code" href="class_p_f_1_1_path.html#a03e7ea692a82d514fecfef011b9e5757">immediateCallback</a>(path);</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160; </div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;                                <span class="keywordflow">if</span> (<a class="code" href="class_p_f_1_1_path_processor.html#ab5d5a3ed1185ef0428eb4b2017e2dbd6">OnPathPostSearch</a> != <span class="keyword">null</span>) {</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;                                        <a class="code" href="class_p_f_1_1_path_processor.html#ab5d5a3ed1185ef0428eb4b2017e2dbd6">OnPathPostSearch</a>(path);</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;                                }</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160; </div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;                                <span class="comment">// Push the path onto the return stack</span></div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;                                <span class="comment">// It will be detected by the main Unity thread and returned as fast as possible (the next late update hopefully)</span></div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;                                returnQueue.<a class="code" href="class_p_f_1_1_path_return_queue.html#a671eeaf4b704e5500f0e215b9966c9cc">Enqueue</a>(path);</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160; </div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;                                <span class="comment">// Will advance to ReturnQueue</span></div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;                                ipath.AdvanceState(<a class="code" href="namespace_p_f.html#a41e3ae15d352e3d178227e2eca48c8a7">PathState</a>.ReturnQueue);</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;                        }</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;<span class="preprocessor">#if !ASTAR_FAST_BUT_NO_EXCEPTIONS</span></div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;                }</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;                <span class="keywordflow">catch</span> (<a class="code" href="namespace_system.html">System</a>.Exception e) {</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;                        {</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;                                <span class="keywordflow">if</span> (PathFindHelper.logPathResults == <a class="code" href="namespace_p_f.html#a09d32f568c66e70bbf34be278622df09">PathLog</a>.Heavy)</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;<span class="preprocessor">#if !SERVER</span></div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;                                        <a class="code" href="namespace_unity_engine.html">UnityEngine</a>.Debug.LogWarning(<span class="stringliteral">&quot;Shutting down pathfinding thread #&quot;</span> + pathHandler.<a class="code" href="class_p_f_1_1_path_handler.html#aabdc4a14003b72938711823568b73901">threadID</a>);</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;                                <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;                        }</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;<span class="preprocessor">#if !SERVER</span></div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;                        <a class="code" href="namespace_unity_engine.html">UnityEngine</a>.Debug.LogException(e);</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;                        <a class="code" href="namespace_unity_engine.html">UnityEngine</a>.Debug.LogError(<span class="stringliteral">&quot;Unhandled exception during pathfinding. Terminating.&quot;</span>);</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;                        <span class="comment">// Unhandled exception, kill pathfinding</span></div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;                }</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160; </div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;<span class="preprocessor">#if !SERVER</span></div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;                        <a class="code" href="namespace_unity_engine.html">UnityEngine</a>.Debug.LogError(<span class="stringliteral">&quot;Error : This part should never be reached.&quot;</span>);</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;                }</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160; </div>
+<div class="line"><a name="l00333"></a><span class="lineno"><a class="line" href="class_p_f_1_1_path_processor.html#abe1829f484c541ccc2ad8238ca230829">  333</a></span>&#160;                <span class="keyword">public</span> IEnumerator <a class="code" href="class_p_f_1_1_path_processor.html#abe1829f484c541ccc2ad8238ca230829">CalculatePaths</a>()</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;                {</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;                        <span class="keywordflow">return</span> this.<a class="code" href="class_p_f_1_1_path_processor.html#abe1829f484c541ccc2ad8238ca230829">CalculatePaths</a>(this.pathHandlers[0]);</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;                }</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160; </div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;                IEnumerator <a class="code" href="class_p_f_1_1_path_processor.html#abe1829f484c541ccc2ad8238ca230829">CalculatePaths</a> (<a class="code" href="class_p_f_1_1_path_handler.html">PathHandler</a> pathHandler) {</div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;                        <span class="comment">// Max number of ticks before yielding/sleeping</span></div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;                        <span class="keywordtype">long</span> maxTicks = (long)(PathFindHelper.GetConfig().maxFrameTime*10000);</div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;                        <span class="keywordtype">long</span> targetTick = <a class="code" href="namespace_system.html">System</a>.DateTime.UtcNow.Ticks + maxTicks;</div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160; </div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;                        <span class="keywordflow">while</span> (<span class="keyword">true</span>) {</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;                                <span class="comment">// The path we are currently calculating</span></div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;                                <a class="code" href="class_p_f_1_1_path.html">Path</a> p = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160; </div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;                                <span class="keywordflow">while</span> (p == <span class="keyword">null</span>) {</div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;                                        <span class="keywordflow">try</span> {</div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;                                                p = queue.PopNoBlock(<span class="keyword">false</span>);</div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;                                        } <span class="keywordflow">catch</span> (Exception e) {</div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;                                                yield <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;                                        }</div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160; </div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;                                        <span class="keywordflow">if</span> (p == <span class="keyword">null</span>) {</div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;                                                yield <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;                                        }</div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;                                }</div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160; </div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160; </div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;                                IPathInternals ip = (IPathInternals)p;</div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160; </div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;                                <span class="comment">// Max number of ticks we are allowed to continue working in one run</span></div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;                                <span class="comment">// One tick is 1/10000 of a millisecond</span></div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;                                maxTicks = (long)(PathFindHelper.GetConfig().maxFrameTime*10000);</div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160; </div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;                                ip.<a class="code" href="class_p_f_1_1_path.html#ab3ef9e16e98287c9a6be8a5943b9f72a">PrepareBase</a>(pathHandler);</div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160; </div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;                                <span class="comment">// Now processing the path</span></div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;                                <span class="comment">// Will advance to Processing</span></div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;                                ip.AdvanceState(<a class="code" href="namespace_p_f.html#a41e3ae15d352e3d178227e2eca48c8a7">PathState</a>.Processing);</div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160; </div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;                                <span class="comment">// Call some callbacks</span></div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;                                <span class="comment">// It needs to be stored in a local variable to avoid race conditions</span></div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;                                var tmpOnPathPreSearch = <a class="code" href="class_p_f_1_1_path_processor.html#a52ec6ad1d7a33857246a22c1845b6cf1">OnPathPreSearch</a>;</div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;                                <span class="keywordflow">if</span> (tmpOnPathPreSearch != <span class="keyword">null</span>) tmpOnPathPreSearch(p);</div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160; </div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;                                <span class="comment">// Tick for when the path started, used for calculating how long time the calculation took</span></div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;                                <span class="keywordtype">long</span> startTicks = <a class="code" href="namespace_system.html">System</a>.DateTime.UtcNow.Ticks;</div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;                                <span class="keywordtype">long</span> totalTicks = 0;</div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160; </div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;                                ip.Prepare();</div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160; </div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;                                <span class="comment">// Check if the Prepare call caused the path to complete</span></div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;                                <span class="comment">// If this happens the path usually failed</span></div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;                                <span class="keywordflow">if</span> (!p.<a class="code" href="class_p_f_1_1_path.html#a7657c9088a0b86ce2d75707adbd410fd">IsDone</a>()) {</div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;                                        <span class="comment">// For debug uses, we set the last computed path to p, so we can view debug info on it in the editor (scene view).</span></div>
+<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;                                        PathFindHelper.debugPathData = ip.PathHandler;</div>
+<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;                                        PathFindHelper.debugPathID = p.pathID;</div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160; </div>
+<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;                                        <span class="comment">// Initialize the path, now ready to begin search</span></div>
+<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;                                        ip.Initialize();</div>
+<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160; </div>
+<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;                                        <span class="comment">// The error can turn up in the Init function</span></div>
+<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;                                        <span class="keywordflow">while</span> (!p.<a class="code" href="class_p_f_1_1_path.html#a7657c9088a0b86ce2d75707adbd410fd">IsDone</a>()) {</div>
+<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;                                                <span class="comment">// Do some work on the path calculation.</span></div>
+<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;                                                <span class="comment">// The function will return when it has taken too much time</span></div>
+<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;                                                <span class="comment">// or when it has finished calculation</span></div>
+<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;                                                ip.CalculateStep(targetTick);</div>
+<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160; </div>
+<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;                                                <span class="comment">// If the path has finished calculation, we can break here directly instead of sleeping</span></div>
+<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;                                                <span class="comment">// Improves latency</span></div>
+<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;                                                <span class="keywordflow">if</span> (p.<a class="code" href="class_p_f_1_1_path.html#a7657c9088a0b86ce2d75707adbd410fd">IsDone</a>()) <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160; </div>
+<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;                                                totalTicks += <a class="code" href="namespace_system.html">System</a>.DateTime.UtcNow.Ticks-startTicks;</div>
+<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;                                                <span class="comment">// Yield/sleep so other threads can work</span></div>
+<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160; </div>
+<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;                                                yield <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160; </div>
+<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;                                                startTicks = <a class="code" href="namespace_system.html">System</a>.DateTime.UtcNow.Ticks;</div>
+<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160; </div>
+<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;                                                targetTick = <a class="code" href="namespace_system.html">System</a>.DateTime.UtcNow.Ticks + maxTicks;</div>
+<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;                                        }</div>
+<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160; </div>
+<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;                                        totalTicks += <a class="code" href="namespace_system.html">System</a>.DateTime.UtcNow.Ticks-startTicks;</div>
+<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;                                        p.duration = totalTicks*0.0001F;</div>
+<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160; </div>
+<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;<span class="preprocessor">                                        #if ProfileAstar</span></div>
+<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;                                        <a class="code" href="namespace_system.html">System</a>.Threading.Interlocked.Increment(ref <a class="code" href="class_astar_path.html">AstarPath</a>.PathsCompleted);</div>
+<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;<span class="preprocessor">                                        #endif</span></div>
+<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;                                }</div>
+<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160; </div>
+<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;                                <span class="comment">// Cleans up node tagging and other things</span></div>
+<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;                                ip.Cleanup();</div>
+<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160; </div>
+<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160; </div>
+<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;                                <span class="comment">// Call the immediate callback</span></div>
+<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;                                <span class="comment">// It needs to be stored in a local variable to avoid race conditions</span></div>
+<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;                                var tmpImmediateCallback = p.<a class="code" href="class_p_f_1_1_path.html#a03e7ea692a82d514fecfef011b9e5757">immediateCallback</a>;</div>
+<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;                                <span class="keywordflow">if</span> (tmpImmediateCallback != <span class="keyword">null</span>) tmpImmediateCallback(p);</div>
+<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160; </div>
+<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160; </div>
+<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;                                <span class="comment">// It needs to be stored in a local variable to avoid race conditions</span></div>
+<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;                                var tmpOnPathPostSearch = <a class="code" href="class_p_f_1_1_path_processor.html#ab5d5a3ed1185ef0428eb4b2017e2dbd6">OnPathPostSearch</a>;</div>
+<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;                                <span class="keywordflow">if</span> (tmpOnPathPostSearch != <span class="keyword">null</span>) tmpOnPathPostSearch(p);</div>
+<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160; </div>
+<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160; </div>
+<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;                                <span class="comment">// Push the path onto the return stack</span></div>
+<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;                                <span class="comment">// It will be detected by the main Unity thread and returned as fast as possible (the next late update)</span></div>
+<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;                                returnQueue.<a class="code" href="class_p_f_1_1_path_return_queue.html#a671eeaf4b704e5500f0e215b9966c9cc">Enqueue</a>(p);</div>
+<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160; </div>
+<div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;                                ip.AdvanceState(<a class="code" href="namespace_p_f.html#a41e3ae15d352e3d178227e2eca48c8a7">PathState</a>.ReturnQueue);</div>
+<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160; </div>
+<div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;                                <span class="comment">// Wait a bit if we have calculated a lot of paths</span></div>
+<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;                                <span class="keywordflow">if</span> (<a class="code" href="namespace_system.html">System</a>.DateTime.UtcNow.Ticks &gt; targetTick) {</div>
+<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;                                        yield <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;                                        targetTick = <a class="code" href="namespace_system.html">System</a>.DateTime.UtcNow.Ticks + maxTicks;</div>
+<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;                                }</div>
+<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;                        }</div>
+<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;                }</div>
+<div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;        }</div>
+<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160;}</div>
+<div class="ttc" id="a_astar_path_8cs_html_ad4502fb9bea3d7a6a0defaa48674aba5"><div class="ttname"><a href="_astar_path_8cs.html#ad4502fb9bea3d7a6a0defaa48674aba5">Thread</a></div><div class="ttdeci">System.Threading.Thread Thread</div><div class="ttdef"><b>Definition:</b> <a href="_astar_path_8cs_source.html#l00014">AstarPath.cs:14</a></div></div>
+<div class="ttc" id="a_game_main_2_customs_2_custom_helpers_2_process_helper_8cs_html_a0100be52d45f14348918ea69ec09f959"><div class="ttname"><a href="_game_main_2_customs_2_custom_helpers_2_process_helper_8cs.html#a0100be52d45f14348918ea69ec09f959">Debug</a></div><div class="ttdeci">UnityEngine.Debug Debug</div><div class="ttdef"><b>Definition:</b> <a href="_game_main_2_customs_2_custom_helpers_2_process_helper_8cs_source.html#l00004">ProcessHelper.cs:4</a></div></div>
+<div class="ttc" id="aclass_astar_path_html"><div class="ttname"><a href="class_astar_path.html">AstarPath</a></div><div class="ttdef"><b>Definition:</b> <a href="_astar_path_8cs_source.html#l00029">AstarPath.cs:29</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_graph_node_html"><div class="ttname"><a href="class_p_f_1_1_graph_node.html">PF.GraphNode</a></div><div class="ttdef"><b>Definition:</b> <a href="_graph_node_8cs_source.html#l00048">GraphNode.cs:48</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_graph_node_html_a69254da9d7e128daa325d0208a93f8bb"><div class="ttname"><a href="class_p_f_1_1_graph_node.html#a69254da9d7e128daa325d0208a93f8bb">PF.GraphNode.NodeIndex</a></div><div class="ttdeci">int NodeIndex</div><div class="ttdef"><b>Definition:</b> <a href="_graph_node_8cs_source.html#l00114">GraphNode.cs:114</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_path_handler_html"><div class="ttname"><a href="class_p_f_1_1_path_handler.html">PF.PathHandler</a></div><div class="ttdef"><b>Definition:</b> <a href="_path_handler_8cs_source.html#l00108">PathHandler.cs:108</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_path_handler_html_aabdc4a14003b72938711823568b73901"><div class="ttname"><a href="class_p_f_1_1_path_handler.html#aabdc4a14003b72938711823568b73901">PF.PathHandler.threadID</a></div><div class="ttdeci">readonly int threadID</div><div class="ttdef"><b>Definition:</b> <a href="_path_handler_8cs_source.html#l00114">PathHandler.cs:114</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_path_html"><div class="ttname"><a href="class_p_f_1_1_path.html">PF.Path</a></div><div class="ttdef"><b>Definition:</b> <a href="_path_8cs_source.html#l00133">Path.cs:133</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_path_html_a03e7ea692a82d514fecfef011b9e5757"><div class="ttname"><a href="class_p_f_1_1_path.html#a03e7ea692a82d514fecfef011b9e5757">PF.Path.immediateCallback</a></div><div class="ttdeci">OnPathDelegate immediateCallback</div><div class="ttdef"><b>Definition:</b> <a href="_path_8cs_source.html#l00165">Path.cs:165</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_path_html_a7657c9088a0b86ce2d75707adbd410fd"><div class="ttname"><a href="class_p_f_1_1_path.html#a7657c9088a0b86ce2d75707adbd410fd">PF.Path.IsDone</a></div><div class="ttdeci">bool IsDone()</div><div class="ttdef"><b>Definition:</b> <a href="_path_8cs_source.html#l00473">Path.cs:473</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_path_html_ab3ef9e16e98287c9a6be8a5943b9f72a"><div class="ttname"><a href="class_p_f_1_1_path.html#ab3ef9e16e98287c9a6be8a5943b9f72a">PF.Path.PrepareBase</a></div><div class="ttdeci">void PrepareBase(PathHandler pathHandler)</div><div class="ttdef"><b>Definition:</b> <a href="_path_8cs_source.html#l00811">Path.cs:811</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_path_processor_html"><div class="ttname"><a href="class_p_f_1_1_path_processor.html">PF.PathProcessor</a></div><div class="ttdef"><b>Definition:</b> <a href="_path_processor_8cs_source.html#l00012">PathProcessor.cs:12</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_path_processor_html_a0186f64682d568e5f9cf0eb0e31b4511"><div class="ttname"><a href="class_p_f_1_1_path_processor.html#a0186f64682d568e5f9cf0eb0e31b4511">PF.PathProcessor.GetNewNodeIndex</a></div><div class="ttdeci">int GetNewNodeIndex()</div><div class="ttdef"><b>Definition:</b> <a href="_path_processor_8cs_source.html#l00188">PathProcessor.cs:188</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_path_processor_html_a1d07abc78ceacccff79d9b50d98ff600"><div class="ttname"><a href="class_p_f_1_1_path_processor.html#a1d07abc78ceacccff79d9b50d98ff600">PF.PathProcessor.InitializeNode</a></div><div class="ttdeci">void InitializeNode(GraphNode node)</div><div class="ttdef"><b>Definition:</b> <a href="_path_processor_8cs_source.html#l00195">PathProcessor.cs:195</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_path_processor_html_a251ba31e20335c4886a71991e9abac37"><div class="ttname"><a href="class_p_f_1_1_path_processor.html#a251ba31e20335c4886a71991e9abac37">PF.PathProcessor.TickNonMultithreaded</a></div><div class="ttdeci">void TickNonMultithreaded()</div><div class="ttdef"><b>Definition:</b> <a href="_path_processor_8cs_source.html#l00140">PathProcessor.cs:140</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_path_processor_html_a2c6051d5b7d780d83943288da3790c1a"><div class="ttname"><a href="class_p_f_1_1_path_processor.html#a2c6051d5b7d780d83943288da3790c1a">PF.PathProcessor.DestroyNode</a></div><div class="ttdeci">void DestroyNode(GraphNode node)</div><div class="ttdef"><b>Definition:</b> <a href="_path_processor_8cs_source.html#l00212">PathProcessor.cs:212</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_path_processor_html_a35f0f43bc0e8bdbe8bcdcf8f3414501b"><div class="ttname"><a href="class_p_f_1_1_path_processor.html#a35f0f43bc0e8bdbe8bcdcf8f3414501b">PF.PathProcessor.PausePathfinding</a></div><div class="ttdeci">GraphUpdateLock PausePathfinding(bool block)</div><div class="ttdef"><b>Definition:</b> <a href="_path_processor_8cs_source.html#l00136">PathProcessor.cs:136</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_path_processor_html_a52ec6ad1d7a33857246a22c1845b6cf1"><div class="ttname"><a href="class_p_f_1_1_path_processor.html#a52ec6ad1d7a33857246a22c1845b6cf1">PF.PathProcessor.OnPathPreSearch</a></div><div class="ttdeci">System.Action&lt; Path &gt; OnPathPreSearch</div><div class="ttdef"><b>Definition:</b> <a href="_path_processor_8cs_source.html#l00013">PathProcessor.cs:13</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_path_processor_html_a75af2e4e128e6e67d20a619e6d709a6f"><div class="ttname"><a href="class_p_f_1_1_path_processor.html#a75af2e4e128e6e67d20a619e6d709a6f">PF.PathProcessor.IsUsingMultithreading</a></div><div class="ttdeci">bool IsUsingMultithreading</div><div class="ttdef"><b>Definition:</b> <a href="_path_processor_8cs_source.html#l00061">PathProcessor.cs:61</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_path_processor_html_a87a62789f5ce27a8e70eeb0afec47237"><div class="ttname"><a href="class_p_f_1_1_path_processor.html#a87a62789f5ce27a8e70eeb0afec47237">PF.PathProcessor.NumThreads</a></div><div class="ttdeci">int NumThreads</div><div class="ttdef"><b>Definition:</b> <a href="_path_processor_8cs_source.html#l00054">PathProcessor.cs:54</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_path_processor_html_a93064c56e712e17165c633144742b5c1"><div class="ttname"><a href="class_p_f_1_1_path_processor.html#a93064c56e712e17165c633144742b5c1">PF.PathProcessor.AbortThreads</a></div><div class="ttdeci">void AbortThreads()</div><div class="ttdef"><b>Definition:</b> <a href="_path_processor_8cs_source.html#l00175">PathProcessor.cs:175</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_path_processor_html_ab5d5a3ed1185ef0428eb4b2017e2dbd6"><div class="ttname"><a href="class_p_f_1_1_path_processor.html#ab5d5a3ed1185ef0428eb4b2017e2dbd6">PF.PathProcessor.OnPathPostSearch</a></div><div class="ttdeci">System.Action&lt; Path &gt; OnPathPostSearch</div><div class="ttdef"><b>Definition:</b> <a href="_path_processor_8cs_source.html#l00014">PathProcessor.cs:14</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_path_processor_html_abe1829f484c541ccc2ad8238ca230829"><div class="ttname"><a href="class_p_f_1_1_path_processor.html#abe1829f484c541ccc2ad8238ca230829">PF.PathProcessor.CalculatePaths</a></div><div class="ttdeci">IEnumerator CalculatePaths()</div><div class="ttdef"><b>Definition:</b> <a href="_path_processor_8cs_source.html#l00333">PathProcessor.cs:333</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_path_processor_html_abf177adeb1983aa5a4e81fd839367321"><div class="ttname"><a href="class_p_f_1_1_path_processor.html#abf177adeb1983aa5a4e81fd839367321">PF.PathProcessor.JoinThreads</a></div><div class="ttdeci">void JoinThreads()</div><div class="ttdef"><b>Definition:</b> <a href="_path_processor_8cs_source.html#l00154">PathProcessor.cs:154</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_path_processor_html_ac6abdac60e0a47bdf4c193c47e86f260"><div class="ttname"><a href="class_p_f_1_1_path_processor.html#ac6abdac60e0a47bdf4c193c47e86f260">PF.PathProcessor.OnQueueUnblocked</a></div><div class="ttdeci">System.Action OnQueueUnblocked</div><div class="ttdef"><b>Definition:</b> <a href="_path_processor_8cs_source.html#l00015">PathProcessor.cs:15</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_path_return_queue_html"><div class="ttname"><a href="class_p_f_1_1_path_return_queue.html">PF.PathReturnQueue</a></div><div class="ttdef"><b>Definition:</b> <a href="_path_return_queue_8cs_source.html#l00008">PathReturnQueue.cs:8</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_path_return_queue_html_a671eeaf4b704e5500f0e215b9966c9cc"><div class="ttname"><a href="class_p_f_1_1_path_return_queue.html#a671eeaf4b704e5500f0e215b9966c9cc">PF.PathReturnQueue.Enqueue</a></div><div class="ttdeci">void Enqueue(Path path)</div><div class="ttdef"><b>Definition:</b> <a href="_path_return_queue_8cs_source.html#l00025">PathReturnQueue.cs:25</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_thread_control_queue_html"><div class="ttname"><a href="class_p_f_1_1_thread_control_queue.html">PF.ThreadControlQueue</a></div><div class="ttdef"><b>Definition:</b> <a href="_thread_control_queue_8cs_source.html#l00003">ThreadControlQueue.cs:4</a></div></div>
+<div class="ttc" id="anamespace_p_f_html"><div class="ttname"><a href="namespace_p_f.html">PF</a></div><div class="ttdef"><b>Definition:</b> <a href="_array_pool_8cs_source.html#l00009">ArrayPool.cs:9</a></div></div>
+<div class="ttc" id="anamespace_p_f_html_a09d32f568c66e70bbf34be278622df09"><div class="ttname"><a href="namespace_p_f.html#a09d32f568c66e70bbf34be278622df09">PF.PathLog</a></div><div class="ttdeci">PathLog</div><div class="ttdef"><b>Definition:</b> <a href="_path_find_helper_8cs_source.html#l00017">PathFindHelper.cs:17</a></div></div>
+<div class="ttc" id="anamespace_p_f_html_a41e3ae15d352e3d178227e2eca48c8a7"><div class="ttname"><a href="namespace_p_f.html#a41e3ae15d352e3d178227e2eca48c8a7">PF.PathState</a></div><div class="ttdeci">PathState</div><div class="ttdef"><b>Definition:</b> <a href="_path_8cs_source.html#l00048">Path.cs:48</a></div></div>
+<div class="ttc" id="anamespace_p_f_html_acafda31666869fa90e621486af7baa17"><div class="ttname"><a href="namespace_p_f.html#acafda31666869fa90e621486af7baa17">PF.Thread</a></div><div class="ttdeci">System.Threading.Thread Thread</div><div class="ttdef"><b>Definition:</b> <a href="_path_processor_8cs_source.html#l00009">PathProcessor.cs:9</a></div></div>
+<div class="ttc" id="anamespace_pathfinding_html"><div class="ttname"><a href="namespace_pathfinding.html">Pathfinding</a></div><div class="ttdef"><b>Definition:</b> <a href="_a_i_base_editor_8cs_source.html#l00004">AIBaseEditor.cs:4</a></div></div>
+<div class="ttc" id="anamespace_system_html"><div class="ttname"><a href="namespace_system.html">System</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_method_builder_attribute_8cs_source.html#l00001">AsyncMethodBuilderAttribute.cs:2</a></div></div>
+<div class="ttc" id="anamespace_thread_html"><div class="ttname"><a href="namespace_thread.html">Thread</a></div></div>
+<div class="ttc" id="anamespace_unity_engine_html"><div class="ttname"><a href="namespace_unity_engine.html">UnityEngine</a></div><div class="ttdef"><b>Definition:</b> <a href="_mathf_8cs_source.html#l00003">Mathf.cs:4</a></div></div>
+<div class="ttc" id="astruct_p_f_1_1_path_processor_1_1_graph_update_lock_html"><div class="ttname"><a href="struct_p_f_1_1_path_processor_1_1_graph_update_lock.html">PF.PathProcessor.GraphUpdateLock</a></div><div class="ttdef"><b>Definition:</b> <a href="_path_processor_8cs_source.html#l00104">PathProcessor.cs:104</a></div></div>
+<div class="ttc" id="astruct_p_f_1_1_path_processor_1_1_graph_update_lock_html_a15cd54e7db6b48e4700caee1a9f2c4c1"><div class="ttname"><a href="struct_p_f_1_1_path_processor_1_1_graph_update_lock.html#a15cd54e7db6b48e4700caee1a9f2c4c1">PF.PathProcessor.GraphUpdateLock.Release</a></div><div class="ttdeci">void Release()</div><div class="ttdef"><b>Definition:</b> <a href="_path_processor_8cs_source.html#l00123">PathProcessor.cs:123</a></div></div>
+<div class="ttc" id="astruct_p_f_1_1_path_processor_1_1_graph_update_lock_html_a3945e7f23a1cf9919e7e1ddfa5b5d2c2"><div class="ttname"><a href="struct_p_f_1_1_path_processor_1_1_graph_update_lock.html#a3945e7f23a1cf9919e7e1ddfa5b5d2c2">PF.PathProcessor.GraphUpdateLock.GraphUpdateLock</a></div><div class="ttdeci">GraphUpdateLock(PathProcessor pathProcessor, bool block)</div><div class="ttdef"><b>Definition:</b> <a href="_path_processor_8cs_source.html#l00108">PathProcessor.cs:108</a></div></div>
+<div class="ttc" id="astruct_p_f_1_1_path_processor_1_1_graph_update_lock_html_aa001eef4cfc3b314d73a7537f4b29146"><div class="ttname"><a href="struct_p_f_1_1_path_processor_1_1_graph_update_lock.html#aa001eef4cfc3b314d73a7537f4b29146">PF.PathProcessor.GraphUpdateLock.pathProcessor</a></div><div class="ttdeci">PathProcessor pathProcessor</div><div class="ttdef"><b>Definition:</b> <a href="_path_processor_8cs_source.html#l00105">PathProcessor.cs:105</a></div></div>
+<div class="ttc" id="astruct_p_f_1_1_path_processor_1_1_graph_update_lock_html_ac6960e8df04ef80edd0bd4ec0bfed53c"><div class="ttname"><a href="struct_p_f_1_1_path_processor_1_1_graph_update_lock.html#ac6960e8df04ef80edd0bd4ec0bfed53c">PF.PathProcessor.GraphUpdateLock.Held</a></div><div class="ttdeci">bool Held</div><div class="ttdef"><b>Definition:</b> <a href="_path_processor_8cs_source.html#l00116">PathProcessor.cs:116</a></div></div>
+<div class="ttc" id="astruct_p_f_1_1_path_processor_1_1_graph_update_lock_html_ad988814ab2facb059562cc969316c55d"><div class="ttname"><a href="struct_p_f_1_1_path_processor_1_1_graph_update_lock.html#ad988814ab2facb059562cc969316c55d">PF.PathProcessor.GraphUpdateLock.id</a></div><div class="ttdeci">int id</div><div class="ttdef"><b>Definition:</b> <a href="_path_processor_8cs_source.html#l00106">PathProcessor.cs:106</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_84bbf7b3c7f28a5a18725745e1505219.html">Assets</a></li><li class="navelem"><a class="el" href="dir_f13b41af88cf68434578284aaf699e39.html">Scripts</a></li><li class="navelem"><a class="el" href="dir_46d134a3bf82cf4dc49ca8f728aea58c.html">Libraries</a></li><li class="navelem"><a class="el" href="dir_f6df8f7e58ea5a2220a287b647108730.html">ET</a></li><li class="navelem"><a class="el" href="dir_83296929b1cb48979e134a96af9624b1.html">Module</a></li><li class="navelem"><a class="el" href="dir_7e04bdad0240fbb16a4f5f805ce44f49.html">Pathfinding</a></li><li class="navelem"><a class="el" href="dir_0d5e2d3313e129d955335235e3d8ffc0.html">Recast</a></li><li class="navelem"><a class="el" href="_path_processor_8cs.html">PathProcessor.cs</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:24:47 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,260 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: Assets/Scripts/Editor/XCodeAPI/Scripts/InfoPlistProcessor.cs 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_info_plist_processor_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">InfoPlistProcessor.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_info_plist_processor_8cs.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Collections.Generic;</div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_chilly_room.html">ChillyRoom</a>.<a class="code" href="namespace_chilly_room_1_1_unity_editor.html">UnityEditor</a>.<a class="code" href="namespace_chilly_room_1_1_unity_editor_1_1i_o_s.html">iOS</a>.<a class="code" href="namespace_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode.html">Xcode</a>;</div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.IO;</div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">//Info.Plist修改设置</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">class </span>InfoPlistProcessor</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;{</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keywordtype">string</span> GetInfoPlistPath(<span class="keywordtype">string</span> buildPath)</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    {</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="_game_main_2_customs_2_custom_helpers_2_process_helper_8cs.html#a5d3f395d3257bcd58335037355f0d7cc">Path</a>.Combine(buildPath, <a class="code" href="class_xcode_project_setting.html">XcodeProjectSetting</a>.<a class="code" href="class_xcode_project_setting.html#a76195cbcf7970ee654af01bef1073252">INFO_PLIST_NAME</a>);</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    }</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keyword">private</span> <span class="keyword">static</span> <a class="code" href="class_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_plist_document.html">PlistDocument</a> GetInfoPlist(<span class="keywordtype">string</span> buildPath)</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    {</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        <span class="keywordtype">string</span> plistPath = GetInfoPlistPath(buildPath);</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        <a class="code" href="class_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_plist_document.html">PlistDocument</a> plist = <span class="keyword">new</span> <a class="code" href="class_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_plist_document.html">PlistDocument</a>();</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        plist.<a class="code" href="class_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_plist_document.html#aec2358cff20c96a816d6576a8c654557">ReadFromFile</a>(plistPath);</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        <span class="keywordflow">return</span> plist;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    }</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keywordtype">void</span> SetPrivacySensiticeData(<a class="code" href="class_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_plist_document.html">PlistDocument</a> plist, List&lt;XcodeProjectSetting.PrivacySensiticeData&gt; privacySensiticeDataList)</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    {</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <a class="code" href="class_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_plist_element_dict.html">PlistElementDict</a> rootDict = plist.<a class="code" href="class_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_plist_document.html#ab8bf1b91e1cf1fe4e8aa8caeeff874fd">root</a>;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <span class="keywordtype">int</span> count = privacySensiticeDataList.Count;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; count; i++)</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        {</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;            <a class="code" href="class_xcode_project_setting.html">XcodeProjectSetting</a>.<a class="code" href="struct_xcode_project_setting_1_1_privacy_sensitice_data.html">PrivacySensiticeData</a> data = privacySensiticeDataList[i];</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;            rootDict.<a class="code" href="class_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_plist_element_dict.html#af7eebe1130334ec1ca3deb58562507fb">SetString</a>(data.key, data.description);</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        }</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    }</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keywordtype">void</span> SetApplicationQueriesSchemes(<a class="code" href="class_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_plist_document.html">PlistDocument</a> plist, List&lt;string&gt; _applicationQueriesSchemes)</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    {</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <a class="code" href="class_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_plist_element_array.html">PlistElementArray</a> queriesSchemes;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <span class="keywordtype">int</span> count = _applicationQueriesSchemes.Count;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <span class="keywordtype">string</span> queriesScheme = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <span class="keywordflow">if</span> (plist.<a class="code" href="class_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_plist_document.html#ab8bf1b91e1cf1fe4e8aa8caeeff874fd">root</a>.<a class="code" href="class_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_plist_element_dict.html#ad11308e0ab22b0c8da373f30ba8d4cee">values</a>.ContainsKey(<a class="code" href="class_xcode_project_setting.html">XcodeProjectSetting</a>.<a class="code" href="class_xcode_project_setting.html#abdd004085b2ca79378400d911e008c28">APPLICATION_QUERIES_SCHEMES_KEY</a>))</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;            queriesSchemes = plist.<a class="code" href="class_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_plist_document.html#ab8bf1b91e1cf1fe4e8aa8caeeff874fd">root</a>[<a class="code" href="class_xcode_project_setting.html">XcodeProjectSetting</a>.<a class="code" href="class_xcode_project_setting.html#abdd004085b2ca79378400d911e008c28">APPLICATION_QUERIES_SCHEMES_KEY</a>].<a class="code" href="class_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_plist_element.html#a9bef9c232856d3f5a751cc2334f7824d">AsArray</a>();</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            queriesSchemes = plist.<a class="code" href="class_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_plist_document.html#ab8bf1b91e1cf1fe4e8aa8caeeff874fd">root</a>.<a class="code" href="class_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_plist_element_dict.html#ac93da2c911975455da59a45abd1c1e8f">CreateArray</a>(<a class="code" href="class_xcode_project_setting.html">XcodeProjectSetting</a>.<a class="code" href="class_xcode_project_setting.html#abdd004085b2ca79378400d911e008c28">APPLICATION_QUERIES_SCHEMES_KEY</a>);</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; count; i++)</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        {</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            queriesScheme = _applicationQueriesSchemes[i];</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;            <span class="keywordflow">if</span> (!queriesSchemes.<a class="code" href="class_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_plist_element_array.html#abbf848e9437e5b5881b84b14521affa5">values</a>.Contains(<span class="keyword">new</span> <a class="code" href="class_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_plist_element_string.html">PlistElementString</a>(queriesScheme)))</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                queriesSchemes.<a class="code" href="class_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_plist_element_array.html#a865a1908c3e242165661992df8d85e77">AddString</a>(queriesScheme);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        }</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    }</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keywordtype">void</span> SetBackgroundModes(<a class="code" href="class_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_plist_document.html">PlistDocument</a> plist, List&lt;string&gt; modes)</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    {</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <span class="keywordtype">int</span> count = modes.Count;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <span class="keywordflow">if</span> (count &gt; 0)</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        {</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            <a class="code" href="class_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_plist_element_dict.html">PlistElementDict</a> rootDict = plist.<a class="code" href="class_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_plist_document.html#ab8bf1b91e1cf1fe4e8aa8caeeff874fd">root</a>;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            <a class="code" href="class_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_plist_element_array.html">PlistElementArray</a> bgModes = rootDict.<a class="code" href="class_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_plist_element_dict.html#ac93da2c911975455da59a45abd1c1e8f">CreateArray</a>(<span class="stringliteral">&quot;UIBackgroundModes&quot;</span>);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; count; i++)</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            {</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                bgModes.<a class="code" href="class_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_plist_element_array.html#a865a1908c3e242165661992df8d85e77">AddString</a>(modes[i]);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            }</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        }</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    }</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keywordtype">void</span> SetURLSchemes(<a class="code" href="class_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_plist_document.html">PlistDocument</a> plist, List&lt;XcodeProjectSetting.BundleUrlType&gt; urlList)</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    {</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <a class="code" href="class_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_plist_element_array.html">PlistElementArray</a> urlTypes;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <a class="code" href="class_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_plist_element_dict.html">PlistElementDict</a> itmeDict;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <span class="keywordflow">if</span> (plist.<a class="code" href="class_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_plist_document.html#ab8bf1b91e1cf1fe4e8aa8caeeff874fd">root</a>.<a class="code" href="class_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_plist_element_dict.html#ad11308e0ab22b0c8da373f30ba8d4cee">values</a>.ContainsKey(<a class="code" href="class_xcode_project_setting.html">XcodeProjectSetting</a>.<a class="code" href="class_xcode_project_setting.html#ac5576e73821eaf706e605c7656c5a8ab">URL_TYPES_KEY</a>))</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            urlTypes = plist.<a class="code" href="class_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_plist_document.html#ab8bf1b91e1cf1fe4e8aa8caeeff874fd">root</a>[<a class="code" href="class_xcode_project_setting.html">XcodeProjectSetting</a>.<a class="code" href="class_xcode_project_setting.html#ac5576e73821eaf706e605c7656c5a8ab">URL_TYPES_KEY</a>].<a class="code" href="class_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_plist_element.html#a9bef9c232856d3f5a751cc2334f7824d">AsArray</a>();</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;            urlTypes = plist.<a class="code" href="class_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_plist_document.html#ab8bf1b91e1cf1fe4e8aa8caeeff874fd">root</a>.<a class="code" href="class_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_plist_element_dict.html#ac93da2c911975455da59a45abd1c1e8f">CreateArray</a>(<a class="code" href="class_xcode_project_setting.html">XcodeProjectSetting</a>.<a class="code" href="class_xcode_project_setting.html#ac5576e73821eaf706e605c7656c5a8ab">URL_TYPES_KEY</a>);</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; urlList.Count; i++)</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        {</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            itmeDict = urlTypes.<a class="code" href="class_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_plist_element_array.html#abfeb5113d926494b1541b9345385df50">AddDict</a>();</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            itmeDict.<a class="code" href="class_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_plist_element_dict.html#af7eebe1130334ec1ca3deb58562507fb">SetString</a>(<a class="code" href="class_xcode_project_setting.html">XcodeProjectSetting</a>.<a class="code" href="class_xcode_project_setting.html#a891d1e8c7adf882f096f835024ad0ae5">URL_TYPE_ROLE_KEY</a>, <span class="stringliteral">&quot;Editor&quot;</span>);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            itmeDict.<a class="code" href="class_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_plist_element_dict.html#af7eebe1130334ec1ca3deb58562507fb">SetString</a>(<a class="code" href="class_xcode_project_setting.html">XcodeProjectSetting</a>.<a class="code" href="class_xcode_project_setting.html#aa7ed6df077639da362f77b084a5b8258">URL_IDENTIFIER_KEY</a>, urlList[i].identifier);</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;            <a class="code" href="class_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_plist_element_array.html">PlistElementArray</a> schemesArray = itmeDict.<a class="code" href="class_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_plist_element_dict.html#ac93da2c911975455da59a45abd1c1e8f">CreateArray</a>(<a class="code" href="class_xcode_project_setting.html">XcodeProjectSetting</a>.<a class="code" href="class_xcode_project_setting.html#a309804de33afa29cff4a812943192ac3">URL_SCHEMES_KEY</a>);</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            <span class="keywordflow">if</span> (itmeDict.<a class="code" href="class_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_plist_element_dict.html#ad11308e0ab22b0c8da373f30ba8d4cee">values</a>.ContainsKey(<a class="code" href="class_xcode_project_setting.html">XcodeProjectSetting</a>.<a class="code" href="class_xcode_project_setting.html#a309804de33afa29cff4a812943192ac3">URL_SCHEMES_KEY</a>))</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                schemesArray = itmeDict[<a class="code" href="class_xcode_project_setting.html">XcodeProjectSetting</a>.<a class="code" href="class_xcode_project_setting.html#a309804de33afa29cff4a812943192ac3">URL_SCHEMES_KEY</a>].<a class="code" href="class_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_plist_element.html#a9bef9c232856d3f5a751cc2334f7824d">AsArray</a>();</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                schemesArray = itmeDict.<a class="code" href="class_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_plist_element_dict.html#ac93da2c911975455da59a45abd1c1e8f">CreateArray</a>(<a class="code" href="class_xcode_project_setting.html">XcodeProjectSetting</a>.<a class="code" href="class_xcode_project_setting.html#a309804de33afa29cff4a812943192ac3">URL_SCHEMES_KEY</a>);</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;            <span class="comment">//TODO:按理说要排除已经存在的，但由于我们是新生成，所以不做排除</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j = 0; j &lt; urlList[i].bundleSchmes.Count; j++)</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            {</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                schemesArray.<a class="code" href="class_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_plist_element_array.html#a865a1908c3e242165661992df8d85e77">AddString</a>(urlList[i].bundleSchmes[j]);</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;            }</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        }</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    }</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keywordtype">void</span> SetGameCenter(<a class="code" href="class_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_plist_document.html">PlistDocument</a> plist)</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    {</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        <a class="code" href="class_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_plist_element_array.html">PlistElementArray</a> gameCenter;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        <span class="keywordflow">if</span> (plist.<a class="code" href="class_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_plist_document.html#ab8bf1b91e1cf1fe4e8aa8caeeff874fd">root</a>.<a class="code" href="class_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_plist_element_dict.html#ad11308e0ab22b0c8da373f30ba8d4cee">values</a>.ContainsKey(GameCenterInfo.Key))</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;            gameCenter = plist.<a class="code" href="class_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_plist_document.html#ab8bf1b91e1cf1fe4e8aa8caeeff874fd">root</a>[GameCenterInfo.Key].<a class="code" href="class_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_plist_element.html#a9bef9c232856d3f5a751cc2334f7824d">AsArray</a>();</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;            gameCenter = plist.<a class="code" href="class_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_plist_document.html#ab8bf1b91e1cf1fe4e8aa8caeeff874fd">root</a>.<a class="code" href="class_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_plist_element_dict.html#ac93da2c911975455da59a45abd1c1e8f">CreateArray</a>(GameCenterInfo.Key);</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160; </div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        <span class="keywordflow">foreach</span> (var item <span class="keywordflow">in</span> GameCenterInfo.Value)</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        {</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;            gameCenter.<a class="code" href="class_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_plist_element_array.html#a865a1908c3e242165661992df8d85e77">AddString</a>(item);</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        }</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    }</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> SetInfoPlist(<span class="keywordtype">string</span> buildPath, <a class="code" href="class_xcode_project_setting.html">XcodeProjectSetting</a> setting)</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    {</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        <a class="code" href="class_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_plist_document.html">PlistDocument</a> plist = GetInfoPlist(buildPath);</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        SetPrivacySensiticeData(plist, setting.<a class="code" href="class_xcode_project_setting.html#a74c5e6375b1c68de51104fc016806c28">privacySensiticeData</a>);</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        SetApplicationQueriesSchemes(plist, setting.<a class="code" href="class_xcode_project_setting.html#a4b70cc60e0e019c8f5cc878017f4e5cf">ApplicationQueriesSchemes</a>);</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        SetBackgroundModes(plist, setting.<a class="code" href="class_xcode_project_setting.html#a6b493d8a53cb9d6bcdb828f3e6e11bad">BackgroundModes</a>);</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        SetURLSchemes(plist, setting.<a class="code" href="class_xcode_project_setting.html#a587c235d3572d05ecd1e75838c5ad563">BundleUrlTypeList</a>);</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160; </div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        <span class="keywordflow">if</span> (setting.<a class="code" href="class_xcode_project_setting.html#a4deaa614260256dd8f58d509acb6d83b">EnableGameCenter</a>)</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        {</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;            SetGameCenter(plist);</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        }</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160; </div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        plist.<a class="code" href="class_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_plist_document.html#abee7a6e864292c1366df8e441e039ab8">WriteToFile</a>(GetInfoPlistPath(buildPath));</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    }</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160; </div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160; </div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    <span class="keyword">internal</span> <span class="keyword">class </span>GameCenterInfo</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    {</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        <span class="keyword">internal</span> <span class="keyword">static</span> readonly <span class="keywordtype">string</span> Key = <span class="stringliteral">&quot;UIRequiredDeviceCapabilities&quot;</span>;</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;        <span class="keyword">internal</span> <span class="keyword">static</span> readonly List&lt;string&gt; Value = <span class="keyword">new</span> List&lt;string&gt; {<span class="stringliteral">&quot;armv7&quot;</span>, <span class="stringliteral">&quot;gamekit&quot;</span>};</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    }</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;}</div>
+<div class="ttc" id="a_game_main_2_customs_2_custom_helpers_2_process_helper_8cs_html_a5d3f395d3257bcd58335037355f0d7cc"><div class="ttname"><a href="_game_main_2_customs_2_custom_helpers_2_process_helper_8cs.html#a5d3f395d3257bcd58335037355f0d7cc">Path</a></div><div class="ttdeci">System.IO.Path Path</div><div class="ttdef"><b>Definition:</b> <a href="_game_main_2_customs_2_custom_helpers_2_process_helper_8cs_source.html#l00005">ProcessHelper.cs:5</a></div></div>
+<div class="ttc" id="aclass_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_plist_document_html"><div class="ttname"><a href="class_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_plist_document.html">ChillyRoom.UnityEditor.iOS.Xcode.PlistDocument</a></div><div class="ttdef"><b>Definition:</b> <a href="_plist_parser_8cs_source.html#l00136">PlistParser.cs:137</a></div></div>
+<div class="ttc" id="aclass_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_plist_document_html_ab8bf1b91e1cf1fe4e8aa8caeeff874fd"><div class="ttname"><a href="class_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_plist_document.html#ab8bf1b91e1cf1fe4e8aa8caeeff874fd">ChillyRoom.UnityEditor.iOS.Xcode.PlistDocument.root</a></div><div class="ttdeci">PlistElementDict root</div><div class="ttdef"><b>Definition:</b> <a href="_plist_parser_8cs_source.html#l00138">PlistParser.cs:138</a></div></div>
+<div class="ttc" id="aclass_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_plist_document_html_abee7a6e864292c1366df8e441e039ab8"><div class="ttname"><a href="class_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_plist_document.html#abee7a6e864292c1366df8e441e039ab8">ChillyRoom.UnityEditor.iOS.Xcode.PlistDocument.WriteToFile</a></div><div class="ttdeci">void WriteToFile(string path)</div><div class="ttdef"><b>Definition:</b> <a href="_plist_parser_8cs_source.html#l00328">PlistParser.cs:328</a></div></div>
+<div class="ttc" id="aclass_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_plist_document_html_aec2358cff20c96a816d6576a8c654557"><div class="ttname"><a href="class_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_plist_document.html#aec2358cff20c96a816d6576a8c654557">ChillyRoom.UnityEditor.iOS.Xcode.PlistDocument.ReadFromFile</a></div><div class="ttdeci">void ReadFromFile(string path)</div><div class="ttdef"><b>Definition:</b> <a href="_plist_parser_8cs_source.html#l00256">PlistParser.cs:256</a></div></div>
+<div class="ttc" id="aclass_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_plist_element_array_html"><div class="ttname"><a href="class_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_plist_element_array.html">ChillyRoom.UnityEditor.iOS.Xcode.PlistElementArray</a></div><div class="ttdef"><b>Definition:</b> <a href="_plist_parser_8cs_source.html#l00100">PlistParser.cs:101</a></div></div>
+<div class="ttc" id="aclass_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_plist_element_array_html_a865a1908c3e242165661992df8d85e77"><div class="ttname"><a href="class_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_plist_element_array.html#a865a1908c3e242165661992df8d85e77">ChillyRoom.UnityEditor.iOS.Xcode.PlistElementArray.AddString</a></div><div class="ttdeci">void AddString(string val)</div><div class="ttdef"><b>Definition:</b> <a href="_plist_parser_8cs_source.html#l00106">PlistParser.cs:106</a></div></div>
+<div class="ttc" id="aclass_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_plist_element_array_html_abbf848e9437e5b5881b84b14521affa5"><div class="ttname"><a href="class_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_plist_element_array.html#abbf848e9437e5b5881b84b14521affa5">ChillyRoom.UnityEditor.iOS.Xcode.PlistElementArray.values</a></div><div class="ttdeci">List&lt; PlistElement &gt; values</div><div class="ttdef"><b>Definition:</b> <a href="_plist_parser_8cs_source.html#l00103">PlistParser.cs:103</a></div></div>
+<div class="ttc" id="aclass_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_plist_element_array_html_abfeb5113d926494b1541b9345385df50"><div class="ttname"><a href="class_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_plist_element_array.html#abfeb5113d926494b1541b9345385df50">ChillyRoom.UnityEditor.iOS.Xcode.PlistElementArray.AddDict</a></div><div class="ttdeci">PlistElementDict AddDict()</div><div class="ttdef"><b>Definition:</b> <a href="_plist_parser_8cs_source.html#l00128">PlistParser.cs:128</a></div></div>
+<div class="ttc" id="aclass_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_plist_element_dict_html"><div class="ttname"><a href="class_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_plist_element_dict.html">ChillyRoom.UnityEditor.iOS.Xcode.PlistElementDict</a></div><div class="ttdef"><b>Definition:</b> <a href="_plist_parser_8cs_source.html#l00051">PlistParser.cs:52</a></div></div>
+<div class="ttc" id="aclass_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_plist_element_dict_html_ac93da2c911975455da59a45abd1c1e8f"><div class="ttname"><a href="class_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_plist_element_dict.html#ac93da2c911975455da59a45abd1c1e8f">ChillyRoom.UnityEditor.iOS.Xcode.PlistElementDict.CreateArray</a></div><div class="ttdeci">PlistElementArray CreateArray(string key)</div><div class="ttdef"><b>Definition:</b> <a href="_plist_parser_8cs_source.html#l00085">PlistParser.cs:85</a></div></div>
+<div class="ttc" id="aclass_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_plist_element_dict_html_ad11308e0ab22b0c8da373f30ba8d4cee"><div class="ttname"><a href="class_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_plist_element_dict.html#ad11308e0ab22b0c8da373f30ba8d4cee">ChillyRoom.UnityEditor.iOS.Xcode.PlistElementDict.values</a></div><div class="ttdeci">IDictionary&lt; string, PlistElement &gt; values</div><div class="ttdef"><b>Definition:</b> <a href="_plist_parser_8cs_source.html#l00056">PlistParser.cs:56</a></div></div>
+<div class="ttc" id="aclass_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_plist_element_dict_html_af7eebe1130334ec1ca3deb58562507fb"><div class="ttname"><a href="class_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_plist_element_dict.html#af7eebe1130334ec1ca3deb58562507fb">ChillyRoom.UnityEditor.iOS.Xcode.PlistElementDict.SetString</a></div><div class="ttdeci">void SetString(string key, string val)</div><div class="ttdef"><b>Definition:</b> <a href="_plist_parser_8cs_source.html#l00075">PlistParser.cs:75</a></div></div>
+<div class="ttc" id="aclass_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_plist_element_html_a9bef9c232856d3f5a751cc2334f7824d"><div class="ttname"><a href="class_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_plist_element.html#a9bef9c232856d3f5a751cc2334f7824d">ChillyRoom.UnityEditor.iOS.Xcode.PlistElement.AsArray</a></div><div class="ttdeci">PlistElementArray AsArray()</div><div class="ttdef"><b>Definition:</b> <a href="_plist_parser_8cs_source.html#l00020">PlistParser.cs:20</a></div></div>
+<div class="ttc" id="aclass_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_plist_element_string_html"><div class="ttname"><a href="class_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_plist_element_string.html">ChillyRoom.UnityEditor.iOS.Xcode.PlistElementString</a></div><div class="ttdef"><b>Definition:</b> <a href="_plist_parser_8cs_source.html#l00030">PlistParser.cs:31</a></div></div>
+<div class="ttc" id="aclass_xcode_project_setting_html"><div class="ttname"><a href="class_xcode_project_setting.html">XcodeProjectSetting</a></div><div class="ttdoc">Xcode项目的一些设定值</div><div class="ttdef"><b>Definition:</b> <a href="_xcode_project_setting_8cs_source.html#l00012">XcodeProjectSetting.cs:13</a></div></div>
+<div class="ttc" id="aclass_xcode_project_setting_html_a309804de33afa29cff4a812943192ac3"><div class="ttname"><a href="class_xcode_project_setting.html#a309804de33afa29cff4a812943192ac3">XcodeProjectSetting.URL_SCHEMES_KEY</a></div><div class="ttdeci">const string URL_SCHEMES_KEY</div><div class="ttdef"><b>Definition:</b> <a href="_xcode_project_setting_8cs_source.html#l00066">XcodeProjectSetting.cs:66</a></div></div>
+<div class="ttc" id="aclass_xcode_project_setting_html_a4b70cc60e0e019c8f5cc878017f4e5cf"><div class="ttname"><a href="class_xcode_project_setting.html#a4b70cc60e0e019c8f5cc878017f4e5cf">XcodeProjectSetting.ApplicationQueriesSchemes</a></div><div class="ttdeci">List&lt; string &gt; ApplicationQueriesSchemes</div><div class="ttdef"><b>Definition:</b> <a href="_xcode_project_setting_8cs_source.html#l00174">XcodeProjectSetting.cs:174</a></div></div>
+<div class="ttc" id="aclass_xcode_project_setting_html_a4deaa614260256dd8f58d509acb6d83b"><div class="ttname"><a href="class_xcode_project_setting.html#a4deaa614260256dd8f58d509acb6d83b">XcodeProjectSetting.EnableGameCenter</a></div><div class="ttdeci">bool EnableGameCenter</div><div class="ttdef"><b>Definition:</b> <a href="_xcode_project_setting_8cs_source.html#l00079">XcodeProjectSetting.cs:79</a></div></div>
+<div class="ttc" id="aclass_xcode_project_setting_html_a587c235d3572d05ecd1e75838c5ad563"><div class="ttname"><a href="class_xcode_project_setting.html#a587c235d3572d05ecd1e75838c5ad563">XcodeProjectSetting.BundleUrlTypeList</a></div><div class="ttdeci">List&lt; BundleUrlType &gt; BundleUrlTypeList</div><div class="ttdef"><b>Definition:</b> <a href="_xcode_project_setting_8cs_source.html#l00210">XcodeProjectSetting.cs:210</a></div></div>
+<div class="ttc" id="aclass_xcode_project_setting_html_a6b493d8a53cb9d6bcdb828f3e6e11bad"><div class="ttname"><a href="class_xcode_project_setting.html#a6b493d8a53cb9d6bcdb828f3e6e11bad">XcodeProjectSetting.BackgroundModes</a></div><div class="ttdeci">List&lt; string &gt; BackgroundModes</div><div class="ttdef"><b>Definition:</b> <a href="_xcode_project_setting_8cs_source.html#l00215">XcodeProjectSetting.cs:215</a></div></div>
+<div class="ttc" id="aclass_xcode_project_setting_html_a74c5e6375b1c68de51104fc016806c28"><div class="ttname"><a href="class_xcode_project_setting.html#a74c5e6375b1c68de51104fc016806c28">XcodeProjectSetting.privacySensiticeData</a></div><div class="ttdeci">List&lt; PrivacySensiticeData &gt; privacySensiticeData</div><div class="ttdef"><b>Definition:</b> <a href="_xcode_project_setting_8cs_source.html#l00191">XcodeProjectSetting.cs:191</a></div></div>
+<div class="ttc" id="aclass_xcode_project_setting_html_a76195cbcf7970ee654af01bef1073252"><div class="ttname"><a href="class_xcode_project_setting.html#a76195cbcf7970ee654af01bef1073252">XcodeProjectSetting.INFO_PLIST_NAME</a></div><div class="ttdeci">const string INFO_PLIST_NAME</div><div class="ttdef"><b>Definition:</b> <a href="_xcode_project_setting_8cs_source.html#l00061">XcodeProjectSetting.cs:61</a></div></div>
+<div class="ttc" id="aclass_xcode_project_setting_html_a891d1e8c7adf882f096f835024ad0ae5"><div class="ttname"><a href="class_xcode_project_setting.html#a891d1e8c7adf882f096f835024ad0ae5">XcodeProjectSetting.URL_TYPE_ROLE_KEY</a></div><div class="ttdeci">const string URL_TYPE_ROLE_KEY</div><div class="ttdef"><b>Definition:</b> <a href="_xcode_project_setting_8cs_source.html#l00064">XcodeProjectSetting.cs:64</a></div></div>
+<div class="ttc" id="aclass_xcode_project_setting_html_aa7ed6df077639da362f77b084a5b8258"><div class="ttname"><a href="class_xcode_project_setting.html#aa7ed6df077639da362f77b084a5b8258">XcodeProjectSetting.URL_IDENTIFIER_KEY</a></div><div class="ttdeci">const string URL_IDENTIFIER_KEY</div><div class="ttdef"><b>Definition:</b> <a href="_xcode_project_setting_8cs_source.html#l00065">XcodeProjectSetting.cs:65</a></div></div>
+<div class="ttc" id="aclass_xcode_project_setting_html_abdd004085b2ca79378400d911e008c28"><div class="ttname"><a href="class_xcode_project_setting.html#abdd004085b2ca79378400d911e008c28">XcodeProjectSetting.APPLICATION_QUERIES_SCHEMES_KEY</a></div><div class="ttdeci">const string APPLICATION_QUERIES_SCHEMES_KEY</div><div class="ttdef"><b>Definition:</b> <a href="_xcode_project_setting_8cs_source.html#l00067">XcodeProjectSetting.cs:67</a></div></div>
+<div class="ttc" id="aclass_xcode_project_setting_html_ac5576e73821eaf706e605c7656c5a8ab"><div class="ttname"><a href="class_xcode_project_setting.html#ac5576e73821eaf706e605c7656c5a8ab">XcodeProjectSetting.URL_TYPES_KEY</a></div><div class="ttdeci">const string URL_TYPES_KEY</div><div class="ttdef"><b>Definition:</b> <a href="_xcode_project_setting_8cs_source.html#l00063">XcodeProjectSetting.cs:63</a></div></div>
+<div class="ttc" id="anamespace_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_html"><div class="ttname"><a href="namespace_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode.html">ChillyRoom.UnityEditor.iOS.Xcode</a></div><div class="ttdef"><b>Definition:</b> <a href="_asset_catalog_8cs_source.html#l00006">AssetCatalog.cs:7</a></div></div>
+<div class="ttc" id="anamespace_chilly_room_1_1_unity_editor_1_1i_o_s_html"><div class="ttname"><a href="namespace_chilly_room_1_1_unity_editor_1_1i_o_s.html">ChillyRoom.UnityEditor.iOS</a></div><div class="ttdef"><b>Definition:</b> <a href="_asset_catalog_8cs_source.html#l00006">AssetCatalog.cs:7</a></div></div>
+<div class="ttc" id="anamespace_chilly_room_1_1_unity_editor_html"><div class="ttname"><a href="namespace_chilly_room_1_1_unity_editor.html">ChillyRoom.UnityEditor</a></div><div class="ttdef"><b>Definition:</b> <a href="_asset_catalog_8cs_source.html#l00006">AssetCatalog.cs:7</a></div></div>
+<div class="ttc" id="anamespace_chilly_room_html"><div class="ttname"><a href="namespace_chilly_room.html">ChillyRoom</a></div><div class="ttdef"><b>Definition:</b> <a href="_asset_catalog_8cs_source.html#l00006">AssetCatalog.cs:7</a></div></div>
+<div class="ttc" id="anamespace_system_html"><div class="ttname"><a href="namespace_system.html">System</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_method_builder_attribute_8cs_source.html#l00001">AsyncMethodBuilderAttribute.cs:2</a></div></div>
+<div class="ttc" id="astruct_xcode_project_setting_1_1_privacy_sensitice_data_html"><div class="ttname"><a href="struct_xcode_project_setting_1_1_privacy_sensitice_data.html">XcodeProjectSetting.PrivacySensiticeData</a></div><div class="ttdef"><b>Definition:</b> <a href="_xcode_project_setting_8cs_source.html#l00179">XcodeProjectSetting.cs:180</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_84bbf7b3c7f28a5a18725745e1505219.html">Assets</a></li><li class="navelem"><a class="el" href="dir_f13b41af88cf68434578284aaf699e39.html">Scripts</a></li><li class="navelem"><a class="el" href="dir_0261d5286017c38b9af36d6d3ff94a53.html">Editor</a></li><li class="navelem"><a class="el" href="dir_26e20bad1c911948ca95b8b7bc9fb7a3.html">XCodeAPI</a></li><li class="navelem"><a class="el" href="dir_7bc3f3c81c3736a3f25aa97aeadac0c6.html">Scripts</a></li><li class="navelem"><a class="el" href="_info_plist_processor_8cs.html">InfoPlistProcessor.cs</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:24:43 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

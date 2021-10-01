@@ -1,0 +1,362 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: Assets/Scripts/Libraries/GameFramework/Scripts/Runtime/FileSystem/AndroidFileSystemStream.cs 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_android_file_system_stream_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">AndroidFileSystemStream.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_android_file_system_stream_8cs.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">//------------------------------------------------------------</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">// Game Framework</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">// Copyright © 2013-2021 Jiang Yin. All rights reserved.</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">// Homepage: https://gameframework.cn/</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">// Feedback: mailto:ellan@gameframework.cn</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">//------------------------------------------------------------</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_game_framework.html">GameFramework</a>;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_game_framework.html">GameFramework</a>.<a class="code" href="namespace_game_framework_1_1_file_system.html">FileSystem</a>;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.IO;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_unity_engine.html">UnityEngine</a>;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_unity_game_framework_1_1_runtime.html">UnityGameFramework.Runtime</a></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;{</div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="class_unity_game_framework_1_1_runtime_1_1_android_file_system_stream.html">   19</a></span>&#160;    <span class="keyword">public</span> sealed <span class="keyword">class </span><a class="code" href="class_unity_game_framework_1_1_runtime_1_1_android_file_system_stream.html">AndroidFileSystemStream</a> : <a class="code" href="class_game_framework_1_1_file_system_1_1_file_system_stream.html">FileSystemStream</a></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    {</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> readonly <span class="keywordtype">string</span> SplitFlag = <span class="stringliteral">&quot;!/assets/&quot;</span>;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> readonly <span class="keywordtype">int</span> SplitFlagLength = SplitFlag.Length;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> readonly AndroidJavaObject s_AssetManager = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> readonly IntPtr s_InternalReadMethodId = IntPtr.Zero;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> readonly jvalue[] s_InternalReadArgs = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <span class="keyword">private</span> readonly AndroidJavaObject m_FileStream;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <span class="keyword">private</span> readonly IntPtr m_FileStreamRawObject;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <span class="keyword">static</span> <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_android_file_system_stream.html">AndroidFileSystemStream</a>()</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        {</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;            AndroidJavaClass unityPlayer = <span class="keyword">new</span> AndroidJavaClass(<span class="stringliteral">&quot;com.unity3d.player.UnityPlayer&quot;</span>);</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;            <span class="keywordflow">if</span> (unityPlayer == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;            {</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> <a class="code" href="class_game_framework_1_1_game_framework_exception.html">GameFrameworkException</a>(<span class="stringliteral">&quot;Unity player is invalid.&quot;</span>);</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;            }</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;            AndroidJavaObject currentActivity = unityPlayer.GetStatic&lt;AndroidJavaObject&gt;(<span class="stringliteral">&quot;currentActivity&quot;</span>);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;            <span class="keywordflow">if</span> (currentActivity == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            {</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> <a class="code" href="class_game_framework_1_1_game_framework_exception.html">GameFrameworkException</a>(<span class="stringliteral">&quot;Current activity is invalid.&quot;</span>);</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;            }</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            AndroidJavaObject assetManager = currentActivity.Call&lt;AndroidJavaObject&gt;(<span class="stringliteral">&quot;getAssets&quot;</span>);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            <span class="keywordflow">if</span> (assetManager == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;            {</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> <a class="code" href="class_game_framework_1_1_game_framework_exception.html">GameFrameworkException</a>(<span class="stringliteral">&quot;Asset manager is invalid.&quot;</span>);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            }</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;            s_AssetManager = assetManager;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            IntPtr inputStreamClassPtr = AndroidJNI.FindClass(<span class="stringliteral">&quot;java/io/InputStream&quot;</span>);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            s_InternalReadMethodId = AndroidJNIHelper.GetMethodID(inputStreamClassPtr, <span class="stringliteral">&quot;read&quot;</span>, <span class="stringliteral">&quot;([BII)I&quot;</span>);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            s_InternalReadArgs = <span class="keyword">new</span> jvalue[3];</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            AndroidJNI.DeleteLocalRef(inputStreamClassPtr);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            currentActivity.Dispose();</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            unityPlayer.Dispose();</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        }</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
+<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="class_unity_game_framework_1_1_runtime_1_1_android_file_system_stream.html#a5365e89bd4942818b02b77e2f0707f42">   67</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_android_file_system_stream.html#a5365e89bd4942818b02b77e2f0707f42">AndroidFileSystemStream</a>(<span class="keywordtype">string</span> fullPath, <a class="code" href="namespace_game_framework_1_1_file_system.html#a5ee368c10e2ba2cea40f726391addfff">FileSystemAccess</a> access, <span class="keywordtype">bool</span> createNew)</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        {</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            <span class="keywordflow">if</span> (<span class="keywordtype">string</span>.IsNullOrEmpty(fullPath))</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            {</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> <a class="code" href="class_game_framework_1_1_game_framework_exception.html">GameFrameworkException</a>(<span class="stringliteral">&quot;Full path is invalid.&quot;</span>);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;            }</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            <span class="keywordflow">if</span> (access != <a class="code" href="namespace_game_framework_1_1_file_system.html#a5ee368c10e2ba2cea40f726391addfff">FileSystemAccess</a>.Read)</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            {</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> <a class="code" href="class_game_framework_1_1_game_framework_exception.html">GameFrameworkException</a>(<a class="code" href="_unity_web_request_download_agent_helper_8cs.html#a9084eedf9b8c1b9c0fb3e425c1f69c1f">Utility</a>.Text.Format(<span class="stringliteral">&quot;&#39;{0}&#39; is not supported in AndroidFileSystemStream.&quot;</span>, access.ToString()));</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            }</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;            <span class="keywordflow">if</span> (createNew)</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            {</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> <a class="code" href="class_game_framework_1_1_game_framework_exception.html">GameFrameworkException</a>(<span class="stringliteral">&quot;Create new is not supported in AndroidFileSystemStream.&quot;</span>);</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            }</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;            <span class="keywordtype">int</span> position = fullPath.LastIndexOf(SplitFlag, StringComparison.Ordinal);</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;            <span class="keywordflow">if</span> (position &lt; 0)</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            {</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> <a class="code" href="class_game_framework_1_1_game_framework_exception.html">GameFrameworkException</a>(<span class="stringliteral">&quot;Can not find split flag in full path.&quot;</span>);</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;            }</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            <span class="keywordtype">string</span> fileName = fullPath.Substring(position + SplitFlagLength);</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;            m_FileStream = InternalOpen(fileName);</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;            <span class="keywordflow">if</span> (m_FileStream == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;            {</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> <a class="code" href="class_game_framework_1_1_game_framework_exception.html">GameFrameworkException</a>(<a class="code" href="_unity_web_request_download_agent_helper_8cs.html#a9084eedf9b8c1b9c0fb3e425c1f69c1f">Utility</a>.Text.Format(<span class="stringliteral">&quot;Open file &#39;{0}&#39; from Android asset manager failure.&quot;</span>, fullPath));</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;            }</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;            m_FileStreamRawObject = m_FileStream.GetRawObject();</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        }</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160; </div>
+<div class="line"><a name="l00103"></a><span class="lineno"><a class="line" href="class_unity_game_framework_1_1_runtime_1_1_android_file_system_stream.html#a8582940719ae38bf0abadec25bf4f7c9">  103</a></span>&#160;        <span class="keyword">protected</span> <span class="keyword">override</span> <span class="keywordtype">long</span> <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_android_file_system_stream.html#a8582940719ae38bf0abadec25bf4f7c9">Position</a></div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        {</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;            <span class="keyword">get</span></div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;            {</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> <a class="code" href="class_game_framework_1_1_game_framework_exception.html">GameFrameworkException</a>(<span class="stringliteral">&quot;Get position is not supported in AndroidFileSystemStream.&quot;</span>);</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;            }</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;            <span class="keyword">set</span></div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;            {</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;                <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_android_file_system_stream.html#a692527c2077c283e7bab32a39dbd4abb">Seek</a>(value, SeekOrigin.Begin);</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;            }</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        }</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160; </div>
+<div class="line"><a name="l00118"></a><span class="lineno"><a class="line" href="class_unity_game_framework_1_1_runtime_1_1_android_file_system_stream.html#a6c9a26a4e89abfde59ea134ca8644614">  118</a></span>&#160;        <span class="keyword">protected</span> <span class="keyword">override</span> <span class="keywordtype">long</span> <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_android_file_system_stream.html#a6c9a26a4e89abfde59ea134ca8644614">Length</a></div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        {</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;            <span class="keyword">get</span></div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;            {</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;                <span class="keywordflow">return</span> InternalAvailable();</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;            }</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        }</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160; </div>
+<div class="line"><a name="l00130"></a><span class="lineno"><a class="line" href="class_unity_game_framework_1_1_runtime_1_1_android_file_system_stream.html#a5548b9ec5b398ab2f586cb1763c8e10e">  130</a></span>&#160;        <span class="keyword">protected</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_android_file_system_stream.html#a5548b9ec5b398ab2f586cb1763c8e10e">SetLength</a>(<span class="keywordtype">long</span> length)</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        {</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;            <span class="keywordflow">throw</span> <span class="keyword">new</span> <a class="code" href="class_game_framework_1_1_game_framework_exception.html">GameFrameworkException</a>(<span class="stringliteral">&quot;SetLength is not supported in AndroidFileSystemStream.&quot;</span>);</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        }</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160; </div>
+<div class="line"><a name="l00140"></a><span class="lineno"><a class="line" href="class_unity_game_framework_1_1_runtime_1_1_android_file_system_stream.html#a692527c2077c283e7bab32a39dbd4abb">  140</a></span>&#160;        <span class="keyword">protected</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_android_file_system_stream.html#a692527c2077c283e7bab32a39dbd4abb">Seek</a>(<span class="keywordtype">long</span> offset, SeekOrigin origin)</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;        {</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;            <span class="keywordflow">if</span> (origin == SeekOrigin.End)</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;            {</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;                <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_android_file_system_stream.html#a692527c2077c283e7bab32a39dbd4abb">Seek</a>(<a class="code" href="class_unity_game_framework_1_1_runtime_1_1_android_file_system_stream.html#a6c9a26a4e89abfde59ea134ca8644614">Length</a> + offset, SeekOrigin.Begin);</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;                <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;            }</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160; </div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;            <span class="keywordflow">if</span> (origin == SeekOrigin.Begin)</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;            {</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;                InternalReset();</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;            }</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160; </div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;            <span class="keywordflow">while</span> (offset &gt; 0)</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;            {</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;                <span class="keywordtype">long</span> skip = InternalSkip(offset);</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;                <span class="keywordflow">if</span> (skip &lt; 0)</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;                {</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;                    <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;                }</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160; </div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;                offset -= skip;</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;            }</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;        }</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160; </div>
+<div class="line"><a name="l00169"></a><span class="lineno"><a class="line" href="class_unity_game_framework_1_1_runtime_1_1_android_file_system_stream.html#ad29df612660fae6434940ccbe70494d8">  169</a></span>&#160;        <span class="keyword">protected</span> <span class="keyword">override</span> <span class="keywordtype">int</span> <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_android_file_system_stream.html#ad29df612660fae6434940ccbe70494d8">ReadByte</a>()</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;        {</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;            <span class="keywordflow">return</span> InternalRead();</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;        }</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160; </div>
+<div class="line"><a name="l00181"></a><span class="lineno"><a class="line" href="class_unity_game_framework_1_1_runtime_1_1_android_file_system_stream.html#ae014eb66cf8e3efcea85be2ccdd64768">  181</a></span>&#160;        <span class="keyword">protected</span> <span class="keyword">override</span> <span class="keywordtype">int</span> <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_android_file_system_stream.html#ae014eb66cf8e3efcea85be2ccdd64768">Read</a>(<span class="keywordtype">byte</span>[] buffer, <span class="keywordtype">int</span> startIndex, <span class="keywordtype">int</span> length)</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;        {</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;            <span class="keywordtype">byte</span>[] result = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;            <span class="keywordtype">int</span> bytesRead = InternalRead(length, out result);</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;            Array.Copy(result, 0, buffer, startIndex, bytesRead);</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;            <span class="keywordflow">return</span> bytesRead;</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;        }</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160; </div>
+<div class="line"><a name="l00193"></a><span class="lineno"><a class="line" href="class_unity_game_framework_1_1_runtime_1_1_android_file_system_stream.html#ae2df5a4035dcccd1126e36335f06d88f">  193</a></span>&#160;        <span class="keyword">protected</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_android_file_system_stream.html#ae2df5a4035dcccd1126e36335f06d88f">WriteByte</a>(<span class="keywordtype">byte</span> value)</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;        {</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;            <span class="keywordflow">throw</span> <span class="keyword">new</span> <a class="code" href="class_game_framework_1_1_game_framework_exception.html">GameFrameworkException</a>(<span class="stringliteral">&quot;WriteByte is not supported in AndroidFileSystemStream.&quot;</span>);</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;        }</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160; </div>
+<div class="line"><a name="l00204"></a><span class="lineno"><a class="line" href="class_unity_game_framework_1_1_runtime_1_1_android_file_system_stream.html#a0906d96f6e5d6a7dc00bf2fe4e67424d">  204</a></span>&#160;        <span class="keyword">protected</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_android_file_system_stream.html#a0906d96f6e5d6a7dc00bf2fe4e67424d">Write</a>(<span class="keywordtype">byte</span>[] buffer, <span class="keywordtype">int</span> startIndex, <span class="keywordtype">int</span> length)</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;        {</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;            <span class="keywordflow">throw</span> <span class="keyword">new</span> <a class="code" href="class_game_framework_1_1_game_framework_exception.html">GameFrameworkException</a>(<span class="stringliteral">&quot;Write is not supported in AndroidFileSystemStream.&quot;</span>);</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;        }</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160; </div>
+<div class="line"><a name="l00212"></a><span class="lineno"><a class="line" href="class_unity_game_framework_1_1_runtime_1_1_android_file_system_stream.html#ad11f929ae5163d248e254d673b43aab5">  212</a></span>&#160;        <span class="keyword">protected</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_android_file_system_stream.html#ad11f929ae5163d248e254d673b43aab5">Flush</a>()</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;        {</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;            <span class="keywordflow">throw</span> <span class="keyword">new</span> <a class="code" href="class_game_framework_1_1_game_framework_exception.html">GameFrameworkException</a>(<span class="stringliteral">&quot;Flush is not supported in AndroidFileSystemStream.&quot;</span>);</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;        }</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160; </div>
+<div class="line"><a name="l00220"></a><span class="lineno"><a class="line" href="class_unity_game_framework_1_1_runtime_1_1_android_file_system_stream.html#a4cfe8b06039c4df6fd00d9dd5096db45">  220</a></span>&#160;        <span class="keyword">protected</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_android_file_system_stream.html#a4cfe8b06039c4df6fd00d9dd5096db45">Close</a>()</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;        {</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;            InternalClose();</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;            m_FileStream.Dispose();</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;        }</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160; </div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;        <span class="keyword">private</span> AndroidJavaObject InternalOpen(<span class="keywordtype">string</span> fileName)</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;        {</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;            <span class="keywordflow">return</span> s_AssetManager.Call&lt;AndroidJavaObject&gt;(<span class="stringliteral">&quot;open&quot;</span>, fileName);</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;        }</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160; </div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">int</span> InternalAvailable()</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;        {</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;            <span class="keywordflow">return</span> m_FileStream.Call&lt;<span class="keywordtype">int</span>&gt;(<span class="stringliteral">&quot;available&quot;</span>);</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;        }</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160; </div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> InternalClose()</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;        {</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;            m_FileStream.Call(<span class="stringliteral">&quot;close&quot;</span>);</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;        }</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160; </div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">int</span> InternalRead()</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;        {</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;            <span class="keywordflow">return</span> m_FileStream.Call&lt;<span class="keywordtype">int</span>&gt;(<span class="stringliteral">&quot;read&quot;</span>);</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;        }</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160; </div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">int</span> InternalRead(<span class="keywordtype">int</span> length, out <span class="keywordtype">byte</span>[] result)</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;        {</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;<span class="preprocessor">#if UNITY_2019_2_OR_NEWER</span></div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;<span class="preprocessor">#pragma warning disable CS0618</span></div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;            IntPtr resultPtr = AndroidJNI.NewByteArray(length);</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;<span class="preprocessor">#if UNITY_2019_2_OR_NEWER</span></div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;<span class="preprocessor">#pragma warning restore CS0618</span></div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;            <span class="keywordtype">int</span> offset = 0;</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;            <span class="keywordtype">int</span> bytesLeft = length;</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;            <span class="keywordflow">while</span> (bytesLeft &gt; 0)</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;            {</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;                s_InternalReadArgs[0] = <span class="keyword">new</span> jvalue() { l = resultPtr };</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;                s_InternalReadArgs[1] = <span class="keyword">new</span> jvalue() { i = offset };</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;                s_InternalReadArgs[2] = <span class="keyword">new</span> jvalue() { i = bytesLeft };</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;                <span class="keywordtype">int</span> bytesRead = AndroidJNI.CallIntMethod(m_FileStreamRawObject, s_InternalReadMethodId, s_InternalReadArgs);</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;                <span class="keywordflow">if</span> (bytesRead &lt;= 0)</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;                {</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;                    <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;                }</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160; </div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;                offset += bytesRead;</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;                bytesLeft -= bytesRead;</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;            }</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160; </div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;<span class="preprocessor">#if UNITY_2019_2_OR_NEWER</span></div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;<span class="preprocessor">#pragma warning disable CS0618</span></div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;            result = AndroidJNI.FromByteArray(resultPtr);</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;<span class="preprocessor">#if UNITY_2019_2_OR_NEWER</span></div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;<span class="preprocessor">#pragma warning restore CS0618</span></div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;            AndroidJNI.DeleteLocalRef(resultPtr);</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;            <span class="keywordflow">return</span> offset;</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;        }</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160; </div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> InternalReset()</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;        {</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;            m_FileStream.Call(<span class="stringliteral">&quot;reset&quot;</span>);</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;        }</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160; </div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">long</span> InternalSkip(<span class="keywordtype">long</span> offset)</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;        {</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;            <span class="keywordflow">return</span> m_FileStream.Call&lt;<span class="keywordtype">long</span>&gt;(<span class="stringliteral">&quot;skip&quot;</span>, offset);</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;        }</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;    }</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;}</div>
+<div class="ttc" id="a_unity_web_request_download_agent_helper_8cs_html_a9084eedf9b8c1b9c0fb3e425c1f69c1f"><div class="ttname"><a href="_unity_web_request_download_agent_helper_8cs.html#a9084eedf9b8c1b9c0fb3e425c1f69c1f">Utility</a></div><div class="ttdeci">GameFramework.Utility Utility</div><div class="ttdef"><b>Definition:</b> <a href="_unity_web_request_download_agent_helper_8cs_source.html#l00016">UnityWebRequestDownloadAgentHelper.cs:16</a></div></div>
+<div class="ttc" id="aclass_game_framework_1_1_file_system_1_1_file_system_stream_html"><div class="ttname"><a href="class_game_framework_1_1_file_system_1_1_file_system_stream.html">GameFramework.FileSystem.FileSystemStream</a></div><div class="ttdoc">文件系统流。</div><div class="ttdef"><b>Definition:</b> <a href="_file_system_stream_8cs_source.html#l00016">FileSystemStream.cs:17</a></div></div>
+<div class="ttc" id="aclass_game_framework_1_1_game_framework_exception_html"><div class="ttname"><a href="class_game_framework_1_1_game_framework_exception.html">GameFramework.GameFrameworkException</a></div><div class="ttdoc">游戏框架异常类。</div><div class="ttdef"><b>Definition:</b> <a href="_game_framework_exception_8cs_source.html#l00017">GameFrameworkException.cs:18</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_runtime_1_1_android_file_system_stream_html"><div class="ttname"><a href="class_unity_game_framework_1_1_runtime_1_1_android_file_system_stream.html">UnityGameFramework.Runtime.AndroidFileSystemStream</a></div><div class="ttdoc">安卓文件系统流。</div><div class="ttdef"><b>Definition:</b> <a href="_android_file_system_stream_8cs_source.html#l00019">AndroidFileSystemStream.cs:20</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_runtime_1_1_android_file_system_stream_html_a0906d96f6e5d6a7dc00bf2fe4e67424d"><div class="ttname"><a href="class_unity_game_framework_1_1_runtime_1_1_android_file_system_stream.html#a0906d96f6e5d6a7dc00bf2fe4e67424d">UnityGameFramework.Runtime.AndroidFileSystemStream.Write</a></div><div class="ttdeci">override void Write(byte[] buffer, int startIndex, int length)</div><div class="ttdoc">向文件系统流中写入二进制流。</div><div class="ttdef"><b>Definition:</b> <a href="_android_file_system_stream_8cs_source.html#l00204">AndroidFileSystemStream.cs:204</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_runtime_1_1_android_file_system_stream_html_a4cfe8b06039c4df6fd00d9dd5096db45"><div class="ttname"><a href="class_unity_game_framework_1_1_runtime_1_1_android_file_system_stream.html#a4cfe8b06039c4df6fd00d9dd5096db45">UnityGameFramework.Runtime.AndroidFileSystemStream.Close</a></div><div class="ttdeci">override void Close()</div><div class="ttdoc">关闭文件系统流。</div><div class="ttdef"><b>Definition:</b> <a href="_android_file_system_stream_8cs_source.html#l00220">AndroidFileSystemStream.cs:220</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_runtime_1_1_android_file_system_stream_html_a5365e89bd4942818b02b77e2f0707f42"><div class="ttname"><a href="class_unity_game_framework_1_1_runtime_1_1_android_file_system_stream.html#a5365e89bd4942818b02b77e2f0707f42">UnityGameFramework.Runtime.AndroidFileSystemStream.AndroidFileSystemStream</a></div><div class="ttdeci">AndroidFileSystemStream(string fullPath, FileSystemAccess access, bool createNew)</div><div class="ttdoc">初始化安卓文件系统流的新实例。</div><div class="ttdef"><b>Definition:</b> <a href="_android_file_system_stream_8cs_source.html#l00067">AndroidFileSystemStream.cs:67</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_runtime_1_1_android_file_system_stream_html_a5548b9ec5b398ab2f586cb1763c8e10e"><div class="ttname"><a href="class_unity_game_framework_1_1_runtime_1_1_android_file_system_stream.html#a5548b9ec5b398ab2f586cb1763c8e10e">UnityGameFramework.Runtime.AndroidFileSystemStream.SetLength</a></div><div class="ttdeci">override void SetLength(long length)</div><div class="ttdoc">设置文件系统流长度。</div><div class="ttdef"><b>Definition:</b> <a href="_android_file_system_stream_8cs_source.html#l00130">AndroidFileSystemStream.cs:130</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_runtime_1_1_android_file_system_stream_html_a692527c2077c283e7bab32a39dbd4abb"><div class="ttname"><a href="class_unity_game_framework_1_1_runtime_1_1_android_file_system_stream.html#a692527c2077c283e7bab32a39dbd4abb">UnityGameFramework.Runtime.AndroidFileSystemStream.Seek</a></div><div class="ttdeci">override void Seek(long offset, SeekOrigin origin)</div><div class="ttdoc">定位文件系统流位置。</div><div class="ttdef"><b>Definition:</b> <a href="_android_file_system_stream_8cs_source.html#l00140">AndroidFileSystemStream.cs:140</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_runtime_1_1_android_file_system_stream_html_a6c9a26a4e89abfde59ea134ca8644614"><div class="ttname"><a href="class_unity_game_framework_1_1_runtime_1_1_android_file_system_stream.html#a6c9a26a4e89abfde59ea134ca8644614">UnityGameFramework.Runtime.AndroidFileSystemStream.Length</a></div><div class="ttdeci">override long Length</div><div class="ttdoc">获取文件系统流长度。</div><div class="ttdef"><b>Definition:</b> <a href="_android_file_system_stream_8cs_source.html#l00118">AndroidFileSystemStream.cs:119</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_runtime_1_1_android_file_system_stream_html_a8582940719ae38bf0abadec25bf4f7c9"><div class="ttname"><a href="class_unity_game_framework_1_1_runtime_1_1_android_file_system_stream.html#a8582940719ae38bf0abadec25bf4f7c9">UnityGameFramework.Runtime.AndroidFileSystemStream.Position</a></div><div class="ttdeci">override long Position</div><div class="ttdoc">获取或设置文件系统流位置。</div><div class="ttdef"><b>Definition:</b> <a href="_android_file_system_stream_8cs_source.html#l00103">AndroidFileSystemStream.cs:104</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_runtime_1_1_android_file_system_stream_html_ad11f929ae5163d248e254d673b43aab5"><div class="ttname"><a href="class_unity_game_framework_1_1_runtime_1_1_android_file_system_stream.html#ad11f929ae5163d248e254d673b43aab5">UnityGameFramework.Runtime.AndroidFileSystemStream.Flush</a></div><div class="ttdeci">override void Flush()</div><div class="ttdoc">将文件系统流立刻更新到存储介质中。</div><div class="ttdef"><b>Definition:</b> <a href="_android_file_system_stream_8cs_source.html#l00212">AndroidFileSystemStream.cs:212</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_runtime_1_1_android_file_system_stream_html_ad29df612660fae6434940ccbe70494d8"><div class="ttname"><a href="class_unity_game_framework_1_1_runtime_1_1_android_file_system_stream.html#ad29df612660fae6434940ccbe70494d8">UnityGameFramework.Runtime.AndroidFileSystemStream.ReadByte</a></div><div class="ttdeci">override int ReadByte()</div><div class="ttdoc">从文件系统流中读取一个字节。</div><div class="ttdef"><b>Definition:</b> <a href="_android_file_system_stream_8cs_source.html#l00169">AndroidFileSystemStream.cs:169</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_runtime_1_1_android_file_system_stream_html_ae014eb66cf8e3efcea85be2ccdd64768"><div class="ttname"><a href="class_unity_game_framework_1_1_runtime_1_1_android_file_system_stream.html#ae014eb66cf8e3efcea85be2ccdd64768">UnityGameFramework.Runtime.AndroidFileSystemStream.Read</a></div><div class="ttdeci">override int Read(byte[] buffer, int startIndex, int length)</div><div class="ttdoc">从文件系统流中读取二进制流。</div><div class="ttdef"><b>Definition:</b> <a href="_android_file_system_stream_8cs_source.html#l00181">AndroidFileSystemStream.cs:181</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_runtime_1_1_android_file_system_stream_html_ae2df5a4035dcccd1126e36335f06d88f"><div class="ttname"><a href="class_unity_game_framework_1_1_runtime_1_1_android_file_system_stream.html#ae2df5a4035dcccd1126e36335f06d88f">UnityGameFramework.Runtime.AndroidFileSystemStream.WriteByte</a></div><div class="ttdeci">override void WriteByte(byte value)</div><div class="ttdoc">向文件系统流中写入一个字节。</div><div class="ttdef"><b>Definition:</b> <a href="_android_file_system_stream_8cs_source.html#l00193">AndroidFileSystemStream.cs:193</a></div></div>
+<div class="ttc" id="anamespace_game_framework_1_1_file_system_html"><div class="ttname"><a href="namespace_game_framework_1_1_file_system.html">GameFramework.FileSystem</a></div><div class="ttdef"><b>Definition:</b> <a href="_common_file_system_stream_8cs_source.html#l00011">CommonFileSystemStream.cs:12</a></div></div>
+<div class="ttc" id="anamespace_game_framework_1_1_file_system_html_a5ee368c10e2ba2cea40f726391addfff"><div class="ttname"><a href="namespace_game_framework_1_1_file_system.html#a5ee368c10e2ba2cea40f726391addfff">GameFramework.FileSystem.FileSystemAccess</a></div><div class="ttdeci">FileSystemAccess</div><div class="ttdoc">文件系统访问方式。</div><div class="ttdef"><b>Definition:</b> <a href="_file_system_access_8cs_source.html#l00016">FileSystemAccess.cs:17</a></div></div>
+<div class="ttc" id="anamespace_game_framework_html"><div class="ttname"><a href="namespace_game_framework.html">GameFramework</a></div><div class="ttdef"><b>Definition:</b> <a href="_data_provider_8cs_source.html#l00011">DataProvider.cs:12</a></div></div>
+<div class="ttc" id="anamespace_system_html"><div class="ttname"><a href="namespace_system.html">System</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_method_builder_attribute_8cs_source.html#l00001">AsyncMethodBuilderAttribute.cs:2</a></div></div>
+<div class="ttc" id="anamespace_unity_engine_html"><div class="ttname"><a href="namespace_unity_engine.html">UnityEngine</a></div><div class="ttdef"><b>Definition:</b> <a href="_mathf_8cs_source.html#l00003">Mathf.cs:4</a></div></div>
+<div class="ttc" id="anamespace_unity_game_framework_1_1_runtime_html"><div class="ttname"><a href="namespace_unity_game_framework_1_1_runtime.html">UnityGameFramework.Runtime</a></div><div class="ttdef"><b>Definition:</b> <a href="_base_component_8cs_source.html#l00014">BaseComponent.cs:15</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_84bbf7b3c7f28a5a18725745e1505219.html">Assets</a></li><li class="navelem"><a class="el" href="dir_f13b41af88cf68434578284aaf699e39.html">Scripts</a></li><li class="navelem"><a class="el" href="dir_46d134a3bf82cf4dc49ca8f728aea58c.html">Libraries</a></li><li class="navelem"><a class="el" href="dir_7a6862c303020716b3c311e95823547c.html">GameFramework</a></li><li class="navelem"><a class="el" href="dir_1d9b7e2b1e68805cdf4440a735859529.html">Scripts</a></li><li class="navelem"><a class="el" href="dir_e81cefffdbcf8632d0c6357d5d83ba40.html">Runtime</a></li><li class="navelem"><a class="el" href="dir_65dd654df1d023ba2a8207655d143cf7.html">FileSystem</a></li><li class="navelem"><a class="el" href="_android_file_system_stream_8cs.html">AndroidFileSystemStream.cs</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:24:49 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

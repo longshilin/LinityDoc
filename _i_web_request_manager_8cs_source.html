@@ -1,0 +1,234 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: Assets/Scripts/Libraries/GameFramework/Libraries/GameFramework-2021.05.31/GameFramework/WebRequest/IWebRequestManager.cs 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_i_web_request_manager_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">IWebRequestManager.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_i_web_request_manager_8cs.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">//------------------------------------------------------------</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">// Game Framework</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">// Copyright © 2013-2021 Jiang Yin. All rights reserved.</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">// Homepage: https://gameframework.cn/</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">// Feedback: mailto:ellan@gameframework.cn</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">//------------------------------------------------------------</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Collections.Generic;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_game_framework_1_1_web_request.html">GameFramework.WebRequest</a></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;{</div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_web_request_1_1_i_web_request_manager.html">   16</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">interface </span><a class="code" href="interface_game_framework_1_1_web_request_1_1_i_web_request_manager.html">IWebRequestManager</a></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    {</div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_web_request_1_1_i_web_request_manager.html#a94fac6dc4e8fd26bf58f87af01254701">   21</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="interface_game_framework_1_1_web_request_1_1_i_web_request_manager.html#a94fac6dc4e8fd26bf58f87af01254701">TotalAgentCount</a></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        {</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;            <span class="keyword">get</span>;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        }</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_web_request_1_1_i_web_request_manager.html#a80429e5ce441197683279e68056d1a77">   29</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="interface_game_framework_1_1_web_request_1_1_i_web_request_manager.html#a80429e5ce441197683279e68056d1a77">FreeAgentCount</a></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        {</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;            <span class="keyword">get</span>;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        }</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_web_request_1_1_i_web_request_manager.html#a5e33cefe56c267eac6b89dd343158703">   37</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="interface_game_framework_1_1_web_request_1_1_i_web_request_manager.html#a5e33cefe56c267eac6b89dd343158703">WorkingAgentCount</a></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        {</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;            <span class="keyword">get</span>;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        }</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_web_request_1_1_i_web_request_manager.html#ad625ee1e5c69d81a9cdc357e1bef57bb">   45</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="interface_game_framework_1_1_web_request_1_1_i_web_request_manager.html#ad625ee1e5c69d81a9cdc357e1bef57bb">WaitingTaskCount</a></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        {</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            <span class="keyword">get</span>;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        }</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_web_request_1_1_i_web_request_manager.html#a70b9c3507c03e894411d0ff615ec319e">   53</a></span>&#160;        <span class="keywordtype">float</span> <a class="code" href="interface_game_framework_1_1_web_request_1_1_i_web_request_manager.html#a70b9c3507c03e894411d0ff615ec319e">Timeout</a></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        {</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            <span class="keyword">get</span>;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            <span class="keyword">set</span>;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        }</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_web_request_1_1_i_web_request_manager.html#a4c9d413887e96f6a84903da89b53206d">   62</a></span>&#160;        <span class="keyword">event</span> EventHandler&lt;WebRequestStartEventArgs&gt; <a class="code" href="interface_game_framework_1_1_web_request_1_1_i_web_request_manager.html#a4c9d413887e96f6a84903da89b53206d">WebRequestStart</a>;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_web_request_1_1_i_web_request_manager.html#a04322555b20f2e53000bef545edaa215">   67</a></span>&#160;        <span class="keyword">event</span> EventHandler&lt;WebRequestSuccessEventArgs&gt; <a class="code" href="interface_game_framework_1_1_web_request_1_1_i_web_request_manager.html#a04322555b20f2e53000bef545edaa215">WebRequestSuccess</a>;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_web_request_1_1_i_web_request_manager.html#a99291eb0ca59d936d99ca5b578dc2132">   72</a></span>&#160;        <span class="keyword">event</span> EventHandler&lt;WebRequestFailureEventArgs&gt; <a class="code" href="interface_game_framework_1_1_web_request_1_1_i_web_request_manager.html#a99291eb0ca59d936d99ca5b578dc2132">WebRequestFailure</a>;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
+<div class="line"><a name="l00078"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_web_request_1_1_i_web_request_manager.html#aaa0083f65a8019bf002672bd36e14623">   78</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="interface_game_framework_1_1_web_request_1_1_i_web_request_manager.html#aaa0083f65a8019bf002672bd36e14623">AddWebRequestAgentHelper</a>(<a class="code" href="interface_game_framework_1_1_web_request_1_1_i_web_request_agent_helper.html">IWebRequestAgentHelper</a> webRequestAgentHelper);</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
+<div class="line"><a name="l00085"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_web_request_1_1_i_web_request_manager.html#ace06688fe20fce4833072b5bcffc6dd4">   85</a></span>&#160;        <a class="code" href="struct_game_framework_1_1_task_info.html">TaskInfo</a> <a class="code" href="interface_game_framework_1_1_web_request_1_1_i_web_request_manager.html#ace06688fe20fce4833072b5bcffc6dd4">GetWebRequestInfo</a>(<span class="keywordtype">int</span> serialId);</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
+<div class="line"><a name="l00092"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_web_request_1_1_i_web_request_manager.html#ad7c62a1d737deba9179a6345f18bb29e">   92</a></span>&#160;        <a class="code" href="struct_game_framework_1_1_task_info.html">TaskInfo</a>[] <a class="code" href="interface_game_framework_1_1_web_request_1_1_i_web_request_manager.html#ad7c62a1d737deba9179a6345f18bb29e">GetWebRequestInfos</a>(<span class="keywordtype">string</span> tag);</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
+<div class="line"><a name="l00099"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_web_request_1_1_i_web_request_manager.html#aaf5ac1bebc50c3c228815f9091f12d34">   99</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="interface_game_framework_1_1_web_request_1_1_i_web_request_manager.html#aaf5ac1bebc50c3c228815f9091f12d34">GetAllWebRequestInfos</a>(<span class="keywordtype">string</span> tag, List&lt;TaskInfo&gt; results);</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
+<div class="line"><a name="l00105"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_web_request_1_1_i_web_request_manager.html#aa317353a8900791df19d6c42d710f605">  105</a></span>&#160;        <a class="code" href="struct_game_framework_1_1_task_info.html">TaskInfo</a>[] <a class="code" href="interface_game_framework_1_1_web_request_1_1_i_web_request_manager.html#aa317353a8900791df19d6c42d710f605">GetAllWebRequestInfos</a>();</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
+<div class="line"><a name="l00111"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_web_request_1_1_i_web_request_manager.html#a6fc036dc1542f5bf01e7261940c28ccb">  111</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="interface_game_framework_1_1_web_request_1_1_i_web_request_manager.html#a6fc036dc1542f5bf01e7261940c28ccb">GetAllWebRequestInfos</a>(List&lt;TaskInfo&gt; results);</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160; </div>
+<div class="line"><a name="l00118"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_web_request_1_1_i_web_request_manager.html#a10cf866b72a9929bdd4deb09b8858e7d">  118</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="interface_game_framework_1_1_web_request_1_1_i_web_request_manager.html#a10cf866b72a9929bdd4deb09b8858e7d">AddWebRequest</a>(<span class="keywordtype">string</span> webRequestUri);</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160; </div>
+<div class="line"><a name="l00126"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_web_request_1_1_i_web_request_manager.html#a6af21c015a9e2362eda80dd3d9d394a2">  126</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="interface_game_framework_1_1_web_request_1_1_i_web_request_manager.html#a6af21c015a9e2362eda80dd3d9d394a2">AddWebRequest</a>(<span class="keywordtype">string</span> webRequestUri, <span class="keywordtype">byte</span>[] postData);</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160; </div>
+<div class="line"><a name="l00134"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_web_request_1_1_i_web_request_manager.html#af6997a8892496fdb7d719189fe02e2db">  134</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="interface_game_framework_1_1_web_request_1_1_i_web_request_manager.html#af6997a8892496fdb7d719189fe02e2db">AddWebRequest</a>(<span class="keywordtype">string</span> webRequestUri, <span class="keywordtype">string</span> tag);</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160; </div>
+<div class="line"><a name="l00142"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_web_request_1_1_i_web_request_manager.html#acfe7e3df8c3519449fff8eaeebde6b44">  142</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="interface_game_framework_1_1_web_request_1_1_i_web_request_manager.html#acfe7e3df8c3519449fff8eaeebde6b44">AddWebRequest</a>(<span class="keywordtype">string</span> webRequestUri, <span class="keywordtype">int</span> priority);</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160; </div>
+<div class="line"><a name="l00150"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_web_request_1_1_i_web_request_manager.html#aa4dff9e3b7a1dee6589eb1921bab4621">  150</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="interface_game_framework_1_1_web_request_1_1_i_web_request_manager.html#aa4dff9e3b7a1dee6589eb1921bab4621">AddWebRequest</a>(<span class="keywordtype">string</span> webRequestUri, <span class="keywordtype">object</span> userData);</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160; </div>
+<div class="line"><a name="l00159"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_web_request_1_1_i_web_request_manager.html#a8404058cf1e2e987c47a126aaec29b49">  159</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="interface_game_framework_1_1_web_request_1_1_i_web_request_manager.html#a8404058cf1e2e987c47a126aaec29b49">AddWebRequest</a>(<span class="keywordtype">string</span> webRequestUri, <span class="keywordtype">byte</span>[] postData, <span class="keywordtype">string</span> tag);</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160; </div>
+<div class="line"><a name="l00168"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_web_request_1_1_i_web_request_manager.html#a0a736669bdb7e135b514021a1f5da97c">  168</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="interface_game_framework_1_1_web_request_1_1_i_web_request_manager.html#a0a736669bdb7e135b514021a1f5da97c">AddWebRequest</a>(<span class="keywordtype">string</span> webRequestUri, <span class="keywordtype">byte</span>[] postData, <span class="keywordtype">int</span> priority);</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160; </div>
+<div class="line"><a name="l00177"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_web_request_1_1_i_web_request_manager.html#ae3ddffe01e524a00e750459a8422370c">  177</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="interface_game_framework_1_1_web_request_1_1_i_web_request_manager.html#ae3ddffe01e524a00e750459a8422370c">AddWebRequest</a>(<span class="keywordtype">string</span> webRequestUri, <span class="keywordtype">byte</span>[] postData, <span class="keywordtype">object</span> userData);</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160; </div>
+<div class="line"><a name="l00186"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_web_request_1_1_i_web_request_manager.html#a1a284c3b8b1298040587c4174ff94abe">  186</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="interface_game_framework_1_1_web_request_1_1_i_web_request_manager.html#a1a284c3b8b1298040587c4174ff94abe">AddWebRequest</a>(<span class="keywordtype">string</span> webRequestUri, <span class="keywordtype">string</span> tag, <span class="keywordtype">int</span> priority);</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160; </div>
+<div class="line"><a name="l00195"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_web_request_1_1_i_web_request_manager.html#aa1d92cea7e2794bedca2844c30c8817d">  195</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="interface_game_framework_1_1_web_request_1_1_i_web_request_manager.html#aa1d92cea7e2794bedca2844c30c8817d">AddWebRequest</a>(<span class="keywordtype">string</span> webRequestUri, <span class="keywordtype">string</span> tag, <span class="keywordtype">object</span> userData);</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160; </div>
+<div class="line"><a name="l00204"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_web_request_1_1_i_web_request_manager.html#a5b0e012245e8ba5733a0ca3d9a64f611">  204</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="interface_game_framework_1_1_web_request_1_1_i_web_request_manager.html#a5b0e012245e8ba5733a0ca3d9a64f611">AddWebRequest</a>(<span class="keywordtype">string</span> webRequestUri, <span class="keywordtype">int</span> priority, <span class="keywordtype">object</span> userData);</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160; </div>
+<div class="line"><a name="l00214"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_web_request_1_1_i_web_request_manager.html#ac004e7b2096dd597a87db3197dcb2514">  214</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="interface_game_framework_1_1_web_request_1_1_i_web_request_manager.html#ac004e7b2096dd597a87db3197dcb2514">AddWebRequest</a>(<span class="keywordtype">string</span> webRequestUri, <span class="keywordtype">byte</span>[] postData, <span class="keywordtype">string</span> tag, <span class="keywordtype">int</span> priority);</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160; </div>
+<div class="line"><a name="l00224"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_web_request_1_1_i_web_request_manager.html#a47442d32dc8508b8ac52822fdfffd82a">  224</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="interface_game_framework_1_1_web_request_1_1_i_web_request_manager.html#a47442d32dc8508b8ac52822fdfffd82a">AddWebRequest</a>(<span class="keywordtype">string</span> webRequestUri, <span class="keywordtype">byte</span>[] postData, <span class="keywordtype">string</span> tag, <span class="keywordtype">object</span> userData);</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160; </div>
+<div class="line"><a name="l00234"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_web_request_1_1_i_web_request_manager.html#a8b8d7ea9c82f5abc47103e1f3bc6d90e">  234</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="interface_game_framework_1_1_web_request_1_1_i_web_request_manager.html#a8b8d7ea9c82f5abc47103e1f3bc6d90e">AddWebRequest</a>(<span class="keywordtype">string</span> webRequestUri, <span class="keywordtype">byte</span>[] postData, <span class="keywordtype">int</span> priority, <span class="keywordtype">object</span> userData);</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160; </div>
+<div class="line"><a name="l00244"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_web_request_1_1_i_web_request_manager.html#a773a41b796c5870d57b68ced862bab19">  244</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="interface_game_framework_1_1_web_request_1_1_i_web_request_manager.html#a773a41b796c5870d57b68ced862bab19">AddWebRequest</a>(<span class="keywordtype">string</span> webRequestUri, <span class="keywordtype">string</span> tag, <span class="keywordtype">int</span> priority, <span class="keywordtype">object</span> userData);</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160; </div>
+<div class="line"><a name="l00255"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_web_request_1_1_i_web_request_manager.html#a81f52879e3da644ba012f04ffd1b87ea">  255</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="interface_game_framework_1_1_web_request_1_1_i_web_request_manager.html#a81f52879e3da644ba012f04ffd1b87ea">AddWebRequest</a>(<span class="keywordtype">string</span> webRequestUri, <span class="keywordtype">byte</span>[] postData, <span class="keywordtype">string</span> tag, <span class="keywordtype">int</span> priority, <span class="keywordtype">object</span> userData);</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160; </div>
+<div class="line"><a name="l00262"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_web_request_1_1_i_web_request_manager.html#a7b5bd2aa3e806332d3e8be7209378289">  262</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="interface_game_framework_1_1_web_request_1_1_i_web_request_manager.html#a7b5bd2aa3e806332d3e8be7209378289">RemoveWebRequest</a>(<span class="keywordtype">int</span> serialId);</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160; </div>
+<div class="line"><a name="l00269"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_web_request_1_1_i_web_request_manager.html#a0c688445af1906df36e88a84f05c0306">  269</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="interface_game_framework_1_1_web_request_1_1_i_web_request_manager.html#a0c688445af1906df36e88a84f05c0306">RemoveWebRequests</a>(<span class="keywordtype">string</span> tag);</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160; </div>
+<div class="line"><a name="l00275"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_web_request_1_1_i_web_request_manager.html#a7dba91192329998256f513b1ccee9767">  275</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="interface_game_framework_1_1_web_request_1_1_i_web_request_manager.html#a7dba91192329998256f513b1ccee9767">RemoveAllWebRequests</a>();</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;    }</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;}</div>
+<div class="ttc" id="ainterface_game_framework_1_1_web_request_1_1_i_web_request_agent_helper_html"><div class="ttname"><a href="interface_game_framework_1_1_web_request_1_1_i_web_request_agent_helper.html">GameFramework.WebRequest.IWebRequestAgentHelper</a></div><div class="ttdoc">Web 请求代理辅助器接口。</div><div class="ttdef"><b>Definition:</b> <a href="_i_web_request_agent_helper_8cs_source.html#l00015">IWebRequestAgentHelper.cs:16</a></div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_web_request_1_1_i_web_request_manager_html"><div class="ttname"><a href="interface_game_framework_1_1_web_request_1_1_i_web_request_manager.html">GameFramework.WebRequest.IWebRequestManager</a></div><div class="ttdoc">Web 请求管理器接口。</div><div class="ttdef"><b>Definition:</b> <a href="_i_web_request_manager_8cs_source.html#l00016">IWebRequestManager.cs:17</a></div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_web_request_1_1_i_web_request_manager_html_a04322555b20f2e53000bef545edaa215"><div class="ttname"><a href="interface_game_framework_1_1_web_request_1_1_i_web_request_manager.html#a04322555b20f2e53000bef545edaa215">GameFramework.WebRequest.IWebRequestManager.WebRequestSuccess</a></div><div class="ttdeci">EventHandler&lt; WebRequestSuccessEventArgs &gt; WebRequestSuccess</div><div class="ttdoc">Web 请求成功事件。</div><div class="ttdef"><b>Definition:</b> <a href="_i_web_request_manager_8cs_source.html#l00067">IWebRequestManager.cs:67</a></div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_web_request_1_1_i_web_request_manager_html_a0a736669bdb7e135b514021a1f5da97c"><div class="ttname"><a href="interface_game_framework_1_1_web_request_1_1_i_web_request_manager.html#a0a736669bdb7e135b514021a1f5da97c">GameFramework.WebRequest.IWebRequestManager.AddWebRequest</a></div><div class="ttdeci">int AddWebRequest(string webRequestUri, byte[] postData, int priority)</div><div class="ttdoc">增加 Web 请求任务。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_web_request_1_1_i_web_request_manager_html_a0c688445af1906df36e88a84f05c0306"><div class="ttname"><a href="interface_game_framework_1_1_web_request_1_1_i_web_request_manager.html#a0c688445af1906df36e88a84f05c0306">GameFramework.WebRequest.IWebRequestManager.RemoveWebRequests</a></div><div class="ttdeci">int RemoveWebRequests(string tag)</div><div class="ttdoc">根据 Web 请求任务的标签移除 Web 请求任务。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_web_request_1_1_i_web_request_manager_html_a10cf866b72a9929bdd4deb09b8858e7d"><div class="ttname"><a href="interface_game_framework_1_1_web_request_1_1_i_web_request_manager.html#a10cf866b72a9929bdd4deb09b8858e7d">GameFramework.WebRequest.IWebRequestManager.AddWebRequest</a></div><div class="ttdeci">int AddWebRequest(string webRequestUri)</div><div class="ttdoc">增加 Web 请求任务。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_web_request_1_1_i_web_request_manager_html_a1a284c3b8b1298040587c4174ff94abe"><div class="ttname"><a href="interface_game_framework_1_1_web_request_1_1_i_web_request_manager.html#a1a284c3b8b1298040587c4174ff94abe">GameFramework.WebRequest.IWebRequestManager.AddWebRequest</a></div><div class="ttdeci">int AddWebRequest(string webRequestUri, string tag, int priority)</div><div class="ttdoc">增加 Web 请求任务。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_web_request_1_1_i_web_request_manager_html_a47442d32dc8508b8ac52822fdfffd82a"><div class="ttname"><a href="interface_game_framework_1_1_web_request_1_1_i_web_request_manager.html#a47442d32dc8508b8ac52822fdfffd82a">GameFramework.WebRequest.IWebRequestManager.AddWebRequest</a></div><div class="ttdeci">int AddWebRequest(string webRequestUri, byte[] postData, string tag, object userData)</div><div class="ttdoc">增加 Web 请求任务。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_web_request_1_1_i_web_request_manager_html_a4c9d413887e96f6a84903da89b53206d"><div class="ttname"><a href="interface_game_framework_1_1_web_request_1_1_i_web_request_manager.html#a4c9d413887e96f6a84903da89b53206d">GameFramework.WebRequest.IWebRequestManager.WebRequestStart</a></div><div class="ttdeci">EventHandler&lt; WebRequestStartEventArgs &gt; WebRequestStart</div><div class="ttdoc">Web 请求开始事件。</div><div class="ttdef"><b>Definition:</b> <a href="_i_web_request_manager_8cs_source.html#l00062">IWebRequestManager.cs:62</a></div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_web_request_1_1_i_web_request_manager_html_a5b0e012245e8ba5733a0ca3d9a64f611"><div class="ttname"><a href="interface_game_framework_1_1_web_request_1_1_i_web_request_manager.html#a5b0e012245e8ba5733a0ca3d9a64f611">GameFramework.WebRequest.IWebRequestManager.AddWebRequest</a></div><div class="ttdeci">int AddWebRequest(string webRequestUri, int priority, object userData)</div><div class="ttdoc">增加 Web 请求任务。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_web_request_1_1_i_web_request_manager_html_a5e33cefe56c267eac6b89dd343158703"><div class="ttname"><a href="interface_game_framework_1_1_web_request_1_1_i_web_request_manager.html#a5e33cefe56c267eac6b89dd343158703">GameFramework.WebRequest.IWebRequestManager.WorkingAgentCount</a></div><div class="ttdeci">int WorkingAgentCount</div><div class="ttdoc">获取工作中 Web 请求代理数量。</div><div class="ttdef"><b>Definition:</b> <a href="_i_web_request_manager_8cs_source.html#l00037">IWebRequestManager.cs:38</a></div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_web_request_1_1_i_web_request_manager_html_a6af21c015a9e2362eda80dd3d9d394a2"><div class="ttname"><a href="interface_game_framework_1_1_web_request_1_1_i_web_request_manager.html#a6af21c015a9e2362eda80dd3d9d394a2">GameFramework.WebRequest.IWebRequestManager.AddWebRequest</a></div><div class="ttdeci">int AddWebRequest(string webRequestUri, byte[] postData)</div><div class="ttdoc">增加 Web 请求任务。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_web_request_1_1_i_web_request_manager_html_a6fc036dc1542f5bf01e7261940c28ccb"><div class="ttname"><a href="interface_game_framework_1_1_web_request_1_1_i_web_request_manager.html#a6fc036dc1542f5bf01e7261940c28ccb">GameFramework.WebRequest.IWebRequestManager.GetAllWebRequestInfos</a></div><div class="ttdeci">void GetAllWebRequestInfos(List&lt; TaskInfo &gt; results)</div><div class="ttdoc">获取所有 Web 请求任务的信息。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_web_request_1_1_i_web_request_manager_html_a70b9c3507c03e894411d0ff615ec319e"><div class="ttname"><a href="interface_game_framework_1_1_web_request_1_1_i_web_request_manager.html#a70b9c3507c03e894411d0ff615ec319e">GameFramework.WebRequest.IWebRequestManager.Timeout</a></div><div class="ttdeci">float Timeout</div><div class="ttdoc">获取或设置 Web 请求超时时长，以秒为单位。</div><div class="ttdef"><b>Definition:</b> <a href="_i_web_request_manager_8cs_source.html#l00053">IWebRequestManager.cs:54</a></div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_web_request_1_1_i_web_request_manager_html_a773a41b796c5870d57b68ced862bab19"><div class="ttname"><a href="interface_game_framework_1_1_web_request_1_1_i_web_request_manager.html#a773a41b796c5870d57b68ced862bab19">GameFramework.WebRequest.IWebRequestManager.AddWebRequest</a></div><div class="ttdeci">int AddWebRequest(string webRequestUri, string tag, int priority, object userData)</div><div class="ttdoc">增加 Web 请求任务。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_web_request_1_1_i_web_request_manager_html_a7b5bd2aa3e806332d3e8be7209378289"><div class="ttname"><a href="interface_game_framework_1_1_web_request_1_1_i_web_request_manager.html#a7b5bd2aa3e806332d3e8be7209378289">GameFramework.WebRequest.IWebRequestManager.RemoveWebRequest</a></div><div class="ttdeci">bool RemoveWebRequest(int serialId)</div><div class="ttdoc">根据 Web 请求任务的序列编号移除 Web 请求任务。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_web_request_1_1_i_web_request_manager_html_a7dba91192329998256f513b1ccee9767"><div class="ttname"><a href="interface_game_framework_1_1_web_request_1_1_i_web_request_manager.html#a7dba91192329998256f513b1ccee9767">GameFramework.WebRequest.IWebRequestManager.RemoveAllWebRequests</a></div><div class="ttdeci">int RemoveAllWebRequests()</div><div class="ttdoc">移除所有 Web 请求任务。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_web_request_1_1_i_web_request_manager_html_a80429e5ce441197683279e68056d1a77"><div class="ttname"><a href="interface_game_framework_1_1_web_request_1_1_i_web_request_manager.html#a80429e5ce441197683279e68056d1a77">GameFramework.WebRequest.IWebRequestManager.FreeAgentCount</a></div><div class="ttdeci">int FreeAgentCount</div><div class="ttdoc">获取可用 Web 请求代理数量。</div><div class="ttdef"><b>Definition:</b> <a href="_i_web_request_manager_8cs_source.html#l00029">IWebRequestManager.cs:30</a></div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_web_request_1_1_i_web_request_manager_html_a81f52879e3da644ba012f04ffd1b87ea"><div class="ttname"><a href="interface_game_framework_1_1_web_request_1_1_i_web_request_manager.html#a81f52879e3da644ba012f04ffd1b87ea">GameFramework.WebRequest.IWebRequestManager.AddWebRequest</a></div><div class="ttdeci">int AddWebRequest(string webRequestUri, byte[] postData, string tag, int priority, object userData)</div><div class="ttdoc">增加 Web 请求任务。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_web_request_1_1_i_web_request_manager_html_a8404058cf1e2e987c47a126aaec29b49"><div class="ttname"><a href="interface_game_framework_1_1_web_request_1_1_i_web_request_manager.html#a8404058cf1e2e987c47a126aaec29b49">GameFramework.WebRequest.IWebRequestManager.AddWebRequest</a></div><div class="ttdeci">int AddWebRequest(string webRequestUri, byte[] postData, string tag)</div><div class="ttdoc">增加 Web 请求任务。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_web_request_1_1_i_web_request_manager_html_a8b8d7ea9c82f5abc47103e1f3bc6d90e"><div class="ttname"><a href="interface_game_framework_1_1_web_request_1_1_i_web_request_manager.html#a8b8d7ea9c82f5abc47103e1f3bc6d90e">GameFramework.WebRequest.IWebRequestManager.AddWebRequest</a></div><div class="ttdeci">int AddWebRequest(string webRequestUri, byte[] postData, int priority, object userData)</div><div class="ttdoc">增加 Web 请求任务。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_web_request_1_1_i_web_request_manager_html_a94fac6dc4e8fd26bf58f87af01254701"><div class="ttname"><a href="interface_game_framework_1_1_web_request_1_1_i_web_request_manager.html#a94fac6dc4e8fd26bf58f87af01254701">GameFramework.WebRequest.IWebRequestManager.TotalAgentCount</a></div><div class="ttdeci">int TotalAgentCount</div><div class="ttdoc">获取 Web 请求代理总数量。</div><div class="ttdef"><b>Definition:</b> <a href="_i_web_request_manager_8cs_source.html#l00021">IWebRequestManager.cs:22</a></div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_web_request_1_1_i_web_request_manager_html_a99291eb0ca59d936d99ca5b578dc2132"><div class="ttname"><a href="interface_game_framework_1_1_web_request_1_1_i_web_request_manager.html#a99291eb0ca59d936d99ca5b578dc2132">GameFramework.WebRequest.IWebRequestManager.WebRequestFailure</a></div><div class="ttdeci">EventHandler&lt; WebRequestFailureEventArgs &gt; WebRequestFailure</div><div class="ttdoc">Web 请求失败事件。</div><div class="ttdef"><b>Definition:</b> <a href="_i_web_request_manager_8cs_source.html#l00072">IWebRequestManager.cs:72</a></div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_web_request_1_1_i_web_request_manager_html_aa1d92cea7e2794bedca2844c30c8817d"><div class="ttname"><a href="interface_game_framework_1_1_web_request_1_1_i_web_request_manager.html#aa1d92cea7e2794bedca2844c30c8817d">GameFramework.WebRequest.IWebRequestManager.AddWebRequest</a></div><div class="ttdeci">int AddWebRequest(string webRequestUri, string tag, object userData)</div><div class="ttdoc">增加 Web 请求任务。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_web_request_1_1_i_web_request_manager_html_aa317353a8900791df19d6c42d710f605"><div class="ttname"><a href="interface_game_framework_1_1_web_request_1_1_i_web_request_manager.html#aa317353a8900791df19d6c42d710f605">GameFramework.WebRequest.IWebRequestManager.GetAllWebRequestInfos</a></div><div class="ttdeci">TaskInfo[] GetAllWebRequestInfos()</div><div class="ttdoc">获取所有 Web 请求任务的信息。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_web_request_1_1_i_web_request_manager_html_aa4dff9e3b7a1dee6589eb1921bab4621"><div class="ttname"><a href="interface_game_framework_1_1_web_request_1_1_i_web_request_manager.html#aa4dff9e3b7a1dee6589eb1921bab4621">GameFramework.WebRequest.IWebRequestManager.AddWebRequest</a></div><div class="ttdeci">int AddWebRequest(string webRequestUri, object userData)</div><div class="ttdoc">增加 Web 请求任务。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_web_request_1_1_i_web_request_manager_html_aaa0083f65a8019bf002672bd36e14623"><div class="ttname"><a href="interface_game_framework_1_1_web_request_1_1_i_web_request_manager.html#aaa0083f65a8019bf002672bd36e14623">GameFramework.WebRequest.IWebRequestManager.AddWebRequestAgentHelper</a></div><div class="ttdeci">void AddWebRequestAgentHelper(IWebRequestAgentHelper webRequestAgentHelper)</div><div class="ttdoc">增加 Web 请求代理辅助器。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_web_request_1_1_i_web_request_manager_html_aaf5ac1bebc50c3c228815f9091f12d34"><div class="ttname"><a href="interface_game_framework_1_1_web_request_1_1_i_web_request_manager.html#aaf5ac1bebc50c3c228815f9091f12d34">GameFramework.WebRequest.IWebRequestManager.GetAllWebRequestInfos</a></div><div class="ttdeci">void GetAllWebRequestInfos(string tag, List&lt; TaskInfo &gt; results)</div><div class="ttdoc">根据 Web 请求任务的标签获取 Web 请求任务的信息。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_web_request_1_1_i_web_request_manager_html_ac004e7b2096dd597a87db3197dcb2514"><div class="ttname"><a href="interface_game_framework_1_1_web_request_1_1_i_web_request_manager.html#ac004e7b2096dd597a87db3197dcb2514">GameFramework.WebRequest.IWebRequestManager.AddWebRequest</a></div><div class="ttdeci">int AddWebRequest(string webRequestUri, byte[] postData, string tag, int priority)</div><div class="ttdoc">增加 Web 请求任务。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_web_request_1_1_i_web_request_manager_html_ace06688fe20fce4833072b5bcffc6dd4"><div class="ttname"><a href="interface_game_framework_1_1_web_request_1_1_i_web_request_manager.html#ace06688fe20fce4833072b5bcffc6dd4">GameFramework.WebRequest.IWebRequestManager.GetWebRequestInfo</a></div><div class="ttdeci">TaskInfo GetWebRequestInfo(int serialId)</div><div class="ttdoc">根据 Web 请求任务的序列编号获取 Web 请求任务的信息。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_web_request_1_1_i_web_request_manager_html_acfe7e3df8c3519449fff8eaeebde6b44"><div class="ttname"><a href="interface_game_framework_1_1_web_request_1_1_i_web_request_manager.html#acfe7e3df8c3519449fff8eaeebde6b44">GameFramework.WebRequest.IWebRequestManager.AddWebRequest</a></div><div class="ttdeci">int AddWebRequest(string webRequestUri, int priority)</div><div class="ttdoc">增加 Web 请求任务。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_web_request_1_1_i_web_request_manager_html_ad625ee1e5c69d81a9cdc357e1bef57bb"><div class="ttname"><a href="interface_game_framework_1_1_web_request_1_1_i_web_request_manager.html#ad625ee1e5c69d81a9cdc357e1bef57bb">GameFramework.WebRequest.IWebRequestManager.WaitingTaskCount</a></div><div class="ttdeci">int WaitingTaskCount</div><div class="ttdoc">获取等待 Web 请求数量。</div><div class="ttdef"><b>Definition:</b> <a href="_i_web_request_manager_8cs_source.html#l00045">IWebRequestManager.cs:46</a></div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_web_request_1_1_i_web_request_manager_html_ad7c62a1d737deba9179a6345f18bb29e"><div class="ttname"><a href="interface_game_framework_1_1_web_request_1_1_i_web_request_manager.html#ad7c62a1d737deba9179a6345f18bb29e">GameFramework.WebRequest.IWebRequestManager.GetWebRequestInfos</a></div><div class="ttdeci">TaskInfo[] GetWebRequestInfos(string tag)</div><div class="ttdoc">根据 Web 请求任务的标签获取 Web 请求任务的信息。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_web_request_1_1_i_web_request_manager_html_ae3ddffe01e524a00e750459a8422370c"><div class="ttname"><a href="interface_game_framework_1_1_web_request_1_1_i_web_request_manager.html#ae3ddffe01e524a00e750459a8422370c">GameFramework.WebRequest.IWebRequestManager.AddWebRequest</a></div><div class="ttdeci">int AddWebRequest(string webRequestUri, byte[] postData, object userData)</div><div class="ttdoc">增加 Web 请求任务。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_web_request_1_1_i_web_request_manager_html_af6997a8892496fdb7d719189fe02e2db"><div class="ttname"><a href="interface_game_framework_1_1_web_request_1_1_i_web_request_manager.html#af6997a8892496fdb7d719189fe02e2db">GameFramework.WebRequest.IWebRequestManager.AddWebRequest</a></div><div class="ttdeci">int AddWebRequest(string webRequestUri, string tag)</div><div class="ttdoc">增加 Web 请求任务。</div></div>
+<div class="ttc" id="anamespace_game_framework_1_1_web_request_html"><div class="ttname"><a href="namespace_game_framework_1_1_web_request.html">GameFramework.WebRequest</a></div><div class="ttdef"><b>Definition:</b> <a href="_web_request_2_constant_8cs_source.html#l00008">Constant.cs:9</a></div></div>
+<div class="ttc" id="anamespace_system_html"><div class="ttname"><a href="namespace_system.html">System</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_method_builder_attribute_8cs_source.html#l00001">AsyncMethodBuilderAttribute.cs:2</a></div></div>
+<div class="ttc" id="astruct_game_framework_1_1_task_info_html"><div class="ttname"><a href="struct_game_framework_1_1_task_info.html">GameFramework.TaskInfo</a></div><div class="ttdoc">任务信息。</div><div class="ttdef"><b>Definition:</b> <a href="_task_info_8cs_source.html#l00016">TaskInfo.cs:17</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_84bbf7b3c7f28a5a18725745e1505219.html">Assets</a></li><li class="navelem"><a class="el" href="dir_f13b41af88cf68434578284aaf699e39.html">Scripts</a></li><li class="navelem"><a class="el" href="dir_46d134a3bf82cf4dc49ca8f728aea58c.html">Libraries</a></li><li class="navelem"><a class="el" href="dir_7a6862c303020716b3c311e95823547c.html">GameFramework</a></li><li class="navelem"><a class="el" href="dir_bfc6cd8d089c265c897460523cef6560.html">Libraries</a></li><li class="navelem"><a class="el" href="dir_c1104d2df307bba6f9db4e185ff99743.html">GameFramework-2021.05.31</a></li><li class="navelem"><a class="el" href="dir_fe759fdbe5a0d8b8465ec936ca1014c7.html">GameFramework</a></li><li class="navelem"><a class="el" href="dir_e1ee07fc597a7e8311f179cf0006b885.html">WebRequest</a></li><li class="navelem"><a class="el" href="_i_web_request_manager_8cs.html">IWebRequestManager.cs</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:24:48 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

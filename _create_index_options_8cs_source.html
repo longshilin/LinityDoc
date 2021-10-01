@@ -1,0 +1,321 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: ETServer/Server/ThirdParty/MongoDBDriver/MongoDB.Driver/CreateIndexOptions.cs 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_create_index_options_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">CreateIndexOptions.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_create_index_options_8cs.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/* Copyright 2010-present MongoDB Inc.</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">* Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">* you may not use this file except in compliance with the License.</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">* You may obtain a copy of the License at</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">* http://www.apache.org/licenses/LICENSE-2.0</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">* Unless required by applicable law or agreed to in writing, software</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">* distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">* See the License for the specific language governing permissions and</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">* limitations under the License.</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_mongo_d_b.html">MongoDB</a>.<a class="code" href="namespace_mongo_d_b_1_1_bson.html">Bson</a>;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_mongo_d_b_1_1_driver.html">MongoDB.Driver</a></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;{</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keyword">public</span> <span class="keyword">class </span>CreateIndexOptions</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    {</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <span class="comment">// fields</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">bool</span>? _background;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">int</span>? _bits;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">double</span>? _bucketSize;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <span class="keyword">private</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_create_index_options.html#a2f5905c35a4bc52dbe41235d8efd077d">Collation</a> _collation;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">string</span> _defaultLanguage;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <span class="keyword">private</span> TimeSpan? _expireAfter;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">string</span> _languageOverride;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">double</span>? _max;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">double</span>? _min;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">string</span> _name;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">bool</span>? _sparse;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">int</span>? _sphereIndexVersion;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <span class="keyword">private</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_document.html">BsonDocument</a> _storageEngine;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">int</span>? _textIndexVersion;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">bool</span>? _unique;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">int</span>? _version;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <span class="keyword">private</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_document.html">BsonDocument</a> _weights;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <span class="comment">// properties</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_create_index_options.html#adf672ace3d4c81ebe48a00480df3c14c">   49</a></span>&#160;<span class="comment"></span>        <span class="keyword">public</span> <span class="keywordtype">bool</span>? <a class="code" href="class_mongo_d_b_1_1_driver_1_1_create_index_options.html#adf672ace3d4c81ebe48a00480df3c14c">Background</a></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        {</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            <span class="keyword">get</span> { <span class="keywordflow">return</span> _background; }</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            <span class="keyword">set</span> { _background = value; }</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        }</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_create_index_options.html#ad414884ab17cc6af92a10414fbe6c7c1">   58</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">int</span>? <a class="code" href="class_mongo_d_b_1_1_driver_1_1_create_index_options.html#ad414884ab17cc6af92a10414fbe6c7c1">Bits</a></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        {</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;            <span class="keyword">get</span> { <span class="keywordflow">return</span> _bits; }</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            <span class="keyword">set</span> { _bits = value; }</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        }</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_create_index_options.html#a4371568451e3e7204f8e40e410f54836">   67</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">double</span>? <a class="code" href="class_mongo_d_b_1_1_driver_1_1_create_index_options.html#a4371568451e3e7204f8e40e410f54836">BucketSize</a></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        {</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            <span class="keyword">get</span> { <span class="keywordflow">return</span> _bucketSize; }</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            <span class="keyword">set</span> { _bucketSize = value; }</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        }</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
+<div class="line"><a name="l00076"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_create_index_options.html#a2f5905c35a4bc52dbe41235d8efd077d">   76</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_collation.html">Collation</a> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_collation.html">Collation</a></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        {</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            <span class="keyword">get</span> { <span class="keywordflow">return</span> _collation; }</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;            <span class="keyword">set</span> { _collation = value; }</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        }</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
+<div class="line"><a name="l00085"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_create_index_options.html#aa16122afa894ca7b5cec7b264ce104b7">   85</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">string</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_create_index_options.html#aa16122afa894ca7b5cec7b264ce104b7">DefaultLanguage</a></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        {</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;            <span class="keyword">get</span> { <span class="keywordflow">return</span> _defaultLanguage; }</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;            <span class="keyword">set</span> { _defaultLanguage = value; }</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        }</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
+<div class="line"><a name="l00094"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_create_index_options.html#aef9a8af3b94176907e0da294b1130698">   94</a></span>&#160;        <span class="keyword">public</span> TimeSpan? <a class="code" href="class_mongo_d_b_1_1_driver_1_1_create_index_options.html#aef9a8af3b94176907e0da294b1130698">ExpireAfter</a></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        {</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;            <span class="keyword">get</span> { <span class="keywordflow">return</span> _expireAfter; }</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;            <span class="keyword">set</span> { _expireAfter = value; }</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        }</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160; </div>
+<div class="line"><a name="l00103"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_create_index_options.html#a5404c517d06ed4383d656a55e0eedd98">  103</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">string</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_create_index_options.html#a5404c517d06ed4383d656a55e0eedd98">LanguageOverride</a></div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        {</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;            <span class="keyword">get</span> { <span class="keywordflow">return</span> _languageOverride; }</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;            <span class="keyword">set</span> { _languageOverride = value; }</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        }</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
+<div class="line"><a name="l00112"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_create_index_options.html#a27a51f66622a5fd7a1fd4cdfbf2a279d">  112</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">double</span>? <a class="code" href="class_mongo_d_b_1_1_driver_1_1_create_index_options.html#a27a51f66622a5fd7a1fd4cdfbf2a279d">Max</a></div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        {</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;            <span class="keyword">get</span> { <span class="keywordflow">return</span> _max; }</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;            <span class="keyword">set</span> { _max = value; }</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        }</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160; </div>
+<div class="line"><a name="l00121"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_create_index_options.html#a1f7fffbad566062017493465623e8baf">  121</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">double</span>? <a class="code" href="class_mongo_d_b_1_1_driver_1_1_create_index_options.html#a1f7fffbad566062017493465623e8baf">Min</a></div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        {</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;            <span class="keyword">get</span> { <span class="keywordflow">return</span> _min; }</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;            <span class="keyword">set</span> { _min = value; }</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        }</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160; </div>
+<div class="line"><a name="l00130"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_create_index_options.html#a00a91f5d12d0520df4e23580aa9afdf4">  130</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">string</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_create_index_options.html#a00a91f5d12d0520df4e23580aa9afdf4">Name</a></div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        {</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;            <span class="keyword">get</span> { <span class="keywordflow">return</span> _name; }</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;            <span class="keyword">set</span> { _name = value; }</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        }</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160; </div>
+<div class="line"><a name="l00139"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_create_index_options.html#abfcd29753d325f62742fae3dee8e96f6">  139</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">bool</span>? <a class="code" href="class_mongo_d_b_1_1_driver_1_1_create_index_options.html#abfcd29753d325f62742fae3dee8e96f6">Sparse</a></div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;        {</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;            <span class="keyword">get</span> { <span class="keywordflow">return</span> _sparse; }</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;            <span class="keyword">set</span> { _sparse = value; }</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;        }</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160; </div>
+<div class="line"><a name="l00148"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_create_index_options.html#aa493b3ed89f05e83c46e172d61dd5980">  148</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">int</span>? <a class="code" href="class_mongo_d_b_1_1_driver_1_1_create_index_options.html#aa493b3ed89f05e83c46e172d61dd5980">SphereIndexVersion</a></div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        {</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;            <span class="keyword">get</span> { <span class="keywordflow">return</span> _sphereIndexVersion; }</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;            <span class="keyword">set</span> { _sphereIndexVersion = value; }</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;        }</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160; </div>
+<div class="line"><a name="l00157"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_create_index_options.html#ad6c6ed53e77c1e827b500de2657a6a13">  157</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_document.html">BsonDocument</a> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_create_index_options.html#ad6c6ed53e77c1e827b500de2657a6a13">StorageEngine</a></div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;        {</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;            <span class="keyword">get</span> { <span class="keywordflow">return</span> _storageEngine; }</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;            <span class="keyword">set</span> { _storageEngine = value; }</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;        }</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160; </div>
+<div class="line"><a name="l00166"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_create_index_options.html#abc9f5e0d6c2f8751b4b5d62ffe98afbc">  166</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">int</span>? <a class="code" href="class_mongo_d_b_1_1_driver_1_1_create_index_options.html#abc9f5e0d6c2f8751b4b5d62ffe98afbc">TextIndexVersion</a></div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;        {</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;            <span class="keyword">get</span> { <span class="keywordflow">return</span> _textIndexVersion; }</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;            <span class="keyword">set</span> { _textIndexVersion = value; }</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;        }</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160; </div>
+<div class="line"><a name="l00175"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_create_index_options.html#a3d1e2e79d82cbff59a114fe68e09ca1f">  175</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">bool</span>? <a class="code" href="class_mongo_d_b_1_1_driver_1_1_create_index_options.html#a3d1e2e79d82cbff59a114fe68e09ca1f">Unique</a></div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;        {</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;            <span class="keyword">get</span> { <span class="keywordflow">return</span> _unique; }</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;            <span class="keyword">set</span> { _unique = value; }</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;        }</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160; </div>
+<div class="line"><a name="l00184"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_create_index_options.html#a2cee6d893f8ef759c173386f8ab1a570">  184</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">int</span>? <a class="code" href="class_mongo_d_b_1_1_driver_1_1_create_index_options.html#a2cee6d893f8ef759c173386f8ab1a570">Version</a></div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;        {</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;            <span class="keyword">get</span> { <span class="keywordflow">return</span> _version; }</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;            <span class="keyword">set</span> { _version = value; }</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;        }</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160; </div>
+<div class="line"><a name="l00193"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_create_index_options.html#a1eec25c10633df94c67c8a83a79b2a7d">  193</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_document.html">BsonDocument</a> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_create_index_options.html#a1eec25c10633df94c67c8a83a79b2a7d">Weights</a></div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;        {</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;            <span class="keyword">get</span> { <span class="keywordflow">return</span> _weights; }</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;            <span class="keyword">set</span> { _weights = value; }</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;        }</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;    }</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160; </div>
+<div class="line"><a name="l00204"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_create_index_options.html">  204</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="class_mongo_d_b_1_1_driver_1_1_create_index_options.html">CreateIndexOptions</a>&lt;TDocument&gt; : <a class="code" href="class_mongo_d_b_1_1_driver_1_1_create_index_options.html">CreateIndexOptions</a></div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;    {</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;<span class="preprocessor">        #region static</span></div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;        <span class="comment">// internal static methods</span></div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;        <span class="keyword">internal</span> <span class="keyword">static</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_create_index_options.html">CreateIndexOptions&lt;TDocument&gt;</a> CoercedFrom(<a class="code" href="class_mongo_d_b_1_1_driver_1_1_create_index_options.html">CreateIndexOptions</a> options)</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;        {</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;            <span class="keywordflow">if</span> (options == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;            {</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;            }</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160; </div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;            <span class="keywordflow">if</span> (options.GetType() == typeof(<a class="code" href="class_mongo_d_b_1_1_driver_1_1_create_index_options.html">CreateIndexOptions</a>))</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;            {</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_create_index_options.html">CreateIndexOptions&lt;TDocument&gt;</a></div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;                {</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;                    <a class="code" href="class_mongo_d_b_1_1_driver_1_1_create_index_options.html#adf672ace3d4c81ebe48a00480df3c14c">Background</a> = options.Background,</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;                    <a class="code" href="class_mongo_d_b_1_1_driver_1_1_create_index_options.html#ad414884ab17cc6af92a10414fbe6c7c1">Bits</a> = options.Bits,</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;                    <a class="code" href="class_mongo_d_b_1_1_driver_1_1_create_index_options.html#a4371568451e3e7204f8e40e410f54836">BucketSize</a> = options.BucketSize,</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;                    <a class="code" href="class_mongo_d_b_1_1_driver_1_1_collation.html">Collation</a> = options.<a class="code" href="class_mongo_d_b_1_1_driver_1_1_collation.html#ac98f96e419ddf1001feaadbc46e43e84">Collation</a>,</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;                    <a class="code" href="class_mongo_d_b_1_1_driver_1_1_create_index_options.html#aa16122afa894ca7b5cec7b264ce104b7">DefaultLanguage</a> = options.DefaultLanguage,</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;                    <a class="code" href="class_mongo_d_b_1_1_driver_1_1_create_index_options.html#aef9a8af3b94176907e0da294b1130698">ExpireAfter</a> = options.ExpireAfter,</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;                    <a class="code" href="class_mongo_d_b_1_1_driver_1_1_create_index_options.html#a5404c517d06ed4383d656a55e0eedd98">LanguageOverride</a> = options.LanguageOverride,</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;                    <a class="code" href="class_mongo_d_b_1_1_driver_1_1_create_index_options.html#a27a51f66622a5fd7a1fd4cdfbf2a279d">Max</a> = options.Max,</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;                    <a class="code" href="class_mongo_d_b_1_1_driver_1_1_create_index_options.html#a1f7fffbad566062017493465623e8baf">Min</a> = options.Min,</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;                    <a class="code" href="class_mongo_d_b_1_1_driver_1_1_create_index_options.html#a00a91f5d12d0520df4e23580aa9afdf4">Name</a> = options.Name,</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;                    <a class="code" href="class_mongo_d_b_1_1_driver_1_1_create_index_options.html#abfcd29753d325f62742fae3dee8e96f6">Sparse</a> = options.Sparse,</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;                    <a class="code" href="class_mongo_d_b_1_1_driver_1_1_create_index_options.html#aa493b3ed89f05e83c46e172d61dd5980">SphereIndexVersion</a> = options.SphereIndexVersion,</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;                    <a class="code" href="class_mongo_d_b_1_1_driver_1_1_create_index_options.html#ad6c6ed53e77c1e827b500de2657a6a13">StorageEngine</a> = options.StorageEngine,</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;                    <a class="code" href="class_mongo_d_b_1_1_driver_1_1_create_index_options.html#abc9f5e0d6c2f8751b4b5d62ffe98afbc">TextIndexVersion</a> = options.TextIndexVersion,</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;                    <a class="code" href="class_mongo_d_b_1_1_driver_1_1_create_index_options.html#a3d1e2e79d82cbff59a114fe68e09ca1f">Unique</a> = options.Unique,</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;                    <a class="code" href="class_mongo_d_b_1_1_driver_1_1_create_index_options.html#a2cee6d893f8ef759c173386f8ab1a570">Version</a> = options.Version,</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;                    <a class="code" href="class_mongo_d_b_1_1_driver_1_1_create_index_options.html#a1eec25c10633df94c67c8a83a79b2a7d">Weights</a> = options.Weights</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;                };</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;            }</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160; </div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;            <span class="keywordflow">return</span> (<a class="code" href="class_mongo_d_b_1_1_driver_1_1_create_index_options.html">CreateIndexOptions&lt;TDocument&gt;</a>)options;</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;        }</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;<span class="preprocessor">        #endregion</span></div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160; </div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;        <span class="comment">// private fields</span></div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;        <span class="keyword">private</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_filter_definition.html">FilterDefinition&lt;TDocument&gt;</a> _partialFilterExpression;</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160; </div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;        <span class="comment">// public properties</span></div>
+<div class="line"><a name="l00250"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_create_index_options.html#aec94fb32718a4839e6a422222c826478">  250</a></span>&#160;<span class="comment"></span>        <span class="keyword">public</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_filter_definition.html">FilterDefinition&lt;TDocument&gt;</a> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_create_index_options.html#aec94fb32718a4839e6a422222c826478">PartialFilterExpression</a></div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;        {</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;            <span class="keyword">get</span> { <span class="keywordflow">return</span> _partialFilterExpression; }</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;            <span class="keyword">set</span> { _partialFilterExpression = value; }</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;        }</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;    }</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;}</div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_bson_document_html"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_bson_document.html">MongoDB.Bson.BsonDocument</a></div><div class="ttdoc">Represents a BSON document.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_document_8cs_source.html#l00034">BsonDocument.cs:35</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_collation_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_collation.html">MongoDB.Driver.Collation</a></div><div class="ttdoc">Represents a MongoDB collation.</div><div class="ttdef"><b>Definition:</b> <a href="_collation_8cs_source.html#l00102">Collation.cs:103</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_collation_html_ac98f96e419ddf1001feaadbc46e43e84"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_collation.html#ac98f96e419ddf1001feaadbc46e43e84">MongoDB.Driver.Collation.Collation</a></div><div class="ttdeci">Collation(string locale, Optional&lt; bool?&gt; caseLevel=default(Optional&lt; bool?&gt;), Optional&lt; CollationCaseFirst?&gt; caseFirst=default(Optional&lt; CollationCaseFirst?&gt;), Optional&lt; CollationStrength?&gt; strength=default(Optional&lt; CollationStrength?&gt;), Optional&lt; bool?&gt; numericOrdering=default(Optional&lt; bool?&gt;), Optional&lt; CollationAlternate?&gt; alternate=default(Optional&lt; CollationAlternate?&gt;), Optional&lt; CollationMaxVariable?&gt; maxVariable=default(Optional&lt; CollationMaxVariable?&gt;), Optional&lt; bool?&gt; normalization=default(Optional&lt; bool?&gt;), Optional&lt; bool?&gt; backwards=default(Optional&lt; bool?&gt;))</div><div class="ttdoc">Initializes a new instance of the Collation class.</div><div class="ttdef"><b>Definition:</b> <a href="_collation_8cs_source.html#l00285">Collation.cs:285</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_create_index_options_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_create_index_options.html">MongoDB.Driver.CreateIndexOptions</a></div><div class="ttdoc">Options for creating an index.</div><div class="ttdef"><b>Definition:</b> <a href="_create_index_options_8cs_source.html#l00204">CreateIndexOptions.cs:205</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_create_index_options_html_a00a91f5d12d0520df4e23580aa9afdf4"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_create_index_options.html#a00a91f5d12d0520df4e23580aa9afdf4">MongoDB.Driver.CreateIndexOptions.Name</a></div><div class="ttdeci">string Name</div><div class="ttdoc">Gets or sets the index name.</div><div class="ttdef"><b>Definition:</b> <a href="_create_index_options_8cs_source.html#l00130">CreateIndexOptions.cs:131</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_create_index_options_html_a1eec25c10633df94c67c8a83a79b2a7d"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_create_index_options.html#a1eec25c10633df94c67c8a83a79b2a7d">MongoDB.Driver.CreateIndexOptions.Weights</a></div><div class="ttdeci">BsonDocument Weights</div><div class="ttdoc">Gets or sets the weights for text indexes.</div><div class="ttdef"><b>Definition:</b> <a href="_create_index_options_8cs_source.html#l00193">CreateIndexOptions.cs:194</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_create_index_options_html_a1f7fffbad566062017493465623e8baf"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_create_index_options.html#a1f7fffbad566062017493465623e8baf">MongoDB.Driver.CreateIndexOptions.Min</a></div><div class="ttdeci">double? Min</div><div class="ttdoc">Gets or sets the min value for 2d indexes.</div><div class="ttdef"><b>Definition:</b> <a href="_create_index_options_8cs_source.html#l00121">CreateIndexOptions.cs:122</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_create_index_options_html_a27a51f66622a5fd7a1fd4cdfbf2a279d"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_create_index_options.html#a27a51f66622a5fd7a1fd4cdfbf2a279d">MongoDB.Driver.CreateIndexOptions.Max</a></div><div class="ttdeci">double? Max</div><div class="ttdoc">Gets or sets the max value for 2d indexes.</div><div class="ttdef"><b>Definition:</b> <a href="_create_index_options_8cs_source.html#l00112">CreateIndexOptions.cs:113</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_create_index_options_html_a2cee6d893f8ef759c173386f8ab1a570"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_create_index_options.html#a2cee6d893f8ef759c173386f8ab1a570">MongoDB.Driver.CreateIndexOptions.Version</a></div><div class="ttdeci">int? Version</div><div class="ttdoc">Gets or sets the version of the index.</div><div class="ttdef"><b>Definition:</b> <a href="_create_index_options_8cs_source.html#l00184">CreateIndexOptions.cs:185</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_create_index_options_html_a2f5905c35a4bc52dbe41235d8efd077d"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_create_index_options.html#a2f5905c35a4bc52dbe41235d8efd077d">MongoDB.Driver.CreateIndexOptions.Collation</a></div><div class="ttdeci">Collation Collation</div><div class="ttdoc">Gets or sets the collation.</div><div class="ttdef"><b>Definition:</b> <a href="_create_index_options_8cs_source.html#l00076">CreateIndexOptions.cs:77</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_create_index_options_html_a3d1e2e79d82cbff59a114fe68e09ca1f"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_create_index_options.html#a3d1e2e79d82cbff59a114fe68e09ca1f">MongoDB.Driver.CreateIndexOptions.Unique</a></div><div class="ttdeci">bool? Unique</div><div class="ttdoc">Gets or sets a value indicating whether the index is a unique index.</div><div class="ttdef"><b>Definition:</b> <a href="_create_index_options_8cs_source.html#l00175">CreateIndexOptions.cs:176</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_create_index_options_html_a4371568451e3e7204f8e40e410f54836"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_create_index_options.html#a4371568451e3e7204f8e40e410f54836">MongoDB.Driver.CreateIndexOptions.BucketSize</a></div><div class="ttdeci">double? BucketSize</div><div class="ttdoc">Gets or sets the size of a geohash bucket.</div><div class="ttdef"><b>Definition:</b> <a href="_create_index_options_8cs_source.html#l00067">CreateIndexOptions.cs:68</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_create_index_options_html_a5404c517d06ed4383d656a55e0eedd98"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_create_index_options.html#a5404c517d06ed4383d656a55e0eedd98">MongoDB.Driver.CreateIndexOptions.LanguageOverride</a></div><div class="ttdeci">string LanguageOverride</div><div class="ttdoc">Gets or sets the language override.</div><div class="ttdef"><b>Definition:</b> <a href="_create_index_options_8cs_source.html#l00103">CreateIndexOptions.cs:104</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_create_index_options_html_aa16122afa894ca7b5cec7b264ce104b7"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_create_index_options.html#aa16122afa894ca7b5cec7b264ce104b7">MongoDB.Driver.CreateIndexOptions.DefaultLanguage</a></div><div class="ttdeci">string DefaultLanguage</div><div class="ttdoc">Gets or sets the default language.</div><div class="ttdef"><b>Definition:</b> <a href="_create_index_options_8cs_source.html#l00085">CreateIndexOptions.cs:86</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_create_index_options_html_aa493b3ed89f05e83c46e172d61dd5980"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_create_index_options.html#aa493b3ed89f05e83c46e172d61dd5980">MongoDB.Driver.CreateIndexOptions.SphereIndexVersion</a></div><div class="ttdeci">int? SphereIndexVersion</div><div class="ttdoc">Gets or sets the index version for 2dsphere indexes.</div><div class="ttdef"><b>Definition:</b> <a href="_create_index_options_8cs_source.html#l00148">CreateIndexOptions.cs:149</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_create_index_options_html_abc9f5e0d6c2f8751b4b5d62ffe98afbc"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_create_index_options.html#abc9f5e0d6c2f8751b4b5d62ffe98afbc">MongoDB.Driver.CreateIndexOptions.TextIndexVersion</a></div><div class="ttdeci">int? TextIndexVersion</div><div class="ttdoc">Gets or sets the index version for text indexes.</div><div class="ttdef"><b>Definition:</b> <a href="_create_index_options_8cs_source.html#l00166">CreateIndexOptions.cs:167</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_create_index_options_html_abfcd29753d325f62742fae3dee8e96f6"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_create_index_options.html#abfcd29753d325f62742fae3dee8e96f6">MongoDB.Driver.CreateIndexOptions.Sparse</a></div><div class="ttdeci">bool? Sparse</div><div class="ttdoc">Gets or sets a value indicating whether the index is a sparse index.</div><div class="ttdef"><b>Definition:</b> <a href="_create_index_options_8cs_source.html#l00139">CreateIndexOptions.cs:140</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_create_index_options_html_ad414884ab17cc6af92a10414fbe6c7c1"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_create_index_options.html#ad414884ab17cc6af92a10414fbe6c7c1">MongoDB.Driver.CreateIndexOptions.Bits</a></div><div class="ttdeci">int? Bits</div><div class="ttdoc">Gets or sets the precision, in bits, used with geohash indexes.</div><div class="ttdef"><b>Definition:</b> <a href="_create_index_options_8cs_source.html#l00058">CreateIndexOptions.cs:59</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_create_index_options_html_ad6c6ed53e77c1e827b500de2657a6a13"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_create_index_options.html#ad6c6ed53e77c1e827b500de2657a6a13">MongoDB.Driver.CreateIndexOptions.StorageEngine</a></div><div class="ttdeci">BsonDocument StorageEngine</div><div class="ttdoc">Gets or sets the storage engine options.</div><div class="ttdef"><b>Definition:</b> <a href="_create_index_options_8cs_source.html#l00157">CreateIndexOptions.cs:158</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_create_index_options_html_adf672ace3d4c81ebe48a00480df3c14c"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_create_index_options.html#adf672ace3d4c81ebe48a00480df3c14c">MongoDB.Driver.CreateIndexOptions.Background</a></div><div class="ttdeci">bool? Background</div><div class="ttdoc">Gets or sets a value indicating whether to create the index in the background.</div><div class="ttdef"><b>Definition:</b> <a href="_create_index_options_8cs_source.html#l00049">CreateIndexOptions.cs:50</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_create_index_options_html_aec94fb32718a4839e6a422222c826478"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_create_index_options.html#aec94fb32718a4839e6a422222c826478">MongoDB.Driver.CreateIndexOptions.PartialFilterExpression</a></div><div class="ttdeci">FilterDefinition&lt; TDocument &gt; PartialFilterExpression</div><div class="ttdoc">Gets or sets the partial filter expression.</div><div class="ttdef"><b>Definition:</b> <a href="_create_index_options_8cs_source.html#l00250">CreateIndexOptions.cs:251</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_create_index_options_html_aef9a8af3b94176907e0da294b1130698"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_create_index_options.html#aef9a8af3b94176907e0da294b1130698">MongoDB.Driver.CreateIndexOptions.ExpireAfter</a></div><div class="ttdeci">TimeSpan? ExpireAfter</div><div class="ttdoc">Gets or sets when documents expire (used with TTL indexes).</div><div class="ttdef"><b>Definition:</b> <a href="_create_index_options_8cs_source.html#l00094">CreateIndexOptions.cs:95</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_filter_definition_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_filter_definition.html">MongoDB.Driver.FilterDefinition</a></div><div class="ttdoc">Base class for filters.</div><div class="ttdef"><b>Definition:</b> <a href="_filter_definition_8cs_source.html#l00032">FilterDefinition.cs:33</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_bson_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_bson.html">MongoDB.Bson</a></div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_bson_constants_8cs_source.html#l00018">BsonConstants.cs:19</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_driver_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_driver.html">MongoDB.Driver</a></div><div class="ttdef"><b>Definition:</b> <a href="_aggregate_bucket_auto_granularity_8cs_source.html#l00018">AggregateBucketAutoGranularity.cs:19</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_html"><div class="ttname"><a href="namespace_mongo_d_b.html">MongoDB</a></div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_bson_constants_8cs_source.html#l00018">BsonConstants.cs:19</a></div></div>
+<div class="ttc" id="anamespace_system_html"><div class="ttname"><a href="namespace_system.html">System</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_method_builder_attribute_8cs_source.html#l00001">AsyncMethodBuilderAttribute.cs:2</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_1e261a42b4a2e33df58a15c412684b10.html">ETServer</a></li><li class="navelem"><a class="el" href="dir_473c270c995194c5ad99131d9c901f09.html">Server</a></li><li class="navelem"><a class="el" href="dir_ce426efcf63311ff42488fb2654bd4b4.html">ThirdParty</a></li><li class="navelem"><a class="el" href="dir_a37b2b5f9c8890cc9f6f8392fb0cdff3.html">MongoDBDriver</a></li><li class="navelem"><a class="el" href="dir_42d569251c6b173c0060c74ec4fd3ce0.html">MongoDB.Driver</a></li><li class="navelem"><a class="el" href="_create_index_options_8cs.html">CreateIndexOptions.cs</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:24:58 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

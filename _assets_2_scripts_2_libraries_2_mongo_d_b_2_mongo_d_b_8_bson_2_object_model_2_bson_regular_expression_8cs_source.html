@@ -1,0 +1,326 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: Assets/Scripts/Libraries/MongoDB/MongoDB.Bson/ObjectModel/BsonRegularExpression.cs 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_regular_expression_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">BsonRegularExpression.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_regular_expression_8cs.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/* Copyright 2010-present MongoDB Inc.</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">* Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">* you may not use this file except in compliance with the License.</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">* You may obtain a copy of the License at</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">* http://www.apache.org/licenses/LICENSE-2.0</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">* Unless required by applicable law or agreed to in writing, software</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">* distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">* See the License for the specific language governing permissions and</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">* limitations under the License.</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Text.RegularExpressions;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_mongo_d_b_1_1_bson.html">MongoDB.Bson</a></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;{</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#if NET452</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    [Serializable]</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_bson_regular_expression.html">   27</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_regular_expression.html">BsonRegularExpression</a> : <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_value.html">BsonValue</a>, IComparable&lt;BsonRegularExpression&gt;, IEquatable&lt;BsonRegularExpression&gt;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    {</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <span class="comment">// private fields</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <span class="keyword">private</span> readonly <span class="keywordtype">string</span> _pattern;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <span class="keyword">private</span> readonly <span class="keywordtype">string</span> _options;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <span class="comment">// constructors</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_bson_regular_expression.html#af2b323663d04c2ce50d16b2930be4b0a">   38</a></span>&#160;<span class="comment"></span>        <span class="keyword">public</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_regular_expression.html#af2b323663d04c2ce50d16b2930be4b0a">BsonRegularExpression</a>(<span class="keywordtype">string</span> pattern)</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        {</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            <span class="keywordflow">if</span> (pattern == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            {</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> ArgumentNullException(<span class="stringliteral">&quot;pattern&quot;</span>);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;            }</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            <span class="keywordflow">if</span> (pattern.Length &gt; 0 &amp;&amp; pattern[0] == <span class="charliteral">&#39;/&#39;</span>)</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            {</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                var index = pattern.LastIndexOf(<span class="charliteral">&#39;/&#39;</span>);</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                var escaped = pattern.Substring(1, index - 1);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                var unescaped = (escaped == <span class="stringliteral">&quot;(?:)&quot;</span>) ? <span class="stringliteral">&quot;&quot;</span> : escaped.Replace(<span class="stringliteral">&quot;\\/&quot;</span>, <span class="stringliteral">&quot;/&quot;</span>);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                _pattern = unescaped;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                _options = pattern.Substring(index + 1);</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            }</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            {</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                _pattern = pattern;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                _options = <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            }</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        }</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_bson_regular_expression.html#a13748496c604c1be2af004ae3f41c313">   64</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_regular_expression.html#a13748496c604c1be2af004ae3f41c313">BsonRegularExpression</a>(<span class="keywordtype">string</span> pattern, <span class="keywordtype">string</span> options)</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        {</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            <span class="keywordflow">if</span> (pattern == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            {</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> ArgumentNullException(<span class="stringliteral">&quot;pattern&quot;</span>);</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            }</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            _pattern = pattern;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            _options = options ?? <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        }</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
+<div class="line"><a name="l00078"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_bson_regular_expression.html#a11931fbe8fcc04009708440cac3b485d">   78</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_regular_expression.html#a11931fbe8fcc04009708440cac3b485d">BsonRegularExpression</a>(Regex regex)</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        {</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            <span class="keywordflow">if</span> (regex == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            {</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> ArgumentNullException(<span class="stringliteral">&quot;regex&quot;</span>);</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;            }</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;            _pattern = regex.ToString();</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;            _options = <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            <span class="keywordflow">if</span> ((regex.Options &amp; RegexOptions.IgnoreCase) != 0)</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;            {</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                _options += <span class="stringliteral">&quot;i&quot;</span>;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;            }</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            <span class="keywordflow">if</span> ((regex.Options &amp; RegexOptions.Multiline) != 0)</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;            {</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                _options += <span class="stringliteral">&quot;m&quot;</span>;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;            }</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;            <span class="keywordflow">if</span> ((regex.Options &amp; RegexOptions.IgnorePatternWhitespace) != 0)</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;            {</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                _options += <span class="stringliteral">&quot;x&quot;</span>;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;            }</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;            <span class="keywordflow">if</span> ((regex.Options &amp; RegexOptions.Singleline) != 0)</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;            {</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;                _options += <span class="stringliteral">&quot;s&quot;</span>;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;            }</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        }</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        <span class="comment">// public properties</span></div>
+<div class="line"><a name="l00108"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_bson_regular_expression.html#a582b29e9e5f35b5377047f7e6bc12f63">  108</a></span>&#160;<span class="comment"></span>        <span class="keyword">public</span> <span class="keyword">override</span> <a class="code" href="namespace_mongo_d_b_1_1_bson.html#a811d3d494b81b025735495a7790f9d08">BsonType</a> <a class="code" href="namespace_mongo_d_b_1_1_bson.html#a811d3d494b81b025735495a7790f9d08">BsonType</a></div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        {</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;            <span class="keyword">get</span> { <span class="keywordflow">return</span> <a class="code" href="namespace_mongo_d_b_1_1_bson.html#a811d3d494b81b025735495a7790f9d08">BsonType</a>.RegularExpression; }</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        }</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160; </div>
+<div class="line"><a name="l00116"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_bson_regular_expression.html#a3b2082613c6565136b7f347f46682098">  116</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">string</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_regular_expression.html#a3b2082613c6565136b7f347f46682098">Pattern</a></div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        {</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;            <span class="keyword">get</span> { <span class="keywordflow">return</span> _pattern; }</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        }</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160; </div>
+<div class="line"><a name="l00124"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_bson_regular_expression.html#a819cfeb4450d01e6fd7242747ab54c34">  124</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">string</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_regular_expression.html#a819cfeb4450d01e6fd7242747ab54c34">Options</a></div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        {</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;            <span class="keyword">get</span> { <span class="keywordflow">return</span> _options; }</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;        }</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160; </div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        <span class="comment">// public operators</span></div>
+<div class="line"><a name="l00135"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_bson_regular_expression.html#a0dd7f0d50476644ba8d1adbef6efdb61">  135</a></span>&#160;<span class="comment"></span>        <span class="keyword">public</span> <span class="keyword">static</span> implicit <span class="keyword">operator</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_regular_expression.html#af2b323663d04c2ce50d16b2930be4b0a">BsonRegularExpression</a>(Regex value)</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        {</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_regular_expression.html#af2b323663d04c2ce50d16b2930be4b0a">BsonRegularExpression</a>(value);</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;        }</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160; </div>
+<div class="line"><a name="l00145"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_bson_regular_expression.html#afee5b28bdbc50b3f4caddc8e02628213">  145</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> implicit <span class="keyword">operator</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_regular_expression.html#af2b323663d04c2ce50d16b2930be4b0a">BsonRegularExpression</a>(<span class="keywordtype">string</span> value)</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;        {</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_regular_expression.html#af2b323663d04c2ce50d16b2930be4b0a">BsonRegularExpression</a>(value);</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;        }</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160; </div>
+<div class="line"><a name="l00156"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_bson_regular_expression.html#aa11195323ba20c07ddf9784ac6a321de">  156</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">bool</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_regular_expression.html#aa11195323ba20c07ddf9784ac6a321de">operator !=</a>(<a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_regular_expression.html">BsonRegularExpression</a> lhs, <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_regular_expression.html">BsonRegularExpression</a> rhs)</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;        {</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;            <span class="keywordflow">return</span> !(lhs == rhs);</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;        }</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160; </div>
+<div class="line"><a name="l00167"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_bson_regular_expression.html#ac229376f7cc677a8fe1ed71bb7dd254a">  167</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">bool</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_regular_expression.html#ac229376f7cc677a8fe1ed71bb7dd254a">operator ==</a>(<a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_regular_expression.html">BsonRegularExpression</a> lhs, <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_regular_expression.html">BsonRegularExpression</a> rhs)</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;        {</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;            <span class="keywordflow">if</span> (<span class="keywordtype">object</span>.ReferenceEquals(lhs, <span class="keyword">null</span>)) { <span class="keywordflow">return</span> <span class="keywordtype">object</span>.ReferenceEquals(rhs, <span class="keyword">null</span>); }</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;            <span class="keywordflow">return</span> lhs.<a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_regular_expression.html#a9c28c97f603cac28d763a82caeb6a81c">Equals</a>(rhs);</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;        }</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160; </div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;        <span class="comment">// public methods</span></div>
+<div class="line"><a name="l00179"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_bson_regular_expression.html#a1e0cf20c1b0346719f15e22ed64afb41">  179</a></span>&#160;<span class="comment"></span>        <span class="keyword">public</span> <span class="keyword">new</span> <span class="keyword">static</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_regular_expression.html">BsonRegularExpression</a> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_regular_expression.html#a1e0cf20c1b0346719f15e22ed64afb41">Create</a>(<span class="keywordtype">object</span> value)</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;        {</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;            <span class="keywordflow">if</span> (value == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;            {</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> ArgumentNullException(<span class="stringliteral">&quot;value&quot;</span>);</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;            }</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160; </div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;            <span class="keywordflow">return</span> (<a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_regular_expression.html">BsonRegularExpression</a>)BsonTypeMapper.MapToBsonValue(value, <a class="code" href="namespace_mongo_d_b_1_1_bson.html#a811d3d494b81b025735495a7790f9d08">BsonType</a>.RegularExpression);</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;        }</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160; </div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;        <span class="comment">// public methods</span></div>
+<div class="line"><a name="l00195"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_bson_regular_expression.html#a23d8c000083c4ad20ce0d9d92f8864a5">  195</a></span>&#160;<span class="comment"></span>        <span class="keyword">public</span> <span class="keywordtype">int</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_regular_expression.html#a23d8c000083c4ad20ce0d9d92f8864a5">CompareTo</a>(<a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_regular_expression.html">BsonRegularExpression</a> other)</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;        {</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;            <span class="keywordflow">if</span> (other == <span class="keyword">null</span>) { <span class="keywordflow">return</span> 1; }</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;            <span class="keywordtype">int</span> r = _pattern.CompareTo(other._pattern);</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;            <span class="keywordflow">if</span> (r != 0) { <span class="keywordflow">return</span> r; }</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;            <span class="keywordflow">return</span> _options.CompareTo(other._options);</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;        }</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160; </div>
+<div class="line"><a name="l00208"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_bson_regular_expression.html#a4b1dcb35b3bbaf5f5743c78e73ce4e00">  208</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">int</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_regular_expression.html#a4b1dcb35b3bbaf5f5743c78e73ce4e00">CompareTo</a>(<a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_value.html">BsonValue</a> other)</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;        {</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;            <span class="keywordflow">if</span> (other == <span class="keyword">null</span>) { <span class="keywordflow">return</span> 1; }</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;            var otherRegularExpression = other as <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_regular_expression.html#af2b323663d04c2ce50d16b2930be4b0a">BsonRegularExpression</a>;</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;            <span class="keywordflow">if</span> (otherRegularExpression != <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;            {</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;                <span class="keywordflow">return</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_regular_expression.html#a23d8c000083c4ad20ce0d9d92f8864a5">CompareTo</a>(otherRegularExpression);</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;            }</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_value.html#a67ccd90c0febcb5cccbbb2807d94b9f5">CompareTypeTo</a>(other);</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;        }</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160; </div>
+<div class="line"><a name="l00224"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_bson_regular_expression.html#a9c28c97f603cac28d763a82caeb6a81c">  224</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_regular_expression.html#a9c28c97f603cac28d763a82caeb6a81c">Equals</a>(<a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_regular_expression.html">BsonRegularExpression</a> rhs)</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;        {</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;            <span class="keywordflow">if</span> (<span class="keywordtype">object</span>.ReferenceEquals(rhs, <span class="keyword">null</span>) || GetType() != rhs.GetType()) { <span class="keywordflow">return</span> <span class="keyword">false</span>; }</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;            <span class="keywordflow">return</span> _pattern == rhs._pattern &amp;&amp; _options == rhs._options;</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;        }</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160; </div>
+<div class="line"><a name="l00235"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_bson_regular_expression.html#ac34c69f5efbfb26aee9faf1c24d03e71">  235</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">bool</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_regular_expression.html#ac34c69f5efbfb26aee9faf1c24d03e71">Equals</a>(<span class="keywordtype">object</span> obj)</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;        {</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_regular_expression.html#a9c28c97f603cac28d763a82caeb6a81c">Equals</a>(obj as <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_regular_expression.html">BsonRegularExpression</a>); <span class="comment">// works even if obj is null or of a different type</span></div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;        }</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160; </div>
+<div class="line"><a name="l00244"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_bson_regular_expression.html#a704fdf8dd27d802fabca829ae9474562">  244</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">int</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_regular_expression.html#a704fdf8dd27d802fabca829ae9474562">GetHashCode</a>()</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;        {</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;            <span class="comment">// see Effective Java by Joshua Bloch</span></div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;            <span class="keywordtype">int</span> hash = 17;</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;            hash = 37 * hash + <a class="code" href="namespace_mongo_d_b_1_1_bson.html#a811d3d494b81b025735495a7790f9d08">BsonType</a>.GetHashCode();</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;            hash = 37 * hash + _pattern.GetHashCode();</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;            hash = 37 * hash + _options.GetHashCode();</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;            <span class="keywordflow">return</span> hash;</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;        }</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160; </div>
+<div class="line"><a name="l00258"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_bson_regular_expression.html#aa17137c112837f968b83a03f1649f1fe">  258</a></span>&#160;        <span class="keyword">public</span> Regex <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_regular_expression.html#aa17137c112837f968b83a03f1649f1fe">ToRegex</a>()</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;        {</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;            var options = RegexOptions.None;</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;            <span class="keywordflow">if</span> (_options.IndexOf(<span class="charliteral">&#39;i&#39;</span>) != -1)</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;            {</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;                options |= RegexOptions.IgnoreCase;</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;            }</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;            <span class="keywordflow">if</span> (_options.IndexOf(<span class="charliteral">&#39;m&#39;</span>) != -1)</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;            {</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;                options |= RegexOptions.Multiline;</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;            }</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;            <span class="keywordflow">if</span> (_options.IndexOf(<span class="charliteral">&#39;x&#39;</span>) != -1)</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;            {</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;                options |= RegexOptions.IgnorePatternWhitespace;</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;            }</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;            <span class="keywordflow">if</span> (_options.IndexOf(<span class="charliteral">&#39;s&#39;</span>) != -1)</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;            {</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;                options |= RegexOptions.Singleline;</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;            }</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> Regex(_pattern, options);</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;        }</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160; </div>
+<div class="line"><a name="l00284"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_bson_regular_expression.html#ad9ad6ff1c9d07cb2250a475db7f41c42">  284</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">string</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_regular_expression.html#ad9ad6ff1c9d07cb2250a475db7f41c42">ToString</a>()</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;        {</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;            var escaped = (_pattern == <span class="stringliteral">&quot;&quot;</span>) ? <span class="stringliteral">&quot;(?:)&quot;</span> :_pattern.Replace(<span class="stringliteral">&quot;/&quot;</span>, <span class="stringliteral">@&quot;\/&quot;</span>);</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;            <span class="keywordflow">return</span> <span class="keywordtype">string</span>.Format(<span class="stringliteral">&quot;/{0}/{1}&quot;</span>, escaped, _options);</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;        }</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;    }</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;}</div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_bson_regular_expression_html"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_bson_regular_expression.html">MongoDB.Bson.BsonRegularExpression</a></div><div class="ttdoc">Represents a BSON regular expression value.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_regular_expression_8cs_source.html#l00027">BsonRegularExpression.cs:28</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_bson_regular_expression_html_a11931fbe8fcc04009708440cac3b485d"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_bson_regular_expression.html#a11931fbe8fcc04009708440cac3b485d">MongoDB.Bson.BsonRegularExpression.BsonRegularExpression</a></div><div class="ttdeci">BsonRegularExpression(Regex regex)</div><div class="ttdoc">Initializes a new instance of the BsonRegularExpression class.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_regular_expression_8cs_source.html#l00078">BsonRegularExpression.cs:78</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_bson_regular_expression_html_a13748496c604c1be2af004ae3f41c313"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_bson_regular_expression.html#a13748496c604c1be2af004ae3f41c313">MongoDB.Bson.BsonRegularExpression.BsonRegularExpression</a></div><div class="ttdeci">BsonRegularExpression(string pattern, string options)</div><div class="ttdoc">Initializes a new instance of the BsonRegularExpression class.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_regular_expression_8cs_source.html#l00064">BsonRegularExpression.cs:64</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_bson_regular_expression_html_a1e0cf20c1b0346719f15e22ed64afb41"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_bson_regular_expression.html#a1e0cf20c1b0346719f15e22ed64afb41">MongoDB.Bson.BsonRegularExpression.Create</a></div><div class="ttdeci">static new BsonRegularExpression Create(object value)</div><div class="ttdoc">Creates a new BsonRegularExpression.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_regular_expression_8cs_source.html#l00179">BsonRegularExpression.cs:179</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_bson_regular_expression_html_a23d8c000083c4ad20ce0d9d92f8864a5"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_bson_regular_expression.html#a23d8c000083c4ad20ce0d9d92f8864a5">MongoDB.Bson.BsonRegularExpression.CompareTo</a></div><div class="ttdeci">int CompareTo(BsonRegularExpression other)</div><div class="ttdoc">Compares this BsonRegularExpression to another BsonRegularExpression.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_regular_expression_8cs_source.html#l00195">BsonRegularExpression.cs:195</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_bson_regular_expression_html_a3b2082613c6565136b7f347f46682098"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_bson_regular_expression.html#a3b2082613c6565136b7f347f46682098">MongoDB.Bson.BsonRegularExpression.Pattern</a></div><div class="ttdeci">string Pattern</div><div class="ttdoc">Gets the regular expression pattern.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_regular_expression_8cs_source.html#l00116">BsonRegularExpression.cs:117</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_bson_regular_expression_html_a4b1dcb35b3bbaf5f5743c78e73ce4e00"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_bson_regular_expression.html#a4b1dcb35b3bbaf5f5743c78e73ce4e00">MongoDB.Bson.BsonRegularExpression.CompareTo</a></div><div class="ttdeci">override int CompareTo(BsonValue other)</div><div class="ttdoc">Compares the BsonRegularExpression to another BsonValue.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_regular_expression_8cs_source.html#l00208">BsonRegularExpression.cs:208</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_bson_regular_expression_html_a704fdf8dd27d802fabca829ae9474562"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_bson_regular_expression.html#a704fdf8dd27d802fabca829ae9474562">MongoDB.Bson.BsonRegularExpression.GetHashCode</a></div><div class="ttdeci">override int GetHashCode()</div><div class="ttdoc">Gets the hash code.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_regular_expression_8cs_source.html#l00244">BsonRegularExpression.cs:244</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_bson_regular_expression_html_a819cfeb4450d01e6fd7242747ab54c34"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_bson_regular_expression.html#a819cfeb4450d01e6fd7242747ab54c34">MongoDB.Bson.BsonRegularExpression.Options</a></div><div class="ttdeci">string Options</div><div class="ttdoc">Gets the regular expression options.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_regular_expression_8cs_source.html#l00124">BsonRegularExpression.cs:125</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_bson_regular_expression_html_a9c28c97f603cac28d763a82caeb6a81c"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_bson_regular_expression.html#a9c28c97f603cac28d763a82caeb6a81c">MongoDB.Bson.BsonRegularExpression.Equals</a></div><div class="ttdeci">bool Equals(BsonRegularExpression rhs)</div><div class="ttdoc">Compares this BsonRegularExpression to another BsonRegularExpression.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_regular_expression_8cs_source.html#l00224">BsonRegularExpression.cs:224</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_bson_regular_expression_html_aa11195323ba20c07ddf9784ac6a321de"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_bson_regular_expression.html#aa11195323ba20c07ddf9784ac6a321de">MongoDB.Bson.BsonRegularExpression.operator!=</a></div><div class="ttdeci">static bool operator!=(BsonRegularExpression lhs, BsonRegularExpression rhs)</div><div class="ttdoc">Compares two BsonRegularExpression values.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_regular_expression_8cs_source.html#l00156">BsonRegularExpression.cs:156</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_bson_regular_expression_html_aa17137c112837f968b83a03f1649f1fe"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_bson_regular_expression.html#aa17137c112837f968b83a03f1649f1fe">MongoDB.Bson.BsonRegularExpression.ToRegex</a></div><div class="ttdeci">Regex ToRegex()</div><div class="ttdoc">Converts the BsonRegularExpression to a Regex.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_regular_expression_8cs_source.html#l00258">BsonRegularExpression.cs:258</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_bson_regular_expression_html_ac229376f7cc677a8fe1ed71bb7dd254a"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_bson_regular_expression.html#ac229376f7cc677a8fe1ed71bb7dd254a">MongoDB.Bson.BsonRegularExpression.operator==</a></div><div class="ttdeci">static bool operator==(BsonRegularExpression lhs, BsonRegularExpression rhs)</div><div class="ttdoc">Compares two BsonRegularExpression values.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_regular_expression_8cs_source.html#l00167">BsonRegularExpression.cs:167</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_bson_regular_expression_html_ac34c69f5efbfb26aee9faf1c24d03e71"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_bson_regular_expression.html#ac34c69f5efbfb26aee9faf1c24d03e71">MongoDB.Bson.BsonRegularExpression.Equals</a></div><div class="ttdeci">override bool Equals(object obj)</div><div class="ttdoc">Compares this BsonRegularExpression to another object.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_regular_expression_8cs_source.html#l00235">BsonRegularExpression.cs:235</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_bson_regular_expression_html_ad9ad6ff1c9d07cb2250a475db7f41c42"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_bson_regular_expression.html#ad9ad6ff1c9d07cb2250a475db7f41c42">MongoDB.Bson.BsonRegularExpression.ToString</a></div><div class="ttdeci">override string ToString()</div><div class="ttdoc">Returns a string representation of the value.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_regular_expression_8cs_source.html#l00284">BsonRegularExpression.cs:284</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_bson_regular_expression_html_af2b323663d04c2ce50d16b2930be4b0a"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_bson_regular_expression.html#af2b323663d04c2ce50d16b2930be4b0a">MongoDB.Bson.BsonRegularExpression.BsonRegularExpression</a></div><div class="ttdeci">BsonRegularExpression(string pattern)</div><div class="ttdoc">Initializes a new instance of the BsonRegularExpression class.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_regular_expression_8cs_source.html#l00038">BsonRegularExpression.cs:38</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_bson_value_html"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_bson_value.html">MongoDB.Bson.BsonValue</a></div><div class="ttdoc">Represents a BSON value (this is an abstract class, see the various subclasses).</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_value_8cs_source.html#l00028">BsonValue.cs:29</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_bson_value_html_a67ccd90c0febcb5cccbbb2807d94b9f5"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_bson_value.html#a67ccd90c0febcb5cccbbb2807d94b9f5">MongoDB.Bson.BsonValue.CompareTypeTo</a></div><div class="ttdeci">int CompareTypeTo(BsonValue other)</div><div class="ttdoc">Compares the type of this BsonValue to the type of another BsonValue.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_value_8cs_source.html#l01239">BsonValue.cs:1239</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_bson_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_bson.html">MongoDB.Bson</a></div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_bson_constants_8cs_source.html#l00018">BsonConstants.cs:19</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_bson_html_a811d3d494b81b025735495a7790f9d08"><div class="ttname"><a href="namespace_mongo_d_b_1_1_bson.html#a811d3d494b81b025735495a7790f9d08">MongoDB.Bson.BsonType</a></div><div class="ttdeci">BsonType</div><div class="ttdoc">Represents the type of a BSON element.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_type_8cs_source.html#l00026">BsonType.cs:27</a></div></div>
+<div class="ttc" id="anamespace_system_html"><div class="ttname"><a href="namespace_system.html">System</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_method_builder_attribute_8cs_source.html#l00001">AsyncMethodBuilderAttribute.cs:2</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_84bbf7b3c7f28a5a18725745e1505219.html">Assets</a></li><li class="navelem"><a class="el" href="dir_f13b41af88cf68434578284aaf699e39.html">Scripts</a></li><li class="navelem"><a class="el" href="dir_46d134a3bf82cf4dc49ca8f728aea58c.html">Libraries</a></li><li class="navelem"><a class="el" href="dir_73566d0e413307016ca2f8948e23ce26.html">MongoDB</a></li><li class="navelem"><a class="el" href="dir_bf52240e991d83ea827d5d13f9c7b60c.html">MongoDB.Bson</a></li><li class="navelem"><a class="el" href="dir_4c6789a319cd36325d98ef1feb818908.html">ObjectModel</a></li><li class="navelem"><a class="el" href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_regular_expression_8cs.html">BsonRegularExpression.cs</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:24:52 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

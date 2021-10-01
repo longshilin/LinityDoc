@@ -1,0 +1,262 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: Assets/Scripts/GameMain/Procedure/ProcedureLaunch.cs 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_procedure_launch_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">ProcedureLaunch.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_procedure_launch_8cs.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">//------------------------------------------------------------</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">// Game Framework</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">// Copyright © 2013-2021 Jiang Yin. All rights reserved.</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">// Homepage: https://gameframework.cn/</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">// Feedback: mailto:ellan@gameframework.cn</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">//------------------------------------------------------------</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_game_framework.html">GameFramework</a>.<a class="code" href="namespace_game_framework_1_1_localization.html">Localization</a>;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_unity_game_framework.html">UnityGameFramework</a>.<a class="code" href="namespace_unity_game_framework_1_1_runtime.html">Runtime</a>;</div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="_procedure_launch_8cs.html#a2485a0c5748e557be16e49a4d2c679f9">   11</a></span>&#160;<span class="keyword">using</span> <a class="code" href="_game_main_2_procedure_2_procedure_change_scene_8cs.html#a2485a0c5748e557be16e49a4d2c679f9">ProcedureOwner</a> = <a class="code" href="namespace_game_framework.html">GameFramework</a>.<a class="code" href="namespace_game_framework_1_1_fsm.html">Fsm</a>.<a class="code" href="interface_game_framework_1_1_fsm_1_1_i_fsm.html">IFsm</a>&lt;<a class="code" href="namespace_game_framework.html">GameFramework</a>.<a class="code" href="namespace_game_framework_1_1_procedure.html">Procedure</a>.<a class="code" href="interface_game_framework_1_1_procedure_1_1_i_procedure_manager.html">IProcedureManager</a>&gt;;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_linity.html">Linity</a></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;{</div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="class_linity_1_1_procedure_launch.html">   15</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="class_linity_1_1_procedure_launch.html">ProcedureLaunch</a> : <a class="code" href="class_linity_1_1_procedure_base.html">ProcedureBase</a></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    {</div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="class_linity_1_1_procedure_launch.html#a6983038f350c15c836ef7881bdc37894">   17</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">bool</span> <a class="code" href="class_linity_1_1_procedure_launch.html#a6983038f350c15c836ef7881bdc37894">UseNativeDialog</a></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        {</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;            <span class="keyword">get</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;            {</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;            }</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        }</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="class_linity_1_1_procedure_launch.html#aea2827b1037bfefcc6da2fbc2f4e56c1">   25</a></span>&#160;        <span class="keyword">protected</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code" href="class_linity_1_1_procedure_launch.html#aea2827b1037bfefcc6da2fbc2f4e56c1">OnEnter</a>(<a class="code" href="_game_main_2_procedure_2_procedure_change_scene_8cs.html#a2485a0c5748e557be16e49a4d2c679f9">ProcedureOwner</a> procedureOwner)</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        {</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;            base.OnEnter(procedureOwner);</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;            <span class="comment">// 构建信息：发布版本时，把一些数据以 Json 的格式写入 Assets/Res/Configs/BuildInfo.txt，供游戏逻辑读取</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;            <a class="code" href="class_linity_1_1_game_entry.html">GameEntry</a>.<a class="code" href="class_linity_1_1_game_entry.html#a2e0da0b4c2c647ab45d30a000cf17b4e">BuiltinData</a>.<a class="code" href="class_linity_1_1_builtin_data_component.html#aedc7fd9a71573835210e6e78df58b0be">InitBuildInfo</a>();</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;            <span class="comment">// 语言配置：设置当前使用的语言，如果不设置，则默认使用操作系统语言</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;            InitLanguageSettings();</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;            <span class="comment">// 变体配置：根据使用的语言，通知底层加载对应的资源变体</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;            InitCurrentVariant();</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;            <span class="comment">// 声音配置：根据用户配置数据，设置即将使用的声音选项</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;            InitSoundSettings();</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            <span class="comment">// 默认字典：加载默认字典文件 Assets/Res/Configs/DefaultDictionary.xml</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;            <span class="comment">// 此字典文件记录了资源更新前使用的各种语言的字符串，会随 App 一起发布，故不可更新</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;            <a class="code" href="class_linity_1_1_game_entry.html">GameEntry</a>.<a class="code" href="class_linity_1_1_game_entry.html#a2e0da0b4c2c647ab45d30a000cf17b4e">BuiltinData</a>.<a class="code" href="class_linity_1_1_builtin_data_component.html#a2020d094759121dc0fb96eb1a9fccd00">InitDefaultDictionary</a>();</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        }</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="class_linity_1_1_procedure_launch.html#ab2fa0dc9b7871347d6862553a353d619">   46</a></span>&#160;        <span class="keyword">protected</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code" href="class_linity_1_1_procedure_launch.html#ab2fa0dc9b7871347d6862553a353d619">OnUpdate</a>(<a class="code" href="_game_main_2_procedure_2_procedure_change_scene_8cs.html#a2485a0c5748e557be16e49a4d2c679f9">ProcedureOwner</a> procedureOwner, <span class="keywordtype">float</span> elapseSeconds, <span class="keywordtype">float</span> realElapseSeconds)</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        {</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            base.OnUpdate(procedureOwner, elapseSeconds, realElapseSeconds);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;            <span class="comment">// 运行一帧即切换到 Splash 展示流程</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            ChangeState&lt;ProcedureSplash&gt;(procedureOwner);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        }</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> InitLanguageSettings()</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        {</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="class_linity_1_1_game_entry.html">GameEntry</a>.<a class="code" href="class_linity_1_1_game_entry.html#ab93cef38d0c3fbddb135bcdfe875394f">Base</a>.<a class="code" href="class_unity_game_framework_1_1_runtime_1_1_base_component.html#a1014f5f50c35e6fc3bcfe1ef1994b177">EditorResourceMode</a> &amp;&amp; <a class="code" href="class_linity_1_1_game_entry.html">GameEntry</a>.<a class="code" href="class_linity_1_1_game_entry.html#ab93cef38d0c3fbddb135bcdfe875394f">Base</a>.<a class="code" href="class_unity_game_framework_1_1_runtime_1_1_base_component.html#a70476104a24c065b86d4046ccba65d5d">EditorLanguage</a> != <a class="code" href="namespace_game_framework_1_1_localization.html#ad3cfd4367154c84f04c26389b0f811ac">Language</a>.Unspecified)</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            {</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;                <span class="comment">// 编辑器资源模式直接使用 Inspector 上设置的语言</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;            }</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            <a class="code" href="namespace_game_framework_1_1_localization.html#ad3cfd4367154c84f04c26389b0f811ac">Language</a> language = GameEntry.Localization.Language;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;            <span class="keywordflow">if</span> (GameEntry.Setting.HasSetting(Constant.Setting.Language))</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            {</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                <span class="keywordflow">try</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                {</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                    <span class="keywordtype">string</span> languageString = GameEntry.Setting.GetString(Constant.Setting.Language);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                    language = (<a class="code" href="namespace_game_framework_1_1_localization.html#ad3cfd4367154c84f04c26389b0f811ac">Language</a>)Enum.Parse(typeof(<a class="code" href="namespace_game_framework_1_1_localization.html#ad3cfd4367154c84f04c26389b0f811ac">Language</a>), languageString);</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                }</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                <span class="keywordflow">catch</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                {</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                }</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            }</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            <span class="keywordflow">if</span> (language != <a class="code" href="namespace_game_framework_1_1_localization.html#ad3cfd4367154c84f04c26389b0f811ac">Language</a>.English</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                &amp;&amp; language != <a class="code" href="namespace_game_framework_1_1_localization.html#ad3cfd4367154c84f04c26389b0f811ac">Language</a>.ChineseSimplified</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                &amp;&amp; language != <a class="code" href="namespace_game_framework_1_1_localization.html#ad3cfd4367154c84f04c26389b0f811ac">Language</a>.ChineseTraditional</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                &amp;&amp; language != <a class="code" href="namespace_game_framework_1_1_localization.html#ad3cfd4367154c84f04c26389b0f811ac">Language</a>.Korean)</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;            {</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                <span class="comment">// 若是暂不支持的语言，则使用英语</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                language = <a class="code" href="namespace_game_framework_1_1_localization.html#ad3cfd4367154c84f04c26389b0f811ac">Language</a>.English;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                GameEntry.Setting.SetString(Constant.Setting.Language, language.ToString());</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                GameEntry.Setting.Save();</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;            }</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;            GameEntry.Localization.Language = language;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;            <a class="code" href="_login_form_8cs.html#a6208db3ac52d7f107a612679d0d8eca3">Log</a>.Info(<span class="stringliteral">&quot;Init language settings complete, current language is &#39;{0}&#39;.&quot;</span>, language.ToString());</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        }</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> InitCurrentVariant()</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        {</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;            <span class="keywordflow">if</span> (GameEntry.Base.EditorResourceMode)</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;            {</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                <span class="comment">// 编辑器资源模式不使用 AssetBundle，也就没有变体了</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;            }</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;            <span class="keywordtype">string</span> currentVariant = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;            <span class="keywordflow">switch</span> (GameEntry.Localization.Language)</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;            {</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;                <span class="keywordflow">case</span> <a class="code" href="namespace_game_framework_1_1_localization.html#ad3cfd4367154c84f04c26389b0f811ac">Language</a>.English:</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;                    currentVariant = <span class="stringliteral">&quot;en-us&quot;</span>;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;                    <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;                <span class="keywordflow">case</span> <a class="code" href="namespace_game_framework_1_1_localization.html#ad3cfd4367154c84f04c26389b0f811ac">Language</a>.ChineseSimplified:</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;                    currentVariant = <span class="stringliteral">&quot;zh-cn&quot;</span>;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;                    <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; </div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;                <span class="keywordflow">case</span> <a class="code" href="namespace_game_framework_1_1_localization.html#ad3cfd4367154c84f04c26389b0f811ac">Language</a>.ChineseTraditional:</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;                    currentVariant = <span class="stringliteral">&quot;zh-tw&quot;</span>;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;                    <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160; </div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;                <span class="keywordflow">case</span> <a class="code" href="namespace_game_framework_1_1_localization.html#ad3cfd4367154c84f04c26389b0f811ac">Language</a>.Korean:</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;                    currentVariant = <span class="stringliteral">&quot;ko-kr&quot;</span>;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;                    <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160; </div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;                <span class="keywordflow">default</span>:</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;                    currentVariant = <span class="stringliteral">&quot;zh-cn&quot;</span>;</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;                    <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;            }</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160; </div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;            GameEntry.Resource.SetCurrentVariant(currentVariant);</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;            <a class="code" href="_login_form_8cs.html#a6208db3ac52d7f107a612679d0d8eca3">Log</a>.Info(<span class="stringliteral">&quot;Init current variant complete.&quot;</span>);</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        }</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160; </div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> InitSoundSettings()</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;        {</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;            GameEntry.Sound.Mute(<span class="stringliteral">&quot;Music&quot;</span>, GameEntry.Setting.GetBool(Constant.Setting.MusicMuted, <span class="keyword">false</span>));</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;            GameEntry.Sound.SetVolume(<span class="stringliteral">&quot;Music&quot;</span>, GameEntry.Setting.GetFloat(Constant.Setting.MusicVolume, 0.3f));</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;            GameEntry.Sound.Mute(<span class="stringliteral">&quot;Sound&quot;</span>, GameEntry.Setting.GetBool(Constant.Setting.SoundMuted, <span class="keyword">false</span>));</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;            GameEntry.Sound.SetVolume(<span class="stringliteral">&quot;Sound&quot;</span>, GameEntry.Setting.GetFloat(Constant.Setting.SoundVolume, 1f));</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;            GameEntry.Sound.Mute(<span class="stringliteral">&quot;UISound&quot;</span>, GameEntry.Setting.GetBool(Constant.Setting.UISoundMuted, <span class="keyword">false</span>));</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;            GameEntry.Sound.SetVolume(<span class="stringliteral">&quot;UISound&quot;</span>, GameEntry.Setting.GetFloat(Constant.Setting.UISoundVolume, 1f));</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;            <a class="code" href="_login_form_8cs.html#a6208db3ac52d7f107a612679d0d8eca3">Log</a>.Info(<span class="stringliteral">&quot;Init sound settings complete.&quot;</span>);</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        }</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    }</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;}</div>
+<div class="ttc" id="a_game_main_2_procedure_2_procedure_change_scene_8cs_html_a2485a0c5748e557be16e49a4d2c679f9"><div class="ttname"><a href="_game_main_2_procedure_2_procedure_change_scene_8cs.html#a2485a0c5748e557be16e49a4d2c679f9">ProcedureOwner</a></div><div class="ttdeci">GameFramework.Fsm.IFsm&lt; GameFramework.Procedure.IProcedureManager &gt; ProcedureOwner</div><div class="ttdef"><b>Definition:</b> <a href="_game_main_2_procedure_2_procedure_change_scene_8cs_source.html#l00011">ProcedureChangeScene.cs:11</a></div></div>
+<div class="ttc" id="a_login_form_8cs_html_a6208db3ac52d7f107a612679d0d8eca3"><div class="ttname"><a href="_login_form_8cs.html#a6208db3ac52d7f107a612679d0d8eca3">Log</a></div><div class="ttdeci">UnityGameFramework.Runtime.Log Log</div><div class="ttdef"><b>Definition:</b> <a href="_login_form_8cs_source.html#l00007">LoginForm.cs:7</a></div></div>
+<div class="ttc" id="aclass_linity_1_1_builtin_data_component_html_a2020d094759121dc0fb96eb1a9fccd00"><div class="ttname"><a href="class_linity_1_1_builtin_data_component.html#a2020d094759121dc0fb96eb1a9fccd00">Linity.BuiltinDataComponent.InitDefaultDictionary</a></div><div class="ttdeci">void InitDefaultDictionary()</div><div class="ttdef"><b>Definition:</b> <a href="_builtin_data_component_8cs_source.html#l00055">BuiltinDataComponent.cs:55</a></div></div>
+<div class="ttc" id="aclass_linity_1_1_builtin_data_component_html_aedc7fd9a71573835210e6e78df58b0be"><div class="ttname"><a href="class_linity_1_1_builtin_data_component.html#aedc7fd9a71573835210e6e78df58b0be">Linity.BuiltinDataComponent.InitBuildInfo</a></div><div class="ttdeci">void InitBuildInfo()</div><div class="ttdef"><b>Definition:</b> <a href="_builtin_data_component_8cs_source.html#l00039">BuiltinDataComponent.cs:39</a></div></div>
+<div class="ttc" id="aclass_linity_1_1_game_entry_html"><div class="ttname"><a href="class_linity_1_1_game_entry.html">Linity.GameEntry</a></div><div class="ttdoc">游戏入口。</div><div class="ttdef"><b>Definition:</b> <a href="_game_entry_8_builtin_8cs_source.html#l00016">GameEntry.Builtin.cs:17</a></div></div>
+<div class="ttc" id="aclass_linity_1_1_game_entry_html_a2e0da0b4c2c647ab45d30a000cf17b4e"><div class="ttname"><a href="class_linity_1_1_game_entry.html#a2e0da0b4c2c647ab45d30a000cf17b4e">Linity.GameEntry.BuiltinData</a></div><div class="ttdeci">static BuiltinDataComponent BuiltinData</div><div class="ttdef"><b>Definition:</b> <a href="_game_entry_8_custom_8cs_source.html#l00017">GameEntry.Custom.cs:18</a></div></div>
+<div class="ttc" id="aclass_linity_1_1_game_entry_html_ab93cef38d0c3fbddb135bcdfe875394f"><div class="ttname"><a href="class_linity_1_1_game_entry.html#ab93cef38d0c3fbddb135bcdfe875394f">Linity.GameEntry.Base</a></div><div class="ttdeci">static BaseComponent Base</div><div class="ttdoc">获取游戏基础组件。</div><div class="ttdef"><b>Definition:</b> <a href="_game_entry_8_builtin_8cs_source.html#l00021">GameEntry.Builtin.cs:22</a></div></div>
+<div class="ttc" id="aclass_linity_1_1_procedure_base_html"><div class="ttname"><a href="class_linity_1_1_procedure_base.html">Linity.ProcedureBase</a></div><div class="ttdef"><b>Definition:</b> <a href="_game_main_2_procedure_2_procedure_base_8cs_source.html#l00013">ProcedureBase.cs:14</a></div></div>
+<div class="ttc" id="aclass_linity_1_1_procedure_launch_html"><div class="ttname"><a href="class_linity_1_1_procedure_launch.html">Linity.ProcedureLaunch</a></div><div class="ttdef"><b>Definition:</b> <a href="_procedure_launch_8cs_source.html#l00015">ProcedureLaunch.cs:16</a></div></div>
+<div class="ttc" id="aclass_linity_1_1_procedure_launch_html_a6983038f350c15c836ef7881bdc37894"><div class="ttname"><a href="class_linity_1_1_procedure_launch.html#a6983038f350c15c836ef7881bdc37894">Linity.ProcedureLaunch.UseNativeDialog</a></div><div class="ttdeci">override bool UseNativeDialog</div><div class="ttdef"><b>Definition:</b> <a href="_procedure_launch_8cs_source.html#l00017">ProcedureLaunch.cs:18</a></div></div>
+<div class="ttc" id="aclass_linity_1_1_procedure_launch_html_ab2fa0dc9b7871347d6862553a353d619"><div class="ttname"><a href="class_linity_1_1_procedure_launch.html#ab2fa0dc9b7871347d6862553a353d619">Linity.ProcedureLaunch.OnUpdate</a></div><div class="ttdeci">override void OnUpdate(ProcedureOwner procedureOwner, float elapseSeconds, float realElapseSeconds)</div><div class="ttdef"><b>Definition:</b> <a href="_procedure_launch_8cs_source.html#l00046">ProcedureLaunch.cs:46</a></div></div>
+<div class="ttc" id="aclass_linity_1_1_procedure_launch_html_aea2827b1037bfefcc6da2fbc2f4e56c1"><div class="ttname"><a href="class_linity_1_1_procedure_launch.html#aea2827b1037bfefcc6da2fbc2f4e56c1">Linity.ProcedureLaunch.OnEnter</a></div><div class="ttdeci">override void OnEnter(ProcedureOwner procedureOwner)</div><div class="ttdef"><b>Definition:</b> <a href="_procedure_launch_8cs_source.html#l00025">ProcedureLaunch.cs:25</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_runtime_1_1_base_component_html_a1014f5f50c35e6fc3bcfe1ef1994b177"><div class="ttname"><a href="class_unity_game_framework_1_1_runtime_1_1_base_component.html#a1014f5f50c35e6fc3bcfe1ef1994b177">UnityGameFramework.Runtime.BaseComponent.EditorResourceMode</a></div><div class="ttdeci">bool EditorResourceMode</div><div class="ttdoc">获取或设置是否使用编辑器资源模式（仅编辑器内有效）。</div><div class="ttdef"><b>Definition:</b> <a href="_base_component_8cs_source.html#l00060">BaseComponent.cs:61</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_runtime_1_1_base_component_html_a70476104a24c065b86d4046ccba65d5d"><div class="ttname"><a href="class_unity_game_framework_1_1_runtime_1_1_base_component.html#a70476104a24c065b86d4046ccba65d5d">UnityGameFramework.Runtime.BaseComponent.EditorLanguage</a></div><div class="ttdeci">Language EditorLanguage</div><div class="ttdoc">获取或设置编辑器语言（仅编辑器内有效）。</div><div class="ttdef"><b>Definition:</b> <a href="_base_component_8cs_source.html#l00075">BaseComponent.cs:76</a></div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_fsm_1_1_i_fsm_html"><div class="ttname"><a href="interface_game_framework_1_1_fsm_1_1_i_fsm.html">GameFramework.Fsm.IFsm</a></div><div class="ttdoc">有限状态机接口。</div><div class="ttdef"><b>Definition:</b> <a href="_libraries_2_game_framework_2_libraries_2_game_framework-2021_805_831_2_game_framework_2_fsm_2_i_fsm_8cs_source.html#l00017">IFsm.cs:18</a></div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_procedure_1_1_i_procedure_manager_html"><div class="ttname"><a href="interface_game_framework_1_1_procedure_1_1_i_procedure_manager.html">GameFramework.Procedure.IProcedureManager</a></div><div class="ttdoc">流程管理器接口。</div><div class="ttdef"><b>Definition:</b> <a href="_libraries_2_game_framework_2_libraries_2_game_framework-2021_805_831_2_game_framework_2_procedure_2_i_procedure_manager_8cs_source.html#l00016">IProcedureManager.cs:17</a></div></div>
+<div class="ttc" id="anamespace_game_framework_1_1_fsm_html"><div class="ttname"><a href="namespace_game_framework_1_1_fsm.html">GameFramework.Fsm</a></div><div class="ttdef"><b>Definition:</b> <a href="_libraries_2_game_framework_2_libraries_2_game_framework-2021_805_831_2_game_framework_2_fsm_2_fsm_8cs_source.html#l00011">Fsm.cs:12</a></div></div>
+<div class="ttc" id="anamespace_game_framework_1_1_localization_html"><div class="ttname"><a href="namespace_game_framework_1_1_localization.html">GameFramework.Localization</a></div><div class="ttdef"><b>Definition:</b> <a href="_i_localization_helper_8cs_source.html#l00008">ILocalizationHelper.cs:9</a></div></div>
+<div class="ttc" id="anamespace_game_framework_1_1_localization_html_ad3cfd4367154c84f04c26389b0f811ac"><div class="ttname"><a href="namespace_game_framework_1_1_localization.html#ad3cfd4367154c84f04c26389b0f811ac">GameFramework.Localization.Language</a></div><div class="ttdeci">Language</div><div class="ttdoc">本地化语言。</div><div class="ttdef"><b>Definition:</b> <a href="_language_8cs_source.html#l00013">Language.cs:14</a></div></div>
+<div class="ttc" id="anamespace_game_framework_1_1_procedure_html"><div class="ttname"><a href="namespace_game_framework_1_1_procedure.html">GameFramework.Procedure</a></div><div class="ttdef"><b>Definition:</b> <a href="_libraries_2_game_framework_2_libraries_2_game_framework-2021_805_831_2_game_framework_2_procedure_2_i_procedure_manager_8cs_source.html#l00011">IProcedureManager.cs:12</a></div></div>
+<div class="ttc" id="anamespace_game_framework_html"><div class="ttname"><a href="namespace_game_framework.html">GameFramework</a></div><div class="ttdef"><b>Definition:</b> <a href="_data_provider_8cs_source.html#l00011">DataProvider.cs:12</a></div></div>
+<div class="ttc" id="anamespace_linity_html"><div class="ttname"><a href="namespace_linity.html">Linity</a></div><div class="ttdef"><b>Definition:</b> <a href="_entity_and_u_i_form_code_generator_8cs_source.html#l00008">EntityAndUIFormCodeGenerator.cs:9</a></div></div>
+<div class="ttc" id="anamespace_system_html"><div class="ttname"><a href="namespace_system.html">System</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_method_builder_attribute_8cs_source.html#l00001">AsyncMethodBuilderAttribute.cs:2</a></div></div>
+<div class="ttc" id="anamespace_unity_game_framework_1_1_runtime_html"><div class="ttname"><a href="namespace_unity_game_framework_1_1_runtime.html">UnityGameFramework.Runtime</a></div><div class="ttdef"><b>Definition:</b> <a href="_base_component_8cs_source.html#l00014">BaseComponent.cs:15</a></div></div>
+<div class="ttc" id="anamespace_unity_game_framework_html"><div class="ttname"><a href="namespace_unity_game_framework.html">UnityGameFramework</a></div><div class="ttdef"><b>Definition:</b> <a href="_base_component_inspector_8cs_source.html#l00014">BaseComponentInspector.cs:15</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_84bbf7b3c7f28a5a18725745e1505219.html">Assets</a></li><li class="navelem"><a class="el" href="dir_f13b41af88cf68434578284aaf699e39.html">Scripts</a></li><li class="navelem"><a class="el" href="dir_8274910eb5bb242a7532823db7176570.html">GameMain</a></li><li class="navelem"><a class="el" href="dir_f3625adb40c7f7ac1088a3cd711a7f0d.html">Procedure</a></li><li class="navelem"><a class="el" href="_procedure_launch_8cs.html">ProcedureLaunch.cs</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:24:44 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

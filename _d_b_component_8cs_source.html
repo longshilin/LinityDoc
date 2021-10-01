@@ -1,0 +1,234 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: ETServer/Server/Model/Module/DB/DBComponent.cs 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_d_b_component_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">DBComponent.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_d_b_component_8cs.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Collections.Generic;</div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_mongo_d_b.html">MongoDB</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver.html">Driver</a>;</div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_e_t_model.html">ETModel</a></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;{</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;        [ObjectSystem]</div>
+<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="class_e_t_model_1_1_db_component_system.html">    7</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="class_e_t_model_1_1_db_component_system.html">DbComponentSystem</a> : <a class="code" href="class_e_t_model_1_1_awake_system.html">AwakeSystem</a>&lt;DBComponent&gt;</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;        {</div>
+<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="class_e_t_model_1_1_db_component_system.html#a087c623bec5baa55e5cc7765b3a4b656">    9</a></span>&#160;                <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code" href="class_e_t_model_1_1_db_component_system.html#a087c623bec5baa55e5cc7765b3a4b656">Awake</a>(<a class="code" href="class_e_t_model_1_1_d_b_component.html">DBComponent</a> <span class="keyword">self</span>)</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;                {</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;                        <span class="keyword">self</span>.Awake();</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;                }</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        }</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="class_e_t_model_1_1_d_b_component.html">   18</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="class_e_t_model_1_1_d_b_component.html">DBComponent</a> : <a class="code" href="class_e_t_model_1_1_component.html">Component</a></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        {</div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="class_e_t_model_1_1_d_b_component.html#a4d9ec6d797f8beea09f3fe2731f8be7b">   20</a></span>&#160;                <span class="keyword">public</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_mongo_client.html">MongoClient</a> <a class="code" href="class_e_t_model_1_1_d_b_component.html#a4d9ec6d797f8beea09f3fe2731f8be7b">mongoClient</a>;</div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="class_e_t_model_1_1_d_b_component.html#a749034683ebda46551b5859497c77de2">   21</a></span>&#160;                <span class="keyword">public</span> <a class="code" href="interface_mongo_d_b_1_1_driver_1_1_i_mongo_database.html">IMongoDatabase</a> <a class="code" href="class_e_t_model_1_1_d_b_component.html#a749034683ebda46551b5859497c77de2">database</a>;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;                </div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="class_e_t_model_1_1_d_b_component.html#a475616fffeafbb6f3707362505184c7d">   23</a></span>&#160;                <span class="keyword">public</span> <span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="class_e_t_model_1_1_d_b_component.html#a475616fffeafbb6f3707362505184c7d">taskCount</a> = 32;</div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="class_e_t_model_1_1_d_b_component.html#a5a77bcc50de498fb45f982aa15982789">   24</a></span>&#160;                <span class="keyword">public</span> List&lt;DBTaskQueue&gt; <a class="code" href="class_e_t_model_1_1_d_b_component.html#a5a77bcc50de498fb45f982aa15982789">tasks</a> = <span class="keyword">new</span> List&lt;DBTaskQueue&gt;(<a class="code" href="class_e_t_model_1_1_d_b_component.html#a475616fffeafbb6f3707362505184c7d">taskCount</a>);</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="class_e_t_model_1_1_d_b_component.html#af68713d4348fe3324c61fe780c66433c">   26</a></span>&#160;                <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_e_t_model_1_1_d_b_component.html#af68713d4348fe3324c61fe780c66433c">Awake</a>()</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;                {</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;                        <a class="code" href="class_e_t_model_1_1_d_b_config.html">DBConfig</a> config = <a class="code" href="class_e_t_model_1_1_start_config_component.html">StartConfigComponent</a>.<a class="code" href="class_e_t_model_1_1_start_config_component.html#ad77b5bcbeb1b27a49bc11ca76ff34c32">Instance</a>.<a class="code" href="class_e_t_model_1_1_start_config_component.html#a7bff50e13b60ea0806637d16f7ed4ead">StartConfig</a>.<a class="code" href="class_e_t_model_1_1_entity.html#a063b14c2158cb5ec98d927aa6b283860">GetComponent</a>&lt;<a class="code" href="class_e_t_model_1_1_d_b_config.html">DBConfig</a>&gt;();</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;                        <span class="keywordtype">string</span> connectionString = config.<a class="code" href="class_e_t_model_1_1_d_b_config.html#a93094c592ed07867cfff1e0ae2f68dc5">ConnectionString</a>;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;                        <a class="code" href="class_e_t_model_1_1_d_b_component.html#a4d9ec6d797f8beea09f3fe2731f8be7b">mongoClient</a> = <span class="keyword">new</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_mongo_client.html">MongoClient</a>(connectionString);</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;                        this.database = this.mongoClient.<a class="code" href="class_mongo_d_b_1_1_driver_1_1_mongo_client.html#a44401f883c7e1ea80c8d23f4e79269e5">GetDatabase</a>(config.<a class="code" href="class_e_t_model_1_1_d_b_config.html#acc7c7a8ddc09a763fd878fc31de0b312">DBName</a>);</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;                        </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;                        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code" href="class_e_t_model_1_1_d_b_component.html#a475616fffeafbb6f3707362505184c7d">taskCount</a>; ++i)</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;                        {</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;                                <a class="code" href="class_e_t_model_1_1_d_b_task_queue.html">DBTaskQueue</a> taskQueue = ComponentFactory.Create&lt;<a class="code" href="class_e_t_model_1_1_d_b_task_queue.html">DBTaskQueue</a>&gt;();</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;                                this.tasks.<a class="code" href="class_e_t_model_1_1_d_b_task_queue.html#ad212e3fe3e8ac941ead8fa66dc43447e">Add</a>(taskQueue);</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;                        }</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;                }</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                </div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="class_e_t_model_1_1_d_b_component.html#a3893f073a83188d6493231a2e9bf4588">   40</a></span>&#160;                <span class="keyword">public</span> <a class="code" href="interface_mongo_d_b_1_1_driver_1_1_i_mongo_collection.html">IMongoCollection&lt;ComponentWithId&gt;</a> <a class="code" href="class_e_t_model_1_1_d_b_component.html#a3893f073a83188d6493231a2e9bf4588">GetCollection</a>(<span class="keywordtype">string</span> name)</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;                {</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                        <span class="keywordflow">return</span> this.database.GetCollection&lt;<a class="code" href="class_e_t_model_1_1_component_with_id.html">ComponentWithId</a>&gt;(name);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;                }</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="class_e_t_model_1_1_d_b_component.html#adc01739878ad2f132ffad8c453066b19">   45</a></span>&#160;                <span class="keyword">public</span> <a class="code" href="struct_e_t_model_1_1_e_t_task.html">ETTask</a> <a class="code" href="class_e_t_model_1_1_d_b_component.html#adc01739878ad2f132ffad8c453066b19">Add</a>(<a class="code" href="class_e_t_model_1_1_component_with_id.html">ComponentWithId</a> component, <span class="keywordtype">string</span> collectionName = <span class="stringliteral">&quot;&quot;</span>)</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                {</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                        <a class="code" href="class_e_t_model_1_1_e_t_task_completion_source.html">ETTaskCompletionSource</a> tcs = <span class="keyword">new</span> <a class="code" href="class_e_t_model_1_1_e_t_task_completion_source.html">ETTaskCompletionSource</a>();</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                        <span class="keywordflow">if</span> (<span class="keywordtype">string</span>.IsNullOrEmpty(collectionName))</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                        {</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                                collectionName = component.GetType().Name;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                        }</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                        <a class="code" href="class_e_t_model_1_1_d_b_save_task.html">DBSaveTask</a> task = ComponentFactory.CreateWithId&lt;<a class="code" href="class_e_t_model_1_1_d_b_save_task.html">DBSaveTask</a>, <a class="code" href="class_e_t_model_1_1_component_with_id.html">ComponentWithId</a>, string, <a class="code" href="class_e_t_model_1_1_e_t_task_completion_source.html">ETTaskCompletionSource</a>&gt;(component.<a class="code" href="class_e_t_model_1_1_component_with_id.html#a5e54a3b2e2f21e66b712ea0fe27e0554">Id</a>, component, collectionName, tcs);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                        this.tasks[(int)((ulong)task.<a class="code" href="class_e_t_model_1_1_component_with_id.html#a5e54a3b2e2f21e66b712ea0fe27e0554">Id</a> % <a class="code" href="class_e_t_model_1_1_d_b_component.html#a475616fffeafbb6f3707362505184c7d">taskCount</a>)].<a class="code" href="class_e_t_model_1_1_d_b_component.html#adc01739878ad2f132ffad8c453066b19">Add</a>(task);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                        <span class="keywordflow">return</span> tcs.<a class="code" href="class_e_t_model_1_1_e_t_task_completion_source.html#abaa1ce98ba9c7fdf69e76f56c9bdb68a">Task</a>;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                }</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="class_e_t_model_1_1_d_b_component.html#a82cda3c314c9fcf5fa6fba27af4efac5">   59</a></span>&#160;                <span class="keyword">public</span> <a class="code" href="struct_e_t_model_1_1_e_t_task.html">ETTask</a> <a class="code" href="class_e_t_model_1_1_d_b_component.html#a82cda3c314c9fcf5fa6fba27af4efac5">AddBatch</a>(List&lt;ComponentWithId&gt; components, <span class="keywordtype">string</span> collectionName)</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                {</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                        <a class="code" href="class_e_t_model_1_1_e_t_task_completion_source.html">ETTaskCompletionSource</a> tcs = <span class="keyword">new</span> <a class="code" href="class_e_t_model_1_1_e_t_task_completion_source.html">ETTaskCompletionSource</a>();</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                        <a class="code" href="class_e_t_model_1_1_d_b_save_batch_task.html">DBSaveBatchTask</a> task = ComponentFactory.Create&lt;<a class="code" href="class_e_t_model_1_1_d_b_save_batch_task.html">DBSaveBatchTask</a>, List&lt;ComponentWithId&gt;, string, <a class="code" href="class_e_t_model_1_1_e_t_task_completion_source.html">ETTaskCompletionSource</a>&gt;(components, collectionName, tcs);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                        this.tasks[(int)((ulong)task.<a class="code" href="class_e_t_model_1_1_component_with_id.html#a5e54a3b2e2f21e66b712ea0fe27e0554">Id</a> % <a class="code" href="class_e_t_model_1_1_d_b_component.html#a475616fffeafbb6f3707362505184c7d">taskCount</a>)].<a class="code" href="class_e_t_model_1_1_d_b_component.html#adc01739878ad2f132ffad8c453066b19">Add</a>(task);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                        <span class="keywordflow">return</span> tcs.<a class="code" href="class_e_t_model_1_1_e_t_task_completion_source.html#abaa1ce98ba9c7fdf69e76f56c9bdb68a">Task</a>;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                }</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
+<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="class_e_t_model_1_1_d_b_component.html#a78390084730562d870fa90003ca2ea06">   67</a></span>&#160;                <span class="keyword">public</span> <a class="code" href="struct_e_t_model_1_1_e_t_task.html">ETTask&lt;ComponentWithId&gt;</a> <a class="code" href="class_e_t_model_1_1_d_b_component.html#a78390084730562d870fa90003ca2ea06">Get</a>(<span class="keywordtype">string</span> collectionName, <span class="keywordtype">long</span> <span class="keywordtype">id</span>)</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                {</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                        <a class="code" href="class_e_t_model_1_1_e_t_task_completion_source.html">ETTaskCompletionSource&lt;ComponentWithId&gt;</a> tcs = <span class="keyword">new</span> <a class="code" href="class_e_t_model_1_1_e_t_task_completion_source.html">ETTaskCompletionSource&lt;ComponentWithId&gt;</a>();</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                        <a class="code" href="class_e_t_model_1_1_d_b_query_task.html">DBQueryTask</a> dbQueryTask = ComponentFactory.CreateWithId&lt;<a class="code" href="class_e_t_model_1_1_d_b_query_task.html">DBQueryTask</a>, string, <a class="code" href="class_e_t_model_1_1_e_t_task_completion_source.html">ETTaskCompletionSource&lt;ComponentWithId&gt;</a>&gt;(id, collectionName, tcs);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                        this.tasks[(int)((ulong)<span class="keywordtype">id</span> % <a class="code" href="class_e_t_model_1_1_d_b_component.html#a475616fffeafbb6f3707362505184c7d">taskCount</a>)].<a class="code" href="class_e_t_model_1_1_d_b_component.html#adc01739878ad2f132ffad8c453066b19">Add</a>(dbQueryTask);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                        <span class="keywordflow">return</span> tcs.<a class="code" href="class_e_t_model_1_1_e_t_task_completion_source.html#abaa1ce98ba9c7fdf69e76f56c9bdb68a">Task</a>;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                }</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
+<div class="line"><a name="l00076"></a><span class="lineno"><a class="line" href="class_e_t_model_1_1_d_b_component.html#a378bc7050a07e617efaea9d6ce874652">   76</a></span>&#160;                <span class="keyword">public</span> <a class="code" href="struct_e_t_model_1_1_e_t_task.html">ETTask&lt;List&lt;ComponentWithId&gt;</a>&gt; <a class="code" href="class_e_t_model_1_1_d_b_component.html#a378bc7050a07e617efaea9d6ce874652">GetBatch</a>(<span class="keywordtype">string</span> collectionName, List&lt;long&gt; idList)</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                {</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                        <a class="code" href="class_e_t_model_1_1_e_t_task_completion_source.html">ETTaskCompletionSource&lt;List&lt;ComponentWithId&gt;</a>&gt; tcs = <span class="keyword">new</span> <a class="code" href="class_e_t_model_1_1_e_t_task_completion_source.html">ETTaskCompletionSource&lt;List&lt;ComponentWithId&gt;</a>&gt;();</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                        <a class="code" href="class_e_t_model_1_1_d_b_query_batch_task.html">DBQueryBatchTask</a> dbQueryBatchTask = ComponentFactory.Create&lt;<a class="code" href="class_e_t_model_1_1_d_b_query_batch_task.html">DBQueryBatchTask</a>, List&lt;long&gt;, string, <a class="code" href="class_e_t_model_1_1_e_t_task_completion_source.html">ETTaskCompletionSource&lt;List&lt;ComponentWithId&gt;</a>&gt;&gt;(idList, collectionName, tcs);</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                        this.tasks[(int)((ulong)dbQueryBatchTask.Id % <a class="code" href="class_e_t_model_1_1_d_b_component.html#a475616fffeafbb6f3707362505184c7d">taskCount</a>)].<a class="code" href="class_e_t_model_1_1_d_b_component.html#adc01739878ad2f132ffad8c453066b19">Add</a>(dbQueryBatchTask);</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                        <span class="keywordflow">return</span> tcs.<a class="code" href="class_e_t_model_1_1_e_t_task_completion_source.html#abaa1ce98ba9c7fdf69e76f56c9bdb68a">Task</a>;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                }</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                </div>
+<div class="line"><a name="l00085"></a><span class="lineno"><a class="line" href="class_e_t_model_1_1_d_b_component.html#a5e8a1fb44b33976581e0fd42825fc9a7">   85</a></span>&#160;                <span class="keyword">public</span> <a class="code" href="struct_e_t_model_1_1_e_t_task.html">ETTask&lt;List&lt;ComponentWithId&gt;</a>&gt; <a class="code" href="class_e_t_model_1_1_d_b_component.html#a5e8a1fb44b33976581e0fd42825fc9a7">GetJson</a>(<span class="keywordtype">string</span> collectionName, <span class="keywordtype">string</span> json)</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                {</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                        <a class="code" href="class_e_t_model_1_1_e_t_task_completion_source.html">ETTaskCompletionSource&lt;List&lt;ComponentWithId&gt;</a>&gt; tcs = <span class="keyword">new</span> <a class="code" href="class_e_t_model_1_1_e_t_task_completion_source.html">ETTaskCompletionSource&lt;List&lt;ComponentWithId&gt;</a>&gt;();</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                        </div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                        <a class="code" href="class_e_t_model_1_1_d_b_query_json_task.html">DBQueryJsonTask</a> dbQueryJsonTask = ComponentFactory.Create&lt;<a class="code" href="class_e_t_model_1_1_d_b_query_json_task.html">DBQueryJsonTask</a>, string, string, <a class="code" href="class_e_t_model_1_1_e_t_task_completion_source.html">ETTaskCompletionSource&lt;List&lt;ComponentWithId&gt;</a>&gt;&gt;(collectionName, json, tcs);</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                        this.tasks[(int)((ulong)dbQueryJsonTask.Id % <a class="code" href="class_e_t_model_1_1_d_b_component.html#a475616fffeafbb6f3707362505184c7d">taskCount</a>)].<a class="code" href="class_e_t_model_1_1_d_b_component.html#adc01739878ad2f132ffad8c453066b19">Add</a>(dbQueryJsonTask);</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                        <span class="keywordflow">return</span> tcs.<a class="code" href="class_e_t_model_1_1_e_t_task_completion_source.html#abaa1ce98ba9c7fdf69e76f56c9bdb68a">Task</a>;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                }</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        }</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;}</div>
+<div class="ttc" id="aclass_e_t_model_1_1_awake_system_html"><div class="ttname"><a href="class_e_t_model_1_1_awake_system.html">ETModel.AwakeSystem</a></div><div class="ttdef"><b>Definition:</b> <a href="_libraries_2_e_t_2_base_2_object_2_i_awake_system_8cs_source.html#l00075">IAwakeSystem.cs:76</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_component_html"><div class="ttname"><a href="class_e_t_model_1_1_component.html">ETModel.Component</a></div><div class="ttdef"><b>Definition:</b> <a href="_libraries_2_e_t_2_base_2_object_2_component_8cs_source.html#l00011">Component.cs:12</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_component_with_id_html"><div class="ttname"><a href="class_e_t_model_1_1_component_with_id.html">ETModel.ComponentWithId</a></div><div class="ttdef"><b>Definition:</b> <a href="_libraries_2_e_t_2_base_2_object_2_component_with_id_8cs_source.html#l00009">ComponentWithId.cs:10</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_component_with_id_html_a5e54a3b2e2f21e66b712ea0fe27e0554"><div class="ttname"><a href="class_e_t_model_1_1_component_with_id.html#a5e54a3b2e2f21e66b712ea0fe27e0554">ETModel.ComponentWithId.Id</a></div><div class="ttdeci">long Id</div><div class="ttdef"><b>Definition:</b> <a href="_libraries_2_e_t_2_base_2_object_2_component_with_id_8cs_source.html#l00015">ComponentWithId.cs:15</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_d_b_component_html"><div class="ttname"><a href="class_e_t_model_1_1_d_b_component.html">ETModel.DBComponent</a></div><div class="ttdoc">用来缓存数据</div><div class="ttdef"><b>Definition:</b> <a href="_d_b_component_8cs_source.html#l00018">DBComponent.cs:19</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_d_b_component_html_a378bc7050a07e617efaea9d6ce874652"><div class="ttname"><a href="class_e_t_model_1_1_d_b_component.html#a378bc7050a07e617efaea9d6ce874652">ETModel.DBComponent.GetBatch</a></div><div class="ttdeci">ETTask&lt; List&lt; ComponentWithId &gt; &gt; GetBatch(string collectionName, List&lt; long &gt; idList)</div><div class="ttdef"><b>Definition:</b> <a href="_d_b_component_8cs_source.html#l00076">DBComponent.cs:76</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_d_b_component_html_a3893f073a83188d6493231a2e9bf4588"><div class="ttname"><a href="class_e_t_model_1_1_d_b_component.html#a3893f073a83188d6493231a2e9bf4588">ETModel.DBComponent.GetCollection</a></div><div class="ttdeci">IMongoCollection&lt; ComponentWithId &gt; GetCollection(string name)</div><div class="ttdef"><b>Definition:</b> <a href="_d_b_component_8cs_source.html#l00040">DBComponent.cs:40</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_d_b_component_html_a475616fffeafbb6f3707362505184c7d"><div class="ttname"><a href="class_e_t_model_1_1_d_b_component.html#a475616fffeafbb6f3707362505184c7d">ETModel.DBComponent.taskCount</a></div><div class="ttdeci">const int taskCount</div><div class="ttdef"><b>Definition:</b> <a href="_d_b_component_8cs_source.html#l00023">DBComponent.cs:23</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_d_b_component_html_a4d9ec6d797f8beea09f3fe2731f8be7b"><div class="ttname"><a href="class_e_t_model_1_1_d_b_component.html#a4d9ec6d797f8beea09f3fe2731f8be7b">ETModel.DBComponent.mongoClient</a></div><div class="ttdeci">MongoClient mongoClient</div><div class="ttdef"><b>Definition:</b> <a href="_d_b_component_8cs_source.html#l00020">DBComponent.cs:20</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_d_b_component_html_a5a77bcc50de498fb45f982aa15982789"><div class="ttname"><a href="class_e_t_model_1_1_d_b_component.html#a5a77bcc50de498fb45f982aa15982789">ETModel.DBComponent.tasks</a></div><div class="ttdeci">List&lt; DBTaskQueue &gt; tasks</div><div class="ttdef"><b>Definition:</b> <a href="_d_b_component_8cs_source.html#l00024">DBComponent.cs:24</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_d_b_component_html_a5e8a1fb44b33976581e0fd42825fc9a7"><div class="ttname"><a href="class_e_t_model_1_1_d_b_component.html#a5e8a1fb44b33976581e0fd42825fc9a7">ETModel.DBComponent.GetJson</a></div><div class="ttdeci">ETTask&lt; List&lt; ComponentWithId &gt; &gt; GetJson(string collectionName, string json)</div><div class="ttdef"><b>Definition:</b> <a href="_d_b_component_8cs_source.html#l00085">DBComponent.cs:85</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_d_b_component_html_a749034683ebda46551b5859497c77de2"><div class="ttname"><a href="class_e_t_model_1_1_d_b_component.html#a749034683ebda46551b5859497c77de2">ETModel.DBComponent.database</a></div><div class="ttdeci">IMongoDatabase database</div><div class="ttdef"><b>Definition:</b> <a href="_d_b_component_8cs_source.html#l00021">DBComponent.cs:21</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_d_b_component_html_a78390084730562d870fa90003ca2ea06"><div class="ttname"><a href="class_e_t_model_1_1_d_b_component.html#a78390084730562d870fa90003ca2ea06">ETModel.DBComponent.Get</a></div><div class="ttdeci">ETTask&lt; ComponentWithId &gt; Get(string collectionName, long id)</div><div class="ttdef"><b>Definition:</b> <a href="_d_b_component_8cs_source.html#l00067">DBComponent.cs:67</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_d_b_component_html_a82cda3c314c9fcf5fa6fba27af4efac5"><div class="ttname"><a href="class_e_t_model_1_1_d_b_component.html#a82cda3c314c9fcf5fa6fba27af4efac5">ETModel.DBComponent.AddBatch</a></div><div class="ttdeci">ETTask AddBatch(List&lt; ComponentWithId &gt; components, string collectionName)</div><div class="ttdef"><b>Definition:</b> <a href="_d_b_component_8cs_source.html#l00059">DBComponent.cs:59</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_d_b_component_html_adc01739878ad2f132ffad8c453066b19"><div class="ttname"><a href="class_e_t_model_1_1_d_b_component.html#adc01739878ad2f132ffad8c453066b19">ETModel.DBComponent.Add</a></div><div class="ttdeci">ETTask Add(ComponentWithId component, string collectionName=&quot;&quot;)</div><div class="ttdef"><b>Definition:</b> <a href="_d_b_component_8cs_source.html#l00045">DBComponent.cs:45</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_d_b_component_html_af68713d4348fe3324c61fe780c66433c"><div class="ttname"><a href="class_e_t_model_1_1_d_b_component.html#af68713d4348fe3324c61fe780c66433c">ETModel.DBComponent.Awake</a></div><div class="ttdeci">void Awake()</div><div class="ttdef"><b>Definition:</b> <a href="_d_b_component_8cs_source.html#l00026">DBComponent.cs:26</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_d_b_config_html"><div class="ttname"><a href="class_e_t_model_1_1_d_b_config.html">ETModel.DBConfig</a></div><div class="ttdef"><b>Definition:</b> <a href="_d_b_config_8cs_source.html#l00006">DBConfig.cs:7</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_d_b_config_html_a93094c592ed07867cfff1e0ae2f68dc5"><div class="ttname"><a href="class_e_t_model_1_1_d_b_config.html#a93094c592ed07867cfff1e0ae2f68dc5">ETModel.DBConfig.ConnectionString</a></div><div class="ttdeci">string ConnectionString</div><div class="ttdef"><b>Definition:</b> <a href="_d_b_config_8cs_source.html#l00008">DBConfig.cs:8</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_d_b_config_html_acc7c7a8ddc09a763fd878fc31de0b312"><div class="ttname"><a href="class_e_t_model_1_1_d_b_config.html#acc7c7a8ddc09a763fd878fc31de0b312">ETModel.DBConfig.DBName</a></div><div class="ttdeci">string DBName</div><div class="ttdef"><b>Definition:</b> <a href="_d_b_config_8cs_source.html#l00009">DBConfig.cs:9</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_d_b_query_batch_task_html"><div class="ttname"><a href="class_e_t_model_1_1_d_b_query_batch_task.html">ETModel.DBQueryBatchTask</a></div><div class="ttdef"><b>Definition:</b> <a href="_d_b_query_batch_task_8cs_source.html#l00018">DBQueryBatchTask.cs:19</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_d_b_query_json_task_html"><div class="ttname"><a href="class_e_t_model_1_1_d_b_query_json_task.html">ETModel.DBQueryJsonTask</a></div><div class="ttdef"><b>Definition:</b> <a href="_d_b_query_json_task_8cs_source.html#l00018">DBQueryJsonTask.cs:19</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_d_b_query_task_html"><div class="ttname"><a href="class_e_t_model_1_1_d_b_query_task.html">ETModel.DBQueryTask</a></div><div class="ttdef"><b>Definition:</b> <a href="_d_b_query_task_8cs_source.html#l00016">DBQueryTask.cs:17</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_d_b_save_batch_task_html"><div class="ttname"><a href="class_e_t_model_1_1_d_b_save_batch_task.html">ETModel.DBSaveBatchTask</a></div><div class="ttdef"><b>Definition:</b> <a href="_d_b_save_batch_task_8cs_source.html#l00019">DBSaveBatchTask.cs:20</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_d_b_save_task_html"><div class="ttname"><a href="class_e_t_model_1_1_d_b_save_task.html">ETModel.DBSaveTask</a></div><div class="ttdef"><b>Definition:</b> <a href="_d_b_save_task_8cs_source.html#l00018">DBSaveTask.cs:19</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_d_b_task_queue_html"><div class="ttname"><a href="class_e_t_model_1_1_d_b_task_queue.html">ETModel.DBTaskQueue</a></div><div class="ttdef"><b>Definition:</b> <a href="_d_b_task_queue_8cs_source.html#l00050">DBTaskQueue.cs:51</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_d_b_task_queue_html_ad212e3fe3e8ac941ead8fa66dc43447e"><div class="ttname"><a href="class_e_t_model_1_1_d_b_task_queue.html#ad212e3fe3e8ac941ead8fa66dc43447e">ETModel.DBTaskQueue.Add</a></div><div class="ttdeci">void Add(DBTask task)</div><div class="ttdef"><b>Definition:</b> <a href="_d_b_task_queue_8cs_source.html#l00056">DBTaskQueue.cs:56</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_db_component_system_html"><div class="ttname"><a href="class_e_t_model_1_1_db_component_system.html">ETModel.DbComponentSystem</a></div><div class="ttdef"><b>Definition:</b> <a href="_d_b_component_8cs_source.html#l00007">DBComponent.cs:8</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_db_component_system_html_a087c623bec5baa55e5cc7765b3a4b656"><div class="ttname"><a href="class_e_t_model_1_1_db_component_system.html#a087c623bec5baa55e5cc7765b3a4b656">ETModel.DbComponentSystem.Awake</a></div><div class="ttdeci">override void Awake(DBComponent self)</div><div class="ttdef"><b>Definition:</b> <a href="_d_b_component_8cs_source.html#l00009">DBComponent.cs:9</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_e_t_task_completion_source_html"><div class="ttname"><a href="class_e_t_model_1_1_e_t_task_completion_source.html">ETModel.ETTaskCompletionSource</a></div><div class="ttdef"><b>Definition:</b> <a href="_e_t_task_completion_source_8cs_source.html#l00145">ETTaskCompletionSource.cs:146</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_e_t_task_completion_source_html_abaa1ce98ba9c7fdf69e76f56c9bdb68a"><div class="ttname"><a href="class_e_t_model_1_1_e_t_task_completion_source.html#abaa1ce98ba9c7fdf69e76f56c9bdb68a">ETModel.ETTaskCompletionSource.Task</a></div><div class="ttdeci">ETTask Task</div><div class="ttdef"><b>Definition:</b> <a href="_e_t_task_completion_source_8cs_source.html#l00023">ETTaskCompletionSource.cs:23</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_entity_html_a063b14c2158cb5ec98d927aa6b283860"><div class="ttname"><a href="class_e_t_model_1_1_entity.html#a063b14c2158cb5ec98d927aa6b283860">ETModel.Entity.GetComponent</a></div><div class="ttdeci">Component GetComponent(Type type)</div><div class="ttdef"><b>Definition:</b> <a href="_libraries_2_e_t_2_base_2_object_2_entity_8cs_source.html#l00217">Entity.cs:217</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_start_config_component_html"><div class="ttname"><a href="class_e_t_model_1_1_start_config_component.html">ETModel.StartConfigComponent</a></div><div class="ttdef"><b>Definition:</b> <a href="_start_config_component_8cs_source.html#l00018">StartConfigComponent.cs:19</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_start_config_component_html_a7bff50e13b60ea0806637d16f7ed4ead"><div class="ttname"><a href="class_e_t_model_1_1_start_config_component.html#a7bff50e13b60ea0806637d16f7ed4ead">ETModel.StartConfigComponent.StartConfig</a></div><div class="ttdeci">StartConfig StartConfig</div><div class="ttdef"><b>Definition:</b> <a href="_start_config_component_8cs_source.html#l00026">StartConfigComponent.cs:26</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_start_config_component_html_ad77b5bcbeb1b27a49bc11ca76ff34c32"><div class="ttname"><a href="class_e_t_model_1_1_start_config_component.html#ad77b5bcbeb1b27a49bc11ca76ff34c32">ETModel.StartConfigComponent.Instance</a></div><div class="ttdeci">static StartConfigComponent Instance</div><div class="ttdef"><b>Definition:</b> <a href="_start_config_component_8cs_source.html#l00020">StartConfigComponent.cs:20</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_mongo_client_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_mongo_client.html">MongoDB.Driver.MongoClient</a></div><div class="ttdef"><b>Definition:</b> <a href="_mongo_client_8cs_source.html#l00036">MongoClient.cs:37</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_mongo_client_html_a44401f883c7e1ea80c8d23f4e79269e5"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_mongo_client.html#a44401f883c7e1ea80c8d23f4e79269e5">MongoDB.Driver.MongoClient.GetDatabase</a></div><div class="ttdeci">sealed override IMongoDatabase GetDatabase(string name, MongoDatabaseSettings settings=null)</div><div class="ttdoc">Gets a database.</div><div class="ttdef"><b>Definition:</b> <a href="_mongo_client_8cs_source.html#l00173">MongoClient.cs:173</a></div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_driver_1_1_i_mongo_collection_html"><div class="ttname"><a href="interface_mongo_d_b_1_1_driver_1_1_i_mongo_collection.html">MongoDB.Driver.IMongoCollection</a></div><div class="ttdoc">Represents a typed collection in MongoDB.</div><div class="ttdef"><b>Definition:</b> <a href="_i_mongo_collection_8cs_source.html#l00033">IMongoCollection.cs:34</a></div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_driver_1_1_i_mongo_database_html"><div class="ttname"><a href="interface_mongo_d_b_1_1_driver_1_1_i_mongo_database.html">MongoDB.Driver.IMongoDatabase</a></div><div class="ttdoc">Represents a database in MongoDB.</div><div class="ttdef"><b>Definition:</b> <a href="_i_mongo_database_8cs_source.html#l00031">IMongoDatabase.cs:32</a></div></div>
+<div class="ttc" id="anamespace_e_t_model_html"><div class="ttname"><a href="namespace_e_t_model.html">ETModel</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_e_t_task_method_builder_8cs_source.html#l00006">AsyncETTaskMethodBuilder.cs:7</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_driver_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_driver.html">MongoDB.Driver</a></div><div class="ttdef"><b>Definition:</b> <a href="_aggregate_bucket_auto_granularity_8cs_source.html#l00018">AggregateBucketAutoGranularity.cs:19</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_html"><div class="ttname"><a href="namespace_mongo_d_b.html">MongoDB</a></div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_bson_constants_8cs_source.html#l00018">BsonConstants.cs:19</a></div></div>
+<div class="ttc" id="anamespace_system_html"><div class="ttname"><a href="namespace_system.html">System</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_method_builder_attribute_8cs_source.html#l00001">AsyncMethodBuilderAttribute.cs:2</a></div></div>
+<div class="ttc" id="astruct_e_t_model_1_1_e_t_task_html"><div class="ttname"><a href="struct_e_t_model_1_1_e_t_task.html">ETModel.ETTask</a></div><div class="ttdoc">Lightweight unity specified task-like object.</div><div class="ttdef"><b>Definition:</b> <a href="_e_t_task_8cs_source.html#l00133">ETTask.cs:134</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_1e261a42b4a2e33df58a15c412684b10.html">ETServer</a></li><li class="navelem"><a class="el" href="dir_473c270c995194c5ad99131d9c901f09.html">Server</a></li><li class="navelem"><a class="el" href="dir_b41cc7e5ac70cc182b8ab814a5a3f866.html">Model</a></li><li class="navelem"><a class="el" href="dir_6a1369edd244f77d1050da7a7ae52be0.html">Module</a></li><li class="navelem"><a class="el" href="dir_bb1f2ecf0b8909615d52f28918921d88.html">DB</a></li><li class="navelem"><a class="el" href="_d_b_component_8cs.html">DBComponent.cs</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:24:56 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

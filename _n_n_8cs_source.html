@@ -1,0 +1,269 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: Assets/Scripts/Libraries/ET/Module/Pathfinding/Recast/NN.cs 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_n_n_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">NN.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_n_n_8cs.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_unity_engine.html">UnityEngine</a>;</div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_p_f.html">PF</a></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;{</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
+<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="class_p_f_1_1_n_n_constraint.html">    7</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="class_p_f_1_1_n_n_constraint.html">NNConstraint</a> {</div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="class_p_f_1_1_n_n_constraint.html#a2dece9ccfc6621ee2a41a3ec4bfaab79">   21</a></span>&#160;                <span class="keyword">public</span> <span class="keywordtype">int</span> <a class="code" href="class_p_f_1_1_n_n_constraint.html#a2dece9ccfc6621ee2a41a3ec4bfaab79">graphMask</a> = -1;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="class_p_f_1_1_n_n_constraint.html#a1089815daaaf6133150efa4bea0cc6ee">   24</a></span>&#160;                <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code" href="class_p_f_1_1_n_n_constraint.html#a1089815daaaf6133150efa4bea0cc6ee">constrainArea</a>;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="class_p_f_1_1_n_n_constraint.html#a593abf744586e4cfb893e89ba4d680bc">   27</a></span>&#160;                <span class="keyword">public</span> <span class="keywordtype">int</span> <a class="code" href="class_p_f_1_1_n_n_constraint.html#a593abf744586e4cfb893e89ba4d680bc">area</a> = -1;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="class_p_f_1_1_n_n_constraint.html#a99d84d2ea7c4749fc5a42b9ca71e7da6">   30</a></span>&#160;                <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code" href="class_p_f_1_1_n_n_constraint.html#a99d84d2ea7c4749fc5a42b9ca71e7da6">constrainWalkability</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="class_p_f_1_1_n_n_constraint.html#a2daf160593cbbebed28f7e4e4fa4b6d3">   36</a></span>&#160;                <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code" href="class_p_f_1_1_n_n_constraint.html#a2daf160593cbbebed28f7e4e4fa4b6d3">walkable</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="class_p_f_1_1_n_n_constraint.html#a1727fcc00d17bb5cd62205a7fed1d602">   46</a></span>&#160;                <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code" href="class_p_f_1_1_n_n_constraint.html#a1727fcc00d17bb5cd62205a7fed1d602">distanceXZ</a>;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="class_p_f_1_1_n_n_constraint.html#a8e9ccd9126fd8f445971c9e01443878e">   51</a></span>&#160;                <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code" href="class_p_f_1_1_n_n_constraint.html#a8e9ccd9126fd8f445971c9e01443878e">constrainTags</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="class_p_f_1_1_n_n_constraint.html#a97624143784a3e5ec2736b952e267716">   59</a></span>&#160;                <span class="keyword">public</span> <span class="keywordtype">int</span> <a class="code" href="class_p_f_1_1_n_n_constraint.html#a97624143784a3e5ec2736b952e267716">tags</a> = -1;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
+<div class="line"><a name="l00068"></a><span class="lineno"><a class="line" href="class_p_f_1_1_n_n_constraint.html#a82c1d776002ce56d9009be3eba20056f">   68</a></span>&#160;                <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code" href="class_p_f_1_1_n_n_constraint.html#a82c1d776002ce56d9009be3eba20056f">constrainDistance</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
+<div class="line"><a name="l00075"></a><span class="lineno"><a class="line" href="class_p_f_1_1_n_n_constraint.html#a2214b6c182dc7a152faccd3e61f0bc7a">   75</a></span>&#160;                <span class="keyword">public</span> <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="class_p_f_1_1_n_n_constraint.html#a2214b6c182dc7a152faccd3e61f0bc7a">SuitableGraph</a> (<span class="keywordtype">int</span> graphIndex, <a class="code" href="class_p_f_1_1_nav_graph.html">NavGraph</a> graph) {</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                        <span class="keywordflow">return</span> ((<a class="code" href="class_p_f_1_1_n_n_constraint.html#a2dece9ccfc6621ee2a41a3ec4bfaab79">graphMask</a> &gt;&gt; graphIndex) &amp; 1) != 0;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                }</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
+<div class="line"><a name="l00080"></a><span class="lineno"><a class="line" href="class_p_f_1_1_n_n_constraint.html#a57cbe6086469529dbce3ac00e1bb2613">   80</a></span>&#160;                <span class="keyword">public</span> <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="class_p_f_1_1_n_n_constraint.html#a57cbe6086469529dbce3ac00e1bb2613">Suitable</a> (<a class="code" href="class_p_f_1_1_graph_node.html">GraphNode</a> node) {</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                        <span class="keywordflow">if</span> (<a class="code" href="class_p_f_1_1_n_n_constraint.html#a99d84d2ea7c4749fc5a42b9ca71e7da6">constrainWalkability</a> &amp;&amp; node.<a class="code" href="class_p_f_1_1_graph_node.html#a6c02d84c45be153e495b32f1c2e48cbf">Walkable</a> != <a class="code" href="class_p_f_1_1_n_n_constraint.html#a2daf160593cbbebed28f7e4e4fa4b6d3">walkable</a>) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                        <span class="keywordflow">if</span> (<a class="code" href="class_p_f_1_1_n_n_constraint.html#a1089815daaaf6133150efa4bea0cc6ee">constrainArea</a> &amp;&amp; <a class="code" href="class_p_f_1_1_n_n_constraint.html#a593abf744586e4cfb893e89ba4d680bc">area</a> &gt;= 0 &amp;&amp; node.<a class="code" href="class_p_f_1_1_graph_node.html#a960095e9c9d6a2b41942e5b6a0843313">Area</a> != <a class="code" href="class_p_f_1_1_n_n_constraint.html#a593abf744586e4cfb893e89ba4d680bc">area</a>) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                        <span class="keywordflow">if</span> (<a class="code" href="class_p_f_1_1_n_n_constraint.html#a8e9ccd9126fd8f445971c9e01443878e">constrainTags</a> &amp;&amp; ((<a class="code" href="class_p_f_1_1_n_n_constraint.html#a97624143784a3e5ec2736b952e267716">tags</a> &gt;&gt; (<span class="keywordtype">int</span>)node.<a class="code" href="class_p_f_1_1_graph_node.html#ad7c1f67e068b2364df72e29b50ed4e7d">Tag</a>) &amp; 0x1) == 0) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                }</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
+<div class="line"><a name="l00094"></a><span class="lineno"><a class="line" href="class_p_f_1_1_n_n_constraint.html#ae19079f822b7600a938b90d7df8afaf7">   94</a></span>&#160;                <span class="keyword">public</span> <span class="keyword">static</span> <a class="code" href="class_p_f_1_1_n_n_constraint.html">NNConstraint</a> <a class="code" href="class_p_f_1_1_n_n_constraint.html#ae19079f822b7600a938b90d7df8afaf7">Default</a> {</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                        <span class="keyword">get</span> {</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                                <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="class_p_f_1_1_n_n_constraint.html#afbc392bea3f6bc94db9396d3b976eeb5">NNConstraint</a>();</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;                        }</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                }</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160; </div>
+<div class="line"><a name="l00101"></a><span class="lineno"><a class="line" href="class_p_f_1_1_n_n_constraint.html#aa775c4be05912410a2710495050e2581">  101</a></span>&#160;                <span class="keyword">public</span> <span class="keyword">static</span> <a class="code" href="class_p_f_1_1_n_n_constraint.html">NNConstraint</a> <a class="code" href="class_p_f_1_1_n_n_constraint.html#aa775c4be05912410a2710495050e2581">None</a> {</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;                        <span class="keyword">get</span> {</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;                                <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="class_p_f_1_1_n_n_constraint.html">NNConstraint</a> {</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;                                                   <a class="code" href="class_p_f_1_1_n_n_constraint.html#a99d84d2ea7c4749fc5a42b9ca71e7da6">constrainWalkability</a> = <span class="keyword">false</span>,</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;                                                   <a class="code" href="class_p_f_1_1_n_n_constraint.html#a1089815daaaf6133150efa4bea0cc6ee">constrainArea</a> = <span class="keyword">false</span>,</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;                                                   <a class="code" href="class_p_f_1_1_n_n_constraint.html#a8e9ccd9126fd8f445971c9e01443878e">constrainTags</a> = <span class="keyword">false</span>,</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;                                                   <a class="code" href="class_p_f_1_1_n_n_constraint.html#a82c1d776002ce56d9009be3eba20056f">constrainDistance</a> = <span class="keyword">false</span>,</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;                                                   <a class="code" href="class_p_f_1_1_n_n_constraint.html#a2dece9ccfc6621ee2a41a3ec4bfaab79">graphMask</a> = -1,</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;                                };</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;                        }</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;                }</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160; </div>
+<div class="line"><a name="l00114"></a><span class="lineno"><a class="line" href="class_p_f_1_1_n_n_constraint.html#afbc392bea3f6bc94db9396d3b976eeb5">  114</a></span>&#160;                <span class="keyword">public</span> <a class="code" href="class_p_f_1_1_n_n_constraint.html#afbc392bea3f6bc94db9396d3b976eeb5">NNConstraint</a> () {</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;                }</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        }</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160; </div>
+<div class="line"><a name="l00122"></a><span class="lineno"><a class="line" href="class_p_f_1_1_path_n_n_constraint.html">  122</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="class_p_f_1_1_path_n_n_constraint.html">PathNNConstraint</a> : <a class="code" href="class_p_f_1_1_n_n_constraint.html">NNConstraint</a> {</div>
+<div class="line"><a name="l00123"></a><span class="lineno"><a class="line" href="class_p_f_1_1_path_n_n_constraint.html#a0b063269634c9ffe3a82129539327a4d">  123</a></span>&#160;                <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">new</span> <a class="code" href="class_p_f_1_1_path_n_n_constraint.html">PathNNConstraint</a> <a class="code" href="class_p_f_1_1_path_n_n_constraint.html#a0b063269634c9ffe3a82129539327a4d">Default</a> {</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;                        <span class="keyword">get</span> {</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;                                <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="class_p_f_1_1_path_n_n_constraint.html">PathNNConstraint</a> {</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;                                                   <a class="code" href="class_p_f_1_1_n_n_constraint.html#a1089815daaaf6133150efa4bea0cc6ee">constrainArea</a> = <span class="keyword">true</span></div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;                                };</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;                        }</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;                }</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160; </div>
+<div class="line"><a name="l00132"></a><span class="lineno"><a class="line" href="class_p_f_1_1_path_n_n_constraint.html#a4fb790211550019ce845c8946bd58ee7">  132</a></span>&#160;                <span class="keyword">public</span> <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_p_f_1_1_path_n_n_constraint.html#a4fb790211550019ce845c8946bd58ee7">SetStart</a> (<a class="code" href="class_p_f_1_1_graph_node.html">GraphNode</a> node) {</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;                        <span class="keywordflow">if</span> (node != <span class="keyword">null</span>) {</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;                                <a class="code" href="class_p_f_1_1_n_n_constraint.html#a593abf744586e4cfb893e89ba4d680bc">area</a> = (int)node.<a class="code" href="class_p_f_1_1_graph_node.html#a960095e9c9d6a2b41942e5b6a0843313">Area</a>;</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;                        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;                                <a class="code" href="class_p_f_1_1_n_n_constraint.html#a1089815daaaf6133150efa4bea0cc6ee">constrainArea</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;                        }</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;                }</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;        }</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160; </div>
+<div class="line"><a name="l00144"></a><span class="lineno"><a class="line" href="struct_p_f_1_1_n_n_info_internal.html">  144</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">struct </span><a class="code" href="struct_p_f_1_1_n_n_info_internal.html">NNInfoInternal</a> {</div>
+<div class="line"><a name="l00149"></a><span class="lineno"><a class="line" href="struct_p_f_1_1_n_n_info_internal.html#a2b5a1ff120cbda9daef1b50d289c12fe">  149</a></span>&#160;                <span class="keyword">public</span> <a class="code" href="class_p_f_1_1_graph_node.html">GraphNode</a> <a class="code" href="struct_p_f_1_1_n_n_info_internal.html#a2b5a1ff120cbda9daef1b50d289c12fe">node</a>;</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160; </div>
+<div class="line"><a name="l00153"></a><span class="lineno"><a class="line" href="struct_p_f_1_1_n_n_info_internal.html#a4b196b16b07e38d712659f8bfafac7e2">  153</a></span>&#160;                <span class="keyword">public</span> <a class="code" href="class_p_f_1_1_graph_node.html">GraphNode</a> <a class="code" href="struct_p_f_1_1_n_n_info_internal.html#a4b196b16b07e38d712659f8bfafac7e2">constrainedNode</a>;</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160; </div>
+<div class="line"><a name="l00157"></a><span class="lineno"><a class="line" href="struct_p_f_1_1_n_n_info_internal.html#abf23ae2849b1f32d25a01e0561b5389b">  157</a></span>&#160;                <span class="keyword">public</span> <a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a> <a class="code" href="struct_p_f_1_1_n_n_info_internal.html#abf23ae2849b1f32d25a01e0561b5389b">clampedPosition</a>;</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160; </div>
+<div class="line"><a name="l00160"></a><span class="lineno"><a class="line" href="struct_p_f_1_1_n_n_info_internal.html#ab332e267159c02d2832d5d7ef762006d">  160</a></span>&#160;                <span class="keyword">public</span> <a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a> <a class="code" href="struct_p_f_1_1_n_n_info_internal.html#ab332e267159c02d2832d5d7ef762006d">constClampedPosition</a>;</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160; </div>
+<div class="line"><a name="l00162"></a><span class="lineno"><a class="line" href="struct_p_f_1_1_n_n_info_internal.html#a865782f08640a0aedde41f7a59de32c9">  162</a></span>&#160;                <span class="keyword">public</span> <a class="code" href="struct_p_f_1_1_n_n_info_internal.html#a865782f08640a0aedde41f7a59de32c9">NNInfoInternal</a> (<a class="code" href="class_p_f_1_1_graph_node.html">GraphNode</a> <a class="code" href="struct_p_f_1_1_n_n_info_internal.html#a2b5a1ff120cbda9daef1b50d289c12fe">node</a>) {</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;                        this.node = <a class="code" href="struct_p_f_1_1_n_n_info_internal.html#a2b5a1ff120cbda9daef1b50d289c12fe">node</a>;</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;                        <a class="code" href="struct_p_f_1_1_n_n_info_internal.html#a4b196b16b07e38d712659f8bfafac7e2">constrainedNode</a> = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;                        <a class="code" href="struct_p_f_1_1_n_n_info_internal.html#abf23ae2849b1f32d25a01e0561b5389b">clampedPosition</a> = <a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a>.<a class="code" href="struct_unity_engine_1_1_vector3.html#a5ee4172032dfc66b99c27713f0122eaa">zero</a>;</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;                        <a class="code" href="struct_p_f_1_1_n_n_info_internal.html#ab332e267159c02d2832d5d7ef762006d">constClampedPosition</a> = <a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a>.<a class="code" href="struct_unity_engine_1_1_vector3.html#a5ee4172032dfc66b99c27713f0122eaa">zero</a>;</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160; </div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;                        <a class="code" href="struct_p_f_1_1_n_n_info_internal.html#a093ad68eca121a70bd898ae59c4fd0d1">UpdateInfo</a>();</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;                }</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160; </div>
+<div class="line"><a name="l00172"></a><span class="lineno"><a class="line" href="struct_p_f_1_1_n_n_info_internal.html#a093ad68eca121a70bd898ae59c4fd0d1">  172</a></span>&#160;                <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="struct_p_f_1_1_n_n_info_internal.html#a093ad68eca121a70bd898ae59c4fd0d1">UpdateInfo</a> () {</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;                        <a class="code" href="struct_p_f_1_1_n_n_info_internal.html#abf23ae2849b1f32d25a01e0561b5389b">clampedPosition</a> = <a class="code" href="struct_p_f_1_1_n_n_info_internal.html#a2b5a1ff120cbda9daef1b50d289c12fe">node</a> != <span class="keyword">null</span> ? (<a class="code" href="_recast_graph_editor_8cs.html#af3326292fdd04d2b384b6d781d9594f6">Vector3</a>)<a class="code" href="struct_p_f_1_1_n_n_info_internal.html#a2b5a1ff120cbda9daef1b50d289c12fe">node</a>.<a class="code" href="class_p_f_1_1_graph_node.html#a66fdcecb3fd3341e07e157838357df90">position</a> : <a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a>.<a class="code" href="struct_unity_engine_1_1_vector3.html#a5ee4172032dfc66b99c27713f0122eaa">zero</a>;</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;                        <a class="code" href="struct_p_f_1_1_n_n_info_internal.html#ab332e267159c02d2832d5d7ef762006d">constClampedPosition</a> = <a class="code" href="struct_p_f_1_1_n_n_info_internal.html#a4b196b16b07e38d712659f8bfafac7e2">constrainedNode</a> != <span class="keyword">null</span> ? (<a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a>)<a class="code" href="struct_p_f_1_1_n_n_info_internal.html#a4b196b16b07e38d712659f8bfafac7e2">constrainedNode</a>.<a class="code" href="class_p_f_1_1_graph_node.html#a66fdcecb3fd3341e07e157838357df90">position</a> : <a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a>.<a class="code" href="struct_unity_engine_1_1_vector3.html#a5ee4172032dfc66b99c27713f0122eaa">zero</a>;</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;                }</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;        }</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160; </div>
+<div class="line"><a name="l00179"></a><span class="lineno"><a class="line" href="struct_p_f_1_1_n_n_info.html">  179</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">struct </span><a class="code" href="struct_p_f_1_1_n_n_info.html">NNInfo</a> {</div>
+<div class="line"><a name="l00181"></a><span class="lineno"><a class="line" href="struct_p_f_1_1_n_n_info.html#a9a221227592711a95e42b3c0c5670068">  181</a></span>&#160;                <span class="keyword">public</span> readonly <a class="code" href="class_p_f_1_1_graph_node.html">GraphNode</a> <a class="code" href="struct_p_f_1_1_n_n_info.html#a9a221227592711a95e42b3c0c5670068">node</a>;</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160; </div>
+<div class="line"><a name="l00186"></a><span class="lineno"><a class="line" href="struct_p_f_1_1_n_n_info.html#a5b1d452096f5bb90ea636ec4218bb193">  186</a></span>&#160;                <span class="keyword">public</span> readonly <a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a> <a class="code" href="struct_p_f_1_1_n_n_info.html#a5b1d452096f5bb90ea636ec4218bb193">position</a>;</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160; </div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;                [<a class="code" href="namespace_system.html">System</a>.Obsolete(<span class="stringliteral">&quot;This field has been renamed to &#39;position&#39;&quot;</span>)]</div>
+<div class="line"><a name="l00192"></a><span class="lineno"><a class="line" href="struct_p_f_1_1_n_n_info.html#a748481aa1860687daaff00c8f8714820">  192</a></span>&#160;                <span class="keyword">public</span> <a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a> <a class="code" href="struct_p_f_1_1_n_n_info.html#a748481aa1860687daaff00c8f8714820">clampedPosition</a> {</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;                        <span class="keyword">get</span> {</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;                                <span class="keywordflow">return</span> <a class="code" href="struct_p_f_1_1_n_n_info.html#a5b1d452096f5bb90ea636ec4218bb193">position</a>;</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;                        }</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;                }</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160; </div>
+<div class="line"><a name="l00198"></a><span class="lineno"><a class="line" href="struct_p_f_1_1_n_n_info.html#a9d672f865eb118dafedd3391748629f1">  198</a></span>&#160;                <span class="keyword">public</span> <a class="code" href="struct_p_f_1_1_n_n_info.html#a9d672f865eb118dafedd3391748629f1">NNInfo</a> (<a class="code" href="struct_p_f_1_1_n_n_info_internal.html">NNInfoInternal</a> internalInfo) {</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;                        <a class="code" href="struct_p_f_1_1_n_n_info.html#a9a221227592711a95e42b3c0c5670068">node</a> = internalInfo.<a class="code" href="struct_p_f_1_1_n_n_info_internal.html#a2b5a1ff120cbda9daef1b50d289c12fe">node</a>;</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;                        <a class="code" href="struct_p_f_1_1_n_n_info.html#a5b1d452096f5bb90ea636ec4218bb193">position</a> = internalInfo.<a class="code" href="struct_p_f_1_1_n_n_info_internal.html#abf23ae2849b1f32d25a01e0561b5389b">clampedPosition</a>;</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;                }</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160; </div>
+<div class="line"><a name="l00203"></a><span class="lineno"><a class="line" href="struct_p_f_1_1_n_n_info.html#afe0d0c7508b4a81f6daa12dec5de0ecb">  203</a></span>&#160;                <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">explicit</span> <span class="keyword">operator</span> <a class="code" href="_recast_graph_editor_8cs.html#af3326292fdd04d2b384b6d781d9594f6">Vector3</a> (<a class="code" href="struct_p_f_1_1_n_n_info.html">NNInfo</a> ob) {</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;                        <span class="keywordflow">return</span> ob.<a class="code" href="struct_p_f_1_1_n_n_info.html#a5b1d452096f5bb90ea636ec4218bb193">position</a>;</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;                }</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160; </div>
+<div class="line"><a name="l00207"></a><span class="lineno"><a class="line" href="struct_p_f_1_1_n_n_info.html#addabda8a7aab4dcbd92c228c55219c55">  207</a></span>&#160;                <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">explicit</span> <span class="keyword">operator</span> <a class="code" href="class_p_f_1_1_graph_node.html">GraphNode</a> (<a class="code" href="struct_p_f_1_1_n_n_info.html">NNInfo</a> ob) {</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;                        <span class="keywordflow">return</span> ob.<a class="code" href="struct_p_f_1_1_n_n_info.html#a9a221227592711a95e42b3c0c5670068">node</a>;</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;                }</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;        }</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;}</div>
+<div class="ttc" id="a_recast_graph_editor_8cs_html_af3326292fdd04d2b384b6d781d9594f6"><div class="ttname"><a href="_recast_graph_editor_8cs.html#af3326292fdd04d2b384b6d781d9594f6">Vector3</a></div><div class="ttdeci">UnityEngine.Vector3 Vector3</div><div class="ttdef"><b>Definition:</b> <a href="_recast_graph_editor_8cs_source.html#l00005">RecastGraphEditor.cs:5</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_graph_node_html"><div class="ttname"><a href="class_p_f_1_1_graph_node.html">PF.GraphNode</a></div><div class="ttdef"><b>Definition:</b> <a href="_graph_node_8cs_source.html#l00048">GraphNode.cs:48</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_graph_node_html_a66fdcecb3fd3341e07e157838357df90"><div class="ttname"><a href="class_p_f_1_1_graph_node.html#a66fdcecb3fd3341e07e157838357df90">PF.GraphNode.position</a></div><div class="ttdeci">Int3 position</div><div class="ttdef"><b>Definition:</b> <a href="_graph_node_8cs_source.html#l00131">GraphNode.cs:131</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_graph_node_html_a6c02d84c45be153e495b32f1c2e48cbf"><div class="ttname"><a href="class_p_f_1_1_graph_node.html#a6c02d84c45be153e495b32f1c2e48cbf">PF.GraphNode.Walkable</a></div><div class="ttdeci">bool? Walkable</div><div class="ttdef"><b>Definition:</b> <a href="_graph_node_8cs_source.html#l00198">GraphNode.cs:198</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_graph_node_html_a960095e9c9d6a2b41942e5b6a0843313"><div class="ttname"><a href="class_p_f_1_1_graph_node.html#a960095e9c9d6a2b41942e5b6a0843313">PF.GraphNode.Area</a></div><div class="ttdeci">uint Area</div><div class="ttdef"><b>Definition:</b> <a href="_graph_node_8cs_source.html#l00214">GraphNode.cs:214</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_graph_node_html_ad7c1f67e068b2364df72e29b50ed4e7d"><div class="ttname"><a href="class_p_f_1_1_graph_node.html#ad7c1f67e068b2364df72e29b50ed4e7d">PF.GraphNode.Tag</a></div><div class="ttdeci">uint Tag</div><div class="ttdef"><b>Definition:</b> <a href="_graph_node_8cs_source.html#l00238">GraphNode.cs:238</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_n_n_constraint_html"><div class="ttname"><a href="class_p_f_1_1_n_n_constraint.html">PF.NNConstraint</a></div><div class="ttdef"><b>Definition:</b> <a href="_n_n_8cs_source.html#l00007">NN.cs:7</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_n_n_constraint_html_a1089815daaaf6133150efa4bea0cc6ee"><div class="ttname"><a href="class_p_f_1_1_n_n_constraint.html#a1089815daaaf6133150efa4bea0cc6ee">PF.NNConstraint.constrainArea</a></div><div class="ttdeci">bool constrainArea</div><div class="ttdef"><b>Definition:</b> <a href="_n_n_8cs_source.html#l00024">NN.cs:24</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_n_n_constraint_html_a1727fcc00d17bb5cd62205a7fed1d602"><div class="ttname"><a href="class_p_f_1_1_n_n_constraint.html#a1727fcc00d17bb5cd62205a7fed1d602">PF.NNConstraint.distanceXZ</a></div><div class="ttdeci">bool distanceXZ</div><div class="ttdef"><b>Definition:</b> <a href="_n_n_8cs_source.html#l00046">NN.cs:46</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_n_n_constraint_html_a2214b6c182dc7a152faccd3e61f0bc7a"><div class="ttname"><a href="class_p_f_1_1_n_n_constraint.html#a2214b6c182dc7a152faccd3e61f0bc7a">PF.NNConstraint.SuitableGraph</a></div><div class="ttdeci">virtual bool SuitableGraph(int graphIndex, NavGraph graph)</div><div class="ttdef"><b>Definition:</b> <a href="_n_n_8cs_source.html#l00075">NN.cs:75</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_n_n_constraint_html_a2daf160593cbbebed28f7e4e4fa4b6d3"><div class="ttname"><a href="class_p_f_1_1_n_n_constraint.html#a2daf160593cbbebed28f7e4e4fa4b6d3">PF.NNConstraint.walkable</a></div><div class="ttdeci">bool walkable</div><div class="ttdef"><b>Definition:</b> <a href="_n_n_8cs_source.html#l00036">NN.cs:36</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_n_n_constraint_html_a2dece9ccfc6621ee2a41a3ec4bfaab79"><div class="ttname"><a href="class_p_f_1_1_n_n_constraint.html#a2dece9ccfc6621ee2a41a3ec4bfaab79">PF.NNConstraint.graphMask</a></div><div class="ttdeci">int graphMask</div><div class="ttdef"><b>Definition:</b> <a href="_n_n_8cs_source.html#l00021">NN.cs:21</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_n_n_constraint_html_a57cbe6086469529dbce3ac00e1bb2613"><div class="ttname"><a href="class_p_f_1_1_n_n_constraint.html#a57cbe6086469529dbce3ac00e1bb2613">PF.NNConstraint.Suitable</a></div><div class="ttdeci">virtual bool Suitable(GraphNode node)</div><div class="ttdef"><b>Definition:</b> <a href="_n_n_8cs_source.html#l00080">NN.cs:80</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_n_n_constraint_html_a593abf744586e4cfb893e89ba4d680bc"><div class="ttname"><a href="class_p_f_1_1_n_n_constraint.html#a593abf744586e4cfb893e89ba4d680bc">PF.NNConstraint.area</a></div><div class="ttdeci">int area</div><div class="ttdef"><b>Definition:</b> <a href="_n_n_8cs_source.html#l00027">NN.cs:27</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_n_n_constraint_html_a82c1d776002ce56d9009be3eba20056f"><div class="ttname"><a href="class_p_f_1_1_n_n_constraint.html#a82c1d776002ce56d9009be3eba20056f">PF.NNConstraint.constrainDistance</a></div><div class="ttdeci">bool constrainDistance</div><div class="ttdef"><b>Definition:</b> <a href="_n_n_8cs_source.html#l00068">NN.cs:68</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_n_n_constraint_html_a8e9ccd9126fd8f445971c9e01443878e"><div class="ttname"><a href="class_p_f_1_1_n_n_constraint.html#a8e9ccd9126fd8f445971c9e01443878e">PF.NNConstraint.constrainTags</a></div><div class="ttdeci">bool constrainTags</div><div class="ttdef"><b>Definition:</b> <a href="_n_n_8cs_source.html#l00051">NN.cs:51</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_n_n_constraint_html_a97624143784a3e5ec2736b952e267716"><div class="ttname"><a href="class_p_f_1_1_n_n_constraint.html#a97624143784a3e5ec2736b952e267716">PF.NNConstraint.tags</a></div><div class="ttdeci">int tags</div><div class="ttdef"><b>Definition:</b> <a href="_n_n_8cs_source.html#l00059">NN.cs:59</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_n_n_constraint_html_a99d84d2ea7c4749fc5a42b9ca71e7da6"><div class="ttname"><a href="class_p_f_1_1_n_n_constraint.html#a99d84d2ea7c4749fc5a42b9ca71e7da6">PF.NNConstraint.constrainWalkability</a></div><div class="ttdeci">bool constrainWalkability</div><div class="ttdef"><b>Definition:</b> <a href="_n_n_8cs_source.html#l00030">NN.cs:30</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_n_n_constraint_html_aa775c4be05912410a2710495050e2581"><div class="ttname"><a href="class_p_f_1_1_n_n_constraint.html#aa775c4be05912410a2710495050e2581">PF.NNConstraint.None</a></div><div class="ttdeci">static NNConstraint None</div><div class="ttdef"><b>Definition:</b> <a href="_n_n_8cs_source.html#l00101">NN.cs:101</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_n_n_constraint_html_ae19079f822b7600a938b90d7df8afaf7"><div class="ttname"><a href="class_p_f_1_1_n_n_constraint.html#ae19079f822b7600a938b90d7df8afaf7">PF.NNConstraint.Default</a></div><div class="ttdeci">static NNConstraint Default</div><div class="ttdef"><b>Definition:</b> <a href="_n_n_8cs_source.html#l00094">NN.cs:94</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_n_n_constraint_html_afbc392bea3f6bc94db9396d3b976eeb5"><div class="ttname"><a href="class_p_f_1_1_n_n_constraint.html#afbc392bea3f6bc94db9396d3b976eeb5">PF.NNConstraint.NNConstraint</a></div><div class="ttdeci">NNConstraint()</div><div class="ttdef"><b>Definition:</b> <a href="_n_n_8cs_source.html#l00114">NN.cs:114</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_nav_graph_html"><div class="ttname"><a href="class_p_f_1_1_nav_graph.html">PF.NavGraph</a></div><div class="ttdef"><b>Definition:</b> <a href="_nav_graph_8cs_source.html#l00022">NavGraph.cs:22</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_path_n_n_constraint_html"><div class="ttname"><a href="class_p_f_1_1_path_n_n_constraint.html">PF.PathNNConstraint</a></div><div class="ttdef"><b>Definition:</b> <a href="_n_n_8cs_source.html#l00122">NN.cs:122</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_path_n_n_constraint_html_a0b063269634c9ffe3a82129539327a4d"><div class="ttname"><a href="class_p_f_1_1_path_n_n_constraint.html#a0b063269634c9ffe3a82129539327a4d">PF.PathNNConstraint.Default</a></div><div class="ttdeci">static new PathNNConstraint Default</div><div class="ttdef"><b>Definition:</b> <a href="_n_n_8cs_source.html#l00123">NN.cs:123</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_path_n_n_constraint_html_a4fb790211550019ce845c8946bd58ee7"><div class="ttname"><a href="class_p_f_1_1_path_n_n_constraint.html#a4fb790211550019ce845c8946bd58ee7">PF.PathNNConstraint.SetStart</a></div><div class="ttdeci">virtual void SetStart(GraphNode node)</div><div class="ttdef"><b>Definition:</b> <a href="_n_n_8cs_source.html#l00132">NN.cs:132</a></div></div>
+<div class="ttc" id="anamespace_p_f_html"><div class="ttname"><a href="namespace_p_f.html">PF</a></div><div class="ttdef"><b>Definition:</b> <a href="_array_pool_8cs_source.html#l00009">ArrayPool.cs:9</a></div></div>
+<div class="ttc" id="anamespace_system_html"><div class="ttname"><a href="namespace_system.html">System</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_method_builder_attribute_8cs_source.html#l00001">AsyncMethodBuilderAttribute.cs:2</a></div></div>
+<div class="ttc" id="anamespace_unity_engine_html"><div class="ttname"><a href="namespace_unity_engine.html">UnityEngine</a></div><div class="ttdef"><b>Definition:</b> <a href="_mathf_8cs_source.html#l00003">Mathf.cs:4</a></div></div>
+<div class="ttc" id="astruct_p_f_1_1_n_n_info_html"><div class="ttname"><a href="struct_p_f_1_1_n_n_info.html">PF.NNInfo</a></div><div class="ttdef"><b>Definition:</b> <a href="_n_n_8cs_source.html#l00179">NN.cs:179</a></div></div>
+<div class="ttc" id="astruct_p_f_1_1_n_n_info_html_a5b1d452096f5bb90ea636ec4218bb193"><div class="ttname"><a href="struct_p_f_1_1_n_n_info.html#a5b1d452096f5bb90ea636ec4218bb193">PF.NNInfo.position</a></div><div class="ttdeci">readonly Vector3 position</div><div class="ttdef"><b>Definition:</b> <a href="_n_n_8cs_source.html#l00186">NN.cs:186</a></div></div>
+<div class="ttc" id="astruct_p_f_1_1_n_n_info_html_a748481aa1860687daaff00c8f8714820"><div class="ttname"><a href="struct_p_f_1_1_n_n_info.html#a748481aa1860687daaff00c8f8714820">PF.NNInfo.clampedPosition</a></div><div class="ttdeci">Vector3 clampedPosition</div><div class="ttdef"><b>Definition:</b> <a href="_n_n_8cs_source.html#l00192">NN.cs:192</a></div></div>
+<div class="ttc" id="astruct_p_f_1_1_n_n_info_html_a9a221227592711a95e42b3c0c5670068"><div class="ttname"><a href="struct_p_f_1_1_n_n_info.html#a9a221227592711a95e42b3c0c5670068">PF.NNInfo.node</a></div><div class="ttdeci">readonly GraphNode node</div><div class="ttdef"><b>Definition:</b> <a href="_n_n_8cs_source.html#l00181">NN.cs:181</a></div></div>
+<div class="ttc" id="astruct_p_f_1_1_n_n_info_html_a9d672f865eb118dafedd3391748629f1"><div class="ttname"><a href="struct_p_f_1_1_n_n_info.html#a9d672f865eb118dafedd3391748629f1">PF.NNInfo.NNInfo</a></div><div class="ttdeci">NNInfo(NNInfoInternal internalInfo)</div><div class="ttdef"><b>Definition:</b> <a href="_n_n_8cs_source.html#l00198">NN.cs:198</a></div></div>
+<div class="ttc" id="astruct_p_f_1_1_n_n_info_internal_html"><div class="ttname"><a href="struct_p_f_1_1_n_n_info_internal.html">PF.NNInfoInternal</a></div><div class="ttdef"><b>Definition:</b> <a href="_n_n_8cs_source.html#l00144">NN.cs:144</a></div></div>
+<div class="ttc" id="astruct_p_f_1_1_n_n_info_internal_html_a093ad68eca121a70bd898ae59c4fd0d1"><div class="ttname"><a href="struct_p_f_1_1_n_n_info_internal.html#a093ad68eca121a70bd898ae59c4fd0d1">PF.NNInfoInternal.UpdateInfo</a></div><div class="ttdeci">void UpdateInfo()</div><div class="ttdef"><b>Definition:</b> <a href="_n_n_8cs_source.html#l00172">NN.cs:172</a></div></div>
+<div class="ttc" id="astruct_p_f_1_1_n_n_info_internal_html_a2b5a1ff120cbda9daef1b50d289c12fe"><div class="ttname"><a href="struct_p_f_1_1_n_n_info_internal.html#a2b5a1ff120cbda9daef1b50d289c12fe">PF.NNInfoInternal.node</a></div><div class="ttdeci">GraphNode node</div><div class="ttdef"><b>Definition:</b> <a href="_n_n_8cs_source.html#l00149">NN.cs:149</a></div></div>
+<div class="ttc" id="astruct_p_f_1_1_n_n_info_internal_html_a4b196b16b07e38d712659f8bfafac7e2"><div class="ttname"><a href="struct_p_f_1_1_n_n_info_internal.html#a4b196b16b07e38d712659f8bfafac7e2">PF.NNInfoInternal.constrainedNode</a></div><div class="ttdeci">GraphNode constrainedNode</div><div class="ttdef"><b>Definition:</b> <a href="_n_n_8cs_source.html#l00153">NN.cs:153</a></div></div>
+<div class="ttc" id="astruct_p_f_1_1_n_n_info_internal_html_a865782f08640a0aedde41f7a59de32c9"><div class="ttname"><a href="struct_p_f_1_1_n_n_info_internal.html#a865782f08640a0aedde41f7a59de32c9">PF.NNInfoInternal.NNInfoInternal</a></div><div class="ttdeci">NNInfoInternal(GraphNode node)</div><div class="ttdef"><b>Definition:</b> <a href="_n_n_8cs_source.html#l00162">NN.cs:162</a></div></div>
+<div class="ttc" id="astruct_p_f_1_1_n_n_info_internal_html_ab332e267159c02d2832d5d7ef762006d"><div class="ttname"><a href="struct_p_f_1_1_n_n_info_internal.html#ab332e267159c02d2832d5d7ef762006d">PF.NNInfoInternal.constClampedPosition</a></div><div class="ttdeci">Vector3 constClampedPosition</div><div class="ttdef"><b>Definition:</b> <a href="_n_n_8cs_source.html#l00160">NN.cs:160</a></div></div>
+<div class="ttc" id="astruct_p_f_1_1_n_n_info_internal_html_abf23ae2849b1f32d25a01e0561b5389b"><div class="ttname"><a href="struct_p_f_1_1_n_n_info_internal.html#abf23ae2849b1f32d25a01e0561b5389b">PF.NNInfoInternal.clampedPosition</a></div><div class="ttdeci">Vector3 clampedPosition</div><div class="ttdef"><b>Definition:</b> <a href="_n_n_8cs_source.html#l00157">NN.cs:157</a></div></div>
+<div class="ttc" id="astruct_unity_engine_1_1_vector3_html"><div class="ttname"><a href="struct_unity_engine_1_1_vector3.html">UnityEngine.Vector3</a></div><div class="ttdef"><b>Definition:</b> <a href="_vector3_8cs_source.html#l00007">Vector3.cs:8</a></div></div>
+<div class="ttc" id="astruct_unity_engine_1_1_vector3_html_a5ee4172032dfc66b99c27713f0122eaa"><div class="ttname"><a href="struct_unity_engine_1_1_vector3.html#a5ee4172032dfc66b99c27713f0122eaa">UnityEngine.Vector3.zero</a></div><div class="ttdeci">static readonly Vector3 zero</div><div class="ttdef"><b>Definition:</b> <a href="_vector3_8cs_source.html#l00011">Vector3.cs:11</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_84bbf7b3c7f28a5a18725745e1505219.html">Assets</a></li><li class="navelem"><a class="el" href="dir_f13b41af88cf68434578284aaf699e39.html">Scripts</a></li><li class="navelem"><a class="el" href="dir_46d134a3bf82cf4dc49ca8f728aea58c.html">Libraries</a></li><li class="navelem"><a class="el" href="dir_f6df8f7e58ea5a2220a287b647108730.html">ET</a></li><li class="navelem"><a class="el" href="dir_83296929b1cb48979e134a96af9624b1.html">Module</a></li><li class="navelem"><a class="el" href="dir_7e04bdad0240fbb16a4f5f805ce44f49.html">Pathfinding</a></li><li class="navelem"><a class="el" href="dir_0d5e2d3313e129d955335235e3d8ffc0.html">Recast</a></li><li class="navelem"><a class="el" href="_n_n_8cs.html">NN.cs</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:24:47 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

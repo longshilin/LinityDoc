@@ -1,0 +1,204 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: Assets/Scripts/Libraries/ET/Base/Event/Env.cs 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_env_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">Env.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_env_8cs.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>;</div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Collections;</div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Collections.Generic;</div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_mongo_d_b.html">MongoDB</a>.<a class="code" href="namespace_mongo_d_b_1_1_bson.html">Bson</a>.<a class="code" href="namespace_mongo_d_b_1_1_bson_1_1_serialization.html">Serialization</a>.<a class="code" href="namespace_mongo_d_b_1_1_bson_1_1_serialization_1_1_attributes.html">Attributes</a>;</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_e_t_model.html">ETModel</a></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;{</div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="class_e_t_model_1_1_env.html">    8</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="class_e_t_model_1_1_env.html">Env</a></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;        {</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;                [BsonElement, BsonIgnoreIfNull]</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;                <span class="keyword">private</span> Dictionary&lt;EnvKey, object&gt; values = <span class="keyword">new</span> Dictionary&lt;EnvKey, object&gt;();</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="class_e_t_model_1_1_env.html#a2351434e4158ecbf97838089407e592b">   13</a></span>&#160;                <span class="keyword">public</span> <span class="keywordtype">object</span> <span class="keyword">this</span>[<a class="code" href="namespace_e_t_model.html#a3e654c32804fe77789ead02d3977eeaa">EnvKey</a> key]</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;                {</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;                        <span class="keyword">get</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;                        {</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;                                <span class="keywordflow">return</span> this.values[key];</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;                        }</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;                        <span class="keyword">set</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;                        {</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;                                <span class="keywordflow">if</span> (this.values == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;                                {</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;                                        this.values = <span class="keyword">new</span> Dictionary&lt;EnvKey, object&gt;();</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;                                }</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;                                this.values[key] = value;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;                        }</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;                }</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="class_e_t_model_1_1_env.html#aa37e6ceeffad92aa29a583b22f72cf7c">   29</a></span>&#160;                <span class="keyword">public</span> T <a class="code" href="class_e_t_model_1_1_env.html#aa37e6ceeffad92aa29a583b22f72cf7c">Get&lt;T&gt;</a>(<a class="code" href="namespace_e_t_model.html#a3e654c32804fe77789ead02d3977eeaa">EnvKey</a> key)</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;                {</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;                        <span class="keywordflow">if</span> (this.values == <span class="keyword">null</span> || !this.values.ContainsKey(key))</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;                        {</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;                                <span class="keywordflow">return</span> <span class="keywordflow">default</span>(T);</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;                        }</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;                        <span class="keywordtype">object</span> value = values[key];</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;                        <span class="keywordflow">try</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;                        {</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;                                <span class="keywordflow">return</span> (T) value;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                        }</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                        <span class="keywordflow">catch</span> (InvalidCastException e)</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;                        {</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                                <span class="keywordflow">throw</span> <span class="keyword">new</span> Exception($<span class="stringliteral">&quot;不能把{value.GetType()}转换为{typeof (T)}&quot;</span>, e);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;                        }</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                }</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="class_e_t_model_1_1_env.html#a30a1f232acd7ad45916fe05edf2ff977">   46</a></span>&#160;                <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_e_t_model_1_1_env.html#a30a1f232acd7ad45916fe05edf2ff977">Set</a>(<a class="code" href="namespace_e_t_model.html#a3e654c32804fe77789ead02d3977eeaa">EnvKey</a> key, <span class="keywordtype">object</span> obj)</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                {</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                        <span class="keywordflow">if</span> (this.values == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                        {</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                                this.values = <span class="keyword">new</span> Dictionary&lt;EnvKey, object&gt;();</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                        }</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                        this.values[key] = obj;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                }</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="class_e_t_model_1_1_env.html#ab8c65d0f6d721a1f1a76d5329ae9ca5e">   55</a></span>&#160;                <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code" href="class_e_t_model_1_1_env.html#ab8c65d0f6d721a1f1a76d5329ae9ca5e">ContainKey</a>(<a class="code" href="namespace_e_t_model.html#a3e654c32804fe77789ead02d3977eeaa">EnvKey</a> key)</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                {</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                        <span class="keywordflow">if</span> (this.values == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;                        {</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                        }</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                        <span class="keywordflow">return</span> this.values.ContainsKey(key);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                }</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="class_e_t_model_1_1_env.html#a95ad40862989c3f6900664c984a38389">   64</a></span>&#160;                <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_e_t_model_1_1_env.html#a95ad40862989c3f6900664c984a38389">Remove</a>(<a class="code" href="namespace_e_t_model.html#a3e654c32804fe77789ead02d3977eeaa">EnvKey</a> key)</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                {</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                        <span class="keywordflow">if</span> (this.values == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                        {</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                                <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                        }</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                        this.values.Remove(key);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                        <span class="keywordflow">if</span> (this.values.Count == 0)</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                        {</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                                this.values = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                        }</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                }</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00077"></a><span class="lineno"><a class="line" href="class_e_t_model_1_1_env.html#a1d68e4891700803a41eeb0ef88951708">   77</a></span>&#160;                <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_e_t_model_1_1_env.html#a1d68e4891700803a41eeb0ef88951708">Add</a>(<a class="code" href="namespace_e_t_model.html#a3e654c32804fe77789ead02d3977eeaa">EnvKey</a> key, <span class="keywordtype">object</span> value)</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                {</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                        <span class="keywordflow">if</span> (this.values == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                        {</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                                this.values = <span class="keyword">new</span> Dictionary&lt;EnvKey, object&gt;();</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                        }</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                        this.values[key] = value;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                }</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
+<div class="line"><a name="l00086"></a><span class="lineno"><a class="line" href="class_e_t_model_1_1_env.html#a4771de717012171fb2d82de058a4fd55">   86</a></span>&#160;                <span class="keyword">public</span> IEnumerator <a class="code" href="class_e_t_model_1_1_env.html#a4771de717012171fb2d82de058a4fd55">GetEnumerator</a>()</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                {</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                        <span class="keywordflow">return</span> this.values.GetEnumerator();</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                }</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        }</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;}</div>
+<div class="ttc" id="aclass_e_t_model_1_1_env_html"><div class="ttname"><a href="class_e_t_model_1_1_env.html">ETModel.Env</a></div><div class="ttdef"><b>Definition:</b> <a href="_env_8cs_source.html#l00008">Env.cs:9</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_env_html_a1d68e4891700803a41eeb0ef88951708"><div class="ttname"><a href="class_e_t_model_1_1_env.html#a1d68e4891700803a41eeb0ef88951708">ETModel.Env.Add</a></div><div class="ttdeci">void Add(EnvKey key, object value)</div><div class="ttdef"><b>Definition:</b> <a href="_env_8cs_source.html#l00077">Env.cs:77</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_env_html_a30a1f232acd7ad45916fe05edf2ff977"><div class="ttname"><a href="class_e_t_model_1_1_env.html#a30a1f232acd7ad45916fe05edf2ff977">ETModel.Env.Set</a></div><div class="ttdeci">void Set(EnvKey key, object obj)</div><div class="ttdef"><b>Definition:</b> <a href="_env_8cs_source.html#l00046">Env.cs:46</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_env_html_a4771de717012171fb2d82de058a4fd55"><div class="ttname"><a href="class_e_t_model_1_1_env.html#a4771de717012171fb2d82de058a4fd55">ETModel.Env.GetEnumerator</a></div><div class="ttdeci">IEnumerator GetEnumerator()</div><div class="ttdef"><b>Definition:</b> <a href="_env_8cs_source.html#l00086">Env.cs:86</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_env_html_a95ad40862989c3f6900664c984a38389"><div class="ttname"><a href="class_e_t_model_1_1_env.html#a95ad40862989c3f6900664c984a38389">ETModel.Env.Remove</a></div><div class="ttdeci">void Remove(EnvKey key)</div><div class="ttdef"><b>Definition:</b> <a href="_env_8cs_source.html#l00064">Env.cs:64</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_env_html_aa37e6ceeffad92aa29a583b22f72cf7c"><div class="ttname"><a href="class_e_t_model_1_1_env.html#aa37e6ceeffad92aa29a583b22f72cf7c">ETModel.Env.Get&lt; T &gt;</a></div><div class="ttdeci">T Get&lt; T &gt;(EnvKey key)</div><div class="ttdef"><b>Definition:</b> <a href="_env_8cs_source.html#l00029">Env.cs:29</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_env_html_ab8c65d0f6d721a1f1a76d5329ae9ca5e"><div class="ttname"><a href="class_e_t_model_1_1_env.html#ab8c65d0f6d721a1f1a76d5329ae9ca5e">ETModel.Env.ContainKey</a></div><div class="ttdeci">bool ContainKey(EnvKey key)</div><div class="ttdef"><b>Definition:</b> <a href="_env_8cs_source.html#l00055">Env.cs:55</a></div></div>
+<div class="ttc" id="anamespace_e_t_model_html"><div class="ttname"><a href="namespace_e_t_model.html">ETModel</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_e_t_task_method_builder_8cs_source.html#l00006">AsyncETTaskMethodBuilder.cs:7</a></div></div>
+<div class="ttc" id="anamespace_e_t_model_html_a3e654c32804fe77789ead02d3977eeaa"><div class="ttname"><a href="namespace_e_t_model.html#a3e654c32804fe77789ead02d3977eeaa">ETModel.EnvKey</a></div><div class="ttdeci">EnvKey</div><div class="ttdoc">一般使用事件名+变量名</div><div class="ttdef"><b>Definition:</b> <a href="_env_key_8cs_source.html#l00006">EnvKey.cs:7</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_bson_1_1_serialization_1_1_attributes_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_bson_1_1_serialization_1_1_attributes.html">MongoDB.Bson.Serialization.Attributes</a></div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_serialization_2_attributes_2_bson_constructor_attribute_8cs_source.html#l00018">BsonConstructorAttribute.cs:19</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_bson_1_1_serialization_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_bson_1_1_serialization.html">MongoDB.Bson.Serialization</a></div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_serialization_2_attributed_serialization_provider_8cs_source.html#l00021">AttributedSerializationProvider.cs:22</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_bson_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_bson.html">MongoDB.Bson</a></div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_bson_constants_8cs_source.html#l00018">BsonConstants.cs:19</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_html"><div class="ttname"><a href="namespace_mongo_d_b.html">MongoDB</a></div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_bson_constants_8cs_source.html#l00018">BsonConstants.cs:19</a></div></div>
+<div class="ttc" id="anamespace_system_html"><div class="ttname"><a href="namespace_system.html">System</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_method_builder_attribute_8cs_source.html#l00001">AsyncMethodBuilderAttribute.cs:2</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_84bbf7b3c7f28a5a18725745e1505219.html">Assets</a></li><li class="navelem"><a class="el" href="dir_f13b41af88cf68434578284aaf699e39.html">Scripts</a></li><li class="navelem"><a class="el" href="dir_46d134a3bf82cf4dc49ca8f728aea58c.html">Libraries</a></li><li class="navelem"><a class="el" href="dir_f6df8f7e58ea5a2220a287b647108730.html">ET</a></li><li class="navelem"><a class="el" href="dir_8f146fdc844f9009ef2833f837fe8976.html">Base</a></li><li class="navelem"><a class="el" href="dir_85b71eeff15160ac3e3f87f65a968022.html">Event</a></li><li class="navelem"><a class="el" href="_env_8cs.html">Env.cs</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:24:45 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

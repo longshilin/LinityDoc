@@ -1,0 +1,439 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: ETServer/Server/ThirdParty/MongoDBDriver/MongoDB.Driver/IndexKeysDefinitionBuilder.cs 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_index_keys_definition_builder_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">IndexKeysDefinitionBuilder.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_index_keys_definition_builder_8cs.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/* Copyright 2010-present MongoDB Inc.</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">* Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">* you may not use this file except in compliance with the License.</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">* You may obtain a copy of the License at</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">* http://www.apache.org/licenses/LICENSE-2.0</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">* Unless required by applicable law or agreed to in writing, software</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">* distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">* See the License for the specific language governing permissions and</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">* limitations under the License.</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Collections.Generic;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Linq;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Linq.Expressions;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_mongo_d_b.html">MongoDB</a>.<a class="code" href="namespace_mongo_d_b_1_1_bson.html">Bson</a>;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_mongo_d_b.html">MongoDB</a>.<a class="code" href="namespace_mongo_d_b_1_1_bson.html">Bson</a>.<a class="code" href="namespace_mongo_d_b_1_1_bson_1_1_i_o.html">IO</a>;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_mongo_d_b.html">MongoDB</a>.<a class="code" href="namespace_mongo_d_b_1_1_bson.html">Bson</a>.<a class="code" href="namespace_mongo_d_b_1_1_bson_1_1_serialization.html">Serialization</a>;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_mongo_d_b.html">MongoDB</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver.html">Driver</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core.html">Core</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_misc.html">Misc</a>;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_mongo_d_b_1_1_driver.html">MongoDB.Driver</a></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;{</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">class </span>IndexKeysDefinitionExtensions</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    {</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> IndexKeysDefinition&lt;TDocument&gt; Ascending&lt;TDocument&gt;(<span class="keyword">this</span> IndexKeysDefinition&lt;TDocument&gt; keys, FieldDefinition&lt;TDocument&gt; field)</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        {</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;            var builder = Builders&lt;TDocument&gt;.IndexKeys;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            <span class="keywordflow">return</span> builder.Combine(keys, builder.Ascending(field));</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        }</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> IndexKeysDefinition&lt;TDocument&gt; Ascending&lt;TDocument&gt;(<span class="keyword">this</span> IndexKeysDefinition&lt;TDocument&gt; keys, Expression&lt;Func&lt;TDocument, object&gt;&gt; field)</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        {</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            var builder = Builders&lt;TDocument&gt;.IndexKeys;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            <span class="keywordflow">return</span> builder.Combine(keys, builder.Ascending(field));</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        }</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> IndexKeysDefinition&lt;TDocument&gt; Descending&lt;TDocument&gt;(<span class="keyword">this</span> IndexKeysDefinition&lt;TDocument&gt; keys, FieldDefinition&lt;TDocument&gt; field)</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        {</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            var builder = Builders&lt;TDocument&gt;.IndexKeys;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            <span class="keywordflow">return</span> builder.Combine(keys, builder.Descending(field));</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        }</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> IndexKeysDefinition&lt;TDocument&gt; Descending&lt;TDocument&gt;(<span class="keyword">this</span> IndexKeysDefinition&lt;TDocument&gt; keys, Expression&lt;Func&lt;TDocument, object&gt;&gt; field)</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        {</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;            var builder = Builders&lt;TDocument&gt;.IndexKeys;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;            <span class="keywordflow">return</span> builder.Combine(keys, builder.Descending(field));</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        }</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> IndexKeysDefinition&lt;TDocument&gt; Geo2D&lt;TDocument&gt;(<span class="keyword">this</span> IndexKeysDefinition&lt;TDocument&gt; keys, FieldDefinition&lt;TDocument&gt; field)</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        {</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;            var builder = Builders&lt;TDocument&gt;.IndexKeys;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;            <span class="keywordflow">return</span> builder.Combine(keys, builder.Geo2D(field));</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        }</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> IndexKeysDefinition&lt;TDocument&gt; Geo2D&lt;TDocument&gt;(<span class="keyword">this</span> IndexKeysDefinition&lt;TDocument&gt; keys, Expression&lt;Func&lt;TDocument, object&gt;&gt; field)</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        {</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;            var builder = Builders&lt;TDocument&gt;.IndexKeys;</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;            <span class="keywordflow">return</span> builder.Combine(keys, builder.Geo2D(field));</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        }</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160; </div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> IndexKeysDefinition&lt;TDocument&gt; GeoHaystack&lt;TDocument&gt;(<span class="keyword">this</span> IndexKeysDefinition&lt;TDocument&gt; keys, FieldDefinition&lt;TDocument&gt; field, FieldDefinition&lt;TDocument&gt; additionalFieldName = <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        {</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;            var builder = Builders&lt;TDocument&gt;.IndexKeys;</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;            <span class="keywordflow">return</span> builder.Combine(keys, builder.GeoHaystack(field, additionalFieldName));</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        }</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160; </div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> IndexKeysDefinition&lt;TDocument&gt; GeoHaystack&lt;TDocument&gt;(<span class="keyword">this</span> IndexKeysDefinition&lt;TDocument&gt; keys, Expression&lt;Func&lt;TDocument, object&gt;&gt; field, Expression&lt;Func&lt;TDocument, object&gt;&gt; additionalFieldName = <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        {</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;            var builder = Builders&lt;TDocument&gt;.IndexKeys;</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;            <span class="keywordflow">return</span> builder.Combine(keys, builder.GeoHaystack(field, additionalFieldName));</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;        }</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160; </div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> IndexKeysDefinition&lt;TDocument&gt; Geo2DSphere&lt;TDocument&gt;(<span class="keyword">this</span> IndexKeysDefinition&lt;TDocument&gt; keys, FieldDefinition&lt;TDocument&gt; field)</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;        {</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;            var builder = Builders&lt;TDocument&gt;.IndexKeys;</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;            <span class="keywordflow">return</span> builder.Combine(keys, builder.Geo2DSphere(field));</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;        }</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160; </div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> IndexKeysDefinition&lt;TDocument&gt; Geo2DSphere&lt;TDocument&gt;(<span class="keyword">this</span> IndexKeysDefinition&lt;TDocument&gt; keys, Expression&lt;Func&lt;TDocument, object&gt;&gt; field)</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;        {</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;            var builder = Builders&lt;TDocument&gt;.IndexKeys;</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;            <span class="keywordflow">return</span> builder.Combine(keys, builder.Geo2DSphere(field));</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;        }</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160; </div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> IndexKeysDefinition&lt;TDocument&gt; Hashed&lt;TDocument&gt;(<span class="keyword">this</span> IndexKeysDefinition&lt;TDocument&gt; keys, FieldDefinition&lt;TDocument&gt; field)</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;        {</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;            var builder = Builders&lt;TDocument&gt;.IndexKeys;</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;            <span class="keywordflow">return</span> builder.Combine(keys, builder.Hashed(field));</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;        }</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160; </div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> IndexKeysDefinition&lt;TDocument&gt; Hashed&lt;TDocument&gt;(<span class="keyword">this</span> IndexKeysDefinition&lt;TDocument&gt; keys, Expression&lt;Func&lt;TDocument, object&gt;&gt; field)</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;        {</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;            var builder = Builders&lt;TDocument&gt;.IndexKeys;</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;            <span class="keywordflow">return</span> builder.Combine(keys, builder.Hashed(field));</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;        }</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160; </div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> IndexKeysDefinition&lt;TDocument&gt; Text&lt;TDocument&gt;(<span class="keyword">this</span> IndexKeysDefinition&lt;TDocument&gt; keys, FieldDefinition&lt;TDocument&gt; field)</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;        {</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;            var builder = Builders&lt;TDocument&gt;.IndexKeys;</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;            <span class="keywordflow">return</span> builder.Combine(keys, builder.Text(field));</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;        }</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160; </div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> IndexKeysDefinition&lt;TDocument&gt; Text&lt;TDocument&gt;(<span class="keyword">this</span> IndexKeysDefinition&lt;TDocument&gt; keys, Expression&lt;Func&lt;TDocument, object&gt;&gt; field)</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;        {</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;            var builder = Builders&lt;TDocument&gt;.IndexKeys;</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;            <span class="keywordflow">return</span> builder.Combine(keys, builder.Text(field));</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;        }</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;    }</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160; </div>
+<div class="line"><a name="l00249"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_index_keys_definition_builder.html">  249</a></span>&#160;    <span class="keyword">public</span> sealed <span class="keyword">class </span><a class="code" href="class_mongo_d_b_1_1_driver_1_1_index_keys_definition_builder.html">IndexKeysDefinitionBuilder</a>&lt;TDocument&gt;</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;    {</div>
+<div class="line"><a name="l00256"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_index_keys_definition_builder.html#a4359eba1dcf790200dce38a1d905d28c">  256</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_index_keys_definition.html">IndexKeysDefinition&lt;TDocument&gt;</a> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_index_keys_definition_builder.html#a4359eba1dcf790200dce38a1d905d28c">Ascending</a>(<a class="code" href="class_mongo_d_b_1_1_driver_1_1_field_definition.html">FieldDefinition&lt;TDocument&gt;</a> field)</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;        {</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> DirectionalIndexKeyDefinition&lt;TDocument&gt;(field, <a class="code" href="namespace_mongo_d_b_1_1_driver.html#a503c2c6cdf673530cc72be2130342795">SortDirection</a>.Ascending);</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;        }</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160; </div>
+<div class="line"><a name="l00266"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_index_keys_definition_builder.html#ab97bac75bbaa13c9a024f2e021904df5">  266</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_index_keys_definition.html">IndexKeysDefinition&lt;TDocument&gt;</a> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_index_keys_definition_builder.html#ab97bac75bbaa13c9a024f2e021904df5">Ascending</a>(Expression&lt;Func&lt;TDocument, object&gt;&gt; field)</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;        {</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_index_keys_definition_builder.html#a4359eba1dcf790200dce38a1d905d28c">Ascending</a>(<span class="keyword">new</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_expression_field_definition.html">ExpressionFieldDefinition&lt;TDocument&gt;</a>(field));</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;        }</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160; </div>
+<div class="line"><a name="l00276"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_index_keys_definition_builder.html#a8d7541df2963187ad2437cb5b8d88427">  276</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_index_keys_definition.html">IndexKeysDefinition&lt;TDocument&gt;</a> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_index_keys_definition_builder.html#a8d7541df2963187ad2437cb5b8d88427">Combine</a>(params <a class="code" href="class_mongo_d_b_1_1_driver_1_1_index_keys_definition.html">IndexKeysDefinition&lt;TDocument&gt;</a>[] keys)</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;        {</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_index_keys_definition_builder.html#a8d7541df2963187ad2437cb5b8d88427">Combine</a>((IEnumerable&lt;<a class="code" href="class_mongo_d_b_1_1_driver_1_1_index_keys_definition.html">IndexKeysDefinition&lt;TDocument&gt;</a>&gt;)keys);</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;        }</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160; </div>
+<div class="line"><a name="l00286"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_index_keys_definition_builder.html#ae4d2cd0cc0e94992cba8e2115f6b7068">  286</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_index_keys_definition.html">IndexKeysDefinition&lt;TDocument&gt;</a> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_index_keys_definition_builder.html#ae4d2cd0cc0e94992cba8e2115f6b7068">Combine</a>(IEnumerable&lt;<a class="code" href="class_mongo_d_b_1_1_driver_1_1_index_keys_definition.html">IndexKeysDefinition&lt;TDocument&gt;</a>&gt; keys)</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;        {</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> CombinedIndexKeysDefinition&lt;TDocument&gt;(keys);</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;        }</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160; </div>
+<div class="line"><a name="l00296"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_index_keys_definition_builder.html#a92ce0e752a096e6e356a15215616123b">  296</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_index_keys_definition.html">IndexKeysDefinition&lt;TDocument&gt;</a> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_index_keys_definition_builder.html#a92ce0e752a096e6e356a15215616123b">Descending</a>(<a class="code" href="class_mongo_d_b_1_1_driver_1_1_field_definition.html">FieldDefinition&lt;TDocument&gt;</a> field)</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;        {</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> DirectionalIndexKeyDefinition&lt;TDocument&gt;(field, <a class="code" href="namespace_mongo_d_b_1_1_driver.html#a503c2c6cdf673530cc72be2130342795">SortDirection</a>.Descending);</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;        }</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160; </div>
+<div class="line"><a name="l00306"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_index_keys_definition_builder.html#a9e6b6e058b48309399c057c510986288">  306</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_index_keys_definition.html">IndexKeysDefinition&lt;TDocument&gt;</a> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_index_keys_definition_builder.html#a9e6b6e058b48309399c057c510986288">Descending</a>(Expression&lt;Func&lt;TDocument, object&gt;&gt; field)</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;        {</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_index_keys_definition_builder.html#a92ce0e752a096e6e356a15215616123b">Descending</a>(<span class="keyword">new</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_expression_field_definition.html">ExpressionFieldDefinition&lt;TDocument&gt;</a>(field));</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;        }</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160; </div>
+<div class="line"><a name="l00316"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_index_keys_definition_builder.html#aaf46918669ceb056f9f75c234f8f606f">  316</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_index_keys_definition.html">IndexKeysDefinition&lt;TDocument&gt;</a> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_index_keys_definition_builder.html#aaf46918669ceb056f9f75c234f8f606f">Geo2D</a>(<a class="code" href="class_mongo_d_b_1_1_driver_1_1_field_definition.html">FieldDefinition&lt;TDocument&gt;</a> field)</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;        {</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> SimpleIndexKeyDefinition&lt;TDocument&gt;(field, <span class="stringliteral">&quot;2d&quot;</span>);</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;        }</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160; </div>
+<div class="line"><a name="l00326"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_index_keys_definition_builder.html#a23dd8cc3569dd36f80ca49b61f4c6288">  326</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_index_keys_definition.html">IndexKeysDefinition&lt;TDocument&gt;</a> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_index_keys_definition_builder.html#a23dd8cc3569dd36f80ca49b61f4c6288">Geo2D</a>(Expression&lt;Func&lt;TDocument, object&gt;&gt; field)</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;        {</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_index_keys_definition_builder.html#aaf46918669ceb056f9f75c234f8f606f">Geo2D</a>(<span class="keyword">new</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_expression_field_definition.html">ExpressionFieldDefinition&lt;TDocument&gt;</a>(field));</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;        }</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160; </div>
+<div class="line"><a name="l00339"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_index_keys_definition_builder.html#a03b5912cf67aabfb8f68abb4a5b8200e">  339</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_index_keys_definition.html">IndexKeysDefinition&lt;TDocument&gt;</a> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_index_keys_definition_builder.html#a03b5912cf67aabfb8f68abb4a5b8200e">GeoHaystack</a>(<a class="code" href="class_mongo_d_b_1_1_driver_1_1_field_definition.html">FieldDefinition&lt;TDocument&gt;</a> field, <a class="code" href="class_mongo_d_b_1_1_driver_1_1_field_definition.html">FieldDefinition&lt;TDocument&gt;</a> additionalFieldName = <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;        {</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> GeoHaystackIndexKeyDefinition&lt;TDocument&gt;(field, additionalFieldName);</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;        }</div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160; </div>
+<div class="line"><a name="l00352"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_index_keys_definition_builder.html#a99b52803c2ec8565abcceb11043b4a75">  352</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_index_keys_definition.html">IndexKeysDefinition&lt;TDocument&gt;</a> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_index_keys_definition_builder.html#a99b52803c2ec8565abcceb11043b4a75">GeoHaystack</a>(Expression&lt;Func&lt;TDocument, object&gt;&gt; field, Expression&lt;Func&lt;TDocument, object&gt;&gt; additionalFieldName = <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;        {</div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;            <a class="code" href="class_mongo_d_b_1_1_driver_1_1_field_definition.html">FieldDefinition&lt;TDocument&gt;</a> additional = additionalFieldName == <span class="keyword">null</span> ? null : <span class="keyword">new</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_expression_field_definition.html">ExpressionFieldDefinition&lt;TDocument&gt;</a>(additionalFieldName);</div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_index_keys_definition_builder.html#a03b5912cf67aabfb8f68abb4a5b8200e">GeoHaystack</a>(<span class="keyword">new</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_expression_field_definition.html">ExpressionFieldDefinition&lt;TDocument&gt;</a>(field), additional);</div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;        }</div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160; </div>
+<div class="line"><a name="l00363"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_index_keys_definition_builder.html#a4a068a5a496d3697e2832f75bb0ac87e">  363</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_index_keys_definition.html">IndexKeysDefinition&lt;TDocument&gt;</a> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_index_keys_definition_builder.html#a4a068a5a496d3697e2832f75bb0ac87e">Geo2DSphere</a>(<a class="code" href="class_mongo_d_b_1_1_driver_1_1_field_definition.html">FieldDefinition&lt;TDocument&gt;</a> field)</div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;        {</div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> SimpleIndexKeyDefinition&lt;TDocument&gt;(field, <span class="stringliteral">&quot;2dsphere&quot;</span>);</div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;        }</div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160; </div>
+<div class="line"><a name="l00373"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_index_keys_definition_builder.html#aea1f20894ef8a4f87f9e9450457e9ffd">  373</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_index_keys_definition.html">IndexKeysDefinition&lt;TDocument&gt;</a> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_index_keys_definition_builder.html#aea1f20894ef8a4f87f9e9450457e9ffd">Geo2DSphere</a>(Expression&lt;Func&lt;TDocument, object&gt;&gt; field)</div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;        {</div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_index_keys_definition_builder.html#a4a068a5a496d3697e2832f75bb0ac87e">Geo2DSphere</a>(<span class="keyword">new</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_expression_field_definition.html">ExpressionFieldDefinition&lt;TDocument&gt;</a>(field));</div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;        }</div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160; </div>
+<div class="line"><a name="l00383"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_index_keys_definition_builder.html#a859c836247399f76a72853c81f812204">  383</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_index_keys_definition.html">IndexKeysDefinition&lt;TDocument&gt;</a> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_index_keys_definition_builder.html#a859c836247399f76a72853c81f812204">Hashed</a>(<a class="code" href="class_mongo_d_b_1_1_driver_1_1_field_definition.html">FieldDefinition&lt;TDocument&gt;</a> field)</div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;        {</div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> SimpleIndexKeyDefinition&lt;TDocument&gt;(field, <span class="stringliteral">&quot;hashed&quot;</span>);</div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;        }</div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160; </div>
+<div class="line"><a name="l00393"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_index_keys_definition_builder.html#a231cf8089508cf2235ed6b7a17e656b4">  393</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_index_keys_definition.html">IndexKeysDefinition&lt;TDocument&gt;</a> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_index_keys_definition_builder.html#a231cf8089508cf2235ed6b7a17e656b4">Hashed</a>(Expression&lt;Func&lt;TDocument, object&gt;&gt; field)</div>
+<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;        {</div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_index_keys_definition_builder.html#a859c836247399f76a72853c81f812204">Hashed</a>(<span class="keyword">new</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_expression_field_definition.html">ExpressionFieldDefinition&lt;TDocument&gt;</a>(field));</div>
+<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;        }</div>
+<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160; </div>
+<div class="line"><a name="l00403"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_index_keys_definition_builder.html#a8e545aec4ab124cd3287a1068dc883bd">  403</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_index_keys_definition.html">IndexKeysDefinition&lt;TDocument&gt;</a> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_index_keys_definition_builder.html#a8e545aec4ab124cd3287a1068dc883bd">Text</a>(<a class="code" href="class_mongo_d_b_1_1_driver_1_1_field_definition.html">FieldDefinition&lt;TDocument&gt;</a> field)</div>
+<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;        {</div>
+<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> SimpleIndexKeyDefinition&lt;TDocument&gt;(field, <span class="stringliteral">&quot;text&quot;</span>);</div>
+<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;        }</div>
+<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160; </div>
+<div class="line"><a name="l00413"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_index_keys_definition_builder.html#a0256da066c97db2f80a7c7d9b8919479">  413</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_index_keys_definition.html">IndexKeysDefinition&lt;TDocument&gt;</a> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_index_keys_definition_builder.html#a0256da066c97db2f80a7c7d9b8919479">Text</a>(Expression&lt;Func&lt;TDocument, object&gt;&gt; field)</div>
+<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;        {</div>
+<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_index_keys_definition_builder.html#a8e545aec4ab124cd3287a1068dc883bd">Text</a>(<span class="keyword">new</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_expression_field_definition.html">ExpressionFieldDefinition&lt;TDocument&gt;</a>(field));</div>
+<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;        }</div>
+<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;    }</div>
+<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160; </div>
+<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;    <span class="keyword">internal</span> sealed <span class="keyword">class </span>CombinedIndexKeysDefinition&lt;TDocument&gt; : IndexKeysDefinition&lt;TDocument&gt;</div>
+<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;    {</div>
+<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;        <span class="keyword">private</span> readonly List&lt;IndexKeysDefinition&lt;TDocument&gt;&gt; _keys;</div>
+<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160; </div>
+<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;        <span class="keyword">public</span> CombinedIndexKeysDefinition(IEnumerable&lt;IndexKeysDefinition&lt;TDocument&gt;&gt; keys)</div>
+<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;        {</div>
+<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;            _keys = Ensure.IsNotNull(keys, nameof(keys)).ToList();</div>
+<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;        }</div>
+<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160; </div>
+<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_document.html">BsonDocument</a> Render(<a class="code" href="interface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_serializer.html">IBsonSerializer&lt;TDocument&gt;</a> documentSerializer, <a class="code" href="interface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_serializer_registry.html">IBsonSerializerRegistry</a> serializerRegistry)</div>
+<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;        {</div>
+<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;            var document = <span class="keyword">new</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_document.html">BsonDocument</a>();</div>
+<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160; </div>
+<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;            <span class="keywordflow">foreach</span> (var key <span class="keywordflow">in</span> _keys)</div>
+<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;            {</div>
+<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;                var renderedKey = key.Render(documentSerializer, serializerRegistry);</div>
+<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160; </div>
+<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;                <span class="keywordflow">foreach</span> (var element <span class="keywordflow">in</span> renderedKey.Elements)</div>
+<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;                {</div>
+<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;                    <span class="keywordflow">if</span> (document.Contains(element.Name))</div>
+<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;                    {</div>
+<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;                        var message = <span class="keywordtype">string</span>.Format(</div>
+<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;                            <span class="stringliteral">&quot;The index keys definition contains multiple values for the field &#39;{0}&#39;.&quot;</span>,</div>
+<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;                            element.Name);</div>
+<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;                        <span class="keywordflow">throw</span> <span class="keyword">new</span> MongoException(message);</div>
+<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;                    }</div>
+<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;                    document.Add(element);</div>
+<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;                }</div>
+<div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;            }</div>
+<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160; </div>
+<div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;            <span class="keywordflow">return</span> document;</div>
+<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;        }</div>
+<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;    }</div>
+<div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160; </div>
+<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;    <span class="keyword">internal</span> sealed <span class="keyword">class </span>DirectionalIndexKeyDefinition&lt;TDocument&gt; : IndexKeysDefinition&lt;TDocument&gt;</div>
+<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;    {</div>
+<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;        <span class="keyword">private</span> readonly FieldDefinition&lt;TDocument&gt; _field;</div>
+<div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;        <span class="keyword">private</span> readonly <a class="code" href="namespace_mongo_d_b_1_1_driver.html#a503c2c6cdf673530cc72be2130342795">SortDirection</a> _direction;</div>
+<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160; </div>
+<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;        <span class="keyword">public</span> DirectionalIndexKeyDefinition(FieldDefinition&lt;TDocument&gt; field, <a class="code" href="namespace_mongo_d_b_1_1_driver.html#a503c2c6cdf673530cc72be2130342795">SortDirection</a> direction)</div>
+<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;        {</div>
+<div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160;            _field = Ensure.IsNotNull(field, nameof(field));</div>
+<div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160;            _direction = direction;</div>
+<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;        }</div>
+<div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160; </div>
+<div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_document.html">BsonDocument</a> Render(<a class="code" href="interface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_serializer.html">IBsonSerializer&lt;TDocument&gt;</a> documentSerializer, <a class="code" href="interface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_serializer_registry.html">IBsonSerializerRegistry</a> serializerRegistry)</div>
+<div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160;        {</div>
+<div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160;            var renderedField = _field.Render(documentSerializer, serializerRegistry);</div>
+<div class="line"><a name="l00467"></a><span class="lineno">  467</span>&#160; </div>
+<div class="line"><a name="l00468"></a><span class="lineno">  468</span>&#160;            <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_value.html">BsonValue</a> value;</div>
+<div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160;            <span class="keywordflow">switch</span> (_direction)</div>
+<div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160;            {</div>
+<div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160;                <span class="keywordflow">case</span> <a class="code" href="namespace_mongo_d_b_1_1_driver.html#a503c2c6cdf673530cc72be2130342795">SortDirection</a>.Ascending:</div>
+<div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160;                    value = 1;</div>
+<div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;                    <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;                <span class="keywordflow">case</span> <a class="code" href="namespace_mongo_d_b_1_1_driver.html#a503c2c6cdf673530cc72be2130342795">SortDirection</a>.Descending:</div>
+<div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160;                    value = -1;</div>
+<div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;                    <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160;                <span class="keywordflow">default</span>:</div>
+<div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160;                    <span class="keywordflow">throw</span> <span class="keyword">new</span> InvalidOperationException(<span class="stringliteral">&quot;Unknown value for &quot;</span> + typeof(<a class="code" href="namespace_mongo_d_b_1_1_driver.html#a503c2c6cdf673530cc72be2130342795">SortDirection</a>) + <span class="stringliteral">&quot;.&quot;</span>);</div>
+<div class="line"><a name="l00479"></a><span class="lineno">  479</span>&#160;            }</div>
+<div class="line"><a name="l00480"></a><span class="lineno">  480</span>&#160; </div>
+<div class="line"><a name="l00481"></a><span class="lineno">  481</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_document.html">BsonDocument</a>(renderedField.FieldName, value);</div>
+<div class="line"><a name="l00482"></a><span class="lineno">  482</span>&#160;        }</div>
+<div class="line"><a name="l00483"></a><span class="lineno">  483</span>&#160;    }</div>
+<div class="line"><a name="l00484"></a><span class="lineno">  484</span>&#160; </div>
+<div class="line"><a name="l00485"></a><span class="lineno">  485</span>&#160;    <span class="keyword">internal</span> sealed <span class="keyword">class </span>GeoHaystackIndexKeyDefinition&lt;TDocument&gt; : IndexKeysDefinition&lt;TDocument&gt;</div>
+<div class="line"><a name="l00486"></a><span class="lineno">  486</span>&#160;    {</div>
+<div class="line"><a name="l00487"></a><span class="lineno">  487</span>&#160;        <span class="keyword">private</span> readonly FieldDefinition&lt;TDocument&gt; _field;</div>
+<div class="line"><a name="l00488"></a><span class="lineno">  488</span>&#160;        <span class="keyword">private</span> readonly FieldDefinition&lt;TDocument&gt; _additionalFieldName;</div>
+<div class="line"><a name="l00489"></a><span class="lineno">  489</span>&#160; </div>
+<div class="line"><a name="l00490"></a><span class="lineno">  490</span>&#160;        <span class="keyword">public</span> GeoHaystackIndexKeyDefinition(FieldDefinition&lt;TDocument&gt; field, FieldDefinition&lt;TDocument&gt; additionalFieldName = <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00491"></a><span class="lineno">  491</span>&#160;        {</div>
+<div class="line"><a name="l00492"></a><span class="lineno">  492</span>&#160;            _field = Ensure.IsNotNull(field, nameof(field));</div>
+<div class="line"><a name="l00493"></a><span class="lineno">  493</span>&#160;            _additionalFieldName = additionalFieldName;</div>
+<div class="line"><a name="l00494"></a><span class="lineno">  494</span>&#160;        }</div>
+<div class="line"><a name="l00495"></a><span class="lineno">  495</span>&#160; </div>
+<div class="line"><a name="l00496"></a><span class="lineno">  496</span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_document.html">BsonDocument</a> Render(<a class="code" href="interface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_serializer.html">IBsonSerializer&lt;TDocument&gt;</a> documentSerializer, <a class="code" href="interface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_serializer_registry.html">IBsonSerializerRegistry</a> serializerRegistry)</div>
+<div class="line"><a name="l00497"></a><span class="lineno">  497</span>&#160;        {</div>
+<div class="line"><a name="l00498"></a><span class="lineno">  498</span>&#160;            var renderedField = _field.Render(documentSerializer, serializerRegistry);</div>
+<div class="line"><a name="l00499"></a><span class="lineno">  499</span>&#160; </div>
+<div class="line"><a name="l00500"></a><span class="lineno">  500</span>&#160;            var document = <span class="keyword">new</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_document.html">BsonDocument</a>(renderedField.FieldName, <span class="stringliteral">&quot;geoHaystack&quot;</span>);</div>
+<div class="line"><a name="l00501"></a><span class="lineno">  501</span>&#160;            <span class="keywordflow">if</span> (_additionalFieldName != <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00502"></a><span class="lineno">  502</span>&#160;            {</div>
+<div class="line"><a name="l00503"></a><span class="lineno">  503</span>&#160;                var additionalRenderedField = _additionalFieldName.Render(documentSerializer, serializerRegistry);</div>
+<div class="line"><a name="l00504"></a><span class="lineno">  504</span>&#160;                document.Add(additionalRenderedField.FieldName, 1);</div>
+<div class="line"><a name="l00505"></a><span class="lineno">  505</span>&#160;            }</div>
+<div class="line"><a name="l00506"></a><span class="lineno">  506</span>&#160; </div>
+<div class="line"><a name="l00507"></a><span class="lineno">  507</span>&#160;            <span class="keywordflow">return</span> document;</div>
+<div class="line"><a name="l00508"></a><span class="lineno">  508</span>&#160;        }</div>
+<div class="line"><a name="l00509"></a><span class="lineno">  509</span>&#160;    }</div>
+<div class="line"><a name="l00510"></a><span class="lineno">  510</span>&#160; </div>
+<div class="line"><a name="l00511"></a><span class="lineno">  511</span>&#160;    <span class="keyword">internal</span> sealed <span class="keyword">class </span>SimpleIndexKeyDefinition&lt;TDocument&gt; : IndexKeysDefinition&lt;TDocument&gt;</div>
+<div class="line"><a name="l00512"></a><span class="lineno">  512</span>&#160;    {</div>
+<div class="line"><a name="l00513"></a><span class="lineno">  513</span>&#160;        <span class="keyword">private</span> readonly FieldDefinition&lt;TDocument&gt; _field;</div>
+<div class="line"><a name="l00514"></a><span class="lineno">  514</span>&#160;        <span class="keyword">private</span> readonly <span class="keywordtype">string</span> _type;</div>
+<div class="line"><a name="l00515"></a><span class="lineno">  515</span>&#160; </div>
+<div class="line"><a name="l00516"></a><span class="lineno">  516</span>&#160;        <span class="keyword">public</span> SimpleIndexKeyDefinition(FieldDefinition&lt;TDocument&gt; field, <span class="keywordtype">string</span> type)</div>
+<div class="line"><a name="l00517"></a><span class="lineno">  517</span>&#160;        {</div>
+<div class="line"><a name="l00518"></a><span class="lineno">  518</span>&#160;            _field = Ensure.IsNotNull(field, nameof(field));</div>
+<div class="line"><a name="l00519"></a><span class="lineno">  519</span>&#160;            _type = type;</div>
+<div class="line"><a name="l00520"></a><span class="lineno">  520</span>&#160;        }</div>
+<div class="line"><a name="l00521"></a><span class="lineno">  521</span>&#160; </div>
+<div class="line"><a name="l00522"></a><span class="lineno">  522</span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_document.html">BsonDocument</a> Render(<a class="code" href="interface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_serializer.html">IBsonSerializer&lt;TDocument&gt;</a> documentSerializer, <a class="code" href="interface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_serializer_registry.html">IBsonSerializerRegistry</a> serializerRegistry)</div>
+<div class="line"><a name="l00523"></a><span class="lineno">  523</span>&#160;        {</div>
+<div class="line"><a name="l00524"></a><span class="lineno">  524</span>&#160;            var renderedField = _field.Render(documentSerializer, serializerRegistry);</div>
+<div class="line"><a name="l00525"></a><span class="lineno">  525</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_document.html">BsonDocument</a>(renderedField.FieldName, _type);</div>
+<div class="line"><a name="l00526"></a><span class="lineno">  526</span>&#160;        }</div>
+<div class="line"><a name="l00527"></a><span class="lineno">  527</span>&#160;    }</div>
+<div class="line"><a name="l00528"></a><span class="lineno">  528</span>&#160;}</div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_bson_document_html"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_bson_document.html">MongoDB.Bson.BsonDocument</a></div><div class="ttdoc">Represents a BSON document.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_document_8cs_source.html#l00034">BsonDocument.cs:35</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_bson_value_html"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_bson_value.html">MongoDB.Bson.BsonValue</a></div><div class="ttdoc">Represents a BSON value (this is an abstract class, see the various subclasses).</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_value_8cs_source.html#l00028">BsonValue.cs:29</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_expression_field_definition_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_expression_field_definition.html">MongoDB.Driver.ExpressionFieldDefinition</a></div><div class="ttdoc">An Expression based field.</div><div class="ttdef"><b>Definition:</b> <a href="_field_definition_8cs_source.html#l00272">FieldDefinition.cs:273</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_field_definition_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_field_definition.html">MongoDB.Driver.FieldDefinition&lt; TDocument &gt;</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_index_keys_definition_builder_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_index_keys_definition_builder.html">MongoDB.Driver.IndexKeysDefinitionBuilder</a></div><div class="ttdoc">A builder for an IndexKeysDefinition&lt;TDocument&gt;.</div><div class="ttdef"><b>Definition:</b> <a href="_index_keys_definition_builder_8cs_source.html#l00249">IndexKeysDefinitionBuilder.cs:250</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_index_keys_definition_builder_html_a0256da066c97db2f80a7c7d9b8919479"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_index_keys_definition_builder.html#a0256da066c97db2f80a7c7d9b8919479">MongoDB.Driver.IndexKeysDefinitionBuilder.Text</a></div><div class="ttdeci">IndexKeysDefinition&lt; TDocument &gt; Text(Expression&lt; Func&lt; TDocument, object &gt;&gt; field)</div><div class="ttdoc">Creates a text index key definition.</div><div class="ttdef"><b>Definition:</b> <a href="_index_keys_definition_builder_8cs_source.html#l00413">IndexKeysDefinitionBuilder.cs:413</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_index_keys_definition_builder_html_a03b5912cf67aabfb8f68abb4a5b8200e"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_index_keys_definition_builder.html#a03b5912cf67aabfb8f68abb4a5b8200e">MongoDB.Driver.IndexKeysDefinitionBuilder.GeoHaystack</a></div><div class="ttdeci">IndexKeysDefinition&lt; TDocument &gt; GeoHaystack(FieldDefinition&lt; TDocument &gt; field, FieldDefinition&lt; TDocument &gt; additionalFieldName=null)</div><div class="ttdoc">Creates a geo haystack index key definition.</div><div class="ttdef"><b>Definition:</b> <a href="_index_keys_definition_builder_8cs_source.html#l00339">IndexKeysDefinitionBuilder.cs:339</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_index_keys_definition_builder_html_a231cf8089508cf2235ed6b7a17e656b4"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_index_keys_definition_builder.html#a231cf8089508cf2235ed6b7a17e656b4">MongoDB.Driver.IndexKeysDefinitionBuilder.Hashed</a></div><div class="ttdeci">IndexKeysDefinition&lt; TDocument &gt; Hashed(Expression&lt; Func&lt; TDocument, object &gt;&gt; field)</div><div class="ttdoc">Creates a hashed index key definition.</div><div class="ttdef"><b>Definition:</b> <a href="_index_keys_definition_builder_8cs_source.html#l00393">IndexKeysDefinitionBuilder.cs:393</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_index_keys_definition_builder_html_a23dd8cc3569dd36f80ca49b61f4c6288"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_index_keys_definition_builder.html#a23dd8cc3569dd36f80ca49b61f4c6288">MongoDB.Driver.IndexKeysDefinitionBuilder.Geo2D</a></div><div class="ttdeci">IndexKeysDefinition&lt; TDocument &gt; Geo2D(Expression&lt; Func&lt; TDocument, object &gt;&gt; field)</div><div class="ttdoc">Creates a 2d index key definition.</div><div class="ttdef"><b>Definition:</b> <a href="_index_keys_definition_builder_8cs_source.html#l00326">IndexKeysDefinitionBuilder.cs:326</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_index_keys_definition_builder_html_a4359eba1dcf790200dce38a1d905d28c"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_index_keys_definition_builder.html#a4359eba1dcf790200dce38a1d905d28c">MongoDB.Driver.IndexKeysDefinitionBuilder.Ascending</a></div><div class="ttdeci">IndexKeysDefinition&lt; TDocument &gt; Ascending(FieldDefinition&lt; TDocument &gt; field)</div><div class="ttdoc">Creates an ascending index key definition.</div><div class="ttdef"><b>Definition:</b> <a href="_index_keys_definition_builder_8cs_source.html#l00256">IndexKeysDefinitionBuilder.cs:256</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_index_keys_definition_builder_html_a4a068a5a496d3697e2832f75bb0ac87e"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_index_keys_definition_builder.html#a4a068a5a496d3697e2832f75bb0ac87e">MongoDB.Driver.IndexKeysDefinitionBuilder.Geo2DSphere</a></div><div class="ttdeci">IndexKeysDefinition&lt; TDocument &gt; Geo2DSphere(FieldDefinition&lt; TDocument &gt; field)</div><div class="ttdoc">Creates a 2dsphere index key definition.</div><div class="ttdef"><b>Definition:</b> <a href="_index_keys_definition_builder_8cs_source.html#l00363">IndexKeysDefinitionBuilder.cs:363</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_index_keys_definition_builder_html_a859c836247399f76a72853c81f812204"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_index_keys_definition_builder.html#a859c836247399f76a72853c81f812204">MongoDB.Driver.IndexKeysDefinitionBuilder.Hashed</a></div><div class="ttdeci">IndexKeysDefinition&lt; TDocument &gt; Hashed(FieldDefinition&lt; TDocument &gt; field)</div><div class="ttdoc">Creates a hashed index key definition.</div><div class="ttdef"><b>Definition:</b> <a href="_index_keys_definition_builder_8cs_source.html#l00383">IndexKeysDefinitionBuilder.cs:383</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_index_keys_definition_builder_html_a8d7541df2963187ad2437cb5b8d88427"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_index_keys_definition_builder.html#a8d7541df2963187ad2437cb5b8d88427">MongoDB.Driver.IndexKeysDefinitionBuilder.Combine</a></div><div class="ttdeci">IndexKeysDefinition&lt; TDocument &gt; Combine(params IndexKeysDefinition&lt; TDocument &gt;[] keys)</div><div class="ttdoc">Creates a combined index keys definition.</div><div class="ttdef"><b>Definition:</b> <a href="_index_keys_definition_builder_8cs_source.html#l00276">IndexKeysDefinitionBuilder.cs:276</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_index_keys_definition_builder_html_a8e545aec4ab124cd3287a1068dc883bd"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_index_keys_definition_builder.html#a8e545aec4ab124cd3287a1068dc883bd">MongoDB.Driver.IndexKeysDefinitionBuilder.Text</a></div><div class="ttdeci">IndexKeysDefinition&lt; TDocument &gt; Text(FieldDefinition&lt; TDocument &gt; field)</div><div class="ttdoc">Creates a text index key definition.</div><div class="ttdef"><b>Definition:</b> <a href="_index_keys_definition_builder_8cs_source.html#l00403">IndexKeysDefinitionBuilder.cs:403</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_index_keys_definition_builder_html_a92ce0e752a096e6e356a15215616123b"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_index_keys_definition_builder.html#a92ce0e752a096e6e356a15215616123b">MongoDB.Driver.IndexKeysDefinitionBuilder.Descending</a></div><div class="ttdeci">IndexKeysDefinition&lt; TDocument &gt; Descending(FieldDefinition&lt; TDocument &gt; field)</div><div class="ttdoc">Creates a descending index key definition.</div><div class="ttdef"><b>Definition:</b> <a href="_index_keys_definition_builder_8cs_source.html#l00296">IndexKeysDefinitionBuilder.cs:296</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_index_keys_definition_builder_html_a99b52803c2ec8565abcceb11043b4a75"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_index_keys_definition_builder.html#a99b52803c2ec8565abcceb11043b4a75">MongoDB.Driver.IndexKeysDefinitionBuilder.GeoHaystack</a></div><div class="ttdeci">IndexKeysDefinition&lt; TDocument &gt; GeoHaystack(Expression&lt; Func&lt; TDocument, object &gt;&gt; field, Expression&lt; Func&lt; TDocument, object &gt;&gt; additionalFieldName=null)</div><div class="ttdoc">Creates a geo haystack index key definition.</div><div class="ttdef"><b>Definition:</b> <a href="_index_keys_definition_builder_8cs_source.html#l00352">IndexKeysDefinitionBuilder.cs:352</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_index_keys_definition_builder_html_a9e6b6e058b48309399c057c510986288"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_index_keys_definition_builder.html#a9e6b6e058b48309399c057c510986288">MongoDB.Driver.IndexKeysDefinitionBuilder.Descending</a></div><div class="ttdeci">IndexKeysDefinition&lt; TDocument &gt; Descending(Expression&lt; Func&lt; TDocument, object &gt;&gt; field)</div><div class="ttdoc">Creates a descending index key definition.</div><div class="ttdef"><b>Definition:</b> <a href="_index_keys_definition_builder_8cs_source.html#l00306">IndexKeysDefinitionBuilder.cs:306</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_index_keys_definition_builder_html_aaf46918669ceb056f9f75c234f8f606f"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_index_keys_definition_builder.html#aaf46918669ceb056f9f75c234f8f606f">MongoDB.Driver.IndexKeysDefinitionBuilder.Geo2D</a></div><div class="ttdeci">IndexKeysDefinition&lt; TDocument &gt; Geo2D(FieldDefinition&lt; TDocument &gt; field)</div><div class="ttdoc">Creates a 2d index key definition.</div><div class="ttdef"><b>Definition:</b> <a href="_index_keys_definition_builder_8cs_source.html#l00316">IndexKeysDefinitionBuilder.cs:316</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_index_keys_definition_builder_html_ab97bac75bbaa13c9a024f2e021904df5"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_index_keys_definition_builder.html#ab97bac75bbaa13c9a024f2e021904df5">MongoDB.Driver.IndexKeysDefinitionBuilder.Ascending</a></div><div class="ttdeci">IndexKeysDefinition&lt; TDocument &gt; Ascending(Expression&lt; Func&lt; TDocument, object &gt;&gt; field)</div><div class="ttdoc">Creates an ascending index key definition.</div><div class="ttdef"><b>Definition:</b> <a href="_index_keys_definition_builder_8cs_source.html#l00266">IndexKeysDefinitionBuilder.cs:266</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_index_keys_definition_builder_html_ae4d2cd0cc0e94992cba8e2115f6b7068"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_index_keys_definition_builder.html#ae4d2cd0cc0e94992cba8e2115f6b7068">MongoDB.Driver.IndexKeysDefinitionBuilder.Combine</a></div><div class="ttdeci">IndexKeysDefinition&lt; TDocument &gt; Combine(IEnumerable&lt; IndexKeysDefinition&lt; TDocument &gt;&gt; keys)</div><div class="ttdoc">Creates a combined index keys definition.</div><div class="ttdef"><b>Definition:</b> <a href="_index_keys_definition_builder_8cs_source.html#l00286">IndexKeysDefinitionBuilder.cs:286</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_index_keys_definition_builder_html_aea1f20894ef8a4f87f9e9450457e9ffd"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_index_keys_definition_builder.html#aea1f20894ef8a4f87f9e9450457e9ffd">MongoDB.Driver.IndexKeysDefinitionBuilder.Geo2DSphere</a></div><div class="ttdeci">IndexKeysDefinition&lt; TDocument &gt; Geo2DSphere(Expression&lt; Func&lt; TDocument, object &gt;&gt; field)</div><div class="ttdoc">Creates a 2dsphere index key definition.</div><div class="ttdef"><b>Definition:</b> <a href="_index_keys_definition_builder_8cs_source.html#l00373">IndexKeysDefinitionBuilder.cs:373</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_index_keys_definition_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_index_keys_definition.html">MongoDB.Driver.IndexKeysDefinition</a></div><div class="ttdoc">Base class for an index keys definition.</div><div class="ttdef"><b>Definition:</b> <a href="_index_keys_definition_8cs_source.html#l00027">IndexKeysDefinition.cs:28</a></div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_serializer_html"><div class="ttname"><a href="interface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_serializer.html">MongoDB.Bson.Serialization.IBsonSerializer&lt; TDocument &gt;</a></div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_serializer_registry_html"><div class="ttname"><a href="interface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_serializer_registry.html">MongoDB.Bson.Serialization.IBsonSerializerRegistry</a></div><div class="ttdoc">A serializer registry.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_serialization_2_i_bson_serializer_registry_8cs_source.html#l00023">IBsonSerializerRegistry.cs:24</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_bson_1_1_i_o_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_bson_1_1_i_o.html">MongoDB.Bson.IO</a></div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_i_o_2_array_element_name_accelerator_8cs_source.html#l00018">ArrayElementNameAccelerator.cs:19</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_bson_1_1_serialization_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_bson_1_1_serialization.html">MongoDB.Bson.Serialization</a></div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_serialization_2_attributed_serialization_provider_8cs_source.html#l00021">AttributedSerializationProvider.cs:22</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_bson_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_bson.html">MongoDB.Bson</a></div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_bson_constants_8cs_source.html#l00018">BsonConstants.cs:19</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_driver_1_1_core_1_1_misc_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_misc.html">MongoDB.Driver.Core.Misc</a></div><div class="ttdef"><b>Definition:</b> <a href="_array_filters_feature_8cs_source.html#l00020">ArrayFiltersFeature.cs:21</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_driver_1_1_core_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_driver_1_1_core.html">MongoDB.Driver.Core</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_queue_8cs_source.html#l00023">AsyncQueue.cs:24</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_driver_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_driver.html">MongoDB.Driver</a></div><div class="ttdef"><b>Definition:</b> <a href="_aggregate_bucket_auto_granularity_8cs_source.html#l00018">AggregateBucketAutoGranularity.cs:19</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_driver_html_a503c2c6cdf673530cc72be2130342795"><div class="ttname"><a href="namespace_mongo_d_b_1_1_driver.html#a503c2c6cdf673530cc72be2130342795">MongoDB.Driver.SortDirection</a></div><div class="ttdeci">SortDirection</div><div class="ttdoc">The direction of the sort.</div><div class="ttdef"><b>Definition:</b> <a href="_sort_definition_8cs_source.html#l00027">SortDefinition.cs:28</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_html"><div class="ttname"><a href="namespace_mongo_d_b.html">MongoDB</a></div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_bson_constants_8cs_source.html#l00018">BsonConstants.cs:19</a></div></div>
+<div class="ttc" id="anamespace_system_html"><div class="ttname"><a href="namespace_system.html">System</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_method_builder_attribute_8cs_source.html#l00001">AsyncMethodBuilderAttribute.cs:2</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_1e261a42b4a2e33df58a15c412684b10.html">ETServer</a></li><li class="navelem"><a class="el" href="dir_473c270c995194c5ad99131d9c901f09.html">Server</a></li><li class="navelem"><a class="el" href="dir_ce426efcf63311ff42488fb2654bd4b4.html">ThirdParty</a></li><li class="navelem"><a class="el" href="dir_a37b2b5f9c8890cc9f6f8392fb0cdff3.html">MongoDBDriver</a></li><li class="navelem"><a class="el" href="dir_42d569251c6b173c0060c74ec4fd3ce0.html">MongoDB.Driver</a></li><li class="navelem"><a class="el" href="_index_keys_definition_builder_8cs.html">IndexKeysDefinitionBuilder.cs</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:24:59 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

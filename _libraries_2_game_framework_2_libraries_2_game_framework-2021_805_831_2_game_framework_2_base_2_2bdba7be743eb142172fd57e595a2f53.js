@@ -1,0 +1,9 @@
+var _libraries_2_game_framework_2_libraries_2_game_framework_2021_805_831_2_game_framework_2_base_2_2bdba7be743eb142172fd57e595a2f53 =
+[
+    [ "EventPoolMode", "_libraries_2_game_framework_2_libraries_2_game_framework-2021_805_831_2_game_framework_2_base_2_2bdba7be743eb142172fd57e595a2f53.html#a775c3bf061520f3c44a12ce8b5e7db3f", [
+      [ "Default", "_libraries_2_game_framework_2_libraries_2_game_framework-2021_805_831_2_game_framework_2_base_2_2bdba7be743eb142172fd57e595a2f53.html#a775c3bf061520f3c44a12ce8b5e7db3fa7a1920d61156abc05a60135aefe8bc67", null ],
+      [ "AllowNoHandler", "_libraries_2_game_framework_2_libraries_2_game_framework-2021_805_831_2_game_framework_2_base_2_2bdba7be743eb142172fd57e595a2f53.html#a775c3bf061520f3c44a12ce8b5e7db3fae3b582a33d1160535bb6156d446bfe2c", null ],
+      [ "AllowMultiHandler", "_libraries_2_game_framework_2_libraries_2_game_framework-2021_805_831_2_game_framework_2_base_2_2bdba7be743eb142172fd57e595a2f53.html#a775c3bf061520f3c44a12ce8b5e7db3fa5ed7fe4fe3caf54b127af9af734f268a", null ],
+      [ "AllowDuplicateHandler", "_libraries_2_game_framework_2_libraries_2_game_framework-2021_805_831_2_game_framework_2_base_2_2bdba7be743eb142172fd57e595a2f53.html#a775c3bf061520f3c44a12ce8b5e7db3fa1cde93dd4326d82e4753c8b7954878cf", null ]
+    ] ]
+];

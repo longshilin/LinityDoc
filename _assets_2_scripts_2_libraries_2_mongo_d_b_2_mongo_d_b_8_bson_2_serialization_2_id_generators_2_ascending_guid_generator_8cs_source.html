@@ -1,0 +1,224 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: Assets/Scripts/Libraries/MongoDB/MongoDB.Bson/Serialization/IdGenerators/AscendingGuidGenerator.cs 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_serialization_2_id_generators_2_ascending_guid_generator_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">AscendingGuidGenerator.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_serialization_2_id_generators_2_ascending_guid_generator_8cs.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/* Copyright 2010-present MongoDB Inc.</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">* Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">* you may not use this file except in compliance with the License.</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">* You may obtain a copy of the License at</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">* http://www.apache.org/licenses/LICENSE-2.0</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">* Unless required by applicable law or agreed to in writing, software</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">* distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">* See the License for the specific language governing permissions and</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">* limitations under the License.</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Diagnostics;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.<a class="code" href="namespace_system_1_1_runtime.html">Runtime</a>.<a class="code" href="namespace_system_1_1_runtime_1_1_compiler_services.html">CompilerServices</a>;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Security;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Security.Cryptography;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Text;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Threading;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="namespace_mongo_d_b_1_1_bson_1_1_serialization_1_1_id_generators.html">   24</a></span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_mongo_d_b_1_1_bson_1_1_serialization_1_1_id_generators.html">MongoDB.Bson.Serialization.IdGenerators</a></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;{</div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_id_generators_1_1_ascending_guid_generator.html">   37</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_id_generators_1_1_ascending_guid_generator.html">AscendingGuidGenerator</a> : <a class="code" href="interface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_id_generator.html">IIdGenerator</a></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    {</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <span class="comment">// private static fields</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> readonly <a class="code" href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_id_generators_1_1_ascending_guid_generator.html">AscendingGuidGenerator</a> __instance = <span class="keyword">new</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_id_generators_1_1_ascending_guid_generator.html">AscendingGuidGenerator</a>();</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> readonly <span class="keywordtype">byte</span>[] __machineProcessId;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keywordtype">int</span> __increment;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="comment">// static constructor</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <span class="keyword">static</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_id_generators_1_1_ascending_guid_generator.html">AscendingGuidGenerator</a>()</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        {</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            var machineHash = GetMachineHash();</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            <span class="keywordtype">short</span> processId;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            <span class="keywordflow">try</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;            {</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                <span class="comment">// use low order two bytes only</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                processId = (short)GetCurrentProcessId();</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            }</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            <span class="keywordflow">catch</span> (SecurityException)</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            {</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                processId = 0;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            }</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            __machineProcessId = <span class="keyword">new</span> <span class="keywordtype">byte</span>[5]</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;            {</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                machineHash[0],</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                machineHash[1],</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                machineHash[2],</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                (byte)(processId &gt;&gt; 8),</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                (byte)(processId)</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            };</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        }</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <span class="comment">// public static properties</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_id_generators_1_1_ascending_guid_generator.html#a531118eec7276e099ab8f5ed6d707697">   74</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_id_generators_1_1_ascending_guid_generator.html">AscendingGuidGenerator</a> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_id_generators_1_1_ascending_guid_generator.html#a531118eec7276e099ab8f5ed6d707697">Instance</a></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        {</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            <span class="keyword">get</span> { <span class="keywordflow">return</span> __instance; }</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        }</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <span class="comment">// public methods</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
+<div class="line"><a name="l00089"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_id_generators_1_1_ascending_guid_generator.html#a906a459e1a106038e46794ff97d69bdf">   89</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">object</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_id_generators_1_1_ascending_guid_generator.html#a906a459e1a106038e46794ff97d69bdf">GenerateId</a>(<span class="keywordtype">object</span> container, <span class="keywordtype">object</span> document)</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        {</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;            var increment = Interlocked.Increment(ref __increment) &amp; 0x00ffffff;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_id_generators_1_1_ascending_guid_generator.html#a906a459e1a106038e46794ff97d69bdf">GenerateId</a>(DateTime.UtcNow.Ticks, __machineProcessId, increment);</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        }</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
+<div class="line"><a name="l00107"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_id_generators_1_1_ascending_guid_generator.html#af5b7d23bae8f4244ff0723bf1ebbb988">  107</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">object</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_id_generators_1_1_ascending_guid_generator.html#af5b7d23bae8f4244ff0723bf1ebbb988">GenerateId</a>(</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;            <span class="keywordtype">long</span> tickCount,</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;            <span class="keywordtype">byte</span>[] machineProcessId,</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;            <span class="keywordtype">int</span> increment)</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        {</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;            var a = (int)(tickCount &gt;&gt; 32);</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;            var b = (short)(tickCount &gt;&gt; 16);</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;            var c = (short)(tickCount);</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;            var d = <span class="keyword">new</span> <span class="keywordtype">byte</span>[8];</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;            Array.Copy(machineProcessId, d, 5);</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;            d[5] = (byte)(increment &gt;&gt; 16);</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;            d[6] = (byte)(increment &gt;&gt; 8);</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;            d[7] = (byte)(increment);</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="_deserialize_helper_8cs.html#ad59b2e51d86e62bb22b22d2a6e191df5">Guid</a>(a, b, c, d);</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        }</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160; </div>
+<div class="line"><a name="l00128"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_id_generators_1_1_ascending_guid_generator.html#afe001f62ff57f75c0c55f137e5c32639">  128</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_id_generators_1_1_ascending_guid_generator.html#afe001f62ff57f75c0c55f137e5c32639">IsEmpty</a>(<span class="keywordtype">object</span> <span class="keywordtype">id</span>)</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        {</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;            <span class="keywordflow">return</span> <span class="keywordtype">id</span> == <span class="keyword">null</span> || (<a class="code" href="_deserialize_helper_8cs.html#ad59b2e51d86e62bb22b22d2a6e191df5">Guid</a>)<span class="keywordtype">id</span> == <a class="code" href="_deserialize_helper_8cs.html#ad59b2e51d86e62bb22b22d2a6e191df5">Guid</a>.Empty;</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        }</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160; </div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        <span class="comment">// private static methods</span></div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;<span class="comment"></span>        [MethodImpl(MethodImplOptions.NoInlining)]</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keywordtype">int</span> GetCurrentProcessId()</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;        {</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;            <span class="keywordflow">return</span> Process.GetCurrentProcess().Id;</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;        }</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160; </div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keywordtype">byte</span>[] GetMachineHash()</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;        {</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;            <span class="comment">// use instead of Dns.HostName so it will work offline</span></div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;            var machineName = GetMachineName();</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;            var sha1 = SHA1.Create();</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;            <span class="keywordflow">return</span> sha1.ComputeHash(Encoding.UTF8.GetBytes(machineName));</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;        }</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160; </div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keywordtype">string</span> GetMachineName()</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;        {</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;            <span class="keywordflow">return</span> Environment.MachineName;</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;        }</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    }</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;}</div>
+<div class="ttc" id="a_deserialize_helper_8cs_html_ad59b2e51d86e62bb22b22d2a6e191df5"><div class="ttname"><a href="_deserialize_helper_8cs.html#ad59b2e51d86e62bb22b22d2a6e191df5">Guid</a></div><div class="ttdeci">PF.Guid Guid</div><div class="ttdef"><b>Definition:</b> <a href="_deserialize_helper_8cs_source.html#l00004">DeserializeHelper.cs:4</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_serialization_1_1_id_generators_1_1_ascending_guid_generator_html"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_id_generators_1_1_ascending_guid_generator.html">MongoDB.Bson.Serialization.IdGenerators.AscendingGuidGenerator</a></div><div class="ttdoc">A GUID generator that generates GUIDs in ascending order. To enable an index to make use of the ascen...</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_serialization_2_id_generators_2_ascending_guid_generator_8cs_source.html#l00037">AscendingGuidGenerator.cs:38</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_serialization_1_1_id_generators_1_1_ascending_guid_generator_html_a531118eec7276e099ab8f5ed6d707697"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_id_generators_1_1_ascending_guid_generator.html#a531118eec7276e099ab8f5ed6d707697">MongoDB.Bson.Serialization.IdGenerators.AscendingGuidGenerator.Instance</a></div><div class="ttdeci">static AscendingGuidGenerator Instance</div><div class="ttdoc">Gets an instance of AscendingGuidGenerator.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_serialization_2_id_generators_2_ascending_guid_generator_8cs_source.html#l00074">AscendingGuidGenerator.cs:75</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_serialization_1_1_id_generators_1_1_ascending_guid_generator_html_a906a459e1a106038e46794ff97d69bdf"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_id_generators_1_1_ascending_guid_generator.html#a906a459e1a106038e46794ff97d69bdf">MongoDB.Bson.Serialization.IdGenerators.AscendingGuidGenerator.GenerateId</a></div><div class="ttdeci">object GenerateId(object container, object document)</div><div class="ttdoc">Generates an ascending Guid for a document. Consecutive invocations should generate Guids that are as...</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_serialization_2_id_generators_2_ascending_guid_generator_8cs_source.html#l00089">AscendingGuidGenerator.cs:89</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_serialization_1_1_id_generators_1_1_ascending_guid_generator_html_af5b7d23bae8f4244ff0723bf1ebbb988"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_id_generators_1_1_ascending_guid_generator.html#af5b7d23bae8f4244ff0723bf1ebbb988">MongoDB.Bson.Serialization.IdGenerators.AscendingGuidGenerator.GenerateId</a></div><div class="ttdeci">object GenerateId(long tickCount, byte[] machineProcessId, int increment)</div><div class="ttdoc">Generates a Guid for a document. Note - this is purely used for unit testing</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_serialization_2_id_generators_2_ascending_guid_generator_8cs_source.html#l00107">AscendingGuidGenerator.cs:107</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_serialization_1_1_id_generators_1_1_ascending_guid_generator_html_afe001f62ff57f75c0c55f137e5c32639"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_id_generators_1_1_ascending_guid_generator.html#afe001f62ff57f75c0c55f137e5c32639">MongoDB.Bson.Serialization.IdGenerators.AscendingGuidGenerator.IsEmpty</a></div><div class="ttdeci">bool IsEmpty(object id)</div><div class="ttdoc">Tests whether an id is empty.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_serialization_2_id_generators_2_ascending_guid_generator_8cs_source.html#l00128">AscendingGuidGenerator.cs:128</a></div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_id_generator_html"><div class="ttname"><a href="interface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_id_generator.html">MongoDB.Bson.Serialization.IIdGenerator</a></div><div class="ttdoc">An interface implemented by Id generators.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_serialization_2_i_id_generator_8cs_source.html#l00021">IIdGenerator.cs:22</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_bson_1_1_serialization_1_1_id_generators_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_bson_1_1_serialization_1_1_id_generators.html">MongoDB.Bson.Serialization.IdGenerators</a></div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_serialization_2_id_generators_2_ascending_guid_generator_8cs_source.html#l00024">AscendingGuidGenerator.cs:25</a></div></div>
+<div class="ttc" id="anamespace_system_1_1_runtime_1_1_compiler_services_html"><div class="ttname"><a href="namespace_system_1_1_runtime_1_1_compiler_services.html">System.Runtime.CompilerServices</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_method_builder_attribute_8cs_source.html#l00001">AsyncMethodBuilderAttribute.cs:2</a></div></div>
+<div class="ttc" id="anamespace_system_1_1_runtime_html"><div class="ttname"><a href="namespace_system_1_1_runtime.html">System.Runtime</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_method_builder_attribute_8cs_source.html#l00001">AsyncMethodBuilderAttribute.cs:2</a></div></div>
+<div class="ttc" id="anamespace_system_html"><div class="ttname"><a href="namespace_system.html">System</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_method_builder_attribute_8cs_source.html#l00001">AsyncMethodBuilderAttribute.cs:2</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_84bbf7b3c7f28a5a18725745e1505219.html">Assets</a></li><li class="navelem"><a class="el" href="dir_f13b41af88cf68434578284aaf699e39.html">Scripts</a></li><li class="navelem"><a class="el" href="dir_46d134a3bf82cf4dc49ca8f728aea58c.html">Libraries</a></li><li class="navelem"><a class="el" href="dir_73566d0e413307016ca2f8948e23ce26.html">MongoDB</a></li><li class="navelem"><a class="el" href="dir_bf52240e991d83ea827d5d13f9c7b60c.html">MongoDB.Bson</a></li><li class="navelem"><a class="el" href="dir_1185c2f6fa61c6af7acfa07ef22522b3.html">Serialization</a></li><li class="navelem"><a class="el" href="dir_55599dc57a904ef88583aceaa375f9f6.html">IdGenerators</a></li><li class="navelem"><a class="el" href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_serialization_2_id_generators_2_ascending_guid_generator_8cs.html">AscendingGuidGenerator.cs</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:24:54 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

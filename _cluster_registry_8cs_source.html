@@ -1,0 +1,353 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: ETServer/Server/ThirdParty/MongoDBDriver/MongoDB.Driver/ClusterRegistry.cs 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_cluster_registry_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">ClusterRegistry.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_cluster_registry_8cs.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/* Copyright 2010-present MongoDB Inc.</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">* Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">* you may not use this file except in compliance with the License.</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">* You may obtain a copy of the License at</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">* http://www.apache.org/licenses/LICENSE-2.0</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">* Unless required by applicable law or agreed to in writing, software</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">* distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">* See the License for the specific language governing permissions and</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">* limitations under the License.</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Collections.Generic;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Linq;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Net;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Net.Security;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Net.Sockets;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Security.Cryptography.X509Certificates;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_mongo_d_b.html">MongoDB</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver.html">Driver</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core.html">Core</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_authentication.html">Authentication</a>;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_mongo_d_b.html">MongoDB</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver.html">Driver</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core.html">Core</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_clusters.html">Clusters</a>;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_mongo_d_b.html">MongoDB</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver.html">Driver</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core.html">Core</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_clusters.html">Clusters</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_clusters_1_1_server_selectors.html">ServerSelectors</a>;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_mongo_d_b.html">MongoDB</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver.html">Driver</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core.html">Core</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_configuration.html">Configuration</a>;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_mongo_d_b.html">MongoDB</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver.html">Driver</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core.html">Core</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_connection_pools.html">ConnectionPools</a>;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_mongo_d_b.html">MongoDB</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver.html">Driver</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core.html">Core</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_connections.html">Connections</a>;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_mongo_d_b.html">MongoDB</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver.html">Driver</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core.html">Core</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_events.html">Events</a>;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_mongo_d_b.html">MongoDB</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver.html">Driver</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core.html">Core</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_events.html">Events</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_events_1_1_diagnostics.html">Diagnostics</a>;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_mongo_d_b.html">MongoDB</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver.html">Driver</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core.html">Core</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_misc.html">Misc</a>;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_mongo_d_b.html">MongoDB</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver.html">Driver</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core.html">Core</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_servers.html">Servers</a>;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_mongo_d_b_1_1_driver.html">MongoDB.Driver</a></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;{</div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_cluster_registry.html">   38</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="class_mongo_d_b_1_1_driver_1_1_cluster_registry.html">ClusterRegistry</a></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    {</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">        #region static</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <span class="comment">// static fields</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> readonly <a class="code" href="class_mongo_d_b_1_1_driver_1_1_cluster_registry.html">ClusterRegistry</a> __instance = <span class="keyword">new</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_cluster_registry.html">ClusterRegistry</a>();</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="comment">// static properties</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_cluster_registry.html#aa51eccef091c0cf77fb68dc002acfb39">   51</a></span>&#160;<span class="comment"></span>        <span class="keyword">public</span> <span class="keyword">static</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_cluster_registry.html">ClusterRegistry</a> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_cluster_registry.html#aa51eccef091c0cf77fb68dc002acfb39">Instance</a></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        {</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            <span class="keyword">get</span> { <span class="keywordflow">return</span> __instance; }</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        }</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="preprocessor">        #endregion</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <span class="comment">// fields</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <span class="keyword">private</span> readonly <span class="keywordtype">object</span> _lock = <span class="keyword">new</span> object();</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <span class="keyword">private</span> readonly Dictionary&lt;ClusterKey, ICluster&gt; _registry = <span class="keyword">new</span> Dictionary&lt;ClusterKey, ICluster&gt;();</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <span class="comment">// methods</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="keyword">private</span> <a class="code" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_clusters_1_1_i_cluster.html">ICluster</a> CreateCluster(ClusterKey clusterKey)</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        {</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            var builder = <span class="keyword">new</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_configuration_1_1_cluster_builder.html">ClusterBuilder</a>()</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                .<a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_configuration_1_1_cluster_builder.html#a17246ef65297255151c14c0d71e5aa70">ConfigureCluster</a>(settings =&gt; ConfigureCluster(settings, clusterKey))</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                .<a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_configuration_1_1_cluster_builder.html#a46e54e40a3da4a39700aea85a2f73e4c">ConfigureServer</a>(settings =&gt; ConfigureServer(settings, clusterKey))</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                .<a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_configuration_1_1_cluster_builder.html#aad56f2b1130a32ce4c0170ef75f2b37a">ConfigureConnectionPool</a>(settings =&gt; ConfigureConnectionPool(settings, clusterKey))</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                .<a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_configuration_1_1_cluster_builder.html#a4aaf7f8fe4f708b489dac99292e1916c">ConfigureConnection</a>(settings =&gt; ConfigureConnection(settings, clusterKey))</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                .<a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_configuration_1_1_cluster_builder.html#a311a22469979f30c86606e520980b63b">ConfigureTcp</a>(settings =&gt; ConfigureTcp(settings, clusterKey))</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                .<a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_configuration_1_1_cluster_builder.html#ac813679da5146962c72751ce91913e9c">ConfigureSdamLogging</a>(settings =&gt; ConfigureSdamLogging(settings, clusterKey));</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;            <span class="keywordflow">if</span> (clusterKey.UseSsl)</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            {</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                builder.<a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_configuration_1_1_cluster_builder.html#ab3494cf821a0b0271d43981abda172de">ConfigureSsl</a>(settings =&gt; ConfigureSsl(settings, clusterKey));</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            }</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            <span class="keywordflow">if</span> (clusterKey.ClusterConfigurator != <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            {</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                clusterKey.ClusterConfigurator(builder);</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            }</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            var cluster = builder.<a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_configuration_1_1_cluster_builder.html#ae02f6a13ce13635bbf0619c172db107f">BuildCluster</a>();</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;            cluster.<a class="code" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_clusters_1_1_i_cluster.html#a65531b843a84d201128d00a0f5fa373a">Initialize</a>();</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;            <span class="keywordflow">return</span> cluster;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        }</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        <span class="keyword">private</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_configuration_1_1_cluster_settings.html">ClusterSettings</a> ConfigureCluster(<a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_configuration_1_1_cluster_settings.html">ClusterSettings</a> settings, ClusterKey clusterKey)</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        {</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            var endPoints = clusterKey.Servers.Select(s =&gt; EndPointHelper.Parse(s.ToString()));</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;            <span class="keywordflow">return</span> settings.<a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_configuration_1_1_cluster_settings.html#a7189537370380b809f1561888b20222a">With</a>(</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                connectionMode: clusterKey.ConnectionMode.ToCore(),</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                endPoints: Optional.Enumerable(endPoints),</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                replicaSetName: clusterKey.ReplicaSetName,</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                maxServerSelectionWaitQueueSize: clusterKey.WaitQueueSize,</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                serverSelectionTimeout: clusterKey.ServerSelectionTimeout,</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;                postServerSelector: <span class="keyword">new</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_clusters_1_1_server_selectors_1_1_latency_limiting_server_selector.html">LatencyLimitingServerSelector</a>(clusterKey.LocalThreshold));</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        }</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160; </div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        <span class="keyword">private</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_configuration_1_1_connection_pool_settings.html">ConnectionPoolSettings</a> ConfigureConnectionPool(<a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_configuration_1_1_connection_pool_settings.html">ConnectionPoolSettings</a> settings, ClusterKey clusterKey)</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        {</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;            <span class="keywordflow">return</span> settings.<a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_configuration_1_1_connection_pool_settings.html#ace27d713ff4a19541a778a87b4250bf3">With</a>(</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;                <span class="comment">// maintenanceInterval: TODO: should this be configurable?</span></div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;                maxConnections: clusterKey.MaxConnectionPoolSize,</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;                minConnections: clusterKey.MinConnectionPoolSize,</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;                waitQueueSize: clusterKey.WaitQueueSize,</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;                waitQueueTimeout: clusterKey.WaitQueueTimeout);</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        }</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; </div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        <span class="keyword">private</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_configuration_1_1_connection_settings.html">ConnectionSettings</a> ConfigureConnection(<a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_configuration_1_1_connection_settings.html">ConnectionSettings</a> settings, ClusterKey clusterKey)</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        {</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;            var authenticators = clusterKey.Credentials.Select(c =&gt; c.ToAuthenticator());</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;            <span class="keywordflow">return</span> settings.<a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_configuration_1_1_connection_settings.html#a55912266e8de3f2c7606be1fbfa6136e">With</a>(</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;                authenticators: Optional.Enumerable(authenticators),</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;                maxIdleTime: clusterKey.MaxConnectionIdleTime,</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;                maxLifeTime: clusterKey.MaxConnectionLifeTime,</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;                applicationName: clusterKey.ApplicationName);</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        }</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160; </div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        <span class="keyword">private</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_configuration_1_1_sdam_logging_settings.html">SdamLoggingSettings</a> ConfigureSdamLogging(<a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_configuration_1_1_sdam_logging_settings.html">SdamLoggingSettings</a> settings, ClusterKey clusterKey)</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        {</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;            <span class="keywordflow">return</span> settings.<a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_configuration_1_1_sdam_logging_settings.html#a0a77a33a29e0d2fcc858ac68a7e86dff">With</a>(logFilename: clusterKey.SdamLogFilename);</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        }</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160; </div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        <span class="keyword">private</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_configuration_1_1_server_settings.html">ServerSettings</a> ConfigureServer(<a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_configuration_1_1_server_settings.html">ServerSettings</a> settings, ClusterKey clusterKey)</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;        {</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;            <span class="keywordflow">return</span> settings.<a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_configuration_1_1_server_settings.html#ae493452a33a17f8ddd811533d09c00fa">With</a>(</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;                heartbeatInterval: clusterKey.HeartbeatInterval,</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;                heartbeatTimeout: clusterKey.HeartbeatTimeout);</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        }</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160; </div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        <span class="keyword">private</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_configuration_1_1_ssl_stream_settings.html">SslStreamSettings</a> ConfigureSsl(<a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_configuration_1_1_ssl_stream_settings.html">SslStreamSettings</a> settings, ClusterKey clusterKey)</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        {</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;            <span class="keywordflow">if</span> (clusterKey.UseSsl)</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;            {</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;                var sslSettings = clusterKey.SslSettings ?? <span class="keyword">new</span> SslSettings();</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160; </div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;                var validationCallback = sslSettings.ServerCertificateValidationCallback;</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;                <span class="keywordflow">if</span> (validationCallback == <span class="keyword">null</span> &amp;&amp; !clusterKey.VerifySslCertificate)</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;                {</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;                    validationCallback = AcceptAnySslCertificate;</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;                }</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160; </div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;                <span class="keywordflow">return</span> settings.<a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_configuration_1_1_ssl_stream_settings.html#aa760d52d22da06a06b801592d28b8bf4">With</a>(</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;                    clientCertificates: Optional.Enumerable(sslSettings.ClientCertificates ?? Enumerable.Empty&lt;X509Certificate&gt;()),</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;                    checkCertificateRevocation: sslSettings.CheckCertificateRevocation,</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;                    clientCertificateSelectionCallback: sslSettings.ClientCertificateSelectionCallback,</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;                    enabledProtocols: sslSettings.EnabledSslProtocols,</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;                    serverCertificateValidationCallback: validationCallback);</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;            }</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160; </div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;            <span class="keywordflow">return</span> settings;</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;        }</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160; </div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;        <span class="keyword">private</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_configuration_1_1_tcp_stream_settings.html">TcpStreamSettings</a> ConfigureTcp(<a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_configuration_1_1_tcp_stream_settings.html">TcpStreamSettings</a> settings, ClusterKey clusterKey)</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;        {</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;            <span class="keywordflow">if</span> (clusterKey.IPv6)</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;            {</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;                settings = settings.<a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_configuration_1_1_tcp_stream_settings.html#a3168a5fec151a864c80927f6d38e5ee7">With</a>(addressFamily: <a class="code" href="namespace_game_framework_1_1_network.html#a1c1f4fb9d29e7a1c07580c9a04062bf9">AddressFamily</a>.InterNetworkV6);</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;            }</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160; </div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;            <span class="keywordflow">return</span> settings.<a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_configuration_1_1_tcp_stream_settings.html#a3168a5fec151a864c80927f6d38e5ee7">With</a>(</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;                connectTimeout: clusterKey.ConnectTimeout,</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;                readTimeout: clusterKey.SocketTimeout,</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;                receiveBufferSize: clusterKey.ReceiveBufferSize,</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;                sendBufferSize: clusterKey.SendBufferSize,</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;                writeTimeout: clusterKey.SocketTimeout);</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;        }</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160; </div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;        <span class="keyword">internal</span> <a class="code" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_clusters_1_1_i_cluster.html">ICluster</a> GetOrCreateCluster(ClusterKey clusterKey)</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;        {</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;            lock (_lock)</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;            {</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;                <a class="code" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_clusters_1_1_i_cluster.html">ICluster</a> cluster;</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;                <span class="keywordflow">if</span> (!_registry.TryGetValue(clusterKey, out cluster))</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;                {</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;                    cluster = CreateCluster(clusterKey);</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;                    _registry.Add(clusterKey, cluster);</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;                }</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;                <span class="keywordflow">return</span> cluster;</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;            }</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;        }</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160; </div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keywordtype">bool</span> AcceptAnySslCertificate(</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;            <span class="keywordtype">object</span> sender,</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;            X509Certificate certificate,</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;            X509Chain chain,</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;            SslPolicyErrors sslPolicyErrors</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;        )</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;        {</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;        }</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160; </div>
+<div class="line"><a name="l00198"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_cluster_registry.html#a1022411612145f4ec6eeb673efed473a">  198</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_cluster_registry.html#a1022411612145f4ec6eeb673efed473a">UnregisterAndDisposeCluster</a>(<a class="code" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_clusters_1_1_i_cluster.html">ICluster</a> cluster)</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;        {</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;            Ensure.IsNotNull(cluster, nameof(cluster));</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160; </div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;            lock (_lock)</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;            {</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;                ClusterKey clusterKey = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;                <span class="keywordflow">foreach</span> (var keyValuePair <span class="keywordflow">in</span> _registry)</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;                {</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;                    <span class="keywordflow">if</span> (<span class="keywordtype">object</span>.ReferenceEquals(keyValuePair.Value, cluster))</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;                    {</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;                        clusterKey = keyValuePair.Key;</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;                        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;                    }</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;                }</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160; </div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;                <span class="keywordflow">if</span> (clusterKey != <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;                {</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;                    _registry.Remove(clusterKey);</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;                }</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;            }</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160; </div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;            cluster.Dispose();</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;        }</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;    }</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;}</div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_cluster_registry_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_cluster_registry.html">MongoDB.Driver.ClusterRegistry</a></div><div class="ttdoc">Represents a registry of already created clusters.</div><div class="ttdef"><b>Definition:</b> <a href="_cluster_registry_8cs_source.html#l00038">ClusterRegistry.cs:39</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_cluster_registry_html_a1022411612145f4ec6eeb673efed473a"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_cluster_registry.html#a1022411612145f4ec6eeb673efed473a">MongoDB.Driver.ClusterRegistry.UnregisterAndDisposeCluster</a></div><div class="ttdeci">void UnregisterAndDisposeCluster(ICluster cluster)</div><div class="ttdoc">Unregisters and disposes the cluster.</div><div class="ttdef"><b>Definition:</b> <a href="_cluster_registry_8cs_source.html#l00198">ClusterRegistry.cs:198</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_cluster_registry_html_aa51eccef091c0cf77fb68dc002acfb39"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_cluster_registry.html#aa51eccef091c0cf77fb68dc002acfb39">MongoDB.Driver.ClusterRegistry.Instance</a></div><div class="ttdeci">static ClusterRegistry Instance</div><div class="ttdoc">Gets the default cluster registry.</div><div class="ttdef"><b>Definition:</b> <a href="_cluster_registry_8cs_source.html#l00051">ClusterRegistry.cs:52</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_clusters_1_1_server_selectors_1_1_latency_limiting_server_selector_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_clusters_1_1_server_selectors_1_1_latency_limiting_server_selector.html">MongoDB.Driver.Core.Clusters.ServerSelectors.LatencyLimitingServerSelector</a></div><div class="ttdoc">Represents a selector that selects servers within an acceptable latency range.</div><div class="ttdef"><b>Definition:</b> <a href="_latency_limiting_server_selector_8cs_source.html#l00028">LatencyLimitingServerSelector.cs:29</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_configuration_1_1_cluster_builder_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_configuration_1_1_cluster_builder.html">MongoDB.Driver.Core.Configuration.ClusterBuilder</a></div><div class="ttdoc">Represents a cluster builder.</div><div class="ttdef"><b>Definition:</b> <a href="_cluster_builder_8cs_source.html#l00036">ClusterBuilder.cs:37</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_configuration_1_1_cluster_builder_html_a17246ef65297255151c14c0d71e5aa70"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_configuration_1_1_cluster_builder.html#a17246ef65297255151c14c0d71e5aa70">MongoDB.Driver.Core.Configuration.ClusterBuilder.ConfigureCluster</a></div><div class="ttdeci">ClusterBuilder ConfigureCluster(Func&lt; ClusterSettings, ClusterSettings &gt; configurator)</div><div class="ttdoc">Configures the cluster settings.</div><div class="ttdef"><b>Definition:</b> <a href="_cluster_builder_8cs_source.html#l00084">ClusterBuilder.cs:84</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_configuration_1_1_cluster_builder_html_a311a22469979f30c86606e520980b63b"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_configuration_1_1_cluster_builder.html#a311a22469979f30c86606e520980b63b">MongoDB.Driver.Core.Configuration.ClusterBuilder.ConfigureTcp</a></div><div class="ttdeci">ClusterBuilder ConfigureTcp(Func&lt; TcpStreamSettings, TcpStreamSettings &gt; configurator)</div><div class="ttdoc">Configures the TCP stream settings.</div><div class="ttdef"><b>Definition:</b> <a href="_cluster_builder_8cs_source.html#l00167">ClusterBuilder.cs:167</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_configuration_1_1_cluster_builder_html_a46e54e40a3da4a39700aea85a2f73e4c"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_configuration_1_1_cluster_builder.html#a46e54e40a3da4a39700aea85a2f73e4c">MongoDB.Driver.Core.Configuration.ClusterBuilder.ConfigureServer</a></div><div class="ttdeci">ClusterBuilder ConfigureServer(Func&lt; ServerSettings, ServerSettings &gt; configurator)</div><div class="ttdoc">Configures the server settings.</div><div class="ttdef"><b>Definition:</b> <a href="_cluster_builder_8cs_source.html#l00145">ClusterBuilder.cs:145</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_configuration_1_1_cluster_builder_html_a4aaf7f8fe4f708b489dac99292e1916c"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_configuration_1_1_cluster_builder.html#a4aaf7f8fe4f708b489dac99292e1916c">MongoDB.Driver.Core.Configuration.ClusterBuilder.ConfigureConnection</a></div><div class="ttdeci">ClusterBuilder ConfigureConnection(Func&lt; ConnectionSettings, ConnectionSettings &gt; configurator)</div><div class="ttdoc">Configures the connection settings.</div><div class="ttdef"><b>Definition:</b> <a href="_cluster_builder_8cs_source.html#l00097">ClusterBuilder.cs:97</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_configuration_1_1_cluster_builder_html_aad56f2b1130a32ce4c0170ef75f2b37a"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_configuration_1_1_cluster_builder.html#aad56f2b1130a32ce4c0170ef75f2b37a">MongoDB.Driver.Core.Configuration.ClusterBuilder.ConfigureConnectionPool</a></div><div class="ttdeci">ClusterBuilder ConfigureConnectionPool(Func&lt; ConnectionPoolSettings, ConnectionPoolSettings &gt; configurator)</div><div class="ttdoc">Configures the connection pool settings.</div><div class="ttdef"><b>Definition:</b> <a href="_cluster_builder_8cs_source.html#l00110">ClusterBuilder.cs:110</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_configuration_1_1_cluster_builder_html_ab3494cf821a0b0271d43981abda172de"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_configuration_1_1_cluster_builder.html#ab3494cf821a0b0271d43981abda172de">MongoDB.Driver.Core.Configuration.ClusterBuilder.ConfigureSsl</a></div><div class="ttdeci">ClusterBuilder ConfigureSsl(Func&lt; SslStreamSettings, SslStreamSettings &gt; configurator)</div><div class="ttdoc">Configures the SSL stream settings.</div><div class="ttdef"><b>Definition:</b> <a href="_cluster_builder_8cs_source.html#l00156">ClusterBuilder.cs:156</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_configuration_1_1_cluster_builder_html_ac813679da5146962c72751ce91913e9c"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_configuration_1_1_cluster_builder.html#ac813679da5146962c72751ce91913e9c">MongoDB.Driver.Core.Configuration.ClusterBuilder.ConfigureSdamLogging</a></div><div class="ttdeci">ClusterBuilder ConfigureSdamLogging(Func&lt; SdamLoggingSettings, SdamLoggingSettings &gt; configurator)</div><div class="ttdoc">Configures the SDAM logging settings.</div><div class="ttdef"><b>Definition:</b> <a href="_cluster_builder_8cs_source.html#l00123">ClusterBuilder.cs:123</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_configuration_1_1_cluster_builder_html_ae02f6a13ce13635bbf0619c172db107f"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_configuration_1_1_cluster_builder.html#ae02f6a13ce13635bbf0619c172db107f">MongoDB.Driver.Core.Configuration.ClusterBuilder.BuildCluster</a></div><div class="ttdeci">ICluster BuildCluster()</div><div class="ttdoc">Builds the cluster.</div><div class="ttdef"><b>Definition:</b> <a href="_cluster_builder_8cs_source.html#l00073">ClusterBuilder.cs:73</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_configuration_1_1_cluster_settings_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_configuration_1_1_cluster_settings.html">MongoDB.Driver.Core.Configuration.ClusterSettings</a></div><div class="ttdoc">Represents settings for a cluster.</div><div class="ttdef"><b>Definition:</b> <a href="_cluster_settings_8cs_source.html#l00029">ClusterSettings.cs:30</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_configuration_1_1_cluster_settings_html_a7189537370380b809f1561888b20222a"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_configuration_1_1_cluster_settings.html#a7189537370380b809f1561888b20222a">MongoDB.Driver.Core.Configuration.ClusterSettings.With</a></div><div class="ttdeci">ClusterSettings With(Optional&lt; ClusterConnectionMode &gt; connectionMode=default(Optional&lt; ClusterConnectionMode &gt;), Optional&lt; IEnumerable&lt; EndPoint &gt;&gt; endPoints=default(Optional&lt; IEnumerable&lt; EndPoint &gt;&gt;), Optional&lt; int &gt; maxServerSelectionWaitQueueSize=default(Optional&lt; int &gt;), Optional&lt; string &gt; replicaSetName=default(Optional&lt; string &gt;), Optional&lt; TimeSpan &gt; serverSelectionTimeout=default(Optional&lt; TimeSpan &gt;), Optional&lt; IServerSelector &gt; preServerSelector=default(Optional&lt; IServerSelector &gt;), Optional&lt; IServerSelector &gt; postServerSelector=default(Optional&lt; IServerSelector &gt;))</div><div class="ttdoc">Returns a new ClusterSettings instance with some settings changed.</div><div class="ttdef"><b>Definition:</b> <a href="_cluster_settings_8cs_source.html#l00164">ClusterSettings.cs:164</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_configuration_1_1_connection_pool_settings_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_configuration_1_1_connection_pool_settings.html">MongoDB.Driver.Core.Configuration.ConnectionPoolSettings</a></div><div class="ttdoc">Represents settings for a connection pool.</div><div class="ttdef"><b>Definition:</b> <a href="_connection_pool_settings_8cs_source.html#l00024">ConnectionPoolSettings.cs:25</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_configuration_1_1_connection_pool_settings_html_ace27d713ff4a19541a778a87b4250bf3"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_configuration_1_1_connection_pool_settings.html#ace27d713ff4a19541a778a87b4250bf3">MongoDB.Driver.Core.Configuration.ConnectionPoolSettings.With</a></div><div class="ttdeci">ConnectionPoolSettings With(Optional&lt; TimeSpan &gt; maintenanceInterval=default(Optional&lt; TimeSpan &gt;), Optional&lt; int &gt; maxConnections=default(Optional&lt; int &gt;), Optional&lt; int &gt; minConnections=default(Optional&lt; int &gt;), Optional&lt; int &gt; waitQueueSize=default(Optional&lt; int &gt;), Optional&lt; TimeSpan &gt; waitQueueTimeout=default(Optional&lt; TimeSpan &gt;))</div><div class="ttdoc">Returns a new ConnectionPoolSettings instance with some settings changed.</div><div class="ttdef"><b>Definition:</b> <a href="_connection_pool_settings_8cs_source.html#l00122">ConnectionPoolSettings.cs:122</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_configuration_1_1_connection_settings_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_configuration_1_1_connection_settings.html">MongoDB.Driver.Core.Configuration.ConnectionSettings</a></div><div class="ttdoc">Represents settings for a connection.</div><div class="ttdef"><b>Definition:</b> <a href="_connection_settings_8cs_source.html#l00028">ConnectionSettings.cs:29</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_configuration_1_1_connection_settings_html_a55912266e8de3f2c7606be1fbfa6136e"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_configuration_1_1_connection_settings.html#a55912266e8de3f2c7606be1fbfa6136e">MongoDB.Driver.Core.Configuration.ConnectionSettings.With</a></div><div class="ttdeci">ConnectionSettings With(Optional&lt; IEnumerable&lt; IAuthenticator &gt;&gt; authenticators=default(Optional&lt; IEnumerable&lt; IAuthenticator &gt;&gt;), Optional&lt; TimeSpan &gt; maxIdleTime=default(Optional&lt; TimeSpan &gt;), Optional&lt; TimeSpan &gt; maxLifeTime=default(Optional&lt; TimeSpan &gt;), Optional&lt; string &gt; applicationName=default(Optional&lt; string &gt;))</div><div class="ttdoc">Returns a new ConnectionSettings instance with some settings changed.</div><div class="ttdef"><b>Definition:</b> <a href="_connection_settings_8cs_source.html#l00115">ConnectionSettings.cs:115</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_configuration_1_1_sdam_logging_settings_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_configuration_1_1_sdam_logging_settings.html">MongoDB.Driver.Core.Configuration.SdamLoggingSettings</a></div><div class="ttdoc">Represents settings for SDAM logging.</div><div class="ttdef"><b>Definition:</b> <a href="_sdam_logging_settings_8cs_source.html#l00021">SdamLoggingSettings.cs:22</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_configuration_1_1_sdam_logging_settings_html_a0a77a33a29e0d2fcc858ac68a7e86dff"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_configuration_1_1_sdam_logging_settings.html#a0a77a33a29e0d2fcc858ac68a7e86dff">MongoDB.Driver.Core.Configuration.SdamLoggingSettings.With</a></div><div class="ttdeci">SdamLoggingSettings With(Optional&lt; string &gt; logFilename=default(Optional&lt; string &gt;))</div><div class="ttdoc">Returns a new SdamLoggingSettings instance with some settings changed.</div><div class="ttdef"><b>Definition:</b> <a href="_sdam_logging_settings_8cs_source.html#l00046">SdamLoggingSettings.cs:46</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_configuration_1_1_server_settings_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_configuration_1_1_server_settings.html">MongoDB.Driver.Core.Configuration.ServerSettings</a></div><div class="ttdoc">Represents settings for a server.</div><div class="ttdef"><b>Definition:</b> <a href="_server_settings_8cs_source.html#l00026">ServerSettings.cs:27</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_configuration_1_1_server_settings_html_ae493452a33a17f8ddd811533d09c00fa"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_configuration_1_1_server_settings.html#ae493452a33a17f8ddd811533d09c00fa">MongoDB.Driver.Core.Configuration.ServerSettings.With</a></div><div class="ttdeci">ServerSettings With(Optional&lt; TimeSpan &gt; heartbeatInterval=default(Optional&lt; TimeSpan &gt;), Optional&lt; TimeSpan &gt; heartbeatTimeout=default(Optional&lt; TimeSpan &gt;))</div><div class="ttdoc">Returns a new ServerSettings instance with some settings changed.</div><div class="ttdef"><b>Definition:</b> <a href="_server_settings_8cs_source.html#l00089">ServerSettings.cs:89</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_configuration_1_1_ssl_stream_settings_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_configuration_1_1_ssl_stream_settings.html">MongoDB.Driver.Core.Configuration.SslStreamSettings</a></div><div class="ttdoc">Represents settings for an SSL stream.</div><div class="ttdef"><b>Definition:</b> <a href="_ssl_stream_settings_8cs_source.html#l00028">SslStreamSettings.cs:29</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_configuration_1_1_ssl_stream_settings_html_aa760d52d22da06a06b801592d28b8bf4"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_configuration_1_1_ssl_stream_settings.html#aa760d52d22da06a06b801592d28b8bf4">MongoDB.Driver.Core.Configuration.SslStreamSettings.With</a></div><div class="ttdeci">SslStreamSettings With(Optional&lt; bool &gt; checkCertificateRevocation=default(Optional&lt; bool &gt;), Optional&lt; IEnumerable&lt; X509Certificate &gt;&gt; clientCertificates=default(Optional&lt; IEnumerable&lt; X509Certificate &gt;&gt;), Optional&lt; LocalCertificateSelectionCallback &gt; clientCertificateSelectionCallback=default(Optional&lt; LocalCertificateSelectionCallback &gt;), Optional&lt; SslProtocols &gt; enabledProtocols=default(Optional&lt; SslProtocols &gt;), Optional&lt; RemoteCertificateValidationCallback &gt; serverCertificateValidationCallback=default(Optional&lt; RemoteCertificateValidationCallback &gt;))</div><div class="ttdoc">Returns a new SsslStreamSettings instance with some settings changed.</div><div class="ttdef"><b>Definition:</b> <a href="_ssl_stream_settings_8cs_source.html#l00126">SslStreamSettings.cs:126</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_configuration_1_1_tcp_stream_settings_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_configuration_1_1_tcp_stream_settings.html">MongoDB.Driver.Core.Configuration.TcpStreamSettings</a></div><div class="ttdoc">Represents settings for a TCP stream.</div><div class="ttdef"><b>Definition:</b> <a href="_tcp_stream_settings_8cs_source.html#l00026">TcpStreamSettings.cs:27</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_configuration_1_1_tcp_stream_settings_html_a3168a5fec151a864c80927f6d38e5ee7"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_configuration_1_1_tcp_stream_settings.html#a3168a5fec151a864c80927f6d38e5ee7">MongoDB.Driver.Core.Configuration.TcpStreamSettings.With</a></div><div class="ttdeci">TcpStreamSettings With(Optional&lt; AddressFamily &gt; addressFamily=default(Optional&lt; AddressFamily &gt;), Optional&lt; TimeSpan &gt; connectTimeout=default(Optional&lt; TimeSpan &gt;), Optional&lt; TimeSpan?&gt; readTimeout=default(Optional&lt; TimeSpan?&gt;), Optional&lt; int &gt; receiveBufferSize=default(Optional&lt; int &gt;), Optional&lt; int &gt; sendBufferSize=default(Optional&lt; int &gt;), Optional&lt; Action&lt; Socket &gt;&gt; socketConfigurator=default(Optional&lt; Action&lt; Socket &gt;&gt;), Optional&lt; TimeSpan?&gt; writeTimeout=default(Optional&lt; TimeSpan?&gt;))</div><div class="ttdoc">Returns a new TcpStreamSettings instance with some settings changed.</div><div class="ttdef"><b>Definition:</b> <a href="_tcp_stream_settings_8cs_source.html#l00167">TcpStreamSettings.cs:167</a></div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_driver_1_1_core_1_1_clusters_1_1_i_cluster_html"><div class="ttname"><a href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_clusters_1_1_i_cluster.html">MongoDB.Driver.Core.Clusters.ICluster</a></div><div class="ttdoc">Represents a MongoDB cluster.</div><div class="ttdef"><b>Definition:</b> <a href="_i_cluster_8cs_source.html#l00029">ICluster.cs:30</a></div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_driver_1_1_core_1_1_clusters_1_1_i_cluster_html_a65531b843a84d201128d00a0f5fa373a"><div class="ttname"><a href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_clusters_1_1_i_cluster.html#a65531b843a84d201128d00a0f5fa373a">MongoDB.Driver.Core.Clusters.ICluster.Initialize</a></div><div class="ttdeci">void Initialize()</div><div class="ttdoc">Initializes the cluster.</div></div>
+<div class="ttc" id="anamespace_game_framework_1_1_network_html_a1c1f4fb9d29e7a1c07580c9a04062bf9"><div class="ttname"><a href="namespace_game_framework_1_1_network.html#a1c1f4fb9d29e7a1c07580c9a04062bf9">GameFramework.Network.AddressFamily</a></div><div class="ttdeci">AddressFamily</div><div class="ttdoc">网络地址类型。</div><div class="ttdef"><b>Definition:</b> <a href="_address_family_8cs_source.html#l00013">AddressFamily.cs:14</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_authentication.html">MongoDB.Driver.Core.Authentication</a></div><div class="ttdef"><b>Definition:</b> <a href="_authentication_helper_8cs_source.html#l00029">AuthenticationHelper.cs:30</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_driver_1_1_core_1_1_clusters_1_1_server_selectors_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_clusters_1_1_server_selectors.html">MongoDB.Driver.Core.Clusters.ServerSelectors</a></div><div class="ttdef"><b>Definition:</b> <a href="_composite_server_selector_8cs_source.html#l00021">CompositeServerSelector.cs:22</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_driver_1_1_core_1_1_clusters_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_clusters.html">MongoDB.Driver.Core.Clusters</a></div><div class="ttdef"><b>Definition:</b> <a href="_cluster_8cs_source.html#l00033">Cluster.cs:34</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_driver_1_1_core_1_1_configuration_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_configuration.html">MongoDB.Driver.Core.Configuration</a></div><div class="ttdef"><b>Definition:</b> <a href="_cluster_builder_8cs_source.html#l00031">ClusterBuilder.cs:32</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_driver_1_1_core_1_1_connection_pools_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_connection_pools.html">MongoDB.Driver.Core.ConnectionPools</a></div><div class="ttdef"><b>Definition:</b> <a href="_exclusive_connection_pool_8cs_source.html#l00030">ExclusiveConnectionPool.cs:31</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_driver_1_1_core_1_1_connections_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_connections.html">MongoDB.Driver.Core.Connections</a></div><div class="ttdef"><b>Definition:</b> <a href="_binary_connection_8cs_source.html#l00035">BinaryConnection.cs:36</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_driver_1_1_core_1_1_events_1_1_diagnostics_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_events_1_1_diagnostics.html">MongoDB.Driver.Core.Events.Diagnostics</a></div><div class="ttdef"><b>Definition:</b> <a href="_trace_source_command_event_subscriber_8cs_source.html#l00021">TraceSourceCommandEventSubscriber.cs:22</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_driver_1_1_core_1_1_events_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_events.html">MongoDB.Driver.Core.Events</a></div><div class="ttdef"><b>Definition:</b> <a href="_cluster_added_server_event_8cs_source.html#l00020">ClusterAddedServerEvent.cs:21</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_driver_1_1_core_1_1_misc_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_misc.html">MongoDB.Driver.Core.Misc</a></div><div class="ttdef"><b>Definition:</b> <a href="_array_filters_feature_8cs_source.html#l00020">ArrayFiltersFeature.cs:21</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_driver_1_1_core_1_1_servers_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_servers.html">MongoDB.Driver.Core.Servers</a></div><div class="ttdef"><b>Definition:</b> <a href="_cluster_clock_advancing_core_session_8cs_source.html#l00021">ClusterClockAdvancingCoreSession.cs:22</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_driver_1_1_core_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_driver_1_1_core.html">MongoDB.Driver.Core</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_queue_8cs_source.html#l00023">AsyncQueue.cs:24</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_driver_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_driver.html">MongoDB.Driver</a></div><div class="ttdef"><b>Definition:</b> <a href="_aggregate_bucket_auto_granularity_8cs_source.html#l00018">AggregateBucketAutoGranularity.cs:19</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_html"><div class="ttname"><a href="namespace_mongo_d_b.html">MongoDB</a></div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_bson_constants_8cs_source.html#l00018">BsonConstants.cs:19</a></div></div>
+<div class="ttc" id="anamespace_system_html"><div class="ttname"><a href="namespace_system.html">System</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_method_builder_attribute_8cs_source.html#l00001">AsyncMethodBuilderAttribute.cs:2</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_1e261a42b4a2e33df58a15c412684b10.html">ETServer</a></li><li class="navelem"><a class="el" href="dir_473c270c995194c5ad99131d9c901f09.html">Server</a></li><li class="navelem"><a class="el" href="dir_ce426efcf63311ff42488fb2654bd4b4.html">ThirdParty</a></li><li class="navelem"><a class="el" href="dir_a37b2b5f9c8890cc9f6f8392fb0cdff3.html">MongoDBDriver</a></li><li class="navelem"><a class="el" href="dir_42d569251c6b173c0060c74ec4fd3ce0.html">MongoDB.Driver</a></li><li class="navelem"><a class="el" href="_cluster_registry_8cs.html">ClusterRegistry.cs</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:24:58 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

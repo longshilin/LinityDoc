@@ -1,0 +1,150 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: Assets/Scripts/Libraries/GameFramework/Libraries/GameFramework-2021.05.31/GameFramework/Event/IEventManager.cs 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_i_event_manager_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">IEventManager.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_i_event_manager_8cs.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">//------------------------------------------------------------</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">// Game Framework</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">// Copyright © 2013-2021 Jiang Yin. All rights reserved.</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">// Homepage: https://gameframework.cn/</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">// Feedback: mailto:ellan@gameframework.cn</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">//------------------------------------------------------------</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_game_framework_1_1_event.html">GameFramework.Event</a></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;{</div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_event_1_1_i_event_manager.html">   15</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">interface </span><a class="code" href="interface_game_framework_1_1_event_1_1_i_event_manager.html">IEventManager</a></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    {</div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_event_1_1_i_event_manager.html#ae57eb30450db3b33f52a850159d85a4c">   20</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="interface_game_framework_1_1_event_1_1_i_event_manager.html#ae57eb30450db3b33f52a850159d85a4c">EventHandlerCount</a></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        {</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;            <span class="keyword">get</span>;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        }</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_event_1_1_i_event_manager.html#af0e5f5deab92c56ce853681c17f292b4">   28</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="interface_game_framework_1_1_event_1_1_i_event_manager.html#af0e5f5deab92c56ce853681c17f292b4">EventCount</a></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        {</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;            <span class="keyword">get</span>;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        }</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_event_1_1_i_event_manager.html#ad5b67fd1a731d7066e5cabc209a600db">   38</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="interface_game_framework_1_1_event_1_1_i_event_manager.html#ad5b67fd1a731d7066e5cabc209a600db">Count</a>(<span class="keywordtype">int</span> <span class="keywordtype">id</span>);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_event_1_1_i_event_manager.html#ad6c0b4dafc046caa2e755bb498eed85b">   46</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="interface_game_framework_1_1_event_1_1_i_event_manager.html#ad6c0b4dafc046caa2e755bb498eed85b">Check</a>(<span class="keywordtype">int</span> <span class="keywordtype">id</span>, EventHandler&lt;GameEventArgs&gt; handler);</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_event_1_1_i_event_manager.html#a73222cc30125b6796893a01b925a462c">   53</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="interface_game_framework_1_1_event_1_1_i_event_manager.html#a73222cc30125b6796893a01b925a462c">Subscribe</a>(<span class="keywordtype">int</span> <span class="keywordtype">id</span>, EventHandler&lt;GameEventArgs&gt; handler);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_event_1_1_i_event_manager.html#a966d8a5288a6da1bd9ffa59fea302bf5">   60</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="interface_game_framework_1_1_event_1_1_i_event_manager.html#a966d8a5288a6da1bd9ffa59fea302bf5">Unsubscribe</a>(<span class="keywordtype">int</span> <span class="keywordtype">id</span>, EventHandler&lt;GameEventArgs&gt; handler);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_event_1_1_i_event_manager.html#ad57797fe29a1fc981bc65f734d4a04a4">   66</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="interface_game_framework_1_1_event_1_1_i_event_manager.html#ad57797fe29a1fc981bc65f734d4a04a4">SetDefaultHandler</a>(EventHandler&lt;GameEventArgs&gt; handler);</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00073"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_event_1_1_i_event_manager.html#a759e7203d2d605e8b31e1ee72bec55c9">   73</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="interface_game_framework_1_1_event_1_1_i_event_manager.html#a759e7203d2d605e8b31e1ee72bec55c9">Fire</a>(<span class="keywordtype">object</span> sender, <a class="code" href="class_game_framework_1_1_event_1_1_game_event_args.html">GameEventArgs</a> e);</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
+<div class="line"><a name="l00080"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_event_1_1_i_event_manager.html#a0a359808084d27c2455056f38141f861">   80</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="interface_game_framework_1_1_event_1_1_i_event_manager.html#a0a359808084d27c2455056f38141f861">FireNow</a>(<span class="keywordtype">object</span> sender, <a class="code" href="class_game_framework_1_1_event_1_1_game_event_args.html">GameEventArgs</a> e);</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    }</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;}</div>
+<div class="ttc" id="aclass_game_framework_1_1_event_1_1_game_event_args_html"><div class="ttname"><a href="class_game_framework_1_1_event_1_1_game_event_args.html">GameFramework.Event.GameEventArgs</a></div><div class="ttdoc">游戏逻辑事件基类。</div><div class="ttdef"><b>Definition:</b> <a href="_game_event_args_8cs_source.html#l00013">GameEventArgs.cs:14</a></div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_event_1_1_i_event_manager_html"><div class="ttname"><a href="interface_game_framework_1_1_event_1_1_i_event_manager.html">GameFramework.Event.IEventManager</a></div><div class="ttdoc">事件管理器接口。</div><div class="ttdef"><b>Definition:</b> <a href="_i_event_manager_8cs_source.html#l00015">IEventManager.cs:16</a></div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_event_1_1_i_event_manager_html_a0a359808084d27c2455056f38141f861"><div class="ttname"><a href="interface_game_framework_1_1_event_1_1_i_event_manager.html#a0a359808084d27c2455056f38141f861">GameFramework.Event.IEventManager.FireNow</a></div><div class="ttdeci">void FireNow(object sender, GameEventArgs e)</div><div class="ttdoc">抛出事件立即模式，这个操作不是线程安全的，事件会立刻分发。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_event_1_1_i_event_manager_html_a73222cc30125b6796893a01b925a462c"><div class="ttname"><a href="interface_game_framework_1_1_event_1_1_i_event_manager.html#a73222cc30125b6796893a01b925a462c">GameFramework.Event.IEventManager.Subscribe</a></div><div class="ttdeci">void Subscribe(int id, EventHandler&lt; GameEventArgs &gt; handler)</div><div class="ttdoc">订阅事件处理函数。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_event_1_1_i_event_manager_html_a759e7203d2d605e8b31e1ee72bec55c9"><div class="ttname"><a href="interface_game_framework_1_1_event_1_1_i_event_manager.html#a759e7203d2d605e8b31e1ee72bec55c9">GameFramework.Event.IEventManager.Fire</a></div><div class="ttdeci">void Fire(object sender, GameEventArgs e)</div><div class="ttdoc">抛出事件，这个操作是线程安全的，即使不在主线程中抛出，也可保证在主线程中回调事件处理函数，但事件会在抛出后的下一帧分发。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_event_1_1_i_event_manager_html_a966d8a5288a6da1bd9ffa59fea302bf5"><div class="ttname"><a href="interface_game_framework_1_1_event_1_1_i_event_manager.html#a966d8a5288a6da1bd9ffa59fea302bf5">GameFramework.Event.IEventManager.Unsubscribe</a></div><div class="ttdeci">void Unsubscribe(int id, EventHandler&lt; GameEventArgs &gt; handler)</div><div class="ttdoc">取消订阅事件处理函数。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_event_1_1_i_event_manager_html_ad57797fe29a1fc981bc65f734d4a04a4"><div class="ttname"><a href="interface_game_framework_1_1_event_1_1_i_event_manager.html#ad57797fe29a1fc981bc65f734d4a04a4">GameFramework.Event.IEventManager.SetDefaultHandler</a></div><div class="ttdeci">void SetDefaultHandler(EventHandler&lt; GameEventArgs &gt; handler)</div><div class="ttdoc">设置默认事件处理函数。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_event_1_1_i_event_manager_html_ad5b67fd1a731d7066e5cabc209a600db"><div class="ttname"><a href="interface_game_framework_1_1_event_1_1_i_event_manager.html#ad5b67fd1a731d7066e5cabc209a600db">GameFramework.Event.IEventManager.Count</a></div><div class="ttdeci">int Count(int id)</div><div class="ttdoc">获取事件处理函数的数量。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_event_1_1_i_event_manager_html_ad6c0b4dafc046caa2e755bb498eed85b"><div class="ttname"><a href="interface_game_framework_1_1_event_1_1_i_event_manager.html#ad6c0b4dafc046caa2e755bb498eed85b">GameFramework.Event.IEventManager.Check</a></div><div class="ttdeci">bool Check(int id, EventHandler&lt; GameEventArgs &gt; handler)</div><div class="ttdoc">检查是否存在事件处理函数。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_event_1_1_i_event_manager_html_ae57eb30450db3b33f52a850159d85a4c"><div class="ttname"><a href="interface_game_framework_1_1_event_1_1_i_event_manager.html#ae57eb30450db3b33f52a850159d85a4c">GameFramework.Event.IEventManager.EventHandlerCount</a></div><div class="ttdeci">int EventHandlerCount</div><div class="ttdoc">获取事件处理函数的数量。</div><div class="ttdef"><b>Definition:</b> <a href="_i_event_manager_8cs_source.html#l00020">IEventManager.cs:21</a></div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_event_1_1_i_event_manager_html_af0e5f5deab92c56ce853681c17f292b4"><div class="ttname"><a href="interface_game_framework_1_1_event_1_1_i_event_manager.html#af0e5f5deab92c56ce853681c17f292b4">GameFramework.Event.IEventManager.EventCount</a></div><div class="ttdeci">int EventCount</div><div class="ttdoc">获取事件数量。</div><div class="ttdef"><b>Definition:</b> <a href="_i_event_manager_8cs_source.html#l00028">IEventManager.cs:29</a></div></div>
+<div class="ttc" id="anamespace_game_framework_1_1_event_html"><div class="ttname"><a href="namespace_game_framework_1_1_event.html">GameFramework.Event</a></div><div class="ttdef"><b>Definition:</b> <a href="_libraries_2_game_framework_2_libraries_2_game_framework-2021_805_831_2_game_framework_2_event_2_event_manager_8cs_source.html#l00010">EventManager.cs:11</a></div></div>
+<div class="ttc" id="anamespace_system_html"><div class="ttname"><a href="namespace_system.html">System</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_method_builder_attribute_8cs_source.html#l00001">AsyncMethodBuilderAttribute.cs:2</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_84bbf7b3c7f28a5a18725745e1505219.html">Assets</a></li><li class="navelem"><a class="el" href="dir_f13b41af88cf68434578284aaf699e39.html">Scripts</a></li><li class="navelem"><a class="el" href="dir_46d134a3bf82cf4dc49ca8f728aea58c.html">Libraries</a></li><li class="navelem"><a class="el" href="dir_7a6862c303020716b3c311e95823547c.html">GameFramework</a></li><li class="navelem"><a class="el" href="dir_bfc6cd8d089c265c897460523cef6560.html">Libraries</a></li><li class="navelem"><a class="el" href="dir_c1104d2df307bba6f9db4e185ff99743.html">GameFramework-2021.05.31</a></li><li class="navelem"><a class="el" href="dir_fe759fdbe5a0d8b8465ec936ca1014c7.html">GameFramework</a></li><li class="navelem"><a class="el" href="dir_8efd5a0f97a27cfc3dd344c88b9cce96.html">Event</a></li><li class="navelem"><a class="el" href="_i_event_manager_8cs.html">IEventManager.cs</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:24:47 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

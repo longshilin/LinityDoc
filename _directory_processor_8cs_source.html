@@ -1,0 +1,281 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: Assets/Scripts/Editor/XCodeAPI/Scripts/DirectoryProcessor.cs 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_directory_processor_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">DirectoryProcessor.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_directory_processor_8cs.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_chilly_room.html">ChillyRoom</a>.<a class="code" href="namespace_chilly_room_1_1_unity_editor.html">UnityEditor</a>.<a class="code" href="namespace_chilly_room_1_1_unity_editor_1_1i_o_s.html">iOS</a>.<a class="code" href="namespace_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode.html">Xcode</a>;</div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_chilly_room.html">ChillyRoom</a>.<a class="code" href="namespace_chilly_room_1_1_unity_editor.html">UnityEditor</a>.<a class="code" href="namespace_chilly_room_1_1_unity_editor_1_1i_o_s.html">iOS</a>.<a class="code" href="namespace_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode.html">Xcode</a>.<a class="code" href="namespace_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_extensions.html">Extensions</a>;</div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Collections.Generic;</div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.IO;</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">class </span>DirectoryProcessor</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;{</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    <span class="comment">//拷贝并增加到项目</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> CopyAndAddBuildToXcode(<a class="code" href="class_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_p_b_x_project.html">PBXProject</a> pbxProject, <span class="keywordtype">string</span> targetGuid, <span class="keywordtype">string</span> copyDirectoryPath, <span class="keywordtype">string</span> buildPath, <span class="keywordtype">string</span> currentDirectoryPath, List&lt;string&gt; embedFrameworks, <span class="keywordtype">bool</span> needToAddBuild = <span class="keyword">true</span>)</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    {</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;        <span class="keywordtype">string</span> unityDirectoryPath = copyDirectoryPath;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        <span class="keywordtype">string</span> xcodeDirectoryPath = buildPath;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        <span class="keywordflow">if</span> (!<span class="keywordtype">string</span>.IsNullOrEmpty(currentDirectoryPath))</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        {</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;            unityDirectoryPath = <a class="code" href="_game_main_2_customs_2_custom_helpers_2_process_helper_8cs.html#a5d3f395d3257bcd58335037355f0d7cc">Path</a>.Combine(unityDirectoryPath, currentDirectoryPath);</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;            xcodeDirectoryPath = <a class="code" href="_game_main_2_customs_2_custom_helpers_2_process_helper_8cs.html#a5d3f395d3257bcd58335037355f0d7cc">Path</a>.Combine(xcodeDirectoryPath, currentDirectoryPath);</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;            <a class="code" href="namespace_mongo_d_b_1_1_driver.html#a603ee7a08ad9cb5941abf0a8be9bff21af2a6c498fb90ee345d997f888fce3b18">Delete</a>(xcodeDirectoryPath);</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;            Directory.CreateDirectory(xcodeDirectoryPath);</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        }</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <span class="keywordflow">foreach</span> (<span class="keywordtype">string</span> filePath <span class="keywordflow">in</span> Directory.GetFiles(unityDirectoryPath))</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        {</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;            <span class="comment">//过滤.meta文件</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;            <span class="keywordtype">string</span> extension = <a class="code" href="_game_main_2_customs_2_custom_helpers_2_process_helper_8cs.html#a5d3f395d3257bcd58335037355f0d7cc">Path</a>.GetExtension(filePath);</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;            <span class="keywordflow">if</span> (extension == ExtensionName.META)</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;                <span class="keywordflow">continue</span>;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;            <span class="comment">//</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;            <span class="keywordflow">if</span> (extension == ExtensionName.ARCHIVE)</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;            {</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;                pbxProject.<a class="code" href="class_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_p_b_x_project.html#aa083eb2fd3d1da2f96aee81c95f9ef5f">AddBuildProperty</a>(targetGuid, <a class="code" href="class_xcode_project_setting.html">XcodeProjectSetting</a>.<a class="code" href="class_xcode_project_setting.html#ac72f3d00338c15291f2fbb192f96cfbd">LIBRARY_SEARCH_PATHS_KEY</a>, <a class="code" href="class_xcode_project_setting.html">XcodeProjectSetting</a>.<a class="code" href="class_xcode_project_setting.html#a5393d6efd7b9c9bcc9d5169462134a60">PROJECT_ROOT</a> + currentDirectoryPath);</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;            }</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;            <span class="keywordtype">string</span> fileName = <a class="code" href="_game_main_2_customs_2_custom_helpers_2_process_helper_8cs.html#a5d3f395d3257bcd58335037355f0d7cc">Path</a>.GetFileName(filePath);</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;            <span class="keywordtype">string</span> copyPath = <a class="code" href="_game_main_2_customs_2_custom_helpers_2_process_helper_8cs.html#a5d3f395d3257bcd58335037355f0d7cc">Path</a>.Combine(xcodeDirectoryPath, fileName);</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;            <span class="comment">//有可能是.DS_Store文件，直接过滤</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;            <span class="keywordflow">if</span> (fileName[0] == <span class="charliteral">&#39;.&#39;</span>)</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                <span class="keywordflow">continue</span>;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            File.Delete(copyPath);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            File.Copy(filePath, copyPath);</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;            <span class="keywordflow">if</span> (needToAddBuild)</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            {</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                <span class="keywordtype">string</span> relativePath = <a class="code" href="_game_main_2_customs_2_custom_helpers_2_process_helper_8cs.html#a5d3f395d3257bcd58335037355f0d7cc">Path</a>.Combine(currentDirectoryPath, fileName);</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                <span class="comment">//特殊化处理，XMain目录下文件添加flags：-fno-objc-arc</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                <span class="keywordflow">if</span> (relativePath.Contains(ExtensionName.XMain))</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                {</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                    pbxProject.<a class="code" href="class_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_p_b_x_project.html#a136b49f8e7e20ab013f7434de94272c1">AddFileToBuildWithFlags</a>(targetGuid, pbxProject.<a class="code" href="class_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_p_b_x_project.html#a2cfa5b784c638a259721eeb8ea4e6af0">AddFile</a>(relativePath, relativePath, <a class="code" href="namespace_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode.html#aa6b865bcf32cba151324de7c4ac0044b">PBXSourceTree</a>.Source), <span class="stringliteral">&quot;-fno-objc-arc&quot;</span>);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                }</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                {</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                    pbxProject.<a class="code" href="class_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_p_b_x_project.html#afe5ddb6cdd8b2a1c148fafc2650c8a03">AddFileToBuild</a>(targetGuid, pbxProject.<a class="code" href="class_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_p_b_x_project.html#a2cfa5b784c638a259721eeb8ea4e6af0">AddFile</a>(relativePath, relativePath, <a class="code" href="namespace_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode.html#aa6b865bcf32cba151324de7c4ac0044b">PBXSourceTree</a>.Source));</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                }</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            }</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        }</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <span class="keywordflow">foreach</span> (<span class="keywordtype">string</span> directoryPath <span class="keywordflow">in</span> Directory.GetDirectories(unityDirectoryPath))</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        {</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;            <span class="keywordtype">string</span> directoryName = <a class="code" href="_game_main_2_customs_2_custom_helpers_2_process_helper_8cs.html#a5d3f395d3257bcd58335037355f0d7cc">Path</a>.GetFileName(directoryPath);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            <span class="keywordflow">if</span> (!directoryName.Contains(ExtensionName.LANGUAGE))</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            {</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                <span class="keywordtype">bool</span> nextNeedToAddBuild = needToAddBuild;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                <span class="keywordflow">if</span> (directoryName.Contains(ExtensionName.FRAMEWORK) || directoryName.Contains(ExtensionName.BUNDLE) || directoryName == <a class="code" href="class_xcode_project_setting.html">XcodeProjectSetting</a>.<a class="code" href="class_xcode_project_setting.html#a0bee2eb7d0a3c9f5de877777b49d9f80">IMAGE_XCASSETS_DIRECTORY_NAME</a>)</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                {</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                    nextNeedToAddBuild = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                }</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                CopyAndAddBuildToXcode(pbxProject, targetGuid, copyDirectoryPath, buildPath, <a class="code" href="_game_main_2_customs_2_custom_helpers_2_process_helper_8cs.html#a5d3f395d3257bcd58335037355f0d7cc">Path</a>.Combine(currentDirectoryPath, directoryName), embedFrameworks, nextNeedToAddBuild);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                <span class="keywordflow">if</span> (directoryName.Contains(ExtensionName.FRAMEWORK) || directoryName.Contains(ExtensionName.BUNDLE))</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                {</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                    <span class="keywordtype">string</span> relativePath = <a class="code" href="_game_main_2_customs_2_custom_helpers_2_process_helper_8cs.html#a5d3f395d3257bcd58335037355f0d7cc">Path</a>.Combine(currentDirectoryPath, directoryName);</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                    <span class="keywordtype">string</span> fileGuid = pbxProject.<a class="code" href="class_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_p_b_x_project.html#a2cfa5b784c638a259721eeb8ea4e6af0">AddFile</a>(relativePath, relativePath, <a class="code" href="namespace_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode.html#aa6b865bcf32cba151324de7c4ac0044b">PBXSourceTree</a>.Source);</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                    pbxProject.<a class="code" href="class_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_p_b_x_project.html#afe5ddb6cdd8b2a1c148fafc2650c8a03">AddFileToBuild</a>(targetGuid, fileGuid);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                    pbxProject.<a class="code" href="class_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_p_b_x_project.html#aa083eb2fd3d1da2f96aee81c95f9ef5f">AddBuildProperty</a>(targetGuid, <a class="code" href="class_xcode_project_setting.html">XcodeProjectSetting</a>.<a class="code" href="class_xcode_project_setting.html#adc36d4c6bb5fa7a35e40908880a164f2">FRAMEWORK_SEARCH_PATHS_KEY</a>, <a class="code" href="class_xcode_project_setting.html">XcodeProjectSetting</a>.<a class="code" href="class_xcode_project_setting.html#a5393d6efd7b9c9bcc9d5169462134a60">PROJECT_ROOT</a> + currentDirectoryPath);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                    <span class="keywordflow">if</span> (embedFrameworks.Contains(directoryName))</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                    {</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                        PBXProjectExtensions.AddFileToEmbedFrameworks(pbxProject, targetGuid, fileGuid);</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                    }</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                }</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            }</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;            {</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                <span class="comment">//特殊化处理本地语言，暂时官方PBXProject不支持AddLocalization方法，如果需要，则必须自己扩充</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                <span class="keywordtype">string</span> relativePath = <a class="code" href="_game_main_2_customs_2_custom_helpers_2_process_helper_8cs.html#a5d3f395d3257bcd58335037355f0d7cc">Path</a>.Combine(currentDirectoryPath, directoryName);</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                CopyAndAddBuildToXcode(pbxProject, targetGuid, copyDirectoryPath, buildPath, relativePath, embedFrameworks, <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                <span class="keywordtype">string</span>[] dirs = Directory.GetDirectories(<a class="code" href="_game_main_2_customs_2_custom_helpers_2_process_helper_8cs.html#a5d3f395d3257bcd58335037355f0d7cc">Path</a>.Combine(xcodeDirectoryPath, directoryName));</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                <span class="keywordflow">if</span> (dirs.Length &gt; 0)</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                {</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                    <span class="keywordtype">string</span> fileName = <a class="code" href="_game_main_2_customs_2_custom_helpers_2_process_helper_8cs.html#a5d3f395d3257bcd58335037355f0d7cc">Path</a>.GetFileName(Directory.GetFiles(dirs[0], <span class="stringliteral">&quot;*.strings&quot;</span>)[0]);</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                    AddLocalizedStrings(pbxProject, buildPath, fileName, directoryPath, directoryName);</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                }</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;            }</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        }</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    }</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="comment">//添加本地化strings文件</span></div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> AddLocalizedStrings(<a class="code" href="class_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_p_b_x_project.html">PBXProject</a> pbxProject, <span class="keywordtype">string</span> buildPath, <span class="keywordtype">string</span> fileName, <span class="keywordtype">string</span> localizedDirectoryPath, <span class="keywordtype">string</span> directoryName)</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    {</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        DirectoryInfo dir = <span class="keyword">new</span> DirectoryInfo(localizedDirectoryPath);</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        <span class="keywordflow">if</span> (!dir.Exists)</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;            <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        List&lt;string&gt; locales = <span class="keyword">new</span> List&lt;string&gt;();</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        var localeDirs = dir.GetDirectories(<span class="stringliteral">&quot;*.lproj&quot;</span>, SearchOption.TopDirectoryOnly);</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160; </div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        <span class="keywordflow">foreach</span> (var sub <span class="keywordflow">in</span> localeDirs)</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;            locales.Add(<a class="code" href="_game_main_2_customs_2_custom_helpers_2_process_helper_8cs.html#a5d3f395d3257bcd58335037355f0d7cc">Path</a>.GetFileNameWithoutExtension(sub.Name));</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160; </div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        AddLocalizedStrings(pbxProject, buildPath, directoryName, fileName, localizedDirectoryPath, locales);</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    }</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160; </div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    <span class="comment">//添加本地化strings文件</span></div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> AddLocalizedStrings(<a class="code" href="class_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_p_b_x_project.html">PBXProject</a> pbxProject, <span class="keywordtype">string</span> buildPath, <span class="keywordtype">string</span> directoryName, <span class="keywordtype">string</span> fileName, <span class="keywordtype">string</span> localizedDirectoryPath, List&lt;string&gt; validLocales)</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    {</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        <span class="keywordflow">foreach</span> (var locale <span class="keywordflow">in</span> validLocales)</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        {</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;            <span class="keywordtype">string</span> fileRelatvePath = <span class="keywordtype">string</span>.Format(<span class="stringliteral">&quot;{0}/{1}.lproj/{2}&quot;</span>, directoryName, locale, fileName);</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;            pbxProject.<a class="code" href="class_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_p_b_x_project.html#aaf3a7847300ab8c7a1f7ca962865b2b5">AddLocalization</a>(fileName, locale, fileRelatvePath);</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        }</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    }</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160; </div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    <span class="comment">//拷贝文件夹或者文件</span></div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> CopyAndReplace(<span class="keywordtype">string</span> sourcePath, <span class="keywordtype">string</span> copyPath)</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    {</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;        <a class="code" href="namespace_mongo_d_b_1_1_driver.html#a603ee7a08ad9cb5941abf0a8be9bff21af2a6c498fb90ee345d997f888fce3b18">Delete</a>(copyPath);</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;        Directory.CreateDirectory(copyPath);</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        <span class="keywordflow">foreach</span> (var file <span class="keywordflow">in</span> Directory.GetFiles(sourcePath))</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        {</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="_game_main_2_customs_2_custom_helpers_2_process_helper_8cs.html#a5d3f395d3257bcd58335037355f0d7cc">Path</a>.GetExtension(file) == ExtensionName.META)</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;                <span class="keywordflow">continue</span>;</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;            File.Copy(file, <a class="code" href="_game_main_2_customs_2_custom_helpers_2_process_helper_8cs.html#a5d3f395d3257bcd58335037355f0d7cc">Path</a>.Combine(copyPath, <a class="code" href="_game_main_2_customs_2_custom_helpers_2_process_helper_8cs.html#a5d3f395d3257bcd58335037355f0d7cc">Path</a>.GetFileName(file)));</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        }</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160; </div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        <span class="keywordflow">foreach</span> (var dir <span class="keywordflow">in</span> Directory.GetDirectories(sourcePath))</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;        {</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;            CopyAndReplace(dir, <a class="code" href="_game_main_2_customs_2_custom_helpers_2_process_helper_8cs.html#a5d3f395d3257bcd58335037355f0d7cc">Path</a>.Combine(copyPath, <a class="code" href="_game_main_2_customs_2_custom_helpers_2_process_helper_8cs.html#a5d3f395d3257bcd58335037355f0d7cc">Path</a>.GetFileName(dir)));</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;        }</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    }</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160; </div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    <span class="comment">//删除目标文件夹以及文件夹内的所有文件</span></div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="namespace_mongo_d_b_1_1_driver.html#a603ee7a08ad9cb5941abf0a8be9bff21af2a6c498fb90ee345d997f888fce3b18">Delete</a>(<span class="keywordtype">string</span> targetDirectoryPath)</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;    {</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;        <span class="keywordflow">if</span> (!Directory.Exists(targetDirectoryPath))</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;            <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;        <span class="keywordtype">string</span>[] filePaths = Directory.GetFiles(targetDirectoryPath);</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;        <span class="keywordflow">foreach</span> (<span class="keywordtype">string</span> filePath <span class="keywordflow">in</span> filePaths)</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        {</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;            File.SetAttributes(filePath, FileAttributes.Normal);</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;            File.Delete(filePath);</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;        }</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160; </div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;        <span class="keywordtype">string</span>[] directoryPaths = Directory.GetDirectories(targetDirectoryPath);</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;        <span class="keywordflow">foreach</span> (<span class="keywordtype">string</span> directoryPath <span class="keywordflow">in</span> directoryPaths)</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;        {</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;            <a class="code" href="namespace_mongo_d_b_1_1_driver.html#a603ee7a08ad9cb5941abf0a8be9bff21af2a6c498fb90ee345d997f888fce3b18">Delete</a>(directoryPath);</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;        }</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160; </div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;        Directory.Delete(targetDirectoryPath, <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    }</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;}</div>
+<div class="ttc" id="a_game_main_2_customs_2_custom_helpers_2_process_helper_8cs_html_a5d3f395d3257bcd58335037355f0d7cc"><div class="ttname"><a href="_game_main_2_customs_2_custom_helpers_2_process_helper_8cs.html#a5d3f395d3257bcd58335037355f0d7cc">Path</a></div><div class="ttdeci">System.IO.Path Path</div><div class="ttdef"><b>Definition:</b> <a href="_game_main_2_customs_2_custom_helpers_2_process_helper_8cs_source.html#l00005">ProcessHelper.cs:5</a></div></div>
+<div class="ttc" id="aclass_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_p_b_x_project_html"><div class="ttname"><a href="class_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_p_b_x_project.html">ChillyRoom.UnityEditor.iOS.Xcode.PBXProject</a></div><div class="ttdef"><b>Definition:</b> <a href="_p_b_x_project_8cs_source.html#l00039">PBXProject.cs:40</a></div></div>
+<div class="ttc" id="aclass_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_p_b_x_project_html_a136b49f8e7e20ab013f7434de94272c1"><div class="ttname"><a href="class_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_p_b_x_project.html#a136b49f8e7e20ab013f7434de94272c1">ChillyRoom.UnityEditor.iOS.Xcode.PBXProject.AddFileToBuildWithFlags</a></div><div class="ttdeci">void AddFileToBuildWithFlags(string targetGuid, string fileGuid, string compileFlags)</div><div class="ttdoc">Configures file for building for the given native target with specific compiler flags....</div><div class="ttdef"><b>Definition:</b> <a href="_p_b_x_project_8cs_source.html#l00396">PBXProject.cs:396</a></div></div>
+<div class="ttc" id="aclass_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_p_b_x_project_html_a2cfa5b784c638a259721eeb8ea4e6af0"><div class="ttname"><a href="class_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_p_b_x_project.html#a2cfa5b784c638a259721eeb8ea4e6af0">ChillyRoom.UnityEditor.iOS.Xcode.PBXProject.AddFile</a></div><div class="ttdeci">string AddFile(string path, string projectPath, PBXSourceTree sourceTree=PBXSourceTree.Source)</div><div class="ttdoc">Adds a new file reference to the list of known files. The group structure is automatically created to...</div><div class="ttdef"><b>Definition:</b> <a href="_p_b_x_project_8cs_source.html#l00333">PBXProject.cs:333</a></div></div>
+<div class="ttc" id="aclass_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_p_b_x_project_html_aa083eb2fd3d1da2f96aee81c95f9ef5f"><div class="ttname"><a href="class_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_p_b_x_project.html#aa083eb2fd3d1da2f96aee81c95f9ef5f">ChillyRoom.UnityEditor.iOS.Xcode.PBXProject.AddBuildProperty</a></div><div class="ttdeci">void AddBuildProperty(string targetGuid, string name, string value)</div><div class="ttdoc">Adds a value to build property list in all build configurations for the specified target....</div><div class="ttdef"><b>Definition:</b> <a href="_p_b_x_project_8cs_source.html#l01267">PBXProject.cs:1267</a></div></div>
+<div class="ttc" id="aclass_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_p_b_x_project_html_aaf3a7847300ab8c7a1f7ca962865b2b5"><div class="ttname"><a href="class_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_p_b_x_project.html#aaf3a7847300ab8c7a1f7ca962865b2b5">ChillyRoom.UnityEditor.iOS.Xcode.PBXProject.AddLocalization</a></div><div class="ttdeci">void AddLocalization(string variantGroupName, string locale, string path)</div><div class="ttdoc">Add the reference to a locale .lproj to a VariantGroup.</div><div class="ttdef"><b>Definition:</b> <a href="_p_b_x_project_8cs_source.html#l01510">PBXProject.cs:1510</a></div></div>
+<div class="ttc" id="aclass_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_p_b_x_project_html_afe5ddb6cdd8b2a1c148fafc2650c8a03"><div class="ttname"><a href="class_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_p_b_x_project.html#afe5ddb6cdd8b2a1c148fafc2650c8a03">ChillyRoom.UnityEditor.iOS.Xcode.PBXProject.AddFileToBuild</a></div><div class="ttdeci">void AddFileToBuild(string targetGuid, string fileGuid)</div><div class="ttdoc">Configures file for building for the given native target. A projects containing multiple native targe...</div><div class="ttdef"><b>Definition:</b> <a href="_p_b_x_project_8cs_source.html#l00381">PBXProject.cs:381</a></div></div>
+<div class="ttc" id="aclass_xcode_project_setting_html"><div class="ttname"><a href="class_xcode_project_setting.html">XcodeProjectSetting</a></div><div class="ttdoc">Xcode项目的一些设定值</div><div class="ttdef"><b>Definition:</b> <a href="_xcode_project_setting_8cs_source.html#l00012">XcodeProjectSetting.cs:13</a></div></div>
+<div class="ttc" id="aclass_xcode_project_setting_html_a0bee2eb7d0a3c9f5de877777b49d9f80"><div class="ttname"><a href="class_xcode_project_setting.html#a0bee2eb7d0a3c9f5de877777b49d9f80">XcodeProjectSetting.IMAGE_XCASSETS_DIRECTORY_NAME</a></div><div class="ttdeci">const string IMAGE_XCASSETS_DIRECTORY_NAME</div><div class="ttdef"><b>Definition:</b> <a href="_xcode_project_setting_8cs_source.html#l00048">XcodeProjectSetting.cs:48</a></div></div>
+<div class="ttc" id="aclass_xcode_project_setting_html_a5393d6efd7b9c9bcc9d5169462134a60"><div class="ttname"><a href="class_xcode_project_setting.html#a5393d6efd7b9c9bcc9d5169462134a60">XcodeProjectSetting.PROJECT_ROOT</a></div><div class="ttdeci">const string PROJECT_ROOT</div><div class="ttdef"><b>Definition:</b> <a href="_xcode_project_setting_8cs_source.html#l00047">XcodeProjectSetting.cs:47</a></div></div>
+<div class="ttc" id="aclass_xcode_project_setting_html_ac72f3d00338c15291f2fbb192f96cfbd"><div class="ttname"><a href="class_xcode_project_setting.html#ac72f3d00338c15291f2fbb192f96cfbd">XcodeProjectSetting.LIBRARY_SEARCH_PATHS_KEY</a></div><div class="ttdeci">const string LIBRARY_SEARCH_PATHS_KEY</div><div class="ttdef"><b>Definition:</b> <a href="_xcode_project_setting_8cs_source.html#l00051">XcodeProjectSetting.cs:51</a></div></div>
+<div class="ttc" id="aclass_xcode_project_setting_html_adc36d4c6bb5fa7a35e40908880a164f2"><div class="ttname"><a href="class_xcode_project_setting.html#adc36d4c6bb5fa7a35e40908880a164f2">XcodeProjectSetting.FRAMEWORK_SEARCH_PATHS_KEY</a></div><div class="ttdeci">const string FRAMEWORK_SEARCH_PATHS_KEY</div><div class="ttdef"><b>Definition:</b> <a href="_xcode_project_setting_8cs_source.html#l00050">XcodeProjectSetting.cs:50</a></div></div>
+<div class="ttc" id="anamespace_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_extensions_html"><div class="ttname"><a href="namespace_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_1_1_extensions.html">ChillyRoom.UnityEditor.iOS.Xcode.Extensions</a></div><div class="ttdef"><b>Definition:</b> <a href="_p_b_x_project_extensions_8cs_source.html#l00004">PBXProjectExtensions.cs:5</a></div></div>
+<div class="ttc" id="anamespace_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_html"><div class="ttname"><a href="namespace_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode.html">ChillyRoom.UnityEditor.iOS.Xcode</a></div><div class="ttdef"><b>Definition:</b> <a href="_asset_catalog_8cs_source.html#l00006">AssetCatalog.cs:7</a></div></div>
+<div class="ttc" id="anamespace_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode_html_aa6b865bcf32cba151324de7c4ac0044b"><div class="ttname"><a href="namespace_chilly_room_1_1_unity_editor_1_1i_o_s_1_1_xcode.html#aa6b865bcf32cba151324de7c4ac0044b">ChillyRoom.UnityEditor.iOS.Xcode.PBXSourceTree</a></div><div class="ttdeci">PBXSourceTree</div><div class="ttdef"><b>Definition:</b> <a href="_p_b_x_project_8cs_source.html#l00027">PBXProject.cs:28</a></div></div>
+<div class="ttc" id="anamespace_chilly_room_1_1_unity_editor_1_1i_o_s_html"><div class="ttname"><a href="namespace_chilly_room_1_1_unity_editor_1_1i_o_s.html">ChillyRoom.UnityEditor.iOS</a></div><div class="ttdef"><b>Definition:</b> <a href="_asset_catalog_8cs_source.html#l00006">AssetCatalog.cs:7</a></div></div>
+<div class="ttc" id="anamespace_chilly_room_1_1_unity_editor_html"><div class="ttname"><a href="namespace_chilly_room_1_1_unity_editor.html">ChillyRoom.UnityEditor</a></div><div class="ttdef"><b>Definition:</b> <a href="_asset_catalog_8cs_source.html#l00006">AssetCatalog.cs:7</a></div></div>
+<div class="ttc" id="anamespace_chilly_room_html"><div class="ttname"><a href="namespace_chilly_room.html">ChillyRoom</a></div><div class="ttdef"><b>Definition:</b> <a href="_asset_catalog_8cs_source.html#l00006">AssetCatalog.cs:7</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_driver_html_a603ee7a08ad9cb5941abf0a8be9bff21af2a6c498fb90ee345d997f888fce3b18"><div class="ttname"><a href="namespace_mongo_d_b_1_1_driver.html#a603ee7a08ad9cb5941abf0a8be9bff21af2a6c498fb90ee345d997f888fce3b18">MongoDB.Driver.ChangeStreamOperationType.Delete</a></div><div class="ttdeci">@ Delete</div><div class="ttdoc">A delete operation type.</div></div>
+<div class="ttc" id="anamespace_system_html"><div class="ttname"><a href="namespace_system.html">System</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_method_builder_attribute_8cs_source.html#l00001">AsyncMethodBuilderAttribute.cs:2</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_84bbf7b3c7f28a5a18725745e1505219.html">Assets</a></li><li class="navelem"><a class="el" href="dir_f13b41af88cf68434578284aaf699e39.html">Scripts</a></li><li class="navelem"><a class="el" href="dir_0261d5286017c38b9af36d6d3ff94a53.html">Editor</a></li><li class="navelem"><a class="el" href="dir_26e20bad1c911948ca95b8b7bc9fb7a3.html">XCodeAPI</a></li><li class="navelem"><a class="el" href="dir_7bc3f3c81c3736a3f25aa97aeadac0c6.html">Scripts</a></li><li class="navelem"><a class="el" href="_directory_processor_8cs.html">DirectoryProcessor.cs</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:24:43 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

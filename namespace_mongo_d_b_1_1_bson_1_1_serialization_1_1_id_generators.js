@@ -1,0 +1,12 @@
+var namespace_mongo_d_b_1_1_bson_1_1_serialization_1_1_id_generators =
+[
+    [ "AscendingGuidGenerator", "class_mongo_d_b_1_1_bson_1_1_serialization_1_1_id_generators_1_1_ascending_guid_generator.html", "class_mongo_d_b_1_1_bson_1_1_serialization_1_1_id_generators_1_1_ascending_guid_generator" ],
+    [ "BsonBinaryDataGuidGenerator", "class_mongo_d_b_1_1_bson_1_1_serialization_1_1_id_generators_1_1_bson_binary_data_guid_generator.html", "class_mongo_d_b_1_1_bson_1_1_serialization_1_1_id_generators_1_1_bson_binary_data_guid_generator" ],
+    [ "BsonObjectIdGenerator", "class_mongo_d_b_1_1_bson_1_1_serialization_1_1_id_generators_1_1_bson_object_id_generator.html", "class_mongo_d_b_1_1_bson_1_1_serialization_1_1_id_generators_1_1_bson_object_id_generator" ],
+    [ "CombGuidGenerator", "class_mongo_d_b_1_1_bson_1_1_serialization_1_1_id_generators_1_1_comb_guid_generator.html", "class_mongo_d_b_1_1_bson_1_1_serialization_1_1_id_generators_1_1_comb_guid_generator" ],
+    [ "GuidGenerator", "class_mongo_d_b_1_1_bson_1_1_serialization_1_1_id_generators_1_1_guid_generator.html", "class_mongo_d_b_1_1_bson_1_1_serialization_1_1_id_generators_1_1_guid_generator" ],
+    [ "NullIdChecker", "class_mongo_d_b_1_1_bson_1_1_serialization_1_1_id_generators_1_1_null_id_checker.html", "class_mongo_d_b_1_1_bson_1_1_serialization_1_1_id_generators_1_1_null_id_checker" ],
+    [ "ObjectIdGenerator", "class_mongo_d_b_1_1_bson_1_1_serialization_1_1_id_generators_1_1_object_id_generator.html", "class_mongo_d_b_1_1_bson_1_1_serialization_1_1_id_generators_1_1_object_id_generator" ],
+    [ "StringObjectIdGenerator", "class_mongo_d_b_1_1_bson_1_1_serialization_1_1_id_generators_1_1_string_object_id_generator.html", "class_mongo_d_b_1_1_bson_1_1_serialization_1_1_id_generators_1_1_string_object_id_generator" ],
+    [ "ZeroIdChecker", "class_mongo_d_b_1_1_bson_1_1_serialization_1_1_id_generators_1_1_zero_id_checker.html", "class_mongo_d_b_1_1_bson_1_1_serialization_1_1_id_generators_1_1_zero_id_checker" ]
+];

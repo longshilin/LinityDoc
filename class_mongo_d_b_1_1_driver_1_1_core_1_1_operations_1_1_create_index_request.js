@@ -1,0 +1,25 @@
+var class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_create_index_request =
+[
+    [ "CreateIndexRequest", "class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_create_index_request.html#a1f39bf548d6ded82e9f343babd9a757a", null ],
+    [ "GetIndexName", "class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_create_index_request.html#aa9799b420db8c34931fed8d8cccb7c2a", null ],
+    [ "AdditionalOptions", "class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_create_index_request.html#a515255e7e71cfd2e0a3521c473eaa2c7", null ],
+    [ "Background", "class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_create_index_request.html#a30623808a7cab8fa00cd693fd8361c46", null ],
+    [ "Bits", "class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_create_index_request.html#a48301e621a8d356c27163ccd52a1f642", null ],
+    [ "BucketSize", "class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_create_index_request.html#a6b06cefe0b6e8fa7621f6968af1af0e9", null ],
+    [ "Collation", "class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_create_index_request.html#a4b0e3ae689e291582480478a14d2961a", null ],
+    [ "DefaultLanguage", "class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_create_index_request.html#af1df7f3769b31c8c67ad424f3d85481e", null ],
+    [ "ExpireAfter", "class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_create_index_request.html#a231fc9f55730cdf5fe055e7105c9c954", null ],
+    [ "Keys", "class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_create_index_request.html#a6a7eae71428d25f0390c8df058fbd7b6", null ],
+    [ "LanguageOverride", "class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_create_index_request.html#a105fe768083ccb66394252a49abc4a2e", null ],
+    [ "Max", "class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_create_index_request.html#a2f733984cfed0035e14f01111b16ce74", null ],
+    [ "Min", "class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_create_index_request.html#af12b2c67cfd6571d76b0b25060682b87", null ],
+    [ "Name", "class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_create_index_request.html#a8d787c8eca3603237b3a8aada3c1820f", null ],
+    [ "PartialFilterExpression", "class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_create_index_request.html#ad13b57464289f83c0b64a34c395189ba", null ],
+    [ "Sparse", "class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_create_index_request.html#ad175fa26701cbfe8c3e3103ab7bf9c4e", null ],
+    [ "SphereIndexVersion", "class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_create_index_request.html#a92caec58c3501a3b42d7ff735879c4e2", null ],
+    [ "StorageEngine", "class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_create_index_request.html#a305e4b91347532d6cdf8c3364dafe587", null ],
+    [ "TextIndexVersion", "class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_create_index_request.html#a766d4f62bfa6ee766106218149d92674", null ],
+    [ "Unique", "class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_create_index_request.html#af6346837cfa4187f017cc6eea775416f", null ],
+    [ "Version", "class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_create_index_request.html#a4428d921b95b2311fc5a11c198cde133", null ],
+    [ "Weights", "class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_create_index_request.html#acf2f83e1e14058283ea566ed66e9b190", null ]
+];

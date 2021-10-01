@@ -1,0 +1,186 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: Assets/Scripts/GameMain/Customs/CustomComponents/ILRuntime/Adaptor/IMessageAdaptor.cs 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_i_message_adaptor_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">IMessageAdaptor.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_i_message_adaptor_8cs.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>;</div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_e_t_model.html">ETModel</a>;</div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_google.html">Google</a>.<a class="code" href="namespace_google_1_1_protobuf.html">Protobuf</a>;</div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_i_l_runtime.html">ILRuntime</a>.<a class="code" href="namespace_i_l_runtime_1_1_runtime.html">Runtime</a>.Enviorment;</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_i_l_runtime.html">ILRuntime</a>.<a class="code" href="namespace_i_l_runtime_1_1_runtime.html">Runtime</a>.Intepreter;</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_linity.html">Linity</a>;</div>
+<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="_i_message_adaptor_8cs.html#a005712ac87927f1c9f5a95d35c4bc855">    7</a></span>&#160;<span class="keyword">using</span> <a class="code" href="_i_message_adaptor_8cs.html#a005712ac87927f1c9f5a95d35c4bc855">AppDomain</a> = <a class="code" href="namespace_i_l_runtime.html">ILRuntime</a>.<a class="code" href="namespace_i_l_runtime_1_1_runtime.html">Runtime</a>.Enviorment.AppDomain;</div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="_i_message_adaptor_8cs.html#a84a5152ebb061c683c23daf848a6a7f9">    8</a></span>&#160;<span class="keyword">using</span> <a class="code" href="interface_e_t_model_1_1_i_message.html">IMessage</a> = <a class="code" href="namespace_google.html">Google</a>.<a class="code" href="namespace_google_1_1_protobuf.html">Protobuf</a>.<a class="code" href="interface_google_1_1_protobuf_1_1_i_message.html">IMessage</a>;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="namespace_google.html">   10</a></span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_google_1_1_protobuf.html">Google.Protobuf</a></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;{</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    [ILAdapter]</div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_i_message_adaptor.html">   13</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="class_google_1_1_protobuf_1_1_i_message_adaptor.html">IMessageAdaptor</a> : CrossBindingAdaptor</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    {</div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_i_message_adaptor.html#a20073298efc8790ac9bafb0ac138f6b9">   15</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> Type <a class="code" href="class_google_1_1_protobuf_1_1_i_message_adaptor.html#a20073298efc8790ac9bafb0ac138f6b9">BaseCLRType</a></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        {</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;            <span class="keyword">get</span> { <span class="keywordflow">return</span> typeof(<a class="code" href="interface_google_1_1_protobuf_1_1_i_message.html">IMessage</a>); }</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        }</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_i_message_adaptor.html#a241debe2fb45a0f5d11d7a28397bb718">   20</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> Type <a class="code" href="class_google_1_1_protobuf_1_1_i_message_adaptor.html#a241debe2fb45a0f5d11d7a28397bb718">AdaptorType</a></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        {</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;            <span class="keyword">get</span> { <span class="keywordflow">return</span> typeof(<a class="code" href="class_google_1_1_protobuf_1_1_i_message_adaptor_1_1_adaptor.html">Adaptor</a>); }</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        }</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_i_message_adaptor.html#a6bdb3f5d0ad0c1f6dc96b5f0aeb21e12">   25</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">object</span> <a class="code" href="class_google_1_1_protobuf_1_1_i_message_adaptor.html#a6bdb3f5d0ad0c1f6dc96b5f0aeb21e12">CreateCLRInstance</a>(<a class="code" href="_i_message_adaptor_8cs.html#a005712ac87927f1c9f5a95d35c4bc855">AppDomain</a> appdomain, ILTypeInstance instance)</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        {</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="class_google_1_1_protobuf_1_1_i_message_adaptor_1_1_adaptor.html">Adaptor</a>(appdomain, instance);</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        }</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_i_message_adaptor_1_1_adaptor.html">   30</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="class_google_1_1_protobuf_1_1_i_message_adaptor_1_1_adaptor.html">Adaptor</a> : <a class="code" href="class_my_adaptor.html">MyAdaptor</a>, <a class="code" href="interface_google_1_1_protobuf_1_1_i_message.html">IMessage</a></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        {</div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_i_message_adaptor_1_1_adaptor.html#ae5b0182288e737e26e301f07680d123b">   32</a></span>&#160;            <span class="keyword">public</span> <a class="code" href="class_google_1_1_protobuf_1_1_i_message_adaptor_1_1_adaptor.html#ae5b0182288e737e26e301f07680d123b">Adaptor</a>(<a class="code" href="_i_message_adaptor_8cs.html#a005712ac87927f1c9f5a95d35c4bc855">AppDomain</a> appdomain, ILTypeInstance instance) : base(appdomain, instance)</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;            {</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;            }</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_i_message_adaptor_1_1_adaptor.html#a0b33159246da3bc068b4798797c49e94">   36</a></span>&#160;            <span class="keyword">protected</span> <span class="keyword">override</span> AdaptHelper.AdaptMethod[] <a class="code" href="class_google_1_1_protobuf_1_1_i_message_adaptor_1_1_adaptor.html#a0b33159246da3bc068b4798797c49e94">GetAdaptMethods</a>()</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;            {</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;                AdaptHelper.AdaptMethod[] methods =</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                {</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                    <span class="keyword">new</span> AdaptHelper.AdaptMethod { Name = <span class="stringliteral">&quot;MergeFrom&quot;</span>, ParamCount = 1 },</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;                    <span class="keyword">new</span> AdaptHelper.AdaptMethod { Name = <span class="stringliteral">&quot;WriteTo&quot;</span>, ParamCount = 1 },</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                    <span class="keyword">new</span> AdaptHelper.AdaptMethod { Name = <span class="stringliteral">&quot;CalculateSize&quot;</span>, ParamCount = 0 },</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;                };</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                <span class="keywordflow">return</span> methods;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            }</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_i_message_adaptor_1_1_adaptor.html#a23b76d85a2af56e7b47bcbe614bf1845">   47</a></span>&#160;            <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_google_1_1_protobuf_1_1_i_message_adaptor_1_1_adaptor.html#a23b76d85a2af56e7b47bcbe614bf1845">MergeFrom</a>(<a class="code" href="class_google_1_1_protobuf_1_1_coded_input_stream.html">CodedInputStream</a> input)</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            {</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                <a class="code" href="class_my_adaptor.html#a6d3f633cc3050081becf3b2527b9302e">Invoke</a>(0, input);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;            }</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_i_message_adaptor_1_1_adaptor.html#aee79d59362d416fc38bd28d70dabd24e">   52</a></span>&#160;            <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_google_1_1_protobuf_1_1_i_message_adaptor_1_1_adaptor.html#aee79d59362d416fc38bd28d70dabd24e">WriteTo</a>(<a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html">CodedOutputStream</a> output)</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            {</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                <a class="code" href="class_my_adaptor.html#a6d3f633cc3050081becf3b2527b9302e">Invoke</a>(1, output);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            }</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_i_message_adaptor_1_1_adaptor.html#abbea86173cabaeb87575b48ba57b3517">   57</a></span>&#160;            <span class="keyword">public</span> <span class="keywordtype">int</span> <a class="code" href="class_google_1_1_protobuf_1_1_i_message_adaptor_1_1_adaptor.html#abbea86173cabaeb87575b48ba57b3517">CalculateSize</a>()</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            {</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                <span class="keywordflow">return</span> (<span class="keywordtype">int</span>)<a class="code" href="class_my_adaptor.html#a6d3f633cc3050081becf3b2527b9302e">Invoke</a>(2);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;            }</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        }</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    }</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;}</div>
+<div class="ttc" id="a_i_message_adaptor_8cs_html_a005712ac87927f1c9f5a95d35c4bc855"><div class="ttname"><a href="_i_message_adaptor_8cs.html#a005712ac87927f1c9f5a95d35c4bc855">AppDomain</a></div><div class="ttdeci">ILRuntime.Runtime.Enviorment.AppDomain AppDomain</div><div class="ttdef"><b>Definition:</b> <a href="_i_message_adaptor_8cs_source.html#l00007">IMessageAdaptor.cs:7</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_coded_input_stream_html"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_coded_input_stream.html">Google.Protobuf.CodedInputStream</a></div><div class="ttdoc">Reads and decodes protocol message fields.</div><div class="ttdef"><b>Definition:</b> <a href="_coded_input_stream_8cs_source.html#l00054">CodedInputStream.cs:55</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_coded_output_stream_html"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_coded_output_stream.html">Google.Protobuf.CodedOutputStream</a></div><div class="ttdoc">Encodes and writes protocol message fields.</div><div class="ttdef"><b>Definition:</b> <a href="_coded_output_stream_8_compute_size_8cs_source.html#l00040">CodedOutputStream.ComputeSize.cs:41</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_i_message_adaptor_1_1_adaptor_html"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_i_message_adaptor_1_1_adaptor.html">Google.Protobuf.IMessageAdaptor.Adaptor</a></div><div class="ttdef"><b>Definition:</b> <a href="_i_message_adaptor_8cs_source.html#l00030">IMessageAdaptor.cs:31</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_i_message_adaptor_1_1_adaptor_html_a0b33159246da3bc068b4798797c49e94"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_i_message_adaptor_1_1_adaptor.html#a0b33159246da3bc068b4798797c49e94">Google.Protobuf.IMessageAdaptor.Adaptor.GetAdaptMethods</a></div><div class="ttdeci">override AdaptHelper.AdaptMethod[] GetAdaptMethods()</div><div class="ttdef"><b>Definition:</b> <a href="_i_message_adaptor_8cs_source.html#l00036">IMessageAdaptor.cs:36</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_i_message_adaptor_1_1_adaptor_html_a23b76d85a2af56e7b47bcbe614bf1845"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_i_message_adaptor_1_1_adaptor.html#a23b76d85a2af56e7b47bcbe614bf1845">Google.Protobuf.IMessageAdaptor.Adaptor.MergeFrom</a></div><div class="ttdeci">void MergeFrom(CodedInputStream input)</div><div class="ttdoc">Merges the data from the specified coded input stream with the current message.</div><div class="ttdef"><b>Definition:</b> <a href="_i_message_adaptor_8cs_source.html#l00047">IMessageAdaptor.cs:47</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_i_message_adaptor_1_1_adaptor_html_abbea86173cabaeb87575b48ba57b3517"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_i_message_adaptor_1_1_adaptor.html#abbea86173cabaeb87575b48ba57b3517">Google.Protobuf.IMessageAdaptor.Adaptor.CalculateSize</a></div><div class="ttdeci">int CalculateSize()</div><div class="ttdoc">Calculates the size of this message in Protocol Buffer wire format, in bytes.</div><div class="ttdef"><b>Definition:</b> <a href="_i_message_adaptor_8cs_source.html#l00057">IMessageAdaptor.cs:57</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_i_message_adaptor_1_1_adaptor_html_ae5b0182288e737e26e301f07680d123b"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_i_message_adaptor_1_1_adaptor.html#ae5b0182288e737e26e301f07680d123b">Google.Protobuf.IMessageAdaptor.Adaptor.Adaptor</a></div><div class="ttdeci">Adaptor(AppDomain appdomain, ILTypeInstance instance)</div><div class="ttdef"><b>Definition:</b> <a href="_i_message_adaptor_8cs_source.html#l00032">IMessageAdaptor.cs:32</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_i_message_adaptor_1_1_adaptor_html_aee79d59362d416fc38bd28d70dabd24e"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_i_message_adaptor_1_1_adaptor.html#aee79d59362d416fc38bd28d70dabd24e">Google.Protobuf.IMessageAdaptor.Adaptor.WriteTo</a></div><div class="ttdeci">void WriteTo(CodedOutputStream output)</div><div class="ttdoc">Writes the data to the given coded output stream.</div><div class="ttdef"><b>Definition:</b> <a href="_i_message_adaptor_8cs_source.html#l00052">IMessageAdaptor.cs:52</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_i_message_adaptor_html"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_i_message_adaptor.html">Google.Protobuf.IMessageAdaptor</a></div><div class="ttdef"><b>Definition:</b> <a href="_i_message_adaptor_8cs_source.html#l00013">IMessageAdaptor.cs:14</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_i_message_adaptor_html_a20073298efc8790ac9bafb0ac138f6b9"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_i_message_adaptor.html#a20073298efc8790ac9bafb0ac138f6b9">Google.Protobuf.IMessageAdaptor.BaseCLRType</a></div><div class="ttdeci">override Type BaseCLRType</div><div class="ttdef"><b>Definition:</b> <a href="_i_message_adaptor_8cs_source.html#l00015">IMessageAdaptor.cs:16</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_i_message_adaptor_html_a241debe2fb45a0f5d11d7a28397bb718"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_i_message_adaptor.html#a241debe2fb45a0f5d11d7a28397bb718">Google.Protobuf.IMessageAdaptor.AdaptorType</a></div><div class="ttdeci">override Type AdaptorType</div><div class="ttdef"><b>Definition:</b> <a href="_i_message_adaptor_8cs_source.html#l00020">IMessageAdaptor.cs:21</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_i_message_adaptor_html_a6bdb3f5d0ad0c1f6dc96b5f0aeb21e12"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_i_message_adaptor.html#a6bdb3f5d0ad0c1f6dc96b5f0aeb21e12">Google.Protobuf.IMessageAdaptor.CreateCLRInstance</a></div><div class="ttdeci">override object CreateCLRInstance(AppDomain appdomain, ILTypeInstance instance)</div><div class="ttdef"><b>Definition:</b> <a href="_i_message_adaptor_8cs_source.html#l00025">IMessageAdaptor.cs:25</a></div></div>
+<div class="ttc" id="aclass_my_adaptor_html"><div class="ttname"><a href="class_my_adaptor.html">MyAdaptor</a></div><div class="ttdef"><b>Definition:</b> <a href="_adapt_helper_8cs_source.html#l00044">AdaptHelper.cs:45</a></div></div>
+<div class="ttc" id="aclass_my_adaptor_html_a6d3f633cc3050081becf3b2527b9302e"><div class="ttname"><a href="class_my_adaptor.html#a6d3f633cc3050081becf3b2527b9302e">MyAdaptor.Invoke</a></div><div class="ttdeci">object Invoke(int index, params object[] p)</div><div class="ttdef"><b>Definition:</b> <a href="_adapt_helper_8cs_source.html#l00058">AdaptHelper.cs:58</a></div></div>
+<div class="ttc" id="ainterface_e_t_model_1_1_i_message_html"><div class="ttname"><a href="interface_e_t_model_1_1_i_message.html">ETModel.IMessage</a></div><div class="ttdef"><b>Definition:</b> <a href="_libraries_2_e_t_2_module_2_message_2_i_message_8cs_source.html#l00003">IMessage.cs:4</a></div></div>
+<div class="ttc" id="ainterface_google_1_1_protobuf_1_1_i_message_html"><div class="ttname"><a href="interface_google_1_1_protobuf_1_1_i_message.html">Google.Protobuf.IMessage</a></div><div class="ttdoc">Interface for a Protocol Buffers message, supporting basic operations required for serialization.</div><div class="ttdef"><b>Definition:</b> <a href="_libraries_2_google_8_protobuf_2_i_message_8cs_source.html#l00040">IMessage.cs:41</a></div></div>
+<div class="ttc" id="anamespace_e_t_model_html"><div class="ttname"><a href="namespace_e_t_model.html">ETModel</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_e_t_task_method_builder_8cs_source.html#l00006">AsyncETTaskMethodBuilder.cs:7</a></div></div>
+<div class="ttc" id="anamespace_google_1_1_protobuf_html"><div class="ttname"><a href="namespace_google_1_1_protobuf.html">Google.Protobuf</a></div><div class="ttdef"><b>Definition:</b> <a href="_i_message_adaptor_8cs_source.html#l00010">IMessageAdaptor.cs:11</a></div></div>
+<div class="ttc" id="anamespace_google_html"><div class="ttname"><a href="namespace_google.html">Google</a></div><div class="ttdef"><b>Definition:</b> <a href="_i_message_adaptor_8cs_source.html#l00010">IMessageAdaptor.cs:11</a></div></div>
+<div class="ttc" id="anamespace_i_l_runtime_1_1_runtime_html"><div class="ttname"><a href="namespace_i_l_runtime_1_1_runtime.html">ILRuntime.Runtime</a></div><div class="ttdef"><b>Definition:</b> <a href="_c_l_r_bindings_8cs_source.html#l00005">CLRBindings.cs:6</a></div></div>
+<div class="ttc" id="anamespace_i_l_runtime_html"><div class="ttname"><a href="namespace_i_l_runtime.html">ILRuntime</a></div><div class="ttdef"><b>Definition:</b> <a href="_c_l_r_bindings_8cs_source.html#l00005">CLRBindings.cs:6</a></div></div>
+<div class="ttc" id="anamespace_linity_html"><div class="ttname"><a href="namespace_linity.html">Linity</a></div><div class="ttdef"><b>Definition:</b> <a href="_entity_and_u_i_form_code_generator_8cs_source.html#l00008">EntityAndUIFormCodeGenerator.cs:9</a></div></div>
+<div class="ttc" id="anamespace_system_html"><div class="ttname"><a href="namespace_system.html">System</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_method_builder_attribute_8cs_source.html#l00001">AsyncMethodBuilderAttribute.cs:2</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_84bbf7b3c7f28a5a18725745e1505219.html">Assets</a></li><li class="navelem"><a class="el" href="dir_f13b41af88cf68434578284aaf699e39.html">Scripts</a></li><li class="navelem"><a class="el" href="dir_8274910eb5bb242a7532823db7176570.html">GameMain</a></li><li class="navelem"><a class="el" href="dir_ae46e2b6b15a3a0d246738adaf31955f.html">Customs</a></li><li class="navelem"><a class="el" href="dir_df53516bd2f8846ef39a6b38a2d0f510.html">CustomComponents</a></li><li class="navelem"><a class="el" href="dir_b0e7bf749da42a7e2506f97b6f1979de.html">ILRuntime</a></li><li class="navelem"><a class="el" href="dir_5afe7dd00a6da9157aab680669297a50.html">Adaptor</a></li><li class="navelem"><a class="el" href="_i_message_adaptor_8cs.html">IMessageAdaptor.cs</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:24:43 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

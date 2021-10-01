@@ -1,0 +1,222 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: Assets/Scripts/Libraries/MongoDB/MongoDB.Bson/IO/BsonBinaryWriterSettings.cs 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_i_o_2_bson_binary_writer_settings_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">BsonBinaryWriterSettings.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_i_o_2_bson_binary_writer_settings_8cs.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/* Copyright 2010-present MongoDB Inc.</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">* Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">* you may not use this file except in compliance with the License.</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">* You may obtain a copy of the License at</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">* http://www.apache.org/licenses/LICENSE-2.0</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">* Unless required by applicable law or agreed to in writing, software</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">* distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">* See the License for the specific language governing permissions and</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">* limitations under the License.</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Text;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_mongo_d_b_1_1_bson_1_1_i_o.html">MongoDB.Bson.IO</a></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;{</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#if NET452</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    [Serializable]</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_binary_writer_settings.html">   27</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_binary_writer_settings.html">BsonBinaryWriterSettings</a> : <a class="code" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_writer_settings.html">BsonWriterSettings</a></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    {</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <span class="comment">// private static fields</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_binary_writer_settings.html">BsonBinaryWriterSettings</a> __defaults = <span class="keyword">null</span>; <span class="comment">// delay creation to pick up the latest default values</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <span class="comment">// private fields</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <span class="keyword">private</span> UTF8Encoding _encoding = Utf8Encodings.Strict;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">bool</span> _fixOldBinarySubTypeOnOutput = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">int</span> _maxDocumentSize = BsonDefaults.<a class="code" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_binary_writer_settings.html#a302aae0f0e59bb19d2a151f6a605bb69">MaxDocumentSize</a>;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <span class="comment">// constructors</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_binary_writer_settings.html#af2cb19394cb1c690874b24907fd14898">   41</a></span>&#160;<span class="comment"></span>        <span class="keyword">public</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_binary_writer_settings.html#af2cb19394cb1c690874b24907fd14898">BsonBinaryWriterSettings</a>()</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        {</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        }</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <span class="comment">// public static properties</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_binary_writer_settings.html#aa2ef73092fccb6c81e53fcee9ee84dd1">   49</a></span>&#160;<span class="comment"></span>        <span class="keyword">public</span> <span class="keyword">static</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_binary_writer_settings.html">BsonBinaryWriterSettings</a> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_binary_writer_settings.html#aa2ef73092fccb6c81e53fcee9ee84dd1">Defaults</a></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        {</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            <span class="keyword">get</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            {</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                <span class="keywordflow">if</span> (__defaults == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                {</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                    __defaults = <span class="keyword">new</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_binary_writer_settings.html#af2cb19394cb1c690874b24907fd14898">BsonBinaryWriterSettings</a>();</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                }</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                <span class="keywordflow">return</span> __defaults;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            }</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            <span class="keyword">set</span> { __defaults = value; }</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        }</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="comment">// public properties</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_binary_writer_settings.html#a76081c173640207652bd09d7f4bfdcdf">   66</a></span>&#160;<span class="comment"></span>        <span class="keyword">public</span> UTF8Encoding <a class="code" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_binary_writer_settings.html#a76081c173640207652bd09d7f4bfdcdf">Encoding</a></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        {</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            <span class="keyword">get</span> { <span class="keywordflow">return</span> _encoding; }</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            <span class="keyword">set</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            {</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                <span class="keywordflow">if</span> (value == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                {</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                    <span class="keywordflow">throw</span> <span class="keyword">new</span> ArgumentNullException(<span class="stringliteral">&quot;value&quot;</span>);</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                }</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                <span class="keywordflow">if</span> (<a class="code" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_writer_settings.html#a022e1e6f032335192cbdfa24129ef242">IsFrozen</a>) { <span class="keywordflow">throw</span> <span class="keyword">new</span> InvalidOperationException(<span class="stringliteral">&quot;BsonBinaryWriterSettings is frozen.&quot;</span>); }</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                _encoding = value;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            }</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        }</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
+<div class="line"><a name="l00083"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_binary_writer_settings.html#a7ee0cd851f93950367f4f6cdf2e35163">   83</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_binary_writer_settings.html#a7ee0cd851f93950367f4f6cdf2e35163">FixOldBinarySubTypeOnOutput</a></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        {</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;            <span class="keyword">get</span> { <span class="keywordflow">return</span> _fixOldBinarySubTypeOnOutput; }</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            <span class="keyword">set</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;            {</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                <span class="keywordflow">if</span> (<a class="code" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_writer_settings.html#a022e1e6f032335192cbdfa24129ef242">IsFrozen</a>) { <span class="keywordflow">throw</span> <span class="keyword">new</span> InvalidOperationException(<span class="stringliteral">&quot;BsonBinaryWriterSettings is frozen.&quot;</span>); }</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                _fixOldBinarySubTypeOnOutput = value;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            }</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        }</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
+<div class="line"><a name="l00096"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_binary_writer_settings.html#a302aae0f0e59bb19d2a151f6a605bb69">   96</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">int</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_binary_writer_settings.html#a302aae0f0e59bb19d2a151f6a605bb69">MaxDocumentSize</a></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        {</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;            <span class="keyword">get</span> { <span class="keywordflow">return</span> _maxDocumentSize; }</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;            <span class="keyword">set</span></div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;            {</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;                <span class="keywordflow">if</span> (<a class="code" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_writer_settings.html#a022e1e6f032335192cbdfa24129ef242">IsFrozen</a>) { <span class="keywordflow">throw</span> <span class="keyword">new</span> InvalidOperationException(<span class="stringliteral">&quot;BsonBinaryWriterSettings is frozen.&quot;</span>); }</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;                _maxDocumentSize = value;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;            }</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        }</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        <span class="comment">// public methods</span></div>
+<div class="line"><a name="l00111"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_binary_writer_settings.html#a70815f73f93b1f3f7edd71f957c23f68">  111</a></span>&#160;<span class="comment"></span>        <span class="keyword">public</span> <span class="keyword">new</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_binary_writer_settings.html">BsonBinaryWriterSettings</a> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_binary_writer_settings.html#a70815f73f93b1f3f7edd71f957c23f68">Clone</a>()</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        {</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;            <span class="keywordflow">return</span> (<a class="code" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_binary_writer_settings.html">BsonBinaryWriterSettings</a>)<a class="code" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_binary_writer_settings.html#ab6828f3de38cba0ef93e38179f86e787">CloneImplementation</a>();</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        }</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160; </div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        <span class="comment">// protected methods</span></div>
+<div class="line"><a name="l00121"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_binary_writer_settings.html#ab6828f3de38cba0ef93e38179f86e787">  121</a></span>&#160;<span class="comment"></span>        <span class="keyword">protected</span> <span class="keyword">override</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_writer_settings.html">BsonWriterSettings</a> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_binary_writer_settings.html#ab6828f3de38cba0ef93e38179f86e787">CloneImplementation</a>()</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        {</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;            var clone = <span class="keyword">new</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_binary_writer_settings.html">BsonBinaryWriterSettings</a></div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;            {</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;                <a class="code" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_binary_writer_settings.html#a76081c173640207652bd09d7f4bfdcdf">Encoding</a> = _encoding,</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;                <a class="code" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_binary_writer_settings.html#a7ee0cd851f93950367f4f6cdf2e35163">FixOldBinarySubTypeOnOutput</a> = _fixOldBinarySubTypeOnOutput,</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;                <a class="code" href="namespace_mongo_d_b_1_1_bson.html#a8fd533815d33d4ee0e6176ed1e7d8b63">GuidRepresentation</a> = <a class="code" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_writer_settings.html#a685ee874744df92f4476ab3cf58bfbd9">GuidRepresentation</a>,</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;                <a class="code" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_binary_writer_settings.html#a302aae0f0e59bb19d2a151f6a605bb69">MaxDocumentSize</a> = _maxDocumentSize,</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;                <a class="code" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_writer_settings.html#a7600a2a3e30e1dd50957218f4fa47724">MaxSerializationDepth</a> = <a class="code" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_writer_settings.html#a7600a2a3e30e1dd50957218f4fa47724">MaxSerializationDepth</a></div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;            };</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;            <span class="keywordflow">return</span> clone;</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        }</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    }</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;}</div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_binary_writer_settings_html"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_binary_writer_settings.html">MongoDB.Bson.IO.BsonBinaryWriterSettings</a></div><div class="ttdoc">Represents settings for a BsonBinaryWriter.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_i_o_2_bson_binary_writer_settings_8cs_source.html#l00027">BsonBinaryWriterSettings.cs:28</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_binary_writer_settings_html_a302aae0f0e59bb19d2a151f6a605bb69"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_binary_writer_settings.html#a302aae0f0e59bb19d2a151f6a605bb69">MongoDB.Bson.IO.BsonBinaryWriterSettings.MaxDocumentSize</a></div><div class="ttdeci">int MaxDocumentSize</div><div class="ttdoc">Gets or sets the max document size.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_i_o_2_bson_binary_writer_settings_8cs_source.html#l00096">BsonBinaryWriterSettings.cs:97</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_binary_writer_settings_html_a70815f73f93b1f3f7edd71f957c23f68"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_binary_writer_settings.html#a70815f73f93b1f3f7edd71f957c23f68">MongoDB.Bson.IO.BsonBinaryWriterSettings.Clone</a></div><div class="ttdeci">new BsonBinaryWriterSettings Clone()</div><div class="ttdoc">Creates a clone of the settings.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_i_o_2_bson_binary_writer_settings_8cs_source.html#l00111">BsonBinaryWriterSettings.cs:111</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_binary_writer_settings_html_a76081c173640207652bd09d7f4bfdcdf"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_binary_writer_settings.html#a76081c173640207652bd09d7f4bfdcdf">MongoDB.Bson.IO.BsonBinaryWriterSettings.Encoding</a></div><div class="ttdeci">UTF8Encoding Encoding</div><div class="ttdoc">Gets or sets the Encoding.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_i_o_2_bson_binary_writer_settings_8cs_source.html#l00066">BsonBinaryWriterSettings.cs:67</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_binary_writer_settings_html_a7ee0cd851f93950367f4f6cdf2e35163"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_binary_writer_settings.html#a7ee0cd851f93950367f4f6cdf2e35163">MongoDB.Bson.IO.BsonBinaryWriterSettings.FixOldBinarySubTypeOnOutput</a></div><div class="ttdeci">bool FixOldBinarySubTypeOnOutput</div><div class="ttdoc">Gets or sets whether to fix the old binary data subtype on output.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_i_o_2_bson_binary_writer_settings_8cs_source.html#l00083">BsonBinaryWriterSettings.cs:84</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_binary_writer_settings_html_aa2ef73092fccb6c81e53fcee9ee84dd1"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_binary_writer_settings.html#aa2ef73092fccb6c81e53fcee9ee84dd1">MongoDB.Bson.IO.BsonBinaryWriterSettings.Defaults</a></div><div class="ttdeci">static BsonBinaryWriterSettings Defaults</div><div class="ttdoc">Gets or sets the default BsonBinaryWriter settings.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_i_o_2_bson_binary_writer_settings_8cs_source.html#l00049">BsonBinaryWriterSettings.cs:50</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_binary_writer_settings_html_ab6828f3de38cba0ef93e38179f86e787"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_binary_writer_settings.html#ab6828f3de38cba0ef93e38179f86e787">MongoDB.Bson.IO.BsonBinaryWriterSettings.CloneImplementation</a></div><div class="ttdeci">override BsonWriterSettings CloneImplementation()</div><div class="ttdoc">Creates a clone of the settings.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_i_o_2_bson_binary_writer_settings_8cs_source.html#l00121">BsonBinaryWriterSettings.cs:121</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_binary_writer_settings_html_af2cb19394cb1c690874b24907fd14898"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_binary_writer_settings.html#af2cb19394cb1c690874b24907fd14898">MongoDB.Bson.IO.BsonBinaryWriterSettings.BsonBinaryWriterSettings</a></div><div class="ttdeci">BsonBinaryWriterSettings()</div><div class="ttdoc">Initializes a new instance of the BsonBinaryWriterSettings class.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_i_o_2_bson_binary_writer_settings_8cs_source.html#l00041">BsonBinaryWriterSettings.cs:41</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_writer_settings_html"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_writer_settings.html">MongoDB.Bson.IO.BsonWriterSettings</a></div><div class="ttdoc">Represents settings for a BsonWriter.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_i_o_2_bson_writer_settings_8cs_source.html#l00026">BsonWriterSettings.cs:27</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_writer_settings_html_a022e1e6f032335192cbdfa24129ef242"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_writer_settings.html#a022e1e6f032335192cbdfa24129ef242">MongoDB.Bson.IO.BsonWriterSettings.IsFrozen</a></div><div class="ttdeci">bool IsFrozen</div><div class="ttdoc">Gets whether the settings are frozen.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_i_o_2_bson_writer_settings_8cs_source.html#l00067">BsonWriterSettings.cs:68</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_writer_settings_html_a685ee874744df92f4476ab3cf58bfbd9"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_writer_settings.html#a685ee874744df92f4476ab3cf58bfbd9">MongoDB.Bson.IO.BsonWriterSettings.GuidRepresentation</a></div><div class="ttdeci">GuidRepresentation GuidRepresentation</div><div class="ttdoc">Gets or sets the representation for Guids.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_i_o_2_bson_writer_settings_8cs_source.html#l00054">BsonWriterSettings.cs:55</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_writer_settings_html_a7600a2a3e30e1dd50957218f4fa47724"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_writer_settings.html#a7600a2a3e30e1dd50957218f4fa47724">MongoDB.Bson.IO.BsonWriterSettings.MaxSerializationDepth</a></div><div class="ttdeci">int MaxSerializationDepth</div><div class="ttdoc">Gets or sets the max serialization depth allowed (used to detect circular references).</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_i_o_2_bson_writer_settings_8cs_source.html#l00075">BsonWriterSettings.cs:76</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_bson_1_1_i_o_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_bson_1_1_i_o.html">MongoDB.Bson.IO</a></div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_i_o_2_array_element_name_accelerator_8cs_source.html#l00018">ArrayElementNameAccelerator.cs:19</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_bson_html_a8fd533815d33d4ee0e6176ed1e7d8b63"><div class="ttname"><a href="namespace_mongo_d_b_1_1_bson.html#a8fd533815d33d4ee0e6176ed1e7d8b63">MongoDB.Bson.GuidRepresentation</a></div><div class="ttdeci">GuidRepresentation</div><div class="ttdoc">Represents the representation to use when converting a Guid to a BSON binary value.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_guid_representation_8cs_source.html#l00025">GuidRepresentation.cs:26</a></div></div>
+<div class="ttc" id="anamespace_system_html"><div class="ttname"><a href="namespace_system.html">System</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_method_builder_attribute_8cs_source.html#l00001">AsyncMethodBuilderAttribute.cs:2</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_84bbf7b3c7f28a5a18725745e1505219.html">Assets</a></li><li class="navelem"><a class="el" href="dir_f13b41af88cf68434578284aaf699e39.html">Scripts</a></li><li class="navelem"><a class="el" href="dir_46d134a3bf82cf4dc49ca8f728aea58c.html">Libraries</a></li><li class="navelem"><a class="el" href="dir_73566d0e413307016ca2f8948e23ce26.html">MongoDB</a></li><li class="navelem"><a class="el" href="dir_bf52240e991d83ea827d5d13f9c7b60c.html">MongoDB.Bson</a></li><li class="navelem"><a class="el" href="dir_1ddeeaf61d6ac8c8c2db9bcbe6f5edd3.html">IO</a></li><li class="navelem"><a class="el" href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_i_o_2_bson_binary_writer_settings_8cs.html">BsonBinaryWriterSettings.cs</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:24:50 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

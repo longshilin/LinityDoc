@@ -1,0 +1,2214 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: Pathfinding.AIBase类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('class_pathfinding_1_1_a_i_base.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pub-attribs">成员变量</a> &#124;
+<a href="#pro-methods">Protected 成员函数</a> &#124;
+<a href="#pro-attribs">Protected 属性</a> &#124;
+<a href="#pro-static-attribs">静态 Protected 属性</a> &#124;
+<a href="#properties">属性</a>  </div>
+  <div class="headertitle">
+<div class="title">Pathfinding.AIBase类 参考<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="dynheader">
+类 Pathfinding.AIBase 继承关系图:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="class_pathfinding_1_1_a_i_base.png" usemap="#Pathfinding.AIBase_map" alt=""/>
+  <map id="Pathfinding.AIBase_map" name="Pathfinding.AIBase_map">
+<area href="class_pathfinding_1_1_versioned_mono_behaviour.html" alt="Pathfinding.VersionedMonoBehaviour" shape="rect" coords="282,56,554,80"/>
+<area href="interface_pathfinding_1_1_i_versioned_mono_behaviour_internal.html" alt="Pathfinding.IVersionedMonoBehaviourInternal" shape="rect" coords="564,0,836,24"/>
+<area href="class_pathfinding_1_1_a_i_path.html" alt="Pathfinding.AIPath" shape="rect" coords="282,168,554,192"/>
+  </map>
+</div></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:a98c40fd55db58750a77e3b1fe796f3fd"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pathfinding_1_1_a_i_base.html#a98c40fd55db58750a77e3b1fe796f3fd">Teleport</a> (<a class="el" href="struct_unity_engine_1_1_vector3.html">Vector3</a> newPosition, bool clearPath=true)</td></tr>
+<tr class="separator:a98c40fd55db58750a77e3b1fe796f3fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3db178e3286c1cdf6c43d146797df942"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pathfinding_1_1_a_i_base.html#a3db178e3286c1cdf6c43d146797df942">MovementUpdate</a> (float deltaTime, out <a class="el" href="struct_unity_engine_1_1_vector3.html">Vector3</a> nextPosition, out <a class="el" href="struct_unity_engine_1_1_quaternion.html">Quaternion</a> nextRotation)</td></tr>
+<tr class="separator:a3db178e3286c1cdf6c43d146797df942"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a26afcddbffa25240e2a0919b34c186a3"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pathfinding_1_1_a_i_base.html#a26afcddbffa25240e2a0919b34c186a3">SearchPath</a> ()</td></tr>
+<tr class="separator:a26afcddbffa25240e2a0919b34c186a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaa8da00b48192301af9bee2d2762c3bf"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="struct_unity_engine_1_1_vector3.html">Vector3</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pathfinding_1_1_a_i_base.html#aaa8da00b48192301af9bee2d2762c3bf">GetFeetPosition</a> ()</td></tr>
+<tr class="separator:aaa8da00b48192301af9bee2d2762c3bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a402f0c93b5fff9e7012a28f89e4ad635"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pathfinding_1_1_a_i_base.html#a402f0c93b5fff9e7012a28f89e4ad635">SetPath</a> (<a class="el" href="class_p_f_1_1_path.html">Path</a> path)</td></tr>
+<tr class="separator:a402f0c93b5fff9e7012a28f89e4ad635"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a379a06037a28b63720415bce93714692"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_unity_engine_1_1_quaternion.html">Quaternion</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pathfinding_1_1_a_i_base.html#a379a06037a28b63720415bce93714692">SimulateRotationTowards</a> (<a class="el" href="struct_unity_engine_1_1_vector3.html">Vector3</a> direction, float maxDegrees)</td></tr>
+<tr class="separator:a379a06037a28b63720415bce93714692"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac85bb57601ed46324551331be62a055a"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pathfinding_1_1_a_i_base.html#ac85bb57601ed46324551331be62a055a">Move</a> (<a class="el" href="struct_unity_engine_1_1_vector3.html">Vector3</a> deltaPosition)</td></tr>
+<tr class="separator:ac85bb57601ed46324551331be62a055a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aebdae01932608c6e0a429a1de2c98089"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pathfinding_1_1_a_i_base.html#aebdae01932608c6e0a429a1de2c98089">FinalizeMovement</a> (<a class="el" href="struct_unity_engine_1_1_vector3.html">Vector3</a> nextPosition, <a class="el" href="struct_unity_engine_1_1_quaternion.html">Quaternion</a> nextRotation)</td></tr>
+<tr class="separator:aebdae01932608c6e0a429a1de2c98089"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+成员变量</h2></td></tr>
+<tr class="memitem:afa4d04fa3ca0dab9efd337f4137aaee1"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pathfinding_1_1_a_i_base.html#afa4d04fa3ca0dab9efd337f4137aaee1">repathRate</a> = 0.5f</td></tr>
+<tr class="separator:afa4d04fa3ca0dab9efd337f4137aaee1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a41e967af16fe497755ada4bc9ee6a87f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pathfinding_1_1_a_i_base.html#a41e967af16fe497755ada4bc9ee6a87f">canSearch</a> = true</td></tr>
+<tr class="separator:a41e967af16fe497755ada4bc9ee6a87f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac5f8e7ade498b0119d295abe28727fd7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pathfinding_1_1_a_i_base.html#ac5f8e7ade498b0119d295abe28727fd7">canMove</a> = true</td></tr>
+<tr class="separator:ac5f8e7ade498b0119d295abe28727fd7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc0d523a19411fc5573fe4658cf53a6f"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pathfinding_1_1_a_i_base.html#afc0d523a19411fc5573fe4658cf53a6f">maxSpeed</a> = 1</td></tr>
+<tr class="separator:afc0d523a19411fc5573fe4658cf53a6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a02b6a0775da56966c31a6a0fb55664b8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_unity_engine_1_1_vector3.html">Vector3</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pathfinding_1_1_a_i_base.html#a02b6a0775da56966c31a6a0fb55664b8">gravity</a> = new <a class="el" href="struct_unity_engine_1_1_vector3.html">Vector3</a>(float.NaN, float.NaN, float.NaN)</td></tr>
+<tr class="separator:a02b6a0775da56966c31a6a0fb55664b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae9a733ea5feda6a0cec1e460c4c89e25"><td class="memItemLeft" align="right" valign="top">LayerMask&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pathfinding_1_1_a_i_base.html#ae9a733ea5feda6a0cec1e460c4c89e25">groundMask</a> = -1</td></tr>
+<tr class="separator:ae9a733ea5feda6a0cec1e460c4c89e25"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8316799eae5218bc12b14920c8f2bd1a"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pathfinding_1_1_a_i_base.html#a8316799eae5218bc12b14920c8f2bd1a">centerOffset</a> = 1</td></tr>
+<tr class="separator:a8316799eae5218bc12b14920c8f2bd1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a91ff41bff489551608d085ab8ca1c674"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pathfinding_1_1_a_i_base.html#a91ff41bff489551608d085ab8ca1c674">rotationIn2D</a> = false</td></tr>
+<tr class="separator:a91ff41bff489551608d085ab8ca1c674"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c782f79c381355f43c0d973fff56f13"><td class="memItemLeft" align="right" valign="top"><a class="el" href="interface_p_f_1_1_i_movement_plane.html">IMovementPlane</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pathfinding_1_1_a_i_base.html#a7c782f79c381355f43c0d973fff56f13">movementPlane</a> = GraphTransform.identityTransform</td></tr>
+<tr class="separator:a7c782f79c381355f43c0d973fff56f13"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6ded00a6060ae9f954dd7d7660d018e8"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pathfinding_1_1_a_i_base.html#a6ded00a6060ae9f954dd7d7660d018e8">updatePosition</a> = true</td></tr>
+<tr class="separator:a6ded00a6060ae9f954dd7d7660d018e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad13ed156c992eca7feee6489ffe78278"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pathfinding_1_1_a_i_base.html#ad13ed156c992eca7feee6489ffe78278">updateRotation</a> = true</td></tr>
+<tr class="separator:ad13ed156c992eca7feee6489ffe78278"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
+Protected 成员函数</h2></td></tr>
+<tr class="memitem:ab638bf2f14eac0c201dea2a2bf416443"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pathfinding_1_1_a_i_base.html#ab638bf2f14eac0c201dea2a2bf416443">AIBase</a> ()</td></tr>
+<tr class="separator:ab638bf2f14eac0c201dea2a2bf416443"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9230ab534c2e2b4b35a9b2e18689b96b"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pathfinding_1_1_a_i_base.html#a9230ab534c2e2b4b35a9b2e18689b96b">FindComponents</a> ()</td></tr>
+<tr class="separator:a9230ab534c2e2b4b35a9b2e18689b96b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae6ef29a15d34dcaf5b346667c75064d5"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pathfinding_1_1_a_i_base.html#ae6ef29a15d34dcaf5b346667c75064d5">OnEnable</a> ()</td></tr>
+<tr class="separator:ae6ef29a15d34dcaf5b346667c75064d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7fa51fdf242b5da3eb82249bc431ca2e"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pathfinding_1_1_a_i_base.html#a7fa51fdf242b5da3eb82249bc431ca2e">Start</a> ()</td></tr>
+<tr class="separator:a7fa51fdf242b5da3eb82249bc431ca2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab81b2b9c3084a1c69e56a8dbbb336bee"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pathfinding_1_1_a_i_base.html#ab81b2b9c3084a1c69e56a8dbbb336bee">CancelCurrentPathRequest</a> ()</td></tr>
+<tr class="separator:ab81b2b9c3084a1c69e56a8dbbb336bee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac55fbf35af935765d5abdd910dee8bd9"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pathfinding_1_1_a_i_base.html#ac55fbf35af935765d5abdd910dee8bd9">OnDisable</a> ()</td></tr>
+<tr class="separator:ac55fbf35af935765d5abdd910dee8bd9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a942fc9185cd8c810e9421c0b5ea2b510"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pathfinding_1_1_a_i_base.html#a942fc9185cd8c810e9421c0b5ea2b510">Update</a> ()</td></tr>
+<tr class="separator:a942fc9185cd8c810e9421c0b5ea2b510"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae97d5e5c84ee58146b9a6c5fdfaf206a"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pathfinding_1_1_a_i_base.html#ae97d5e5c84ee58146b9a6c5fdfaf206a">FixedUpdate</a> ()</td></tr>
+<tr class="separator:ae97d5e5c84ee58146b9a6c5fdfaf206a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9066a4f8d1edc6e996ef70fbb332daec"><td class="memItemLeft" align="right" valign="top">abstract void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pathfinding_1_1_a_i_base.html#a9066a4f8d1edc6e996ef70fbb332daec">MovementUpdateInternal</a> (float deltaTime, out <a class="el" href="struct_unity_engine_1_1_vector3.html">Vector3</a> nextPosition, out <a class="el" href="struct_unity_engine_1_1_quaternion.html">Quaternion</a> nextRotation)</td></tr>
+<tr class="separator:a9066a4f8d1edc6e996ef70fbb332daec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af1d8278f98d7e00a601d0cf7c240bcad"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pathfinding_1_1_a_i_base.html#af1d8278f98d7e00a601d0cf7c240bcad">CalculatePathRequestEndpoints</a> (out <a class="el" href="struct_unity_engine_1_1_vector3.html">Vector3</a> start, out <a class="el" href="struct_unity_engine_1_1_vector3.html">Vector3</a> end)</td></tr>
+<tr class="separator:af1d8278f98d7e00a601d0cf7c240bcad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a100debb9b4c842b422885ee47d87110f"><td class="memItemLeft" align="right" valign="top">abstract void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pathfinding_1_1_a_i_base.html#a100debb9b4c842b422885ee47d87110f">OnPathComplete</a> (<a class="el" href="class_p_f_1_1_path.html">Path</a> newPath)</td></tr>
+<tr class="separator:a100debb9b4c842b422885ee47d87110f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a28da6b84c33928ef2021adac58ff9645"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pathfinding_1_1_a_i_base.html#a28da6b84c33928ef2021adac58ff9645">ApplyGravity</a> (float deltaTime)</td></tr>
+<tr class="separator:a28da6b84c33928ef2021adac58ff9645"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a268aef4a2a67b6349301209b59c3063d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_unity_engine_1_1_vector2.html">Vector2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pathfinding_1_1_a_i_base.html#a268aef4a2a67b6349301209b59c3063d">CalculateDeltaToMoveThisFrame</a> (<a class="el" href="struct_unity_engine_1_1_vector2.html">Vector2</a> <a class="el" href="class_pathfinding_1_1_a_i_base.html#a11f9fced4a7fac3f1ce4aa144a9e9873">position</a>, float distanceToEndOfPath, float deltaTime)</td></tr>
+<tr class="separator:a268aef4a2a67b6349301209b59c3063d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af4628442dd40d5e8433eaabbb9f4d92c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_unity_engine_1_1_quaternion.html">Quaternion</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pathfinding_1_1_a_i_base.html#af4628442dd40d5e8433eaabbb9f4d92c">SimulateRotationTowards</a> (<a class="el" href="struct_unity_engine_1_1_vector2.html">Vector2</a> direction, float maxDegrees)</td></tr>
+<tr class="separator:af4628442dd40d5e8433eaabbb9f4d92c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acbb4d33d999513ad040fdcfbf54d299c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pathfinding_1_1_a_i_base.html#acbb4d33d999513ad040fdcfbf54d299c">UpdateVelocity</a> ()</td></tr>
+<tr class="separator:acbb4d33d999513ad040fdcfbf54d299c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af4dad2058562181cb4833c49fd5467cc"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="struct_unity_engine_1_1_vector3.html">Vector3</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pathfinding_1_1_a_i_base.html#af4dad2058562181cb4833c49fd5467cc">ClampToNavmesh</a> (<a class="el" href="struct_unity_engine_1_1_vector3.html">Vector3</a> <a class="el" href="class_pathfinding_1_1_a_i_base.html#a11f9fced4a7fac3f1ce4aa144a9e9873">position</a>, out bool positionChanged)</td></tr>
+<tr class="separator:af4dad2058562181cb4833c49fd5467cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab18caa72d75cdb75d26d17f51cc6544b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_unity_engine_1_1_vector3.html">Vector3</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pathfinding_1_1_a_i_base.html#ab18caa72d75cdb75d26d17f51cc6544b">RaycastPosition</a> (<a class="el" href="struct_unity_engine_1_1_vector3.html">Vector3</a> <a class="el" href="class_pathfinding_1_1_a_i_base.html#a11f9fced4a7fac3f1ce4aa144a9e9873">position</a>, float lastElevation)</td></tr>
+<tr class="separator:ab18caa72d75cdb75d26d17f51cc6544b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a542b4c0e993e9acd5527f54a767c1a1c"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pathfinding_1_1_a_i_base.html#a542b4c0e993e9acd5527f54a767c1a1c">OnDrawGizmosSelected</a> ()</td></tr>
+<tr class="separator:a542b4c0e993e9acd5527f54a767c1a1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac29fa87a12223a03d6de65172aa2549c"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pathfinding_1_1_a_i_base.html#ac29fa87a12223a03d6de65172aa2549c">OnDrawGizmos</a> ()</td></tr>
+<tr class="separator:ac29fa87a12223a03d6de65172aa2549c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab0a1e798e6425b6bca1f17bbbe706a56"><td class="memItemLeft" align="right" valign="top">override int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pathfinding_1_1_a_i_base.html#ab0a1e798e6425b6bca1f17bbbe706a56">OnUpgradeSerializedData</a> (int version, bool unityThread)</td></tr>
+<tr class="separator:ab0a1e798e6425b6bca1f17bbbe706a56"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_methods_class_pathfinding_1_1_versioned_mono_behaviour"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_class_pathfinding_1_1_versioned_mono_behaviour')"><img src="closed.png" alt="-"/>&#160;Protected 成员函数 继承自 <a class="el" href="class_pathfinding_1_1_versioned_mono_behaviour.html">Pathfinding.VersionedMonoBehaviour</a></td></tr>
+<tr class="memitem:a5e8030d9ff7f1b197a11e455c9fed59b inherit pro_methods_class_pathfinding_1_1_versioned_mono_behaviour"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pathfinding_1_1_versioned_mono_behaviour.html#a5e8030d9ff7f1b197a11e455c9fed59b">Awake</a> ()</td></tr>
+<tr class="separator:a5e8030d9ff7f1b197a11e455c9fed59b inherit pro_methods_class_pathfinding_1_1_versioned_mono_behaviour"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
+Protected 属性</h2></td></tr>
+<tr class="memitem:a79f8752ff8f03561670b649877885f47"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_unity_engine_1_1_vector3.html">Vector3</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pathfinding_1_1_a_i_base.html#a79f8752ff8f03561670b649877885f47">simulatedPosition</a></td></tr>
+<tr class="separator:a79f8752ff8f03561670b649877885f47"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa976910d0f07cc4b6c202b0641556e29"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_unity_engine_1_1_quaternion.html">Quaternion</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pathfinding_1_1_a_i_base.html#aa976910d0f07cc4b6c202b0641556e29">simulatedRotation</a></td></tr>
+<tr class="separator:aa976910d0f07cc4b6c202b0641556e29"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a34e29e401ffda5567d0099adba806e01"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_unity_engine_1_1_vector2.html">Vector2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pathfinding_1_1_a_i_base.html#a34e29e401ffda5567d0099adba806e01">velocity2D</a></td></tr>
+<tr class="separator:a34e29e401ffda5567d0099adba806e01"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a11e6f2567cda3e072df5d575ab2b177c"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pathfinding_1_1_a_i_base.html#a11e6f2567cda3e072df5d575ab2b177c">verticalVelocity</a></td></tr>
+<tr class="separator:a11e6f2567cda3e072df5d575ab2b177c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a407f52e610fff493e2b72e1bd9eafb0e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_pathfinding_1_1_seeker.html">Seeker</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pathfinding_1_1_a_i_base.html#a407f52e610fff493e2b72e1bd9eafb0e">seeker</a></td></tr>
+<tr class="separator:a407f52e610fff493e2b72e1bd9eafb0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a12e0c1364be2699fc0d36c0c313e1579"><td class="memItemLeft" align="right" valign="top">Transform&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pathfinding_1_1_a_i_base.html#a12e0c1364be2699fc0d36c0c313e1579">tr</a></td></tr>
+<tr class="separator:a12e0c1364be2699fc0d36c0c313e1579"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a58c18c3286632390becbbb3dbf3d476d"><td class="memItemLeft" align="right" valign="top">Rigidbody&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pathfinding_1_1_a_i_base.html#a58c18c3286632390becbbb3dbf3d476d">rigid</a></td></tr>
+<tr class="separator:a58c18c3286632390becbbb3dbf3d476d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af4099b509c0abacab085f0b15d88b6fa"><td class="memItemLeft" align="right" valign="top">Rigidbody2D&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pathfinding_1_1_a_i_base.html#af4099b509c0abacab085f0b15d88b6fa">rigid2D</a></td></tr>
+<tr class="separator:af4099b509c0abacab085f0b15d88b6fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0fffcf5ba963a7b2a87d3a1f08f36235"><td class="memItemLeft" align="right" valign="top">CharacterController&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pathfinding_1_1_a_i_base.html#a0fffcf5ba963a7b2a87d3a1f08f36235">controller</a></td></tr>
+<tr class="separator:a0fffcf5ba963a7b2a87d3a1f08f36235"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac9b5ed6aaca06aeb54d80c8a3d3a7a67"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_controller.html">RVOController</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pathfinding_1_1_a_i_base.html#ac9b5ed6aaca06aeb54d80c8a3d3a7a67">rvoController</a></td></tr>
+<tr class="separator:ac9b5ed6aaca06aeb54d80c8a3d3a7a67"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a533e10419322845377bd558516120847"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pathfinding_1_1_a_i_base.html#a533e10419322845377bd558516120847">lastDeltaTime</a></td></tr>
+<tr class="separator:a533e10419322845377bd558516120847"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f2e995ded129f24bf34519f0cfeb34d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pathfinding_1_1_a_i_base.html#a8f2e995ded129f24bf34519f0cfeb34d">prevFrame</a></td></tr>
+<tr class="separator:a8f2e995ded129f24bf34519f0cfeb34d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a35a512a38979e6653a131728522d5d7e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_unity_engine_1_1_vector3.html">Vector3</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pathfinding_1_1_a_i_base.html#a35a512a38979e6653a131728522d5d7e">prevPosition1</a></td></tr>
+<tr class="separator:a35a512a38979e6653a131728522d5d7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5e72b38fd20753af8f8859019a01218e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_unity_engine_1_1_vector3.html">Vector3</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pathfinding_1_1_a_i_base.html#a5e72b38fd20753af8f8859019a01218e">prevPosition2</a></td></tr>
+<tr class="separator:a5e72b38fd20753af8f8859019a01218e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e0edf6e45a987dfcf2dba58fc6d60bf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_unity_engine_1_1_vector2.html">Vector2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pathfinding_1_1_a_i_base.html#a7e0edf6e45a987dfcf2dba58fc6d60bf">lastDeltaPosition</a></td></tr>
+<tr class="separator:a7e0edf6e45a987dfcf2dba58fc6d60bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab35b0de3dcabe8a49261ef997619e23f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pathfinding_1_1_a_i_base.html#ab35b0de3dcabe8a49261ef997619e23f">waitingForPathCalculation</a> = false</td></tr>
+<tr class="separator:ab35b0de3dcabe8a49261ef997619e23f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a36d5d41161ec324c1b6937708d4f90e3"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pathfinding_1_1_a_i_base.html#a36d5d41161ec324c1b6937708d4f90e3">lastRepath</a> = float.NegativeInfinity</td></tr>
+<tr class="separator:a36d5d41161ec324c1b6937708d4f90e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-static-attribs"></a>
+静态 Protected 属性</h2></td></tr>
+<tr class="memitem:a6162cffd323ef75fe22ee0f2605b2264"><td class="memItemLeft" align="right" valign="top">static readonly Color&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pathfinding_1_1_a_i_base.html#a6162cffd323ef75fe22ee0f2605b2264">GizmoColorRaycast</a> = new Color(118.0f/255, 206.0f/255, 112.0f/255)</td></tr>
+<tr class="separator:a6162cffd323ef75fe22ee0f2605b2264"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
+属性</h2></td></tr>
+<tr class="memitem:a11f9fced4a7fac3f1ce4aa144a9e9873"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_unity_engine_1_1_vector3.html">Vector3</a>?&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pathfinding_1_1_a_i_base.html#a11f9fced4a7fac3f1ce4aa144a9e9873">position</a><code> [get]</code></td></tr>
+<tr class="separator:a11f9fced4a7fac3f1ce4aa144a9e9873"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aad1bb51c011f0f9d05c640788e6f12ef"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_unity_engine_1_1_quaternion.html">Quaternion</a>?&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pathfinding_1_1_a_i_base.html#aad1bb51c011f0f9d05c640788e6f12ef">rotation</a><code> [get]</code></td></tr>
+<tr class="separator:aad1bb51c011f0f9d05c640788e6f12ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a980f118380f7394892b0f6067cad7b46"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pathfinding_1_1_a_i_base.html#a980f118380f7394892b0f6067cad7b46">usingGravity</a><code> [get]</code></td></tr>
+<tr class="separator:a980f118380f7394892b0f6067cad7b46"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2d67040df4ed2689668298965202db93"><td class="memItemLeft" align="right" valign="top">Transform??&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pathfinding_1_1_a_i_base.html#a2d67040df4ed2689668298965202db93">target</a><code> [get, set]</code></td></tr>
+<tr class="separator:a2d67040df4ed2689668298965202db93"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc4e4d26d791e66ecebfc00fbb03328f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_unity_engine_1_1_vector3.html">Vector3</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pathfinding_1_1_a_i_base.html#adc4e4d26d791e66ecebfc00fbb03328f">destination</a><code> [get, set]</code></td></tr>
+<tr class="separator:adc4e4d26d791e66ecebfc00fbb03328f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7d33c6940885427f39360c714a96053f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_unity_engine_1_1_vector3.html">Vector3</a>?&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pathfinding_1_1_a_i_base.html#a7d33c6940885427f39360c714a96053f">velocity</a><code> [get]</code></td></tr>
+<tr class="separator:a7d33c6940885427f39360c714a96053f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8ccd3c47fb9acedc0f7dbfce3615470c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_unity_engine_1_1_vector3.html">Vector3</a>?&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pathfinding_1_1_a_i_base.html#a8ccd3c47fb9acedc0f7dbfce3615470c">desiredVelocity</a><code> [get]</code></td></tr>
+<tr class="separator:a8ccd3c47fb9acedc0f7dbfce3615470c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa1a09167d34af0d943a1b63b0b0a54c6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pathfinding_1_1_a_i_base.html#aa1a09167d34af0d943a1b63b0b0a54c6">isStopped</a><code> [get, set]</code></td></tr>
+<tr class="separator:aa1a09167d34af0d943a1b63b0b0a54c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a39fde7ace50a1ab852abc7d47521bca3"><td class="memItemLeft" align="right" valign="top">System.Action&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pathfinding_1_1_a_i_base.html#a39fde7ace50a1ab852abc7d47521bca3">onSearchPath</a><code> [get, set]</code></td></tr>
+<tr class="separator:a39fde7ace50a1ab852abc7d47521bca3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a98a6be29702d08fdd2f006b4662b45c2"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pathfinding_1_1_a_i_base.html#a98a6be29702d08fdd2f006b4662b45c2">shouldRecalculatePath</a><code> [get]</code></td></tr>
+<tr class="separator:a98a6be29702d08fdd2f006b4662b45c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>Base class for <a class="el" href="class_pathfinding_1_1_a_i_path.html">AIPath</a> and RichAI. This class holds various methods and fields that are common to both <a class="el" href="class_pathfinding_1_1_a_i_path.html">AIPath</a> and RichAI.</p>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="class_pathfinding_1_1_a_i_path.html">Pathfinding.AIPath</a> </dd>
+<dd>
+#Pathfinding.RichAI </dd>
+<dd>
+<a class="el" href="interface_pathfinding_1_1_i_astar_a_i.html">Pathfinding.IAstarAI</a> (all movement scripts implement this interface) </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="_a_i_base_8cs_source.html">AIBase.cs</a> 第 <a class="el" href="_a_i_base_8cs_source.html#l00021">21</a> 行定义.</p>
+</div><h2 class="groupheader">构造及析构函数说明</h2>
+<a id="ab638bf2f14eac0c201dea2a2bf416443"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab638bf2f14eac0c201dea2a2bf416443">&#9670;&nbsp;</a></span>AIBase()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Pathfinding.AIBase.AIBase </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_a_i_base_8cs_source.html">AIBase.cs</a> 第 <a class="el" href="_a_i_base_8cs_source.html#l00251">251</a> 行定义.</p>
+
+</div>
+</div>
+<h2 class="groupheader">成员函数说明</h2>
+<a id="a28da6b84c33928ef2021adac58ff9645"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a28da6b84c33928ef2021adac58ff9645">&#9670;&nbsp;</a></span>ApplyGravity()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Pathfinding.AIBase.ApplyGravity </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>deltaTime</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Accelerates the agent downwards. </p><dl class="section see"><dt>参见</dt><dd><a class="el" href="class_pathfinding_1_1_a_i_base.html#a11e6f2567cda3e072df5d575ab2b177c">verticalVelocity</a> </dd>
+<dd>
+<a class="el" href="class_pathfinding_1_1_a_i_base.html#a02b6a0775da56966c31a6a0fb55664b8">gravity</a> </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="_a_i_base_8cs_source.html">AIBase.cs</a> 第 <a class="el" href="_a_i_base_8cs_source.html#l00443">443</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a268aef4a2a67b6349301209b59c3063d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a268aef4a2a67b6349301209b59c3063d">&#9670;&nbsp;</a></span>CalculateDeltaToMoveThisFrame()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_unity_engine_1_1_vector2.html">Vector2</a> Pathfinding.AIBase.CalculateDeltaToMoveThisFrame </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_unity_engine_1_1_vector2.html">Vector2</a>&#160;</td>
+          <td class="paramname"><em>position</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>distanceToEndOfPath</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>deltaTime</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Calculates how far to move during a single frame </p>
+
+<p class="definition">在文件 <a class="el" href="_a_i_base_8cs_source.html">AIBase.cs</a> 第 <a class="el" href="_a_i_base_8cs_source.html#l00455">455</a> 行定义.</p>
+
+</div>
+</div>
+<a id="af1d8278f98d7e00a601d0cf7c240bcad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af1d8278f98d7e00a601d0cf7c240bcad">&#9670;&nbsp;</a></span>CalculatePathRequestEndpoints()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void Pathfinding.AIBase.CalculatePathRequestEndpoints </td>
+          <td>(</td>
+          <td class="paramtype">out <a class="el" href="struct_unity_engine_1_1_vector3.html">Vector3</a>&#160;</td>
+          <td class="paramname"><em>start</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">out <a class="el" href="struct_unity_engine_1_1_vector3.html">Vector3</a>&#160;</td>
+          <td class="paramname"><em>end</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Outputs the start point and end point of the next automatic path request. This is a separate method to make it easy for subclasses to swap out the endpoints of path requests. For example the #LocalSpaceRichAI script which requires the endpoints to be transformed to graph space first. </p>
+
+<p class="definition">在文件 <a class="el" href="_a_i_base_8cs_source.html">AIBase.cs</a> 第 <a class="el" href="_a_i_base_8cs_source.html#l00366">366</a> 行定义.</p>
+
+</div>
+</div>
+<a id="ab81b2b9c3084a1c69e56a8dbbb336bee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab81b2b9c3084a1c69e56a8dbbb336bee">&#9670;&nbsp;</a></span>CancelCurrentPathRequest()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Pathfinding.AIBase.CancelCurrentPathRequest </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_a_i_base_8cs_source.html">AIBase.cs</a> 第 <a class="el" href="_a_i_base_8cs_source.html#l00304">304</a> 行定义.</p>
+
+</div>
+</div>
+<a id="af4dad2058562181cb4833c49fd5467cc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af4dad2058562181cb4833c49fd5467cc">&#9670;&nbsp;</a></span>ClampToNavmesh()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual <a class="el" href="struct_unity_engine_1_1_vector3.html">Vector3</a> Pathfinding.AIBase.ClampToNavmesh </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_unity_engine_1_1_vector3.html">Vector3</a>&#160;</td>
+          <td class="paramname"><em>position</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">out bool&#160;</td>
+          <td class="paramname"><em>positionChanged</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Constrains the character's position to lie on the navmesh. Not all movement scripts have support for this.</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">position</td><td>Current position of the character. </td></tr>
+    <tr><td class="paramname">positionChanged</td><td>True if the character's position was modified by this method.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>New position of the character that has been clamped to the navmesh. </dd></dl>
+
+<p>被 <a class="el" href="class_pathfinding_1_1_a_i_path.html#a8a8cebeb2dfa733f23c82a21327bc13f">Pathfinding.AIPath</a> 重载.</p>
+
+<p class="definition">在文件 <a class="el" href="_a_i_base_8cs_source.html">AIBase.cs</a> 第 <a class="el" href="_a_i_base_8cs_source.html#l00590">590</a> 行定义.</p>
+
+</div>
+</div>
+<a id="aebdae01932608c6e0a429a1de2c98089"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aebdae01932608c6e0a429a1de2c98089">&#9670;&nbsp;</a></span>FinalizeMovement()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void Pathfinding.AIBase.FinalizeMovement </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_unity_engine_1_1_vector3.html">Vector3</a>&#160;</td>
+          <td class="paramname"><em>nextPosition</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="struct_unity_engine_1_1_quaternion.html">Quaternion</a>&#160;</td>
+          <td class="paramname"><em>nextRotation</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Moves the agent to a position. </p><dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">nextPosition</td><td>New position of the agent. </td></tr>
+    <tr><td class="paramname">nextRotation</td><td>New rotation of the agent.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>This is used if you want to override how the agent moves. For example if you are using root motion with Mecanim.</p>
+<p>This will use a CharacterController, Rigidbody, Rigidbody2D or the Transform component depending on what options are available.</p>
+<p>The agent will be clamped to the navmesh after the movement (if such information is available, generally this is only done by the RichAI component).</p>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="class_pathfinding_1_1_a_i_base.html#a3db178e3286c1cdf6c43d146797df942">MovementUpdate</a> for some example code. </dd>
+<dd>
+<a class="el" href="class_pathfinding_1_1_a_i_base.html#a0fffcf5ba963a7b2a87d3a1f08f36235">controller</a>, <a class="el" href="class_pathfinding_1_1_a_i_base.html#a58c18c3286632390becbbb3dbf3d476d">rigid</a>, <a class="el" href="class_pathfinding_1_1_a_i_base.html#af4099b509c0abacab085f0b15d88b6fa">rigid2D</a> </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="_a_i_base_8cs_source.html">AIBase.cs</a> 第 <a class="el" href="_a_i_base_8cs_source.html#l00517">517</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a9230ab534c2e2b4b35a9b2e18689b96b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9230ab534c2e2b4b35a9b2e18689b96b">&#9670;&nbsp;</a></span>FindComponents()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void Pathfinding.AIBase.FindComponents </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_a_i_base_8cs_source.html">AIBase.cs</a> 第 <a class="el" href="_a_i_base_8cs_source.html#l00258">258</a> 行定义.</p>
+
+</div>
+</div>
+<a id="ae97d5e5c84ee58146b9a6c5fdfaf206a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae97d5e5c84ee58146b9a6c5fdfaf206a">&#9670;&nbsp;</a></span>FixedUpdate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void Pathfinding.AIBase.FixedUpdate </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Called every physics update. If rigidbodies are used then all movement happens here. </p>
+
+<p class="definition">在文件 <a class="el" href="_a_i_base_8cs_source.html">AIBase.cs</a> 第 <a class="el" href="_a_i_base_8cs_source.html#l00343">343</a> 行定义.</p>
+
+</div>
+</div>
+<a id="aaa8da00b48192301af9bee2d2762c3bf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaa8da00b48192301af9bee2d2762c3bf">&#9670;&nbsp;</a></span>GetFeetPosition()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual <a class="el" href="struct_unity_engine_1_1_vector3.html">Vector3</a> Pathfinding.AIBase.GetFeetPosition </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Position of the base of the character. This is used for pathfinding as the character's pivot point is sometimes placed at the center of the character instead of near the feet. In a building with multiple floors the center of a character may in some scenarios be closer to the navmesh on the floor above than to the floor below which could cause an incorrect path to be calculated. To solve this the start point of the requested paths is always at the base of the character. </p>
+
+<p class="definition">在文件 <a class="el" href="_a_i_base_8cs_source.html">AIBase.cs</a> 第 <a class="el" href="_a_i_base_8cs_source.html#l00400">400</a> 行定义.</p>
+
+</div>
+</div>
+<a id="ac85bb57601ed46324551331be62a055a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac85bb57601ed46324551331be62a055a">&#9670;&nbsp;</a></span>Move()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void Pathfinding.AIBase.Move </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_unity_engine_1_1_vector3.html">Vector3</a>&#160;</td>
+          <td class="paramname"><em>deltaPosition</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p></p>
+<p>Move the agent. </p><dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">deltaPosition</td><td>Direction and distance to move the agent in world space.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>This is intended for external movement forces such as those applied by wind, conveyor belts, knockbacks etc.</p>
+<p>Some movement scripts may ignore this completely (notably the <a class="el" href="class_pathfinding_1_1_a_i_lerp.html">AILerp</a> script) if it does not have any concept of being moved externally.</p>
+<p>The agent will not be moved immediately when calling this method. Instead this offset will be stored and then applied the next time the agent runs its movement calculations (which is usually later this frame or the next frame). If you want to move the agent immediately then call: </p><div class="fragment"><div class="line">ai.Move(someVector);</div>
+<div class="line">ai.FinalizeMovement(ai.position, ai.rotation);</div>
+</div><!-- fragment --> 
+<p class="definition">在文件 <a class="el" href="_a_i_base_8cs_source.html">AIBase.cs</a> 第 <a class="el" href="_a_i_base_8cs_source.html#l00498">498</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a3db178e3286c1cdf6c43d146797df942"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3db178e3286c1cdf6c43d146797df942">&#9670;&nbsp;</a></span>MovementUpdate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Pathfinding.AIBase.MovementUpdate </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>deltaTime</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">out <a class="el" href="struct_unity_engine_1_1_vector3.html">Vector3</a>&#160;</td>
+          <td class="paramname"><em>nextPosition</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">out <a class="el" href="struct_unity_engine_1_1_quaternion.html">Quaternion</a>&#160;</td>
+          <td class="paramname"><em>nextRotation</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p></p>
+<p>Calculate how the character wants to move during this frame. </p><dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">deltaTime</td><td>time to simulate movement for. Usually set to Time.deltaTime. </td></tr>
+    <tr><td class="paramname">nextPosition</td><td>the position that the agent wants to move to during this frame. </td></tr>
+    <tr><td class="paramname">nextRotation</td><td>the rotation that the agent wants to rotate to during this frame.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Note that this does not actually move the character. You need to call <a class="el" href="class_pathfinding_1_1_a_i_base.html#aebdae01932608c6e0a429a1de2c98089">FinalizeMovement</a> for that. This is called automatically unless <a class="el" href="class_pathfinding_1_1_a_i_base.html#ac5f8e7ade498b0119d295abe28727fd7">canMove</a> is false.</p>
+<p>To handle movement yourself you can disable <a class="el" href="class_pathfinding_1_1_a_i_base.html#ac5f8e7ade498b0119d295abe28727fd7">canMove</a> and call this method manually. This code will replicate the normal behavior of the component: </p><div class="fragment"></div><!-- fragment -->
+<p class="definition">在文件 <a class="el" href="_a_i_base_8cs_source.html">AIBase.cs</a> 第 <a class="el" href="_a_i_base_8cs_source.html#l00353">353</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a9066a4f8d1edc6e996ef70fbb332daec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9066a4f8d1edc6e996ef70fbb332daec">&#9670;&nbsp;</a></span>MovementUpdateInternal()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">abstract void Pathfinding.AIBase.MovementUpdateInternal </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>deltaTime</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">out <a class="el" href="struct_unity_engine_1_1_vector3.html">Vector3</a>&#160;</td>
+          <td class="paramname"><em>nextPosition</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">out <a class="el" href="struct_unity_engine_1_1_quaternion.html">Quaternion</a>&#160;</td>
+          <td class="paramname"><em>nextRotation</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Called during either Update or FixedUpdate depending on if rigidbodies are used for movement or not </p>
+
+<p>在 <a class="el" href="class_pathfinding_1_1_a_i_path.html#a1f40dff024eec267709e0a63dbf06ea8">Pathfinding.AIPath</a> 内被实现.</p>
+
+</div>
+</div>
+<a id="ac55fbf35af935765d5abdd910dee8bd9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac55fbf35af935765d5abdd910dee8bd9">&#9670;&nbsp;</a></span>OnDisable()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void Pathfinding.AIBase.OnDisable </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>被 <a class="el" href="class_pathfinding_1_1_a_i_path.html#ae788776bfca1bf2fdab249e4f6505555">Pathfinding.AIPath</a> 重载.</p>
+
+<p class="definition">在文件 <a class="el" href="_a_i_base_8cs_source.html">AIBase.cs</a> 第 <a class="el" href="_a_i_base_8cs_source.html#l00310">310</a> 行定义.</p>
+
+</div>
+</div>
+<a id="ac29fa87a12223a03d6de65172aa2549c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac29fa87a12223a03d6de65172aa2549c">&#9670;&nbsp;</a></span>OnDrawGizmos()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void Pathfinding.AIBase.OnDrawGizmos </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_a_i_base_8cs_source.html">AIBase.cs</a> 第 <a class="el" href="_a_i_base_8cs_source.html#l00635">635</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a542b4c0e993e9acd5527f54a767c1a1c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a542b4c0e993e9acd5527f54a767c1a1c">&#9670;&nbsp;</a></span>OnDrawGizmosSelected()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void Pathfinding.AIBase.OnDrawGizmosSelected </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_a_i_base_8cs_source.html">AIBase.cs</a> 第 <a class="el" href="_a_i_base_8cs_source.html#l00628">628</a> 行定义.</p>
+
+</div>
+</div>
+<a id="ae6ef29a15d34dcaf5b346667c75064d5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae6ef29a15d34dcaf5b346667c75064d5">&#9670;&nbsp;</a></span>OnEnable()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void Pathfinding.AIBase.OnEnable </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Called when the component is enabled </p>
+
+<p class="definition">在文件 <a class="el" href="_a_i_base_8cs_source.html">AIBase.cs</a> 第 <a class="el" href="_a_i_base_8cs_source.html#l00269">269</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a100debb9b4c842b422885ee47d87110f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a100debb9b4c842b422885ee47d87110f">&#9670;&nbsp;</a></span>OnPathComplete()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">abstract void Pathfinding.AIBase.OnPathComplete </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_p_f_1_1_path.html">Path</a>&#160;</td>
+          <td class="paramname"><em>newPath</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Called when a requested path has been calculated </p>
+
+<p>在 <a class="el" href="class_pathfinding_1_1_a_i_path.html#a7713dd3f6c48e79e7198158ce1a434aa">Pathfinding.AIPath</a> 内被实现.</p>
+
+</div>
+</div>
+<a id="ab0a1e798e6425b6bca1f17bbbe706a56"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab0a1e798e6425b6bca1f17bbbe706a56">&#9670;&nbsp;</a></span>OnUpgradeSerializedData()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">override int Pathfinding.AIBase.OnUpgradeSerializedData </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>version</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>unityThread</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Handle serialization backwards compatibility </p>
+
+<p>重载 <a class="el" href="class_pathfinding_1_1_versioned_mono_behaviour.html#a501c9660c7cc83781a8773fa73ed392c">Pathfinding.VersionedMonoBehaviour</a> .</p>
+
+<p>被 <a class="el" href="class_pathfinding_1_1_a_i_path.html#a6e1dd68e2b8aac8c0cf3496d6ec02c88">Pathfinding.AIPath</a> 重载.</p>
+
+<p class="definition">在文件 <a class="el" href="_a_i_base_8cs_source.html">AIBase.cs</a> 第 <a class="el" href="_a_i_base_8cs_source.html#l00650">650</a> 行定义.</p>
+
+</div>
+</div>
+<a id="ab18caa72d75cdb75d26d17f51cc6544b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab18caa72d75cdb75d26d17f51cc6544b">&#9670;&nbsp;</a></span>RaycastPosition()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_unity_engine_1_1_vector3.html">Vector3</a> Pathfinding.AIBase.RaycastPosition </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_unity_engine_1_1_vector3.html">Vector3</a>&#160;</td>
+          <td class="paramname"><em>position</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>lastElevation</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Checks if the character is grounded and prevents ground penetration. </p><dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">position</td><td>Position of the character in the world. </td></tr>
+    <tr><td class="paramname">lastElevation</td><td>Elevation coordinate before the agent was moved. This is along the 'up' axis of the <a class="el" href="class_pathfinding_1_1_a_i_base.html#a7c782f79c381355f43c0d973fff56f13">movementPlane</a>.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Sets <a class="el" href="class_pathfinding_1_1_a_i_base.html#a11e6f2567cda3e072df5d575ab2b177c">verticalVelocity</a> to zero if the character is grounded.</p>
+<dl class="section return"><dt>返回</dt><dd>The new position of the character. </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="_a_i_base_8cs_source.html">AIBase.cs</a> 第 <a class="el" href="_a_i_base_8cs_source.html#l00603">603</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a26afcddbffa25240e2a0919b34c186a3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a26afcddbffa25240e2a0919b34c186a3">&#9670;&nbsp;</a></span>SearchPath()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void Pathfinding.AIBase.SearchPath </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p></p>
+<p>Recalculate the current path. You can for example use this if you want very quick reaction times when you have changed the <a class="el" href="class_pathfinding_1_1_a_i_base.html#adc4e4d26d791e66ecebfc00fbb03328f">destination</a> so that the agent does not have to wait until the next automatic path recalculation (see <a class="el" href="class_pathfinding_1_1_a_i_base.html#a41e967af16fe497755ada4bc9ee6a87f">canSearch</a>).</p>
+<p>If there is an ongoing path calculation, it will be canceled, so make sure you leave time for the paths to get calculated before calling this function again. A canceled path will show up in the log with the message "Canceled by script" (see #Seeker.CancelCurrentPathRequest()).</p>
+<p>If no <a class="el" href="class_pathfinding_1_1_a_i_base.html#adc4e4d26d791e66ecebfc00fbb03328f">destination</a> has been set yet then nothing will be done.</p>
+<dl class="section note"><dt>注解</dt><dd>The path result may not become available until after a few frames. During the calculation time the #pathPending property will return true.</dd></dl>
+<dl class="section see"><dt>参见</dt><dd>#pathPending </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="_a_i_base_8cs_source.html">AIBase.cs</a> 第 <a class="el" href="_a_i_base_8cs_source.html#l00372">372</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a402f0c93b5fff9e7012a28f89e4ad635"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a402f0c93b5fff9e7012a28f89e4ad635">&#9670;&nbsp;</a></span>SetPath()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Pathfinding.AIBase.SetPath </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_p_f_1_1_path.html">Path</a>&#160;</td>
+          <td class="paramname"><em>path</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p></p>
+<p>Make the AI follow the specified path. In case the path has not been calculated, the script will call seeker.StartPath to calculate it. This means the AI may not actually start to follow the path until in a few frames when the path has been calculated. The #pathPending field will as usual return true while the path is being calculated.</p>
+<p>In case the path has already been calculated it will immediately replace the current path the AI is following. This is useful if you want to replace how the AI calculates its paths. Note that if you calculate the path using seeker.StartPath then this script will already pick it up because it is listening for all paths that the <a class="el" href="class_pathfinding_1_1_seeker.html">Seeker</a> finishes calculating. In that case you do not need to call this function.</p>
+<p>You can disable the automatic path recalculation by setting the <a class="el" href="class_pathfinding_1_1_a_i_base.html#a41e967af16fe497755ada4bc9ee6a87f">canSearch</a> field to false.</p>
+<div class="fragment"></div><!-- fragment -->
+<p class="definition">在文件 <a class="el" href="_a_i_base_8cs_source.html">AIBase.cs</a> 第 <a class="el" href="_a_i_base_8cs_source.html#l00418">418</a> 行定义.</p>
+
+</div>
+</div>
+<a id="af4628442dd40d5e8433eaabbb9f4d92c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af4628442dd40d5e8433eaabbb9f4d92c">&#9670;&nbsp;</a></span>SimulateRotationTowards() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_unity_engine_1_1_quaternion.html">Quaternion</a> Pathfinding.AIBase.SimulateRotationTowards </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_unity_engine_1_1_vector2.html">Vector2</a>&#160;</td>
+          <td class="paramname"><em>direction</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>maxDegrees</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Simulates rotating the agent towards the specified direction and returns the new rotation. </p><dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">direction</td><td>Direction in the movement plane to rotate towards. </td></tr>
+    <tr><td class="paramname">maxDegrees</td><td>Maximum number of degrees to rotate this frame.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Note that this only calculates a new rotation, it does not change the actual rotation of the agent.</p>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="class_pathfinding_1_1_a_i_base.html#a91ff41bff489551608d085ab8ca1c674">rotationIn2D</a> </dd>
+<dd>
+<a class="el" href="class_pathfinding_1_1_a_i_base.html#a7c782f79c381355f43c0d973fff56f13">movementPlane</a> </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="_a_i_base_8cs_source.html">AIBase.cs</a> 第 <a class="el" href="_a_i_base_8cs_source.html#l00487">487</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a379a06037a28b63720415bce93714692"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a379a06037a28b63720415bce93714692">&#9670;&nbsp;</a></span>SimulateRotationTowards() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_unity_engine_1_1_quaternion.html">Quaternion</a> Pathfinding.AIBase.SimulateRotationTowards </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_unity_engine_1_1_vector3.html">Vector3</a>&#160;</td>
+          <td class="paramname"><em>direction</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>maxDegrees</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Simulates rotating the agent towards the specified direction and returns the new rotation. </p><dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">direction</td><td>Direction in world space to rotate towards. </td></tr>
+    <tr><td class="paramname">maxDegrees</td><td>Maximum number of degrees to rotate this frame.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Note that this only calculates a new rotation, it does not change the actual rotation of the agent. Useful when you are handling movement externally using <a class="el" href="class_pathfinding_1_1_a_i_base.html#aebdae01932608c6e0a429a1de2c98089">FinalizeMovement</a> but you want to use the built-in rotation code.</p>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="class_pathfinding_1_1_a_i_base.html#a91ff41bff489551608d085ab8ca1c674">rotationIn2D</a> </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="_a_i_base_8cs_source.html">AIBase.cs</a> 第 <a class="el" href="_a_i_base_8cs_source.html#l00474">474</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a7fa51fdf242b5da3eb82249bc431ca2e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7fa51fdf242b5da3eb82249bc431ca2e">&#9670;&nbsp;</a></span>Start()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void Pathfinding.AIBase.Start </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Starts searching for paths. If you override this method you should in most cases call base.Start () at the start of it. </p><dl class="section see"><dt>参见</dt><dd>#Init </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="_a_i_base_8cs_source.html">AIBase.cs</a> 第 <a class="el" href="_a_i_base_8cs_source.html#l00280">280</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a98c40fd55db58750a77e3b1fe796f3fd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a98c40fd55db58750a77e3b1fe796f3fd">&#9670;&nbsp;</a></span>Teleport()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void Pathfinding.AIBase.Teleport </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_unity_engine_1_1_vector3.html">Vector3</a>&#160;</td>
+          <td class="paramname"><em>newPosition</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>clearPath</em> = <code>true</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p></p>
+<p>Instantly move the agent to a new position. This will trigger a path recalculation (if <em>clearPath</em> is true, which is the default) so if you want to teleport the agent and change its <a class="el" href="class_pathfinding_1_1_a_i_base.html#adc4e4d26d791e66ecebfc00fbb03328f">destination</a> it is recommended that you set the <a class="el" href="class_pathfinding_1_1_a_i_base.html#adc4e4d26d791e66ecebfc00fbb03328f">destination</a> before calling this method.</p>
+<p>The current path will be cleared by default.</p>
+<dl class="section see"><dt>参见</dt><dd>Works similarly to Unity's NavmeshAgent.Warp. </dd>
+<dd>
+<a class="el" href="class_pathfinding_1_1_a_i_base.html#a26afcddbffa25240e2a0919b34c186a3">SearchPath</a> </dd></dl>
+
+<p>被 <a class="el" href="class_pathfinding_1_1_a_i_path.html#a6813d572d16802ce0d674faaa44e35ac">Pathfinding.AIPath</a> 重载.</p>
+
+<p class="definition">在文件 <a class="el" href="_a_i_base_8cs_source.html">AIBase.cs</a> 第 <a class="el" href="_a_i_base_8cs_source.html#l00296">296</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a942fc9185cd8c810e9421c0b5ea2b510"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a942fc9185cd8c810e9421c0b5ea2b510">&#9670;&nbsp;</a></span>Update()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void Pathfinding.AIBase.Update </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Called every frame. If no rigidbodies are used then all movement happens here. </p>
+
+<p class="definition">在文件 <a class="el" href="_a_i_base_8cs_source.html">AIBase.cs</a> 第 <a class="el" href="_a_i_base_8cs_source.html#l00325">325</a> 行定义.</p>
+
+</div>
+</div>
+<a id="acbb4d33d999513ad040fdcfbf54d299c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acbb4d33d999513ad040fdcfbf54d299c">&#9670;&nbsp;</a></span>UpdateVelocity()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Pathfinding.AIBase.UpdateVelocity </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_a_i_base_8cs_source.html">AIBase.cs</a> 第 <a class="el" href="_a_i_base_8cs_source.html#l00574">574</a> 行定义.</p>
+
+</div>
+</div>
+<h2 class="groupheader">结构体成员变量说明</h2>
+<a id="ac5f8e7ade498b0119d295abe28727fd7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac5f8e7ade498b0119d295abe28727fd7">&#9670;&nbsp;</a></span>canMove</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Pathfinding.AIBase.canMove = true</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p></p>
+<p>Enables or disables movement completely. If you want the agent to stand still, but still react to local avoidance and use gravity: use <a class="el" href="class_pathfinding_1_1_a_i_base.html#aa1a09167d34af0d943a1b63b0b0a54c6">isStopped</a> instead.</p>
+<p>This is also useful if you want to have full control over when the movement calculations run. Take a look at <a class="el" href="class_pathfinding_1_1_a_i_base.html#a3db178e3286c1cdf6c43d146797df942">MovementUpdate</a></p>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="class_pathfinding_1_1_a_i_base.html#a41e967af16fe497755ada4bc9ee6a87f">canSearch</a> </dd>
+<dd>
+<a class="el" href="class_pathfinding_1_1_a_i_base.html#aa1a09167d34af0d943a1b63b0b0a54c6">isStopped</a> </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="_a_i_base_8cs_source.html">AIBase.cs</a> 第 <a class="el" href="_a_i_base_8cs_source.html#l00036">36</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a41e967af16fe497755ada4bc9ee6a87f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a41e967af16fe497755ada4bc9ee6a87f">&#9670;&nbsp;</a></span>canSearch</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Pathfinding.AIBase.canSearch = true</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p></p>
+<p>Enables or disables recalculating the path at regular intervals. Setting this to false does not stop any active path requests from being calculated or stop it from continuing to follow the current path.</p>
+<p>Note that this only disables automatic path recalculations. If you call the <a class="el" href="class_pathfinding_1_1_a_i_base.html#a26afcddbffa25240e2a0919b34c186a3">SearchPath()</a> method a path will still be calculated.</p>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="class_pathfinding_1_1_a_i_base.html#ac5f8e7ade498b0119d295abe28727fd7">canMove</a> </dd>
+<dd>
+<a class="el" href="class_pathfinding_1_1_a_i_base.html#aa1a09167d34af0d943a1b63b0b0a54c6">isStopped</a> </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="_a_i_base_8cs_source.html">AIBase.cs</a> 第 <a class="el" href="_a_i_base_8cs_source.html#l00033">33</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a8316799eae5218bc12b14920c8f2bd1a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8316799eae5218bc12b14920c8f2bd1a">&#9670;&nbsp;</a></span>centerOffset</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Pathfinding.AIBase.centerOffset = 1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Offset along the Y coordinate for the ground raycast start position. Normally the pivot of the character is at the character's feet, but you usually want to fire the raycast from the character's center, so this value should be half of the character's height.</p>
+<p>A green gizmo line will be drawn upwards from the pivot point of the character to indicate where the raycast will start.</p>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="class_pathfinding_1_1_a_i_base.html#a02b6a0775da56966c31a6a0fb55664b8">gravity</a> </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="_a_i_base_8cs_source.html">AIBase.cs</a> 第 <a class="el" href="_a_i_base_8cs_source.html#l00064">64</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a0fffcf5ba963a7b2a87d3a1f08f36235"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0fffcf5ba963a7b2a87d3a1f08f36235">&#9670;&nbsp;</a></span>controller</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">CharacterController Pathfinding.AIBase.controller</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Cached CharacterController component </p>
+
+<p class="definition">在文件 <a class="el" href="_a_i_base_8cs_source.html">AIBase.cs</a> 第 <a class="el" href="_a_i_base_8cs_source.html#l00128">128</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a6162cffd323ef75fe22ee0f2605b2264"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6162cffd323ef75fe22ee0f2605b2264">&#9670;&nbsp;</a></span>GizmoColorRaycast</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly Color Pathfinding.AIBase.GizmoColorRaycast = new Color(118.0f/255, 206.0f/255, 112.0f/255)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="_a_i_base_8cs_source.html">AIBase.cs</a> 第 <a class="el" href="_a_i_base_8cs_source.html#l00626">626</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a02b6a0775da56966c31a6a0fb55664b8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a02b6a0775da56966c31a6a0fb55664b8">&#9670;&nbsp;</a></span>gravity</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_unity_engine_1_1_vector3.html">Vector3</a> Pathfinding.AIBase.gravity = new <a class="el" href="struct_unity_engine_1_1_vector3.html">Vector3</a>(float.NaN, float.NaN, float.NaN)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Gravity to use. If set to (NaN,NaN,NaN) then Physics.Gravity (configured in the Unity project settings) will be used. If set to (0,0,0) then no gravity will be used and no raycast to check for ground penetration will be performed. </p>
+
+<p class="definition">在文件 <a class="el" href="_a_i_base_8cs_source.html">AIBase.cs</a> 第 <a class="el" href="_a_i_base_8cs_source.html#l00046">46</a> 行定义.</p>
+
+</div>
+</div>
+<a id="ae9a733ea5feda6a0cec1e460c4c89e25"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae9a733ea5feda6a0cec1e460c4c89e25">&#9670;&nbsp;</a></span>groundMask</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">LayerMask Pathfinding.AIBase.groundMask = -1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Layer mask to use for ground placement. Make sure this does not include the layer of any colliders attached to this gameobject.</p>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="class_pathfinding_1_1_a_i_base.html#a02b6a0775da56966c31a6a0fb55664b8">gravity</a> </dd>
+<dd>
+<a href="https://docs.unity3d.com/Manual/Layers.html">https://docs.unity3d.com/Manual/Layers.html</a> </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="_a_i_base_8cs_source.html">AIBase.cs</a> 第 <a class="el" href="_a_i_base_8cs_source.html#l00054">54</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a7e0edf6e45a987dfcf2dba58fc6d60bf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7e0edf6e45a987dfcf2dba58fc6d60bf">&#9670;&nbsp;</a></span>lastDeltaPosition</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_unity_engine_1_1_vector2.html">Vector2</a> Pathfinding.AIBase.lastDeltaPosition</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Amount which the character wants or tried to move with during the last frame </p>
+
+<p class="definition">在文件 <a class="el" href="_a_i_base_8cs_source.html">AIBase.cs</a> 第 <a class="el" href="_a_i_base_8cs_source.html#l00178">178</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a533e10419322845377bd558516120847"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a533e10419322845377bd558516120847">&#9670;&nbsp;</a></span>lastDeltaTime</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Pathfinding.AIBase.lastDeltaTime</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Delta time used for movement during the last frame </p>
+
+<p class="definition">在文件 <a class="el" href="_a_i_base_8cs_source.html">AIBase.cs</a> 第 <a class="el" href="_a_i_base_8cs_source.html#l00166">166</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a36d5d41161ec324c1b6937708d4f90e3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a36d5d41161ec324c1b6937708d4f90e3">&#9670;&nbsp;</a></span>lastRepath</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Pathfinding.AIBase.lastRepath = float.NegativeInfinity</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Time when the last path request was started </p>
+
+<p class="definition">在文件 <a class="el" href="_a_i_base_8cs_source.html">AIBase.cs</a> 第 <a class="el" href="_a_i_base_8cs_source.html#l00184">184</a> 行定义.</p>
+
+</div>
+</div>
+<a id="afc0d523a19411fc5573fe4658cf53a6f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afc0d523a19411fc5573fe4658cf53a6f">&#9670;&nbsp;</a></span>maxSpeed</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Pathfinding.AIBase.maxSpeed = 1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Max speed in world units per second </p>
+
+<p class="definition">在文件 <a class="el" href="_a_i_base_8cs_source.html">AIBase.cs</a> 第 <a class="el" href="_a_i_base_8cs_source.html#l00040">40</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a7c782f79c381355f43c0d973fff56f13"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7c782f79c381355f43c0d973fff56f13">&#9670;&nbsp;</a></span>movementPlane</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="interface_p_f_1_1_i_movement_plane.html">IMovementPlane</a> Pathfinding.AIBase.movementPlane = GraphTransform.identityTransform</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Plane which this agent is moving in. This is used to convert between world space and a movement plane to make it possible to use this script in both 2D games and 3D games. </p>
+
+<p class="definition">在文件 <a class="el" href="_a_i_base_8cs_source.html">AIBase.cs</a> 第 <a class="el" href="_a_i_base_8cs_source.html#l00137">137</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a8f2e995ded129f24bf34519f0cfeb34d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8f2e995ded129f24bf34519f0cfeb34d">&#9670;&nbsp;</a></span>prevFrame</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Pathfinding.AIBase.prevFrame</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Last frame index when <a class="el" href="class_pathfinding_1_1_a_i_base.html#a35a512a38979e6653a131728522d5d7e">prevPosition1</a> was updated </p>
+
+<p class="definition">在文件 <a class="el" href="_a_i_base_8cs_source.html">AIBase.cs</a> 第 <a class="el" href="_a_i_base_8cs_source.html#l00169">169</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a35a512a38979e6653a131728522d5d7e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a35a512a38979e6653a131728522d5d7e">&#9670;&nbsp;</a></span>prevPosition1</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_unity_engine_1_1_vector3.html">Vector3</a> Pathfinding.AIBase.prevPosition1</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Position of the character at the end of the last frame </p>
+
+<p class="definition">在文件 <a class="el" href="_a_i_base_8cs_source.html">AIBase.cs</a> 第 <a class="el" href="_a_i_base_8cs_source.html#l00172">172</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a5e72b38fd20753af8f8859019a01218e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5e72b38fd20753af8f8859019a01218e">&#9670;&nbsp;</a></span>prevPosition2</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_unity_engine_1_1_vector3.html">Vector3</a> Pathfinding.AIBase.prevPosition2</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Position of the character at the end of the frame before the last frame </p>
+
+<p class="definition">在文件 <a class="el" href="_a_i_base_8cs_source.html">AIBase.cs</a> 第 <a class="el" href="_a_i_base_8cs_source.html#l00175">175</a> 行定义.</p>
+
+</div>
+</div>
+<a id="afa4d04fa3ca0dab9efd337f4137aaee1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afa4d04fa3ca0dab9efd337f4137aaee1">&#9670;&nbsp;</a></span>repathRate</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Pathfinding.AIBase.repathRate = 0.5f</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Determines how often the agent will search for new paths (in seconds). The agent will plan a new path to the target every N seconds.</p>
+<p>If you have fast moving targets or AIs, you might want to set it to a lower value.</p>
+<dl class="section see"><dt>参见</dt><dd>#RepeatTrySearchPath </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="_a_i_base_8cs_source.html">AIBase.cs</a> 第 <a class="el" href="_a_i_base_8cs_source.html#l00029">29</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a58c18c3286632390becbbb3dbf3d476d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a58c18c3286632390becbbb3dbf3d476d">&#9670;&nbsp;</a></span>rigid</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Rigidbody Pathfinding.AIBase.rigid</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Cached Rigidbody component </p>
+
+<p class="definition">在文件 <a class="el" href="_a_i_base_8cs_source.html">AIBase.cs</a> 第 <a class="el" href="_a_i_base_8cs_source.html#l00122">122</a> 行定义.</p>
+
+</div>
+</div>
+<a id="af4099b509c0abacab085f0b15d88b6fa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af4099b509c0abacab085f0b15d88b6fa">&#9670;&nbsp;</a></span>rigid2D</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Rigidbody2D Pathfinding.AIBase.rigid2D</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Cached Rigidbody component </p>
+
+<p class="definition">在文件 <a class="el" href="_a_i_base_8cs_source.html">AIBase.cs</a> 第 <a class="el" href="_a_i_base_8cs_source.html#l00125">125</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a91ff41bff489551608d085ab8ca1c674"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a91ff41bff489551608d085ab8ca1c674">&#9670;&nbsp;</a></span>rotationIn2D</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Pathfinding.AIBase.rotationIn2D = false</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>If true, the forward axis of the character will be along the Y axis instead of the Z axis.</p>
+<p>For 3D games you most likely want to leave this the default value which is false. For 2D games you most likely want to change this to true as in 2D games you usually want the Y axis to be the forwards direction of the character.</p>
+<p>\shadowimage{aibase_forward_axis.png} </p>
+
+<p class="definition">在文件 <a class="el" href="_a_i_base_8cs_source.html">AIBase.cs</a> 第 <a class="el" href="_a_i_base_8cs_source.html#l00074">74</a> 行定义.</p>
+
+</div>
+</div>
+<a id="ac9b5ed6aaca06aeb54d80c8a3d3a7a67"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac9b5ed6aaca06aeb54d80c8a3d3a7a67">&#9670;&nbsp;</a></span>rvoController</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_controller.html">RVOController</a> Pathfinding.AIBase.rvoController</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Cached RVOController component </p>
+
+<p class="definition">在文件 <a class="el" href="_a_i_base_8cs_source.html">AIBase.cs</a> 第 <a class="el" href="_a_i_base_8cs_source.html#l00131">131</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a407f52e610fff493e2b72e1bd9eafb0e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a407f52e610fff493e2b72e1bd9eafb0e">&#9670;&nbsp;</a></span>seeker</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_pathfinding_1_1_seeker.html">Seeker</a> Pathfinding.AIBase.seeker</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Cached <a class="el" href="class_pathfinding_1_1_seeker.html">Seeker</a> component </p>
+
+<p class="definition">在文件 <a class="el" href="_a_i_base_8cs_source.html">AIBase.cs</a> 第 <a class="el" href="_a_i_base_8cs_source.html#l00116">116</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a79f8752ff8f03561670b649877885f47"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a79f8752ff8f03561670b649877885f47">&#9670;&nbsp;</a></span>simulatedPosition</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_unity_engine_1_1_vector3.html">Vector3</a> Pathfinding.AIBase.simulatedPosition</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Position of the agent. If <a class="el" href="class_pathfinding_1_1_a_i_base.html#a6ded00a6060ae9f954dd7d7660d018e8">updatePosition</a> is true then this value will be synchronized every frame with Transform.position. </p>
+
+<p class="definition">在文件 <a class="el" href="_a_i_base_8cs_source.html">AIBase.cs</a> 第 <a class="el" href="_a_i_base_8cs_source.html#l00079">79</a> 行定义.</p>
+
+</div>
+</div>
+<a id="aa976910d0f07cc4b6c202b0641556e29"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa976910d0f07cc4b6c202b0641556e29">&#9670;&nbsp;</a></span>simulatedRotation</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_unity_engine_1_1_quaternion.html">Quaternion</a> Pathfinding.AIBase.simulatedRotation</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Rotation of the agent. If <a class="el" href="class_pathfinding_1_1_a_i_base.html#ad13ed156c992eca7feee6489ffe78278">updateRotation</a> is true then this value will be synchronized every frame with Transform.rotation. </p>
+
+<p class="definition">在文件 <a class="el" href="_a_i_base_8cs_source.html">AIBase.cs</a> 第 <a class="el" href="_a_i_base_8cs_source.html#l00084">84</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a12e0c1364be2699fc0d36c0c313e1579"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a12e0c1364be2699fc0d36c0c313e1579">&#9670;&nbsp;</a></span>tr</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Transform Pathfinding.AIBase.tr</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Cached Transform component </p>
+
+<p class="definition">在文件 <a class="el" href="_a_i_base_8cs_source.html">AIBase.cs</a> 第 <a class="el" href="_a_i_base_8cs_source.html#l00119">119</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a6ded00a6060ae9f954dd7d7660d018e8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6ded00a6060ae9f954dd7d7660d018e8">&#9670;&nbsp;</a></span>updatePosition</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Pathfinding.AIBase.updatePosition = true</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Determines if the character's position should be coupled to the Transform's position. If false then all movement calculations will happen as usual, but the object that this component is attached to will not move instead only the <a class="el" href="class_pathfinding_1_1_a_i_base.html#a11f9fced4a7fac3f1ce4aa144a9e9873">position</a> property will change.</p>
+<p>This is useful if you want to control the movement of the character using some other means such as for example root motion but still want the AI to move freely. </p><dl class="section see"><dt>参见</dt><dd>Combined with calling <a class="el" href="class_pathfinding_1_1_a_i_base.html#a3db178e3286c1cdf6c43d146797df942">MovementUpdate</a> from a separate script instead of it being called automatically one can take a similar approach to what is documented here: <a href="https://docs.unity3d.com/Manual/nav-CouplingAnimationAndNavigation.html">https://docs.unity3d.com/Manual/nav-CouplingAnimationAndNavigation.html</a></dd>
+<dd>
+<a class="el" href="class_pathfinding_1_1_a_i_base.html#ac5f8e7ade498b0119d295abe28727fd7">canMove</a> which in contrast to this field will disable all movement calculations. </dd>
+<dd>
+<a class="el" href="class_pathfinding_1_1_a_i_base.html#ad13ed156c992eca7feee6489ffe78278">updateRotation</a> </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="_a_i_base_8cs_source.html">AIBase.cs</a> 第 <a class="el" href="_a_i_base_8cs_source.html#l00151">151</a> 行定义.</p>
+
+</div>
+</div>
+<a id="ad13ed156c992eca7feee6489ffe78278"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad13ed156c992eca7feee6489ffe78278">&#9670;&nbsp;</a></span>updateRotation</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Pathfinding.AIBase.updateRotation = true</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Determines if the character's rotation should be coupled to the Transform's rotation. If false then all movement calculations will happen as usual, but the object that this component is attached to will not rotate instead only the <a class="el" href="class_pathfinding_1_1_a_i_base.html#aad1bb51c011f0f9d05c640788e6f12ef">rotation</a> property will change.</p>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="class_pathfinding_1_1_a_i_base.html#a6ded00a6060ae9f954dd7d7660d018e8">updatePosition</a> </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="_a_i_base_8cs_source.html">AIBase.cs</a> 第 <a class="el" href="_a_i_base_8cs_source.html#l00160">160</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a34e29e401ffda5567d0099adba806e01"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a34e29e401ffda5567d0099adba806e01">&#9670;&nbsp;</a></span>velocity2D</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_unity_engine_1_1_vector2.html">Vector2</a> Pathfinding.AIBase.velocity2D</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Current desired velocity of the agent (does not include local avoidance and physics). Lies in the movement plane. </p>
+
+<p class="definition">在文件 <a class="el" href="_a_i_base_8cs_source.html">AIBase.cs</a> 第 <a class="el" href="_a_i_base_8cs_source.html#l00105">105</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a11e6f2567cda3e072df5d575ab2b177c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a11e6f2567cda3e072df5d575ab2b177c">&#9670;&nbsp;</a></span>verticalVelocity</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Pathfinding.AIBase.verticalVelocity</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Velocity due to gravity. Perpendicular to the movement plane.</p>
+<p>When the agent is grounded this may not accurately reflect the velocity of the agent. It may be non-zero even though the agent is not moving. </p>
+
+<p class="definition">在文件 <a class="el" href="_a_i_base_8cs_source.html">AIBase.cs</a> 第 <a class="el" href="_a_i_base_8cs_source.html#l00113">113</a> 行定义.</p>
+
+</div>
+</div>
+<a id="ab35b0de3dcabe8a49261ef997619e23f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab35b0de3dcabe8a49261ef997619e23f">&#9670;&nbsp;</a></span>waitingForPathCalculation</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Pathfinding.AIBase.waitingForPathCalculation = false</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Only when the previous path has been calculated should the script consider searching for a new path </p>
+
+<p class="definition">在文件 <a class="el" href="_a_i_base_8cs_source.html">AIBase.cs</a> 第 <a class="el" href="_a_i_base_8cs_source.html#l00181">181</a> 行定义.</p>
+
+</div>
+</div>
+<h2 class="groupheader">属性说明</h2>
+<a id="a8ccd3c47fb9acedc0f7dbfce3615470c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8ccd3c47fb9acedc0f7dbfce3615470c">&#9670;&nbsp;</a></span>desiredVelocity</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_unity_engine_1_1_vector3.html">Vector3</a>? Pathfinding.AIBase.desiredVelocity</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Velocity that this agent wants to move with. Includes gravity and local avoidance if applicable. </p>
+
+<p class="definition">在文件 <a class="el" href="_a_i_base_8cs_source.html">AIBase.cs</a> 第 <a class="el" href="_a_i_base_8cs_source.html#l00231">231</a> 行定义.</p>
+
+</div>
+</div>
+<a id="adc4e4d26d791e66ecebfc00fbb03328f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adc4e4d26d791e66ecebfc00fbb03328f">&#9670;&nbsp;</a></span>destination</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_unity_engine_1_1_vector3.html">Vector3</a> Pathfinding.AIBase.destination</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p></p>
+<p>Position in the world that this agent should move to.</p>
+<p>If no destination has been set yet, then (+infinity, +infinity, +infinity) will be returned.</p>
+<p>Note that setting this property does not immediately cause the agent to recalculate its path. So it may take some time before the agent starts to move towards this point. Most movement scripts have a <em>repathRate</em> field which indicates how often the agent looks for a new path. You can also call the <a class="el" href="class_pathfinding_1_1_a_i_base.html#a26afcddbffa25240e2a0919b34c186a3">SearchPath</a> method to immediately start to search for a new path. Paths are calculated asynchronously so when an agent starts to search for path it may take a few frames (usually 1 or 2) until the result is available. During this time the #pathPending property will return true.</p>
+<p>If you are setting a destination and then want to know when the agent has reached that destination then you should check both #pathPending and #reachedEndOfPath: </p><div class="fragment"></div><!-- fragment -->
+<p class="definition">在文件 <a class="el" href="_a_i_base_8cs_source.html">AIBase.cs</a> 第 <a class="el" href="_a_i_base_8cs_source.html#l00219">219</a> 行定义.</p>
+
+</div>
+</div>
+<a id="aa1a09167d34af0d943a1b63b0b0a54c6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa1a09167d34af0d943a1b63b0b0a54c6">&#9670;&nbsp;</a></span>isStopped</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Pathfinding.AIBase.isStopped</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p></p>
+<p>Gets or sets if the agent should stop moving. If this is set to true the agent will immediately start to slow down as quickly as it can to come to a full stop. The agent will still react to local avoidance and gravity (if applicable), but it will not try to move in any particular direction.</p>
+<p>The current path of the agent will not be cleared, so when this is set to false again the agent will continue moving along the previous path.</p>
+<p>This is a purely user-controlled parameter, so for example it is not set automatically when the agent stops moving because it has reached the target. Use #reachedEndOfPath for that.</p>
+<p>If this property is set to true while the agent is traversing an off-mesh link (RichAI script only), then the agent will continue traversing the link and stop once it has completed it.</p>
+<dl class="section note"><dt>注解</dt><dd>This is not the same as the <a class="el" href="class_pathfinding_1_1_a_i_base.html#ac5f8e7ade498b0119d295abe28727fd7">canMove</a> setting which some movement scripts have. The <a class="el" href="class_pathfinding_1_1_a_i_base.html#ac5f8e7ade498b0119d295abe28727fd7">canMove</a> setting disables movement calculations completely (which among other things makes it not be affected by local avoidance or gravity). For the <a class="el" href="class_pathfinding_1_1_a_i_lerp.html">AILerp</a> movement script which doesn't use gravity or local avoidance anyway changing this property is very similar to changing <a class="el" href="class_pathfinding_1_1_a_i_base.html#ac5f8e7ade498b0119d295abe28727fd7">canMove</a>.</dd></dl>
+<p>The #steeringTarget property will continue to indicate the point which the agent would move towards if it would not be stopped. </p>
+
+<p class="definition">在文件 <a class="el" href="_a_i_base_8cs_source.html">AIBase.cs</a> 第 <a class="el" href="_a_i_base_8cs_source.html#l00239">239</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a39fde7ace50a1ab852abc7d47521bca3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a39fde7ace50a1ab852abc7d47521bca3">&#9670;&nbsp;</a></span>onSearchPath</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">System.Action Pathfinding.AIBase.onSearchPath</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p></p>
+<p>Called when the agent recalculates its path. This is called both for automatic path recalculations (see <a class="el" href="class_pathfinding_1_1_a_i_base.html#a41e967af16fe497755ada4bc9ee6a87f">canSearch</a>) and manual ones (see <a class="el" href="class_pathfinding_1_1_a_i_base.html#a26afcddbffa25240e2a0919b34c186a3">SearchPath</a>).</p>
+<dl class="section see"><dt>参见</dt><dd>Take a look at the <a class="el" href="class_pathfinding_1_1_a_i_destination_setter.html">Pathfinding.AIDestinationSetter</a> source code for an example of how it can be used. </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="_a_i_base_8cs_source.html">AIBase.cs</a> 第 <a class="el" href="_a_i_base_8cs_source.html#l00242">242</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a11f9fced4a7fac3f1ce4aa144a9e9873"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a11f9fced4a7fac3f1ce4aa144a9e9873">&#9670;&nbsp;</a></span>position</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_unity_engine_1_1_vector3.html">Vector3</a>? Pathfinding.AIBase.position</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Position of the agent. In world space. If <a class="el" href="class_pathfinding_1_1_a_i_base.html#a6ded00a6060ae9f954dd7d7660d018e8">updatePosition</a> is true then this value is idential to transform.position. </p><dl class="section see"><dt>参见</dt><dd><a class="el" href="class_pathfinding_1_1_a_i_base.html#a98c40fd55db58750a77e3b1fe796f3fd">Teleport</a> </dd>
+<dd>
+<a class="el" href="class_pathfinding_1_1_a_i_base.html#ac85bb57601ed46324551331be62a055a">Move</a> </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="_a_i_base_8cs_source.html">AIBase.cs</a> 第 <a class="el" href="_a_i_base_8cs_source.html#l00092">92</a> 行定义.</p>
+
+</div>
+</div>
+<a id="aad1bb51c011f0f9d05c640788e6f12ef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aad1bb51c011f0f9d05c640788e6f12ef">&#9670;&nbsp;</a></span>rotation</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_unity_engine_1_1_quaternion.html">Quaternion</a>? Pathfinding.AIBase.rotation</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Rotation of the agent. If <a class="el" href="class_pathfinding_1_1_a_i_base.html#ad13ed156c992eca7feee6489ffe78278">updateRotation</a> is true then this value is identical to transform.rotation. </p>
+
+<p class="definition">在文件 <a class="el" href="_a_i_base_8cs_source.html">AIBase.cs</a> 第 <a class="el" href="_a_i_base_8cs_source.html#l00097">97</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a98a6be29702d08fdd2f006b4662b45c2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a98a6be29702d08fdd2f006b4662b45c2">&#9670;&nbsp;</a></span>shouldRecalculatePath</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool Pathfinding.AIBase.shouldRecalculatePath</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>True if the path should be automatically recalculated as soon as possible </p>
+
+<p class="definition">在文件 <a class="el" href="_a_i_base_8cs_source.html">AIBase.cs</a> 第 <a class="el" href="_a_i_base_8cs_source.html#l00245">245</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a2d67040df4ed2689668298965202db93"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2d67040df4ed2689668298965202db93">&#9670;&nbsp;</a></span>target</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Transform?? Pathfinding.AIBase.target</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Target to move towards. The AI will try to follow/move towards this target. It can be a point on the ground where the player has clicked in an RTS for example, or it can be the player object in a zombie game.</p>
+<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000001">弃用:</a></b></dt><dd>In 4.1 this will automatically add a <a class="el" href="class_pathfinding_1_1_a_i_destination_setter.html">AIDestinationSetter</a> component and set the target on that component. Try instead to use the <a class="el" href="class_pathfinding_1_1_a_i_base.html#adc4e4d26d791e66ecebfc00fbb03328f">destination</a> property which does not require a transform to be created as the target or use the <a class="el" href="class_pathfinding_1_1_a_i_destination_setter.html">AIDestinationSetter</a> component directly. </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="_a_i_base_8cs_source.html">AIBase.cs</a> 第 <a class="el" href="_a_i_base_8cs_source.html#l00204">204</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a980f118380f7394892b0f6067cad7b46"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a980f118380f7394892b0f6067cad7b46">&#9670;&nbsp;</a></span>usingGravity</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Pathfinding.AIBase.usingGravity</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Indicates if gravity is used during this frame </p>
+
+<p class="definition">在文件 <a class="el" href="_a_i_base_8cs_source.html">AIBase.cs</a> 第 <a class="el" href="_a_i_base_8cs_source.html#l00163">163</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a7d33c6940885427f39360c714a96053f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7d33c6940885427f39360c714a96053f">&#9670;&nbsp;</a></span>velocity</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_unity_engine_1_1_vector3.html">Vector3</a>? Pathfinding.AIBase.velocity</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p></p>
+<p>Actual velocity that the agent is moving with. In world units per second.</p>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="class_pathfinding_1_1_a_i_base.html#a8ccd3c47fb9acedc0f7dbfce3615470c">desiredVelocity</a> </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="_a_i_base_8cs_source.html">AIBase.cs</a> 第 <a class="el" href="_a_i_base_8cs_source.html#l00222">222</a> 行定义.</p>
+
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>Assets/Scripts/Libraries/ET/Module/Pathfinding/AstarPathfindingProject/Core/AI/<a class="el" href="_a_i_base_8cs_source.html">AIBase.cs</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespace_pathfinding.html">Pathfinding</a></li><li class="navelem"><a class="el" href="class_pathfinding_1_1_a_i_base.html">AIBase</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:25:23 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

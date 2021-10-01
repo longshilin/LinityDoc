@@ -1,0 +1,159 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: Assets/Scripts/Libraries/ET/Module/Message/Network/AService.cs 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_a_service_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">AService.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_a_service_8cs.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>;</div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Net;</div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_e_t_model.html">ETModel</a></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;{</div>
+<div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="namespace_e_t_model.html#abf72755796a1b16dafaceb0ef384e81f">    6</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">enum</span> <a class="code" href="namespace_e_t_model.html#abf72755796a1b16dafaceb0ef384e81f">NetworkProtocol</a></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;        {</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;                <a class="code" href="namespace_e_t_model.html#abf72755796a1b16dafaceb0ef384e81faeed546b8772d1e1aec9c7feef89b6bcc">KCP</a>,</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;                <a class="code" href="namespace_e_t_model.html#abf72755796a1b16dafaceb0ef384e81fab136ef5f6a01d816991fe3cf7a6ac763">TCP</a>,</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;                <a class="code" href="namespace_e_t_model.html#abf72755796a1b16dafaceb0ef384e81fa45edc1b96407d9d213dd1135962a32a0">WebSocket</a>,</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;        }</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="class_e_t_model_1_1_a_service.html">   13</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">class </span><a class="code" href="class_e_t_model_1_1_a_service.html">AService</a>: <a class="code" href="class_e_t_model_1_1_component.html">Component</a></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        {</div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="class_e_t_model_1_1_a_service.html#aac03a7751e64aba8992f7b1ef695fd57">   15</a></span>&#160;                <span class="keyword">public</span> <span class="keyword">abstract</span> <a class="code" href="class_e_t_model_1_1_a_channel.html">AChannel</a> <a class="code" href="class_e_t_model_1_1_a_service.html#aac03a7751e64aba8992f7b1ef695fd57">GetChannel</a>(<span class="keywordtype">long</span> <span class="keywordtype">id</span>);</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;                <span class="keyword">private</span> Action&lt;AChannel&gt; acceptCallback;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="class_e_t_model_1_1_a_service.html#a03502446d6b98c1099e5e3ad56917ab3">   19</a></span>&#160;                <span class="keyword">public</span> <span class="keyword">event</span> Action&lt;AChannel&gt; <a class="code" href="class_e_t_model_1_1_a_service.html#a03502446d6b98c1099e5e3ad56917ab3">AcceptCallback</a></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;                {</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;                        add</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;                        {</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;                                this.acceptCallback += value;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;                        }</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;                        <span class="keyword">remove</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;                        {</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;                                this.acceptCallback -= value;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;                        }</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;                }</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;                </div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="class_e_t_model_1_1_a_service.html#a8cc8f32a2803df16a9b39fa93e88f4c6">   31</a></span>&#160;                <span class="keyword">protected</span> <span class="keywordtype">void</span> <a class="code" href="class_e_t_model_1_1_a_service.html#a8cc8f32a2803df16a9b39fa93e88f4c6">OnAccept</a>(<a class="code" href="class_e_t_model_1_1_a_channel.html">AChannel</a> channel)</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;                {</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;                        this.acceptCallback.Invoke(channel);</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;                }</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="class_e_t_model_1_1_a_service.html#ac7e999a790cffb4211b55b6ce33070bd">   36</a></span>&#160;                <span class="keyword">public</span> <span class="keyword">abstract</span> <a class="code" href="class_e_t_model_1_1_a_channel.html">AChannel</a> <a class="code" href="class_e_t_model_1_1_a_service.html#ac7e999a790cffb4211b55b6ce33070bd">ConnectChannel</a>(IPEndPoint ipEndPoint);</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;                </div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="class_e_t_model_1_1_a_service.html#a8fce0f6cb42720fecddbcf90d5f86055">   38</a></span>&#160;                <span class="keyword">public</span> <span class="keyword">abstract</span> <a class="code" href="class_e_t_model_1_1_a_channel.html">AChannel</a> <a class="code" href="class_e_t_model_1_1_a_service.html#a8fce0f6cb42720fecddbcf90d5f86055">ConnectChannel</a>(<span class="keywordtype">string</span> address);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="class_e_t_model_1_1_a_service.html#a31185533abd8334ba1f63d879c3437b3">   40</a></span>&#160;                <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keywordtype">void</span> <a class="code" href="class_e_t_model_1_1_a_service.html#a31185533abd8334ba1f63d879c3437b3">Remove</a>(<span class="keywordtype">long</span> channelId);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="class_e_t_model_1_1_a_service.html#a646fd9943e601f2fc8bddbb260245939">   42</a></span>&#160;                <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keywordtype">void</span> <a class="code" href="class_e_t_model_1_1_a_service.html#a646fd9943e601f2fc8bddbb260245939">Update</a>();</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        }</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;}</div>
+<div class="ttc" id="aclass_e_t_model_1_1_a_channel_html"><div class="ttname"><a href="class_e_t_model_1_1_a_channel.html">ETModel.AChannel</a></div><div class="ttdef"><b>Definition:</b> <a href="_a_channel_8cs_source.html#l00013">AChannel.cs:14</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_a_service_html"><div class="ttname"><a href="class_e_t_model_1_1_a_service.html">ETModel.AService</a></div><div class="ttdef"><b>Definition:</b> <a href="_a_service_8cs_source.html#l00013">AService.cs:14</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_a_service_html_a03502446d6b98c1099e5e3ad56917ab3"><div class="ttname"><a href="class_e_t_model_1_1_a_service.html#a03502446d6b98c1099e5e3ad56917ab3">ETModel.AService.AcceptCallback</a></div><div class="ttdeci">Action&lt; AChannel &gt; AcceptCallback</div><div class="ttdef"><b>Definition:</b> <a href="_a_service_8cs_source.html#l00019">AService.cs:20</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_a_service_html_a31185533abd8334ba1f63d879c3437b3"><div class="ttname"><a href="class_e_t_model_1_1_a_service.html#a31185533abd8334ba1f63d879c3437b3">ETModel.AService.Remove</a></div><div class="ttdeci">abstract void Remove(long channelId)</div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_a_service_html_a646fd9943e601f2fc8bddbb260245939"><div class="ttname"><a href="class_e_t_model_1_1_a_service.html#a646fd9943e601f2fc8bddbb260245939">ETModel.AService.Update</a></div><div class="ttdeci">abstract void Update()</div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_a_service_html_a8cc8f32a2803df16a9b39fa93e88f4c6"><div class="ttname"><a href="class_e_t_model_1_1_a_service.html#a8cc8f32a2803df16a9b39fa93e88f4c6">ETModel.AService.OnAccept</a></div><div class="ttdeci">void OnAccept(AChannel channel)</div><div class="ttdef"><b>Definition:</b> <a href="_a_service_8cs_source.html#l00031">AService.cs:31</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_a_service_html_a8fce0f6cb42720fecddbcf90d5f86055"><div class="ttname"><a href="class_e_t_model_1_1_a_service.html#a8fce0f6cb42720fecddbcf90d5f86055">ETModel.AService.ConnectChannel</a></div><div class="ttdeci">abstract AChannel ConnectChannel(string address)</div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_a_service_html_aac03a7751e64aba8992f7b1ef695fd57"><div class="ttname"><a href="class_e_t_model_1_1_a_service.html#aac03a7751e64aba8992f7b1ef695fd57">ETModel.AService.GetChannel</a></div><div class="ttdeci">abstract AChannel GetChannel(long id)</div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_a_service_html_ac7e999a790cffb4211b55b6ce33070bd"><div class="ttname"><a href="class_e_t_model_1_1_a_service.html#ac7e999a790cffb4211b55b6ce33070bd">ETModel.AService.ConnectChannel</a></div><div class="ttdeci">abstract AChannel ConnectChannel(IPEndPoint ipEndPoint)</div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_component_html"><div class="ttname"><a href="class_e_t_model_1_1_component.html">ETModel.Component</a></div><div class="ttdef"><b>Definition:</b> <a href="_libraries_2_e_t_2_base_2_object_2_component_8cs_source.html#l00011">Component.cs:12</a></div></div>
+<div class="ttc" id="anamespace_e_t_model_html"><div class="ttname"><a href="namespace_e_t_model.html">ETModel</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_e_t_task_method_builder_8cs_source.html#l00006">AsyncETTaskMethodBuilder.cs:7</a></div></div>
+<div class="ttc" id="anamespace_e_t_model_html_abf72755796a1b16dafaceb0ef384e81f"><div class="ttname"><a href="namespace_e_t_model.html#abf72755796a1b16dafaceb0ef384e81f">ETModel.NetworkProtocol</a></div><div class="ttdeci">NetworkProtocol</div><div class="ttdef"><b>Definition:</b> <a href="_a_service_8cs_source.html#l00006">AService.cs:7</a></div></div>
+<div class="ttc" id="anamespace_e_t_model_html_abf72755796a1b16dafaceb0ef384e81fa45edc1b96407d9d213dd1135962a32a0"><div class="ttname"><a href="namespace_e_t_model.html#abf72755796a1b16dafaceb0ef384e81fa45edc1b96407d9d213dd1135962a32a0">ETModel.NetworkProtocol.WebSocket</a></div><div class="ttdeci">@ WebSocket</div></div>
+<div class="ttc" id="anamespace_e_t_model_html_abf72755796a1b16dafaceb0ef384e81fab136ef5f6a01d816991fe3cf7a6ac763"><div class="ttname"><a href="namespace_e_t_model.html#abf72755796a1b16dafaceb0ef384e81fab136ef5f6a01d816991fe3cf7a6ac763">ETModel.NetworkProtocol.TCP</a></div><div class="ttdeci">@ TCP</div></div>
+<div class="ttc" id="anamespace_e_t_model_html_abf72755796a1b16dafaceb0ef384e81faeed546b8772d1e1aec9c7feef89b6bcc"><div class="ttname"><a href="namespace_e_t_model.html#abf72755796a1b16dafaceb0ef384e81faeed546b8772d1e1aec9c7feef89b6bcc">ETModel.NetworkProtocol.KCP</a></div><div class="ttdeci">@ KCP</div></div>
+<div class="ttc" id="anamespace_system_html"><div class="ttname"><a href="namespace_system.html">System</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_method_builder_attribute_8cs_source.html#l00001">AsyncMethodBuilderAttribute.cs:2</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_84bbf7b3c7f28a5a18725745e1505219.html">Assets</a></li><li class="navelem"><a class="el" href="dir_f13b41af88cf68434578284aaf699e39.html">Scripts</a></li><li class="navelem"><a class="el" href="dir_46d134a3bf82cf4dc49ca8f728aea58c.html">Libraries</a></li><li class="navelem"><a class="el" href="dir_f6df8f7e58ea5a2220a287b647108730.html">ET</a></li><li class="navelem"><a class="el" href="dir_83296929b1cb48979e134a96af9624b1.html">Module</a></li><li class="navelem"><a class="el" href="dir_294341664f59c46dd79c497dca774bde.html">Message</a></li><li class="navelem"><a class="el" href="dir_687a23efdbeee3ff0a60924af43ee8f5.html">Network</a></li><li class="navelem"><a class="el" href="_a_service_8cs.html">AService.cs</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:24:45 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

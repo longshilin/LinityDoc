@@ -1,0 +1,168 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: ETServer/Server/ThirdParty/MongoDBDriver/MongoDB.Bson/Serialization/Serializers/ExpandoObjectSerializer.cs 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_e_t_server_2_server_2_third_party_2_mongo_d_b_driver_2_mongo_d_b_8_bson_2_serialization_2_seriadbf0e38dc95e8a2e1e8d7cda90943c6d_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">ExpandoObjectSerializer.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_e_t_server_2_server_2_third_party_2_mongo_d_b_driver_2_mongo_d_b_8_bson_2_serialization_2_seriadbf0e38dc95e8a2e1e8d7cda90943c6d.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/* Copyright 2010-present MongoDB Inc.</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">* Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">* you may not use this file except in compliance with the License.</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">* You may obtain a copy of the License at</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">* http://www.apache.org/licenses/LICENSE-2.0</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">* Unless required by applicable law or agreed to in writing, software</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">* distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">* See the License for the specific language governing permissions and</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">* limitations under the License.</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Collections.Generic;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Dynamic;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers.html">MongoDB.Bson.Serialization.Serializers</a></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;{</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keyword">public</span> <span class="keyword">class </span>ExpandoObjectSerializer : DynamicDocumentBaseSerializer&lt;ExpandoObject&gt;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    {</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <span class="comment">// private fields</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <span class="keyword">private</span> readonly IBsonSerializer&lt;List&lt;object&gt;&gt; _listSerializer;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_expando_object_serializer.html#a946d7f14f9f5d9fb0975901615c75b2e">   37</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_expando_object_serializer.html#a946d7f14f9f5d9fb0975901615c75b2e">ExpandoObjectSerializer</a>()</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        {</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;            _listSerializer = BsonSerializer.LookupSerializer&lt;List&lt;object&gt;&gt;();</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        }</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_expando_object_serializer.html#a93d5cb76db726c8fa23dc89172c61b88">   46</a></span>&#160;        <span class="keyword">protected</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_expando_object_serializer.html#a93d5cb76db726c8fa23dc89172c61b88">ConfigureDeserializationContext</a>(<a class="code" href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_bson_deserialization_context.html">BsonDeserializationContext</a>.<a class="code" href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_bson_deserialization_context_1_1_builder.html">Builder</a> builder)</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        {</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            builder.DynamicDocumentSerializer = <span class="keyword">this</span>;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            builder.DynamicArraySerializer = _listSerializer;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        }</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_expando_object_serializer.html#aa14649cbc7dd3f0ba58036f9fa9c53d4">   56</a></span>&#160;        <span class="keyword">protected</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_expando_object_serializer.html#aa14649cbc7dd3f0ba58036f9fa9c53d4">ConfigureSerializationContext</a>(<a class="code" href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_bson_serialization_context.html">BsonSerializationContext</a>.<a class="code" href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_bson_serialization_context_1_1_builder.html">Builder</a> builder)</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        {</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            builder.IsDynamicType = t =&gt; t == typeof(ExpandoObject) || t == typeof(List&lt;object&gt;);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        }</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
+<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_expando_object_serializer.html#a7bb7193b3c5258a09000c95e0ffc668e">   67</a></span>&#160;        <span class="keyword">protected</span> <span class="keyword">override</span> ExpandoObject <a class="code" href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_expando_object_serializer.html#a7bb7193b3c5258a09000c95e0ffc668e">CreateDocument</a>()</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        {</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> ExpandoObject();</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        }</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
+<div class="line"><a name="l00078"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_expando_object_serializer.html#aa4357f6baa4573939876b09792df35dd">   78</a></span>&#160;        <span class="keyword">protected</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_expando_object_serializer.html#aa4357f6baa4573939876b09792df35dd">SetValueForMember</a>(ExpandoObject document, <span class="keywordtype">string</span> memberName, <span class="keywordtype">object</span> value)</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        {</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            ((IDictionary&lt;string, object&gt;)document)[memberName] = value;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        }</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+<div class="line"><a name="l00090"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_expando_object_serializer.html#a37b1cac1382a65e67710df19a43cd3e5">   90</a></span>&#160;        <span class="keyword">protected</span> <span class="keyword">override</span> <span class="keywordtype">bool</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_expando_object_serializer.html#a37b1cac1382a65e67710df19a43cd3e5">TryGetValueForMember</a>(ExpandoObject value, <span class="keywordtype">string</span> memberName, out <span class="keywordtype">object</span> memberValue)</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        {</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;            <span class="keywordflow">return</span> ((IDictionary&lt;string, object&gt;)value).TryGetValue(memberName, out memberValue);</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        }</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    }</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;}</div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_serialization_1_1_bson_deserialization_context_1_1_builder_html"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_bson_deserialization_context_1_1_builder.html">MongoDB.Bson.Serialization.BsonDeserializationContext.Builder</a></div><div class="ttdoc">Represents a builder for a BsonDeserializationContext.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_serialization_2_bson_deserialization_context_8cs_source.html#l00134">BsonDeserializationContext.cs:135</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_serialization_1_1_bson_deserialization_context_html"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_bson_deserialization_context.html">MongoDB.Bson.Serialization.BsonDeserializationContext</a></div><div class="ttdoc">Represents all the contextual information needed by a serializer to deserialize a value.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_serialization_2_bson_deserialization_context_8cs_source.html#l00024">BsonDeserializationContext.cs:25</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_serialization_1_1_bson_serialization_context_1_1_builder_html"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_bson_serialization_context_1_1_builder.html">MongoDB.Bson.Serialization.BsonSerializationContext.Builder</a></div><div class="ttdoc">Represents a builder for a BsonSerializationContext.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_serialization_2_bson_serialization_context_8cs_source.html#l00103">BsonSerializationContext.cs:104</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_serialization_1_1_bson_serialization_context_html"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_bson_serialization_context.html">MongoDB.Bson.Serialization.BsonSerializationContext</a></div><div class="ttdoc">Represents all the contextual information needed by a serializer to serialize a value.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_serialization_2_bson_serialization_context_8cs_source.html#l00024">BsonSerializationContext.cs:25</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_expando_object_serializer_html_a37b1cac1382a65e67710df19a43cd3e5"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_expando_object_serializer.html#a37b1cac1382a65e67710df19a43cd3e5">MongoDB.Bson.Serialization.Serializers.ExpandoObjectSerializer.TryGetValueForMember</a></div><div class="ttdeci">override bool TryGetValueForMember(ExpandoObject value, string memberName, out object memberValue)</div><div class="ttdoc">Tries to get the value for a member. Returns true if the member should be serialized.</div><div class="ttdef"><b>Definition:</b> <a href="_e_t_server_2_server_2_third_party_2_mongo_d_b_driver_2_mongo_d_b_8_bson_2_serialization_2_seriadbf0e38dc95e8a2e1e8d7cda90943c6d_source.html#l00090">ExpandoObjectSerializer.cs:90</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_expando_object_serializer_html_a7bb7193b3c5258a09000c95e0ffc668e"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_expando_object_serializer.html#a7bb7193b3c5258a09000c95e0ffc668e">MongoDB.Bson.Serialization.Serializers.ExpandoObjectSerializer.CreateDocument</a></div><div class="ttdeci">override ExpandoObject CreateDocument()</div><div class="ttdoc">Creates the document.</div><div class="ttdef"><b>Definition:</b> <a href="_e_t_server_2_server_2_third_party_2_mongo_d_b_driver_2_mongo_d_b_8_bson_2_serialization_2_seriadbf0e38dc95e8a2e1e8d7cda90943c6d_source.html#l00067">ExpandoObjectSerializer.cs:67</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_expando_object_serializer_html_a93d5cb76db726c8fa23dc89172c61b88"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_expando_object_serializer.html#a93d5cb76db726c8fa23dc89172c61b88">MongoDB.Bson.Serialization.Serializers.ExpandoObjectSerializer.ConfigureDeserializationContext</a></div><div class="ttdeci">override void ConfigureDeserializationContext(BsonDeserializationContext.Builder builder)</div><div class="ttdoc">Configures the deserialization context.</div><div class="ttdef"><b>Definition:</b> <a href="_e_t_server_2_server_2_third_party_2_mongo_d_b_driver_2_mongo_d_b_8_bson_2_serialization_2_seriadbf0e38dc95e8a2e1e8d7cda90943c6d_source.html#l00046">ExpandoObjectSerializer.cs:46</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_expando_object_serializer_html_a946d7f14f9f5d9fb0975901615c75b2e"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_expando_object_serializer.html#a946d7f14f9f5d9fb0975901615c75b2e">MongoDB.Bson.Serialization.Serializers.ExpandoObjectSerializer.ExpandoObjectSerializer</a></div><div class="ttdeci">ExpandoObjectSerializer()</div><div class="ttdoc">Initializes a new instance of the ExpandoObjectSerializer class.</div><div class="ttdef"><b>Definition:</b> <a href="_e_t_server_2_server_2_third_party_2_mongo_d_b_driver_2_mongo_d_b_8_bson_2_serialization_2_seriadbf0e38dc95e8a2e1e8d7cda90943c6d_source.html#l00037">ExpandoObjectSerializer.cs:37</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_expando_object_serializer_html_aa14649cbc7dd3f0ba58036f9fa9c53d4"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_expando_object_serializer.html#aa14649cbc7dd3f0ba58036f9fa9c53d4">MongoDB.Bson.Serialization.Serializers.ExpandoObjectSerializer.ConfigureSerializationContext</a></div><div class="ttdeci">override void ConfigureSerializationContext(BsonSerializationContext.Builder builder)</div><div class="ttdoc">Configures the serialization context.</div><div class="ttdef"><b>Definition:</b> <a href="_e_t_server_2_server_2_third_party_2_mongo_d_b_driver_2_mongo_d_b_8_bson_2_serialization_2_seriadbf0e38dc95e8a2e1e8d7cda90943c6d_source.html#l00056">ExpandoObjectSerializer.cs:56</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_expando_object_serializer_html_aa4357f6baa4573939876b09792df35dd"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_expando_object_serializer.html#aa4357f6baa4573939876b09792df35dd">MongoDB.Bson.Serialization.Serializers.ExpandoObjectSerializer.SetValueForMember</a></div><div class="ttdeci">override void SetValueForMember(ExpandoObject document, string memberName, object value)</div><div class="ttdoc">Sets the value for the member.</div><div class="ttdef"><b>Definition:</b> <a href="_e_t_server_2_server_2_third_party_2_mongo_d_b_driver_2_mongo_d_b_8_bson_2_serialization_2_seriadbf0e38dc95e8a2e1e8d7cda90943c6d_source.html#l00078">ExpandoObjectSerializer.cs:78</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers.html">MongoDB.Bson.Serialization.Serializers</a></div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_serialization_2_serializers_2_abstract_class_serializer_8cs_source.html#l00022">AbstractClassSerializer.cs:23</a></div></div>
+<div class="ttc" id="anamespace_system_html"><div class="ttname"><a href="namespace_system.html">System</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_method_builder_attribute_8cs_source.html#l00001">AsyncMethodBuilderAttribute.cs:2</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_1e261a42b4a2e33df58a15c412684b10.html">ETServer</a></li><li class="navelem"><a class="el" href="dir_473c270c995194c5ad99131d9c901f09.html">Server</a></li><li class="navelem"><a class="el" href="dir_ce426efcf63311ff42488fb2654bd4b4.html">ThirdParty</a></li><li class="navelem"><a class="el" href="dir_a37b2b5f9c8890cc9f6f8392fb0cdff3.html">MongoDBDriver</a></li><li class="navelem"><a class="el" href="dir_198f7ac7ec0ecfbede324c1e9484bef2.html">MongoDB.Bson</a></li><li class="navelem"><a class="el" href="dir_da7326830cd0627a7af7803034884055.html">Serialization</a></li><li class="navelem"><a class="el" href="dir_7e4ba90993179adbd0a14747d3178f74.html">Serializers</a></li><li class="navelem"><a class="el" href="_e_t_server_2_server_2_third_party_2_mongo_d_b_driver_2_mongo_d_b_8_bson_2_serialization_2_seriadbf0e38dc95e8a2e1e8d7cda90943c6d.html">ExpandoObjectSerializer.cs</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:24:55 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

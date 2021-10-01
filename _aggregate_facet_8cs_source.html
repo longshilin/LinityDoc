@@ -1,0 +1,187 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: ETServer/Server/ThirdParty/MongoDBDriver/MongoDB.Driver/AggregateFacet.cs 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_aggregate_facet_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">AggregateFacet.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_aggregate_facet_8cs.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/* Copyright 2016-present MongoDB Inc.</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">* Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">* you may not use this file except in compliance with the License.</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">* You may obtain a copy of the License at</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">* http://www.apache.org/licenses/LICENSE-2.0</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">* Unless required by applicable law or agreed to in writing, software</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">* distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">* See the License for the specific language governing permissions and</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">* limitations under the License.</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_mongo_d_b.html">MongoDB</a>.<a class="code" href="namespace_mongo_d_b_1_1_bson.html">Bson</a>;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_mongo_d_b.html">MongoDB</a>.<a class="code" href="namespace_mongo_d_b_1_1_bson.html">Bson</a>.<a class="code" href="namespace_mongo_d_b_1_1_bson_1_1_serialization.html">Serialization</a>;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_mongo_d_b.html">MongoDB</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver.html">Driver</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core.html">Core</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_misc.html">Misc</a>;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_mongo_d_b_1_1_driver.html">MongoDB.Driver</a></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;{</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">class </span>AggregateFacet</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    {</div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_aggregate_facet.html#a539dd0f602e92bf2d7a827fd08cba397">   38</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_aggregate_facet.html">AggregateFacet&lt;TInput, TOutput&gt;</a> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_aggregate_facet.html#a539dd0f602e92bf2d7a827fd08cba397">Create&lt;TInput, TOutput&gt;</a>(<span class="keywordtype">string</span> name, <a class="code" href="class_mongo_d_b_1_1_driver_1_1_pipeline_definition.html">PipelineDefinition&lt;TInput, TOutput&gt;</a> pipeline)</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        {</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_aggregate_facet.html">AggregateFacet&lt;TInput, TOutput&gt;</a>(name, pipeline);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        }</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    }</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">class </span>AggregateFacet&lt;TInput&gt;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    {</div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_aggregate_facet.html#afd3f653c07dcb34f21d6b0e94b761f97">   54</a></span>&#160;        <span class="keyword">protected</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_aggregate_facet.html#afd3f653c07dcb34f21d6b0e94b761f97">AggregateFacet</a>(<span class="keywordtype">string</span> name)</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        {</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            <a class="code" href="class_mongo_d_b_1_1_driver_1_1_aggregate_facet.html#a8d6cdd12609fbc0960a02128af3191bd">Name</a> = Ensure.IsNotNull(name, nameof(name));</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        }</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_aggregate_facet.html#a8d6cdd12609fbc0960a02128af3191bd">   62</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">string</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_aggregate_facet.html#a8d6cdd12609fbc0960a02128af3191bd">Name</a> { <span class="keyword">get</span>; <span class="keyword">private</span> <span class="keyword">set</span>; }</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_aggregate_facet.html#a3489e45625b178978ea64d28657f89f2">   67</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">abstract</span> <a class="code" href="interface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_serializer.html">IBsonSerializer</a> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_aggregate_facet.html#a3489e45625b178978ea64d28657f89f2">OutputSerializer</a> { <span class="keyword">get</span>; }</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_aggregate_facet.html#ad17e7ec650c09a8f7b9ce5915144ceeb">   72</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">abstract</span> Type <a class="code" href="class_mongo_d_b_1_1_driver_1_1_aggregate_facet.html#ad17e7ec650c09a8f7b9ce5915144ceeb">OutputType</a> { <span class="keyword">get</span>; }</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
+<div class="line"><a name="l00080"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_aggregate_facet.html#a825427e401e65579d664bd0749a3b63e">   80</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">abstract</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_array.html">BsonArray</a> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_aggregate_facet.html#a825427e401e65579d664bd0749a3b63e">RenderPipeline</a>(<a class="code" href="interface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_serializer.html">IBsonSerializer&lt;TInput&gt;</a> inputSerializer, <a class="code" href="interface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_serializer_registry.html">IBsonSerializerRegistry</a> serializerRegistry);</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    }</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+<div class="line"><a name="l00088"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_aggregate_facet.html">   88</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="class_mongo_d_b_1_1_driver_1_1_aggregate_facet.html">AggregateFacet</a>&lt;TInput, TOutput&gt; : <a class="code" href="class_mongo_d_b_1_1_driver_1_1_aggregate_facet.html">AggregateFacet</a>&lt;TInput&gt;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    {</div>
+<div class="line"><a name="l00095"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_aggregate_facet.html#a5676485d115c8dc41d5793f6e746949d">   95</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_aggregate_facet.html#a5676485d115c8dc41d5793f6e746949d">AggregateFacet</a>(<span class="keywordtype">string</span> name, <a class="code" href="class_mongo_d_b_1_1_driver_1_1_pipeline_definition.html">PipelineDefinition&lt;TInput, TOutput&gt;</a> pipeline)</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;            : base(name)</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        {</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;            <a class="code" href="class_mongo_d_b_1_1_driver_1_1_aggregate_facet.html#a2d85086dacb17cbf7e469bbc7aed2549">Pipeline</a> = Ensure.IsNotNull(pipeline, nameof(pipeline));</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        }</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
+<div class="line"><a name="l00102"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_aggregate_facet.html#af54f457d290634dc9f7e258bbadb52a2">  102</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <a class="code" href="interface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_serializer.html">IBsonSerializer</a> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_aggregate_facet.html#a3489e45625b178978ea64d28657f89f2">OutputSerializer</a> =&gt; <a class="code" href="class_mongo_d_b_1_1_driver_1_1_aggregate_facet.html#a2d85086dacb17cbf7e469bbc7aed2549">Pipeline</a>.OutputSerializer;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
+<div class="line"><a name="l00105"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_aggregate_facet.html#a2cd80fe5f4a18df2137a66e42233aa34">  105</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> Type <a class="code" href="class_mongo_d_b_1_1_driver_1_1_aggregate_facet.html#ad17e7ec650c09a8f7b9ce5915144ceeb">OutputType</a> =&gt; typeof(TOutput);</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
+<div class="line"><a name="l00110"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_aggregate_facet.html#a2d85086dacb17cbf7e469bbc7aed2549">  110</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_pipeline_definition.html">PipelineDefinition&lt;TInput, TOutput&gt;</a> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_aggregate_facet.html#a2d85086dacb17cbf7e469bbc7aed2549">Pipeline</a> { <span class="keyword">get</span>; <span class="keyword">private</span> <span class="keyword">set</span>; }</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; </div>
+<div class="line"><a name="l00113"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_aggregate_facet.html#a5ce497f3a7430c412d25748f474e644c">  113</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_array.html">BsonArray</a> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_aggregate_facet.html#a5ce497f3a7430c412d25748f474e644c">RenderPipeline</a>(<a class="code" href="interface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_serializer.html">IBsonSerializer&lt;TInput&gt;</a> inputSerializer, <a class="code" href="interface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_serializer_registry.html">IBsonSerializerRegistry</a> serializerRegistry)</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        {</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;            var renderedPipeline = <a class="code" href="class_mongo_d_b_1_1_driver_1_1_aggregate_facet.html#a2d85086dacb17cbf7e469bbc7aed2549">Pipeline</a>.Render(inputSerializer, serializerRegistry);</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_array.html">BsonArray</a>(renderedPipeline.Documents);</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        }</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    }</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;}</div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_bson_array_html"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_bson_array.html">MongoDB.Bson.BsonArray</a></div><div class="ttdoc">Represents a BSON array.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_array_8cs_source.html#l00031">BsonArray.cs:32</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_aggregate_facet_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_aggregate_facet.html">MongoDB.Driver.AggregateFacet</a></div><div class="ttdoc">Represents static methods for creating facets.</div><div class="ttdef"><b>Definition:</b> <a href="_aggregate_facet_8cs_source.html#l00088">AggregateFacet.cs:89</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_aggregate_facet_html_a2d85086dacb17cbf7e469bbc7aed2549"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_aggregate_facet.html#a2d85086dacb17cbf7e469bbc7aed2549">MongoDB.Driver.AggregateFacet.Pipeline</a></div><div class="ttdeci">PipelineDefinition&lt; TInput, TOutput &gt; Pipeline</div><div class="ttdoc">Gets the facet pipeline.</div><div class="ttdef"><b>Definition:</b> <a href="_aggregate_facet_8cs_source.html#l00110">AggregateFacet.cs:110</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_aggregate_facet_html_a3489e45625b178978ea64d28657f89f2"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_aggregate_facet.html#a3489e45625b178978ea64d28657f89f2">MongoDB.Driver.AggregateFacet.OutputSerializer</a></div><div class="ttdeci">abstract IBsonSerializer OutputSerializer</div><div class="ttdoc">Gets the output serializer.</div><div class="ttdef"><b>Definition:</b> <a href="_aggregate_facet_8cs_source.html#l00067">AggregateFacet.cs:67</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_aggregate_facet_html_a539dd0f602e92bf2d7a827fd08cba397"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_aggregate_facet.html#a539dd0f602e92bf2d7a827fd08cba397">MongoDB.Driver.AggregateFacet.Create&lt; TInput, TOutput &gt;</a></div><div class="ttdeci">static AggregateFacet&lt; TInput, TOutput &gt; Create&lt; TInput, TOutput &gt;(string name, PipelineDefinition&lt; TInput, TOutput &gt; pipeline)</div><div class="ttdoc">Creates a new instance of the AggregateFacet&lt;TInput, TOutput&gt; class.</div><div class="ttdef"><b>Definition:</b> <a href="_aggregate_facet_8cs_source.html#l00038">AggregateFacet.cs:38</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_aggregate_facet_html_a5676485d115c8dc41d5793f6e746949d"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_aggregate_facet.html#a5676485d115c8dc41d5793f6e746949d">MongoDB.Driver.AggregateFacet.AggregateFacet</a></div><div class="ttdeci">AggregateFacet(string name, PipelineDefinition&lt; TInput, TOutput &gt; pipeline)</div><div class="ttdoc">Initializes a new instance of the AggregateFacet&lt;TInput, TOutput&gt; class.</div><div class="ttdef"><b>Definition:</b> <a href="_aggregate_facet_8cs_source.html#l00095">AggregateFacet.cs:95</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_aggregate_facet_html_a5ce497f3a7430c412d25748f474e644c"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_aggregate_facet.html#a5ce497f3a7430c412d25748f474e644c">MongoDB.Driver.AggregateFacet.RenderPipeline</a></div><div class="ttdeci">override BsonArray RenderPipeline(IBsonSerializer&lt; TInput &gt; inputSerializer, IBsonSerializerRegistry serializerRegistry)</div><div class="ttdef"><b>Definition:</b> <a href="_aggregate_facet_8cs_source.html#l00113">AggregateFacet.cs:113</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_aggregate_facet_html_a825427e401e65579d664bd0749a3b63e"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_aggregate_facet.html#a825427e401e65579d664bd0749a3b63e">MongoDB.Driver.AggregateFacet.RenderPipeline</a></div><div class="ttdeci">abstract BsonArray RenderPipeline(IBsonSerializer&lt; TInput &gt; inputSerializer, IBsonSerializerRegistry serializerRegistry)</div><div class="ttdoc">Renders the facet pipeline.</div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_aggregate_facet_html_a8d6cdd12609fbc0960a02128af3191bd"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_aggregate_facet.html#a8d6cdd12609fbc0960a02128af3191bd">MongoDB.Driver.AggregateFacet.Name</a></div><div class="ttdeci">string Name</div><div class="ttdoc">Gets the facet name.</div><div class="ttdef"><b>Definition:</b> <a href="_aggregate_facet_8cs_source.html#l00062">AggregateFacet.cs:62</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_aggregate_facet_html_ad17e7ec650c09a8f7b9ce5915144ceeb"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_aggregate_facet.html#ad17e7ec650c09a8f7b9ce5915144ceeb">MongoDB.Driver.AggregateFacet.OutputType</a></div><div class="ttdeci">abstract Type OutputType</div><div class="ttdoc">Gets the type of the output documents.</div><div class="ttdef"><b>Definition:</b> <a href="_aggregate_facet_8cs_source.html#l00072">AggregateFacet.cs:72</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_aggregate_facet_html_afd3f653c07dcb34f21d6b0e94b761f97"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_aggregate_facet.html#afd3f653c07dcb34f21d6b0e94b761f97">MongoDB.Driver.AggregateFacet.AggregateFacet</a></div><div class="ttdeci">AggregateFacet(string name)</div><div class="ttdoc">Initializes a new instance of the AggregateFacet&lt;TInput&gt; class.</div><div class="ttdef"><b>Definition:</b> <a href="_aggregate_facet_8cs_source.html#l00054">AggregateFacet.cs:54</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_pipeline_definition_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_pipeline_definition.html">MongoDB.Driver.PipelineDefinition</a></div><div class="ttdoc">Base class for a pipeline.</div><div class="ttdef"><b>Definition:</b> <a href="_pipeline_definition_8cs_source.html#l00068">PipelineDefinition.cs:69</a></div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_serializer_html"><div class="ttname"><a href="interface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_serializer.html">MongoDB.Bson.Serialization.IBsonSerializer</a></div><div class="ttdoc">An interface implemented by a serializer.</div><div class="ttdef"><b>Definition:</b> <a href="_e_t_server_2_server_2_third_party_2_mongo_d_b_driver_2_mongo_d_b_8_bson_2_serialization_2_i_bson_serializer_8cs_source.html#l00056">IBsonSerializer.cs:57</a></div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_serializer_registry_html"><div class="ttname"><a href="interface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_serializer_registry.html">MongoDB.Bson.Serialization.IBsonSerializerRegistry</a></div><div class="ttdoc">A serializer registry.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_serialization_2_i_bson_serializer_registry_8cs_source.html#l00023">IBsonSerializerRegistry.cs:24</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_bson_1_1_serialization_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_bson_1_1_serialization.html">MongoDB.Bson.Serialization</a></div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_serialization_2_attributed_serialization_provider_8cs_source.html#l00021">AttributedSerializationProvider.cs:22</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_bson_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_bson.html">MongoDB.Bson</a></div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_bson_constants_8cs_source.html#l00018">BsonConstants.cs:19</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_driver_1_1_core_1_1_misc_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_misc.html">MongoDB.Driver.Core.Misc</a></div><div class="ttdef"><b>Definition:</b> <a href="_array_filters_feature_8cs_source.html#l00020">ArrayFiltersFeature.cs:21</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_driver_1_1_core_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_driver_1_1_core.html">MongoDB.Driver.Core</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_queue_8cs_source.html#l00023">AsyncQueue.cs:24</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_driver_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_driver.html">MongoDB.Driver</a></div><div class="ttdef"><b>Definition:</b> <a href="_aggregate_bucket_auto_granularity_8cs_source.html#l00018">AggregateBucketAutoGranularity.cs:19</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_html"><div class="ttname"><a href="namespace_mongo_d_b.html">MongoDB</a></div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_bson_constants_8cs_source.html#l00018">BsonConstants.cs:19</a></div></div>
+<div class="ttc" id="anamespace_system_html"><div class="ttname"><a href="namespace_system.html">System</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_method_builder_attribute_8cs_source.html#l00001">AsyncMethodBuilderAttribute.cs:2</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_1e261a42b4a2e33df58a15c412684b10.html">ETServer</a></li><li class="navelem"><a class="el" href="dir_473c270c995194c5ad99131d9c901f09.html">Server</a></li><li class="navelem"><a class="el" href="dir_ce426efcf63311ff42488fb2654bd4b4.html">ThirdParty</a></li><li class="navelem"><a class="el" href="dir_a37b2b5f9c8890cc9f6f8392fb0cdff3.html">MongoDBDriver</a></li><li class="navelem"><a class="el" href="dir_42d569251c6b173c0060c74ec4fd3ce0.html">MongoDB.Driver</a></li><li class="navelem"><a class="el" href="_aggregate_facet_8cs.html">AggregateFacet.cs</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:24:58 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,752 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: MongoDB.Driver.Core.Operations.RetryableWriteCommandOperationBase类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_retryable_write_command_operation_base.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">结构体</a> &#124;
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pro-methods">Protected 成员函数</a> &#124;
+<a href="#properties">属性</a>  </div>
+  <div class="headertitle">
+<div class="title">MongoDB.Driver.Core.Operations.RetryableWriteCommandOperationBase类 参考<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Represents a base class for a delete, insert or update command operation.  
+ <a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_retryable_write_command_operation_base.html#details">更多...</a></p>
+<div class="dynheader">
+类 MongoDB.Driver.Core.Operations.RetryableWriteCommandOperationBase 继承关系图:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_retryable_write_command_operation_base.png" usemap="#MongoDB.Driver.Core.Operations.RetryableWriteCommandOperationBase_map" alt=""/>
+  <map id="MongoDB.Driver.Core.Operations.RetryableWriteCommandOperationBase_map" name="MongoDB.Driver.Core.Operations.RetryableWriteCommandOperationBase_map">
+<area href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_i_write_operation.html" alt="MongoDB.Driver.Core.Operations.IWriteOperation&lt; BsonDocument &gt;" shape="rect" coords="251,0,744,24"/>
+<area href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_i_retryable_write_operation.html" alt="MongoDB.Driver.Core.Operations.IRetryableWriteOperation&lt; BsonDocument &gt;" shape="rect" coords="754,0,1247,24"/>
+<area href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_retryable_delete_command_operation.html" title="Represents a delete command operation." alt="MongoDB.Driver.Core.Operations.RetryableDeleteCommandOperation" shape="rect" coords="0,112,493,136"/>
+<area href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_retryable_insert_command_operation.html" title="Represents an insert command operation." alt="MongoDB.Driver.Core.Operations.RetryableInsertCommandOperation&lt; TDocument &gt;" shape="rect" coords="503,112,996,136"/>
+<area href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_retryable_update_command_operation.html" title="Represents an update command operation." alt="MongoDB.Driver.Core.Operations.RetryableUpdateCommandOperation" shape="rect" coords="1006,112,1499,136"/>
+  </map>
+</div></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:a611a2eda6c29ca107b870ee78e710ec6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_retryable_write_command_operation_base.html#a611a2eda6c29ca107b870ee78e710ec6">RetryableWriteCommandOperationBase</a> (<a class="el" href="class_mongo_d_b_1_1_driver_1_1_database_namespace.html">DatabaseNamespace</a> databaseNamespace, <a class="el" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_wire_protocol_1_1_messages_1_1_encoders_1_1_message_encoder_settings.html">MessageEncoderSettings</a> messageEncoderSettings)</td></tr>
+<tr class="memdesc:a611a2eda6c29ca107b870ee78e710ec6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a new instance of the <a class="el" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_retryable_write_command_operation_base.html" title="Represents a base class for a delete, insert or update command operation.">RetryableWriteCommandOperationBase</a> class.  <a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_retryable_write_command_operation_base.html#a611a2eda6c29ca107b870ee78e710ec6">更多...</a><br /></td></tr>
+<tr class="separator:a611a2eda6c29ca107b870ee78e710ec6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a011758431620c7be3f2edea9dfdc23da"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="class_mongo_d_b_1_1_bson_1_1_bson_document.html">BsonDocument</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_retryable_write_command_operation_base.html#a011758431620c7be3f2edea9dfdc23da">Execute</a> (<a class="el" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_i_write_binding.html">IWriteBinding</a> binding, CancellationToken cancellationToken)</td></tr>
+<tr class="separator:a011758431620c7be3f2edea9dfdc23da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aba530595655d8de3dcec641edfe52f01"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="class_mongo_d_b_1_1_bson_1_1_bson_document.html">BsonDocument</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_retryable_write_command_operation_base.html#aba530595655d8de3dcec641edfe52f01">Execute</a> (<a class="el" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_retryable_write_context.html">RetryableWriteContext</a> context, CancellationToken cancellationToken)</td></tr>
+<tr class="separator:aba530595655d8de3dcec641edfe52f01"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aef48eb118b4e96c7ce412a19dfef5ec9"><td class="memItemLeft" align="right" valign="top">virtual async Task&lt; <a class="el" href="class_mongo_d_b_1_1_bson_1_1_bson_document.html">BsonDocument</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_retryable_write_command_operation_base.html#aef48eb118b4e96c7ce412a19dfef5ec9">ExecuteAsync</a> (<a class="el" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_i_write_binding.html">IWriteBinding</a> binding, CancellationToken cancellationToken)</td></tr>
+<tr class="separator:aef48eb118b4e96c7ce412a19dfef5ec9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f7e6a54fc2c3b402d641d1048028160"><td class="memItemLeft" align="right" valign="top">virtual Task&lt; <a class="el" href="class_mongo_d_b_1_1_bson_1_1_bson_document.html">BsonDocument</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_retryable_write_command_operation_base.html#a3f7e6a54fc2c3b402d641d1048028160">ExecuteAsync</a> (<a class="el" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_retryable_write_context.html">RetryableWriteContext</a> context, CancellationToken cancellationToken)</td></tr>
+<tr class="separator:a3f7e6a54fc2c3b402d641d1048028160"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ae1c98dc2dec716046828bc186af952"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_mongo_d_b_1_1_bson_1_1_bson_document.html">BsonDocument</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_retryable_write_command_operation_base.html#a7ae1c98dc2dec716046828bc186af952">ExecuteAttempt</a> (<a class="el" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_retryable_write_context.html">RetryableWriteContext</a> context, int attempt, long? transactionNumber, CancellationToken cancellationToken)</td></tr>
+<tr class="separator:a7ae1c98dc2dec716046828bc186af952"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8458fc31122b8db9a4b344a3e73505e6"><td class="memItemLeft" align="right" valign="top">Task&lt; <a class="el" href="class_mongo_d_b_1_1_bson_1_1_bson_document.html">BsonDocument</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_retryable_write_command_operation_base.html#a8458fc31122b8db9a4b344a3e73505e6">ExecuteAttemptAsync</a> (<a class="el" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_retryable_write_context.html">RetryableWriteContext</a> context, int attempt, long? transactionNumber, CancellationToken cancellationToken)</td></tr>
+<tr class="separator:a8458fc31122b8db9a4b344a3e73505e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_interface_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_i_write_operation"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_interface_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_i_write_operation')"><img src="closed.png" alt="-"/>&#160;Public 成员函数 继承自 <a class="el" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_i_write_operation.html">MongoDB.Driver.Core.Operations.IWriteOperation&lt; BsonDocument &gt;</a></td></tr>
+<tr class="memitem:a739a82770de761f5cbd5734a08a49c1c inherit pub_methods_interface_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_i_write_operation"><td class="memItemLeft" align="right" valign="top">TResult&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_i_write_operation.html#a739a82770de761f5cbd5734a08a49c1c">Execute</a> (<a class="el" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_i_write_binding.html">IWriteBinding</a> binding, CancellationToken cancellationToken)</td></tr>
+<tr class="memdesc:a739a82770de761f5cbd5734a08a49c1c inherit pub_methods_interface_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_i_write_operation"><td class="mdescLeft">&#160;</td><td class="mdescRight">Executes the operation.  <a href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_i_write_operation.html#a739a82770de761f5cbd5734a08a49c1c">更多...</a><br /></td></tr>
+<tr class="separator:a739a82770de761f5cbd5734a08a49c1c inherit pub_methods_interface_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_i_write_operation"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a79fe296ea5ebb231592ca71c354f3b86 inherit pub_methods_interface_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_i_write_operation"><td class="memItemLeft" align="right" valign="top">Task&lt; TResult &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_i_write_operation.html#a79fe296ea5ebb231592ca71c354f3b86">ExecuteAsync</a> (<a class="el" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_i_write_binding.html">IWriteBinding</a> binding, CancellationToken cancellationToken)</td></tr>
+<tr class="memdesc:a79fe296ea5ebb231592ca71c354f3b86 inherit pub_methods_interface_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_i_write_operation"><td class="mdescLeft">&#160;</td><td class="mdescRight">Executes the operation.  <a href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_i_write_operation.html#a79fe296ea5ebb231592ca71c354f3b86">更多...</a><br /></td></tr>
+<tr class="separator:a79fe296ea5ebb231592ca71c354f3b86 inherit pub_methods_interface_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_i_write_operation"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_interface_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_i_retryable_write_operation"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_interface_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_i_retryable_write_operation')"><img src="closed.png" alt="-"/>&#160;Public 成员函数 继承自 <a class="el" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_i_retryable_write_operation.html">MongoDB.Driver.Core.Operations.IRetryableWriteOperation&lt; BsonDocument &gt;</a></td></tr>
+<tr class="memitem:aae77ed5ef25e52651f57f8ca7ce4c1e0 inherit pub_methods_interface_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_i_retryable_write_operation"><td class="memItemLeft" align="right" valign="top">TResult&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_i_retryable_write_operation.html#aae77ed5ef25e52651f57f8ca7ce4c1e0">ExecuteAttempt</a> (<a class="el" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_retryable_write_context.html">RetryableWriteContext</a> context, int attempt, long? transactionNumber, CancellationToken cancellationToken)</td></tr>
+<tr class="memdesc:aae77ed5ef25e52651f57f8ca7ce4c1e0 inherit pub_methods_interface_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_i_retryable_write_operation"><td class="mdescLeft">&#160;</td><td class="mdescRight">Executes the first attempt.  <a href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_i_retryable_write_operation.html#aae77ed5ef25e52651f57f8ca7ce4c1e0">更多...</a><br /></td></tr>
+<tr class="separator:aae77ed5ef25e52651f57f8ca7ce4c1e0 inherit pub_methods_interface_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_i_retryable_write_operation"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a239adbc4901c960b9b0c11f8af0eff9e inherit pub_methods_interface_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_i_retryable_write_operation"><td class="memItemLeft" align="right" valign="top">Task&lt; TResult &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_i_retryable_write_operation.html#a239adbc4901c960b9b0c11f8af0eff9e">ExecuteAttemptAsync</a> (<a class="el" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_retryable_write_context.html">RetryableWriteContext</a> context, int attempt, long? transactionNumber, CancellationToken cancellationToken)</td></tr>
+<tr class="memdesc:a239adbc4901c960b9b0c11f8af0eff9e inherit pub_methods_interface_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_i_retryable_write_operation"><td class="mdescLeft">&#160;</td><td class="mdescRight">Executes the first attempt.  <a href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_i_retryable_write_operation.html#a239adbc4901c960b9b0c11f8af0eff9e">更多...</a><br /></td></tr>
+<tr class="separator:a239adbc4901c960b9b0c11f8af0eff9e inherit pub_methods_interface_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_i_retryable_write_operation"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
+Protected 成员函数</h2></td></tr>
+<tr class="memitem:a3fa6d6f34be2be1f17b84a7935011bfd"><td class="memItemLeft" align="right" valign="top">abstract <a class="el" href="class_mongo_d_b_1_1_bson_1_1_bson_document.html">BsonDocument</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_retryable_write_command_operation_base.html#a3fa6d6f34be2be1f17b84a7935011bfd">CreateCommand</a> (<a class="el" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_i_core_session_handle.html">ICoreSessionHandle</a> session, <a class="el" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_connection_description.html">ConnectionDescription</a> connectionDescription, int attempt, long? transactionNumber)</td></tr>
+<tr class="memdesc:a3fa6d6f34be2be1f17b84a7935011bfd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates the command.  <a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_retryable_write_command_operation_base.html#a3fa6d6f34be2be1f17b84a7935011bfd">更多...</a><br /></td></tr>
+<tr class="separator:a3fa6d6f34be2be1f17b84a7935011bfd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6e6e0a3a88fa2ab99c86e02ce3faf5b8"><td class="memItemLeft" align="right" valign="top">abstract IEnumerable&lt; <a class="el" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_wire_protocol_1_1_messages_1_1_type1_command_message_section.html">Type1CommandMessageSection</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_retryable_write_command_operation_base.html#a6e6e0a3a88fa2ab99c86e02ce3faf5b8">CreateCommandPayloads</a> (<a class="el" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_i_channel_handle.html">IChannelHandle</a> channel, int attempt)</td></tr>
+<tr class="memdesc:a6e6e0a3a88fa2ab99c86e02ce3faf5b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates the command payloads.  <a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_retryable_write_command_operation_base.html#a6e6e0a3a88fa2ab99c86e02ce3faf5b8">更多...</a><br /></td></tr>
+<tr class="separator:a6e6e0a3a88fa2ab99c86e02ce3faf5b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
+属性</h2></td></tr>
+<tr class="memitem:a8dd5ff76288b5feae9c109cd1f895cdb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_mongo_d_b_1_1_driver_1_1_database_namespace.html">DatabaseNamespace</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_retryable_write_command_operation_base.html#a8dd5ff76288b5feae9c109cd1f895cdb">DatabaseNamespace</a><code> [get]</code></td></tr>
+<tr class="memdesc:a8dd5ff76288b5feae9c109cd1f895cdb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the database namespace.  <a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_retryable_write_command_operation_base.html#a8dd5ff76288b5feae9c109cd1f895cdb">更多...</a><br /></td></tr>
+<tr class="separator:a8dd5ff76288b5feae9c109cd1f895cdb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abe914b388d21966668518ac361c07205"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_retryable_write_command_operation_base.html#abe914b388d21966668518ac361c07205">IsOrdered</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:abe914b388d21966668518ac361c07205"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets or sets a value indicating whether the server should process the requests in order.  <a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_retryable_write_command_operation_base.html#abe914b388d21966668518ac361c07205">更多...</a><br /></td></tr>
+<tr class="separator:abe914b388d21966668518ac361c07205"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a746a0442c9632562209822b41fe60a6e"><td class="memItemLeft" align="right" valign="top">int?&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_retryable_write_command_operation_base.html#a746a0442c9632562209822b41fe60a6e">MaxBatchCount</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:a746a0442c9632562209822b41fe60a6e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets or sets the maximum batch count.  <a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_retryable_write_command_operation_base.html#a746a0442c9632562209822b41fe60a6e">更多...</a><br /></td></tr>
+<tr class="separator:a746a0442c9632562209822b41fe60a6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab1bd75a1cdc94f786a5ec59746d700b2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_wire_protocol_1_1_messages_1_1_encoders_1_1_message_encoder_settings.html">MessageEncoderSettings</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_retryable_write_command_operation_base.html#ab1bd75a1cdc94f786a5ec59746d700b2">MessageEncoderSettings</a><code> [get]</code></td></tr>
+<tr class="memdesc:ab1bd75a1cdc94f786a5ec59746d700b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the message encoder settings.  <a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_retryable_write_command_operation_base.html#ab1bd75a1cdc94f786a5ec59746d700b2">更多...</a><br /></td></tr>
+<tr class="separator:ab1bd75a1cdc94f786a5ec59746d700b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad1c71cd27e0d686e54af8229e52a2f71"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_retryable_write_command_operation_base.html#ad1c71cd27e0d686e54af8229e52a2f71">RetryRequested</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:ad1c71cd27e0d686e54af8229e52a2f71"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets or sets a value indicating whether retry is enabled for the operation.  <a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_retryable_write_command_operation_base.html#ad1c71cd27e0d686e54af8229e52a2f71">更多...</a><br /></td></tr>
+<tr class="separator:ad1c71cd27e0d686e54af8229e52a2f71"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa158abcfc2d983ea08b7f9fd8ac59865"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_mongo_d_b_1_1_driver_1_1_write_concern.html">WriteConcern</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_retryable_write_command_operation_base.html#aa158abcfc2d983ea08b7f9fd8ac59865">WriteConcern</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:aa158abcfc2d983ea08b7f9fd8ac59865"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets or sets the write concern.  <a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_retryable_write_command_operation_base.html#aa158abcfc2d983ea08b7f9fd8ac59865">更多...</a><br /></td></tr>
+<tr class="separator:aa158abcfc2d983ea08b7f9fd8ac59865"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>Represents a base class for a delete, insert or update command operation. </p>
+
+<p class="definition">在文件 <a class="el" href="_retryable_write_command_operation_base_8cs_source.html">RetryableWriteCommandOperationBase.cs</a> 第 <a class="el" href="_retryable_write_command_operation_base_8cs_source.html#l00036">36</a> 行定义.</p>
+</div><h2 class="groupheader">构造及析构函数说明</h2>
+<a id="a611a2eda6c29ca107b870ee78e710ec6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a611a2eda6c29ca107b870ee78e710ec6">&#9670;&nbsp;</a></span>RetryableWriteCommandOperationBase()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">MongoDB.Driver.Core.Operations.RetryableWriteCommandOperationBase.RetryableWriteCommandOperationBase </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_mongo_d_b_1_1_driver_1_1_database_namespace.html">DatabaseNamespace</a>&#160;</td>
+          <td class="paramname"><em>databaseNamespace</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_wire_protocol_1_1_messages_1_1_encoders_1_1_message_encoder_settings.html">MessageEncoderSettings</a>&#160;</td>
+          <td class="paramname"><em>messageEncoderSettings</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initializes a new instance of the <a class="el" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_retryable_write_command_operation_base.html" title="Represents a base class for a delete, insert or update command operation.">RetryableWriteCommandOperationBase</a> class. </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">databaseNamespace</td><td>The database namespace.</td></tr>
+    <tr><td class="paramname">messageEncoderSettings</td><td>The message encoder settings.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">在文件 <a class="el" href="_retryable_write_command_operation_base_8cs_source.html">RetryableWriteCommandOperationBase.cs</a> 第 <a class="el" href="_retryable_write_command_operation_base_8cs_source.html#l00052">52</a> 行定义.</p>
+
+</div>
+</div>
+<h2 class="groupheader">成员函数说明</h2>
+<a id="a3fa6d6f34be2be1f17b84a7935011bfd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3fa6d6f34be2be1f17b84a7935011bfd">&#9670;&nbsp;</a></span>CreateCommand()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">abstract <a class="el" href="class_mongo_d_b_1_1_bson_1_1_bson_document.html">BsonDocument</a> MongoDB.Driver.Core.Operations.RetryableWriteCommandOperationBase.CreateCommand </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_i_core_session_handle.html">ICoreSessionHandle</a>&#160;</td>
+          <td class="paramname"><em>session</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_connection_description.html">ConnectionDescription</a>&#160;</td>
+          <td class="paramname"><em>connectionDescription</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>attempt</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">long?&#160;</td>
+          <td class="paramname"><em>transactionNumber</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Creates the command. </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">session</td><td>The session.</td></tr>
+    <tr><td class="paramname">connectionDescription</td><td>The connection description.</td></tr>
+    <tr><td class="paramname">attempt</td><td>The attempt.</td></tr>
+    <tr><td class="paramname">transactionNumber</td><td>The transaction number.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>A command. </dd></dl>
+
+<p>在 <a class="el" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_retryable_update_command_operation.html#a45780bba6522b3f5f9bf87884b1a6f5b">MongoDB.Driver.Core.Operations.RetryableUpdateCommandOperation</a>, <a class="el" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_retryable_insert_command_operation.html#a2e7d6570a2510f8d709ac379678f1101">MongoDB.Driver.Core.Operations.RetryableInsertCommandOperation&lt; TDocument &gt;</a> , 以及 <a class="el" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_retryable_delete_command_operation.html#afc0b3eb3e85a3be7e5362d8db6b75937">MongoDB.Driver.Core.Operations.RetryableDeleteCommandOperation</a> 内被实现.</p>
+
+</div>
+</div>
+<a id="a6e6e0a3a88fa2ab99c86e02ce3faf5b8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6e6e0a3a88fa2ab99c86e02ce3faf5b8">&#9670;&nbsp;</a></span>CreateCommandPayloads()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">abstract IEnumerable&lt;<a class="el" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_wire_protocol_1_1_messages_1_1_type1_command_message_section.html">Type1CommandMessageSection</a>&gt; MongoDB.Driver.Core.Operations.RetryableWriteCommandOperationBase.CreateCommandPayloads </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_i_channel_handle.html">IChannelHandle</a>&#160;</td>
+          <td class="paramname"><em>channel</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>attempt</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Creates the command payloads. </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">channel</td><td>The channel.</td></tr>
+    <tr><td class="paramname">attempt</td><td>The attempt.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>The command payloads. </dd></dl>
+
+<p>在 <a class="el" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_retryable_update_command_operation.html#a1a05404142cd2aedc85c043d5b2764f5">MongoDB.Driver.Core.Operations.RetryableUpdateCommandOperation</a>, <a class="el" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_retryable_insert_command_operation.html#af4df6620ab65baecd23b1c4a8313dbdf">MongoDB.Driver.Core.Operations.RetryableInsertCommandOperation&lt; TDocument &gt;</a> , 以及 <a class="el" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_retryable_delete_command_operation.html#acbd73634ad56aed0fc5a5b52721cfae6">MongoDB.Driver.Core.Operations.RetryableDeleteCommandOperation</a> 内被实现.</p>
+
+</div>
+</div>
+<a id="a011758431620c7be3f2edea9dfdc23da"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a011758431620c7be3f2edea9dfdc23da">&#9670;&nbsp;</a></span>Execute() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual <a class="el" href="class_mongo_d_b_1_1_bson_1_1_bson_document.html">BsonDocument</a> MongoDB.Driver.Core.Operations.RetryableWriteCommandOperationBase.Execute </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_i_write_binding.html">IWriteBinding</a>&#160;</td>
+          <td class="paramname"><em>binding</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">CancellationToken&#160;</td>
+          <td class="paramname"><em>cancellationToken</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p></p>
+
+<p class="definition">在文件 <a class="el" href="_retryable_write_command_operation_base_8cs_source.html">RetryableWriteCommandOperationBase.cs</a> 第 <a class="el" href="_retryable_write_command_operation_base_8cs_source.html#l00129">129</a> 行定义.</p>
+
+</div>
+</div>
+<a id="aba530595655d8de3dcec641edfe52f01"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aba530595655d8de3dcec641edfe52f01">&#9670;&nbsp;</a></span>Execute() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual <a class="el" href="class_mongo_d_b_1_1_bson_1_1_bson_document.html">BsonDocument</a> MongoDB.Driver.Core.Operations.RetryableWriteCommandOperationBase.Execute </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_retryable_write_context.html">RetryableWriteContext</a>&#160;</td>
+          <td class="paramname"><em>context</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">CancellationToken&#160;</td>
+          <td class="paramname"><em>cancellationToken</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p></p>
+
+<p class="definition">在文件 <a class="el" href="_retryable_write_command_operation_base_8cs_source.html">RetryableWriteCommandOperationBase.cs</a> 第 <a class="el" href="_retryable_write_command_operation_base_8cs_source.html#l00138">138</a> 行定义.</p>
+
+</div>
+</div>
+<a id="aef48eb118b4e96c7ce412a19dfef5ec9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aef48eb118b4e96c7ce412a19dfef5ec9">&#9670;&nbsp;</a></span>ExecuteAsync() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual async Task&lt;<a class="el" href="class_mongo_d_b_1_1_bson_1_1_bson_document.html">BsonDocument</a>&gt; MongoDB.Driver.Core.Operations.RetryableWriteCommandOperationBase.ExecuteAsync </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_i_write_binding.html">IWriteBinding</a>&#160;</td>
+          <td class="paramname"><em>binding</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">CancellationToken&#160;</td>
+          <td class="paramname"><em>cancellationToken</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p></p>
+
+<p class="definition">在文件 <a class="el" href="_retryable_write_command_operation_base_8cs_source.html">RetryableWriteCommandOperationBase.cs</a> 第 <a class="el" href="_retryable_write_command_operation_base_8cs_source.html#l00144">144</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a3f7e6a54fc2c3b402d641d1048028160"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f7e6a54fc2c3b402d641d1048028160">&#9670;&nbsp;</a></span>ExecuteAsync() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual Task&lt;<a class="el" href="class_mongo_d_b_1_1_bson_1_1_bson_document.html">BsonDocument</a>&gt; MongoDB.Driver.Core.Operations.RetryableWriteCommandOperationBase.ExecuteAsync </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_retryable_write_context.html">RetryableWriteContext</a>&#160;</td>
+          <td class="paramname"><em>context</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">CancellationToken&#160;</td>
+          <td class="paramname"><em>cancellationToken</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p></p>
+
+<p class="definition">在文件 <a class="el" href="_retryable_write_command_operation_base_8cs_source.html">RetryableWriteCommandOperationBase.cs</a> 第 <a class="el" href="_retryable_write_command_operation_base_8cs_source.html#l00153">153</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a7ae1c98dc2dec716046828bc186af952"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7ae1c98dc2dec716046828bc186af952">&#9670;&nbsp;</a></span>ExecuteAttempt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_mongo_d_b_1_1_bson_1_1_bson_document.html">BsonDocument</a> MongoDB.Driver.Core.Operations.RetryableWriteCommandOperationBase.ExecuteAttempt </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_retryable_write_context.html">RetryableWriteContext</a>&#160;</td>
+          <td class="paramname"><em>context</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>attempt</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">long?&#160;</td>
+          <td class="paramname"><em>transactionNumber</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">CancellationToken&#160;</td>
+          <td class="paramname"><em>cancellationToken</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p></p>
+
+<p class="definition">在文件 <a class="el" href="_retryable_write_command_operation_base_8cs_source.html">RetryableWriteCommandOperationBase.cs</a> 第 <a class="el" href="_retryable_write_command_operation_base_8cs_source.html#l00159">159</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a8458fc31122b8db9a4b344a3e73505e6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8458fc31122b8db9a4b344a3e73505e6">&#9670;&nbsp;</a></span>ExecuteAttemptAsync()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Task&lt;<a class="el" href="class_mongo_d_b_1_1_bson_1_1_bson_document.html">BsonDocument</a>&gt; MongoDB.Driver.Core.Operations.RetryableWriteCommandOperationBase.ExecuteAttemptAsync </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_retryable_write_context.html">RetryableWriteContext</a>&#160;</td>
+          <td class="paramname"><em>context</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>attempt</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">long?&#160;</td>
+          <td class="paramname"><em>transactionNumber</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">CancellationToken&#160;</td>
+          <td class="paramname"><em>cancellationToken</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p></p>
+
+<p class="definition">在文件 <a class="el" href="_retryable_write_command_operation_base_8cs_source.html">RetryableWriteCommandOperationBase.cs</a> 第 <a class="el" href="_retryable_write_command_operation_base_8cs_source.html#l00179">179</a> 行定义.</p>
+
+</div>
+</div>
+<h2 class="groupheader">属性说明</h2>
+<a id="a8dd5ff76288b5feae9c109cd1f895cdb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8dd5ff76288b5feae9c109cd1f895cdb">&#9670;&nbsp;</a></span>DatabaseNamespace</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_mongo_d_b_1_1_driver_1_1_database_namespace.html">DatabaseNamespace</a> MongoDB.Driver.Core.Operations.RetryableWriteCommandOperationBase.DatabaseNamespace</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets the database namespace. </p>
+<p>The database namespace. </p>
+
+<p class="definition">在文件 <a class="el" href="_retryable_write_command_operation_base_8cs_source.html">RetryableWriteCommandOperationBase.cs</a> 第 <a class="el" href="_retryable_write_command_operation_base_8cs_source.html#l00067">67</a> 行定义.</p>
+
+</div>
+</div>
+<a id="abe914b388d21966668518ac361c07205"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abe914b388d21966668518ac361c07205">&#9670;&nbsp;</a></span>IsOrdered</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool MongoDB.Driver.Core.Operations.RetryableWriteCommandOperationBase.IsOrdered</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets or sets a value indicating whether the server should process the requests in order. </p>
+<p>A value indicating whether the server should process the requests in order.</p>
+
+<p class="definition">在文件 <a class="el" href="_retryable_write_command_operation_base_8cs_source.html">RetryableWriteCommandOperationBase.cs</a> 第 <a class="el" href="_retryable_write_command_operation_base_8cs_source.html#l00076">76</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a746a0442c9632562209822b41fe60a6e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a746a0442c9632562209822b41fe60a6e">&#9670;&nbsp;</a></span>MaxBatchCount</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int? MongoDB.Driver.Core.Operations.RetryableWriteCommandOperationBase.MaxBatchCount</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets or sets the maximum batch count. </p>
+<p>The maximum batch count. </p>
+
+<p class="definition">在文件 <a class="el" href="_retryable_write_command_operation_base_8cs_source.html">RetryableWriteCommandOperationBase.cs</a> 第 <a class="el" href="_retryable_write_command_operation_base_8cs_source.html#l00088">88</a> 行定义.</p>
+
+</div>
+</div>
+<a id="ab1bd75a1cdc94f786a5ec59746d700b2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab1bd75a1cdc94f786a5ec59746d700b2">&#9670;&nbsp;</a></span>MessageEncoderSettings</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_wire_protocol_1_1_messages_1_1_encoders_1_1_message_encoder_settings.html">MessageEncoderSettings</a> MongoDB.Driver.Core.Operations.RetryableWriteCommandOperationBase.MessageEncoderSettings</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets the message encoder settings. </p>
+<p>The message encoder settings. </p>
+
+<p class="definition">在文件 <a class="el" href="_retryable_write_command_operation_base_8cs_source.html">RetryableWriteCommandOperationBase.cs</a> 第 <a class="el" href="_retryable_write_command_operation_base_8cs_source.html#l00100">100</a> 行定义.</p>
+
+</div>
+</div>
+<a id="ad1c71cd27e0d686e54af8229e52a2f71"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad1c71cd27e0d686e54af8229e52a2f71">&#9670;&nbsp;</a></span>RetryRequested</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool MongoDB.Driver.Core.Operations.RetryableWriteCommandOperationBase.RetryRequested</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets or sets a value indicating whether retry is enabled for the operation. </p>
+<p>A value indicating whether retry is enabled.</p>
+
+<p class="definition">在文件 <a class="el" href="_retryable_write_command_operation_base_8cs_source.html">RetryableWriteCommandOperationBase.cs</a> 第 <a class="el" href="_retryable_write_command_operation_base_8cs_source.html#l00109">109</a> 行定义.</p>
+
+</div>
+</div>
+<a id="aa158abcfc2d983ea08b7f9fd8ac59865"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa158abcfc2d983ea08b7f9fd8ac59865">&#9670;&nbsp;</a></span>WriteConcern</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_mongo_d_b_1_1_driver_1_1_write_concern.html">WriteConcern</a> MongoDB.Driver.Core.Operations.RetryableWriteCommandOperationBase.WriteConcern</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets or sets the write concern. </p>
+<p>The write concern. </p>
+
+<p class="definition">在文件 <a class="el" href="_retryable_write_command_operation_base_8cs_source.html">RetryableWriteCommandOperationBase.cs</a> 第 <a class="el" href="_retryable_write_command_operation_base_8cs_source.html#l00121">121</a> 行定义.</p>
+
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>ETServer/Server/ThirdParty/MongoDBDriver/MongoDB.Driver.Core/Core/Operations/<a class="el" href="_retryable_write_command_operation_base_8cs_source.html">RetryableWriteCommandOperationBase.cs</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespace_mongo_d_b.html">MongoDB</a></li><li class="navelem"><a class="el" href="namespace_mongo_d_b_1_1_driver.html">Driver</a></li><li class="navelem"><a class="el" href="namespace_mongo_d_b_1_1_driver_1_1_core.html">Core</a></li><li class="navelem"><a class="el" href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_operations.html">Operations</a></li><li class="navelem"><a class="el" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_retryable_write_command_operation_base.html">RetryableWriteCommandOperationBase</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:25:22 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

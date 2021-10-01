@@ -1,0 +1,177 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: Assets/Scripts/Libraries/GameFramework/Libraries/GameFramework-2021.05.31/GameFramework/Network/NetworkErrorEventArgs.cs 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_libraries_2_game_framework-2021_805_831_2_game_framework_2_network_2_network_error_event_args_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">NetworkErrorEventArgs.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_libraries_2_game_framework-2021_805_831_2_game_framework_2_network_2_network_error_event_args_8cs.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">//------------------------------------------------------------</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">// Game Framework</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">// Copyright © 2013-2021 Jiang Yin. All rights reserved.</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">// Homepage: https://gameframework.cn/</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">// Feedback: mailto:ellan@gameframework.cn</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">//------------------------------------------------------------</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Net.Sockets;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_game_framework_1_1_network.html">GameFramework.Network</a></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;{</div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="class_game_framework_1_1_network_1_1_network_error_event_args.html">   15</a></span>&#160;    <span class="keyword">public</span> sealed <span class="keyword">class </span><a class="code" href="class_game_framework_1_1_network_1_1_network_error_event_args.html">NetworkErrorEventArgs</a> : <a class="code" href="class_game_framework_1_1_game_framework_event_args.html">GameFrameworkEventArgs</a></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    {</div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="class_game_framework_1_1_network_1_1_network_error_event_args.html#a395274009bd9f732c7be6080d037aa62">   20</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_game_framework_1_1_network_1_1_network_error_event_args.html#a395274009bd9f732c7be6080d037aa62">NetworkErrorEventArgs</a>()</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        {</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;            <a class="code" href="class_game_framework_1_1_network_1_1_network_error_event_args.html#a0720eda8b30da1b963a4e0a8e5d19ecb">NetworkChannel</a> = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;            <a class="code" href="class_game_framework_1_1_network_1_1_network_error_event_args.html#ae519833795c2f66a2633c9f62f75c1ea">ErrorCode</a> = <a class="code" href="namespace_game_framework_1_1_network.html#a29169bc287dfd72d662a5ab0bd0772a2">NetworkErrorCode</a>.Unknown;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;            <a class="code" href="class_game_framework_1_1_network_1_1_network_error_event_args.html#ae86b73391350a54a1addc3c4b51c0d28">SocketErrorCode</a> = <a class="code" href="namespace_game_framework_1_1_network.html#a29169bc287dfd72d662a5ab0bd0772a2ad4a2b05c3c61121e1ce151feb647a0c6">SocketError</a>.Success;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;            <a class="code" href="class_game_framework_1_1_network_1_1_network_error_event_args.html#a8694e48e34243180e60648e58293f48c">ErrorMessage</a> = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        }</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="class_game_framework_1_1_network_1_1_network_error_event_args.html#a0720eda8b30da1b963a4e0a8e5d19ecb">   31</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="interface_game_framework_1_1_network_1_1_i_network_channel.html">INetworkChannel</a> <a class="code" href="class_game_framework_1_1_network_1_1_network_error_event_args.html#a0720eda8b30da1b963a4e0a8e5d19ecb">NetworkChannel</a></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        {</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;            <span class="keyword">get</span>;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;            <span class="keyword">private</span> <span class="keyword">set</span>;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        }</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="class_game_framework_1_1_network_1_1_network_error_event_args.html#ae519833795c2f66a2633c9f62f75c1ea">   40</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="namespace_game_framework_1_1_network.html#a29169bc287dfd72d662a5ab0bd0772a2">NetworkErrorCode</a> <a class="code" href="class_game_framework_1_1_network_1_1_network_error_event_args.html#ae519833795c2f66a2633c9f62f75c1ea">ErrorCode</a></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        {</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;            <span class="keyword">get</span>;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;            <span class="keyword">private</span> <span class="keyword">set</span>;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        }</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="class_game_framework_1_1_network_1_1_network_error_event_args.html#ae86b73391350a54a1addc3c4b51c0d28">   49</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="namespace_game_framework_1_1_network.html#a29169bc287dfd72d662a5ab0bd0772a2ad4a2b05c3c61121e1ce151feb647a0c6">SocketError</a> <a class="code" href="class_game_framework_1_1_network_1_1_network_error_event_args.html#ae86b73391350a54a1addc3c4b51c0d28">SocketErrorCode</a></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        {</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            <span class="keyword">get</span>;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            <span class="keyword">private</span> <span class="keyword">set</span>;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        }</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="class_game_framework_1_1_network_1_1_network_error_event_args.html#a8694e48e34243180e60648e58293f48c">   58</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">string</span> <a class="code" href="class_game_framework_1_1_network_1_1_network_error_event_args.html#a8694e48e34243180e60648e58293f48c">ErrorMessage</a></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        {</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;            <span class="keyword">get</span>;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            <span class="keyword">private</span> <span class="keyword">set</span>;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        }</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="class_game_framework_1_1_network_1_1_network_error_event_args.html#a23240e1993bf532f89bb674b99758be6">   72</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <a class="code" href="class_game_framework_1_1_network_1_1_network_error_event_args.html">NetworkErrorEventArgs</a> <a class="code" href="class_game_framework_1_1_network_1_1_network_error_event_args.html#a23240e1993bf532f89bb674b99758be6">Create</a>(<a class="code" href="interface_game_framework_1_1_network_1_1_i_network_channel.html">INetworkChannel</a> networkChannel, <a class="code" href="namespace_game_framework_1_1_network.html#a29169bc287dfd72d662a5ab0bd0772a2">NetworkErrorCode</a> errorCode, SocketError socketErrorCode, <span class="keywordtype">string</span> errorMessage)</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        {</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            <a class="code" href="class_game_framework_1_1_network_1_1_network_error_event_args.html">NetworkErrorEventArgs</a> networkErrorEventArgs = ReferencePool.Acquire&lt;<a class="code" href="class_game_framework_1_1_network_1_1_network_error_event_args.html">NetworkErrorEventArgs</a>&gt;();</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            networkErrorEventArgs.<a class="code" href="class_game_framework_1_1_network_1_1_network_error_event_args.html#a0720eda8b30da1b963a4e0a8e5d19ecb">NetworkChannel</a> = networkChannel;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            networkErrorEventArgs.<a class="code" href="class_game_framework_1_1_network_1_1_network_error_event_args.html#ae519833795c2f66a2633c9f62f75c1ea">ErrorCode</a> = errorCode;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            networkErrorEventArgs.<a class="code" href="class_game_framework_1_1_network_1_1_network_error_event_args.html#ae86b73391350a54a1addc3c4b51c0d28">SocketErrorCode</a> = socketErrorCode;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            networkErrorEventArgs.<a class="code" href="class_game_framework_1_1_network_1_1_network_error_event_args.html#a8694e48e34243180e60648e58293f48c">ErrorMessage</a> = errorMessage;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;            <span class="keywordflow">return</span> networkErrorEventArgs;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        }</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
+<div class="line"><a name="l00085"></a><span class="lineno"><a class="line" href="class_game_framework_1_1_network_1_1_network_error_event_args.html#add89d704dc9f6bcb6be5efa110b1a575">   85</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code" href="class_game_framework_1_1_network_1_1_network_error_event_args.html#add89d704dc9f6bcb6be5efa110b1a575">Clear</a>()</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        {</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;            <a class="code" href="class_game_framework_1_1_network_1_1_network_error_event_args.html#a0720eda8b30da1b963a4e0a8e5d19ecb">NetworkChannel</a> = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;            <a class="code" href="class_game_framework_1_1_network_1_1_network_error_event_args.html#ae519833795c2f66a2633c9f62f75c1ea">ErrorCode</a> = <a class="code" href="namespace_game_framework_1_1_network.html#a29169bc287dfd72d662a5ab0bd0772a2">NetworkErrorCode</a>.Unknown;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;            <a class="code" href="class_game_framework_1_1_network_1_1_network_error_event_args.html#ae86b73391350a54a1addc3c4b51c0d28">SocketErrorCode</a> = <a class="code" href="namespace_game_framework_1_1_network.html#a29169bc287dfd72d662a5ab0bd0772a2ad4a2b05c3c61121e1ce151feb647a0c6">SocketError</a>.Success;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            <a class="code" href="class_game_framework_1_1_network_1_1_network_error_event_args.html#a8694e48e34243180e60648e58293f48c">ErrorMessage</a> = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        }</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    }</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;}</div>
+<div class="ttc" id="aclass_game_framework_1_1_game_framework_event_args_html"><div class="ttname"><a href="class_game_framework_1_1_game_framework_event_args.html">GameFramework.GameFrameworkEventArgs</a></div><div class="ttdoc">游戏框架中包含事件数据的类的基类。</div><div class="ttdef"><b>Definition:</b> <a href="_game_framework_event_args_8cs_source.html#l00015">GameFrameworkEventArgs.cs:16</a></div></div>
+<div class="ttc" id="aclass_game_framework_1_1_network_1_1_network_error_event_args_html"><div class="ttname"><a href="class_game_framework_1_1_network_1_1_network_error_event_args.html">GameFramework.Network.NetworkErrorEventArgs</a></div><div class="ttdoc">网络错误事件。</div><div class="ttdef"><b>Definition:</b> <a href="_libraries_2_game_framework-2021_805_831_2_game_framework_2_network_2_network_error_event_args_8cs_source.html#l00015">NetworkErrorEventArgs.cs:16</a></div></div>
+<div class="ttc" id="aclass_game_framework_1_1_network_1_1_network_error_event_args_html_a0720eda8b30da1b963a4e0a8e5d19ecb"><div class="ttname"><a href="class_game_framework_1_1_network_1_1_network_error_event_args.html#a0720eda8b30da1b963a4e0a8e5d19ecb">GameFramework.Network.NetworkErrorEventArgs.NetworkChannel</a></div><div class="ttdeci">INetworkChannel NetworkChannel</div><div class="ttdoc">获取网络频道。</div><div class="ttdef"><b>Definition:</b> <a href="_libraries_2_game_framework-2021_805_831_2_game_framework_2_network_2_network_error_event_args_8cs_source.html#l00031">NetworkErrorEventArgs.cs:32</a></div></div>
+<div class="ttc" id="aclass_game_framework_1_1_network_1_1_network_error_event_args_html_a23240e1993bf532f89bb674b99758be6"><div class="ttname"><a href="class_game_framework_1_1_network_1_1_network_error_event_args.html#a23240e1993bf532f89bb674b99758be6">GameFramework.Network.NetworkErrorEventArgs.Create</a></div><div class="ttdeci">static NetworkErrorEventArgs Create(INetworkChannel networkChannel, NetworkErrorCode errorCode, SocketError socketErrorCode, string errorMessage)</div><div class="ttdoc">创建网络错误事件。</div><div class="ttdef"><b>Definition:</b> <a href="_libraries_2_game_framework-2021_805_831_2_game_framework_2_network_2_network_error_event_args_8cs_source.html#l00072">NetworkErrorEventArgs.cs:72</a></div></div>
+<div class="ttc" id="aclass_game_framework_1_1_network_1_1_network_error_event_args_html_a395274009bd9f732c7be6080d037aa62"><div class="ttname"><a href="class_game_framework_1_1_network_1_1_network_error_event_args.html#a395274009bd9f732c7be6080d037aa62">GameFramework.Network.NetworkErrorEventArgs.NetworkErrorEventArgs</a></div><div class="ttdeci">NetworkErrorEventArgs()</div><div class="ttdoc">初始化网络错误事件的新实例。</div><div class="ttdef"><b>Definition:</b> <a href="_libraries_2_game_framework-2021_805_831_2_game_framework_2_network_2_network_error_event_args_8cs_source.html#l00020">NetworkErrorEventArgs.cs:20</a></div></div>
+<div class="ttc" id="aclass_game_framework_1_1_network_1_1_network_error_event_args_html_a8694e48e34243180e60648e58293f48c"><div class="ttname"><a href="class_game_framework_1_1_network_1_1_network_error_event_args.html#a8694e48e34243180e60648e58293f48c">GameFramework.Network.NetworkErrorEventArgs.ErrorMessage</a></div><div class="ttdeci">string ErrorMessage</div><div class="ttdoc">获取错误信息。</div><div class="ttdef"><b>Definition:</b> <a href="_libraries_2_game_framework-2021_805_831_2_game_framework_2_network_2_network_error_event_args_8cs_source.html#l00058">NetworkErrorEventArgs.cs:59</a></div></div>
+<div class="ttc" id="aclass_game_framework_1_1_network_1_1_network_error_event_args_html_add89d704dc9f6bcb6be5efa110b1a575"><div class="ttname"><a href="class_game_framework_1_1_network_1_1_network_error_event_args.html#add89d704dc9f6bcb6be5efa110b1a575">GameFramework.Network.NetworkErrorEventArgs.Clear</a></div><div class="ttdeci">override void Clear()</div><div class="ttdoc">清理网络错误事件。</div><div class="ttdef"><b>Definition:</b> <a href="_libraries_2_game_framework-2021_805_831_2_game_framework_2_network_2_network_error_event_args_8cs_source.html#l00085">NetworkErrorEventArgs.cs:85</a></div></div>
+<div class="ttc" id="aclass_game_framework_1_1_network_1_1_network_error_event_args_html_ae519833795c2f66a2633c9f62f75c1ea"><div class="ttname"><a href="class_game_framework_1_1_network_1_1_network_error_event_args.html#ae519833795c2f66a2633c9f62f75c1ea">GameFramework.Network.NetworkErrorEventArgs.ErrorCode</a></div><div class="ttdeci">NetworkErrorCode ErrorCode</div><div class="ttdoc">获取错误码。</div><div class="ttdef"><b>Definition:</b> <a href="_libraries_2_game_framework-2021_805_831_2_game_framework_2_network_2_network_error_event_args_8cs_source.html#l00040">NetworkErrorEventArgs.cs:41</a></div></div>
+<div class="ttc" id="aclass_game_framework_1_1_network_1_1_network_error_event_args_html_ae86b73391350a54a1addc3c4b51c0d28"><div class="ttname"><a href="class_game_framework_1_1_network_1_1_network_error_event_args.html#ae86b73391350a54a1addc3c4b51c0d28">GameFramework.Network.NetworkErrorEventArgs.SocketErrorCode</a></div><div class="ttdeci">SocketError SocketErrorCode</div><div class="ttdoc">获取 Socket 错误码。</div><div class="ttdef"><b>Definition:</b> <a href="_libraries_2_game_framework-2021_805_831_2_game_framework_2_network_2_network_error_event_args_8cs_source.html#l00049">NetworkErrorEventArgs.cs:50</a></div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_network_1_1_i_network_channel_html"><div class="ttname"><a href="interface_game_framework_1_1_network_1_1_i_network_channel.html">GameFramework.Network.INetworkChannel</a></div><div class="ttdoc">网络频道接口。</div><div class="ttdef"><b>Definition:</b> <a href="_i_network_channel_8cs_source.html#l00017">INetworkChannel.cs:18</a></div></div>
+<div class="ttc" id="anamespace_game_framework_1_1_network_html"><div class="ttname"><a href="namespace_game_framework_1_1_network.html">GameFramework.Network</a></div><div class="ttdef"><b>Definition:</b> <a href="_address_family_8cs_source.html#l00008">AddressFamily.cs:9</a></div></div>
+<div class="ttc" id="anamespace_game_framework_1_1_network_html_a29169bc287dfd72d662a5ab0bd0772a2"><div class="ttname"><a href="namespace_game_framework_1_1_network.html#a29169bc287dfd72d662a5ab0bd0772a2">GameFramework.Network.NetworkErrorCode</a></div><div class="ttdeci">NetworkErrorCode</div><div class="ttdoc">网络错误码。</div><div class="ttdef"><b>Definition:</b> <a href="_network_error_code_8cs_source.html#l00013">NetworkErrorCode.cs:14</a></div></div>
+<div class="ttc" id="anamespace_game_framework_1_1_network_html_a29169bc287dfd72d662a5ab0bd0772a2ad4a2b05c3c61121e1ce151feb647a0c6"><div class="ttname"><a href="namespace_game_framework_1_1_network.html#a29169bc287dfd72d662a5ab0bd0772a2ad4a2b05c3c61121e1ce151feb647a0c6">GameFramework.Network.NetworkErrorCode.SocketError</a></div><div class="ttdeci">@ SocketError</div><div class="ttdoc">Socket 错误。</div></div>
+<div class="ttc" id="anamespace_system_html"><div class="ttname"><a href="namespace_system.html">System</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_method_builder_attribute_8cs_source.html#l00001">AsyncMethodBuilderAttribute.cs:2</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_84bbf7b3c7f28a5a18725745e1505219.html">Assets</a></li><li class="navelem"><a class="el" href="dir_f13b41af88cf68434578284aaf699e39.html">Scripts</a></li><li class="navelem"><a class="el" href="dir_46d134a3bf82cf4dc49ca8f728aea58c.html">Libraries</a></li><li class="navelem"><a class="el" href="dir_7a6862c303020716b3c311e95823547c.html">GameFramework</a></li><li class="navelem"><a class="el" href="dir_bfc6cd8d089c265c897460523cef6560.html">Libraries</a></li><li class="navelem"><a class="el" href="dir_c1104d2df307bba6f9db4e185ff99743.html">GameFramework-2021.05.31</a></li><li class="navelem"><a class="el" href="dir_fe759fdbe5a0d8b8465ec936ca1014c7.html">GameFramework</a></li><li class="navelem"><a class="el" href="dir_3ab36864985e01bc0b0e2c5602c784d8.html">Network</a></li><li class="navelem"><a class="el" href="_libraries_2_game_framework-2021_805_831_2_game_framework_2_network_2_network_error_event_args_8cs.html">NetworkErrorEventArgs.cs</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:24:47 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

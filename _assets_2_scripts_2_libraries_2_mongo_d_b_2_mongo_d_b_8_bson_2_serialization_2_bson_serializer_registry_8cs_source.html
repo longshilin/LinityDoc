@@ -1,0 +1,236 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: Assets/Scripts/Libraries/MongoDB/MongoDB.Bson/Serialization/BsonSerializerRegistry.cs 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_serialization_2_bson_serializer_registry_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">BsonSerializerRegistry.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_serialization_2_bson_serializer_registry_8cs.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/* Copyright 2010-present MongoDB Inc.</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">* Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">* you may not use this file except in compliance with the License.</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">* You may obtain a copy of the License at</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">* http://www.apache.org/licenses/LICENSE-2.0</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">* Unless required by applicable law or agreed to in writing, software</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">* distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">* See the License for the specific language governing permissions and</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">* limitations under the License.</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Collections.Concurrent;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Reflection;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_mongo_d_b_1_1_bson_1_1_serialization.html">MongoDB.Bson.Serialization</a></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;{</div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_bson_serializer_registry.html">   25</a></span>&#160;    <span class="keyword">public</span> sealed <span class="keyword">class </span><a class="code" href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_bson_serializer_registry.html">BsonSerializerRegistry</a> : <a class="code" href="interface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_serializer_registry.html">IBsonSerializerRegistry</a></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    {</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <span class="comment">// private fields</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <span class="keyword">private</span> readonly ConcurrentDictionary&lt;Type, IBsonSerializer&gt; _cache;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <span class="keyword">private</span> readonly ConcurrentStack&lt;IBsonSerializationProvider&gt; _serializationProviders;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <span class="comment">// constructors</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_bson_serializer_registry.html#a7591582ee22b32f1f519d4c626f1c8bd">   35</a></span>&#160;<span class="comment"></span>        <span class="keyword">public</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_bson_serializer_registry.html#a7591582ee22b32f1f519d4c626f1c8bd">BsonSerializerRegistry</a>()</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        {</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;            _cache = <span class="keyword">new</span> ConcurrentDictionary&lt;Type,IBsonSerializer&gt;();</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;            _serializationProviders = <span class="keyword">new</span> ConcurrentStack&lt;IBsonSerializationProvider&gt;();</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        }</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <span class="comment">// public methods</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_bson_serializer_registry.html#a0d42d1d7144f2a48dcf043497f060d12">   49</a></span>&#160;<span class="comment"></span>        <span class="keyword">public</span> <a class="code" href="interface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_serializer.html">IBsonSerializer</a> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_bson_serializer_registry.html#a0d42d1d7144f2a48dcf043497f060d12">GetSerializer</a>(Type type)</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        {</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            <span class="keywordflow">if</span> (type == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            {</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> ArgumentNullException(<span class="stringliteral">&quot;type&quot;</span>);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            }</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            var typeInfo = type.GetTypeInfo();</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            <span class="keywordflow">if</span> (typeInfo.IsGenericType &amp;&amp; typeInfo.ContainsGenericParameters)</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            {</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;                var message = <span class="keywordtype">string</span>.Format(<span class="stringliteral">&quot;Generic type {0} has unassigned type parameters.&quot;</span>, BsonUtils.GetFriendlyTypeName(type));</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> ArgumentException(message, <span class="stringliteral">&quot;type&quot;</span>);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;            }</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            <span class="keywordflow">return</span> _cache.GetOrAdd(type, CreateSerializer);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        }</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_bson_serializer_registry.html#aef2a2dd5fcbe26acc62fffefdf6214d7">   72</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="interface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_serializer.html">IBsonSerializer&lt;T&gt;</a> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_bson_serializer_registry.html#aef2a2dd5fcbe26acc62fffefdf6214d7">GetSerializer&lt;T&gt;</a>()</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        {</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            <span class="keywordflow">return</span> (<a class="code" href="interface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_serializer.html">IBsonSerializer&lt;T&gt;</a>)<a class="code" href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_bson_serializer_registry.html#a0d42d1d7144f2a48dcf043497f060d12">GetSerializer</a>(typeof(T));</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        }</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00082"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_bson_serializer_registry.html#ae5923b3bbb91b1d95ea7f401f526881c">   82</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_bson_serializer_registry.html#ae5923b3bbb91b1d95ea7f401f526881c">RegisterSerializer</a>(Type type, <a class="code" href="interface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_serializer.html">IBsonSerializer</a> serializer)</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        {</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;            <span class="keywordflow">if</span> (type == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;            {</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> ArgumentNullException(<span class="stringliteral">&quot;type&quot;</span>);</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;            }</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;            <span class="keywordflow">if</span> (serializer == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;            {</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> ArgumentNullException(<span class="stringliteral">&quot;serializer&quot;</span>);</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;            }</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;            var typeInfo = type.GetTypeInfo();</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;            <span class="keywordflow">if</span> (typeof(<a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_value.html">BsonValue</a>).GetTypeInfo().IsAssignableFrom(type))</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;            {</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                var message = <span class="keywordtype">string</span>.Format(<span class="stringliteral">&quot;A serializer cannot be registered for type {0} because it is a subclass of BsonValue.&quot;</span>, BsonUtils.GetFriendlyTypeName(type));</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_serialization_exception.html">BsonSerializationException</a>(message);</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;            }</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;            <span class="keywordflow">if</span> (typeInfo.IsGenericType &amp;&amp; typeInfo.ContainsGenericParameters)</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;            {</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;                var message = <span class="keywordtype">string</span>.Format(<span class="stringliteral">&quot;Generic type {0} has unassigned type parameters.&quot;</span>, BsonUtils.GetFriendlyTypeName(type));</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> ArgumentException(message, <span class="stringliteral">&quot;type&quot;</span>);</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;            }</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;            <span class="keywordflow">if</span> (!_cache.TryAdd(type, serializer))</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;            {</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;                var message = <span class="keywordtype">string</span>.Format(<span class="stringliteral">&quot;There is already a serializer registered for type {0}.&quot;</span>, BsonUtils.GetFriendlyTypeName(type));</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_serialization_exception.html">BsonSerializationException</a>(message);</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;            }</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        }</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160; </div>
+<div class="line"><a name="l00116"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_bson_serializer_registry.html#a435f4b630d541715340850e0d6a8657a">  116</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_bson_serializer_registry.html#a435f4b630d541715340850e0d6a8657a">RegisterSerializationProvider</a>(<a class="code" href="interface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_serialization_provider.html">IBsonSerializationProvider</a> serializationProvider)</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        {</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;            <span class="keywordflow">if</span> (serializationProvider == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;            {</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> ArgumentNullException(<span class="stringliteral">&quot;serializationProvider&quot;</span>);</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;            }</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;            </div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;            _serializationProviders.Push(serializationProvider);</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        }</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160; </div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;        <span class="comment">// private methods</span></div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;        <span class="keyword">private</span> <a class="code" href="interface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_serializer.html">IBsonSerializer</a> CreateSerializer(Type type)</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;        {</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;            <span class="keywordflow">foreach</span> (var serializationProvider <span class="keywordflow">in</span> _serializationProviders)</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;            {</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;                <a class="code" href="interface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_serializer.html">IBsonSerializer</a> serializer;</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160; </div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;                var registryAwareSerializationProvider = serializationProvider as <a class="code" href="interface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_registry_aware_bson_serialization_provider.html">IRegistryAwareBsonSerializationProvider</a>;</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;                <span class="keywordflow">if</span> (registryAwareSerializationProvider != <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;                {</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;                    serializer = registryAwareSerializationProvider.GetSerializer(type, <span class="keyword">this</span>);</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;                }</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;                <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;                {</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;                    serializer = serializationProvider.GetSerializer(type);</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;                }</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160; </div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;                <span class="keywordflow">if</span> (serializer != <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;                {</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;                    <span class="keywordflow">return</span> serializer;</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;                }</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;            }</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160; </div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;            var message = <span class="keywordtype">string</span>.Format(<span class="stringliteral">&quot;No serializer found for type {0}.&quot;</span>, type.FullName);</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;            <span class="keywordflow">throw</span> <span class="keyword">new</span> BsonSerializationException(message);</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;        }</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    }</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;}</div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_bson_serialization_exception_html"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_bson_serialization_exception.html">MongoDB.Bson.BsonSerializationException</a></div><div class="ttdoc">Represents a BSON serialization exception.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_exceptions_2_bson_serialization_exception_8cs_source.html#l00029">BsonSerializationException.cs:30</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_bson_value_html"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_bson_value.html">MongoDB.Bson.BsonValue</a></div><div class="ttdoc">Represents a BSON value (this is an abstract class, see the various subclasses).</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_value_8cs_source.html#l00028">BsonValue.cs:29</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_serialization_1_1_bson_serializer_registry_html"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_bson_serializer_registry.html">MongoDB.Bson.Serialization.BsonSerializerRegistry</a></div><div class="ttdoc">Default, global implementation of an IBsonSerializerRegistry.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_serialization_2_bson_serializer_registry_8cs_source.html#l00025">BsonSerializerRegistry.cs:26</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_serialization_1_1_bson_serializer_registry_html_a0d42d1d7144f2a48dcf043497f060d12"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_bson_serializer_registry.html#a0d42d1d7144f2a48dcf043497f060d12">MongoDB.Bson.Serialization.BsonSerializerRegistry.GetSerializer</a></div><div class="ttdeci">IBsonSerializer GetSerializer(Type type)</div><div class="ttdoc">Gets the serializer for the specified type .</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_serialization_2_bson_serializer_registry_8cs_source.html#l00049">BsonSerializerRegistry.cs:49</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_serialization_1_1_bson_serializer_registry_html_a435f4b630d541715340850e0d6a8657a"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_bson_serializer_registry.html#a435f4b630d541715340850e0d6a8657a">MongoDB.Bson.Serialization.BsonSerializerRegistry.RegisterSerializationProvider</a></div><div class="ttdeci">void RegisterSerializationProvider(IBsonSerializationProvider serializationProvider)</div><div class="ttdoc">Registers the serialization provider. This behaves like a stack, so the last provider registered is t...</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_serialization_2_bson_serializer_registry_8cs_source.html#l00116">BsonSerializerRegistry.cs:116</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_serialization_1_1_bson_serializer_registry_html_a7591582ee22b32f1f519d4c626f1c8bd"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_bson_serializer_registry.html#a7591582ee22b32f1f519d4c626f1c8bd">MongoDB.Bson.Serialization.BsonSerializerRegistry.BsonSerializerRegistry</a></div><div class="ttdeci">BsonSerializerRegistry()</div><div class="ttdoc">Initializes a new instance of the BsonSerializerRegistry class.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_serialization_2_bson_serializer_registry_8cs_source.html#l00035">BsonSerializerRegistry.cs:35</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_serialization_1_1_bson_serializer_registry_html_ae5923b3bbb91b1d95ea7f401f526881c"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_bson_serializer_registry.html#ae5923b3bbb91b1d95ea7f401f526881c">MongoDB.Bson.Serialization.BsonSerializerRegistry.RegisterSerializer</a></div><div class="ttdeci">void RegisterSerializer(Type type, IBsonSerializer serializer)</div><div class="ttdoc">Registers the serializer.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_serialization_2_bson_serializer_registry_8cs_source.html#l00082">BsonSerializerRegistry.cs:82</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_serialization_1_1_bson_serializer_registry_html_aef2a2dd5fcbe26acc62fffefdf6214d7"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_bson_serializer_registry.html#aef2a2dd5fcbe26acc62fffefdf6214d7">MongoDB.Bson.Serialization.BsonSerializerRegistry.GetSerializer&lt; T &gt;</a></div><div class="ttdeci">IBsonSerializer&lt; T &gt; GetSerializer&lt; T &gt;()</div><div class="ttdoc">Gets the serializer for the specified T .</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_serialization_2_bson_serializer_registry_8cs_source.html#l00072">BsonSerializerRegistry.cs:72</a></div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_serialization_provider_html"><div class="ttname"><a href="interface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_serialization_provider.html">MongoDB.Bson.Serialization.IBsonSerializationProvider</a></div><div class="ttdoc">An interface implemented by serialization providers.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_serialization_2_i_bson_serialization_provider_8cs_source.html#l00023">IBsonSerializationProvider.cs:24</a></div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_serializer_html"><div class="ttname"><a href="interface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_serializer.html">MongoDB.Bson.Serialization.IBsonSerializer</a></div><div class="ttdoc">An interface implemented by a serializer.</div><div class="ttdef"><b>Definition:</b> <a href="_e_t_server_2_server_2_third_party_2_mongo_d_b_driver_2_mongo_d_b_8_bson_2_serialization_2_i_bson_serializer_8cs_source.html#l00056">IBsonSerializer.cs:57</a></div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_serializer_registry_html"><div class="ttname"><a href="interface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_serializer_registry.html">MongoDB.Bson.Serialization.IBsonSerializerRegistry</a></div><div class="ttdoc">A serializer registry.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_serialization_2_i_bson_serializer_registry_8cs_source.html#l00023">IBsonSerializerRegistry.cs:24</a></div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_registry_aware_bson_serialization_provider_html"><div class="ttname"><a href="interface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_registry_aware_bson_serialization_provider.html">MongoDB.Bson.Serialization.IRegistryAwareBsonSerializationProvider</a></div><div class="ttdoc">An interface implemented by serialization providers that are aware of registries.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_serialization_2_i_bson_serialization_provider_8cs_source.html#l00039">IBsonSerializationProvider.cs:40</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_bson_1_1_serialization_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_bson_1_1_serialization.html">MongoDB.Bson.Serialization</a></div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_serialization_2_attributed_serialization_provider_8cs_source.html#l00021">AttributedSerializationProvider.cs:22</a></div></div>
+<div class="ttc" id="anamespace_system_html"><div class="ttname"><a href="namespace_system.html">System</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_method_builder_attribute_8cs_source.html#l00001">AsyncMethodBuilderAttribute.cs:2</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_84bbf7b3c7f28a5a18725745e1505219.html">Assets</a></li><li class="navelem"><a class="el" href="dir_f13b41af88cf68434578284aaf699e39.html">Scripts</a></li><li class="navelem"><a class="el" href="dir_46d134a3bf82cf4dc49ca8f728aea58c.html">Libraries</a></li><li class="navelem"><a class="el" href="dir_73566d0e413307016ca2f8948e23ce26.html">MongoDB</a></li><li class="navelem"><a class="el" href="dir_bf52240e991d83ea827d5d13f9c7b60c.html">MongoDB.Bson</a></li><li class="navelem"><a class="el" href="dir_1185c2f6fa61c6af7acfa07ef22522b3.html">Serialization</a></li><li class="navelem"><a class="el" href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_serialization_2_bson_serializer_registry_8cs.html">BsonSerializerRegistry.cs</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:24:53 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

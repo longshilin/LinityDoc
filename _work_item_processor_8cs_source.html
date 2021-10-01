@@ -1,0 +1,309 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: Assets/Scripts/Libraries/ET/Module/Pathfinding/AstarPathfindingProject/Core/Misc/WorkItemProcessor.cs 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_work_item_processor_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">WorkItemProcessor.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_work_item_processor_8cs.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_pathfinding.html">Pathfinding</a> {</div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;        <span class="keyword">using</span> <a class="code" href="namespace_unity_engine.html">UnityEngine</a>;</div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="struct_pathfinding_1_1_astar_work_item.html">    8</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">struct </span><a class="code" href="struct_pathfinding_1_1_astar_work_item.html">AstarWorkItem</a> {</div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="struct_pathfinding_1_1_astar_work_item.html#afe42eaef64344051b009405efec572b3">   13</a></span>&#160;                <span class="keyword">public</span> <a class="code" href="namespace_system.html">System</a>.Action <a class="code" href="struct_pathfinding_1_1_astar_work_item.html#afe42eaef64344051b009405efec572b3">init</a>;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="struct_pathfinding_1_1_astar_work_item.html#a799f840eed7a95d60c3db6ee7b9e53cd">   28</a></span>&#160;                <span class="keyword">public</span> <a class="code" href="namespace_system.html">System</a>.Action&lt;<a class="code" href="interface_pathfinding_1_1_i_work_item_context.html">IWorkItemContext</a>&gt; <a class="code" href="struct_pathfinding_1_1_astar_work_item.html#a799f840eed7a95d60c3db6ee7b9e53cd">initWithContext</a>;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="struct_pathfinding_1_1_astar_work_item.html#ac8b1bcae0c93f59268ee50156e1c7070">   35</a></span>&#160;                <span class="keyword">public</span> <a class="code" href="namespace_system.html">System</a>.Func&lt;bool, <span class="keywordtype">bool</span>&gt; <a class="code" href="struct_pathfinding_1_1_astar_work_item.html#ac8b1bcae0c93f59268ee50156e1c7070">update</a>;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="struct_pathfinding_1_1_astar_work_item.html#a2096249d28049a8817950c94755d8706">   51</a></span>&#160;                <span class="keyword">public</span> <a class="code" href="namespace_system.html">System</a>.Func&lt;<a class="code" href="interface_pathfinding_1_1_i_work_item_context.html">IWorkItemContext</a>, bool, <span class="keywordtype">bool</span>&gt; <a class="code" href="struct_pathfinding_1_1_astar_work_item.html#a2096249d28049a8817950c94755d8706">updateWithContext</a>;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="struct_pathfinding_1_1_astar_work_item.html#a2efe6913731e61e54d962069b2ddbf1d">   53</a></span>&#160;                <span class="keyword">public</span> <a class="code" href="struct_pathfinding_1_1_astar_work_item.html#a2efe6913731e61e54d962069b2ddbf1d">AstarWorkItem</a> (<a class="code" href="namespace_system.html">System</a>.Func&lt;<span class="keywordtype">bool</span>, <span class="keywordtype">bool</span>&gt; <a class="code" href="struct_pathfinding_1_1_astar_work_item.html#ac8b1bcae0c93f59268ee50156e1c7070">update</a>) {</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                        this.<a class="code" href="struct_pathfinding_1_1_astar_work_item.html#afe42eaef64344051b009405efec572b3">init</a> = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                        this.initWithContext = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                        this.updateWithContext = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                        this.update = <a class="code" href="struct_pathfinding_1_1_astar_work_item.html#ac8b1bcae0c93f59268ee50156e1c7070">update</a>;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;                }</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="struct_pathfinding_1_1_astar_work_item.html#a29f82b8b945b80aca13adeb8556ac8fd">   60</a></span>&#160;                <span class="keyword">public</span> <a class="code" href="struct_pathfinding_1_1_astar_work_item.html#a29f82b8b945b80aca13adeb8556ac8fd">AstarWorkItem</a> (<a class="code" href="namespace_system.html">System</a>.Func&lt;<a class="code" href="interface_pathfinding_1_1_i_work_item_context.html">IWorkItemContext</a>, <span class="keywordtype">bool</span>, <span class="keywordtype">bool</span>&gt; <a class="code" href="struct_pathfinding_1_1_astar_work_item.html#ac8b1bcae0c93f59268ee50156e1c7070">update</a>) {</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                        this.<a class="code" href="struct_pathfinding_1_1_astar_work_item.html#afe42eaef64344051b009405efec572b3">init</a> = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                        this.initWithContext = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                        this.updateWithContext = <a class="code" href="struct_pathfinding_1_1_astar_work_item.html#ac8b1bcae0c93f59268ee50156e1c7070">update</a>;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                        this.update = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                }</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
+<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="struct_pathfinding_1_1_astar_work_item.html#acc101e8d66f7603db3f2cc7cdfe65c09">   67</a></span>&#160;                <span class="keyword">public</span> <a class="code" href="struct_pathfinding_1_1_astar_work_item.html#acc101e8d66f7603db3f2cc7cdfe65c09">AstarWorkItem</a> (<a class="code" href="namespace_system.html">System</a>.Action <a class="code" href="struct_pathfinding_1_1_astar_work_item.html#afe42eaef64344051b009405efec572b3">init</a>, <a class="code" href="namespace_system.html">System</a>.Func&lt;<span class="keywordtype">bool</span>, <span class="keywordtype">bool</span>&gt; <a class="code" href="struct_pathfinding_1_1_astar_work_item.html#ac8b1bcae0c93f59268ee50156e1c7070">update</a> = <span class="keyword">null</span>) {</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                        this.<a class="code" href="struct_pathfinding_1_1_astar_work_item.html#afe42eaef64344051b009405efec572b3">init</a> = <a class="code" href="struct_pathfinding_1_1_astar_work_item.html#afe42eaef64344051b009405efec572b3">init</a>;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                        this.initWithContext = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                        this.update = <a class="code" href="struct_pathfinding_1_1_astar_work_item.html#ac8b1bcae0c93f59268ee50156e1c7070">update</a>;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                        this.updateWithContext = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                }</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno"><a class="line" href="struct_pathfinding_1_1_astar_work_item.html#a7cf4050e595e0c9ee88e0d4b973dd1d5">   74</a></span>&#160;                <span class="keyword">public</span> <a class="code" href="struct_pathfinding_1_1_astar_work_item.html#a7cf4050e595e0c9ee88e0d4b973dd1d5">AstarWorkItem</a> (<a class="code" href="namespace_system.html">System</a>.Action&lt;<a class="code" href="interface_pathfinding_1_1_i_work_item_context.html">IWorkItemContext</a>&gt; <a class="code" href="struct_pathfinding_1_1_astar_work_item.html#afe42eaef64344051b009405efec572b3">init</a>, <a class="code" href="namespace_system.html">System</a>.Func&lt;<a class="code" href="interface_pathfinding_1_1_i_work_item_context.html">IWorkItemContext</a>, <span class="keywordtype">bool</span>, <span class="keywordtype">bool</span>&gt; <a class="code" href="struct_pathfinding_1_1_astar_work_item.html#ac8b1bcae0c93f59268ee50156e1c7070">update</a> = <span class="keyword">null</span>) {</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                        this.<a class="code" href="struct_pathfinding_1_1_astar_work_item.html#afe42eaef64344051b009405efec572b3">init</a> = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                        this.initWithContext = <a class="code" href="struct_pathfinding_1_1_astar_work_item.html#afe42eaef64344051b009405efec572b3">init</a>;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                        this.update = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                        this.updateWithContext = <a class="code" href="struct_pathfinding_1_1_astar_work_item.html#ac8b1bcae0c93f59268ee50156e1c7070">update</a>;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                }</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        }</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
+<div class="line"><a name="l00083"></a><span class="lineno"><a class="line" href="interface_pathfinding_1_1_i_work_item_context.html">   83</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">interface </span><a class="code" href="interface_pathfinding_1_1_i_work_item_context.html">IWorkItemContext</a> {</div>
+<div class="line"><a name="l00093"></a><span class="lineno"><a class="line" href="interface_pathfinding_1_1_i_work_item_context.html#a345c1c6c34353891d91c256733590bd2">   93</a></span>&#160;                <span class="keywordtype">void</span> <a class="code" href="interface_pathfinding_1_1_i_work_item_context.html#a345c1c6c34353891d91c256733590bd2">QueueFloodFill</a> ();</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
+<div class="line"><a name="l00096"></a><span class="lineno"><a class="line" href="interface_pathfinding_1_1_i_work_item_context.html#ac65045355fa80580eae07bc98af4ad54">   96</a></span>&#160;                <span class="keywordtype">void</span> <a class="code" href="interface_pathfinding_1_1_i_work_item_context.html#ac65045355fa80580eae07bc98af4ad54">EnsureValidFloodFill</a> ();</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        }</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
+<div class="line"><a name="l00099"></a><span class="lineno"><a class="line" href="class_pathfinding_1_1_work_item_processor.html">   99</a></span>&#160;        <span class="keyword">class </span><a class="code" href="class_pathfinding_1_1_work_item_processor.html">WorkItemProcessor</a> : <a class="code" href="interface_pathfinding_1_1_i_work_item_context.html">IWorkItemContext</a> {</div>
+<div class="line"><a name="l00101"></a><span class="lineno"><a class="line" href="class_pathfinding_1_1_work_item_processor.html#ae163b857df9cdc225046adb14524424b">  101</a></span>&#160;                <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code" href="class_pathfinding_1_1_work_item_processor.html#ae163b857df9cdc225046adb14524424b">workItemsInProgressRightNow</a> { <span class="keyword">get</span>; <span class="keyword">private</span> <span class="keyword">set</span>; }</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;                readonly IndexedQueue&lt;AstarWorkItem&gt; workItems = <span class="keyword">new</span> IndexedQueue&lt;AstarWorkItem&gt;();</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;                <span class="keywordtype">bool</span> queuedWorkItemFloodFill = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; </div>
+<div class="line"><a name="l00117"></a><span class="lineno"><a class="line" href="class_pathfinding_1_1_work_item_processor.html#ab30b82e52db31f255bfca253ffa5fb3a">  117</a></span>&#160;                <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code" href="class_pathfinding_1_1_work_item_processor.html#ab30b82e52db31f255bfca253ffa5fb3a">workItemsInProgress</a> { <span class="keyword">get</span>; <span class="keyword">private</span> <span class="keyword">set</span>; }</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160; </div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;                <span class="keyword">class </span>IndexedQueue&lt;T&gt; {</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;                        T[] buffer = <span class="keyword">new</span> T[4];</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;                        <span class="keywordtype">int</span> start;</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160; </div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;                        <span class="keyword">public</span> T <span class="keyword">this</span>[<span class="keywordtype">int</span> index] {</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;                                <span class="keyword">get</span> {</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;                                        <span class="keywordflow">if</span> (index &lt; 0 || index &gt;= Count) <span class="keywordflow">throw</span> <span class="keyword">new</span> <a class="code" href="namespace_system.html">System</a>.IndexOutOfRangeException();</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;                                        <span class="keywordflow">return</span> buffer[(start + index) % buffer.Length];</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;                                }</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;                                <span class="keyword">set</span> {</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;                                        <span class="keywordflow">if</span> (index &lt; 0 || index &gt;= Count) <span class="keywordflow">throw</span> <span class="keyword">new</span> <a class="code" href="namespace_system.html">System</a>.IndexOutOfRangeException();</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;                                        buffer[(start + index) % buffer.Length] = value;</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;                                }</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;                        }</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160; </div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;                        <span class="keyword">public</span> <span class="keywordtype">int</span> Count { <span class="keyword">get</span>; <span class="keyword">private</span> <span class="keyword">set</span>; }</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160; </div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;                        <span class="keyword">public</span> <span class="keywordtype">void</span> Enqueue (T item) {</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;                                <span class="keywordflow">if</span> (Count == buffer.Length) {</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;                                        var newBuffer = <span class="keyword">new</span> T[buffer.Length*2];</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;                                        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; Count; i++) {</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;                                                newBuffer[i] = <span class="keyword">this</span>[i];</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;                                        }</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;                                        buffer = newBuffer;</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;                                        start = 0;</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;                                }</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160; </div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;                                buffer[(start + Count) % buffer.Length] = item;</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;                                Count++;</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;                        }</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160; </div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;                        <span class="keyword">public</span> T Dequeue () {</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;                                <span class="keywordflow">if</span> (Count == 0) <span class="keywordflow">throw</span> <span class="keyword">new</span> <a class="code" href="namespace_system.html">System</a>.InvalidOperationException();</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;                                var item = buffer[start];</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;                                start = (start + 1) % buffer.Length;</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;                                Count--;</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;                                <span class="keywordflow">return</span> item;</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;                        }</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;                }</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160; </div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;                <span class="keywordtype">void</span> IWorkItemContext.QueueFloodFill () {</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;                        queuedWorkItemFloodFill = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;                }</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160; </div>
+<div class="line"><a name="l00174"></a><span class="lineno"><a class="line" href="class_pathfinding_1_1_work_item_processor.html#a2550c232024e5412394dd61526948275">  174</a></span>&#160;                <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_pathfinding_1_1_work_item_processor.html#a2550c232024e5412394dd61526948275">EnsureValidFloodFill</a> () {</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;                        <span class="keywordflow">if</span> (queuedWorkItemFloodFill) {</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;                                <a class="code" href="class_astar_path.html">AstarPath</a>.<a class="code" href="class_astar_path.html#a93828f3873280d7b2db847f69392b5fd">active</a>.<a class="code" href="class_astar_path.html#a6c076ccc313073944406e29bcc83cd91">FloodFill</a>();</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;                        }</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;                }</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160; </div>
+<div class="line"><a name="l00180"></a><span class="lineno"><a class="line" href="class_pathfinding_1_1_work_item_processor.html#a40839be3df2c2914d60bb98f95ed5bfa">  180</a></span>&#160;                <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_pathfinding_1_1_work_item_processor.html#a40839be3df2c2914d60bb98f95ed5bfa">OnFloodFill</a> () {</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;                        queuedWorkItemFloodFill = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;                }</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160; </div>
+<div class="line"><a name="l00188"></a><span class="lineno"><a class="line" href="class_pathfinding_1_1_work_item_processor.html#a7f20c570d41a7e0e9694af4f17cc8b3d">  188</a></span>&#160;                <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_pathfinding_1_1_work_item_processor.html#a7f20c570d41a7e0e9694af4f17cc8b3d">AddWorkItem</a> (<a class="code" href="struct_pathfinding_1_1_astar_work_item.html">AstarWorkItem</a> item) {</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;                        workItems.Enqueue(item);</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;                }</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160; </div>
+<div class="line"><a name="l00203"></a><span class="lineno"><a class="line" href="class_pathfinding_1_1_work_item_processor.html#a08ec79b88027b4f0af9379f526ceee0c">  203</a></span>&#160;                <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code" href="class_pathfinding_1_1_work_item_processor.html#a08ec79b88027b4f0af9379f526ceee0c">ProcessWorkItems</a> (<span class="keywordtype">bool</span> force) {</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;                        <span class="keywordflow">if</span> (<a class="code" href="class_pathfinding_1_1_work_item_processor.html#ae163b857df9cdc225046adb14524424b">workItemsInProgressRightNow</a>) <span class="keywordflow">throw</span> <span class="keyword">new</span> <a class="code" href="namespace_system.html">System</a>.Exception(<span class="stringliteral">&quot;Processing work items recursively. Please do not wait for other work items to be completed inside work items. &quot;</span> +</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;                                        <span class="stringliteral">&quot;If you think this is not caused by any of your scripts, this might be a bug.&quot;</span>);</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160; </div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;                        <a class="code" href="class_pathfinding_1_1_work_item_processor.html#ae163b857df9cdc225046adb14524424b">workItemsInProgressRightNow</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;                        <a class="code" href="class_astar_path.html">AstarPath</a>.<a class="code" href="class_astar_path.html#a93828f3873280d7b2db847f69392b5fd">active</a>.<a class="code" href="class_astar_path.html#a862c787d58adaf4c7b87b37a0c1aea83">data</a>.LockGraphStructure(<span class="keyword">true</span>);</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;                        <span class="keywordflow">while</span> (workItems.Count &gt; 0) {</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;                                <span class="comment">// Working on a new batch</span></div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;                                <span class="keywordflow">if</span> (!<a class="code" href="class_pathfinding_1_1_work_item_processor.html#ab30b82e52db31f255bfca253ffa5fb3a">workItemsInProgress</a>) {</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;                                        <a class="code" href="class_pathfinding_1_1_work_item_processor.html#ab30b82e52db31f255bfca253ffa5fb3a">workItemsInProgress</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;                                        queuedWorkItemFloodFill = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;                                }</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160; </div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;                                <span class="comment">// Peek at first item in the queue</span></div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;                                <a class="code" href="struct_pathfinding_1_1_astar_work_item.html">AstarWorkItem</a> itm = workItems[0];</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160; </div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;                                <span class="comment">// Call init the first time the item is seen</span></div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;                                <span class="keywordflow">if</span> (itm.<a class="code" href="struct_pathfinding_1_1_astar_work_item.html#afe42eaef64344051b009405efec572b3">init</a> != <span class="keyword">null</span>) {</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;                                        itm.<a class="code" href="struct_pathfinding_1_1_astar_work_item.html#afe42eaef64344051b009405efec572b3">init</a>();</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;                                        itm.<a class="code" href="struct_pathfinding_1_1_astar_work_item.html#afe42eaef64344051b009405efec572b3">init</a> = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;                                }</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160; </div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;                                <span class="keywordflow">if</span> (itm.<a class="code" href="struct_pathfinding_1_1_astar_work_item.html#a799f840eed7a95d60c3db6ee7b9e53cd">initWithContext</a> != <span class="keyword">null</span>) {</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;                                        itm.<a class="code" href="struct_pathfinding_1_1_astar_work_item.html#a799f840eed7a95d60c3db6ee7b9e53cd">initWithContext</a>(<span class="keyword">this</span>);</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;                                        itm.<a class="code" href="struct_pathfinding_1_1_astar_work_item.html#a799f840eed7a95d60c3db6ee7b9e53cd">initWithContext</a> = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;                                }</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160; </div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;                                <span class="comment">// Make sure the item in the queue is up to date</span></div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;                                workItems[0] = itm;</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160; </div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;                                <span class="keywordtype">bool</span> status;</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;                                <span class="keywordflow">try</span> {</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;                                        <span class="keywordflow">if</span> (itm.<a class="code" href="struct_pathfinding_1_1_astar_work_item.html#ac8b1bcae0c93f59268ee50156e1c7070">update</a> != <span class="keyword">null</span>) {</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;                                                status = itm.<a class="code" href="struct_pathfinding_1_1_astar_work_item.html#ac8b1bcae0c93f59268ee50156e1c7070">update</a>(force);</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;                                        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (itm.<a class="code" href="struct_pathfinding_1_1_astar_work_item.html#a2096249d28049a8817950c94755d8706">updateWithContext</a> != <span class="keyword">null</span>) {</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;                                                status = itm.<a class="code" href="struct_pathfinding_1_1_astar_work_item.html#a2096249d28049a8817950c94755d8706">updateWithContext</a>(<span class="keyword">this</span>, force);</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;                                        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;                                                status = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;                                        }</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;                                } <span class="keywordflow">catch</span> {</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;                                        workItems.Dequeue();</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;                                        <a class="code" href="class_pathfinding_1_1_work_item_processor.html#ae163b857df9cdc225046adb14524424b">workItemsInProgressRightNow</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;                                        <a class="code" href="class_astar_path.html">AstarPath</a>.<a class="code" href="class_astar_path.html#a93828f3873280d7b2db847f69392b5fd">active</a>.<a class="code" href="class_astar_path.html#a862c787d58adaf4c7b87b37a0c1aea83">data</a>.UnlockGraphStructure();</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;                                        <span class="keywordflow">throw</span>;</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;                                }</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160; </div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;                                <span class="keywordflow">if</span> (!status) {</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;                                        <span class="keywordflow">if</span> (force) {</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;                                                <a class="code" href="_game_main_2_customs_2_custom_helpers_2_process_helper_8cs.html#a0100be52d45f14348918ea69ec09f959">Debug</a>.LogError(<span class="stringliteral">&quot;Misbehaving WorkItem. &#39;force&#39;=true but the work item did not complete.\nIf force=true is passed to a WorkItem it should always return true.&quot;</span>);</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;                                        }</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160; </div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;                                        <span class="comment">// Still work items to process</span></div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;                                        <a class="code" href="class_pathfinding_1_1_work_item_processor.html#ae163b857df9cdc225046adb14524424b">workItemsInProgressRightNow</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;                                        <a class="code" href="class_astar_path.html">AstarPath</a>.<a class="code" href="class_astar_path.html#a93828f3873280d7b2db847f69392b5fd">active</a>.<a class="code" href="class_astar_path.html#a862c787d58adaf4c7b87b37a0c1aea83">data</a>.UnlockGraphStructure();</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;                                        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;                                } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;                                        workItems.Dequeue();</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;                                }</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;                        }</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160; </div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;                        <a class="code" href="class_pathfinding_1_1_work_item_processor.html#a2550c232024e5412394dd61526948275">EnsureValidFloodFill</a>();</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160; </div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;                        <a class="code" href="class_pathfinding_1_1_work_item_processor.html#ae163b857df9cdc225046adb14524424b">workItemsInProgressRightNow</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;                        <a class="code" href="class_pathfinding_1_1_work_item_processor.html#ab30b82e52db31f255bfca253ffa5fb3a">workItemsInProgress</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;                        <a class="code" href="class_astar_path.html">AstarPath</a>.<a class="code" href="class_astar_path.html#a93828f3873280d7b2db847f69392b5fd">active</a>.<a class="code" href="class_astar_path.html#a862c787d58adaf4c7b87b37a0c1aea83">data</a>.UnlockGraphStructure();</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;                        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;                }</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;        }</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;}</div>
+<div class="ttc" id="a_game_main_2_customs_2_custom_helpers_2_process_helper_8cs_html_a0100be52d45f14348918ea69ec09f959"><div class="ttname"><a href="_game_main_2_customs_2_custom_helpers_2_process_helper_8cs.html#a0100be52d45f14348918ea69ec09f959">Debug</a></div><div class="ttdeci">UnityEngine.Debug Debug</div><div class="ttdef"><b>Definition:</b> <a href="_game_main_2_customs_2_custom_helpers_2_process_helper_8cs_source.html#l00004">ProcessHelper.cs:4</a></div></div>
+<div class="ttc" id="aclass_astar_path_html"><div class="ttname"><a href="class_astar_path.html">AstarPath</a></div><div class="ttdef"><b>Definition:</b> <a href="_astar_path_8cs_source.html#l00029">AstarPath.cs:29</a></div></div>
+<div class="ttc" id="aclass_astar_path_html_a6c076ccc313073944406e29bcc83cd91"><div class="ttname"><a href="class_astar_path.html#a6c076ccc313073944406e29bcc83cd91">AstarPath.FloodFill</a></div><div class="ttdeci">void FloodFill(GraphNode seed)</div><div class="ttdef"><b>Definition:</b> <a href="_astar_path_8cs_source.html#l01123">AstarPath.cs:1123</a></div></div>
+<div class="ttc" id="aclass_astar_path_html_a862c787d58adaf4c7b87b37a0c1aea83"><div class="ttname"><a href="class_astar_path.html#a862c787d58adaf4c7b87b37a0c1aea83">AstarPath.data</a></div><div class="ttdeci">AstarData data</div><div class="ttdef"><b>Definition:</b> <a href="_astar_path_8cs_source.html#l00048">AstarPath.cs:48</a></div></div>
+<div class="ttc" id="aclass_astar_path_html_a93828f3873280d7b2db847f69392b5fd"><div class="ttname"><a href="class_astar_path.html#a93828f3873280d7b2db847f69392b5fd">AstarPath.active</a></div><div class="ttdeci">static AstarPath active</div><div class="ttdef"><b>Definition:</b> <a href="_astar_path_8cs_source.html#l00056">AstarPath.cs:56</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_work_item_processor_html"><div class="ttname"><a href="class_pathfinding_1_1_work_item_processor.html">Pathfinding.WorkItemProcessor</a></div><div class="ttdef"><b>Definition:</b> <a href="_work_item_processor_8cs_source.html#l00099">WorkItemProcessor.cs:99</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_work_item_processor_html_a08ec79b88027b4f0af9379f526ceee0c"><div class="ttname"><a href="class_pathfinding_1_1_work_item_processor.html#a08ec79b88027b4f0af9379f526ceee0c">Pathfinding.WorkItemProcessor.ProcessWorkItems</a></div><div class="ttdeci">bool ProcessWorkItems(bool force)</div><div class="ttdef"><b>Definition:</b> <a href="_work_item_processor_8cs_source.html#l00203">WorkItemProcessor.cs:203</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_work_item_processor_html_a2550c232024e5412394dd61526948275"><div class="ttname"><a href="class_pathfinding_1_1_work_item_processor.html#a2550c232024e5412394dd61526948275">Pathfinding.WorkItemProcessor.EnsureValidFloodFill</a></div><div class="ttdeci">void EnsureValidFloodFill()</div><div class="ttdef"><b>Definition:</b> <a href="_work_item_processor_8cs_source.html#l00174">WorkItemProcessor.cs:174</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_work_item_processor_html_a40839be3df2c2914d60bb98f95ed5bfa"><div class="ttname"><a href="class_pathfinding_1_1_work_item_processor.html#a40839be3df2c2914d60bb98f95ed5bfa">Pathfinding.WorkItemProcessor.OnFloodFill</a></div><div class="ttdeci">void OnFloodFill()</div><div class="ttdef"><b>Definition:</b> <a href="_work_item_processor_8cs_source.html#l00180">WorkItemProcessor.cs:180</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_work_item_processor_html_a7f20c570d41a7e0e9694af4f17cc8b3d"><div class="ttname"><a href="class_pathfinding_1_1_work_item_processor.html#a7f20c570d41a7e0e9694af4f17cc8b3d">Pathfinding.WorkItemProcessor.AddWorkItem</a></div><div class="ttdeci">void AddWorkItem(AstarWorkItem item)</div><div class="ttdef"><b>Definition:</b> <a href="_work_item_processor_8cs_source.html#l00188">WorkItemProcessor.cs:188</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_work_item_processor_html_ab30b82e52db31f255bfca253ffa5fb3a"><div class="ttname"><a href="class_pathfinding_1_1_work_item_processor.html#ab30b82e52db31f255bfca253ffa5fb3a">Pathfinding.WorkItemProcessor.workItemsInProgress</a></div><div class="ttdeci">bool workItemsInProgress</div><div class="ttdef"><b>Definition:</b> <a href="_work_item_processor_8cs_source.html#l00117">WorkItemProcessor.cs:117</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_work_item_processor_html_ae163b857df9cdc225046adb14524424b"><div class="ttname"><a href="class_pathfinding_1_1_work_item_processor.html#ae163b857df9cdc225046adb14524424b">Pathfinding.WorkItemProcessor.workItemsInProgressRightNow</a></div><div class="ttdeci">bool workItemsInProgressRightNow</div><div class="ttdef"><b>Definition:</b> <a href="_work_item_processor_8cs_source.html#l00101">WorkItemProcessor.cs:101</a></div></div>
+<div class="ttc" id="ainterface_pathfinding_1_1_i_work_item_context_html"><div class="ttname"><a href="interface_pathfinding_1_1_i_work_item_context.html">Pathfinding.IWorkItemContext</a></div><div class="ttdef"><b>Definition:</b> <a href="_work_item_processor_8cs_source.html#l00083">WorkItemProcessor.cs:83</a></div></div>
+<div class="ttc" id="ainterface_pathfinding_1_1_i_work_item_context_html_a345c1c6c34353891d91c256733590bd2"><div class="ttname"><a href="interface_pathfinding_1_1_i_work_item_context.html#a345c1c6c34353891d91c256733590bd2">Pathfinding.IWorkItemContext.QueueFloodFill</a></div><div class="ttdeci">void QueueFloodFill()</div></div>
+<div class="ttc" id="ainterface_pathfinding_1_1_i_work_item_context_html_ac65045355fa80580eae07bc98af4ad54"><div class="ttname"><a href="interface_pathfinding_1_1_i_work_item_context.html#ac65045355fa80580eae07bc98af4ad54">Pathfinding.IWorkItemContext.EnsureValidFloodFill</a></div><div class="ttdeci">void EnsureValidFloodFill()</div></div>
+<div class="ttc" id="anamespace_pathfinding_html"><div class="ttname"><a href="namespace_pathfinding.html">Pathfinding</a></div><div class="ttdef"><b>Definition:</b> <a href="_a_i_base_editor_8cs_source.html#l00004">AIBaseEditor.cs:4</a></div></div>
+<div class="ttc" id="anamespace_system_html"><div class="ttname"><a href="namespace_system.html">System</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_method_builder_attribute_8cs_source.html#l00001">AsyncMethodBuilderAttribute.cs:2</a></div></div>
+<div class="ttc" id="anamespace_unity_engine_html"><div class="ttname"><a href="namespace_unity_engine.html">UnityEngine</a></div><div class="ttdef"><b>Definition:</b> <a href="_mathf_8cs_source.html#l00003">Mathf.cs:4</a></div></div>
+<div class="ttc" id="astruct_pathfinding_1_1_astar_work_item_html"><div class="ttname"><a href="struct_pathfinding_1_1_astar_work_item.html">Pathfinding.AstarWorkItem</a></div><div class="ttdef"><b>Definition:</b> <a href="_work_item_processor_8cs_source.html#l00008">WorkItemProcessor.cs:8</a></div></div>
+<div class="ttc" id="astruct_pathfinding_1_1_astar_work_item_html_a2096249d28049a8817950c94755d8706"><div class="ttname"><a href="struct_pathfinding_1_1_astar_work_item.html#a2096249d28049a8817950c94755d8706">Pathfinding.AstarWorkItem.updateWithContext</a></div><div class="ttdeci">System.Func&lt; IWorkItemContext, bool, bool &gt; updateWithContext</div><div class="ttdef"><b>Definition:</b> <a href="_work_item_processor_8cs_source.html#l00051">WorkItemProcessor.cs:51</a></div></div>
+<div class="ttc" id="astruct_pathfinding_1_1_astar_work_item_html_a29f82b8b945b80aca13adeb8556ac8fd"><div class="ttname"><a href="struct_pathfinding_1_1_astar_work_item.html#a29f82b8b945b80aca13adeb8556ac8fd">Pathfinding.AstarWorkItem.AstarWorkItem</a></div><div class="ttdeci">AstarWorkItem(System.Func&lt; IWorkItemContext, bool, bool &gt; update)</div><div class="ttdef"><b>Definition:</b> <a href="_work_item_processor_8cs_source.html#l00060">WorkItemProcessor.cs:60</a></div></div>
+<div class="ttc" id="astruct_pathfinding_1_1_astar_work_item_html_a2efe6913731e61e54d962069b2ddbf1d"><div class="ttname"><a href="struct_pathfinding_1_1_astar_work_item.html#a2efe6913731e61e54d962069b2ddbf1d">Pathfinding.AstarWorkItem.AstarWorkItem</a></div><div class="ttdeci">AstarWorkItem(System.Func&lt; bool, bool &gt; update)</div><div class="ttdef"><b>Definition:</b> <a href="_work_item_processor_8cs_source.html#l00053">WorkItemProcessor.cs:53</a></div></div>
+<div class="ttc" id="astruct_pathfinding_1_1_astar_work_item_html_a799f840eed7a95d60c3db6ee7b9e53cd"><div class="ttname"><a href="struct_pathfinding_1_1_astar_work_item.html#a799f840eed7a95d60c3db6ee7b9e53cd">Pathfinding.AstarWorkItem.initWithContext</a></div><div class="ttdeci">System.Action&lt; IWorkItemContext &gt; initWithContext</div><div class="ttdef"><b>Definition:</b> <a href="_work_item_processor_8cs_source.html#l00028">WorkItemProcessor.cs:28</a></div></div>
+<div class="ttc" id="astruct_pathfinding_1_1_astar_work_item_html_a7cf4050e595e0c9ee88e0d4b973dd1d5"><div class="ttname"><a href="struct_pathfinding_1_1_astar_work_item.html#a7cf4050e595e0c9ee88e0d4b973dd1d5">Pathfinding.AstarWorkItem.AstarWorkItem</a></div><div class="ttdeci">AstarWorkItem(System.Action&lt; IWorkItemContext &gt; init, System.Func&lt; IWorkItemContext, bool, bool &gt; update=null)</div><div class="ttdef"><b>Definition:</b> <a href="_work_item_processor_8cs_source.html#l00074">WorkItemProcessor.cs:74</a></div></div>
+<div class="ttc" id="astruct_pathfinding_1_1_astar_work_item_html_ac8b1bcae0c93f59268ee50156e1c7070"><div class="ttname"><a href="struct_pathfinding_1_1_astar_work_item.html#ac8b1bcae0c93f59268ee50156e1c7070">Pathfinding.AstarWorkItem.update</a></div><div class="ttdeci">System.Func&lt; bool, bool &gt; update</div><div class="ttdef"><b>Definition:</b> <a href="_work_item_processor_8cs_source.html#l00035">WorkItemProcessor.cs:35</a></div></div>
+<div class="ttc" id="astruct_pathfinding_1_1_astar_work_item_html_acc101e8d66f7603db3f2cc7cdfe65c09"><div class="ttname"><a href="struct_pathfinding_1_1_astar_work_item.html#acc101e8d66f7603db3f2cc7cdfe65c09">Pathfinding.AstarWorkItem.AstarWorkItem</a></div><div class="ttdeci">AstarWorkItem(System.Action init, System.Func&lt; bool, bool &gt; update=null)</div><div class="ttdef"><b>Definition:</b> <a href="_work_item_processor_8cs_source.html#l00067">WorkItemProcessor.cs:67</a></div></div>
+<div class="ttc" id="astruct_pathfinding_1_1_astar_work_item_html_afe42eaef64344051b009405efec572b3"><div class="ttname"><a href="struct_pathfinding_1_1_astar_work_item.html#afe42eaef64344051b009405efec572b3">Pathfinding.AstarWorkItem.init</a></div><div class="ttdeci">System.Action init</div><div class="ttdef"><b>Definition:</b> <a href="_work_item_processor_8cs_source.html#l00013">WorkItemProcessor.cs:13</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_84bbf7b3c7f28a5a18725745e1505219.html">Assets</a></li><li class="navelem"><a class="el" href="dir_f13b41af88cf68434578284aaf699e39.html">Scripts</a></li><li class="navelem"><a class="el" href="dir_46d134a3bf82cf4dc49ca8f728aea58c.html">Libraries</a></li><li class="navelem"><a class="el" href="dir_f6df8f7e58ea5a2220a287b647108730.html">ET</a></li><li class="navelem"><a class="el" href="dir_83296929b1cb48979e134a96af9624b1.html">Module</a></li><li class="navelem"><a class="el" href="dir_7e04bdad0240fbb16a4f5f805ce44f49.html">Pathfinding</a></li><li class="navelem"><a class="el" href="dir_12c2f59e7be642934a5bea5c58ae8c1b.html">AstarPathfindingProject</a></li><li class="navelem"><a class="el" href="dir_00177d857ff2a6f262586fd2fafd8818.html">Core</a></li><li class="navelem"><a class="el" href="dir_2cacc9b34b628f37b6c0e942cfc958df.html">Misc</a></li><li class="navelem"><a class="el" href="_work_item_processor_8cs.html">WorkItemProcessor.cs</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:24:46 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

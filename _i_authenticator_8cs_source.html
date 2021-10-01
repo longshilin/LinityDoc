@@ -1,0 +1,148 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: ETServer/Server/ThirdParty/MongoDBDriver/MongoDB.Driver.Core/Core/Authentication/IAuthenticator.cs 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_i_authenticator_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">IAuthenticator.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_i_authenticator_8cs.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/* Copyright 2013-present MongoDB Inc.</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">* Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">* you may not use this file except in compliance with the License.</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">* You may obtain a copy of the License at</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">* http://www.apache.org/licenses/LICENSE-2.0</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">* Unless required by applicable law or agreed to in writing, software</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">* distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">* See the License for the specific language governing permissions and</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">* limitations under the License.</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Threading;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Threading.Tasks;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_mongo_d_b.html">MongoDB</a>.<a class="code" href="namespace_mongo_d_b_1_1_bson.html">Bson</a>;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_mongo_d_b.html">MongoDB</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver.html">Driver</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core.html">Core</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_connections.html">Connections</a>;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_authentication.html">MongoDB.Driver.Core.Authentication</a></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;{</div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_i_authenticator.html">   27</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">interface </span><a class="code" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_i_authenticator.html">IAuthenticator</a></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    {</div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_i_authenticator.html#a1eaade5a38a637102d11e22ac10fb961">   35</a></span>&#160;        <span class="keywordtype">string</span> <a class="code" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_i_authenticator.html#a1eaade5a38a637102d11e22ac10fb961">Name</a> { <span class="keyword">get</span>; }</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_i_authenticator.html#ad66aa7811c65f29079ce3919945df530">   43</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_i_authenticator.html#ad66aa7811c65f29079ce3919945df530">Authenticate</a>(<a class="code" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_i_connection.html">IConnection</a> connection, <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_connection_description.html">ConnectionDescription</a> description, CancellationToken cancellationToken);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_i_authenticator.html#a412866a59b9c5279e909e5e0e58bdaa3">   52</a></span>&#160;        Task <a class="code" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_i_authenticator.html#a412866a59b9c5279e909e5e0e58bdaa3">AuthenticateAsync</a>(<a class="code" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_i_connection.html">IConnection</a> connection, <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_connection_description.html">ConnectionDescription</a> description, CancellationToken cancellationToken);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        </div>
+<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_i_authenticator.html#a9e96f3011fab3853e362f59af7c0c3bc">   59</a></span>&#160;        <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_document.html">BsonDocument</a> <a class="code" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_i_authenticator.html#a9e96f3011fab3853e362f59af7c0c3bc">CustomizeInitialIsMasterCommand</a>(<a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_document.html">BsonDocument</a> isMasterCommand);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    }</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;}</div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_bson_document_html"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_bson_document.html">MongoDB.Bson.BsonDocument</a></div><div class="ttdoc">Represents a BSON document.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_document_8cs_source.html#l00034">BsonDocument.cs:35</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_connection_description_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_connection_description.html">MongoDB.Driver.Core.Connections.ConnectionDescription</a></div><div class="ttdoc">Represents information describing a connection.</div><div class="ttdef"><b>Definition:</b> <a href="_connection_description_8cs_source.html#l00025">ConnectionDescription.cs:26</a></div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_i_authenticator_html"><div class="ttname"><a href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_i_authenticator.html">MongoDB.Driver.Core.Authentication.IAuthenticator</a></div><div class="ttdoc">Represents a connection authenticator.</div><div class="ttdef"><b>Definition:</b> <a href="_i_authenticator_8cs_source.html#l00027">IAuthenticator.cs:28</a></div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_i_authenticator_html_a1eaade5a38a637102d11e22ac10fb961"><div class="ttname"><a href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_i_authenticator.html#a1eaade5a38a637102d11e22ac10fb961">MongoDB.Driver.Core.Authentication.IAuthenticator.Name</a></div><div class="ttdeci">string Name</div><div class="ttdoc">Gets the name of the authenticator.</div><div class="ttdef"><b>Definition:</b> <a href="_i_authenticator_8cs_source.html#l00035">IAuthenticator.cs:35</a></div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_i_authenticator_html_a412866a59b9c5279e909e5e0e58bdaa3"><div class="ttname"><a href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_i_authenticator.html#a412866a59b9c5279e909e5e0e58bdaa3">MongoDB.Driver.Core.Authentication.IAuthenticator.AuthenticateAsync</a></div><div class="ttdeci">Task AuthenticateAsync(IConnection connection, ConnectionDescription description, CancellationToken cancellationToken)</div><div class="ttdoc">Authenticates the connection.</div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_i_authenticator_html_a9e96f3011fab3853e362f59af7c0c3bc"><div class="ttname"><a href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_i_authenticator.html#a9e96f3011fab3853e362f59af7c0c3bc">MongoDB.Driver.Core.Authentication.IAuthenticator.CustomizeInitialIsMasterCommand</a></div><div class="ttdeci">BsonDocument CustomizeInitialIsMasterCommand(BsonDocument isMasterCommand)</div><div class="ttdoc">Optionally customizes isMaster command.</div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_i_authenticator_html_ad66aa7811c65f29079ce3919945df530"><div class="ttname"><a href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_i_authenticator.html#ad66aa7811c65f29079ce3919945df530">MongoDB.Driver.Core.Authentication.IAuthenticator.Authenticate</a></div><div class="ttdeci">void Authenticate(IConnection connection, ConnectionDescription description, CancellationToken cancellationToken)</div><div class="ttdoc">Authenticates the connection.</div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_i_connection_html"><div class="ttname"><a href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_i_connection.html">MongoDB.Driver.Core.Connections.IConnection</a></div><div class="ttdoc">Represents a connection.</div><div class="ttdef"><b>Definition:</b> <a href="_i_connection_8cs_source.html#l00033">IConnection.cs:34</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_bson_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_bson.html">MongoDB.Bson</a></div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_bson_constants_8cs_source.html#l00018">BsonConstants.cs:19</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_authentication.html">MongoDB.Driver.Core.Authentication</a></div><div class="ttdef"><b>Definition:</b> <a href="_authentication_helper_8cs_source.html#l00029">AuthenticationHelper.cs:30</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_driver_1_1_core_1_1_connections_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_connections.html">MongoDB.Driver.Core.Connections</a></div><div class="ttdef"><b>Definition:</b> <a href="_binary_connection_8cs_source.html#l00035">BinaryConnection.cs:36</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_driver_1_1_core_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_driver_1_1_core.html">MongoDB.Driver.Core</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_queue_8cs_source.html#l00023">AsyncQueue.cs:24</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_driver_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_driver.html">MongoDB.Driver</a></div><div class="ttdef"><b>Definition:</b> <a href="_aggregate_bucket_auto_granularity_8cs_source.html#l00018">AggregateBucketAutoGranularity.cs:19</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_html"><div class="ttname"><a href="namespace_mongo_d_b.html">MongoDB</a></div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_bson_constants_8cs_source.html#l00018">BsonConstants.cs:19</a></div></div>
+<div class="ttc" id="anamespace_system_html"><div class="ttname"><a href="namespace_system.html">System</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_method_builder_attribute_8cs_source.html#l00001">AsyncMethodBuilderAttribute.cs:2</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_1e261a42b4a2e33df58a15c412684b10.html">ETServer</a></li><li class="navelem"><a class="el" href="dir_473c270c995194c5ad99131d9c901f09.html">Server</a></li><li class="navelem"><a class="el" href="dir_ce426efcf63311ff42488fb2654bd4b4.html">ThirdParty</a></li><li class="navelem"><a class="el" href="dir_a37b2b5f9c8890cc9f6f8392fb0cdff3.html">MongoDBDriver</a></li><li class="navelem"><a class="el" href="dir_3c55113864d48cf4713f3b3197e2f720.html">MongoDB.Driver.Core</a></li><li class="navelem"><a class="el" href="dir_d802212cd82500a65b6eed8667c0c3ad.html">Core</a></li><li class="navelem"><a class="el" href="dir_0bfbf6548f49cb91a53ee92be54ede6d.html">Authentication</a></li><li class="navelem"><a class="el" href="_i_authenticator_8cs.html">IAuthenticator.cs</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:24:56 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

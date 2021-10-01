@@ -1,0 +1,315 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: ETServer/Server/ThirdParty/MongoDBDriver/MongoDB.Driver.Core/Core/Authentication/Sspi/NativeMethods.cs 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_native_methods_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">NativeMethods.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_native_methods_8cs.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/* Copyright 2010-present MongoDB Inc.</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">* Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">* you may not use this file except in compliance with the License.</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">* You may obtain a copy of the License at</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">* http://www.apache.org/licenses/LICENSE-2.0</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">* Unless required by applicable law or agreed to in writing, software</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">* distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">* See the License for the specific language governing permissions and</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">* limitations under the License.</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#if NET452</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.<a class="code" href="namespace_system_1_1_runtime.html">Runtime</a>.ConstrainedExecution;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.<a class="code" href="namespace_system_1_1_runtime.html">Runtime</a>.InteropServices;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sspi.html">MongoDB.Driver.Core.Authentication.Sspi</a></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;{</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keyword">internal</span> <span class="keyword">static</span> <span class="keyword">class </span>NativeMethods</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    {</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <span class="comment">// public constants</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <span class="keyword">public</span> <span class="keyword">const</span> <span class="keywordtype">int</span> MAX_TOKEN_SIZE = 12288;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <span class="keyword">public</span> <span class="keyword">const</span> <span class="keywordtype">long</span> SEC_E_OK = 0x0;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <span class="keyword">public</span> <span class="keyword">const</span> <span class="keywordtype">long</span> SEC_E_INSUFFICENT_MEMORY = 0x80090300;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <span class="keyword">public</span> <span class="keyword">const</span> <span class="keywordtype">long</span> SEC_E_INVALID_HANDLE = 0x80090301;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <span class="keyword">public</span> <span class="keyword">const</span> <span class="keywordtype">long</span> SEC_E_TARGET_UNKNOWN = 0x80090303;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <span class="keyword">public</span> <span class="keyword">const</span> <span class="keywordtype">long</span> SEC_E_INTERNAL_ERROR = 0x80090304;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="keyword">public</span> <span class="keyword">const</span> <span class="keywordtype">long</span> SEC_E_SECPKG_NOT_FOUND = 0x80090305;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <span class="keyword">public</span> <span class="keyword">const</span> <span class="keywordtype">long</span> SEC_E_INVALID_TOKEN = 0x80090308;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <span class="keyword">public</span> <span class="keyword">const</span> <span class="keywordtype">long</span> SEC_E_QOP_NOT_SUPPORTED = 0x8009030A;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <span class="keyword">public</span> <span class="keyword">const</span> <span class="keywordtype">long</span> SEC_E_LOGON_DENIED = 0x8009030C;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <span class="keyword">public</span> <span class="keyword">const</span> <span class="keywordtype">long</span> SEC_E_UNKNOWN_CREDENTIALS = 0x8009030D;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <span class="keyword">public</span> <span class="keyword">const</span> <span class="keywordtype">long</span> SEC_E_NO_CREDENTIALS = 0x8009030E;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <span class="keyword">public</span> <span class="keyword">const</span> <span class="keywordtype">long</span> SEC_E_MESSAGE_ALTERED = 0x8009030F;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <span class="keyword">public</span> <span class="keyword">const</span> <span class="keywordtype">long</span> SEC_E_OUT_OF_SEQUENCE = 0x80090310;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <span class="keyword">public</span> <span class="keyword">const</span> <span class="keywordtype">long</span> SEC_E_NO_AUTHENTICATING_AUTHORITY = 0x80090311;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <span class="keyword">public</span> <span class="keyword">const</span> <span class="keywordtype">long</span> SEC_E_CONTEXT_EXPIRED = 0x80090317;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="keyword">public</span> <span class="keyword">const</span> <span class="keywordtype">long</span> SEC_E_INCOMPLETE_MESSAGE = 0x80090318;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <span class="keyword">public</span> <span class="keyword">const</span> <span class="keywordtype">long</span> SEC_E_BUFFER_TOO_SMALL = 0x80090321;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <span class="keyword">public</span> <span class="keyword">const</span> <span class="keywordtype">long</span> SEC_E_CRYPTO_SYSTEM_INVALID = 0x80090337;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <span class="keyword">public</span> <span class="keyword">const</span> <span class="keywordtype">long</span> SEC_I_CONTINUE_NEEDED = 0x00090312;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <span class="keyword">public</span> <span class="keyword">const</span> <span class="keywordtype">long</span> SEC_I_CONTEXT_EXPIRED = 0x00090317;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="keyword">public</span> <span class="keyword">const</span> <span class="keywordtype">long</span> SEC_I_RENEGOTIATE = 0x00090321;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> Win32Exception CreateException(<span class="keywordtype">long</span> errorCode, <span class="keywordtype">string</span> defaultMessage)</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        {</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;            <span class="keywordtype">string</span> message = defaultMessage;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            <span class="keywordflow">switch</span> (errorCode)</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            {</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                <span class="keywordflow">case</span> SEC_E_BUFFER_TOO_SMALL:</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                    message = <span class="stringliteral">&quot;The message buffer is too small. Used with the Digest SSP.&quot;</span>;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                    <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                <span class="keywordflow">case</span> SEC_E_CONTEXT_EXPIRED:</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                    message = <span class="stringliteral">&quot;The application is referencing a context that has already been closed.&quot;</span>;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                    <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                <span class="keywordflow">case</span> SEC_E_CRYPTO_SYSTEM_INVALID:</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                    message = <span class="stringliteral">&quot;The cipher chosen for the security context is not supported. Used with the Digest SSP.&quot;</span>;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                    <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                <span class="keywordflow">case</span> SEC_E_INCOMPLETE_MESSAGE:</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                    message = <span class="stringliteral">&quot;The data in the input buffer is incomplete.&quot;</span>;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                    <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                <span class="keywordflow">case</span> SEC_E_INSUFFICENT_MEMORY:</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                    message = <span class="stringliteral">&quot;There is not enough memory available to complete the requested action.&quot;</span>;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                    <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                <span class="keywordflow">case</span> SEC_E_INTERNAL_ERROR:</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                    message = <span class="stringliteral">&quot;An error occurred that did not map to an SSPI error code.&quot;</span>;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                    <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                <span class="keywordflow">case</span> SEC_E_INVALID_HANDLE:</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                    message = <span class="stringliteral">&quot;The handle passed to the function is not valid.&quot;</span>;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                    <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                <span class="keywordflow">case</span> SEC_E_INVALID_TOKEN:</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                    message = <span class="stringliteral">&quot;The input token is malformed . Possible causes include a token corrupted in transit, a token of incorrect size, and a token passed into the wrong security package. This last condition can happen if the client and server did not negotiate the proper security package.&quot;</span>;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                    <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                <span class="keywordflow">case</span> SEC_E_LOGON_DENIED:</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                    message = <span class="stringliteral">&quot;The logon failed.&quot;</span>;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                    <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                <span class="keywordflow">case</span> SEC_E_MESSAGE_ALTERED:</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                    message = <span class="stringliteral">&quot;The message has been altered. Used with the Digest and Schannel SSPs.&quot;</span>;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                    <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                <span class="keywordflow">case</span> SEC_E_NO_AUTHENTICATING_AUTHORITY:</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                    message = <span class="stringliteral">&quot;No authority could be contacted for authentication. The domain name of the authenticating party could be wrong, the domain could be unreachable, or there might have been a trust relationship failure.&quot;</span>;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                    <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                <span class="keywordflow">case</span> SEC_E_NO_CREDENTIALS:</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;                    message = <span class="stringliteral">&quot;No credentials are available in the security package.&quot;</span>;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                    <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                <span class="keywordflow">case</span> SEC_E_OUT_OF_SEQUENCE:</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;                    message = <span class="stringliteral">&quot;The message was not received in the correct sequence.&quot;</span>;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;                    <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;                <span class="keywordflow">case</span> SEC_E_QOP_NOT_SUPPORTED:</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;                    message = <span class="stringliteral">&quot;Neither confidentiality nor integrity are supported by the security context. Used with the Digest SSP.&quot;</span>;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;                    <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;                <span class="keywordflow">case</span> SEC_E_SECPKG_NOT_FOUND:</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;                    message = <span class="stringliteral">&quot;The requested security package does not exist.&quot;</span>;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;                    <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;                <span class="keywordflow">case</span> SEC_E_TARGET_UNKNOWN:</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;                    message = <span class="stringliteral">&quot;The target was not recognized.&quot;</span>;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;                    <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;                <span class="keywordflow">case</span> SEC_E_UNKNOWN_CREDENTIALS:</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;                    message = <span class="stringliteral">&quot;The credentials supplied to the package were not recognized.&quot;</span>;</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;                    <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;                <span class="keywordflow">case</span> SEC_I_CONTEXT_EXPIRED:</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;                    message = <span class="stringliteral">&quot;The message sender has finished using the connection and has initiated a shutdown.&quot;</span>;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;                    <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;                <span class="keywordflow">case</span> SEC_I_RENEGOTIATE:</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;                    message = <span class="stringliteral">&quot;The remote party requires a new handshake sequence or the application has just initiated a shutdown.&quot;</span>;</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;                    <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;            }</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160; </div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> Win32Exception(errorCode, message);</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        }</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160; </div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        <span class="comment">// public static methods</span></div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;<span class="comment"></span>        [DllImport(<span class="stringliteral">&quot;security.dll&quot;</span>, CharSet = CharSet.Unicode, SetLastError = <span class="keyword">true</span>, ThrowOnUnmappableChar = <span class="keyword">true</span>)]</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">extern</span> uint AcquireCredentialsHandle(</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;            <span class="keywordtype">string</span> principal,</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;            <span class="keywordtype">string</span> package,</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;            SecurityCredentialUse credentialUsage,</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;            IntPtr logonId,</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;            AuthIdentity identity,</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;            <span class="keywordtype">int</span> keyCallback,</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;            IntPtr keyArgument,</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;            ref SspiHandle credentialHandle,</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;            out <span class="keywordtype">long</span> timestamp);</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160; </div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;        [DllImport(<span class="stringliteral">&quot;security.dll&quot;</span>, CharSet = CharSet.Unicode, SetLastError = <span class="keyword">true</span>, ThrowOnUnmappableChar = <span class="keyword">true</span>)]</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">extern</span> uint AcquireCredentialsHandle(</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;            <span class="keywordtype">string</span> principal,</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;            <span class="keywordtype">string</span> package,</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;            SecurityCredentialUse credentialUsage,</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;            IntPtr logonId,</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;            IntPtr identity,</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;            <span class="keywordtype">int</span> keyCallback,</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;            IntPtr keyArgument,</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;            ref SspiHandle credentialHandle,</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;            out <span class="keywordtype">long</span> timestamp);</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160; </div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;        [DllImport(<span class="stringliteral">&quot;security.dll&quot;</span>, CharSet = CharSet.Unicode, SetLastError = <span class="keyword">false</span>)]</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;<span class="preprocessor">#if NET452</span></div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;        [ReliabilityContract(Consistency.WillNotCorruptState, Cer.Success)]</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">extern</span> uint DeleteSecurityContext(ref SspiHandle context);</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160; </div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;        [DllImport(<span class="stringliteral">&quot;security.dll&quot;</span>, CharSet = CharSet.Unicode, SetLastError = <span class="keyword">false</span>)]</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">extern</span> uint DecryptMessage(ref SspiHandle context,</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;            ref SecurityBufferDescriptor pMessage,</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;            uint sequenceNumber,</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;            out uint quality);</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160; </div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;        [DllImport(<span class="stringliteral">&quot;security.dll&quot;</span>, CharSet = CharSet.Unicode, SetLastError = <span class="keyword">false</span>)]</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">extern</span> uint EncryptMessage(ref SspiHandle context,</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;            EncryptQualityOfProtection quality,</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;            ref SecurityBufferDescriptor pMessage,</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;            uint sequenceNumber);</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160; </div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;        [DllImport(<span class="stringliteral">&quot;security.dll&quot;</span>, CharSet = CharSet.Unicode, SetLastError = <span class="keyword">false</span>)]</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">extern</span> uint EnumerateSecurityPackages(ref uint numPackages, ref IntPtr securityPackageInfoArray);</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160; </div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;        [DllImport(<span class="stringliteral">&quot;security.dll&quot;</span>)]</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;<span class="preprocessor">#if NET452</span></div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;        [ReliabilityContract(Consistency.WillNotCorruptState, Cer.Success)]</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">extern</span> uint FreeContextBuffer(IntPtr contextBuffer);</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160; </div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;        [DllImport(<span class="stringliteral">&quot;security.dll&quot;</span>)]</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;<span class="preprocessor">#if NET452</span></div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;        [ReliabilityContract(Consistency.WillNotCorruptState, Cer.Success)]</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">extern</span> <span class="keywordtype">int</span> FreeCredentialsHandle(ref SspiHandle sspiHandle);</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160; </div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;        [DllImport(<span class="stringliteral">&quot;security.dll&quot;</span>, CharSet = CharSet.Unicode, SetLastError = <span class="keyword">true</span>, ThrowOnUnmappableChar = <span class="keyword">true</span>)]</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">extern</span> uint InitializeSecurityContext(</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;            ref SspiHandle credentialHandle,</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;            IntPtr inContextPtr,</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;            <span class="keywordtype">string</span> targetName,</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;            SspiContextFlags flags,</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;            <span class="keywordtype">int</span> reserved1,</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;            DataRepresentation dataRepresentation,</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;            IntPtr inputBuffer,</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;            <span class="keywordtype">int</span> reserved2,</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;            ref SspiHandle outContextHandle,</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;            ref SecurityBufferDescriptor outputBuffer,</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;            out SspiContextFlags outAttributes,</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;            out <span class="keywordtype">long</span> timestamp);</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160; </div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;        [DllImport(<span class="stringliteral">&quot;security.dll&quot;</span>, CharSet = CharSet.Unicode, SetLastError = <span class="keyword">true</span>, ThrowOnUnmappableChar = <span class="keyword">true</span>)]</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">extern</span> uint InitializeSecurityContext(</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;            ref SspiHandle credentialHandle,</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;            ref SspiHandle inContextHandle,</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;            <span class="keywordtype">string</span> targetName,</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;            SspiContextFlags flags,</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;            <span class="keywordtype">int</span> reserved1,</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;            DataRepresentation dataRepresentation,</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;            ref SecurityBufferDescriptor inputBuffer,</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;            <span class="keywordtype">int</span> reserved2,</div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;            ref SspiHandle outContext,</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;            ref SecurityBufferDescriptor outputBuffer,</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;            out SspiContextFlags outAttributes,</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;            out <span class="keywordtype">long</span> timestamp);</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160; </div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;        [DllImport(<span class="stringliteral">&quot;security.dll&quot;</span>, CharSet = CharSet.Unicode, SetLastError = <span class="keyword">false</span>)]</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">extern</span> uint QueryContextAttributes(</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;            ref SspiHandle inContextHandle,</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;            QueryContextAttributes attribute,</div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;            out SecurityPackageContextSizes sizes);</div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;    }</div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;}</div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sspi_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sspi.html">MongoDB.Driver.Core.Authentication.Sspi</a></div><div class="ttdef"><b>Definition:</b> <a href="_auth_identity_8cs_source.html#l00020">AuthIdentity.cs:21</a></div></div>
+<div class="ttc" id="anamespace_system_1_1_runtime_html"><div class="ttname"><a href="namespace_system_1_1_runtime.html">System.Runtime</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_method_builder_attribute_8cs_source.html#l00001">AsyncMethodBuilderAttribute.cs:2</a></div></div>
+<div class="ttc" id="anamespace_system_html"><div class="ttname"><a href="namespace_system.html">System</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_method_builder_attribute_8cs_source.html#l00001">AsyncMethodBuilderAttribute.cs:2</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_1e261a42b4a2e33df58a15c412684b10.html">ETServer</a></li><li class="navelem"><a class="el" href="dir_473c270c995194c5ad99131d9c901f09.html">Server</a></li><li class="navelem"><a class="el" href="dir_ce426efcf63311ff42488fb2654bd4b4.html">ThirdParty</a></li><li class="navelem"><a class="el" href="dir_a37b2b5f9c8890cc9f6f8392fb0cdff3.html">MongoDBDriver</a></li><li class="navelem"><a class="el" href="dir_3c55113864d48cf4713f3b3197e2f720.html">MongoDB.Driver.Core</a></li><li class="navelem"><a class="el" href="dir_d802212cd82500a65b6eed8667c0c3ad.html">Core</a></li><li class="navelem"><a class="el" href="dir_0bfbf6548f49cb91a53ee92be54ede6d.html">Authentication</a></li><li class="navelem"><a class="el" href="dir_cc399f5fb9017323167d6ec99fa846e4.html">Sspi</a></li><li class="navelem"><a class="el" href="_native_methods_8cs.html">NativeMethods.cs</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:24:56 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

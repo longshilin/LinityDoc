@@ -1,0 +1,595 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: Assets/Scripts/Libraries/Google.Protobuf/RepeatedField.cs 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_repeated_field_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">RepeatedField.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_repeated_field_8cs.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#region Copyright notice and license</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">// Protocol Buffers - Google&#39;s data interchange format</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">// Copyright 2015 Google Inc.  All rights reserved.</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">// https://developers.google.com/protocol-buffers/</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">// Redistribution and use in source and binary forms, with or without</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">// modification, are permitted provided that the following conditions are</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">// met:</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">//     * Redistributions of source code must retain the above copyright</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">// notice, this list of conditions and the following disclaimer.</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">//     * Redistributions in binary form must reproduce the above</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">// copyright notice, this list of conditions and the following disclaimer</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">// in the documentation and/or other materials provided with the</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">// distribution.</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">//     * Neither the name of Google Inc. nor the names of its</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">// contributors may be used to endorse or promote products derived from</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">// this software without specific prior written permission.</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">// &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">// LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">// A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">// OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">// SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">// LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">// DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">// THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">// (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment">// OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#endregion</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Collections;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Collections.Generic;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.IO;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="namespace_google_1_1_protobuf_1_1_collections.html">   38</a></span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_google_1_1_protobuf_1_1_collections.html">Google.Protobuf.Collections</a></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;{</div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html">   49</a></span>&#160;    <span class="keyword">public</span> sealed <span class="keyword">class </span><a class="code" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html">RepeatedField</a>&lt;T&gt; : IList&lt;T&gt;, IList </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    {</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> readonly T[] EmptyArray = <span class="keyword">new</span> T[0];</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        <span class="keyword">private</span> <span class="keyword">const</span> <span class="keywordtype">int</span> MinArraySize = 8;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a9a17365a51a7db31ee6d39bb616e8121">   54</a></span>&#160;        <span class="keyword">public</span> T[] <a class="code" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a9a17365a51a7db31ee6d39bb616e8121">array</a> = EmptyArray;</div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a086e0b08552dce15e4536d9f91d89d59">   55</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">int</span> <a class="code" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a086e0b08552dce15e4536d9f91d89d59">count</a> = 0;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a2cec29bc476d9fcbb7a95a677eed3e40">   62</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a2cec29bc476d9fcbb7a95a677eed3e40">AddEntriesFrom</a>(<a class="code" href="class_google_1_1_protobuf_1_1_coded_input_stream.html">CodedInputStream</a> input, <a class="code" href="class_google_1_1_protobuf_1_1_field_codec.html">FieldCodec&lt;T&gt;</a> codec)</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        {</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            <span class="comment">// TODO: Inline some of the Add code, so we can avoid checking the size on every</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            <span class="comment">// iteration.</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            uint tag = input.LastTag;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            var reader = codec.ValueReader;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            <span class="comment">// Non-nullable value types can be packed or not.</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="class_google_1_1_protobuf_1_1_field_codec.html">FieldCodec&lt;T&gt;</a>.IsPackedRepeatedField(tag))</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            {</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                <span class="keywordtype">int</span> length = input.<a class="code" href="class_google_1_1_protobuf_1_1_coded_input_stream.html#a525f14fb58ffba40ebbf437acd41c4f6">ReadLength</a>();</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                <span class="keywordflow">if</span> (length &gt; 0)</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                {</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                    <span class="keywordtype">int</span> oldLimit = input.PushLimit(length);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                    <span class="keywordflow">while</span> (!input.ReachedLimit)</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                    {</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                        <a class="code" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a7b8e1737b43e97f7bfa7b983ba2947ff">Add</a>(reader(input));</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                    }</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                    input.PopLimit(oldLimit);</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                }</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                <span class="comment">// Empty packed field. Odd, but valid - just ignore.</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            }</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;            {</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                <span class="comment">// Not packed... (possibly not packable)</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                <span class="keywordflow">do</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                {</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                    <a class="code" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a7b8e1737b43e97f7bfa7b983ba2947ff">Add</a>(reader(input));</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                } <span class="keywordflow">while</span> (input.<a class="code" href="class_google_1_1_protobuf_1_1_coded_input_stream.html#aa270f362832bcaa6e1f388a86b87f6a7">MaybeConsumeTag</a>(tag));</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            }</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        }</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
+<div class="line"><a name="l00099"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#ae26779d4a26cf749e57be390036ac505">   99</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">int</span> <a class="code" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#ae26779d4a26cf749e57be390036ac505">CalculateSize</a>(<a class="code" href="class_google_1_1_protobuf_1_1_field_codec.html">FieldCodec&lt;T&gt;</a> codec)</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        {</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a086e0b08552dce15e4536d9f91d89d59">count</a> == 0)</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;            {</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;                <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;            }</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;            uint tag = codec.Tag;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;            <span class="keywordflow">if</span> (codec.PackedRepeatedField)</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;            {</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;                <span class="keywordtype">int</span> dataSize = CalculatePackedDataSize(codec);</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;                <span class="keywordflow">return</span> <a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html">CodedOutputStream</a>.<a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#aedd0de75b8b8f40e66998ea226611255">ComputeRawVarint32Size</a>(tag) +</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;                    <a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html">CodedOutputStream</a>.<a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#af8af9c9101dd1dc9488911b5b88478bd">ComputeLengthSize</a>(dataSize) +</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;                    dataSize;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;            }</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;            {</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;                var sizeCalculator = codec.ValueSizeCalculator;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;                <span class="keywordtype">int</span> size = <a class="code" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a086e0b08552dce15e4536d9f91d89d59">count</a> * <a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html">CodedOutputStream</a>.<a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#aedd0de75b8b8f40e66998ea226611255">ComputeRawVarint32Size</a>(tag);</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a086e0b08552dce15e4536d9f91d89d59">count</a>; i++)</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;                {</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;                    size += sizeCalculator(<a class="code" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a9a17365a51a7db31ee6d39bb616e8121">array</a>[i]);</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;                }</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;                <span class="keywordflow">return</span> size;</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;            }</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        }</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160; </div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">int</span> CalculatePackedDataSize(<a class="code" href="class_google_1_1_protobuf_1_1_field_codec.html">FieldCodec&lt;T&gt;</a> codec)</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;        {</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;            <span class="keywordtype">int</span> fixedSize = codec.FixedSize;</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;            <span class="keywordflow">if</span> (fixedSize == 0)</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;            {</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;                var calculator = codec.ValueSizeCalculator;</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;                <span class="keywordtype">int</span> tmp = 0;</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a086e0b08552dce15e4536d9f91d89d59">count</a>; i++)</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;                {</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;                    tmp += calculator(<a class="code" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a9a17365a51a7db31ee6d39bb616e8121">array</a>[i]);</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;                }</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;                <span class="keywordflow">return</span> tmp;</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;            }</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;            {</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;                <span class="keywordflow">return</span> fixedSize * <a class="code" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#ae54d23e56f3aafd5ca6cb25407e424d1">Count</a>;</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;            }</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;        }</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160; </div>
+<div class="line"><a name="l00150"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a5dece338ded6fd700877e8903ff04c13">  150</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a5dece338ded6fd700877e8903ff04c13">WriteTo</a>(<a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html">CodedOutputStream</a> output, <a class="code" href="class_google_1_1_protobuf_1_1_field_codec.html">FieldCodec&lt;T&gt;</a> codec)</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;        {</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a086e0b08552dce15e4536d9f91d89d59">count</a> == 0)</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;            {</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;                <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;            }</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;            var writer = codec.ValueWriter;</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;            var tag = codec.Tag;</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;            <span class="keywordflow">if</span> (codec.PackedRepeatedField)</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;            {</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;                <span class="comment">// Packed primitive type</span></div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;                uint size = (uint)CalculatePackedDataSize(codec);</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;                output.<a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a5a843cc4916c9832a99d9b8b18cea2cc">WriteTag</a>(tag);</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;                output.WriteRawVarint32(size);</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a086e0b08552dce15e4536d9f91d89d59">count</a>; i++)</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;                {</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;                    writer(output, <a class="code" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a9a17365a51a7db31ee6d39bb616e8121">array</a>[i]);</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;                }</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;            }</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;            {</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;                <span class="comment">// Not packed: a simple tag/value pair for each value.</span></div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;                <span class="comment">// Can&#39;t use codec.WriteTagAndValue, as that omits default values.</span></div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a086e0b08552dce15e4536d9f91d89d59">count</a>; i++)</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;                {</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;                    output.<a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a5a843cc4916c9832a99d9b8b18cea2cc">WriteTag</a>(tag);</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;                    writer(output, <a class="code" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a9a17365a51a7db31ee6d39bb616e8121">array</a>[i]);</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;                }</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;            }</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;        }</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160; </div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> EnsureSize(<span class="keywordtype">int</span> size)</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;        {</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a9a17365a51a7db31ee6d39bb616e8121">array</a>.Length &lt; size)</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;            {</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;                size = <a class="code" href="namespace_p_f.html#a6cf89bee2694a0f75de4233403192b07">Math</a>.Max(size, MinArraySize);</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;                <span class="keywordtype">int</span> newSize = <a class="code" href="namespace_p_f.html#a6cf89bee2694a0f75de4233403192b07">Math</a>.Max(<a class="code" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a9a17365a51a7db31ee6d39bb616e8121">array</a>.Length * 2, size);</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;                var tmp = <span class="keyword">new</span> T[newSize];</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;                Array.Copy(<a class="code" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a9a17365a51a7db31ee6d39bb616e8121">array</a>, 0, tmp, 0, <a class="code" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a9a17365a51a7db31ee6d39bb616e8121">array</a>.Length);</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;                <a class="code" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a9a17365a51a7db31ee6d39bb616e8121">array</a> = tmp;</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;            }</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;        }</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160; </div>
+<div class="line"><a name="l00197"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a7b8e1737b43e97f7bfa7b983ba2947ff">  197</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a7b8e1737b43e97f7bfa7b983ba2947ff">Add</a>(T item)</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;        {</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;            ProtoPreconditions.CheckNotNullUnconstrained(item, <span class="stringliteral">&quot;item&quot;</span>);</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;            EnsureSize(<a class="code" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a086e0b08552dce15e4536d9f91d89d59">count</a> + 1);</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;            <a class="code" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a9a17365a51a7db31ee6d39bb616e8121">array</a>[<a class="code" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a086e0b08552dce15e4536d9f91d89d59">count</a>++] = item;</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;        }</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160; </div>
+<div class="line"><a name="l00207"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a190df1dc48fe4d17c5c961b762d59da6">  207</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a190df1dc48fe4d17c5c961b762d59da6">Clear</a>()</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;        {</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;            <span class="comment">// ET修改，这里不释放数组，避免gc</span></div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;            <span class="comment">//array = EmptyArray;</span></div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;            <a class="code" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a086e0b08552dce15e4536d9f91d89d59">count</a> = 0;</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;        }</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160; </div>
+<div class="line"><a name="l00219"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#ae6bd05a32c40554fe813e236f74bab6e">  219</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#ae6bd05a32c40554fe813e236f74bab6e">Contains</a>(T item)</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;        {</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a35ff75f798c7451a9479c40c7d4db5da">IndexOf</a>(item) != -1;</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;        }</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160; </div>
+<div class="line"><a name="l00229"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a6f8d653573cecec20fcef6a9695c0ec4">  229</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a6f8d653573cecec20fcef6a9695c0ec4">CopyTo</a>(T[] <a class="code" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a9a17365a51a7db31ee6d39bb616e8121">array</a>, <span class="keywordtype">int</span> arrayIndex)</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;        {</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;            Array.Copy(this.array, 0, <a class="code" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a9a17365a51a7db31ee6d39bb616e8121">array</a>, arrayIndex, <a class="code" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a086e0b08552dce15e4536d9f91d89d59">count</a>);</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;        }</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160; </div>
+<div class="line"><a name="l00239"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a61ac675d7629a8043f0113b05bac6738">  239</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a61ac675d7629a8043f0113b05bac6738">Remove</a>(T item)</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;        {</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;            <span class="keywordtype">int</span> index = <a class="code" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a35ff75f798c7451a9479c40c7d4db5da">IndexOf</a>(item);</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;            <span class="keywordflow">if</span> (index == -1)</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;            {</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;            }</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;            Array.Copy(<a class="code" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a9a17365a51a7db31ee6d39bb616e8121">array</a>, index + 1, <a class="code" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a9a17365a51a7db31ee6d39bb616e8121">array</a>, index, <a class="code" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a086e0b08552dce15e4536d9f91d89d59">count</a> - index - 1);</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;            <a class="code" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a086e0b08552dce15e4536d9f91d89d59">count</a>--;</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;            <a class="code" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a9a17365a51a7db31ee6d39bb616e8121">array</a>[<a class="code" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a086e0b08552dce15e4536d9f91d89d59">count</a>] = <span class="keywordflow">default</span>(T);</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;        }</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160; </div>
+<div class="line"><a name="l00255"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#ae54d23e56f3aafd5ca6cb25407e424d1">  255</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">int</span> <a class="code" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#ae54d23e56f3aafd5ca6cb25407e424d1">Count</a></div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;        {</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;            <span class="keyword">get</span></div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;            {</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;                <span class="keywordflow">return</span> <a class="code" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a086e0b08552dce15e4536d9f91d89d59">count</a>;</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;            }</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;        }</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160; </div>
+<div class="line"><a name="l00266"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a1e49d05ed1868a39a49e3f2717259e8c">  266</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a1e49d05ed1868a39a49e3f2717259e8c">IsReadOnly</a></div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;        {</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;            <span class="keyword">get</span></div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;            {</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;            }</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;        }</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160; </div>
+<div class="line"><a name="l00278"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a3f07a2f838da0ee13b862afafb42c66f">  278</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a3f07a2f838da0ee13b862afafb42c66f">AddRange</a>(IEnumerable&lt;T&gt; values)</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;        {</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;            ProtoPreconditions.CheckNotNull(values, <span class="stringliteral">&quot;values&quot;</span>);</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160; </div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;            <span class="comment">// Optimization 1: If the collection we&#39;re adding is already a RepeatedField&lt;T&gt;,</span></div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;            <span class="comment">// we know the values are valid.</span></div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;            var otherRepeatedField = values as <a class="code" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html">RepeatedField&lt;T&gt;</a>;</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;            <span class="keywordflow">if</span> (otherRepeatedField != <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;            {</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;                EnsureSize(<a class="code" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a086e0b08552dce15e4536d9f91d89d59">count</a> + otherRepeatedField.count);</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;                Array.Copy(otherRepeatedField.array, 0, <a class="code" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a9a17365a51a7db31ee6d39bb616e8121">array</a>, <a class="code" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a086e0b08552dce15e4536d9f91d89d59">count</a>, otherRepeatedField.count);</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;                <a class="code" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a086e0b08552dce15e4536d9f91d89d59">count</a> += otherRepeatedField.count;</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;                <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;            }</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160; </div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;            <span class="comment">// Optimization 2: The collection is an ICollection, so we can expand</span></div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;            <span class="comment">// just once and ask the collection to copy itself into the array.</span></div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;            var collection = values as ICollection;</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;            <span class="keywordflow">if</span> (collection != <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;            {</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;                var extraCount = collection.Count;</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;                <span class="comment">// For reference types and nullable value types, we need to check that there are no nulls</span></div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;                <span class="comment">// present. (This isn&#39;t a thread-safe approach, but we don&#39;t advertise this is thread-safe.)</span></div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;                <span class="comment">// We expect the JITter to optimize this test to true/false, so it&#39;s effectively conditional</span></div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;                <span class="comment">// specialization.</span></div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;                <span class="keywordflow">if</span> (<span class="keywordflow">default</span>(T) == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;                {</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;                    <span class="comment">// TODO: Measure whether iterating once to check and then letting the collection copy</span></div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;                    <span class="comment">// itself is faster or slower than iterating and adding as we go. For large</span></div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;                    <span class="comment">// collections this will not be great in terms of cache usage... but the optimized</span></div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;                    <span class="comment">// copy may be significantly faster than doing it one at a time.</span></div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;                    <span class="keywordflow">foreach</span> (var item <span class="keywordflow">in</span> collection)</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;                    {</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;                        <span class="keywordflow">if</span> (item == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;                        {</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;                            <span class="keywordflow">throw</span> <span class="keyword">new</span> ArgumentException(<span class="stringliteral">&quot;Sequence contained null element&quot;</span>, <span class="stringliteral">&quot;values&quot;</span>);</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;                        }</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;                    }</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;                }</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;                EnsureSize(<a class="code" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a086e0b08552dce15e4536d9f91d89d59">count</a> + extraCount);</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;                collection.CopyTo(<a class="code" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a9a17365a51a7db31ee6d39bb616e8121">array</a>, <a class="code" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a086e0b08552dce15e4536d9f91d89d59">count</a>);</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;                <a class="code" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a086e0b08552dce15e4536d9f91d89d59">count</a> += extraCount;</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;                <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;            }</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160; </div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;            <span class="comment">// We *could* check for ICollection&lt;T&gt; as well, but very very few collections implement</span></div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;            <span class="comment">// ICollection&lt;T&gt; but not ICollection. (HashSet&lt;T&gt; does, for one...)</span></div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160; </div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;            <span class="comment">// Fall back to a slower path of adding items one at a time.</span></div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;            <span class="keywordflow">foreach</span> (T item <span class="keywordflow">in</span> values)</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;            {</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;                <a class="code" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a7b8e1737b43e97f7bfa7b983ba2947ff">Add</a>(item);</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;            }</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;        }</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160; </div>
+<div class="line"><a name="l00340"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a6d0e9efbac818182068afae48b8d4599">  340</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a6d0e9efbac818182068afae48b8d4599">Add</a>(IEnumerable&lt;T&gt; values)</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;        {</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;            <a class="code" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a3f07a2f838da0ee13b862afafb42c66f">AddRange</a>(values);</div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;        }</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160; </div>
+<div class="line"><a name="l00351"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a0deaffacf2ad1da40a532ddeded60a69">  351</a></span>&#160;        <span class="keyword">public</span> IEnumerator&lt;T&gt; <a class="code" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a0deaffacf2ad1da40a532ddeded60a69">GetEnumerator</a>()</div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;        {</div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a086e0b08552dce15e4536d9f91d89d59">count</a>; i++)</div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;            {</div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;                yield <span class="keywordflow">return</span> <a class="code" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a9a17365a51a7db31ee6d39bb616e8121">array</a>[i];</div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;            }</div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;        }</div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160; </div>
+<div class="line"><a name="l00366"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a7fddb583a65fe9dc71737af62211bc81">  366</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">bool</span> <a class="code" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a7fddb583a65fe9dc71737af62211bc81">Equals</a>(<span class="keywordtype">object</span> obj)</div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;        {</div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a7fddb583a65fe9dc71737af62211bc81">Equals</a>(obj as <a class="code" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html">RepeatedField&lt;T&gt;</a>);</div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;        }</div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160; </div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;        IEnumerator IEnumerable.GetEnumerator()</div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;        {</div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a0deaffacf2ad1da40a532ddeded60a69">GetEnumerator</a>();</div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;        }</div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160; </div>
+<div class="line"><a name="l00388"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a6f6cad394d642a2d403a5a3a679d435c">  388</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">int</span> <a class="code" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a6f6cad394d642a2d403a5a3a679d435c">GetHashCode</a>()</div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;        {</div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;            <span class="keywordtype">int</span> hash = 0;</div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a086e0b08552dce15e4536d9f91d89d59">count</a>; i++)</div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;            {</div>
+<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;                hash = hash * 31 + <a class="code" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a9a17365a51a7db31ee6d39bb616e8121">array</a>[i].GetHashCode();</div>
+<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;            }</div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;            <span class="keywordflow">return</span> hash;</div>
+<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;        }</div>
+<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160; </div>
+<div class="line"><a name="l00403"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a2607441aec8ecb9341beafaeb03e5d14">  403</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a2607441aec8ecb9341beafaeb03e5d14">Equals</a>(<a class="code" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html">RepeatedField&lt;T&gt;</a> other)</div>
+<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;        {</div>
+<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;            <span class="keywordflow">if</span> (ReferenceEquals(other, <span class="keyword">null</span>))</div>
+<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;            {</div>
+<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;            }</div>
+<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;            <span class="keywordflow">if</span> (ReferenceEquals(other, <span class="keyword">this</span>))</div>
+<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;            {</div>
+<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;            }</div>
+<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;            <span class="keywordflow">if</span> (other.<a class="code" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#ae54d23e56f3aafd5ca6cb25407e424d1">Count</a> != <span class="keyword">this</span>.Count)</div>
+<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;            {</div>
+<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;            }</div>
+<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;            EqualityComparer&lt;T&gt; comparer = EqualityComparer&lt;T&gt;.Default;</div>
+<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a086e0b08552dce15e4536d9f91d89d59">count</a>; i++)</div>
+<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;            {</div>
+<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;                <span class="keywordflow">if</span> (!comparer.Equals(<a class="code" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a9a17365a51a7db31ee6d39bb616e8121">array</a>[i], other.<a class="code" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a9a17365a51a7db31ee6d39bb616e8121">array</a>[i]))</div>
+<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;                {</div>
+<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;                    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;                }</div>
+<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;            }</div>
+<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;        }</div>
+<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160; </div>
+<div class="line"><a name="l00434"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a35ff75f798c7451a9479c40c7d4db5da">  434</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">int</span> <a class="code" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a35ff75f798c7451a9479c40c7d4db5da">IndexOf</a>(T item)</div>
+<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;        {</div>
+<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;            ProtoPreconditions.CheckNotNullUnconstrained(item, <span class="stringliteral">&quot;item&quot;</span>);</div>
+<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;            EqualityComparer&lt;T&gt; comparer = EqualityComparer&lt;T&gt;.Default;</div>
+<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a086e0b08552dce15e4536d9f91d89d59">count</a>; i++)</div>
+<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;            {</div>
+<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;                <span class="keywordflow">if</span> (comparer.Equals(<a class="code" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a9a17365a51a7db31ee6d39bb616e8121">array</a>[i], item))</div>
+<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;                {</div>
+<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;                    <span class="keywordflow">return</span> i;</div>
+<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;                }</div>
+<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;            }</div>
+<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;            <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;        }</div>
+<div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160; </div>
+<div class="line"><a name="l00453"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a1b62aad211935e679ad6ab822fca82a5">  453</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a1b62aad211935e679ad6ab822fca82a5">Insert</a>(<span class="keywordtype">int</span> index, T item)</div>
+<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;        {</div>
+<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;            ProtoPreconditions.CheckNotNullUnconstrained(item, <span class="stringliteral">&quot;item&quot;</span>);</div>
+<div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;            <span class="keywordflow">if</span> (index &lt; 0 || index &gt; <a class="code" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a086e0b08552dce15e4536d9f91d89d59">count</a>)</div>
+<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160;            {</div>
+<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> ArgumentOutOfRangeException(<span class="stringliteral">&quot;index&quot;</span>);</div>
+<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;            }</div>
+<div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160;            EnsureSize(<a class="code" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a086e0b08552dce15e4536d9f91d89d59">count</a> + 1);</div>
+<div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160;            Array.Copy(<a class="code" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a9a17365a51a7db31ee6d39bb616e8121">array</a>, index, <a class="code" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a9a17365a51a7db31ee6d39bb616e8121">array</a>, index + 1, <a class="code" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a086e0b08552dce15e4536d9f91d89d59">count</a> - index);</div>
+<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;            <a class="code" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a9a17365a51a7db31ee6d39bb616e8121">array</a>[index] = item;</div>
+<div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160;            <a class="code" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a086e0b08552dce15e4536d9f91d89d59">count</a>++;</div>
+<div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160;        }</div>
+<div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160; </div>
+<div class="line"><a name="l00470"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a9850e856db5216e1d929a69221d48245">  470</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a9850e856db5216e1d929a69221d48245">RemoveAt</a>(<span class="keywordtype">int</span> index)</div>
+<div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160;        {</div>
+<div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160;            <span class="keywordflow">if</span> (index &lt; 0 || index &gt;= <a class="code" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a086e0b08552dce15e4536d9f91d89d59">count</a>)</div>
+<div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;            {</div>
+<div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> ArgumentOutOfRangeException(<span class="stringliteral">&quot;index&quot;</span>);</div>
+<div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160;            }</div>
+<div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;            Array.Copy(<a class="code" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a9a17365a51a7db31ee6d39bb616e8121">array</a>, index + 1, <a class="code" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a9a17365a51a7db31ee6d39bb616e8121">array</a>, index, <a class="code" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a086e0b08552dce15e4536d9f91d89d59">count</a> - index - 1);</div>
+<div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160;            <a class="code" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a086e0b08552dce15e4536d9f91d89d59">count</a>--;</div>
+<div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160;            <a class="code" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a9a17365a51a7db31ee6d39bb616e8121">array</a>[<a class="code" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a086e0b08552dce15e4536d9f91d89d59">count</a>] = <span class="keywordflow">default</span>(T);</div>
+<div class="line"><a name="l00479"></a><span class="lineno">  479</span>&#160;        }</div>
+<div class="line"><a name="l00480"></a><span class="lineno">  480</span>&#160; </div>
+<div class="line"><a name="l00489"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#ab5abd20d776fb4e4b79ea54909e8bc88">  489</a></span>&#160;        <span class="keyword">public</span> T <span class="keyword">this</span>[<span class="keywordtype">int</span> index]</div>
+<div class="line"><a name="l00490"></a><span class="lineno">  490</span>&#160;        {</div>
+<div class="line"><a name="l00491"></a><span class="lineno">  491</span>&#160;            <span class="keyword">get</span></div>
+<div class="line"><a name="l00492"></a><span class="lineno">  492</span>&#160;            {</div>
+<div class="line"><a name="l00493"></a><span class="lineno">  493</span>&#160;                <span class="keywordflow">if</span> (index &lt; 0 || index &gt;= <a class="code" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a086e0b08552dce15e4536d9f91d89d59">count</a>)</div>
+<div class="line"><a name="l00494"></a><span class="lineno">  494</span>&#160;                {</div>
+<div class="line"><a name="l00495"></a><span class="lineno">  495</span>&#160;                    <span class="keywordflow">throw</span> <span class="keyword">new</span> ArgumentOutOfRangeException(<span class="stringliteral">&quot;index&quot;</span>);</div>
+<div class="line"><a name="l00496"></a><span class="lineno">  496</span>&#160;                }</div>
+<div class="line"><a name="l00497"></a><span class="lineno">  497</span>&#160;                <span class="keywordflow">return</span> <a class="code" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a9a17365a51a7db31ee6d39bb616e8121">array</a>[index];</div>
+<div class="line"><a name="l00498"></a><span class="lineno">  498</span>&#160;            }</div>
+<div class="line"><a name="l00499"></a><span class="lineno">  499</span>&#160;            <span class="keyword">set</span></div>
+<div class="line"><a name="l00500"></a><span class="lineno">  500</span>&#160;            {</div>
+<div class="line"><a name="l00501"></a><span class="lineno">  501</span>&#160;                <span class="keywordflow">if</span> (index &lt; 0 || index &gt;= <a class="code" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a086e0b08552dce15e4536d9f91d89d59">count</a>)</div>
+<div class="line"><a name="l00502"></a><span class="lineno">  502</span>&#160;                {</div>
+<div class="line"><a name="l00503"></a><span class="lineno">  503</span>&#160;                    <span class="keywordflow">throw</span> <span class="keyword">new</span> ArgumentOutOfRangeException(<span class="stringliteral">&quot;index&quot;</span>);</div>
+<div class="line"><a name="l00504"></a><span class="lineno">  504</span>&#160;                }</div>
+<div class="line"><a name="l00505"></a><span class="lineno">  505</span>&#160;                ProtoPreconditions.CheckNotNullUnconstrained(value, <span class="stringliteral">&quot;value&quot;</span>);</div>
+<div class="line"><a name="l00506"></a><span class="lineno">  506</span>&#160;                <a class="code" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a9a17365a51a7db31ee6d39bb616e8121">array</a>[index] = value;</div>
+<div class="line"><a name="l00507"></a><span class="lineno">  507</span>&#160;            }</div>
+<div class="line"><a name="l00508"></a><span class="lineno">  508</span>&#160;        }</div>
+<div class="line"><a name="l00509"></a><span class="lineno">  509</span>&#160; </div>
+<div class="line"><a name="l00510"></a><span class="lineno">  510</span>&#160;<span class="preprocessor">        #region Explicit interface implementation for IList and ICollection.</span></div>
+<div class="line"><a name="l00511"></a><span class="lineno">  511</span>&#160;        <span class="keywordtype">bool</span> IList.IsFixedSize</div>
+<div class="line"><a name="l00512"></a><span class="lineno">  512</span>&#160;        {</div>
+<div class="line"><a name="l00513"></a><span class="lineno">  513</span>&#160;            <span class="keyword">get</span></div>
+<div class="line"><a name="l00514"></a><span class="lineno">  514</span>&#160;            {</div>
+<div class="line"><a name="l00515"></a><span class="lineno">  515</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00516"></a><span class="lineno">  516</span>&#160;            }</div>
+<div class="line"><a name="l00517"></a><span class="lineno">  517</span>&#160;        }</div>
+<div class="line"><a name="l00518"></a><span class="lineno">  518</span>&#160; </div>
+<div class="line"><a name="l00519"></a><span class="lineno">  519</span>&#160;        <span class="keywordtype">void</span> ICollection.CopyTo(Array <a class="code" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a9a17365a51a7db31ee6d39bb616e8121">array</a>, <span class="keywordtype">int</span> index)</div>
+<div class="line"><a name="l00520"></a><span class="lineno">  520</span>&#160;        {</div>
+<div class="line"><a name="l00521"></a><span class="lineno">  521</span>&#160;            Array.Copy(this.array, 0, <a class="code" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a9a17365a51a7db31ee6d39bb616e8121">array</a>, index, <a class="code" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a086e0b08552dce15e4536d9f91d89d59">count</a>);</div>
+<div class="line"><a name="l00522"></a><span class="lineno">  522</span>&#160;        }</div>
+<div class="line"><a name="l00523"></a><span class="lineno">  523</span>&#160; </div>
+<div class="line"><a name="l00524"></a><span class="lineno">  524</span>&#160;        <span class="keywordtype">bool</span> ICollection.IsSynchronized</div>
+<div class="line"><a name="l00525"></a><span class="lineno">  525</span>&#160;        {</div>
+<div class="line"><a name="l00526"></a><span class="lineno">  526</span>&#160;            <span class="keyword">get</span></div>
+<div class="line"><a name="l00527"></a><span class="lineno">  527</span>&#160;            {</div>
+<div class="line"><a name="l00528"></a><span class="lineno">  528</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00529"></a><span class="lineno">  529</span>&#160;            }</div>
+<div class="line"><a name="l00530"></a><span class="lineno">  530</span>&#160;        }</div>
+<div class="line"><a name="l00531"></a><span class="lineno">  531</span>&#160; </div>
+<div class="line"><a name="l00532"></a><span class="lineno">  532</span>&#160;        <span class="keywordtype">object</span> ICollection.SyncRoot</div>
+<div class="line"><a name="l00533"></a><span class="lineno">  533</span>&#160;        {</div>
+<div class="line"><a name="l00534"></a><span class="lineno">  534</span>&#160;            <span class="keyword">get</span></div>
+<div class="line"><a name="l00535"></a><span class="lineno">  535</span>&#160;            {</div>
+<div class="line"><a name="l00536"></a><span class="lineno">  536</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">this</span>;</div>
+<div class="line"><a name="l00537"></a><span class="lineno">  537</span>&#160;            }</div>
+<div class="line"><a name="l00538"></a><span class="lineno">  538</span>&#160;        }</div>
+<div class="line"><a name="l00539"></a><span class="lineno">  539</span>&#160; </div>
+<div class="line"><a name="l00540"></a><span class="lineno">  540</span>&#160;        <span class="keywordtype">object</span> IList.this[<span class="keywordtype">int</span> index]</div>
+<div class="line"><a name="l00541"></a><span class="lineno">  541</span>&#160;        {</div>
+<div class="line"><a name="l00542"></a><span class="lineno">  542</span>&#160;            <span class="keyword">get</span> { <span class="keywordflow">return</span> <span class="keyword">this</span>[index]; }</div>
+<div class="line"><a name="l00543"></a><span class="lineno">  543</span>&#160;            <span class="keyword">set</span> { <span class="keyword">this</span>[index] = (T)value; }</div>
+<div class="line"><a name="l00544"></a><span class="lineno">  544</span>&#160;        }</div>
+<div class="line"><a name="l00545"></a><span class="lineno">  545</span>&#160; </div>
+<div class="line"><a name="l00546"></a><span class="lineno">  546</span>&#160;        <span class="keywordtype">int</span> IList.Add(<span class="keywordtype">object</span> value)</div>
+<div class="line"><a name="l00547"></a><span class="lineno">  547</span>&#160;        {</div>
+<div class="line"><a name="l00548"></a><span class="lineno">  548</span>&#160;            <a class="code" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a7b8e1737b43e97f7bfa7b983ba2947ff">Add</a>((T)value);</div>
+<div class="line"><a name="l00549"></a><span class="lineno">  549</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a086e0b08552dce15e4536d9f91d89d59">count</a> - 1;</div>
+<div class="line"><a name="l00550"></a><span class="lineno">  550</span>&#160;        }</div>
+<div class="line"><a name="l00551"></a><span class="lineno">  551</span>&#160; </div>
+<div class="line"><a name="l00552"></a><span class="lineno">  552</span>&#160;        <span class="keywordtype">bool</span> IList.Contains(<span class="keywordtype">object</span> value)</div>
+<div class="line"><a name="l00553"></a><span class="lineno">  553</span>&#160;        {</div>
+<div class="line"><a name="l00554"></a><span class="lineno">  554</span>&#160;            <span class="keywordflow">return</span> (value is T &amp;&amp; <a class="code" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#ae6bd05a32c40554fe813e236f74bab6e">Contains</a>((T)value));</div>
+<div class="line"><a name="l00555"></a><span class="lineno">  555</span>&#160;        }</div>
+<div class="line"><a name="l00556"></a><span class="lineno">  556</span>&#160; </div>
+<div class="line"><a name="l00557"></a><span class="lineno">  557</span>&#160;        <span class="keywordtype">int</span> IList.IndexOf(<span class="keywordtype">object</span> value)</div>
+<div class="line"><a name="l00558"></a><span class="lineno">  558</span>&#160;        {</div>
+<div class="line"><a name="l00559"></a><span class="lineno">  559</span>&#160;            <span class="keywordflow">if</span> (!(value is T))</div>
+<div class="line"><a name="l00560"></a><span class="lineno">  560</span>&#160;            {</div>
+<div class="line"><a name="l00561"></a><span class="lineno">  561</span>&#160;                <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a name="l00562"></a><span class="lineno">  562</span>&#160;            }</div>
+<div class="line"><a name="l00563"></a><span class="lineno">  563</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a35ff75f798c7451a9479c40c7d4db5da">IndexOf</a>((T)value);</div>
+<div class="line"><a name="l00564"></a><span class="lineno">  564</span>&#160;        }</div>
+<div class="line"><a name="l00565"></a><span class="lineno">  565</span>&#160; </div>
+<div class="line"><a name="l00566"></a><span class="lineno">  566</span>&#160;        <span class="keywordtype">void</span> IList.Insert(<span class="keywordtype">int</span> index, <span class="keywordtype">object</span> value)</div>
+<div class="line"><a name="l00567"></a><span class="lineno">  567</span>&#160;        {</div>
+<div class="line"><a name="l00568"></a><span class="lineno">  568</span>&#160;            <a class="code" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a1b62aad211935e679ad6ab822fca82a5">Insert</a>(index, (T)value);</div>
+<div class="line"><a name="l00569"></a><span class="lineno">  569</span>&#160;        }</div>
+<div class="line"><a name="l00570"></a><span class="lineno">  570</span>&#160; </div>
+<div class="line"><a name="l00571"></a><span class="lineno">  571</span>&#160;        <span class="keywordtype">void</span> IList.Remove(<span class="keywordtype">object</span> value)</div>
+<div class="line"><a name="l00572"></a><span class="lineno">  572</span>&#160;        {</div>
+<div class="line"><a name="l00573"></a><span class="lineno">  573</span>&#160;            <span class="keywordflow">if</span> (!(value is T))</div>
+<div class="line"><a name="l00574"></a><span class="lineno">  574</span>&#160;            {</div>
+<div class="line"><a name="l00575"></a><span class="lineno">  575</span>&#160;                <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00576"></a><span class="lineno">  576</span>&#160;            }</div>
+<div class="line"><a name="l00577"></a><span class="lineno">  577</span>&#160;            <a class="code" href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a61ac675d7629a8043f0113b05bac6738">Remove</a>((T)value);</div>
+<div class="line"><a name="l00578"></a><span class="lineno">  578</span>&#160;        }</div>
+<div class="line"><a name="l00579"></a><span class="lineno">  579</span>&#160;<span class="preprocessor">        #endregion        </span></div>
+<div class="line"><a name="l00580"></a><span class="lineno">  580</span>&#160;    }</div>
+<div class="line"><a name="l00581"></a><span class="lineno">  581</span>&#160;}</div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_coded_input_stream_html"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_coded_input_stream.html">Google.Protobuf.CodedInputStream</a></div><div class="ttdoc">Reads and decodes protocol message fields.</div><div class="ttdef"><b>Definition:</b> <a href="_coded_input_stream_8cs_source.html#l00054">CodedInputStream.cs:55</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_coded_input_stream_html_a525f14fb58ffba40ebbf437acd41c4f6"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_coded_input_stream.html#a525f14fb58ffba40ebbf437acd41c4f6">Google.Protobuf.CodedInputStream.ReadLength</a></div><div class="ttdeci">int ReadLength()</div><div class="ttdoc">Reads a length for length-delimited data.</div><div class="ttdef"><b>Definition:</b> <a href="_coded_input_stream_8cs_source.html#l00680">CodedInputStream.cs:680</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_coded_input_stream_html_aa270f362832bcaa6e1f388a86b87f6a7"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_coded_input_stream.html#aa270f362832bcaa6e1f388a86b87f6a7">Google.Protobuf.CodedInputStream.MaybeConsumeTag</a></div><div class="ttdeci">bool MaybeConsumeTag(uint tag)</div><div class="ttdoc">Peeks at the next tag in the stream. If it matches tag , the tag is consumed and the method returns t...</div><div class="ttdef"><b>Definition:</b> <a href="_coded_input_stream_8cs_source.html#l00690">CodedInputStream.cs:690</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_coded_output_stream_html"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_coded_output_stream.html">Google.Protobuf.CodedOutputStream</a></div><div class="ttdoc">Encodes and writes protocol message fields.</div><div class="ttdef"><b>Definition:</b> <a href="_coded_output_stream_8_compute_size_8cs_source.html#l00040">CodedOutputStream.ComputeSize.cs:41</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_coded_output_stream_html_a5a843cc4916c9832a99d9b8b18cea2cc"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a5a843cc4916c9832a99d9b8b18cea2cc">Google.Protobuf.CodedOutputStream.WriteTag</a></div><div class="ttdeci">void WriteTag(int fieldNumber, WireFormat.WireType type)</div><div class="ttdoc">Encodes and writes a tag.</div><div class="ttdef"><b>Definition:</b> <a href="_coded_output_stream_8cs_source.html#l00391">CodedOutputStream.cs:391</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_coded_output_stream_html_aedd0de75b8b8f40e66998ea226611255"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_coded_output_stream.html#aedd0de75b8b8f40e66998ea226611255">Google.Protobuf.CodedOutputStream.ComputeRawVarint32Size</a></div><div class="ttdeci">static int ComputeRawVarint32Size(uint value)</div><div class="ttdoc">Computes the number of bytes that would be needed to encode a varint.</div><div class="ttdef"><b>Definition:</b> <a href="_coded_output_stream_8_compute_size_8cs_source.html#l00231">CodedOutputStream.ComputeSize.cs:231</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_coded_output_stream_html_af8af9c9101dd1dc9488911b5b88478bd"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_coded_output_stream.html#af8af9c9101dd1dc9488911b5b88478bd">Google.Protobuf.CodedOutputStream.ComputeLengthSize</a></div><div class="ttdeci">static int ComputeLengthSize(int length)</div><div class="ttdoc">Computes the number of bytes that would be needed to encode a length, as written by WriteLength.</div><div class="ttdef"><b>Definition:</b> <a href="_coded_output_stream_8_compute_size_8cs_source.html#l00223">CodedOutputStream.ComputeSize.cs:223</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_collections_1_1_repeated_field_html"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html">Google.Protobuf.Collections.RepeatedField</a></div><div class="ttdoc">The contents of a repeated field: essentially, a collection with some extra restrictions (no null val...</div><div class="ttdef"><b>Definition:</b> <a href="_repeated_field_8cs_source.html#l00049">RepeatedField.cs:50</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_collections_1_1_repeated_field_html_a086e0b08552dce15e4536d9f91d89d59"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a086e0b08552dce15e4536d9f91d89d59">Google.Protobuf.Collections.RepeatedField.count</a></div><div class="ttdeci">int count</div><div class="ttdef"><b>Definition:</b> <a href="_repeated_field_8cs_source.html#l00055">RepeatedField.cs:55</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_collections_1_1_repeated_field_html_a0deaffacf2ad1da40a532ddeded60a69"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a0deaffacf2ad1da40a532ddeded60a69">Google.Protobuf.Collections.RepeatedField.GetEnumerator</a></div><div class="ttdeci">IEnumerator&lt; T &gt; GetEnumerator()</div><div class="ttdoc">Returns an enumerator that iterates through the collection.</div><div class="ttdef"><b>Definition:</b> <a href="_repeated_field_8cs_source.html#l00351">RepeatedField.cs:351</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_collections_1_1_repeated_field_html_a190df1dc48fe4d17c5c961b762d59da6"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a190df1dc48fe4d17c5c961b762d59da6">Google.Protobuf.Collections.RepeatedField.Clear</a></div><div class="ttdeci">void Clear()</div><div class="ttdoc">Removes all items from the collection.</div><div class="ttdef"><b>Definition:</b> <a href="_repeated_field_8cs_source.html#l00207">RepeatedField.cs:207</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_collections_1_1_repeated_field_html_a1b62aad211935e679ad6ab822fca82a5"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a1b62aad211935e679ad6ab822fca82a5">Google.Protobuf.Collections.RepeatedField.Insert</a></div><div class="ttdeci">void Insert(int index, T item)</div><div class="ttdoc">Inserts the given item at the specified index.</div><div class="ttdef"><b>Definition:</b> <a href="_repeated_field_8cs_source.html#l00453">RepeatedField.cs:453</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_collections_1_1_repeated_field_html_a1e49d05ed1868a39a49e3f2717259e8c"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a1e49d05ed1868a39a49e3f2717259e8c">Google.Protobuf.Collections.RepeatedField.IsReadOnly</a></div><div class="ttdeci">bool IsReadOnly</div><div class="ttdoc">Gets a value indicating whether the collection is read-only.</div><div class="ttdef"><b>Definition:</b> <a href="_repeated_field_8cs_source.html#l00266">RepeatedField.cs:267</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_collections_1_1_repeated_field_html_a2607441aec8ecb9341beafaeb03e5d14"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a2607441aec8ecb9341beafaeb03e5d14">Google.Protobuf.Collections.RepeatedField.Equals</a></div><div class="ttdeci">bool Equals(RepeatedField&lt; T &gt; other)</div><div class="ttdoc">Compares this repeated field with another for equality.</div><div class="ttdef"><b>Definition:</b> <a href="_repeated_field_8cs_source.html#l00403">RepeatedField.cs:403</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_collections_1_1_repeated_field_html_a2cec29bc476d9fcbb7a95a677eed3e40"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a2cec29bc476d9fcbb7a95a677eed3e40">Google.Protobuf.Collections.RepeatedField.AddEntriesFrom</a></div><div class="ttdeci">void AddEntriesFrom(CodedInputStream input, FieldCodec&lt; T &gt; codec)</div><div class="ttdoc">Adds the entries from the given input stream, decoding them with the specified codec.</div><div class="ttdef"><b>Definition:</b> <a href="_repeated_field_8cs_source.html#l00062">RepeatedField.cs:62</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_collections_1_1_repeated_field_html_a35ff75f798c7451a9479c40c7d4db5da"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a35ff75f798c7451a9479c40c7d4db5da">Google.Protobuf.Collections.RepeatedField.IndexOf</a></div><div class="ttdeci">int IndexOf(T item)</div><div class="ttdoc">Returns the index of the given item within the collection, or -1 if the item is not present.</div><div class="ttdef"><b>Definition:</b> <a href="_repeated_field_8cs_source.html#l00434">RepeatedField.cs:434</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_collections_1_1_repeated_field_html_a3f07a2f838da0ee13b862afafb42c66f"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a3f07a2f838da0ee13b862afafb42c66f">Google.Protobuf.Collections.RepeatedField.AddRange</a></div><div class="ttdeci">void AddRange(IEnumerable&lt; T &gt; values)</div><div class="ttdoc">Adds all of the specified values into this collection.</div><div class="ttdef"><b>Definition:</b> <a href="_repeated_field_8cs_source.html#l00278">RepeatedField.cs:278</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_collections_1_1_repeated_field_html_a5dece338ded6fd700877e8903ff04c13"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a5dece338ded6fd700877e8903ff04c13">Google.Protobuf.Collections.RepeatedField.WriteTo</a></div><div class="ttdeci">void WriteTo(CodedOutputStream output, FieldCodec&lt; T &gt; codec)</div><div class="ttdoc">Writes the contents of this collection to the given CodedOutputStream, encoding each value using the ...</div><div class="ttdef"><b>Definition:</b> <a href="_repeated_field_8cs_source.html#l00150">RepeatedField.cs:150</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_collections_1_1_repeated_field_html_a61ac675d7629a8043f0113b05bac6738"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a61ac675d7629a8043f0113b05bac6738">Google.Protobuf.Collections.RepeatedField.Remove</a></div><div class="ttdeci">bool Remove(T item)</div><div class="ttdoc">Removes the specified item from the collection</div><div class="ttdef"><b>Definition:</b> <a href="_repeated_field_8cs_source.html#l00239">RepeatedField.cs:239</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_collections_1_1_repeated_field_html_a6d0e9efbac818182068afae48b8d4599"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a6d0e9efbac818182068afae48b8d4599">Google.Protobuf.Collections.RepeatedField.Add</a></div><div class="ttdeci">void Add(IEnumerable&lt; T &gt; values)</div><div class="ttdoc">Adds all of the specified values into this collection. This method is present to allow repeated field...</div><div class="ttdef"><b>Definition:</b> <a href="_repeated_field_8cs_source.html#l00340">RepeatedField.cs:340</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_collections_1_1_repeated_field_html_a6f6cad394d642a2d403a5a3a679d435c"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a6f6cad394d642a2d403a5a3a679d435c">Google.Protobuf.Collections.RepeatedField.GetHashCode</a></div><div class="ttdeci">override int GetHashCode()</div><div class="ttdoc">Returns a hash code for this instance.</div><div class="ttdef"><b>Definition:</b> <a href="_repeated_field_8cs_source.html#l00388">RepeatedField.cs:388</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_collections_1_1_repeated_field_html_a6f8d653573cecec20fcef6a9695c0ec4"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a6f8d653573cecec20fcef6a9695c0ec4">Google.Protobuf.Collections.RepeatedField.CopyTo</a></div><div class="ttdeci">void CopyTo(T[] array, int arrayIndex)</div><div class="ttdoc">Copies this collection to the given array.</div><div class="ttdef"><b>Definition:</b> <a href="_repeated_field_8cs_source.html#l00229">RepeatedField.cs:229</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_collections_1_1_repeated_field_html_a7b8e1737b43e97f7bfa7b983ba2947ff"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a7b8e1737b43e97f7bfa7b983ba2947ff">Google.Protobuf.Collections.RepeatedField.Add</a></div><div class="ttdeci">void Add(T item)</div><div class="ttdoc">Adds the specified item to the collection.</div><div class="ttdef"><b>Definition:</b> <a href="_repeated_field_8cs_source.html#l00197">RepeatedField.cs:197</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_collections_1_1_repeated_field_html_a7fddb583a65fe9dc71737af62211bc81"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a7fddb583a65fe9dc71737af62211bc81">Google.Protobuf.Collections.RepeatedField.Equals</a></div><div class="ttdeci">override bool Equals(object obj)</div><div class="ttdoc">Determines whether the specified System.Object, is equal to this instance.</div><div class="ttdef"><b>Definition:</b> <a href="_repeated_field_8cs_source.html#l00366">RepeatedField.cs:366</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_collections_1_1_repeated_field_html_a9850e856db5216e1d929a69221d48245"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a9850e856db5216e1d929a69221d48245">Google.Protobuf.Collections.RepeatedField.RemoveAt</a></div><div class="ttdeci">void RemoveAt(int index)</div><div class="ttdoc">Removes the item at the given index.</div><div class="ttdef"><b>Definition:</b> <a href="_repeated_field_8cs_source.html#l00470">RepeatedField.cs:470</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_collections_1_1_repeated_field_html_a9a17365a51a7db31ee6d39bb616e8121"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#a9a17365a51a7db31ee6d39bb616e8121">Google.Protobuf.Collections.RepeatedField.array</a></div><div class="ttdeci">T[] array</div><div class="ttdef"><b>Definition:</b> <a href="_repeated_field_8cs_source.html#l00054">RepeatedField.cs:54</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_collections_1_1_repeated_field_html_ae26779d4a26cf749e57be390036ac505"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#ae26779d4a26cf749e57be390036ac505">Google.Protobuf.Collections.RepeatedField.CalculateSize</a></div><div class="ttdeci">int CalculateSize(FieldCodec&lt; T &gt; codec)</div><div class="ttdoc">Calculates the size of this collection based on the given codec.</div><div class="ttdef"><b>Definition:</b> <a href="_repeated_field_8cs_source.html#l00099">RepeatedField.cs:99</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_collections_1_1_repeated_field_html_ae54d23e56f3aafd5ca6cb25407e424d1"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#ae54d23e56f3aafd5ca6cb25407e424d1">Google.Protobuf.Collections.RepeatedField.Count</a></div><div class="ttdeci">int Count</div><div class="ttdoc">Gets the number of elements contained in the collection.</div><div class="ttdef"><b>Definition:</b> <a href="_repeated_field_8cs_source.html#l00255">RepeatedField.cs:256</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_collections_1_1_repeated_field_html_ae6bd05a32c40554fe813e236f74bab6e"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_collections_1_1_repeated_field.html#ae6bd05a32c40554fe813e236f74bab6e">Google.Protobuf.Collections.RepeatedField.Contains</a></div><div class="ttdeci">bool Contains(T item)</div><div class="ttdoc">Determines whether this collection contains the given item.</div><div class="ttdef"><b>Definition:</b> <a href="_repeated_field_8cs_source.html#l00219">RepeatedField.cs:219</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_field_codec_html"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_field_codec.html">Google.Protobuf.FieldCodec</a></div><div class="ttdoc">Factory methods for FieldCodec&lt;T&gt;.</div><div class="ttdef"><b>Definition:</b> <a href="_field_codec_8cs_source.html#l00241">FieldCodec.cs:242</a></div></div>
+<div class="ttc" id="anamespace_google_1_1_protobuf_1_1_collections_html"><div class="ttname"><a href="namespace_google_1_1_protobuf_1_1_collections.html">Google.Protobuf.Collections</a></div><div class="ttdef"><b>Definition:</b> <a href="_repeated_field_8cs_source.html#l00038">RepeatedField.cs:39</a></div></div>
+<div class="ttc" id="anamespace_p_f_html_a6cf89bee2694a0f75de4233403192b07"><div class="ttname"><a href="namespace_p_f.html#a6cf89bee2694a0f75de4233403192b07">PF.Math</a></div><div class="ttdeci">System.Math Math</div><div class="ttdef"><b>Definition:</b> <a href="_navmesh_base_8cs_source.html#l00006">NavmeshBase.cs:6</a></div></div>
+<div class="ttc" id="anamespace_system_html"><div class="ttname"><a href="namespace_system.html">System</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_method_builder_attribute_8cs_source.html#l00001">AsyncMethodBuilderAttribute.cs:2</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_84bbf7b3c7f28a5a18725745e1505219.html">Assets</a></li><li class="navelem"><a class="el" href="dir_f13b41af88cf68434578284aaf699e39.html">Scripts</a></li><li class="navelem"><a class="el" href="dir_46d134a3bf82cf4dc49ca8f728aea58c.html">Libraries</a></li><li class="navelem"><a class="el" href="dir_ee874eb5685beecfc37035b4fc9dfc0c.html">Google.Protobuf</a></li><li class="navelem"><a class="el" href="_repeated_field_8cs.html">RepeatedField.cs</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:24:50 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

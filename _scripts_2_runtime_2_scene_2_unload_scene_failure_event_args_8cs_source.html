@@ -1,0 +1,170 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: Assets/Scripts/Libraries/GameFramework/Scripts/Runtime/Scene/UnloadSceneFailureEventArgs.cs 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_scripts_2_runtime_2_scene_2_unload_scene_failure_event_args_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">UnloadSceneFailureEventArgs.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_scripts_2_runtime_2_scene_2_unload_scene_failure_event_args_8cs.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">//------------------------------------------------------------</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">// Game Framework</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">// Copyright © 2013-2021 Jiang Yin. All rights reserved.</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">// Homepage: https://gameframework.cn/</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">// Feedback: mailto:ellan@gameframework.cn</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">//------------------------------------------------------------</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_game_framework.html">GameFramework</a>;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_game_framework.html">GameFramework</a>.<a class="code" href="namespace_game_framework_1_1_event.html">Event</a>;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_unity_game_framework_1_1_runtime.html">UnityGameFramework.Runtime</a></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;{</div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="class_unity_game_framework_1_1_runtime_1_1_unload_scene_failure_event_args.html">   16</a></span>&#160;    <span class="keyword">public</span> sealed <span class="keyword">class </span><a class="code" href="class_unity_game_framework_1_1_runtime_1_1_unload_scene_failure_event_args.html">UnloadSceneFailureEventArgs</a> : <a class="code" href="class_game_framework_1_1_event_1_1_game_event_args.html">GameEventArgs</a></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    {</div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="class_unity_game_framework_1_1_runtime_1_1_unload_scene_failure_event_args.html#a2f2ef21a097f4ddb22fee35f94b2fd69">   21</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> readonly <span class="keywordtype">int</span> <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_unload_scene_failure_event_args.html#a2f2ef21a097f4ddb22fee35f94b2fd69">EventId</a> = typeof(<a class="code" href="class_unity_game_framework_1_1_runtime_1_1_unload_scene_failure_event_args.html">UnloadSceneFailureEventArgs</a>).GetHashCode();</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="class_unity_game_framework_1_1_runtime_1_1_unload_scene_failure_event_args.html#ab2be1bc3c02a97c426195abba0ae90b2">   26</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_unload_scene_failure_event_args.html#ab2be1bc3c02a97c426195abba0ae90b2">UnloadSceneFailureEventArgs</a>()</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        {</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;            <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_unload_scene_failure_event_args.html#a8e3b7c144ff8ea4e8be3bcc113a45037">SceneAssetName</a> = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;            <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_unload_scene_failure_event_args.html#ad55112edf37575a61115211fd993a7bf">UserData</a> = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        }</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="class_unity_game_framework_1_1_runtime_1_1_unload_scene_failure_event_args.html#a41c9b4aaae0f26f4867d7046b3aaf14a">   35</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">int</span> <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_unload_scene_failure_event_args.html#a41c9b4aaae0f26f4867d7046b3aaf14a">Id</a></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        {</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;            <span class="keyword">get</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;            {</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                <span class="keywordflow">return</span> <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_unload_scene_failure_event_args.html#a2f2ef21a097f4ddb22fee35f94b2fd69">EventId</a>;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            }</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        }</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="class_unity_game_framework_1_1_runtime_1_1_unload_scene_failure_event_args.html#a8e3b7c144ff8ea4e8be3bcc113a45037">   46</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">string</span> <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_unload_scene_failure_event_args.html#a8e3b7c144ff8ea4e8be3bcc113a45037">SceneAssetName</a></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        {</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            <span class="keyword">get</span>;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            <span class="keyword">private</span> <span class="keyword">set</span>;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        }</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="class_unity_game_framework_1_1_runtime_1_1_unload_scene_failure_event_args.html#ad55112edf37575a61115211fd993a7bf">   55</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">object</span> <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_unload_scene_failure_event_args.html#ad55112edf37575a61115211fd993a7bf">UserData</a></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        {</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            <span class="keyword">get</span>;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            <span class="keyword">private</span> <span class="keyword">set</span>;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        }</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="class_unity_game_framework_1_1_runtime_1_1_unload_scene_failure_event_args.html#a04dbcd8f9abb8fdc62f6d45745511b34">   66</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_unload_scene_failure_event_args.html">UnloadSceneFailureEventArgs</a> <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_unload_scene_failure_event_args.html#a04dbcd8f9abb8fdc62f6d45745511b34">Create</a>(<a class="code" href="namespace_game_framework.html">GameFramework</a>.<a class="code" href="namespace_game_framework_1_1_scene.html">Scene</a>.<a class="code" href="class_game_framework_1_1_scene_1_1_unload_scene_failure_event_args.html">UnloadSceneFailureEventArgs</a> e)</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        {</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_unload_scene_failure_event_args.html">UnloadSceneFailureEventArgs</a> unloadSceneFailureEventArgs = ReferencePool.Acquire&lt;<a class="code" href="class_unity_game_framework_1_1_runtime_1_1_unload_scene_failure_event_args.html">UnloadSceneFailureEventArgs</a>&gt;();</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            unloadSceneFailureEventArgs.<a class="code" href="class_unity_game_framework_1_1_runtime_1_1_unload_scene_failure_event_args.html#a8e3b7c144ff8ea4e8be3bcc113a45037">SceneAssetName</a> = e.SceneAssetName;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            unloadSceneFailureEventArgs.<a class="code" href="class_unity_game_framework_1_1_runtime_1_1_unload_scene_failure_event_args.html#ad55112edf37575a61115211fd993a7bf">UserData</a> = e.UserData;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            <span class="keywordflow">return</span> unloadSceneFailureEventArgs;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        }</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
+<div class="line"><a name="l00077"></a><span class="lineno"><a class="line" href="class_unity_game_framework_1_1_runtime_1_1_unload_scene_failure_event_args.html#abdb0f84ba2542454f1b74e75f973e9ab">   77</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_unload_scene_failure_event_args.html#abdb0f84ba2542454f1b74e75f973e9ab">Clear</a>()</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        {</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;            <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_unload_scene_failure_event_args.html#a8e3b7c144ff8ea4e8be3bcc113a45037">SceneAssetName</a> = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_unload_scene_failure_event_args.html#ad55112edf37575a61115211fd993a7bf">UserData</a> = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        }</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    }</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;}</div>
+<div class="ttc" id="aclass_game_framework_1_1_event_1_1_game_event_args_html"><div class="ttname"><a href="class_game_framework_1_1_event_1_1_game_event_args.html">GameFramework.Event.GameEventArgs</a></div><div class="ttdoc">游戏逻辑事件基类。</div><div class="ttdef"><b>Definition:</b> <a href="_game_event_args_8cs_source.html#l00013">GameEventArgs.cs:14</a></div></div>
+<div class="ttc" id="aclass_game_framework_1_1_scene_1_1_unload_scene_failure_event_args_html"><div class="ttname"><a href="class_game_framework_1_1_scene_1_1_unload_scene_failure_event_args.html">GameFramework.Scene.UnloadSceneFailureEventArgs</a></div><div class="ttdoc">卸载场景失败事件。</div><div class="ttdef"><b>Definition:</b> <a href="_libraries_2_game_framework-2021_805_831_2_game_framework_2_scene_2_unload_scene_failure_event_args_8cs_source.html#l00013">UnloadSceneFailureEventArgs.cs:14</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_runtime_1_1_unload_scene_failure_event_args_html"><div class="ttname"><a href="class_unity_game_framework_1_1_runtime_1_1_unload_scene_failure_event_args.html">UnityGameFramework.Runtime.UnloadSceneFailureEventArgs</a></div><div class="ttdoc">卸载场景失败事件。</div><div class="ttdef"><b>Definition:</b> <a href="_scripts_2_runtime_2_scene_2_unload_scene_failure_event_args_8cs_source.html#l00016">UnloadSceneFailureEventArgs.cs:17</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_runtime_1_1_unload_scene_failure_event_args_html_a04dbcd8f9abb8fdc62f6d45745511b34"><div class="ttname"><a href="class_unity_game_framework_1_1_runtime_1_1_unload_scene_failure_event_args.html#a04dbcd8f9abb8fdc62f6d45745511b34">UnityGameFramework.Runtime.UnloadSceneFailureEventArgs.Create</a></div><div class="ttdeci">static UnloadSceneFailureEventArgs Create(GameFramework.Scene.UnloadSceneFailureEventArgs e)</div><div class="ttdoc">创建卸载场景失败事件。</div><div class="ttdef"><b>Definition:</b> <a href="_scripts_2_runtime_2_scene_2_unload_scene_failure_event_args_8cs_source.html#l00066">UnloadSceneFailureEventArgs.cs:66</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_runtime_1_1_unload_scene_failure_event_args_html_a2f2ef21a097f4ddb22fee35f94b2fd69"><div class="ttname"><a href="class_unity_game_framework_1_1_runtime_1_1_unload_scene_failure_event_args.html#a2f2ef21a097f4ddb22fee35f94b2fd69">UnityGameFramework.Runtime.UnloadSceneFailureEventArgs.EventId</a></div><div class="ttdeci">static readonly int EventId</div><div class="ttdoc">加载场景失败事件编号。</div><div class="ttdef"><b>Definition:</b> <a href="_scripts_2_runtime_2_scene_2_unload_scene_failure_event_args_8cs_source.html#l00021">UnloadSceneFailureEventArgs.cs:21</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_runtime_1_1_unload_scene_failure_event_args_html_a41c9b4aaae0f26f4867d7046b3aaf14a"><div class="ttname"><a href="class_unity_game_framework_1_1_runtime_1_1_unload_scene_failure_event_args.html#a41c9b4aaae0f26f4867d7046b3aaf14a">UnityGameFramework.Runtime.UnloadSceneFailureEventArgs.Id</a></div><div class="ttdeci">override int Id</div><div class="ttdoc">获取加载场景失败事件编号。</div><div class="ttdef"><b>Definition:</b> <a href="_scripts_2_runtime_2_scene_2_unload_scene_failure_event_args_8cs_source.html#l00035">UnloadSceneFailureEventArgs.cs:36</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_runtime_1_1_unload_scene_failure_event_args_html_a8e3b7c144ff8ea4e8be3bcc113a45037"><div class="ttname"><a href="class_unity_game_framework_1_1_runtime_1_1_unload_scene_failure_event_args.html#a8e3b7c144ff8ea4e8be3bcc113a45037">UnityGameFramework.Runtime.UnloadSceneFailureEventArgs.SceneAssetName</a></div><div class="ttdeci">string SceneAssetName</div><div class="ttdoc">获取场景资源名称。</div><div class="ttdef"><b>Definition:</b> <a href="_scripts_2_runtime_2_scene_2_unload_scene_failure_event_args_8cs_source.html#l00046">UnloadSceneFailureEventArgs.cs:47</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_runtime_1_1_unload_scene_failure_event_args_html_ab2be1bc3c02a97c426195abba0ae90b2"><div class="ttname"><a href="class_unity_game_framework_1_1_runtime_1_1_unload_scene_failure_event_args.html#ab2be1bc3c02a97c426195abba0ae90b2">UnityGameFramework.Runtime.UnloadSceneFailureEventArgs.UnloadSceneFailureEventArgs</a></div><div class="ttdeci">UnloadSceneFailureEventArgs()</div><div class="ttdoc">初始化卸载场景失败事件的新实例。</div><div class="ttdef"><b>Definition:</b> <a href="_scripts_2_runtime_2_scene_2_unload_scene_failure_event_args_8cs_source.html#l00026">UnloadSceneFailureEventArgs.cs:26</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_runtime_1_1_unload_scene_failure_event_args_html_abdb0f84ba2542454f1b74e75f973e9ab"><div class="ttname"><a href="class_unity_game_framework_1_1_runtime_1_1_unload_scene_failure_event_args.html#abdb0f84ba2542454f1b74e75f973e9ab">UnityGameFramework.Runtime.UnloadSceneFailureEventArgs.Clear</a></div><div class="ttdeci">override void Clear()</div><div class="ttdoc">清理卸载场景失败事件。</div><div class="ttdef"><b>Definition:</b> <a href="_scripts_2_runtime_2_scene_2_unload_scene_failure_event_args_8cs_source.html#l00077">UnloadSceneFailureEventArgs.cs:77</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_runtime_1_1_unload_scene_failure_event_args_html_ad55112edf37575a61115211fd993a7bf"><div class="ttname"><a href="class_unity_game_framework_1_1_runtime_1_1_unload_scene_failure_event_args.html#ad55112edf37575a61115211fd993a7bf">UnityGameFramework.Runtime.UnloadSceneFailureEventArgs.UserData</a></div><div class="ttdeci">object UserData</div><div class="ttdoc">获取用户自定义数据。</div><div class="ttdef"><b>Definition:</b> <a href="_scripts_2_runtime_2_scene_2_unload_scene_failure_event_args_8cs_source.html#l00055">UnloadSceneFailureEventArgs.cs:56</a></div></div>
+<div class="ttc" id="anamespace_game_framework_1_1_event_html"><div class="ttname"><a href="namespace_game_framework_1_1_event.html">GameFramework.Event</a></div><div class="ttdef"><b>Definition:</b> <a href="_libraries_2_game_framework_2_libraries_2_game_framework-2021_805_831_2_game_framework_2_event_2_event_manager_8cs_source.html#l00010">EventManager.cs:11</a></div></div>
+<div class="ttc" id="anamespace_game_framework_1_1_scene_html"><div class="ttname"><a href="namespace_game_framework_1_1_scene.html">GameFramework.Scene</a></div><div class="ttdef"><b>Definition:</b> <a href="_i_scene_manager_8cs_source.html#l00012">ISceneManager.cs:13</a></div></div>
+<div class="ttc" id="anamespace_game_framework_html"><div class="ttname"><a href="namespace_game_framework.html">GameFramework</a></div><div class="ttdef"><b>Definition:</b> <a href="_data_provider_8cs_source.html#l00011">DataProvider.cs:12</a></div></div>
+<div class="ttc" id="anamespace_unity_game_framework_1_1_runtime_html"><div class="ttname"><a href="namespace_unity_game_framework_1_1_runtime.html">UnityGameFramework.Runtime</a></div><div class="ttdef"><b>Definition:</b> <a href="_base_component_8cs_source.html#l00014">BaseComponent.cs:15</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_84bbf7b3c7f28a5a18725745e1505219.html">Assets</a></li><li class="navelem"><a class="el" href="dir_f13b41af88cf68434578284aaf699e39.html">Scripts</a></li><li class="navelem"><a class="el" href="dir_46d134a3bf82cf4dc49ca8f728aea58c.html">Libraries</a></li><li class="navelem"><a class="el" href="dir_7a6862c303020716b3c311e95823547c.html">GameFramework</a></li><li class="navelem"><a class="el" href="dir_1d9b7e2b1e68805cdf4440a735859529.html">Scripts</a></li><li class="navelem"><a class="el" href="dir_e81cefffdbcf8632d0c6357d5d83ba40.html">Runtime</a></li><li class="navelem"><a class="el" href="dir_48c0104bd4e96b53abad5559b2991791.html">Scene</a></li><li class="navelem"><a class="el" href="_scripts_2_runtime_2_scene_2_unload_scene_failure_event_args_8cs.html">UnloadSceneFailureEventArgs.cs</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:24:48 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

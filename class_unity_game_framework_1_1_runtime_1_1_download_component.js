@@ -1,0 +1,28 @@
+var class_unity_game_framework_1_1_runtime_1_1_download_component =
+[
+    [ "AddDownload", "class_unity_game_framework_1_1_runtime_1_1_download_component.html#aa074004964d8b9a47b0648a0bd8921c4", null ],
+    [ "AddDownload", "class_unity_game_framework_1_1_runtime_1_1_download_component.html#a5461bcdaf118a42982b3165b96ab3927", null ],
+    [ "AddDownload", "class_unity_game_framework_1_1_runtime_1_1_download_component.html#a7028eb3e5756ca0474eb2c548d811ead", null ],
+    [ "AddDownload", "class_unity_game_framework_1_1_runtime_1_1_download_component.html#ac522f82bb04c2d2bb1695a8e59275a5a", null ],
+    [ "AddDownload", "class_unity_game_framework_1_1_runtime_1_1_download_component.html#a13eb9d285e1cd053ab82a810ea607e66", null ],
+    [ "AddDownload", "class_unity_game_framework_1_1_runtime_1_1_download_component.html#add0760cf7f810d318a3bf3a7d50f0694", null ],
+    [ "AddDownload", "class_unity_game_framework_1_1_runtime_1_1_download_component.html#a2f2b2e122700436a55dfa44ea8c10020", null ],
+    [ "AddDownload", "class_unity_game_framework_1_1_runtime_1_1_download_component.html#a2b2f282d9e3b3e3aa6af52100dc77cc0", null ],
+    [ "Awake", "class_unity_game_framework_1_1_runtime_1_1_download_component.html#a0a0c9a275b465c8d8e80d5a5776a3e5c", null ],
+    [ "GetAllDownloadInfos", "class_unity_game_framework_1_1_runtime_1_1_download_component.html#a9bd93e3872b6f62353eb8d8a2a8ffa58", null ],
+    [ "GetAllDownloadInfos", "class_unity_game_framework_1_1_runtime_1_1_download_component.html#a26a8830361bf8e905efd311bb648ca17", null ],
+    [ "GetDownloadInfo", "class_unity_game_framework_1_1_runtime_1_1_download_component.html#af29e0ecbdcb912d28ad1db097db919e8", null ],
+    [ "GetDownloadInfos", "class_unity_game_framework_1_1_runtime_1_1_download_component.html#af226981a00ccf0554c94c0d00b2b0742", null ],
+    [ "GetDownloadInfos", "class_unity_game_framework_1_1_runtime_1_1_download_component.html#a2c83db3be2a5834e0a674c7264defbae", null ],
+    [ "RemoveAllDownloads", "class_unity_game_framework_1_1_runtime_1_1_download_component.html#a8488a8573eadd534915321f0cacadf54", null ],
+    [ "RemoveDownload", "class_unity_game_framework_1_1_runtime_1_1_download_component.html#a8e4ddcc07424bb997ab89fdb73051ac0", null ],
+    [ "RemoveDownloads", "class_unity_game_framework_1_1_runtime_1_1_download_component.html#af35de7ab96752d65e0e3677cb7e2f8ed", null ],
+    [ "CurrentSpeed", "class_unity_game_framework_1_1_runtime_1_1_download_component.html#a87c4a435f1ddbd1cd9ea2129f95cc03f", null ],
+    [ "FlushSize", "class_unity_game_framework_1_1_runtime_1_1_download_component.html#ad2617a46ed2134f70c4c9882a010ab72", null ],
+    [ "FreeAgentCount", "class_unity_game_framework_1_1_runtime_1_1_download_component.html#a0b16e6ce6ccd7679704fb0ed76064dc2", null ],
+    [ "Paused", "class_unity_game_framework_1_1_runtime_1_1_download_component.html#af59265cd9d543939b3875e6d7335d78a", null ],
+    [ "Timeout", "class_unity_game_framework_1_1_runtime_1_1_download_component.html#ab7b5e5ae0eeaca7d579d72ce6e592af9", null ],
+    [ "TotalAgentCount", "class_unity_game_framework_1_1_runtime_1_1_download_component.html#a1695d3216e73005d02f7cfac296e169a", null ],
+    [ "WaitingTaskCount", "class_unity_game_framework_1_1_runtime_1_1_download_component.html#aa0bf17affcc640a471bf5f3340828fae", null ],
+    [ "WorkingAgentCount", "class_unity_game_framework_1_1_runtime_1_1_download_component.html#ab02fad9ba6f85121175a5fbd1fd5eda1", null ]
+];

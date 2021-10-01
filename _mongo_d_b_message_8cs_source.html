@@ -1,0 +1,146 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: ETServer/Server/ThirdParty/MongoDBDriver/MongoDB.Driver.Core/Core/WireProtocol/Messages/MongoDBMessage.cs 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_mongo_d_b_message_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">MongoDBMessage.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_mongo_d_b_message_8cs.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/* Copyright 2013-present MongoDB Inc.</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">* Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">* you may not use this file except in compliance with the License.</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">* You may obtain a copy of the License at</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">* http://www.apache.org/licenses/LICENSE-2.0</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">* Unless required by applicable law or agreed to in writing, software</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">* distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">* See the License for the specific language governing permissions and</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">* limitations under the License.</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Collections.Generic;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Linq;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Text;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Threading.Tasks;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_mongo_d_b.html">MongoDB</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver.html">Driver</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core.html">Core</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_wire_protocol.html">WireProtocol</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_wire_protocol_1_1_messages.html">Messages</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_wire_protocol_1_1_messages_1_1_encoders.html">Encoders</a>;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_wire_protocol_1_1_messages.html">MongoDB.Driver.Core.WireProtocol.Messages</a></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;{</div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_wire_protocol_1_1_messages_1_1_mongo_d_b_message.html">   28</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">class </span><a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_wire_protocol_1_1_messages_1_1_mongo_d_b_message.html">MongoDBMessage</a> : <a class="code" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_wire_protocol_1_1_messages_1_1_encoders_1_1_i_encodable_message.html">IEncodableMessage</a></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    {</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <span class="comment">// properties</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_wire_protocol_1_1_messages_1_1_mongo_d_b_message.html#ac47ca76d4c138bdbaf6ffc33dde12d00">   34</a></span>&#160;<span class="comment"></span>        <span class="keyword">public</span> <span class="keyword">abstract</span> <a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_wire_protocol_1_1_messages.html#a652c7031bc57d326bcce7796178bb87d">MongoDBMessageType</a> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_wire_protocol_1_1_messages_1_1_mongo_d_b_message.html#ac47ca76d4c138bdbaf6ffc33dde12d00">MessageType</a> { <span class="keyword">get</span>; }</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <span class="comment">// methods        </span></div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_wire_protocol_1_1_messages_1_1_mongo_d_b_message.html#ac827ae176ec45a4615403638ec6457ef">   38</a></span>&#160;<span class="comment"></span>        <span class="keyword">public</span> <span class="keyword">abstract</span> <a class="code" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_wire_protocol_1_1_messages_1_1_encoders_1_1_i_message_encoder.html">IMessageEncoder</a> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_wire_protocol_1_1_messages_1_1_mongo_d_b_message.html#ac827ae176ec45a4615403638ec6457ef">GetEncoder</a>(<a class="code" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_wire_protocol_1_1_messages_1_1_encoders_1_1_i_message_encoder_factory.html">IMessageEncoderFactory</a> encoderFactory);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    }</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;}</div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_wire_protocol_1_1_messages_1_1_mongo_d_b_message_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_wire_protocol_1_1_messages_1_1_mongo_d_b_message.html">MongoDB.Driver.Core.WireProtocol.Messages.MongoDBMessage</a></div><div class="ttdoc">Represents a base class for messages.</div><div class="ttdef"><b>Definition:</b> <a href="_mongo_d_b_message_8cs_source.html#l00028">MongoDBMessage.cs:29</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_wire_protocol_1_1_messages_1_1_mongo_d_b_message_html_ac47ca76d4c138bdbaf6ffc33dde12d00"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_wire_protocol_1_1_messages_1_1_mongo_d_b_message.html#ac47ca76d4c138bdbaf6ffc33dde12d00">MongoDB.Driver.Core.WireProtocol.Messages.MongoDBMessage.MessageType</a></div><div class="ttdeci">abstract MongoDBMessageType MessageType</div><div class="ttdoc">Gets the type of the message.</div><div class="ttdef"><b>Definition:</b> <a href="_mongo_d_b_message_8cs_source.html#l00034">MongoDBMessage.cs:34</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_wire_protocol_1_1_messages_1_1_mongo_d_b_message_html_ac827ae176ec45a4615403638ec6457ef"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_wire_protocol_1_1_messages_1_1_mongo_d_b_message.html#ac827ae176ec45a4615403638ec6457ef">MongoDB.Driver.Core.WireProtocol.Messages.MongoDBMessage.GetEncoder</a></div><div class="ttdeci">abstract IMessageEncoder GetEncoder(IMessageEncoderFactory encoderFactory)</div><div class="ttdoc">Gets an encoder for the message from an encoder factory.</div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_driver_1_1_core_1_1_wire_protocol_1_1_messages_1_1_encoders_1_1_i_encodable_message_html"><div class="ttname"><a href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_wire_protocol_1_1_messages_1_1_encoders_1_1_i_encodable_message.html">MongoDB.Driver.Core.WireProtocol.Messages.Encoders.IEncodableMessage</a></div><div class="ttdoc">Represents an encodable message.</div><div class="ttdef"><b>Definition:</b> <a href="_i_encodable_message_8cs_source.html#l00027">IEncodableMessage.cs:28</a></div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_driver_1_1_core_1_1_wire_protocol_1_1_messages_1_1_encoders_1_1_i_message_encoder_factory_html"><div class="ttname"><a href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_wire_protocol_1_1_messages_1_1_encoders_1_1_i_message_encoder_factory.html">MongoDB.Driver.Core.WireProtocol.Messages.Encoders.IMessageEncoderFactory</a></div><div class="ttdoc">Represents a message encoder factory.</div><div class="ttdef"><b>Definition:</b> <a href="_i_message_encoder_factory_8cs_source.html#l00028">IMessageEncoderFactory.cs:29</a></div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_driver_1_1_core_1_1_wire_protocol_1_1_messages_1_1_encoders_1_1_i_message_encoder_html"><div class="ttname"><a href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_wire_protocol_1_1_messages_1_1_encoders_1_1_i_message_encoder.html">MongoDB.Driver.Core.WireProtocol.Messages.Encoders.IMessageEncoder</a></div><div class="ttdoc">Represents a message encoder.</div><div class="ttdef"><b>Definition:</b> <a href="_i_message_encoder_8cs_source.html#l00027">IMessageEncoder.cs:28</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_driver_1_1_core_1_1_wire_protocol_1_1_messages_1_1_encoders_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_wire_protocol_1_1_messages_1_1_encoders.html">MongoDB.Driver.Core.WireProtocol.Messages.Encoders</a></div><div class="ttdef"><b>Definition:</b> <a href="_binary_message_encoder_factory_8cs_source.html#l00021">BinaryMessageEncoderFactory.cs:22</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_driver_1_1_core_1_1_wire_protocol_1_1_messages_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_wire_protocol_1_1_messages.html">MongoDB.Driver.Core.WireProtocol.Messages</a></div><div class="ttdef"><b>Definition:</b> <a href="_command_message_8cs_source.html#l00022">CommandMessage.cs:23</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_driver_1_1_core_1_1_wire_protocol_1_1_messages_html_a652c7031bc57d326bcce7796178bb87d"><div class="ttname"><a href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_wire_protocol_1_1_messages.html#a652c7031bc57d326bcce7796178bb87d">MongoDB.Driver.Core.WireProtocol.Messages.MongoDBMessageType</a></div><div class="ttdeci">MongoDBMessageType</div><div class="ttdoc">Represents the type of message.</div><div class="ttdef"><b>Definition:</b> <a href="_mongo_d_b_message_type_8cs_source.html#l00022">MongoDBMessageType.cs:23</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_driver_1_1_core_1_1_wire_protocol_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_wire_protocol.html">MongoDB.Driver.Core.WireProtocol</a></div><div class="ttdef"><b>Definition:</b> <a href="_command_response_handling_8cs_source.html#l00023">CommandResponseHandling.cs:24</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_driver_1_1_core_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_driver_1_1_core.html">MongoDB.Driver.Core</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_queue_8cs_source.html#l00023">AsyncQueue.cs:24</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_driver_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_driver.html">MongoDB.Driver</a></div><div class="ttdef"><b>Definition:</b> <a href="_aggregate_bucket_auto_granularity_8cs_source.html#l00018">AggregateBucketAutoGranularity.cs:19</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_html"><div class="ttname"><a href="namespace_mongo_d_b.html">MongoDB</a></div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_bson_constants_8cs_source.html#l00018">BsonConstants.cs:19</a></div></div>
+<div class="ttc" id="anamespace_system_html"><div class="ttname"><a href="namespace_system.html">System</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_method_builder_attribute_8cs_source.html#l00001">AsyncMethodBuilderAttribute.cs:2</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_1e261a42b4a2e33df58a15c412684b10.html">ETServer</a></li><li class="navelem"><a class="el" href="dir_473c270c995194c5ad99131d9c901f09.html">Server</a></li><li class="navelem"><a class="el" href="dir_ce426efcf63311ff42488fb2654bd4b4.html">ThirdParty</a></li><li class="navelem"><a class="el" href="dir_a37b2b5f9c8890cc9f6f8392fb0cdff3.html">MongoDBDriver</a></li><li class="navelem"><a class="el" href="dir_3c55113864d48cf4713f3b3197e2f720.html">MongoDB.Driver.Core</a></li><li class="navelem"><a class="el" href="dir_d802212cd82500a65b6eed8667c0c3ad.html">Core</a></li><li class="navelem"><a class="el" href="dir_6e9a1b981056330e79dfb430531fe50b.html">WireProtocol</a></li><li class="navelem"><a class="el" href="dir_925f5151ec2bb0113c9050365f170a9b.html">Messages</a></li><li class="navelem"><a class="el" href="_mongo_d_b_message_8cs.html">MongoDBMessage.cs</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:24:58 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,207 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: Assets/Scripts/Libraries/GameFramework/Scripts/Runtime/Debugger/DebuggerComponent.LogNode.cs 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_debugger_component_8_log_node_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">DebuggerComponent.LogNode.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_debugger_component_8_log_node_8cs.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">//------------------------------------------------------------</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">// Game Framework</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">// Copyright © 2013-2021 Jiang Yin. All rights reserved.</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">// Homepage: https://gameframework.cn/</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">// Feedback: mailto:ellan@gameframework.cn</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">//------------------------------------------------------------</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_game_framework.html">GameFramework</a>;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_unity_engine.html">UnityEngine</a>;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_unity_game_framework_1_1_runtime.html">UnityGameFramework.Runtime</a></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;{</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keyword">public</span> sealed <span class="keyword">partial class </span>DebuggerComponent : GameFrameworkComponent</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    {</div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="class_unity_game_framework_1_1_runtime_1_1_debugger_component_1_1_log_node.html">   19</a></span>&#160;        <span class="keyword">public</span> sealed <span class="keyword">class </span><a class="code" href="class_unity_game_framework_1_1_runtime_1_1_debugger_component_1_1_log_node.html">LogNode</a> : <a class="code" href="interface_game_framework_1_1_i_reference.html">IReference</a></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        {</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;            <span class="keyword">private</span> DateTime m_LogTime;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;            <span class="keyword">private</span> <span class="keywordtype">int</span> m_LogFrameCount;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;            <span class="keyword">private</span> <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_debugger_component_1_1_log_node.html#ad458832bade4d983b089d01fd1fdfea6">LogType</a> m_LogType;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;            <span class="keyword">private</span> <span class="keywordtype">string</span> m_LogMessage;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;            <span class="keyword">private</span> <span class="keywordtype">string</span> m_StackTrack;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="class_unity_game_framework_1_1_runtime_1_1_debugger_component_1_1_log_node.html#a4ab76e54af10babbc0723a8ae7f80bfe">   30</a></span>&#160;            <span class="keyword">public</span> <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_debugger_component_1_1_log_node.html#a4ab76e54af10babbc0723a8ae7f80bfe">LogNode</a>()</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;            {</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;                m_LogTime = <span class="keywordflow">default</span>(DateTime);</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;                m_LogFrameCount = 0;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;                m_LogType = <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_debugger_component_1_1_log_node.html#ad458832bade4d983b089d01fd1fdfea6">LogType</a>.Error;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;                m_LogMessage = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;                m_StackTrack = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;            }</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="class_unity_game_framework_1_1_runtime_1_1_debugger_component_1_1_log_node.html#a8193f567680dcf3a2e845ebcd9bf9181">   42</a></span>&#160;            <span class="keyword">public</span> DateTime <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_debugger_component_1_1_log_node.html#a8193f567680dcf3a2e845ebcd9bf9181">LogTime</a></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;            {</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                <span class="keyword">get</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                {</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                    <span class="keywordflow">return</span> m_LogTime;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                }</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            }</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="class_unity_game_framework_1_1_runtime_1_1_debugger_component_1_1_log_node.html#ab9652bfa1f2a29447beb16b6194a9191">   53</a></span>&#160;            <span class="keyword">public</span> <span class="keywordtype">int</span> <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_debugger_component_1_1_log_node.html#ab9652bfa1f2a29447beb16b6194a9191">LogFrameCount</a></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            {</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                <span class="keyword">get</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                {</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                    <span class="keywordflow">return</span> m_LogFrameCount;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;                }</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            }</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="class_unity_game_framework_1_1_runtime_1_1_debugger_component_1_1_log_node.html#ad458832bade4d983b089d01fd1fdfea6">   64</a></span>&#160;            <span class="keyword">public</span> <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_debugger_component_1_1_log_node.html#ad458832bade4d983b089d01fd1fdfea6">LogType</a> <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_debugger_component_1_1_log_node.html#ad458832bade4d983b089d01fd1fdfea6">LogType</a></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            {</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                <span class="keyword">get</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                {</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                    <span class="keywordflow">return</span> m_LogType;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                }</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            }</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
+<div class="line"><a name="l00075"></a><span class="lineno"><a class="line" href="class_unity_game_framework_1_1_runtime_1_1_debugger_component_1_1_log_node.html#ab13224b8942b0cea532af196c1cfce5d">   75</a></span>&#160;            <span class="keyword">public</span> <span class="keywordtype">string</span> <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_debugger_component_1_1_log_node.html#ab13224b8942b0cea532af196c1cfce5d">LogMessage</a></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            {</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                <span class="keyword">get</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                {</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                    <span class="keywordflow">return</span> m_LogMessage;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                }</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            }</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+<div class="line"><a name="l00086"></a><span class="lineno"><a class="line" href="class_unity_game_framework_1_1_runtime_1_1_debugger_component_1_1_log_node.html#a974c9511fbce4790fccd7ce762000eb0">   86</a></span>&#160;            <span class="keyword">public</span> <span class="keywordtype">string</span> <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_debugger_component_1_1_log_node.html#a974c9511fbce4790fccd7ce762000eb0">StackTrack</a></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;            {</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                <span class="keyword">get</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                {</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                    <span class="keywordflow">return</span> m_StackTrack;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                }</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;            }</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
+<div class="line"><a name="l00101"></a><span class="lineno"><a class="line" href="class_unity_game_framework_1_1_runtime_1_1_debugger_component_1_1_log_node.html#ab8ca078c78932e973825fab21975d1dd">  101</a></span>&#160;            <span class="keyword">public</span> <span class="keyword">static</span> <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_debugger_component_1_1_log_node.html">LogNode</a> <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_debugger_component_1_1_log_node.html#ab8ca078c78932e973825fab21975d1dd">Create</a>(<a class="code" href="class_unity_game_framework_1_1_runtime_1_1_debugger_component_1_1_log_node.html#ad458832bade4d983b089d01fd1fdfea6">LogType</a> logType, <span class="keywordtype">string</span> logMessage, <span class="keywordtype">string</span> stackTrack)</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;            {</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;                <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_debugger_component_1_1_log_node.html">LogNode</a> logNode = ReferencePool.Acquire&lt;<a class="code" href="class_unity_game_framework_1_1_runtime_1_1_debugger_component_1_1_log_node.html">LogNode</a>&gt;();</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;                logNode.m_LogTime = DateTime.UtcNow;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;                logNode.m_LogFrameCount = Time.frameCount;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;                logNode.m_LogType = logType;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;                logNode.m_LogMessage = logMessage;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;                logNode.m_StackTrack = stackTrack;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;                <span class="keywordflow">return</span> logNode;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;            }</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; </div>
+<div class="line"><a name="l00115"></a><span class="lineno"><a class="line" href="class_unity_game_framework_1_1_runtime_1_1_debugger_component_1_1_log_node.html#ac8446d99cda138ce88085964ccdb1932">  115</a></span>&#160;            <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_debugger_component_1_1_log_node.html#ac8446d99cda138ce88085964ccdb1932">Clear</a>()</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;            {</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;                m_LogTime = <span class="keywordflow">default</span>(DateTime);</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;                m_LogFrameCount = 0;</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;                m_LogType = <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_debugger_component_1_1_log_node.html#ad458832bade4d983b089d01fd1fdfea6">LogType</a>.Error;</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;                m_LogMessage = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;                m_StackTrack = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;            }</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        }</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    }</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;}</div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_runtime_1_1_debugger_component_1_1_log_node_html"><div class="ttname"><a href="class_unity_game_framework_1_1_runtime_1_1_debugger_component_1_1_log_node.html">UnityGameFramework.Runtime.DebuggerComponent.LogNode</a></div><div class="ttdoc">日志记录结点。</div><div class="ttdef"><b>Definition:</b> <a href="_debugger_component_8_log_node_8cs_source.html#l00019">DebuggerComponent.LogNode.cs:20</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_runtime_1_1_debugger_component_1_1_log_node_html_a4ab76e54af10babbc0723a8ae7f80bfe"><div class="ttname"><a href="class_unity_game_framework_1_1_runtime_1_1_debugger_component_1_1_log_node.html#a4ab76e54af10babbc0723a8ae7f80bfe">UnityGameFramework.Runtime.DebuggerComponent.LogNode.LogNode</a></div><div class="ttdeci">LogNode()</div><div class="ttdoc">初始化日志记录结点的新实例。</div><div class="ttdef"><b>Definition:</b> <a href="_debugger_component_8_log_node_8cs_source.html#l00030">DebuggerComponent.LogNode.cs:30</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_runtime_1_1_debugger_component_1_1_log_node_html_a8193f567680dcf3a2e845ebcd9bf9181"><div class="ttname"><a href="class_unity_game_framework_1_1_runtime_1_1_debugger_component_1_1_log_node.html#a8193f567680dcf3a2e845ebcd9bf9181">UnityGameFramework.Runtime.DebuggerComponent.LogNode.LogTime</a></div><div class="ttdeci">DateTime LogTime</div><div class="ttdoc">获取日志时间。</div><div class="ttdef"><b>Definition:</b> <a href="_debugger_component_8_log_node_8cs_source.html#l00042">DebuggerComponent.LogNode.cs:43</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_runtime_1_1_debugger_component_1_1_log_node_html_a974c9511fbce4790fccd7ce762000eb0"><div class="ttname"><a href="class_unity_game_framework_1_1_runtime_1_1_debugger_component_1_1_log_node.html#a974c9511fbce4790fccd7ce762000eb0">UnityGameFramework.Runtime.DebuggerComponent.LogNode.StackTrack</a></div><div class="ttdeci">string StackTrack</div><div class="ttdoc">获取日志堆栈信息。</div><div class="ttdef"><b>Definition:</b> <a href="_debugger_component_8_log_node_8cs_source.html#l00086">DebuggerComponent.LogNode.cs:87</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_runtime_1_1_debugger_component_1_1_log_node_html_ab13224b8942b0cea532af196c1cfce5d"><div class="ttname"><a href="class_unity_game_framework_1_1_runtime_1_1_debugger_component_1_1_log_node.html#ab13224b8942b0cea532af196c1cfce5d">UnityGameFramework.Runtime.DebuggerComponent.LogNode.LogMessage</a></div><div class="ttdeci">string LogMessage</div><div class="ttdoc">获取日志内容。</div><div class="ttdef"><b>Definition:</b> <a href="_debugger_component_8_log_node_8cs_source.html#l00075">DebuggerComponent.LogNode.cs:76</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_runtime_1_1_debugger_component_1_1_log_node_html_ab8ca078c78932e973825fab21975d1dd"><div class="ttname"><a href="class_unity_game_framework_1_1_runtime_1_1_debugger_component_1_1_log_node.html#ab8ca078c78932e973825fab21975d1dd">UnityGameFramework.Runtime.DebuggerComponent.LogNode.Create</a></div><div class="ttdeci">static LogNode Create(LogType logType, string logMessage, string stackTrack)</div><div class="ttdoc">创建日志记录结点。</div><div class="ttdef"><b>Definition:</b> <a href="_debugger_component_8_log_node_8cs_source.html#l00101">DebuggerComponent.LogNode.cs:101</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_runtime_1_1_debugger_component_1_1_log_node_html_ab9652bfa1f2a29447beb16b6194a9191"><div class="ttname"><a href="class_unity_game_framework_1_1_runtime_1_1_debugger_component_1_1_log_node.html#ab9652bfa1f2a29447beb16b6194a9191">UnityGameFramework.Runtime.DebuggerComponent.LogNode.LogFrameCount</a></div><div class="ttdeci">int LogFrameCount</div><div class="ttdoc">获取日志帧计数。</div><div class="ttdef"><b>Definition:</b> <a href="_debugger_component_8_log_node_8cs_source.html#l00053">DebuggerComponent.LogNode.cs:54</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_runtime_1_1_debugger_component_1_1_log_node_html_ac8446d99cda138ce88085964ccdb1932"><div class="ttname"><a href="class_unity_game_framework_1_1_runtime_1_1_debugger_component_1_1_log_node.html#ac8446d99cda138ce88085964ccdb1932">UnityGameFramework.Runtime.DebuggerComponent.LogNode.Clear</a></div><div class="ttdeci">void Clear()</div><div class="ttdoc">清理日志记录结点。</div><div class="ttdef"><b>Definition:</b> <a href="_debugger_component_8_log_node_8cs_source.html#l00115">DebuggerComponent.LogNode.cs:115</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_runtime_1_1_debugger_component_1_1_log_node_html_ad458832bade4d983b089d01fd1fdfea6"><div class="ttname"><a href="class_unity_game_framework_1_1_runtime_1_1_debugger_component_1_1_log_node.html#ad458832bade4d983b089d01fd1fdfea6">UnityGameFramework.Runtime.DebuggerComponent.LogNode.LogType</a></div><div class="ttdeci">LogType LogType</div><div class="ttdoc">获取日志类型。</div><div class="ttdef"><b>Definition:</b> <a href="_debugger_component_8_log_node_8cs_source.html#l00064">DebuggerComponent.LogNode.cs:65</a></div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_i_reference_html"><div class="ttname"><a href="interface_game_framework_1_1_i_reference.html">GameFramework.IReference</a></div><div class="ttdoc">引用接口。</div><div class="ttdef"><b>Definition:</b> <a href="_libraries_2_game_framework_2_libraries_2_game_framework-2021_805_831_2_game_framework_2_base_2_1b3cee03745ed378cf06a4003e8a128c_source.html#l00013">IReference.cs:14</a></div></div>
+<div class="ttc" id="anamespace_game_framework_html"><div class="ttname"><a href="namespace_game_framework.html">GameFramework</a></div><div class="ttdef"><b>Definition:</b> <a href="_data_provider_8cs_source.html#l00011">DataProvider.cs:12</a></div></div>
+<div class="ttc" id="anamespace_system_html"><div class="ttname"><a href="namespace_system.html">System</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_method_builder_attribute_8cs_source.html#l00001">AsyncMethodBuilderAttribute.cs:2</a></div></div>
+<div class="ttc" id="anamespace_unity_engine_html"><div class="ttname"><a href="namespace_unity_engine.html">UnityEngine</a></div><div class="ttdef"><b>Definition:</b> <a href="_mathf_8cs_source.html#l00003">Mathf.cs:4</a></div></div>
+<div class="ttc" id="anamespace_unity_game_framework_1_1_runtime_html"><div class="ttname"><a href="namespace_unity_game_framework_1_1_runtime.html">UnityGameFramework.Runtime</a></div><div class="ttdef"><b>Definition:</b> <a href="_base_component_8cs_source.html#l00014">BaseComponent.cs:15</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_84bbf7b3c7f28a5a18725745e1505219.html">Assets</a></li><li class="navelem"><a class="el" href="dir_f13b41af88cf68434578284aaf699e39.html">Scripts</a></li><li class="navelem"><a class="el" href="dir_46d134a3bf82cf4dc49ca8f728aea58c.html">Libraries</a></li><li class="navelem"><a class="el" href="dir_7a6862c303020716b3c311e95823547c.html">GameFramework</a></li><li class="navelem"><a class="el" href="dir_1d9b7e2b1e68805cdf4440a735859529.html">Scripts</a></li><li class="navelem"><a class="el" href="dir_e81cefffdbcf8632d0c6357d5d83ba40.html">Runtime</a></li><li class="navelem"><a class="el" href="dir_11ae6ffd40e6d3728c4f8ffb1153126b.html">Debugger</a></li><li class="navelem"><a class="el" href="_debugger_component_8_log_node_8cs.html">DebuggerComponent.LogNode.cs</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:24:49 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

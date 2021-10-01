@@ -1,0 +1,180 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: Assets/Scripts/Editor/ProjectSetting/LinityProjectSetting.cs 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_linity_project_setting_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">LinityProjectSetting.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_linity_project_setting_8cs.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_unity_engine.html">UnityEngine</a>;</div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Collections.Generic;</div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#if UNITY_EDITOR</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="keyword">using</span> UnityEditor;</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;[<a class="code" href="namespace_system.html">System</a>.Serializable]</div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="class_linity_project_setting.html">   11</a></span>&#160;<span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="class_linity_project_setting.html">LinityProjectSetting</a> : ScriptableObject</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;{</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keyword">private</span> <span class="keyword">static</span> <a class="code" href="class_linity_project_setting.html">LinityProjectSetting</a> instance;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="class_linity_project_setting.html#aa59368eeb881e4006dfaa95419d200a7">   15</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">static</span> <a class="code" href="class_linity_project_setting.html">LinityProjectSetting</a> <a class="code" href="class_linity_project_setting.html#aa59368eeb881e4006dfaa95419d200a7">Instance</a></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    {</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        <span class="keyword">get</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        {</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;            <span class="keywordtype">string</span> SETTING_DATA_PATH = <a class="code" href="class_linity_project_setting_creator.html">LinityProjectSettingCreator</a>.<a class="code" href="class_linity_project_setting_creator.html#a61cb007e8cf4765774797c8e91e418a8">GetCurrentFilePath</a>();</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;            instance = AssetDatabase.LoadAssetAtPath&lt;<a class="code" href="class_linity_project_setting.html">LinityProjectSetting</a>&gt;(SETTING_DATA_PATH);</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;            <span class="keywordflow">if</span> (instance == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;            {</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;                instance = CreateInstance&lt;LinityProjectSetting&gt;();</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#if UNITY_EDITOR</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;                AssetDatabase.CreateAsset(instance, SETTING_DATA_PATH);</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;            }</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;            <span class="keywordflow">return</span> instance;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        }</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    }</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="class_linity_project_setting.html#ab8ec06a2aadb9f0cbf3966fa45eb685b">   33</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_linity_project_setting.html#ab8ec06a2aadb9f0cbf3966fa45eb685b">SaveConfig</a>()</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    {</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#if UNITY_EDITOR</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <a class="code" href="_game_main_2_customs_2_custom_helpers_2_process_helper_8cs.html#a0100be52d45f14348918ea69ec09f959">Debug</a>.Log($<span class="stringliteral">&quot;********* Current Branch: {instance.CurrentBranchName} *********&quot;</span>);</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        EditorUtility.SetDirty(instance);</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <span class="comment">// AssetDatabase.SaveAssets();</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        EditorApplication.delayCall += AssetDatabase.SaveAssets;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        EditorApplication.delayCall += AssetDatabase.Refresh;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        EditorApplication.delayCall += EditorApplication.UnlockReloadAssemblies;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    }</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    [Tooltip(<span class="stringliteral">&quot;项目名称&quot;</span>)] [ReadOnly] [SerializeField]</div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="class_linity_project_setting.html#ae15326af5e0ad2ec041dd1cf904fc372">   46</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">string</span> <a class="code" href="class_linity_project_setting.html#ae15326af5e0ad2ec041dd1cf904fc372">ProductName</a> = <span class="stringliteral">&quot;Star Force&quot;</span>;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    [Tooltip(<span class="stringliteral">&quot;项目版本号&quot;</span>)] [ReadOnly] [SerializeField]</div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="class_linity_project_setting.html#aee2cdd244cf8a1643183d7730568fca9">   49</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">string</span> <a class="code" href="class_linity_project_setting.html#aee2cdd244cf8a1643183d7730568fca9">Version</a> = <span class="stringliteral">&quot;0.1.0&quot;</span>;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    [Tooltip(<span class="stringliteral">&quot;远程资源服务器&quot;</span>)] [ReadOnly] [SerializeField]</div>
+<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="class_linity_project_setting.html#a2764039ba27ca0fac38fece0075aad6a">   52</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">string</span> <a class="code" href="class_linity_project_setting.html#a2764039ba27ca0fac38fece0075aad6a">RemoteResourceServerAddress</a> = <span class="stringliteral">&quot;https://cdn.jsdelivr.net/gh/longshilin/StarForceRes&quot;</span>;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    [Tooltip(<span class="stringliteral">&quot;本地资源服务器&quot;</span>)] [ReadOnly] [SerializeField]</div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="class_linity_project_setting.html#a32a9867924f663a0e792008e11a4798d">   55</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">string</span> <a class="code" href="class_linity_project_setting.html#a32a9867924f663a0e792008e11a4798d">LocalResourceServerAddress</a> = <span class="stringliteral">&quot;http://127.0.0.1:8800&quot;</span>;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    [Tooltip(<span class="stringliteral">&quot;当前项目分支名称&quot;</span>)] [ReadOnly] [SerializeField]</div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="class_linity_project_setting.html#aa1876d91599f569bee327cda7aa70d93">   58</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">string</span> <a class="code" href="class_linity_project_setting.html#aa1876d91599f569bee327cda7aa70d93">CurrentBranchName</a> = <span class="stringliteral">&quot;master&quot;</span>;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    [Tooltip(<span class="stringliteral">&quot;资源导出路径&quot;</span>)] [ReadOnly] [SerializeField]</div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="class_linity_project_setting.html#a8c4c6e56942292b774b3ba774c3a495d">   61</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">string</span> <a class="code" href="class_linity_project_setting.html#a8c4c6e56942292b774b3ba774c3a495d">OutputDirectory</a> = <span class="stringliteral">&quot;../Release&quot;</span>;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    [Tooltip(<span class="stringliteral">&quot;BuildInfo.json文件路径&quot;</span>)] [ReadOnly] [SerializeField]</div>
+<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="class_linity_project_setting.html#ac55352c22b8d57c9cb62bd26c171eef6">   64</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">string</span> <a class="code" href="class_linity_project_setting.html#ac55352c22b8d57c9cb62bd26c171eef6">BuildInfoPath</a> = <span class="stringliteral">&quot;Res/Configs/BuildInfo.txt&quot;</span>;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    [Tooltip(<span class="stringliteral">&quot;是否是Editor打包模式&quot;</span>)] [ReadOnly] [SerializeField]</div>
+<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="class_linity_project_setting.html#aed26c97ddf33cff2674b49d1cfb56dc3">   67</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code" href="class_linity_project_setting.html#aed26c97ddf33cff2674b49d1cfb56dc3">IsEditorBuild</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;}</div>
+<div class="ttc" id="a_game_main_2_customs_2_custom_helpers_2_process_helper_8cs_html_a0100be52d45f14348918ea69ec09f959"><div class="ttname"><a href="_game_main_2_customs_2_custom_helpers_2_process_helper_8cs.html#a0100be52d45f14348918ea69ec09f959">Debug</a></div><div class="ttdeci">UnityEngine.Debug Debug</div><div class="ttdef"><b>Definition:</b> <a href="_game_main_2_customs_2_custom_helpers_2_process_helper_8cs_source.html#l00004">ProcessHelper.cs:4</a></div></div>
+<div class="ttc" id="aclass_linity_project_setting_creator_html"><div class="ttname"><a href="class_linity_project_setting_creator.html">LinityProjectSettingCreator</a></div><div class="ttdef"><b>Definition:</b> <a href="_linity_project_setting_creator_8cs_source.html#l00004">LinityProjectSettingCreator.cs:5</a></div></div>
+<div class="ttc" id="aclass_linity_project_setting_creator_html_a61cb007e8cf4765774797c8e91e418a8"><div class="ttname"><a href="class_linity_project_setting_creator.html#a61cb007e8cf4765774797c8e91e418a8">LinityProjectSettingCreator.GetCurrentFilePath</a></div><div class="ttdeci">static string GetCurrentFilePath()</div><div class="ttdef"><b>Definition:</b> <a href="_linity_project_setting_creator_8cs_source.html#l00015">LinityProjectSettingCreator.cs:15</a></div></div>
+<div class="ttc" id="aclass_linity_project_setting_html"><div class="ttname"><a href="class_linity_project_setting.html">LinityProjectSetting</a></div><div class="ttdoc">项目的一些本地化设定值，不上传git</div><div class="ttdef"><b>Definition:</b> <a href="_linity_project_setting_8cs_source.html#l00011">LinityProjectSetting.cs:12</a></div></div>
+<div class="ttc" id="aclass_linity_project_setting_html_a2764039ba27ca0fac38fece0075aad6a"><div class="ttname"><a href="class_linity_project_setting.html#a2764039ba27ca0fac38fece0075aad6a">LinityProjectSetting.RemoteResourceServerAddress</a></div><div class="ttdeci">string RemoteResourceServerAddress</div><div class="ttdef"><b>Definition:</b> <a href="_linity_project_setting_8cs_source.html#l00052">LinityProjectSetting.cs:52</a></div></div>
+<div class="ttc" id="aclass_linity_project_setting_html_a32a9867924f663a0e792008e11a4798d"><div class="ttname"><a href="class_linity_project_setting.html#a32a9867924f663a0e792008e11a4798d">LinityProjectSetting.LocalResourceServerAddress</a></div><div class="ttdeci">string LocalResourceServerAddress</div><div class="ttdef"><b>Definition:</b> <a href="_linity_project_setting_8cs_source.html#l00055">LinityProjectSetting.cs:55</a></div></div>
+<div class="ttc" id="aclass_linity_project_setting_html_a8c4c6e56942292b774b3ba774c3a495d"><div class="ttname"><a href="class_linity_project_setting.html#a8c4c6e56942292b774b3ba774c3a495d">LinityProjectSetting.OutputDirectory</a></div><div class="ttdeci">string OutputDirectory</div><div class="ttdef"><b>Definition:</b> <a href="_linity_project_setting_8cs_source.html#l00061">LinityProjectSetting.cs:61</a></div></div>
+<div class="ttc" id="aclass_linity_project_setting_html_aa1876d91599f569bee327cda7aa70d93"><div class="ttname"><a href="class_linity_project_setting.html#aa1876d91599f569bee327cda7aa70d93">LinityProjectSetting.CurrentBranchName</a></div><div class="ttdeci">string CurrentBranchName</div><div class="ttdef"><b>Definition:</b> <a href="_linity_project_setting_8cs_source.html#l00058">LinityProjectSetting.cs:58</a></div></div>
+<div class="ttc" id="aclass_linity_project_setting_html_aa59368eeb881e4006dfaa95419d200a7"><div class="ttname"><a href="class_linity_project_setting.html#aa59368eeb881e4006dfaa95419d200a7">LinityProjectSetting.Instance</a></div><div class="ttdeci">static LinityProjectSetting Instance</div><div class="ttdef"><b>Definition:</b> <a href="_linity_project_setting_8cs_source.html#l00015">LinityProjectSetting.cs:16</a></div></div>
+<div class="ttc" id="aclass_linity_project_setting_html_ab8ec06a2aadb9f0cbf3966fa45eb685b"><div class="ttname"><a href="class_linity_project_setting.html#ab8ec06a2aadb9f0cbf3966fa45eb685b">LinityProjectSetting.SaveConfig</a></div><div class="ttdeci">void SaveConfig()</div><div class="ttdef"><b>Definition:</b> <a href="_linity_project_setting_8cs_source.html#l00033">LinityProjectSetting.cs:33</a></div></div>
+<div class="ttc" id="aclass_linity_project_setting_html_ac55352c22b8d57c9cb62bd26c171eef6"><div class="ttname"><a href="class_linity_project_setting.html#ac55352c22b8d57c9cb62bd26c171eef6">LinityProjectSetting.BuildInfoPath</a></div><div class="ttdeci">string BuildInfoPath</div><div class="ttdef"><b>Definition:</b> <a href="_linity_project_setting_8cs_source.html#l00064">LinityProjectSetting.cs:64</a></div></div>
+<div class="ttc" id="aclass_linity_project_setting_html_ae15326af5e0ad2ec041dd1cf904fc372"><div class="ttname"><a href="class_linity_project_setting.html#ae15326af5e0ad2ec041dd1cf904fc372">LinityProjectSetting.ProductName</a></div><div class="ttdeci">string ProductName</div><div class="ttdef"><b>Definition:</b> <a href="_linity_project_setting_8cs_source.html#l00046">LinityProjectSetting.cs:46</a></div></div>
+<div class="ttc" id="aclass_linity_project_setting_html_aed26c97ddf33cff2674b49d1cfb56dc3"><div class="ttname"><a href="class_linity_project_setting.html#aed26c97ddf33cff2674b49d1cfb56dc3">LinityProjectSetting.IsEditorBuild</a></div><div class="ttdeci">bool IsEditorBuild</div><div class="ttdef"><b>Definition:</b> <a href="_linity_project_setting_8cs_source.html#l00067">LinityProjectSetting.cs:67</a></div></div>
+<div class="ttc" id="aclass_linity_project_setting_html_aee2cdd244cf8a1643183d7730568fca9"><div class="ttname"><a href="class_linity_project_setting.html#aee2cdd244cf8a1643183d7730568fca9">LinityProjectSetting.Version</a></div><div class="ttdeci">string Version</div><div class="ttdef"><b>Definition:</b> <a href="_linity_project_setting_8cs_source.html#l00049">LinityProjectSetting.cs:49</a></div></div>
+<div class="ttc" id="anamespace_system_html"><div class="ttname"><a href="namespace_system.html">System</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_method_builder_attribute_8cs_source.html#l00001">AsyncMethodBuilderAttribute.cs:2</a></div></div>
+<div class="ttc" id="anamespace_unity_engine_html"><div class="ttname"><a href="namespace_unity_engine.html">UnityEngine</a></div><div class="ttdef"><b>Definition:</b> <a href="_mathf_8cs_source.html#l00003">Mathf.cs:4</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_84bbf7b3c7f28a5a18725745e1505219.html">Assets</a></li><li class="navelem"><a class="el" href="dir_f13b41af88cf68434578284aaf699e39.html">Scripts</a></li><li class="navelem"><a class="el" href="dir_0261d5286017c38b9af36d6d3ff94a53.html">Editor</a></li><li class="navelem"><a class="el" href="dir_d20f9b8d88424a680751a737a451878a.html">ProjectSetting</a></li><li class="navelem"><a class="el" href="_linity_project_setting_8cs.html">LinityProjectSetting.cs</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:24:43 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

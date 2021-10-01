@@ -1,0 +1,293 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: Assets/Scripts/Libraries/GameFramework/Scripts/Editor/ResourceEditor/SourceFolder.cs 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_source_folder_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">SourceFolder.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_source_folder_8cs.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">//------------------------------------------------------------</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">// Game Framework</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">// Copyright © 2013-2021 Jiang Yin. All rights reserved.</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">// Homepage: https://gameframework.cn/</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">// Feedback: mailto:ellan@gameframework.cn</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">//------------------------------------------------------------</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_game_framework.html">GameFramework</a>;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Collections.Generic;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">using</span> UnityEditor;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_unity_engine.html">UnityEngine</a>;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_unity_game_framework_1_1_editor_1_1_resource_tools.html">UnityGameFramework.Editor.ResourceTools</a></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;{</div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_folder.html">   15</a></span>&#160;    <span class="keyword">public</span> sealed <span class="keyword">class </span><a class="code" href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_folder.html">SourceFolder</a></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    {</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> Texture s_CachedIcon = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <span class="keyword">private</span> readonly List&lt;SourceFolder&gt; m_Folders;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        <span class="keyword">private</span> readonly List&lt;SourceAsset&gt; m_Assets;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_folder.html#a08b29ead8224e5360a45cb2babda71a0">   22</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_folder.html#a08b29ead8224e5360a45cb2babda71a0">SourceFolder</a>(<span class="keywordtype">string</span> name, <a class="code" href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_folder.html">SourceFolder</a> folder)</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        {</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;            m_Folders = <span class="keyword">new</span> List&lt;SourceFolder&gt;();</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;            m_Assets = <span class="keyword">new</span> List&lt;SourceAsset&gt;();</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;            <a class="code" href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_folder.html#a7652db178137f9a91cc35c063ccd0ec6">Name</a> = name;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;            <a class="code" href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_folder.html#a987b1044e43cd67d8ffbb59167b8c8de">Folder</a> = folder;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        }</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_folder.html#a7652db178137f9a91cc35c063ccd0ec6">   31</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">string</span> <a class="code" href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_folder.html#a7652db178137f9a91cc35c063ccd0ec6">Name</a></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        {</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;            <span class="keyword">get</span>;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;            <span class="keyword">private</span> <span class="keyword">set</span>;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        }</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_folder.html#a987b1044e43cd67d8ffbb59167b8c8de">   37</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_folder.html">SourceFolder</a> <a class="code" href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_folder.html#a987b1044e43cd67d8ffbb59167b8c8de">Folder</a></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        {</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;            <span class="keyword">get</span>;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            <span class="keyword">private</span> <span class="keyword">set</span>;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        }</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_folder.html#a276c46e5e5304d8041fda8399c788da1">   43</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">string</span> <a class="code" href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_folder.html#a276c46e5e5304d8041fda8399c788da1">FromRootPath</a></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        {</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            <span class="keyword">get</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;            {</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                <span class="keywordflow">return</span> <a class="code" href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_folder.html#a987b1044e43cd67d8ffbb59167b8c8de">Folder</a> == <span class="keyword">null</span> ? <span class="keywordtype">string</span>.Empty : (<a class="code" href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_folder.html#a987b1044e43cd67d8ffbb59167b8c8de">Folder</a>.<a class="code" href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_folder.html#a987b1044e43cd67d8ffbb59167b8c8de">Folder</a> == <span class="keyword">null</span> ? <a class="code" href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_folder.html#a7652db178137f9a91cc35c063ccd0ec6">Name</a> : <a class="code" href="_unity_web_request_download_agent_helper_8cs.html#a9084eedf9b8c1b9c0fb3e425c1f69c1f">Utility</a>.Text.Format(<span class="stringliteral">&quot;{0}/{1}&quot;</span>, <a class="code" href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_folder.html#a987b1044e43cd67d8ffbb59167b8c8de">Folder</a>.<a class="code" href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_folder.html#a276c46e5e5304d8041fda8399c788da1">FromRootPath</a>, <a class="code" href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_folder.html#a7652db178137f9a91cc35c063ccd0ec6">Name</a>));</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            }</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        }</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_folder.html#a3298043554387cec0d2f0bf15bc4459e">   51</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">int</span> <a class="code" href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_folder.html#a3298043554387cec0d2f0bf15bc4459e">Depth</a></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        {</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            <span class="keyword">get</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            {</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                <span class="keywordflow">return</span> <a class="code" href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_folder.html#a987b1044e43cd67d8ffbb59167b8c8de">Folder</a> != <span class="keyword">null</span> ? <a class="code" href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_folder.html#a987b1044e43cd67d8ffbb59167b8c8de">Folder</a>.<a class="code" href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_folder.html#a3298043554387cec0d2f0bf15bc4459e">Depth</a> + 1 : 0;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            }</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        }</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_folder.html#ab66635e63de01ea66d876b56a7f9760c">   59</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> Texture <a class="code" href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_folder.html#ab66635e63de01ea66d876b56a7f9760c">Icon</a></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        {</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            <span class="keyword">get</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            {</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                <span class="keywordflow">if</span> (s_CachedIcon == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                {</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                    s_CachedIcon = AssetDatabase.GetCachedIcon(<span class="stringliteral">&quot;Assets&quot;</span>);</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                }</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                <span class="keywordflow">return</span> s_CachedIcon;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            }</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        }</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_folder.html#a86b0059e783aa56098a42233b9dc2a13">   72</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_folder.html#a86b0059e783aa56098a42233b9dc2a13">Clear</a>()</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        {</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            m_Folders.Clear();</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            m_Assets.Clear();</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        }</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
+<div class="line"><a name="l00078"></a><span class="lineno"><a class="line" href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_folder.html#a2e64fd30c6f82bc0f2ba236bd43ebf6a">   78</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_folder.html">SourceFolder</a>[] <a class="code" href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_folder.html#a2e64fd30c6f82bc0f2ba236bd43ebf6a">GetFolders</a>()</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        {</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            <span class="keywordflow">return</span> m_Folders.ToArray();</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        }</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+<div class="line"><a name="l00083"></a><span class="lineno"><a class="line" href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_folder.html#a501d71dfcf86f19c13999634f7293476">   83</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_folder.html">SourceFolder</a> <a class="code" href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_folder.html#a501d71dfcf86f19c13999634f7293476">GetFolder</a>(<span class="keywordtype">string</span> name)</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        {</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;            <span class="keywordflow">if</span> (<span class="keywordtype">string</span>.IsNullOrEmpty(name))</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            {</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> <a class="code" href="class_game_framework_1_1_game_framework_exception.html">GameFrameworkException</a>(<span class="stringliteral">&quot;Source folder name is invalid.&quot;</span>);</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;            }</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            <span class="keywordflow">foreach</span> (<a class="code" href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_folder.html">SourceFolder</a> folder <span class="keywordflow">in</span> m_Folders)</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;            {</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                <span class="keywordflow">if</span> (folder.<a class="code" href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_folder.html#a7652db178137f9a91cc35c063ccd0ec6">Name</a> == name)</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                {</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                    <span class="keywordflow">return</span> folder;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                }</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;            }</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        }</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
+<div class="line"><a name="l00101"></a><span class="lineno"><a class="line" href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_folder.html#ab4f9383558fd8b1b08d3a2a9c88beb02">  101</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_folder.html">SourceFolder</a> <a class="code" href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_folder.html#ab4f9383558fd8b1b08d3a2a9c88beb02">AddFolder</a>(<span class="keywordtype">string</span> name)</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        {</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;            <span class="keywordflow">if</span> (<span class="keywordtype">string</span>.IsNullOrEmpty(name))</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;            {</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> <a class="code" href="class_game_framework_1_1_game_framework_exception.html">GameFrameworkException</a>(<span class="stringliteral">&quot;Source folder name is invalid.&quot;</span>);</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;            }</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160; </div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;            <a class="code" href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_folder.html">SourceFolder</a> folder = <a class="code" href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_folder.html#a501d71dfcf86f19c13999634f7293476">GetFolder</a>(name);</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;            <span class="keywordflow">if</span> (folder != <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;            {</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> <a class="code" href="class_game_framework_1_1_game_framework_exception.html">GameFrameworkException</a>(<span class="stringliteral">&quot;Source folder is already exist.&quot;</span>);</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;            }</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160; </div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;            folder = <span class="keyword">new</span> <a class="code" href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_folder.html#a08b29ead8224e5360a45cb2babda71a0">SourceFolder</a>(name, <span class="keyword">this</span>);</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;            m_Folders.Add(folder);</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160; </div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;            <span class="keywordflow">return</span> folder;</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        }</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160; </div>
+<div class="line"><a name="l00120"></a><span class="lineno"><a class="line" href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_folder.html#aa5f82f9232872a02c086a06f04b607e6">  120</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_asset.html">SourceAsset</a>[] <a class="code" href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_folder.html#aa5f82f9232872a02c086a06f04b607e6">GetAssets</a>()</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        {</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;            <span class="keywordflow">return</span> m_Assets.ToArray();</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        }</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160; </div>
+<div class="line"><a name="l00125"></a><span class="lineno"><a class="line" href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_folder.html#a8768d86d602104690fee558d852c39b0">  125</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_asset.html">SourceAsset</a> <a class="code" href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_folder.html#a8768d86d602104690fee558d852c39b0">GetAsset</a>(<span class="keywordtype">string</span> name)</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;        {</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;            <span class="keywordflow">if</span> (<span class="keywordtype">string</span>.IsNullOrEmpty(name))</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;            {</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> <a class="code" href="class_game_framework_1_1_game_framework_exception.html">GameFrameworkException</a>(<span class="stringliteral">&quot;Source asset name is invalid.&quot;</span>);</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;            }</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160; </div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;            <span class="keywordflow">foreach</span> (<a class="code" href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_asset.html">SourceAsset</a> asset <span class="keywordflow">in</span> m_Assets)</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;            {</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;                <span class="keywordflow">if</span> (asset.<a class="code" href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_asset.html#ac7a7914b58c73249c21b3d66a523f237">Name</a> == name)</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;                {</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;                    <span class="keywordflow">return</span> asset;</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;                }</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;            }</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160; </div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;        }</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160; </div>
+<div class="line"><a name="l00143"></a><span class="lineno"><a class="line" href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_folder.html#ae1d6c8fc9debf94369affa5b9d0e3729">  143</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_asset.html">SourceAsset</a> <a class="code" href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_folder.html#ae1d6c8fc9debf94369affa5b9d0e3729">AddAsset</a>(<span class="keywordtype">string</span> guid, <span class="keywordtype">string</span> path, <span class="keywordtype">string</span> name)</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;        {</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;            <span class="keywordflow">if</span> (<span class="keywordtype">string</span>.IsNullOrEmpty(guid))</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;            {</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> <a class="code" href="class_game_framework_1_1_game_framework_exception.html">GameFrameworkException</a>(<span class="stringliteral">&quot;Source asset guid is invalid.&quot;</span>);</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;            }</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160; </div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;            <span class="keywordflow">if</span> (<span class="keywordtype">string</span>.IsNullOrEmpty(path))</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;            {</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> <a class="code" href="class_game_framework_1_1_game_framework_exception.html">GameFrameworkException</a>(<span class="stringliteral">&quot;Source asset path is invalid.&quot;</span>);</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;            }</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160; </div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;            <span class="keywordflow">if</span> (<span class="keywordtype">string</span>.IsNullOrEmpty(name))</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;            {</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> <a class="code" href="class_game_framework_1_1_game_framework_exception.html">GameFrameworkException</a>(<span class="stringliteral">&quot;Source asset name is invalid.&quot;</span>);</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;            }</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160; </div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;            <a class="code" href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_asset.html">SourceAsset</a> asset = <a class="code" href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_folder.html#a8768d86d602104690fee558d852c39b0">GetAsset</a>(name);</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;            <span class="keywordflow">if</span> (asset != <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;            {</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> <a class="code" href="class_game_framework_1_1_game_framework_exception.html">GameFrameworkException</a>(<a class="code" href="_unity_web_request_download_agent_helper_8cs.html#a9084eedf9b8c1b9c0fb3e425c1f69c1f">Utility</a>.Text.Format(<span class="stringliteral">&quot;Source asset &#39;{0}&#39; is already exist.&quot;</span>, name));</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;            }</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160; </div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;            asset = <span class="keyword">new</span> <a class="code" href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_asset.html">SourceAsset</a>(guid, path, name, <span class="keyword">this</span>);</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;            m_Assets.Add(asset);</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160; </div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;            <span class="keywordflow">return</span> asset;</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;        }</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    }</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;}</div>
+<div class="ttc" id="a_unity_web_request_download_agent_helper_8cs_html_a9084eedf9b8c1b9c0fb3e425c1f69c1f"><div class="ttname"><a href="_unity_web_request_download_agent_helper_8cs.html#a9084eedf9b8c1b9c0fb3e425c1f69c1f">Utility</a></div><div class="ttdeci">GameFramework.Utility Utility</div><div class="ttdef"><b>Definition:</b> <a href="_unity_web_request_download_agent_helper_8cs_source.html#l00016">UnityWebRequestDownloadAgentHelper.cs:16</a></div></div>
+<div class="ttc" id="aclass_game_framework_1_1_game_framework_exception_html"><div class="ttname"><a href="class_game_framework_1_1_game_framework_exception.html">GameFramework.GameFrameworkException</a></div><div class="ttdoc">游戏框架异常类。</div><div class="ttdef"><b>Definition:</b> <a href="_game_framework_exception_8cs_source.html#l00017">GameFrameworkException.cs:18</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_asset_html"><div class="ttname"><a href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_asset.html">UnityGameFramework.Editor.ResourceTools.SourceAsset</a></div><div class="ttdef"><b>Definition:</b> <a href="_source_asset_8cs_source.html#l00014">SourceAsset.cs:15</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_asset_html_ac7a7914b58c73249c21b3d66a523f237"><div class="ttname"><a href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_asset.html#ac7a7914b58c73249c21b3d66a523f237">UnityGameFramework.Editor.ResourceTools.SourceAsset.Name</a></div><div class="ttdeci">string Name</div><div class="ttdef"><b>Definition:</b> <a href="_source_asset_8cs_source.html#l00044">SourceAsset.cs:45</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_folder_html"><div class="ttname"><a href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_folder.html">UnityGameFramework.Editor.ResourceTools.SourceFolder</a></div><div class="ttdef"><b>Definition:</b> <a href="_source_folder_8cs_source.html#l00015">SourceFolder.cs:16</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_folder_html_a08b29ead8224e5360a45cb2babda71a0"><div class="ttname"><a href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_folder.html#a08b29ead8224e5360a45cb2babda71a0">UnityGameFramework.Editor.ResourceTools.SourceFolder.SourceFolder</a></div><div class="ttdeci">SourceFolder(string name, SourceFolder folder)</div><div class="ttdef"><b>Definition:</b> <a href="_source_folder_8cs_source.html#l00022">SourceFolder.cs:22</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_folder_html_a276c46e5e5304d8041fda8399c788da1"><div class="ttname"><a href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_folder.html#a276c46e5e5304d8041fda8399c788da1">UnityGameFramework.Editor.ResourceTools.SourceFolder.FromRootPath</a></div><div class="ttdeci">string?? FromRootPath</div><div class="ttdef"><b>Definition:</b> <a href="_source_folder_8cs_source.html#l00043">SourceFolder.cs:44</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_folder_html_a2e64fd30c6f82bc0f2ba236bd43ebf6a"><div class="ttname"><a href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_folder.html#a2e64fd30c6f82bc0f2ba236bd43ebf6a">UnityGameFramework.Editor.ResourceTools.SourceFolder.GetFolders</a></div><div class="ttdeci">SourceFolder[] GetFolders()</div><div class="ttdef"><b>Definition:</b> <a href="_source_folder_8cs_source.html#l00078">SourceFolder.cs:78</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_folder_html_a3298043554387cec0d2f0bf15bc4459e"><div class="ttname"><a href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_folder.html#a3298043554387cec0d2f0bf15bc4459e">UnityGameFramework.Editor.ResourceTools.SourceFolder.Depth</a></div><div class="ttdeci">int? Depth</div><div class="ttdef"><b>Definition:</b> <a href="_source_folder_8cs_source.html#l00051">SourceFolder.cs:52</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_folder_html_a501d71dfcf86f19c13999634f7293476"><div class="ttname"><a href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_folder.html#a501d71dfcf86f19c13999634f7293476">UnityGameFramework.Editor.ResourceTools.SourceFolder.GetFolder</a></div><div class="ttdeci">SourceFolder GetFolder(string name)</div><div class="ttdef"><b>Definition:</b> <a href="_source_folder_8cs_source.html#l00083">SourceFolder.cs:83</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_folder_html_a7652db178137f9a91cc35c063ccd0ec6"><div class="ttname"><a href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_folder.html#a7652db178137f9a91cc35c063ccd0ec6">UnityGameFramework.Editor.ResourceTools.SourceFolder.Name</a></div><div class="ttdeci">string Name</div><div class="ttdef"><b>Definition:</b> <a href="_source_folder_8cs_source.html#l00031">SourceFolder.cs:32</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_folder_html_a86b0059e783aa56098a42233b9dc2a13"><div class="ttname"><a href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_folder.html#a86b0059e783aa56098a42233b9dc2a13">UnityGameFramework.Editor.ResourceTools.SourceFolder.Clear</a></div><div class="ttdeci">void Clear()</div><div class="ttdef"><b>Definition:</b> <a href="_source_folder_8cs_source.html#l00072">SourceFolder.cs:72</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_folder_html_a8768d86d602104690fee558d852c39b0"><div class="ttname"><a href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_folder.html#a8768d86d602104690fee558d852c39b0">UnityGameFramework.Editor.ResourceTools.SourceFolder.GetAsset</a></div><div class="ttdeci">SourceAsset GetAsset(string name)</div><div class="ttdef"><b>Definition:</b> <a href="_source_folder_8cs_source.html#l00125">SourceFolder.cs:125</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_folder_html_a987b1044e43cd67d8ffbb59167b8c8de"><div class="ttname"><a href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_folder.html#a987b1044e43cd67d8ffbb59167b8c8de">UnityGameFramework.Editor.ResourceTools.SourceFolder.Folder</a></div><div class="ttdeci">SourceFolder Folder</div><div class="ttdef"><b>Definition:</b> <a href="_source_folder_8cs_source.html#l00037">SourceFolder.cs:38</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_folder_html_aa5f82f9232872a02c086a06f04b607e6"><div class="ttname"><a href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_folder.html#aa5f82f9232872a02c086a06f04b607e6">UnityGameFramework.Editor.ResourceTools.SourceFolder.GetAssets</a></div><div class="ttdeci">SourceAsset[] GetAssets()</div><div class="ttdef"><b>Definition:</b> <a href="_source_folder_8cs_source.html#l00120">SourceFolder.cs:120</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_folder_html_ab4f9383558fd8b1b08d3a2a9c88beb02"><div class="ttname"><a href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_folder.html#ab4f9383558fd8b1b08d3a2a9c88beb02">UnityGameFramework.Editor.ResourceTools.SourceFolder.AddFolder</a></div><div class="ttdeci">SourceFolder AddFolder(string name)</div><div class="ttdef"><b>Definition:</b> <a href="_source_folder_8cs_source.html#l00101">SourceFolder.cs:101</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_folder_html_ab66635e63de01ea66d876b56a7f9760c"><div class="ttname"><a href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_folder.html#ab66635e63de01ea66d876b56a7f9760c">UnityGameFramework.Editor.ResourceTools.SourceFolder.Icon</a></div><div class="ttdeci">static Texture Icon</div><div class="ttdef"><b>Definition:</b> <a href="_source_folder_8cs_source.html#l00059">SourceFolder.cs:60</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_folder_html_ae1d6c8fc9debf94369affa5b9d0e3729"><div class="ttname"><a href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_folder.html#ae1d6c8fc9debf94369affa5b9d0e3729">UnityGameFramework.Editor.ResourceTools.SourceFolder.AddAsset</a></div><div class="ttdeci">SourceAsset AddAsset(string guid, string path, string name)</div><div class="ttdef"><b>Definition:</b> <a href="_source_folder_8cs_source.html#l00143">SourceFolder.cs:143</a></div></div>
+<div class="ttc" id="anamespace_game_framework_html"><div class="ttname"><a href="namespace_game_framework.html">GameFramework</a></div><div class="ttdef"><b>Definition:</b> <a href="_data_provider_8cs_source.html#l00011">DataProvider.cs:12</a></div></div>
+<div class="ttc" id="anamespace_system_html"><div class="ttname"><a href="namespace_system.html">System</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_method_builder_attribute_8cs_source.html#l00001">AsyncMethodBuilderAttribute.cs:2</a></div></div>
+<div class="ttc" id="anamespace_unity_engine_html"><div class="ttname"><a href="namespace_unity_engine.html">UnityEngine</a></div><div class="ttdef"><b>Definition:</b> <a href="_mathf_8cs_source.html#l00003">Mathf.cs:4</a></div></div>
+<div class="ttc" id="anamespace_unity_game_framework_1_1_editor_1_1_resource_tools_html"><div class="ttname"><a href="namespace_unity_game_framework_1_1_editor_1_1_resource_tools.html">UnityGameFramework.Editor.ResourceTools</a></div><div class="ttdef"><b>Definition:</b> <a href="_assets_order_8cs_source.html#l00008">AssetsOrder.cs:9</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_84bbf7b3c7f28a5a18725745e1505219.html">Assets</a></li><li class="navelem"><a class="el" href="dir_f13b41af88cf68434578284aaf699e39.html">Scripts</a></li><li class="navelem"><a class="el" href="dir_46d134a3bf82cf4dc49ca8f728aea58c.html">Libraries</a></li><li class="navelem"><a class="el" href="dir_7a6862c303020716b3c311e95823547c.html">GameFramework</a></li><li class="navelem"><a class="el" href="dir_1d9b7e2b1e68805cdf4440a735859529.html">Scripts</a></li><li class="navelem"><a class="el" href="dir_ba4b5b2d60a8a4f339d75a3db7214d9a.html">Editor</a></li><li class="navelem"><a class="el" href="dir_b3587be0e883d494828af84f09bc008a.html">ResourceEditor</a></li><li class="navelem"><a class="el" href="_source_folder_8cs.html">SourceFolder.cs</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:24:49 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

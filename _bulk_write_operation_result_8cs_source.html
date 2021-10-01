@@ -1,0 +1,324 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: ETServer/Server/ThirdParty/MongoDBDriver/MongoDB.Driver.Core/Core/Operations/BulkWriteOperationResult.cs 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_bulk_write_operation_result_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">BulkWriteOperationResult.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_bulk_write_operation_result_8cs.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/* Copyright 2010-present MongoDB Inc.</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">* Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">* you may not use this file except in compliance with the License.</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">* You may obtain a copy of the License at</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">* http://www.apache.org/licenses/LICENSE-2.0</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">* Unless required by applicable law or agreed to in writing, software</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">* distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">* See the License for the specific language governing permissions and</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">* limitations under the License.</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Collections.Generic;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Collections.ObjectModel;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Linq;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_mongo_d_b.html">MongoDB</a>.<a class="code" href="namespace_mongo_d_b_1_1_bson.html">Bson</a>;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_operations.html">MongoDB.Driver.Core.Operations</a></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;{</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#if NET452</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    [Serializable]</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result.html">   30</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">class </span><a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result.html">BulkWriteOperationResult</a></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    {</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <span class="comment">// fields</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <span class="keyword">private</span> readonly IReadOnlyList&lt;WriteRequest&gt; _processedRequests;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="keyword">private</span> readonly <span class="keywordtype">int</span> _requestCount;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <span class="comment">// constructors</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result.html#a2ee3d6ac8550c7f90a2fab96b4550880">   42</a></span>&#160;<span class="comment"></span>        <span class="keyword">protected</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result.html#a2ee3d6ac8550c7f90a2fab96b4550880">BulkWriteOperationResult</a>(</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;            <span class="keywordtype">int</span> requestCount,</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            IReadOnlyList&lt;WriteRequest&gt; processedRequests)</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        {</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;            _requestCount = requestCount;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            _processedRequests = processedRequests;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        }</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="comment">// properties</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result.html#ad9c7ccdb5acb0530020b668cf89936b5">   57</a></span>&#160;<span class="comment"></span>        <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keywordtype">long</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result.html#ad9c7ccdb5acb0530020b668cf89936b5">DeletedCount</a> { <span class="keyword">get</span>; }</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result.html#a9cab8beb5188a9cb1ae8f0823edd8af2">   65</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keywordtype">long</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result.html#a9cab8beb5188a9cb1ae8f0823edd8af2">InsertedCount</a> { <span class="keyword">get</span>; }</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
+<div class="line"><a name="l00073"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result.html#a3d054efc320cb992d2b7de8d0aa5a9cb">   73</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keywordtype">bool</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result.html#a3d054efc320cb992d2b7de8d0aa5a9cb">IsAcknowledged</a> { <span class="keyword">get</span>; }</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
+<div class="line"><a name="l00084"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result.html#a5be57fda6e9181a32e79936370b343ff">   84</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keywordtype">bool</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result.html#a5be57fda6e9181a32e79936370b343ff">IsModifiedCountAvailable</a> { <span class="keyword">get</span>; }</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
+<div class="line"><a name="l00092"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result.html#a448c9c7a4bd30e5b3dde09029d8908a9">   92</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keywordtype">long</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result.html#a448c9c7a4bd30e5b3dde09029d8908a9">MatchedCount</a> { <span class="keyword">get</span>; }</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
+<div class="line"><a name="l00100"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result.html#a1ad6fa208349ad7b032dd146b6cfbc50">  100</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keywordtype">long</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result.html#a1ad6fa208349ad7b032dd146b6cfbc50">ModifiedCount</a> { <span class="keyword">get</span>; }</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
+<div class="line"><a name="l00108"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result.html#a4443f1cca0f0b66dcabb32b63658d496">  108</a></span>&#160;        <span class="keyword">public</span> IReadOnlyList&lt;WriteRequest&gt; <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result.html#a4443f1cca0f0b66dcabb32b63658d496">ProcessedRequests</a></div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        {</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;            <span class="keyword">get</span> { <span class="keywordflow">return</span> _processedRequests; }</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        }</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160; </div>
+<div class="line"><a name="l00119"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result.html#a8d207194d9bf37551e674c3bee43d0e8">  119</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">int</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result.html#a8d207194d9bf37551e674c3bee43d0e8">RequestCount</a></div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        {</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;            <span class="keyword">get</span> { <span class="keywordflow">return</span> _requestCount; }</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        }</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160; </div>
+<div class="line"><a name="l00130"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result.html#a4c85d8a48a8d8b8d97fab3843ce8b0db">  130</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">abstract</span> IReadOnlyList&lt;BulkWriteOperationUpsert&gt; <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result.html#a4c85d8a48a8d8b8d97fab3843ce8b0db">Upserts</a> { <span class="keyword">get</span>; }</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160; </div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        <span class="comment">// nested classes</span></div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;<span class="comment"></span><span class="preprocessor">#if NET452</span></div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    [Serializable]</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00139"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result_1_1_acknowledged.html">  139</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result_1_1_acknowledged.html">Acknowledged</a> : <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result.html">BulkWriteOperationResult</a></div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;        {</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;            <span class="comment">// fields</span></div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;            <span class="keyword">private</span> readonly <span class="keywordtype">long</span> _deletedCount;</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;            <span class="keyword">private</span> readonly <span class="keywordtype">long</span> _insertedCount;</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;            <span class="keyword">private</span> readonly <span class="keywordtype">long</span> _matchedCount;</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;            <span class="keyword">private</span> readonly <span class="keywordtype">long</span>? _modifiedCount;</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;            <span class="keyword">private</span> readonly IReadOnlyList&lt;BulkWriteOperationUpsert&gt; _upserts;</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160; </div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;            <span class="comment">// constructors</span></div>
+<div class="line"><a name="l00159"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result_1_1_acknowledged.html#a0934fbb267820d92ad1307f47f85045a">  159</a></span>&#160;<span class="comment"></span>            <span class="keyword">public</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result_1_1_acknowledged.html#a0934fbb267820d92ad1307f47f85045a">Acknowledged</a>(</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;                <span class="keywordtype">int</span> requestCount,</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;                <span class="keywordtype">long</span> matchedCount,</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;                <span class="keywordtype">long</span> deletedCount,</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;                <span class="keywordtype">long</span> insertedCount,</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;                <span class="keywordtype">long</span>? modifiedCount,</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;                IReadOnlyList&lt;WriteRequest&gt; processedRequests,</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;                IReadOnlyList&lt;BulkWriteOperationUpsert&gt; upserts)</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;                : base(requestCount, processedRequests)</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;            {</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;                _matchedCount = matchedCount;</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;                _deletedCount = deletedCount;</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;                _insertedCount = insertedCount;</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;                _modifiedCount = modifiedCount;</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;                _upserts = upserts;</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;            }</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160; </div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;            <span class="comment">// properties</span></div>
+<div class="line"><a name="l00178"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result_1_1_acknowledged.html#ac65ddc4b4138f532bcf41b74f54d2afc">  178</a></span>&#160;<span class="comment"></span>            <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">long</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result_1_1_acknowledged.html#ac65ddc4b4138f532bcf41b74f54d2afc">DeletedCount</a></div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;            {</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;                <span class="keyword">get</span> { <span class="keywordflow">return</span> _deletedCount; }</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;            }</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160; </div>
+<div class="line"><a name="l00184"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result_1_1_acknowledged.html#a9d20a8cb7e4d3ff8e19af2b4b1f75e35">  184</a></span>&#160;            <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">long</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result_1_1_acknowledged.html#a9d20a8cb7e4d3ff8e19af2b4b1f75e35">InsertedCount</a></div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;            {</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;                <span class="keyword">get</span> { <span class="keywordflow">return</span> _insertedCount; }</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;            }</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160; </div>
+<div class="line"><a name="l00190"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result_1_1_acknowledged.html#aa613a79f512b3890bca090f4a2d906cc">  190</a></span>&#160;            <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">bool</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result_1_1_acknowledged.html#aa613a79f512b3890bca090f4a2d906cc">IsModifiedCountAvailable</a></div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;            {</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;                <span class="keyword">get</span> { <span class="keywordflow">return</span> _modifiedCount.HasValue; }</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;            }</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160; </div>
+<div class="line"><a name="l00196"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result_1_1_acknowledged.html#a66ab24e1c38b51135aad374ed51d6186">  196</a></span>&#160;            <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">long</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result_1_1_acknowledged.html#a66ab24e1c38b51135aad374ed51d6186">MatchedCount</a></div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;            {</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;                <span class="keyword">get</span> { <span class="keywordflow">return</span> _matchedCount; }</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;            }</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160; </div>
+<div class="line"><a name="l00202"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result_1_1_acknowledged.html#a4534c7a6df5887a627de44e7be29de80">  202</a></span>&#160;            <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">long</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result_1_1_acknowledged.html#a4534c7a6df5887a627de44e7be29de80">ModifiedCount</a></div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;            {</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;                <span class="keyword">get</span></div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;                {</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;                    <span class="keywordflow">if</span> (!_modifiedCount.HasValue)</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;                    {</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;                        <span class="keywordflow">throw</span> <span class="keyword">new</span> NotSupportedException(<span class="stringliteral">&quot;ModifiedCount is not available.&quot;</span>);</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;                    }</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;                    <span class="keywordflow">return</span> _modifiedCount.Value;</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;                }</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;            }</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160; </div>
+<div class="line"><a name="l00215"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result_1_1_acknowledged.html#ae779825baf46d2499ecf840c908b8a6c">  215</a></span>&#160;            <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">bool</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result_1_1_acknowledged.html#ae779825baf46d2499ecf840c908b8a6c">IsAcknowledged</a></div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;            {</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;                <span class="keyword">get</span> { <span class="keywordflow">return</span> <span class="keyword">true</span>; }</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;            }</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160; </div>
+<div class="line"><a name="l00221"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result_1_1_acknowledged.html#ac57c27222fa4f023452b3ffc8b26d53e">  221</a></span>&#160;            <span class="keyword">public</span> <span class="keyword">override</span> IReadOnlyList&lt;BulkWriteOperationUpsert&gt; <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result_1_1_acknowledged.html#ac57c27222fa4f023452b3ffc8b26d53e">Upserts</a></div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;            {</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;                <span class="keyword">get</span> { <span class="keywordflow">return</span> _upserts; }</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;            }</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;        }</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160; </div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;<span class="preprocessor">#if NET452</span></div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;    [Serializable]</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00233"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result_1_1_unacknowledged.html">  233</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result_1_1_unacknowledged.html">Unacknowledged</a> : <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result.html">BulkWriteOperationResult</a></div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;        {</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;            <span class="comment">// constructors</span></div>
+<div class="line"><a name="l00241"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result_1_1_unacknowledged.html#a8b2c8d8c4870f84d2adcf060fa2e5134">  241</a></span>&#160;<span class="comment"></span>            <span class="keyword">public</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result_1_1_unacknowledged.html#a8b2c8d8c4870f84d2adcf060fa2e5134">Unacknowledged</a>(</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;                <span class="keywordtype">int</span> requestCount,</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;                IReadOnlyList&lt;WriteRequest&gt; processedRequests)</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;                : base(requestCount, processedRequests)</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;            {</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;            }</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160; </div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;            <span class="comment">// properties</span></div>
+<div class="line"><a name="l00250"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result_1_1_unacknowledged.html#a68f7ae7851a9b7b1841c04f180ae5eb3">  250</a></span>&#160;<span class="comment"></span>            <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">long</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result_1_1_unacknowledged.html#a68f7ae7851a9b7b1841c04f180ae5eb3">DeletedCount</a></div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;            {</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;                <span class="keyword">get</span> { <span class="keywordflow">throw</span> <span class="keyword">new</span> NotSupportedException(<span class="stringliteral">&quot;Only acknowledged writes support the DeletedCount property.&quot;</span>); }</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;            }</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160; </div>
+<div class="line"><a name="l00256"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result_1_1_unacknowledged.html#a1a0a04123594681cab3e22589478e3bc">  256</a></span>&#160;            <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">long</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result_1_1_unacknowledged.html#a1a0a04123594681cab3e22589478e3bc">InsertedCount</a></div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;            {</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;                <span class="keyword">get</span> { <span class="keywordflow">throw</span> <span class="keyword">new</span> NotSupportedException(<span class="stringliteral">&quot;Only acknowledged writes support the InsertedCount property.&quot;</span>); }</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;            }</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160; </div>
+<div class="line"><a name="l00262"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result_1_1_unacknowledged.html#a1e68046b4867aa01399fa9f5011568a6">  262</a></span>&#160;            <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">bool</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result_1_1_unacknowledged.html#a1e68046b4867aa01399fa9f5011568a6">IsModifiedCountAvailable</a></div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;            {</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;                <span class="keyword">get</span> { <span class="keywordflow">throw</span> <span class="keyword">new</span> NotSupportedException(<span class="stringliteral">&quot;Only acknowledged writes support the IsModifiedCountAvailable property.&quot;</span>); }</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;            }</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160; </div>
+<div class="line"><a name="l00268"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result_1_1_unacknowledged.html#aa4cb42aca9d157c3564de3b9c79d322e">  268</a></span>&#160;            <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">long</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result_1_1_unacknowledged.html#aa4cb42aca9d157c3564de3b9c79d322e">MatchedCount</a></div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;            {</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;                <span class="keyword">get</span> { <span class="keywordflow">throw</span> <span class="keyword">new</span> NotSupportedException(<span class="stringliteral">&quot;Only acknowledged writes support the MatchedCount property.&quot;</span>); }</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;            }</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160; </div>
+<div class="line"><a name="l00274"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result_1_1_unacknowledged.html#a71a1de8c6b45f4894c9e1dfda4f081b5">  274</a></span>&#160;            <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">long</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result_1_1_unacknowledged.html#a71a1de8c6b45f4894c9e1dfda4f081b5">ModifiedCount</a></div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;            {</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;                <span class="keyword">get</span> { <span class="keywordflow">throw</span> <span class="keyword">new</span> NotSupportedException(<span class="stringliteral">&quot;Only acknowledged writes support the ModifiedCount property.&quot;</span>); }</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;            }</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160; </div>
+<div class="line"><a name="l00280"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result_1_1_unacknowledged.html#abdf8704b04927c73be6782e78f97614c">  280</a></span>&#160;            <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">bool</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result_1_1_unacknowledged.html#abdf8704b04927c73be6782e78f97614c">IsAcknowledged</a></div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;            {</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;                <span class="keyword">get</span> { <span class="keywordflow">return</span> <span class="keyword">false</span>; }</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;            }</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160; </div>
+<div class="line"><a name="l00286"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result_1_1_unacknowledged.html#ae6fadf03cd038b56ab99f2270506d0ab">  286</a></span>&#160;            <span class="keyword">public</span> <span class="keyword">override</span> IReadOnlyList&lt;BulkWriteOperationUpsert&gt; <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result_1_1_unacknowledged.html#ae6fadf03cd038b56ab99f2270506d0ab">Upserts</a></div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;            {</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;                <span class="keyword">get</span> { <span class="keywordflow">throw</span> <span class="keyword">new</span> NotSupportedException(<span class="stringliteral">&quot;Only acknowledged writes support the Upserts property.&quot;</span>); }</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;            }</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;        }</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;    }</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;}</div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result_1_1_acknowledged_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result_1_1_acknowledged.html">MongoDB.Driver.Core.Operations.BulkWriteOperationResult.Acknowledged</a></div><div class="ttdoc">Represents the result of an acknowledged bulk write operation.</div><div class="ttdef"><b>Definition:</b> <a href="_bulk_write_operation_result_8cs_source.html#l00139">BulkWriteOperationResult.cs:140</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result_1_1_acknowledged_html_a0934fbb267820d92ad1307f47f85045a"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result_1_1_acknowledged.html#a0934fbb267820d92ad1307f47f85045a">MongoDB.Driver.Core.Operations.BulkWriteOperationResult.Acknowledged.Acknowledged</a></div><div class="ttdeci">Acknowledged(int requestCount, long matchedCount, long deletedCount, long insertedCount, long? modifiedCount, IReadOnlyList&lt; WriteRequest &gt; processedRequests, IReadOnlyList&lt; BulkWriteOperationUpsert &gt; upserts)</div><div class="ttdoc">Initializes a new instance of the class.</div><div class="ttdef"><b>Definition:</b> <a href="_bulk_write_operation_result_8cs_source.html#l00159">BulkWriteOperationResult.cs:159</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result_1_1_acknowledged_html_a4534c7a6df5887a627de44e7be29de80"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result_1_1_acknowledged.html#a4534c7a6df5887a627de44e7be29de80">MongoDB.Driver.Core.Operations.BulkWriteOperationResult.Acknowledged.ModifiedCount</a></div><div class="ttdeci">override long ModifiedCount</div><div class="ttdef"><b>Definition:</b> <a href="_bulk_write_operation_result_8cs_source.html#l00202">BulkWriteOperationResult.cs:203</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result_1_1_acknowledged_html_a66ab24e1c38b51135aad374ed51d6186"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result_1_1_acknowledged.html#a66ab24e1c38b51135aad374ed51d6186">MongoDB.Driver.Core.Operations.BulkWriteOperationResult.Acknowledged.MatchedCount</a></div><div class="ttdeci">override long MatchedCount</div><div class="ttdef"><b>Definition:</b> <a href="_bulk_write_operation_result_8cs_source.html#l00196">BulkWriteOperationResult.cs:197</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result_1_1_acknowledged_html_a9d20a8cb7e4d3ff8e19af2b4b1f75e35"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result_1_1_acknowledged.html#a9d20a8cb7e4d3ff8e19af2b4b1f75e35">MongoDB.Driver.Core.Operations.BulkWriteOperationResult.Acknowledged.InsertedCount</a></div><div class="ttdeci">override long InsertedCount</div><div class="ttdef"><b>Definition:</b> <a href="_bulk_write_operation_result_8cs_source.html#l00184">BulkWriteOperationResult.cs:185</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result_1_1_acknowledged_html_aa613a79f512b3890bca090f4a2d906cc"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result_1_1_acknowledged.html#aa613a79f512b3890bca090f4a2d906cc">MongoDB.Driver.Core.Operations.BulkWriteOperationResult.Acknowledged.IsModifiedCountAvailable</a></div><div class="ttdeci">override bool IsModifiedCountAvailable</div><div class="ttdef"><b>Definition:</b> <a href="_bulk_write_operation_result_8cs_source.html#l00190">BulkWriteOperationResult.cs:191</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result_1_1_acknowledged_html_ac57c27222fa4f023452b3ffc8b26d53e"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result_1_1_acknowledged.html#ac57c27222fa4f023452b3ffc8b26d53e">MongoDB.Driver.Core.Operations.BulkWriteOperationResult.Acknowledged.Upserts</a></div><div class="ttdeci">override IReadOnlyList&lt; BulkWriteOperationUpsert &gt; Upserts</div><div class="ttdef"><b>Definition:</b> <a href="_bulk_write_operation_result_8cs_source.html#l00221">BulkWriteOperationResult.cs:222</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result_1_1_acknowledged_html_ac65ddc4b4138f532bcf41b74f54d2afc"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result_1_1_acknowledged.html#ac65ddc4b4138f532bcf41b74f54d2afc">MongoDB.Driver.Core.Operations.BulkWriteOperationResult.Acknowledged.DeletedCount</a></div><div class="ttdeci">override long DeletedCount</div><div class="ttdef"><b>Definition:</b> <a href="_bulk_write_operation_result_8cs_source.html#l00178">BulkWriteOperationResult.cs:179</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result_1_1_acknowledged_html_ae779825baf46d2499ecf840c908b8a6c"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result_1_1_acknowledged.html#ae779825baf46d2499ecf840c908b8a6c">MongoDB.Driver.Core.Operations.BulkWriteOperationResult.Acknowledged.IsAcknowledged</a></div><div class="ttdeci">override bool IsAcknowledged</div><div class="ttdef"><b>Definition:</b> <a href="_bulk_write_operation_result_8cs_source.html#l00215">BulkWriteOperationResult.cs:216</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result_1_1_unacknowledged_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result_1_1_unacknowledged.html">MongoDB.Driver.Core.Operations.BulkWriteOperationResult.Unacknowledged</a></div><div class="ttdoc">Represents the result of an unacknowledged BulkWrite operation.</div><div class="ttdef"><b>Definition:</b> <a href="_bulk_write_operation_result_8cs_source.html#l00233">BulkWriteOperationResult.cs:234</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result_1_1_unacknowledged_html_a1a0a04123594681cab3e22589478e3bc"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result_1_1_unacknowledged.html#a1a0a04123594681cab3e22589478e3bc">MongoDB.Driver.Core.Operations.BulkWriteOperationResult.Unacknowledged.InsertedCount</a></div><div class="ttdeci">override long InsertedCount</div><div class="ttdef"><b>Definition:</b> <a href="_bulk_write_operation_result_8cs_source.html#l00256">BulkWriteOperationResult.cs:257</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result_1_1_unacknowledged_html_a1e68046b4867aa01399fa9f5011568a6"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result_1_1_unacknowledged.html#a1e68046b4867aa01399fa9f5011568a6">MongoDB.Driver.Core.Operations.BulkWriteOperationResult.Unacknowledged.IsModifiedCountAvailable</a></div><div class="ttdeci">override bool IsModifiedCountAvailable</div><div class="ttdef"><b>Definition:</b> <a href="_bulk_write_operation_result_8cs_source.html#l00262">BulkWriteOperationResult.cs:263</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result_1_1_unacknowledged_html_a68f7ae7851a9b7b1841c04f180ae5eb3"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result_1_1_unacknowledged.html#a68f7ae7851a9b7b1841c04f180ae5eb3">MongoDB.Driver.Core.Operations.BulkWriteOperationResult.Unacknowledged.DeletedCount</a></div><div class="ttdeci">override long DeletedCount</div><div class="ttdef"><b>Definition:</b> <a href="_bulk_write_operation_result_8cs_source.html#l00250">BulkWriteOperationResult.cs:251</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result_1_1_unacknowledged_html_a71a1de8c6b45f4894c9e1dfda4f081b5"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result_1_1_unacknowledged.html#a71a1de8c6b45f4894c9e1dfda4f081b5">MongoDB.Driver.Core.Operations.BulkWriteOperationResult.Unacknowledged.ModifiedCount</a></div><div class="ttdeci">override long ModifiedCount</div><div class="ttdef"><b>Definition:</b> <a href="_bulk_write_operation_result_8cs_source.html#l00274">BulkWriteOperationResult.cs:275</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result_1_1_unacknowledged_html_a8b2c8d8c4870f84d2adcf060fa2e5134"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result_1_1_unacknowledged.html#a8b2c8d8c4870f84d2adcf060fa2e5134">MongoDB.Driver.Core.Operations.BulkWriteOperationResult.Unacknowledged.Unacknowledged</a></div><div class="ttdeci">Unacknowledged(int requestCount, IReadOnlyList&lt; WriteRequest &gt; processedRequests)</div><div class="ttdoc">Initializes a new instance of the BulkWriteOperationResult.Unacknowledged class.</div><div class="ttdef"><b>Definition:</b> <a href="_bulk_write_operation_result_8cs_source.html#l00241">BulkWriteOperationResult.cs:241</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result_1_1_unacknowledged_html_aa4cb42aca9d157c3564de3b9c79d322e"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result_1_1_unacknowledged.html#aa4cb42aca9d157c3564de3b9c79d322e">MongoDB.Driver.Core.Operations.BulkWriteOperationResult.Unacknowledged.MatchedCount</a></div><div class="ttdeci">override long MatchedCount</div><div class="ttdef"><b>Definition:</b> <a href="_bulk_write_operation_result_8cs_source.html#l00268">BulkWriteOperationResult.cs:269</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result_1_1_unacknowledged_html_abdf8704b04927c73be6782e78f97614c"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result_1_1_unacknowledged.html#abdf8704b04927c73be6782e78f97614c">MongoDB.Driver.Core.Operations.BulkWriteOperationResult.Unacknowledged.IsAcknowledged</a></div><div class="ttdeci">override bool IsAcknowledged</div><div class="ttdef"><b>Definition:</b> <a href="_bulk_write_operation_result_8cs_source.html#l00280">BulkWriteOperationResult.cs:281</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result_1_1_unacknowledged_html_ae6fadf03cd038b56ab99f2270506d0ab"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result_1_1_unacknowledged.html#ae6fadf03cd038b56ab99f2270506d0ab">MongoDB.Driver.Core.Operations.BulkWriteOperationResult.Unacknowledged.Upserts</a></div><div class="ttdeci">override IReadOnlyList&lt; BulkWriteOperationUpsert &gt; Upserts</div><div class="ttdef"><b>Definition:</b> <a href="_bulk_write_operation_result_8cs_source.html#l00286">BulkWriteOperationResult.cs:287</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result.html">MongoDB.Driver.Core.Operations.BulkWriteOperationResult</a></div><div class="ttdoc">Represents the result of a bulk write operation.</div><div class="ttdef"><b>Definition:</b> <a href="_bulk_write_operation_result_8cs_source.html#l00030">BulkWriteOperationResult.cs:31</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result_html_a1ad6fa208349ad7b032dd146b6cfbc50"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result.html#a1ad6fa208349ad7b032dd146b6cfbc50">MongoDB.Driver.Core.Operations.BulkWriteOperationResult.ModifiedCount</a></div><div class="ttdeci">abstract long ModifiedCount</div><div class="ttdoc">Gets the number of documents that were actually modified during an update.</div><div class="ttdef"><b>Definition:</b> <a href="_bulk_write_operation_result_8cs_source.html#l00100">BulkWriteOperationResult.cs:100</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result_html_a2ee3d6ac8550c7f90a2fab96b4550880"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result.html#a2ee3d6ac8550c7f90a2fab96b4550880">MongoDB.Driver.Core.Operations.BulkWriteOperationResult.BulkWriteOperationResult</a></div><div class="ttdeci">BulkWriteOperationResult(int requestCount, IReadOnlyList&lt; WriteRequest &gt; processedRequests)</div><div class="ttdoc">Initializes a new instance of the BulkWriteOperationResult class.</div><div class="ttdef"><b>Definition:</b> <a href="_bulk_write_operation_result_8cs_source.html#l00042">BulkWriteOperationResult.cs:42</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result_html_a3d054efc320cb992d2b7de8d0aa5a9cb"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result.html#a3d054efc320cb992d2b7de8d0aa5a9cb">MongoDB.Driver.Core.Operations.BulkWriteOperationResult.IsAcknowledged</a></div><div class="ttdeci">abstract bool IsAcknowledged</div><div class="ttdoc">Gets a value indicating whether the bulk write operation was acknowledged.</div><div class="ttdef"><b>Definition:</b> <a href="_bulk_write_operation_result_8cs_source.html#l00073">BulkWriteOperationResult.cs:73</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result_html_a4443f1cca0f0b66dcabb32b63658d496"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result.html#a4443f1cca0f0b66dcabb32b63658d496">MongoDB.Driver.Core.Operations.BulkWriteOperationResult.ProcessedRequests</a></div><div class="ttdeci">IReadOnlyList&lt; WriteRequest &gt; ProcessedRequests</div><div class="ttdoc">Gets the processed requests.</div><div class="ttdef"><b>Definition:</b> <a href="_bulk_write_operation_result_8cs_source.html#l00108">BulkWriteOperationResult.cs:109</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result_html_a448c9c7a4bd30e5b3dde09029d8908a9"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result.html#a448c9c7a4bd30e5b3dde09029d8908a9">MongoDB.Driver.Core.Operations.BulkWriteOperationResult.MatchedCount</a></div><div class="ttdeci">abstract long MatchedCount</div><div class="ttdoc">Gets the number of documents that were matched.</div><div class="ttdef"><b>Definition:</b> <a href="_bulk_write_operation_result_8cs_source.html#l00092">BulkWriteOperationResult.cs:92</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result_html_a4c85d8a48a8d8b8d97fab3843ce8b0db"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result.html#a4c85d8a48a8d8b8d97fab3843ce8b0db">MongoDB.Driver.Core.Operations.BulkWriteOperationResult.Upserts</a></div><div class="ttdeci">abstract IReadOnlyList&lt; BulkWriteOperationUpsert &gt; Upserts</div><div class="ttdoc">Gets a list with information about each request that resulted in an upsert.</div><div class="ttdef"><b>Definition:</b> <a href="_bulk_write_operation_result_8cs_source.html#l00130">BulkWriteOperationResult.cs:130</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result_html_a5be57fda6e9181a32e79936370b343ff"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result.html#a5be57fda6e9181a32e79936370b343ff">MongoDB.Driver.Core.Operations.BulkWriteOperationResult.IsModifiedCountAvailable</a></div><div class="ttdeci">abstract bool IsModifiedCountAvailable</div><div class="ttdoc">Gets a value indicating whether the modified count is available.</div><div class="ttdef"><b>Definition:</b> <a href="_bulk_write_operation_result_8cs_source.html#l00084">BulkWriteOperationResult.cs:84</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result_html_a8d207194d9bf37551e674c3bee43d0e8"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result.html#a8d207194d9bf37551e674c3bee43d0e8">MongoDB.Driver.Core.Operations.BulkWriteOperationResult.RequestCount</a></div><div class="ttdeci">int RequestCount</div><div class="ttdoc">Gets the request count.</div><div class="ttdef"><b>Definition:</b> <a href="_bulk_write_operation_result_8cs_source.html#l00119">BulkWriteOperationResult.cs:120</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result_html_a9cab8beb5188a9cb1ae8f0823edd8af2"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result.html#a9cab8beb5188a9cb1ae8f0823edd8af2">MongoDB.Driver.Core.Operations.BulkWriteOperationResult.InsertedCount</a></div><div class="ttdeci">abstract long InsertedCount</div><div class="ttdoc">Gets the number of documents that were inserted.</div><div class="ttdef"><b>Definition:</b> <a href="_bulk_write_operation_result_8cs_source.html#l00065">BulkWriteOperationResult.cs:65</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result_html_ad9c7ccdb5acb0530020b668cf89936b5"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_bulk_write_operation_result.html#ad9c7ccdb5acb0530020b668cf89936b5">MongoDB.Driver.Core.Operations.BulkWriteOperationResult.DeletedCount</a></div><div class="ttdeci">abstract long DeletedCount</div><div class="ttdoc">Gets the number of documents that were deleted.</div><div class="ttdef"><b>Definition:</b> <a href="_bulk_write_operation_result_8cs_source.html#l00057">BulkWriteOperationResult.cs:57</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_bson_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_bson.html">MongoDB.Bson</a></div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_bson_constants_8cs_source.html#l00018">BsonConstants.cs:19</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_driver_1_1_core_1_1_operations_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_operations.html">MongoDB.Driver.Core.Operations</a></div><div class="ttdef"><b>Definition:</b> <a href="_aggregate_explain_operation_8cs_source.html#l00028">AggregateExplainOperation.cs:29</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_html"><div class="ttname"><a href="namespace_mongo_d_b.html">MongoDB</a></div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_bson_constants_8cs_source.html#l00018">BsonConstants.cs:19</a></div></div>
+<div class="ttc" id="anamespace_system_html"><div class="ttname"><a href="namespace_system.html">System</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_method_builder_attribute_8cs_source.html#l00001">AsyncMethodBuilderAttribute.cs:2</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_1e261a42b4a2e33df58a15c412684b10.html">ETServer</a></li><li class="navelem"><a class="el" href="dir_473c270c995194c5ad99131d9c901f09.html">Server</a></li><li class="navelem"><a class="el" href="dir_ce426efcf63311ff42488fb2654bd4b4.html">ThirdParty</a></li><li class="navelem"><a class="el" href="dir_a37b2b5f9c8890cc9f6f8392fb0cdff3.html">MongoDBDriver</a></li><li class="navelem"><a class="el" href="dir_3c55113864d48cf4713f3b3197e2f720.html">MongoDB.Driver.Core</a></li><li class="navelem"><a class="el" href="dir_d802212cd82500a65b6eed8667c0c3ad.html">Core</a></li><li class="navelem"><a class="el" href="dir_06d540760304d2c1f6cc8e1c9398b42f.html">Operations</a></li><li class="navelem"><a class="el" href="_bulk_write_operation_result_8cs.html">BulkWriteOperationResult.cs</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:24:57 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,657 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: ETServer/Server/ThirdParty/MongoDBDriver/MongoDB.Bson/IO/BsonStreamAdapter.cs 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_e_t_server_2_server_2_third_party_2_mongo_d_b_driver_2_mongo_d_b_8_bson_2_i_o_2_bson_stream_adapter_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">BsonStreamAdapter.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_e_t_server_2_server_2_third_party_2_mongo_d_b_driver_2_mongo_d_b_8_bson_2_i_o_2_bson_stream_adapter_8cs.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/* Copyright 2010-present MongoDB Inc.</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">* Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">* you may not use this file except in compliance with the License.</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">* You may obtain a copy of the License at</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">* http://www.apache.org/licenses/LICENSE-2.0</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">* Unless required by applicable law or agreed to in writing, software</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">* distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">* See the License for the specific language governing permissions and</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">* limitations under the License.</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.IO;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Linq;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Text;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Threading;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Threading.Tasks;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_mongo_d_b_1_1_bson_1_1_i_o.html">MongoDB.Bson.IO</a></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;{</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keyword">public</span> sealed <span class="keyword">class </span>BsonStreamAdapter : BsonStream</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    {</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <span class="comment">// fields</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">bool</span> _disposed;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">bool</span> _ownsStream;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <span class="keyword">private</span> readonly Stream _stream;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="keyword">private</span> readonly <span class="keywordtype">byte</span>[] _temp = <span class="keyword">new</span> <span class="keywordtype">byte</span>[12];</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <span class="keyword">private</span> readonly <span class="keywordtype">byte</span>[] _tempUtf8 = <span class="keyword">new</span> <span class="keywordtype">byte</span>[128];</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <span class="comment">// constructors</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#a717e6dad2dcc0ca0ec0946610e365316">   44</a></span>&#160;<span class="comment"></span>        <span class="keyword">public</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#a717e6dad2dcc0ca0ec0946610e365316">BsonStreamAdapter</a>(Stream stream, <span class="keywordtype">bool</span> ownsStream = <span class="keyword">false</span>)</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        {</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;            <span class="keywordflow">if</span> (stream == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            {</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> ArgumentNullException(<span class="stringliteral">&quot;stream&quot;</span>);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            }</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            _stream = stream;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            _ownsStream = ownsStream;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        }</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <span class="comment">// properties        </span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="comment"></span>        <span class="keyword">public</span> Stream <a class="code" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#a4e20a0a5eb4b05025941c3f7afdd36ee">BaseStream</a></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        {</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            <span class="keyword">get</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            {</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                ThrowIfDisposed();</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                <span class="keywordflow">return</span> _stream;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            }</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        }</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">bool</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#a72ee431a2993da7b38631f260157b924">CanRead</a></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        {</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            <span class="keyword">get</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            {</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                ThrowIfDisposed();</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                <span class="keywordflow">return</span> _stream.CanRead;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            }</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        }</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">bool</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#aa86e5bad64a2308c79d704b4bb6e274c">CanSeek</a></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        {</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;            <span class="keyword">get</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;            {</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                ThrowIfDisposed();</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                <span class="keywordflow">return</span> _stream.CanSeek;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;            }</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        }</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">bool</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#afeea585390ad38282e2a7c0edaa9495a">CanTimeout</a></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        {</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;            <span class="keyword">get</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;            {</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                ThrowIfDisposed();</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;                <span class="keywordflow">return</span> _stream.CanTimeout;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;            }</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        }</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">bool</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#ab9e3f51e26b2d4c2975e50fa54e1dab0">CanWrite</a></div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        {</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;            <span class="keyword">get</span></div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;            {</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;                ThrowIfDisposed();</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;                <span class="keywordflow">return</span> _stream.CanWrite;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;            }</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        }</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160; </div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">long</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#acc926752d2701a72736f34488920e1d9">Length</a></div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        {</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;            <span class="keyword">get</span></div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;            {</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;                ThrowIfDisposed();</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;                <span class="keywordflow">return</span> _stream.Length;</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;            }</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        }</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160; </div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">long</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#aef57ce39593aadfe7b129c5b2f77f00a">Position</a></div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        {</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;            <span class="keyword">get</span></div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;            {</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;                ThrowIfDisposed();</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;                <span class="keywordflow">return</span> _stream.Position;</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;            }</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;            <span class="keyword">set</span></div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;            {</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;                ThrowIfDisposed();</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;                _stream.Position = value;</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;            }</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        }</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160; </div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">int</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#a9699f41a9d5d35e100a32b7a9762676d">ReadTimeout</a></div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;        {</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;            <span class="keyword">get</span></div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;            {</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;                ThrowIfDisposed();</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;                <span class="keywordflow">return</span> _stream.ReadTimeout;</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;            }</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;            <span class="keyword">set</span></div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;            {</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;                ThrowIfDisposed();</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;                _stream.ReadTimeout = value;</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;            }</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        }</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160; </div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">int</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#add430c71750eb6b2f33d79f65c384cd4">WriteTimeout</a></div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;        {</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;            <span class="keyword">get</span></div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;            {</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;                ThrowIfDisposed();</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;                <span class="keywordflow">return</span> _stream.WriteTimeout;</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;            }</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;            <span class="keyword">set</span></div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;            {</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;                ThrowIfDisposed();</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;                _stream.WriteTimeout = value;</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;            }</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;        }</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160; </div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;        <span class="comment">// methods</span></div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;<span class="preprocessor">#if NET452</span></div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> IAsyncResult BeginRead(<span class="keywordtype">byte</span>[] buffer, <span class="keywordtype">int</span> offset, <span class="keywordtype">int</span> count, AsyncCallback callback, <span class="keywordtype">object</span> state)</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;        {</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;            ThrowIfDisposed();</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;            <span class="keywordflow">return</span> _stream.BeginRead(buffer, offset, count, callback, state);</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;        }</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160; </div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;<span class="preprocessor">#if NET452</span></div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> IAsyncResult BeginWrite(<span class="keywordtype">byte</span>[] buffer, <span class="keywordtype">int</span> offset, <span class="keywordtype">int</span> count, AsyncCallback callback, <span class="keywordtype">object</span> state)</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;        {</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;            ThrowIfDisposed();</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;            <span class="keywordflow">return</span> _stream.BeginWrite(buffer, offset, count, callback, state);</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;        }</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160; </div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;<span class="preprocessor">#if NET452</span></div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> Close()</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;        {</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;            base.Close(); <span class="comment">// base class will call Dispose</span></div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;        }</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160; </div>
+<div class="line"><a name="l00194"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#a935098470e611fed2ea829207236cafc">  194</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> Task <a class="code" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#a935098470e611fed2ea829207236cafc">CopyToAsync</a>(Stream destination, <span class="keywordtype">int</span> bufferSize, CancellationToken cancellationToken)</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;        {</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;            ThrowIfDisposed();</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;            <span class="keywordflow">return</span> _stream.CopyToAsync(destination, bufferSize, cancellationToken);</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;        }</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160; </div>
+<div class="line"><a name="l00201"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#a097441f5a46c0c80b89064f203a4fbf2">  201</a></span>&#160;        <span class="keyword">protected</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#a097441f5a46c0c80b89064f203a4fbf2">Dispose</a>(<span class="keywordtype">bool</span> disposing)</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;        {</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;            <span class="keywordflow">if</span> (!_disposed)</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;            {</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;                <span class="keywordflow">if</span> (disposing)</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;                {</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;                    <span class="keywordflow">if</span> (_ownsStream)</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;                    {</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;                        _stream.Dispose();</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;                    }</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;                }</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;                _disposed = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;            }</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;            base.Dispose(disposing);</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;        }</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160; </div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;<span class="preprocessor">#if NET452</span></div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">int</span> EndRead(IAsyncResult asyncResult)</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;        {</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;            ThrowIfDisposed();</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;            <span class="keywordflow">return</span> _stream.EndRead(asyncResult);</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;        }</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160; </div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;<span class="preprocessor">#if NET452</span></div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> EndWrite(IAsyncResult asyncResult)</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;        {</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;            ThrowIfDisposed();</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;            _stream.EndWrite(asyncResult);</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;        }</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160; </div>
+<div class="line"><a name="l00236"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#a3ec6c2c9ba52919c1ed5f4463c307ff5">  236</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#a3ec6c2c9ba52919c1ed5f4463c307ff5">Flush</a>()</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;        {</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;            ThrowIfDisposed();</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;            _stream.Flush();</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;        }</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160; </div>
+<div class="line"><a name="l00243"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#a185fdd8183507cc025b30292278101f5">  243</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> Task <a class="code" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#a185fdd8183507cc025b30292278101f5">FlushAsync</a>(CancellationToken cancellationToken)</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;        {</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;            ThrowIfDisposed();</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;            <span class="keywordflow">return</span> _stream.FlushAsync(cancellationToken);</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;        }</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160; </div>
+<div class="line"><a name="l00250"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#aa555fe938528aa63e4b56132e038ac44">  250</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">int</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#aa555fe938528aa63e4b56132e038ac44">Read</a>(<span class="keywordtype">byte</span>[] buffer, <span class="keywordtype">int</span> offset, <span class="keywordtype">int</span> count)</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;        {</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;            ThrowIfDisposed();</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;            <span class="keywordflow">return</span> _stream.Read(buffer, offset, count);</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;        }</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160; </div>
+<div class="line"><a name="l00257"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#a7a49639d50fbdbeb275ba76c7447089e">  257</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> Task&lt;int&gt; <a class="code" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#a7a49639d50fbdbeb275ba76c7447089e">ReadAsync</a>(<span class="keywordtype">byte</span>[] buffer, <span class="keywordtype">int</span> offset, <span class="keywordtype">int</span> count, CancellationToken cancellationToken)</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;        {</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;            ThrowIfDisposed();</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;            <span class="keywordflow">return</span> _stream.ReadAsync(buffer, offset, count, cancellationToken);</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;        }</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160; </div>
+<div class="line"><a name="l00264"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#a793626ed65fe498be6de2a10b2213c61">  264</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">int</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#a793626ed65fe498be6de2a10b2213c61">ReadByte</a>()</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;        {</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;            ThrowIfDisposed();</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;            <span class="keywordflow">return</span> _stream.ReadByte();</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;        }</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160; </div>
+<div class="line"><a name="l00271"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#a3f5011c75fdd26bde52bee3e51240c3e">  271</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">string</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#a3f5011c75fdd26bde52bee3e51240c3e">ReadCString</a>(UTF8Encoding encoding)</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;        {</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;            <span class="keywordflow">if</span> (encoding == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;            {</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> ArgumentNullException(<span class="stringliteral">&quot;encoding&quot;</span>);</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;            }</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;            ThrowIfDisposed();</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160; </div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;            var bytes = <a class="code" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#a506d8164868a7b2a5e26a56f46a442f7">ReadCStringBytes</a>();</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;            <span class="keywordflow">return</span> Utf8Helper.DecodeUtf8String(bytes.Array, 0, bytes.Count, encoding);</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;        }</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160; </div>
+<div class="line"><a name="l00284"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#a506d8164868a7b2a5e26a56f46a442f7">  284</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> ArraySegment&lt;byte&gt; <a class="code" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#a506d8164868a7b2a5e26a56f46a442f7">ReadCStringBytes</a>()</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;        {</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;            ThrowIfDisposed();</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160; </div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;            var memoryStream = <span class="keyword">new</span> MemoryStream(32);</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160; </div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;            <span class="keywordflow">while</span> (<span class="keyword">true</span>)</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;            {</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;                var b = _stream.ReadByte();</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;                <span class="keywordflow">if</span> (b == -1)</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;                {</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;                    <span class="keywordflow">throw</span> <span class="keyword">new</span> EndOfStreamException();</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;                }</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;                <span class="keywordflow">if</span> (b == 0)</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;                {</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;                    <span class="keywordtype">byte</span>[] memoryStreamBuffer;</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;<span class="preprocessor">#if NETSTANDARD1_5 || NETSTANDARD1_6</span></div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;                    memoryStreamBuffer = memoryStream.ToArray();</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;                    memoryStreamBuffer = memoryStream.GetBuffer();</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;                    <span class="keywordflow">return</span> <span class="keyword">new</span> ArraySegment&lt;byte&gt;(memoryStreamBuffer, 0, (<span class="keywordtype">int</span>)memoryStream.Length);</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;                }</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160; </div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;                memoryStream.WriteByte((<span class="keywordtype">byte</span>)b);</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;            }</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;        }</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160; </div>
+<div class="line"><a name="l00313"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#ac913bb0f93c24bd9659485d661893030">  313</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <a class="code" href="struct_mongo_d_b_1_1_bson_1_1_decimal128.html">Decimal128</a> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#ac913bb0f93c24bd9659485d661893030">ReadDecimal128</a>()</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;        {</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;            ThrowIfDisposed();</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;            var lowBits = (ulong)<a class="code" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#a23a5cef5b1418c3338fca1c5e1dcb3f2">ReadInt64</a>();</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;            var highBits = (ulong)<a class="code" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#a23a5cef5b1418c3338fca1c5e1dcb3f2">ReadInt64</a>();</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="struct_mongo_d_b_1_1_bson_1_1_decimal128.html">Decimal128</a>.<a class="code" href="struct_mongo_d_b_1_1_bson_1_1_decimal128.html#a0600c7d56270bddbc3303f75f9381e37">FromIEEEBits</a>(highBits, lowBits);</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;        }</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160; </div>
+<div class="line"><a name="l00322"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#af13b664e8bb88518c9822243f540ea11">  322</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">double</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#af13b664e8bb88518c9822243f540ea11">ReadDouble</a>()</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;        {</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;            ThrowIfDisposed();</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;            this.ReadBytes(_temp, 0, 8);</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;            <span class="keywordflow">return</span> BitConverter.ToDouble(_temp, 0);</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;        }</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160; </div>
+<div class="line"><a name="l00330"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#a2e034d526e3374305e21ec711c856c7d">  330</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">int</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#a2e034d526e3374305e21ec711c856c7d">ReadInt32</a>()</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;        {</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;            ThrowIfDisposed();</div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;            this.ReadBytes(_temp, 0, 4);</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;            <span class="keywordflow">return</span> _temp[0] | (_temp[1] &lt;&lt; 8) | (_temp[2] &lt;&lt; 16) | (_temp[3] &lt;&lt; 24);</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;        }</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160; </div>
+<div class="line"><a name="l00338"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#a23a5cef5b1418c3338fca1c5e1dcb3f2">  338</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">long</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#a23a5cef5b1418c3338fca1c5e1dcb3f2">ReadInt64</a>()</div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;        {</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;            ThrowIfDisposed();</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;            this.ReadBytes(_temp, 0, 8);</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;            <span class="keywordflow">return</span> BitConverter.ToInt64(_temp, 0);</div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;        }</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160; </div>
+<div class="line"><a name="l00346"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#ae5c5f89a8c54a5fef5ada226ba121a3c">  346</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <a class="code" href="struct_mongo_d_b_1_1_bson_1_1_object_id.html">ObjectId</a> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#ae5c5f89a8c54a5fef5ada226ba121a3c">ReadObjectId</a>()</div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;        {</div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;            ThrowIfDisposed();</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;            this.ReadBytes(_temp, 0, 12);</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="struct_mongo_d_b_1_1_bson_1_1_object_id.html">ObjectId</a>(_temp, 0);</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;        }</div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160; </div>
+<div class="line"><a name="l00354"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#a3dd167674a1cfb2ff4d3176e057cb3f2">  354</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <a class="code" href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_byte_buffer.html">IByteBuffer</a> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#a3dd167674a1cfb2ff4d3176e057cb3f2">ReadSlice</a>()</div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;        {</div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;            ThrowIfDisposed();</div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;            var position = _stream.Position;</div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;            var length = <a class="code" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#a2e034d526e3374305e21ec711c856c7d">ReadInt32</a>();</div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;            var bytes = <span class="keyword">new</span> <span class="keywordtype">byte</span>[length];</div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;            _stream.Position = position;</div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;            this.ReadBytes(bytes, 0, length);</div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_byte_array_buffer.html">ByteArrayBuffer</a>(bytes, isReadOnly: <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;        }</div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160; </div>
+<div class="line"><a name="l00366"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#a6ca53d2242536a60ed851c05298cad16">  366</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">string</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#a6ca53d2242536a60ed851c05298cad16">ReadString</a>(UTF8Encoding encoding)</div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;        {</div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;            <span class="keywordflow">if</span> (encoding == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;            {</div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> ArgumentNullException(<span class="stringliteral">&quot;encoding&quot;</span>);</div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;            }</div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;            ThrowIfDisposed();</div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160; </div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;            var length = <a class="code" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#a2e034d526e3374305e21ec711c856c7d">ReadInt32</a>();</div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;            var bytes = length &lt;= _tempUtf8.Length ? _tempUtf8 : <span class="keyword">new</span> <span class="keywordtype">byte</span>[length];</div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;            this.ReadBytes(bytes, 0, length);</div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;            <span class="keywordflow">if</span> (bytes[length - 1] != 0)</div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;            {</div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> FormatException(<span class="stringliteral">&quot;String is missing terminating null byte.&quot;</span>);</div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;            }</div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160; </div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;            <span class="keywordflow">return</span> encoding.GetString(bytes, 0, length - 1);</div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;        }</div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160; </div>
+<div class="line"><a name="l00386"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#a16188d69e589335c39c86789d9574f8b">  386</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">long</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#a16188d69e589335c39c86789d9574f8b">Seek</a>(<span class="keywordtype">long</span> offset, SeekOrigin origin)</div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;        {</div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;            ThrowIfDisposed();</div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;            <span class="keywordflow">return</span> _stream.Seek(offset, origin);</div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;        }</div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160; </div>
+<div class="line"><a name="l00393"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#afeea7b2da08151908b19352bb58de90d">  393</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#afeea7b2da08151908b19352bb58de90d">SetLength</a>(<span class="keywordtype">long</span> value)</div>
+<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;        {</div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;            ThrowIfDisposed();</div>
+<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;            _stream.SetLength(value);</div>
+<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;        }</div>
+<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160; </div>
+<div class="line"><a name="l00400"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#a4cb6af2e9a9068830d9da7247e89d25f">  400</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#a4cb6af2e9a9068830d9da7247e89d25f">SkipCString</a>()</div>
+<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;        {</div>
+<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;            ThrowIfDisposed();</div>
+<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160; </div>
+<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;            <span class="keywordflow">while</span> (<span class="keyword">true</span>)</div>
+<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;            {</div>
+<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;                var b = _stream.ReadByte();</div>
+<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;                <span class="keywordflow">if</span> (b == -1)</div>
+<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;                {</div>
+<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;                    <span class="keywordflow">throw</span> <span class="keyword">new</span> EndOfStreamException();</div>
+<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;                }</div>
+<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;                <span class="keywordflow">if</span> (b == 0)</div>
+<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;                {</div>
+<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;                    <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;                }</div>
+<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;            }</div>
+<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;        }</div>
+<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160; </div>
+<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> ThrowIfDisposed()</div>
+<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;        {</div>
+<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;            <span class="keywordflow">if</span> (_disposed)</div>
+<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;            {</div>
+<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> ObjectDisposedException(GetType().Name);</div>
+<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;            }</div>
+<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;        }</div>
+<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160; </div>
+<div class="line"><a name="l00428"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#a100cc3624b48055f03dc0d7fc49837c1">  428</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#a100cc3624b48055f03dc0d7fc49837c1">Write</a>(<span class="keywordtype">byte</span>[] buffer, <span class="keywordtype">int</span> offset, <span class="keywordtype">int</span> count)</div>
+<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;        {</div>
+<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;            ThrowIfDisposed();</div>
+<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;            _stream.Write(buffer, offset, count);</div>
+<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;        }</div>
+<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160; </div>
+<div class="line"><a name="l00435"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#adb19203a108feb79323b87f4a5d5ac89">  435</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> Task <a class="code" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#adb19203a108feb79323b87f4a5d5ac89">WriteAsync</a>(<span class="keywordtype">byte</span>[] buffer, <span class="keywordtype">int</span> offset, <span class="keywordtype">int</span> count, CancellationToken cancellationToken)</div>
+<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;        {</div>
+<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;            ThrowIfDisposed();</div>
+<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;            <span class="keywordflow">return</span> _stream.WriteAsync(buffer, offset, count, cancellationToken);</div>
+<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;        }</div>
+<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160; </div>
+<div class="line"><a name="l00442"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#abfb73bc298a4ffac6b18bc70b91e5021">  442</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#abfb73bc298a4ffac6b18bc70b91e5021">WriteByte</a>(<span class="keywordtype">byte</span> value)</div>
+<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;        {</div>
+<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;            ThrowIfDisposed();</div>
+<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;            _stream.WriteByte(value);</div>
+<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;        }</div>
+<div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160; </div>
+<div class="line"><a name="l00449"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#a2dcfbfcb827baff51c64cce84f6d6783">  449</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#a2dcfbfcb827baff51c64cce84f6d6783">WriteCString</a>(<span class="keywordtype">string</span> value)</div>
+<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;        {</div>
+<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;            <span class="keywordflow">if</span> (value == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;            {</div>
+<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> ArgumentNullException(<span class="stringliteral">&quot;value&quot;</span>);</div>
+<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;            }</div>
+<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;            ThrowIfDisposed();</div>
+<div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160; </div>
+<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160;            <span class="keywordtype">byte</span>[] bytes;</div>
+<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;            <span class="keywordtype">int</span> length;</div>
+<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160; </div>
+<div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160;            <span class="keywordflow">if</span> (CStringUtf8Encoding.GetMaxByteCount(value.Length) &lt;= _tempUtf8.Length)</div>
+<div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160;            {</div>
+<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;                bytes = _tempUtf8;</div>
+<div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160;                length = CStringUtf8Encoding.GetBytes(value, _tempUtf8, 0, Utf8Encodings.Strict);</div>
+<div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160;            }</div>
+<div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160;            {</div>
+<div class="line"><a name="l00467"></a><span class="lineno">  467</span>&#160;                bytes = Utf8Encodings.Strict.GetBytes(value);</div>
+<div class="line"><a name="l00468"></a><span class="lineno">  468</span>&#160;                <span class="keywordflow">if</span> (Array.IndexOf&lt;<span class="keywordtype">byte</span>&gt;(bytes, 0) != -1)</div>
+<div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160;                {</div>
+<div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160;                    <span class="keywordflow">throw</span> <span class="keyword">new</span> ArgumentException(<span class="stringliteral">&quot;A CString cannot contain null bytes.&quot;</span>, <span class="stringliteral">&quot;value&quot;</span>);</div>
+<div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160;                }</div>
+<div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160;                length = bytes.Length;</div>
+<div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;            }</div>
+<div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160; </div>
+<div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160;            _stream.Write(bytes, 0, length);</div>
+<div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;            _stream.WriteByte(0);</div>
+<div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160;        }</div>
+<div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160; </div>
+<div class="line"><a name="l00480"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#acc3d103b7d7b2c7177556dbd8cb567b7">  480</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#acc3d103b7d7b2c7177556dbd8cb567b7">WriteCStringBytes</a>(<span class="keywordtype">byte</span>[] value)</div>
+<div class="line"><a name="l00481"></a><span class="lineno">  481</span>&#160;        {</div>
+<div class="line"><a name="l00482"></a><span class="lineno">  482</span>&#160;            <span class="keywordflow">if</span> (value == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00483"></a><span class="lineno">  483</span>&#160;            {</div>
+<div class="line"><a name="l00484"></a><span class="lineno">  484</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> ArgumentNullException(<span class="stringliteral">&quot;value&quot;</span>);</div>
+<div class="line"><a name="l00485"></a><span class="lineno">  485</span>&#160;            }</div>
+<div class="line"><a name="l00486"></a><span class="lineno">  486</span>&#160;            ThrowIfDisposed();</div>
+<div class="line"><a name="l00487"></a><span class="lineno">  487</span>&#160; </div>
+<div class="line"><a name="l00488"></a><span class="lineno">  488</span>&#160;            this.WriteBytes(value, 0, value.Length);</div>
+<div class="line"><a name="l00489"></a><span class="lineno">  489</span>&#160;            <a class="code" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#abfb73bc298a4ffac6b18bc70b91e5021">WriteByte</a>(0);</div>
+<div class="line"><a name="l00490"></a><span class="lineno">  490</span>&#160;        }</div>
+<div class="line"><a name="l00491"></a><span class="lineno">  491</span>&#160; </div>
+<div class="line"><a name="l00493"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#ab46e0925f49d22f1f9d298a516741b36">  493</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#ab46e0925f49d22f1f9d298a516741b36">WriteDecimal128</a>(<a class="code" href="struct_mongo_d_b_1_1_bson_1_1_decimal128.html">Decimal128</a> value)</div>
+<div class="line"><a name="l00494"></a><span class="lineno">  494</span>&#160;        {</div>
+<div class="line"><a name="l00495"></a><span class="lineno">  495</span>&#160;            ThrowIfDisposed();</div>
+<div class="line"><a name="l00496"></a><span class="lineno">  496</span>&#160;            <a class="code" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#ae7cb9438cfaa4799828fd55b77d2b26c">WriteInt64</a>((<span class="keywordtype">long</span>)value.<a class="code" href="struct_mongo_d_b_1_1_bson_1_1_decimal128.html#a3659bdfef2ddab3b14a13a5f1b58a342">GetIEEELowBits</a>());</div>
+<div class="line"><a name="l00497"></a><span class="lineno">  497</span>&#160;            <a class="code" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#ae7cb9438cfaa4799828fd55b77d2b26c">WriteInt64</a>((<span class="keywordtype">long</span>)value.<a class="code" href="struct_mongo_d_b_1_1_bson_1_1_decimal128.html#a0361fc6af8b0be9dfe62a2dd6b65aabc">GetIEEEHighBits</a>());</div>
+<div class="line"><a name="l00498"></a><span class="lineno">  498</span>&#160;        }</div>
+<div class="line"><a name="l00499"></a><span class="lineno">  499</span>&#160; </div>
+<div class="line"><a name="l00501"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#aaa5912d0e2929924132f114bc9c9ca3b">  501</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#aaa5912d0e2929924132f114bc9c9ca3b">WriteDouble</a>(<span class="keywordtype">double</span> value)</div>
+<div class="line"><a name="l00502"></a><span class="lineno">  502</span>&#160;        {</div>
+<div class="line"><a name="l00503"></a><span class="lineno">  503</span>&#160;            ThrowIfDisposed();</div>
+<div class="line"><a name="l00504"></a><span class="lineno">  504</span>&#160;            var bytes = BitConverter.GetBytes(value);</div>
+<div class="line"><a name="l00505"></a><span class="lineno">  505</span>&#160;            _stream.Write(bytes, 0, 8);</div>
+<div class="line"><a name="l00506"></a><span class="lineno">  506</span>&#160;        }</div>
+<div class="line"><a name="l00507"></a><span class="lineno">  507</span>&#160; </div>
+<div class="line"><a name="l00509"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#a14d3a6dd3a845bef9fdaa86d2921f461">  509</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#a14d3a6dd3a845bef9fdaa86d2921f461">WriteInt32</a>(<span class="keywordtype">int</span> value)</div>
+<div class="line"><a name="l00510"></a><span class="lineno">  510</span>&#160;        {</div>
+<div class="line"><a name="l00511"></a><span class="lineno">  511</span>&#160;            ThrowIfDisposed();</div>
+<div class="line"><a name="l00512"></a><span class="lineno">  512</span>&#160;            _temp[0] = (byte)(value);</div>
+<div class="line"><a name="l00513"></a><span class="lineno">  513</span>&#160;            _temp[1] = (byte)(value &gt;&gt; 8);</div>
+<div class="line"><a name="l00514"></a><span class="lineno">  514</span>&#160;            _temp[2] = (byte)(value &gt;&gt; 16);</div>
+<div class="line"><a name="l00515"></a><span class="lineno">  515</span>&#160;            _temp[3] = (byte)(value &gt;&gt; 24);</div>
+<div class="line"><a name="l00516"></a><span class="lineno">  516</span>&#160;            _stream.Write(_temp, 0, 4);</div>
+<div class="line"><a name="l00517"></a><span class="lineno">  517</span>&#160;        }</div>
+<div class="line"><a name="l00518"></a><span class="lineno">  518</span>&#160; </div>
+<div class="line"><a name="l00520"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#ae7cb9438cfaa4799828fd55b77d2b26c">  520</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#ae7cb9438cfaa4799828fd55b77d2b26c">WriteInt64</a>(<span class="keywordtype">long</span> value)</div>
+<div class="line"><a name="l00521"></a><span class="lineno">  521</span>&#160;        {</div>
+<div class="line"><a name="l00522"></a><span class="lineno">  522</span>&#160;            ThrowIfDisposed();</div>
+<div class="line"><a name="l00523"></a><span class="lineno">  523</span>&#160;            var bytes = BitConverter.GetBytes(value);</div>
+<div class="line"><a name="l00524"></a><span class="lineno">  524</span>&#160;            _stream.Write(bytes, 0, 8);</div>
+<div class="line"><a name="l00525"></a><span class="lineno">  525</span>&#160;        }</div>
+<div class="line"><a name="l00526"></a><span class="lineno">  526</span>&#160; </div>
+<div class="line"><a name="l00528"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#ab3b2026dd2abc56558c856f7e092093c">  528</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#ab3b2026dd2abc56558c856f7e092093c">WriteObjectId</a>(<a class="code" href="struct_mongo_d_b_1_1_bson_1_1_object_id.html">ObjectId</a> value)</div>
+<div class="line"><a name="l00529"></a><span class="lineno">  529</span>&#160;        {</div>
+<div class="line"><a name="l00530"></a><span class="lineno">  530</span>&#160;            ThrowIfDisposed();</div>
+<div class="line"><a name="l00531"></a><span class="lineno">  531</span>&#160;            value.<a class="code" href="struct_mongo_d_b_1_1_bson_1_1_object_id.html#a21adefc4f3e1714e367af7e1a18c6e59">ToByteArray</a>(_temp, 0);</div>
+<div class="line"><a name="l00532"></a><span class="lineno">  532</span>&#160;            _stream.Write(_temp, 0, 12);</div>
+<div class="line"><a name="l00533"></a><span class="lineno">  533</span>&#160;        }</div>
+<div class="line"><a name="l00534"></a><span class="lineno">  534</span>&#160; </div>
+<div class="line"><a name="l00536"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#a219883b9382000b62a6088953ea3aa2a">  536</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#a219883b9382000b62a6088953ea3aa2a">WriteString</a>(<span class="keywordtype">string</span> value, UTF8Encoding encoding)</div>
+<div class="line"><a name="l00537"></a><span class="lineno">  537</span>&#160;        {</div>
+<div class="line"><a name="l00538"></a><span class="lineno">  538</span>&#160;            <span class="keywordflow">if</span> (value == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00539"></a><span class="lineno">  539</span>&#160;            {</div>
+<div class="line"><a name="l00540"></a><span class="lineno">  540</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> ArgumentNullException(<span class="stringliteral">&quot;value&quot;</span>);</div>
+<div class="line"><a name="l00541"></a><span class="lineno">  541</span>&#160;            }</div>
+<div class="line"><a name="l00542"></a><span class="lineno">  542</span>&#160;            <span class="keywordflow">if</span> (encoding == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00543"></a><span class="lineno">  543</span>&#160;            {</div>
+<div class="line"><a name="l00544"></a><span class="lineno">  544</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> ArgumentNullException(<span class="stringliteral">&quot;encoding&quot;</span>);</div>
+<div class="line"><a name="l00545"></a><span class="lineno">  545</span>&#160;            }</div>
+<div class="line"><a name="l00546"></a><span class="lineno">  546</span>&#160;            ThrowIfDisposed();</div>
+<div class="line"><a name="l00547"></a><span class="lineno">  547</span>&#160; </div>
+<div class="line"><a name="l00548"></a><span class="lineno">  548</span>&#160;            <span class="keywordtype">byte</span>[] bytes;</div>
+<div class="line"><a name="l00549"></a><span class="lineno">  549</span>&#160;            <span class="keywordtype">int</span> length;</div>
+<div class="line"><a name="l00550"></a><span class="lineno">  550</span>&#160; </div>
+<div class="line"><a name="l00551"></a><span class="lineno">  551</span>&#160;            <span class="keywordflow">if</span> (encoding.GetMaxByteCount(value.Length) &lt;= _tempUtf8.Length)</div>
+<div class="line"><a name="l00552"></a><span class="lineno">  552</span>&#160;            {</div>
+<div class="line"><a name="l00553"></a><span class="lineno">  553</span>&#160;                bytes = _tempUtf8;</div>
+<div class="line"><a name="l00554"></a><span class="lineno">  554</span>&#160;                length = encoding.GetBytes(value, 0, value.Length, _tempUtf8, 0);</div>
+<div class="line"><a name="l00555"></a><span class="lineno">  555</span>&#160;            }</div>
+<div class="line"><a name="l00556"></a><span class="lineno">  556</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00557"></a><span class="lineno">  557</span>&#160;            {</div>
+<div class="line"><a name="l00558"></a><span class="lineno">  558</span>&#160;                bytes = encoding.GetBytes(value);</div>
+<div class="line"><a name="l00559"></a><span class="lineno">  559</span>&#160;                length = bytes.Length;</div>
+<div class="line"><a name="l00560"></a><span class="lineno">  560</span>&#160;            }</div>
+<div class="line"><a name="l00561"></a><span class="lineno">  561</span>&#160; </div>
+<div class="line"><a name="l00562"></a><span class="lineno">  562</span>&#160;            <a class="code" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#a14d3a6dd3a845bef9fdaa86d2921f461">WriteInt32</a>(length + 1);</div>
+<div class="line"><a name="l00563"></a><span class="lineno">  563</span>&#160;            _stream.Write(bytes, 0, length);</div>
+<div class="line"><a name="l00564"></a><span class="lineno">  564</span>&#160;            _stream.WriteByte(0);</div>
+<div class="line"><a name="l00565"></a><span class="lineno">  565</span>&#160;        }</div>
+<div class="line"><a name="l00566"></a><span class="lineno">  566</span>&#160;    }</div>
+<div class="line"><a name="l00567"></a><span class="lineno">  567</span>&#160;}</div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter_html_a097441f5a46c0c80b89064f203a4fbf2"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#a097441f5a46c0c80b89064f203a4fbf2">MongoDB.Bson.IO.BsonStreamAdapter.Dispose</a></div><div class="ttdeci">override void Dispose(bool disposing)</div><div class="ttdef"><b>Definition:</b> <a href="_e_t_server_2_server_2_third_party_2_mongo_d_b_driver_2_mongo_d_b_8_bson_2_i_o_2_bson_stream_adapter_8cs_source.html#l00201">BsonStreamAdapter.cs:201</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter_html_a100cc3624b48055f03dc0d7fc49837c1"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#a100cc3624b48055f03dc0d7fc49837c1">MongoDB.Bson.IO.BsonStreamAdapter.Write</a></div><div class="ttdeci">override void Write(byte[] buffer, int offset, int count)</div><div class="ttdef"><b>Definition:</b> <a href="_e_t_server_2_server_2_third_party_2_mongo_d_b_driver_2_mongo_d_b_8_bson_2_i_o_2_bson_stream_adapter_8cs_source.html#l00428">BsonStreamAdapter.cs:428</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter_html_a14d3a6dd3a845bef9fdaa86d2921f461"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#a14d3a6dd3a845bef9fdaa86d2921f461">MongoDB.Bson.IO.BsonStreamAdapter.WriteInt32</a></div><div class="ttdeci">override void WriteInt32(int value)</div><div class="ttdoc">Writes a 32-bit BSON integer to the stream.</div><div class="ttdef"><b>Definition:</b> <a href="_e_t_server_2_server_2_third_party_2_mongo_d_b_driver_2_mongo_d_b_8_bson_2_i_o_2_bson_stream_adapter_8cs_source.html#l00509">BsonStreamAdapter.cs:509</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter_html_a16188d69e589335c39c86789d9574f8b"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#a16188d69e589335c39c86789d9574f8b">MongoDB.Bson.IO.BsonStreamAdapter.Seek</a></div><div class="ttdeci">override long Seek(long offset, SeekOrigin origin)</div><div class="ttdef"><b>Definition:</b> <a href="_e_t_server_2_server_2_third_party_2_mongo_d_b_driver_2_mongo_d_b_8_bson_2_i_o_2_bson_stream_adapter_8cs_source.html#l00386">BsonStreamAdapter.cs:386</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter_html_a185fdd8183507cc025b30292278101f5"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#a185fdd8183507cc025b30292278101f5">MongoDB.Bson.IO.BsonStreamAdapter.FlushAsync</a></div><div class="ttdeci">override Task FlushAsync(CancellationToken cancellationToken)</div><div class="ttdef"><b>Definition:</b> <a href="_e_t_server_2_server_2_third_party_2_mongo_d_b_driver_2_mongo_d_b_8_bson_2_i_o_2_bson_stream_adapter_8cs_source.html#l00243">BsonStreamAdapter.cs:243</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter_html_a219883b9382000b62a6088953ea3aa2a"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#a219883b9382000b62a6088953ea3aa2a">MongoDB.Bson.IO.BsonStreamAdapter.WriteString</a></div><div class="ttdeci">override void WriteString(string value, UTF8Encoding encoding)</div><div class="ttdoc">Writes a BSON string to the stream.</div><div class="ttdef"><b>Definition:</b> <a href="_e_t_server_2_server_2_third_party_2_mongo_d_b_driver_2_mongo_d_b_8_bson_2_i_o_2_bson_stream_adapter_8cs_source.html#l00536">BsonStreamAdapter.cs:536</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter_html_a23a5cef5b1418c3338fca1c5e1dcb3f2"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#a23a5cef5b1418c3338fca1c5e1dcb3f2">MongoDB.Bson.IO.BsonStreamAdapter.ReadInt64</a></div><div class="ttdeci">override long ReadInt64()</div><div class="ttdoc">Reads a 64-bit BSON integer from the stream.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_i_o_2_bson_stream_adapter_8cs_source.html#l00338">BsonStreamAdapter.cs:338</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter_html_a2dcfbfcb827baff51c64cce84f6d6783"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#a2dcfbfcb827baff51c64cce84f6d6783">MongoDB.Bson.IO.BsonStreamAdapter.WriteCString</a></div><div class="ttdeci">override void WriteCString(string value)</div><div class="ttdoc">Writes a BSON CString to the stream.</div><div class="ttdef"><b>Definition:</b> <a href="_e_t_server_2_server_2_third_party_2_mongo_d_b_driver_2_mongo_d_b_8_bson_2_i_o_2_bson_stream_adapter_8cs_source.html#l00449">BsonStreamAdapter.cs:449</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter_html_a2e034d526e3374305e21ec711c856c7d"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#a2e034d526e3374305e21ec711c856c7d">MongoDB.Bson.IO.BsonStreamAdapter.ReadInt32</a></div><div class="ttdeci">override int ReadInt32()</div><div class="ttdoc">Reads a 32-bit BSON integer from the stream.</div><div class="ttdef"><b>Definition:</b> <a href="_e_t_server_2_server_2_third_party_2_mongo_d_b_driver_2_mongo_d_b_8_bson_2_i_o_2_bson_stream_adapter_8cs_source.html#l00330">BsonStreamAdapter.cs:330</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter_html_a3dd167674a1cfb2ff4d3176e057cb3f2"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#a3dd167674a1cfb2ff4d3176e057cb3f2">MongoDB.Bson.IO.BsonStreamAdapter.ReadSlice</a></div><div class="ttdeci">override IByteBuffer ReadSlice()</div><div class="ttdoc">Reads a raw length prefixed slice from the stream.</div><div class="ttdef"><b>Definition:</b> <a href="_e_t_server_2_server_2_third_party_2_mongo_d_b_driver_2_mongo_d_b_8_bson_2_i_o_2_bson_stream_adapter_8cs_source.html#l00354">BsonStreamAdapter.cs:354</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter_html_a3ec6c2c9ba52919c1ed5f4463c307ff5"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#a3ec6c2c9ba52919c1ed5f4463c307ff5">MongoDB.Bson.IO.BsonStreamAdapter.Flush</a></div><div class="ttdeci">override void Flush()</div><div class="ttdef"><b>Definition:</b> <a href="_e_t_server_2_server_2_third_party_2_mongo_d_b_driver_2_mongo_d_b_8_bson_2_i_o_2_bson_stream_adapter_8cs_source.html#l00236">BsonStreamAdapter.cs:236</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter_html_a3f5011c75fdd26bde52bee3e51240c3e"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#a3f5011c75fdd26bde52bee3e51240c3e">MongoDB.Bson.IO.BsonStreamAdapter.ReadCString</a></div><div class="ttdeci">override string ReadCString(UTF8Encoding encoding)</div><div class="ttdoc">Reads a BSON CString from the stream.</div><div class="ttdef"><b>Definition:</b> <a href="_e_t_server_2_server_2_third_party_2_mongo_d_b_driver_2_mongo_d_b_8_bson_2_i_o_2_bson_stream_adapter_8cs_source.html#l00271">BsonStreamAdapter.cs:271</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter_html_a4cb6af2e9a9068830d9da7247e89d25f"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#a4cb6af2e9a9068830d9da7247e89d25f">MongoDB.Bson.IO.BsonStreamAdapter.SkipCString</a></div><div class="ttdeci">override void SkipCString()</div><div class="ttdoc">Skips over a BSON CString leaving the stream positioned just after the terminating null byte.</div><div class="ttdef"><b>Definition:</b> <a href="_e_t_server_2_server_2_third_party_2_mongo_d_b_driver_2_mongo_d_b_8_bson_2_i_o_2_bson_stream_adapter_8cs_source.html#l00400">BsonStreamAdapter.cs:400</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter_html_a4e20a0a5eb4b05025941c3f7afdd36ee"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#a4e20a0a5eb4b05025941c3f7afdd36ee">MongoDB.Bson.IO.BsonStreamAdapter.BaseStream</a></div><div class="ttdeci">Stream BaseStream</div><div class="ttdoc">Gets the base stream.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_i_o_2_bson_stream_adapter_8cs_source.html#l00062">BsonStreamAdapter.cs:63</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter_html_a506d8164868a7b2a5e26a56f46a442f7"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#a506d8164868a7b2a5e26a56f46a442f7">MongoDB.Bson.IO.BsonStreamAdapter.ReadCStringBytes</a></div><div class="ttdeci">override ArraySegment&lt; byte &gt; ReadCStringBytes()</div><div class="ttdoc">Reads a BSON CString from the stream.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_i_o_2_bson_stream_adapter_8cs_source.html#l00284">BsonStreamAdapter.cs:284</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter_html_a6ca53d2242536a60ed851c05298cad16"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#a6ca53d2242536a60ed851c05298cad16">MongoDB.Bson.IO.BsonStreamAdapter.ReadString</a></div><div class="ttdeci">override string ReadString(UTF8Encoding encoding)</div><div class="ttdoc">Reads a BSON string from the stream.</div><div class="ttdef"><b>Definition:</b> <a href="_e_t_server_2_server_2_third_party_2_mongo_d_b_driver_2_mongo_d_b_8_bson_2_i_o_2_bson_stream_adapter_8cs_source.html#l00366">BsonStreamAdapter.cs:366</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter_html_a717e6dad2dcc0ca0ec0946610e365316"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#a717e6dad2dcc0ca0ec0946610e365316">MongoDB.Bson.IO.BsonStreamAdapter.BsonStreamAdapter</a></div><div class="ttdeci">BsonStreamAdapter(Stream stream, bool ownsStream=false)</div><div class="ttdoc">Initializes a new instance of the BsonStreamAdapter class.</div><div class="ttdef"><b>Definition:</b> <a href="_e_t_server_2_server_2_third_party_2_mongo_d_b_driver_2_mongo_d_b_8_bson_2_i_o_2_bson_stream_adapter_8cs_source.html#l00044">BsonStreamAdapter.cs:44</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter_html_a72ee431a2993da7b38631f260157b924"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#a72ee431a2993da7b38631f260157b924">MongoDB.Bson.IO.BsonStreamAdapter.CanRead</a></div><div class="ttdeci">override bool CanRead</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_i_o_2_bson_stream_adapter_8cs_source.html#l00072">BsonStreamAdapter.cs:73</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter_html_a793626ed65fe498be6de2a10b2213c61"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#a793626ed65fe498be6de2a10b2213c61">MongoDB.Bson.IO.BsonStreamAdapter.ReadByte</a></div><div class="ttdeci">override int ReadByte()</div><div class="ttdef"><b>Definition:</b> <a href="_e_t_server_2_server_2_third_party_2_mongo_d_b_driver_2_mongo_d_b_8_bson_2_i_o_2_bson_stream_adapter_8cs_source.html#l00264">BsonStreamAdapter.cs:264</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter_html_a7a49639d50fbdbeb275ba76c7447089e"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#a7a49639d50fbdbeb275ba76c7447089e">MongoDB.Bson.IO.BsonStreamAdapter.ReadAsync</a></div><div class="ttdeci">override Task&lt; int &gt; ReadAsync(byte[] buffer, int offset, int count, CancellationToken cancellationToken)</div><div class="ttdef"><b>Definition:</b> <a href="_e_t_server_2_server_2_third_party_2_mongo_d_b_driver_2_mongo_d_b_8_bson_2_i_o_2_bson_stream_adapter_8cs_source.html#l00257">BsonStreamAdapter.cs:257</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter_html_a935098470e611fed2ea829207236cafc"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#a935098470e611fed2ea829207236cafc">MongoDB.Bson.IO.BsonStreamAdapter.CopyToAsync</a></div><div class="ttdeci">override Task CopyToAsync(Stream destination, int bufferSize, CancellationToken cancellationToken)</div><div class="ttdef"><b>Definition:</b> <a href="_e_t_server_2_server_2_third_party_2_mongo_d_b_driver_2_mongo_d_b_8_bson_2_i_o_2_bson_stream_adapter_8cs_source.html#l00194">BsonStreamAdapter.cs:194</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter_html_a9699f41a9d5d35e100a32b7a9762676d"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#a9699f41a9d5d35e100a32b7a9762676d">MongoDB.Bson.IO.BsonStreamAdapter.ReadTimeout</a></div><div class="ttdeci">override int ReadTimeout</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_i_o_2_bson_stream_adapter_8cs_source.html#l00137">BsonStreamAdapter.cs:138</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter_html_aa555fe938528aa63e4b56132e038ac44"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#aa555fe938528aa63e4b56132e038ac44">MongoDB.Bson.IO.BsonStreamAdapter.Read</a></div><div class="ttdeci">override int Read(byte[] buffer, int offset, int count)</div><div class="ttdef"><b>Definition:</b> <a href="_e_t_server_2_server_2_third_party_2_mongo_d_b_driver_2_mongo_d_b_8_bson_2_i_o_2_bson_stream_adapter_8cs_source.html#l00250">BsonStreamAdapter.cs:250</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter_html_aa86e5bad64a2308c79d704b4bb6e274c"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#aa86e5bad64a2308c79d704b4bb6e274c">MongoDB.Bson.IO.BsonStreamAdapter.CanSeek</a></div><div class="ttdeci">override bool CanSeek</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_i_o_2_bson_stream_adapter_8cs_source.html#l00082">BsonStreamAdapter.cs:83</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter_html_aaa5912d0e2929924132f114bc9c9ca3b"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#aaa5912d0e2929924132f114bc9c9ca3b">MongoDB.Bson.IO.BsonStreamAdapter.WriteDouble</a></div><div class="ttdeci">override void WriteDouble(double value)</div><div class="ttdoc">Writes a BSON double to the stream.</div><div class="ttdef"><b>Definition:</b> <a href="_e_t_server_2_server_2_third_party_2_mongo_d_b_driver_2_mongo_d_b_8_bson_2_i_o_2_bson_stream_adapter_8cs_source.html#l00501">BsonStreamAdapter.cs:501</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter_html_ab3b2026dd2abc56558c856f7e092093c"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#ab3b2026dd2abc56558c856f7e092093c">MongoDB.Bson.IO.BsonStreamAdapter.WriteObjectId</a></div><div class="ttdeci">override void WriteObjectId(ObjectId value)</div><div class="ttdoc">Writes a BSON ObjectId to the stream.</div><div class="ttdef"><b>Definition:</b> <a href="_e_t_server_2_server_2_third_party_2_mongo_d_b_driver_2_mongo_d_b_8_bson_2_i_o_2_bson_stream_adapter_8cs_source.html#l00528">BsonStreamAdapter.cs:528</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter_html_ab46e0925f49d22f1f9d298a516741b36"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#ab46e0925f49d22f1f9d298a516741b36">MongoDB.Bson.IO.BsonStreamAdapter.WriteDecimal128</a></div><div class="ttdeci">override void WriteDecimal128(Decimal128 value)</div><div class="ttdoc">Writes a BSON Decimal128 to the stream.</div><div class="ttdef"><b>Definition:</b> <a href="_e_t_server_2_server_2_third_party_2_mongo_d_b_driver_2_mongo_d_b_8_bson_2_i_o_2_bson_stream_adapter_8cs_source.html#l00493">BsonStreamAdapter.cs:493</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter_html_ab9e3f51e26b2d4c2975e50fa54e1dab0"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#ab9e3f51e26b2d4c2975e50fa54e1dab0">MongoDB.Bson.IO.BsonStreamAdapter.CanWrite</a></div><div class="ttdeci">override bool CanWrite</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_i_o_2_bson_stream_adapter_8cs_source.html#l00102">BsonStreamAdapter.cs:103</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter_html_abfb73bc298a4ffac6b18bc70b91e5021"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#abfb73bc298a4ffac6b18bc70b91e5021">MongoDB.Bson.IO.BsonStreamAdapter.WriteByte</a></div><div class="ttdeci">override void WriteByte(byte value)</div><div class="ttdef"><b>Definition:</b> <a href="_e_t_server_2_server_2_third_party_2_mongo_d_b_driver_2_mongo_d_b_8_bson_2_i_o_2_bson_stream_adapter_8cs_source.html#l00442">BsonStreamAdapter.cs:442</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter_html_ac913bb0f93c24bd9659485d661893030"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#ac913bb0f93c24bd9659485d661893030">MongoDB.Bson.IO.BsonStreamAdapter.ReadDecimal128</a></div><div class="ttdeci">override Decimal128 ReadDecimal128()</div><div class="ttdoc">Reads a BSON Decimal128 from the stream.</div><div class="ttdef"><b>Definition:</b> <a href="_e_t_server_2_server_2_third_party_2_mongo_d_b_driver_2_mongo_d_b_8_bson_2_i_o_2_bson_stream_adapter_8cs_source.html#l00313">BsonStreamAdapter.cs:313</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter_html_acc3d103b7d7b2c7177556dbd8cb567b7"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#acc3d103b7d7b2c7177556dbd8cb567b7">MongoDB.Bson.IO.BsonStreamAdapter.WriteCStringBytes</a></div><div class="ttdeci">override void WriteCStringBytes(byte[] value)</div><div class="ttdoc">Writes the CString bytes to the stream.</div><div class="ttdef"><b>Definition:</b> <a href="_e_t_server_2_server_2_third_party_2_mongo_d_b_driver_2_mongo_d_b_8_bson_2_i_o_2_bson_stream_adapter_8cs_source.html#l00480">BsonStreamAdapter.cs:480</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter_html_acc926752d2701a72736f34488920e1d9"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#acc926752d2701a72736f34488920e1d9">MongoDB.Bson.IO.BsonStreamAdapter.Length</a></div><div class="ttdeci">override long Length</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_i_o_2_bson_stream_adapter_8cs_source.html#l00112">BsonStreamAdapter.cs:113</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter_html_adb19203a108feb79323b87f4a5d5ac89"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#adb19203a108feb79323b87f4a5d5ac89">MongoDB.Bson.IO.BsonStreamAdapter.WriteAsync</a></div><div class="ttdeci">override Task WriteAsync(byte[] buffer, int offset, int count, CancellationToken cancellationToken)</div><div class="ttdef"><b>Definition:</b> <a href="_e_t_server_2_server_2_third_party_2_mongo_d_b_driver_2_mongo_d_b_8_bson_2_i_o_2_bson_stream_adapter_8cs_source.html#l00435">BsonStreamAdapter.cs:435</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter_html_add430c71750eb6b2f33d79f65c384cd4"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#add430c71750eb6b2f33d79f65c384cd4">MongoDB.Bson.IO.BsonStreamAdapter.WriteTimeout</a></div><div class="ttdeci">override int WriteTimeout</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_i_o_2_bson_stream_adapter_8cs_source.html#l00152">BsonStreamAdapter.cs:153</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter_html_ae5c5f89a8c54a5fef5ada226ba121a3c"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#ae5c5f89a8c54a5fef5ada226ba121a3c">MongoDB.Bson.IO.BsonStreamAdapter.ReadObjectId</a></div><div class="ttdeci">override ObjectId ReadObjectId()</div><div class="ttdoc">Reads a BSON ObjectId from the stream.</div><div class="ttdef"><b>Definition:</b> <a href="_e_t_server_2_server_2_third_party_2_mongo_d_b_driver_2_mongo_d_b_8_bson_2_i_o_2_bson_stream_adapter_8cs_source.html#l00346">BsonStreamAdapter.cs:346</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter_html_ae7cb9438cfaa4799828fd55b77d2b26c"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#ae7cb9438cfaa4799828fd55b77d2b26c">MongoDB.Bson.IO.BsonStreamAdapter.WriteInt64</a></div><div class="ttdeci">override void WriteInt64(long value)</div><div class="ttdoc">Writes a 64-bit BSON integer to the stream.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_i_o_2_bson_stream_adapter_8cs_source.html#l00520">BsonStreamAdapter.cs:520</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter_html_aef57ce39593aadfe7b129c5b2f77f00a"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#aef57ce39593aadfe7b129c5b2f77f00a">MongoDB.Bson.IO.BsonStreamAdapter.Position</a></div><div class="ttdeci">override long Position</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_i_o_2_bson_stream_adapter_8cs_source.html#l00122">BsonStreamAdapter.cs:123</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter_html_af13b664e8bb88518c9822243f540ea11"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#af13b664e8bb88518c9822243f540ea11">MongoDB.Bson.IO.BsonStreamAdapter.ReadDouble</a></div><div class="ttdeci">override double ReadDouble()</div><div class="ttdoc">Reads a BSON double from the stream.</div><div class="ttdef"><b>Definition:</b> <a href="_e_t_server_2_server_2_third_party_2_mongo_d_b_driver_2_mongo_d_b_8_bson_2_i_o_2_bson_stream_adapter_8cs_source.html#l00322">BsonStreamAdapter.cs:322</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter_html_afeea585390ad38282e2a7c0edaa9495a"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#afeea585390ad38282e2a7c0edaa9495a">MongoDB.Bson.IO.BsonStreamAdapter.CanTimeout</a></div><div class="ttdeci">override bool CanTimeout</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_i_o_2_bson_stream_adapter_8cs_source.html#l00092">BsonStreamAdapter.cs:93</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter_html_afeea7b2da08151908b19352bb58de90d"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#afeea7b2da08151908b19352bb58de90d">MongoDB.Bson.IO.BsonStreamAdapter.SetLength</a></div><div class="ttdeci">override void SetLength(long value)</div><div class="ttdef"><b>Definition:</b> <a href="_e_t_server_2_server_2_third_party_2_mongo_d_b_driver_2_mongo_d_b_8_bson_2_i_o_2_bson_stream_adapter_8cs_source.html#l00393">BsonStreamAdapter.cs:393</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_i_o_1_1_byte_array_buffer_html"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_byte_array_buffer.html">MongoDB.Bson.IO.ByteArrayBuffer</a></div><div class="ttdoc">An IByteBuffer that is backed by a contiguous byte array.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_i_o_2_byte_array_buffer_8cs_source.html#l00023">ByteArrayBuffer.cs:24</a></div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_byte_buffer_html"><div class="ttname"><a href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_byte_buffer.html">MongoDB.Bson.IO.IByteBuffer</a></div><div class="ttdoc">Represents a byte buffer (backed by various means depending on the implementation).</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_i_o_2_i_byte_buffer_8cs_source.html#l00024">IByteBuffer.cs:25</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_bson_1_1_i_o_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_bson_1_1_i_o.html">MongoDB.Bson.IO</a></div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_i_o_2_array_element_name_accelerator_8cs_source.html#l00018">ArrayElementNameAccelerator.cs:19</a></div></div>
+<div class="ttc" id="anamespace_system_html"><div class="ttname"><a href="namespace_system.html">System</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_method_builder_attribute_8cs_source.html#l00001">AsyncMethodBuilderAttribute.cs:2</a></div></div>
+<div class="ttc" id="astruct_mongo_d_b_1_1_bson_1_1_decimal128_html"><div class="ttname"><a href="struct_mongo_d_b_1_1_bson_1_1_decimal128.html">MongoDB.Bson.Decimal128</a></div><div class="ttdoc">Represents a Decimal128 value.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_decimal128_8cs_source.html#l00030">Decimal128.cs:31</a></div></div>
+<div class="ttc" id="astruct_mongo_d_b_1_1_bson_1_1_decimal128_html_a0361fc6af8b0be9dfe62a2dd6b65aabc"><div class="ttname"><a href="struct_mongo_d_b_1_1_bson_1_1_decimal128.html#a0361fc6af8b0be9dfe62a2dd6b65aabc">MongoDB.Bson.Decimal128.GetIEEEHighBits</a></div><div class="ttdeci">ulong GetIEEEHighBits()</div><div class="ttdoc">Gets the high order 64 bits of the binary representation of this instance.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_decimal128_8cs_source.html#l01549">Decimal128.cs:1549</a></div></div>
+<div class="ttc" id="astruct_mongo_d_b_1_1_bson_1_1_decimal128_html_a0600c7d56270bddbc3303f75f9381e37"><div class="ttname"><a href="struct_mongo_d_b_1_1_bson_1_1_decimal128.html#a0600c7d56270bddbc3303f75f9381e37">MongoDB.Bson.Decimal128.FromIEEEBits</a></div><div class="ttdeci">static Decimal128 FromIEEEBits(ulong highBits, ulong lowBits)</div><div class="ttdoc">Creates a new Decimal128 value from the IEEE encoding bits.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_decimal128_8cs_source.html#l00510">Decimal128.cs:510</a></div></div>
+<div class="ttc" id="astruct_mongo_d_b_1_1_bson_1_1_decimal128_html_a3659bdfef2ddab3b14a13a5f1b58a342"><div class="ttname"><a href="struct_mongo_d_b_1_1_bson_1_1_decimal128.html#a3659bdfef2ddab3b14a13a5f1b58a342">MongoDB.Bson.Decimal128.GetIEEELowBits</a></div><div class="ttdeci">ulong GetIEEELowBits()</div><div class="ttdoc">Gets the low order 64 bits of the binary representation of this instance.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_decimal128_8cs_source.html#l01559">Decimal128.cs:1559</a></div></div>
+<div class="ttc" id="astruct_mongo_d_b_1_1_bson_1_1_object_id_html"><div class="ttname"><a href="struct_mongo_d_b_1_1_bson_1_1_object_id.html">MongoDB.Bson.ObjectId</a></div><div class="ttdoc">Represents an ObjectId (see also BsonObjectId).</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_object_id_8cs_source.html#l00030">ObjectId.cs:31</a></div></div>
+<div class="ttc" id="astruct_mongo_d_b_1_1_bson_1_1_object_id_html_a21adefc4f3e1714e367af7e1a18c6e59"><div class="ttname"><a href="struct_mongo_d_b_1_1_bson_1_1_object_id.html#a21adefc4f3e1714e367af7e1a18c6e59">MongoDB.Bson.ObjectId.ToByteArray</a></div><div class="ttdeci">byte[] ToByteArray()</div><div class="ttdoc">Converts the ObjectId to a byte array.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_object_id_8cs_source.html#l00501">ObjectId.cs:501</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_1e261a42b4a2e33df58a15c412684b10.html">ETServer</a></li><li class="navelem"><a class="el" href="dir_473c270c995194c5ad99131d9c901f09.html">Server</a></li><li class="navelem"><a class="el" href="dir_ce426efcf63311ff42488fb2654bd4b4.html">ThirdParty</a></li><li class="navelem"><a class="el" href="dir_a37b2b5f9c8890cc9f6f8392fb0cdff3.html">MongoDBDriver</a></li><li class="navelem"><a class="el" href="dir_198f7ac7ec0ecfbede324c1e9484bef2.html">MongoDB.Bson</a></li><li class="navelem"><a class="el" href="dir_3cc01dcb0be15a140418b879df7a61ac.html">IO</a></li><li class="navelem"><a class="el" href="_e_t_server_2_server_2_third_party_2_mongo_d_b_driver_2_mongo_d_b_8_bson_2_i_o_2_bson_stream_adapter_8cs.html">BsonStreamAdapter.cs</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:24:51 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,267 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: Assets/Scripts/Libraries/MongoDB/MongoDB.Bson/Serialization/Serializers/StackSerializer.cs 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_serialization_2_serializers_2_stack_serializer_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">StackSerializer.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_serialization_2_serializers_2_stack_serializer_8cs.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/* Copyright 2010-present MongoDB Inc.</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">* Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">* you may not use this file except in compliance with the License.</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">* You may obtain a copy of the License at</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">* http://www.apache.org/licenses/LICENSE-2.0</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">* Unless required by applicable law or agreed to in writing, software</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">* distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">* See the License for the specific language governing permissions and</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">* limitations under the License.</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Collections;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Collections.Generic;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Linq;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_mongo_d_b.html">MongoDB</a>.<a class="code" href="namespace_mongo_d_b_1_1_bson.html">Bson</a>.<a class="code" href="namespace_mongo_d_b_1_1_bson_1_1_serialization.html">Serialization</a>.<a class="code" href="namespace_mongo_d_b_1_1_bson_1_1_serialization_1_1_conventions.html">Conventions</a>;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_mongo_d_b.html">MongoDB</a>.<a class="code" href="namespace_mongo_d_b_1_1_bson.html">Bson</a>.<a class="code" href="namespace_mongo_d_b_1_1_bson_1_1_serialization.html">Serialization</a>.<a class="code" href="namespace_mongo_d_b_1_1_bson_1_1_serialization_1_1_options.html">Options</a>;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers.html">MongoDB.Bson.Serialization.Serializers</a></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;{</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keyword">public</span> <span class="keyword">class </span>StackSerializer :</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        EnumerableSerializerBase&lt;Stack&gt;,</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        IChildSerializerConfigurable,</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        IBsonArraySerializer</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    {</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <span class="comment">// constructors</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_stack_serializer.html#aaf1b3bf745524cdb8986ce810a6d2117">   37</a></span>&#160;<span class="comment"></span>        <span class="keyword">public</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_stack_serializer.html#aaf1b3bf745524cdb8986ce810a6d2117">StackSerializer</a>()</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        {</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        }</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_stack_serializer.html#a1b76f55edfbf61730a37ea1ad29ec03d">   45</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_stack_serializer.html#a1b76f55edfbf61730a37ea1ad29ec03d">StackSerializer</a>(<a class="code" href="interface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_serializer.html">IBsonSerializer</a> itemSerializer)</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;            : base(itemSerializer)</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        {</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        }</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_stack_serializer.html#a7d689a7dff95b0855ba7431eaf36be24">   54</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_stack_serializer.html#a7d689a7dff95b0855ba7431eaf36be24">StackSerializer</a>(<a class="code" href="interface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_serializer_registry.html">IBsonSerializerRegistry</a> serializerRegistry)</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            : base(serializerRegistry)</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        {</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        }</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <span class="comment">// public methods</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_stack_serializer.html#abdcf898186983a12a66ab7970a2a89ce">   65</a></span>&#160;<span class="comment"></span>        <span class="keyword">public</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_stack_serializer.html">StackSerializer</a> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_stack_serializer.html#abdcf898186983a12a66ab7970a2a89ce">WithItemSerializer</a>(<a class="code" href="interface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_serializer.html">IBsonSerializer</a> itemSerializer)</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        {</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_stack_serializer.html#aaf1b3bf745524cdb8986ce810a6d2117">StackSerializer</a>(itemSerializer);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        }</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;       <span class="comment">// protected methods</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_stack_serializer.html#a85be8faa940154d481eae48b1eb21f8a">   76</a></span>&#160;<span class="comment"></span>        <span class="keyword">protected</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_stack_serializer.html#a85be8faa940154d481eae48b1eb21f8a">AddItem</a>(<span class="keywordtype">object</span> accumulator, <span class="keywordtype">object</span> item)</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        {</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            ((Stack)accumulator).Push(item);</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        }</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
+<div class="line"><a name="l00085"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_stack_serializer.html#a8e2e024368c7f338aa063ac1b03a6add">   85</a></span>&#160;        <span class="keyword">protected</span> <span class="keyword">override</span> <span class="keywordtype">object</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_stack_serializer.html#a8e2e024368c7f338aa063ac1b03a6add">CreateAccumulator</a>()</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        {</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> Stack();</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        }</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
+<div class="line"><a name="l00095"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_stack_serializer.html#aa914fa157ead04131fcd20b3dfdf6d00">   95</a></span>&#160;        <span class="keyword">protected</span> <span class="keyword">override</span> IEnumerable <a class="code" href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_stack_serializer.html#aa914fa157ead04131fcd20b3dfdf6d00">EnumerateItemsInSerializationOrder</a>(Stack value)</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        {</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;            <span class="keywordflow">return</span> value.Cast&lt;<span class="keywordtype">object</span>&gt;().Reverse();</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        }</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160; </div>
+<div class="line"><a name="l00105"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_stack_serializer.html#ac783865872f20ccc2f750083cd992257">  105</a></span>&#160;        <span class="keyword">protected</span> <span class="keyword">override</span> Stack <a class="code" href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_stack_serializer.html#ac783865872f20ccc2f750083cd992257">FinalizeResult</a>(<span class="keywordtype">object</span> accumulator)</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        {</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;            <span class="keywordflow">return</span> (Stack)accumulator;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        }</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; </div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        <span class="comment">// explicit interface implementations</span></div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        <a class="code" href="interface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_serializer.html">IBsonSerializer</a> <a class="code" href="interface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_child_serializer_configurable.html">IChildSerializerConfigurable</a>.<a class="code" href="interface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_child_serializer_configurable.html#a16fa5ae5a67eb552d4c5a443385a376c">ChildSerializer</a></div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        {</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;            <span class="keyword">get</span> { <span class="keywordflow">return</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_enumerable_serializer_base.html#a7b989de1c65454f42e91b8d67694138a">ItemSerializer</a>; }</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        }</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160; </div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        IBsonSerializer IChildSerializerConfigurable.WithChildSerializer(IBsonSerializer childSerializer)</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        {</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_stack_serializer.html#abdcf898186983a12a66ab7970a2a89ce">WithItemSerializer</a>(childSerializer);</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        }</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    }</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160; </div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    <span class="keyword">public</span> <span class="keyword">class </span>StackSerializer&lt;TItem&gt; :</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;        EnumerableSerializerBase&lt;Stack&lt;TItem&gt;, TItem&gt;,</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;        IChildSerializerConfigurable,</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        IBsonArraySerializer</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    {</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        <span class="comment">// constructors</span></div>
+<div class="line"><a name="l00135"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_stack_serializer.html#aaf1b3bf745524cdb8986ce810a6d2117">  135</a></span>&#160;<span class="comment"></span>        <span class="keyword">public</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_stack_serializer.html#aaf1b3bf745524cdb8986ce810a6d2117">StackSerializer</a>()</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        {</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;        }</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160; </div>
+<div class="line"><a name="l00143"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_stack_serializer.html#a892d13462e4dd9a26c8a2ebd12683d6f">  143</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_stack_serializer.html#a892d13462e4dd9a26c8a2ebd12683d6f">StackSerializer</a>(<a class="code" href="interface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_serializer.html">IBsonSerializer&lt;TItem&gt;</a> itemSerializer)</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;            : base(itemSerializer)</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;        {</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;        }</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160; </div>
+<div class="line"><a name="l00152"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_stack_serializer.html#a7d689a7dff95b0855ba7431eaf36be24">  152</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_stack_serializer.html#a7d689a7dff95b0855ba7431eaf36be24">StackSerializer</a>(<a class="code" href="interface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_serializer_registry.html">IBsonSerializerRegistry</a> serializerRegistry)</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;            : base(serializerRegistry)</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;        {</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;        }</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160; </div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;        <span class="comment">// public methods</span></div>
+<div class="line"><a name="l00163"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_stack_serializer.html#a95241d2fe1cdd7a95b7ca4b4f42138b2">  163</a></span>&#160;<span class="comment"></span>        <span class="keyword">public</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_stack_serializer.html">StackSerializer&lt;TItem&gt;</a> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_stack_serializer.html#a95241d2fe1cdd7a95b7ca4b4f42138b2">WithItemSerializer</a>(<a class="code" href="interface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_serializer.html">IBsonSerializer&lt;TItem&gt;</a> itemSerializer)</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;        {</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_stack_serializer.html">StackSerializer&lt;TItem&gt;</a>(itemSerializer);</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;        }</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160; </div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;        <span class="comment">// protected methods</span></div>
+<div class="line"><a name="l00174"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_stack_serializer.html#a4363baecf2062c0a5d3dcd19ff5677dc">  174</a></span>&#160;<span class="comment"></span>        <span class="keyword">protected</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_stack_serializer.html#a4363baecf2062c0a5d3dcd19ff5677dc">AddItem</a>(<span class="keywordtype">object</span> accumulator, TItem item)</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;        {</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;            ((Stack&lt;TItem&gt;)accumulator).Push(item);</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;        }</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160; </div>
+<div class="line"><a name="l00183"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_stack_serializer.html#a8e2e024368c7f338aa063ac1b03a6add">  183</a></span>&#160;        <span class="keyword">protected</span> <span class="keyword">override</span> <span class="keywordtype">object</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_stack_serializer.html#a8e2e024368c7f338aa063ac1b03a6add">CreateAccumulator</a>()</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;        {</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> Stack&lt;TItem&gt;();</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;        }</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160; </div>
+<div class="line"><a name="l00193"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_stack_serializer.html#af859bdf744eb7f0e0c8e7d81260fe200">  193</a></span>&#160;        <span class="keyword">protected</span> <span class="keyword">override</span> IEnumerable&lt;TItem&gt; <a class="code" href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_stack_serializer.html#af859bdf744eb7f0e0c8e7d81260fe200">EnumerateItemsInSerializationOrder</a>(Stack&lt;TItem&gt; value)</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;        {</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;            <span class="keywordflow">return</span> value.Reverse();</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;        }</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160; </div>
+<div class="line"><a name="l00203"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_stack_serializer.html#ad9cb2b2f3776f4f630f55798c0540718">  203</a></span>&#160;        <span class="keyword">protected</span> <span class="keyword">override</span> Stack&lt;TItem&gt; <a class="code" href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_stack_serializer.html#ad9cb2b2f3776f4f630f55798c0540718">FinalizeResult</a>(<span class="keywordtype">object</span> accumulator)</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;        {</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;            <span class="keywordflow">return</span> (Stack&lt;TItem&gt;)accumulator;</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;        }</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160; </div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;        <span class="comment">// explicit interface implementations</span></div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;        <a class="code" href="interface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_serializer.html">IBsonSerializer</a> <a class="code" href="interface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_child_serializer_configurable.html">IChildSerializerConfigurable</a>.<a class="code" href="interface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_child_serializer_configurable.html#a16fa5ae5a67eb552d4c5a443385a376c">ChildSerializer</a></div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;        {</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;            <span class="keyword">get</span> { <span class="keywordflow">return</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_enumerable_serializer_base.html#a7b989de1c65454f42e91b8d67694138a">ItemSerializer</a>; }</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;        }</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160; </div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;        IBsonSerializer IChildSerializerConfigurable.WithChildSerializer(IBsonSerializer childSerializer)</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;        {</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_stack_serializer.html#abdcf898186983a12a66ab7970a2a89ce">WithItemSerializer</a>((IBsonSerializer&lt;TItem&gt;)childSerializer);</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;        }</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;    }</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;}</div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_enumerable_serializer_base_html_a7b989de1c65454f42e91b8d67694138a"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_enumerable_serializer_base.html#a7b989de1c65454f42e91b8d67694138a">MongoDB.Bson.Serialization.Serializers.EnumerableSerializerBase&lt; Stack &gt;::ItemSerializer</a></div><div class="ttdeci">IBsonSerializer ItemSerializer</div><div class="ttdoc">Gets the item serializer.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_serialization_2_serializers_2_enumerable_serializer_base_8cs_source.html#l00076">EnumerableSerializerBase.cs:77</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_stack_serializer_html"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_stack_serializer.html">MongoDB.Bson.Serialization.Serializers.StackSerializer</a></div><div class="ttdoc">Represents a serializer for Stacks.</div><div class="ttdef"><b>Definition:</b> <a href="_e_t_server_2_server_2_third_party_2_mongo_d_b_driver_2_mongo_d_b_8_bson_2_serialization_2_serializers_2_stack_serializer_8cs_source.html#l00126">StackSerializer.cs:130</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_stack_serializer_html_a1b76f55edfbf61730a37ea1ad29ec03d"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_stack_serializer.html#a1b76f55edfbf61730a37ea1ad29ec03d">MongoDB.Bson.Serialization.Serializers.StackSerializer.StackSerializer</a></div><div class="ttdeci">StackSerializer(IBsonSerializer itemSerializer)</div><div class="ttdoc">Initializes a new instance of the StackSerializer class.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_serialization_2_serializers_2_stack_serializer_8cs_source.html#l00045">StackSerializer.cs:45</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_stack_serializer_html_a4363baecf2062c0a5d3dcd19ff5677dc"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_stack_serializer.html#a4363baecf2062c0a5d3dcd19ff5677dc">MongoDB.Bson.Serialization.Serializers.StackSerializer.AddItem</a></div><div class="ttdeci">override void AddItem(object accumulator, TItem item)</div><div class="ttdoc">Adds the item.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_serialization_2_serializers_2_stack_serializer_8cs_source.html#l00174">StackSerializer.cs:174</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_stack_serializer_html_a7d689a7dff95b0855ba7431eaf36be24"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_stack_serializer.html#a7d689a7dff95b0855ba7431eaf36be24">MongoDB.Bson.Serialization.Serializers.StackSerializer.StackSerializer</a></div><div class="ttdeci">StackSerializer(IBsonSerializerRegistry serializerRegistry)</div><div class="ttdoc">Initializes a new instance of the StackSerializer class.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_serialization_2_serializers_2_stack_serializer_8cs_source.html#l00054">StackSerializer.cs:54</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_stack_serializer_html_a85be8faa940154d481eae48b1eb21f8a"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_stack_serializer.html#a85be8faa940154d481eae48b1eb21f8a">MongoDB.Bson.Serialization.Serializers.StackSerializer.AddItem</a></div><div class="ttdeci">override void AddItem(object accumulator, object item)</div><div class="ttdoc">Adds the item.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_serialization_2_serializers_2_stack_serializer_8cs_source.html#l00076">StackSerializer.cs:76</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_stack_serializer_html_a892d13462e4dd9a26c8a2ebd12683d6f"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_stack_serializer.html#a892d13462e4dd9a26c8a2ebd12683d6f">MongoDB.Bson.Serialization.Serializers.StackSerializer.StackSerializer</a></div><div class="ttdeci">StackSerializer(IBsonSerializer&lt; TItem &gt; itemSerializer)</div><div class="ttdoc">Initializes a new instance of the StackSerializer&lt;TItem&gt; class.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_serialization_2_serializers_2_stack_serializer_8cs_source.html#l00143">StackSerializer.cs:143</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_stack_serializer_html_a8e2e024368c7f338aa063ac1b03a6add"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_stack_serializer.html#a8e2e024368c7f338aa063ac1b03a6add">MongoDB.Bson.Serialization.Serializers.StackSerializer.CreateAccumulator</a></div><div class="ttdeci">override object CreateAccumulator()</div><div class="ttdoc">Creates the accumulator.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_serialization_2_serializers_2_stack_serializer_8cs_source.html#l00085">StackSerializer.cs:85</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_stack_serializer_html_a95241d2fe1cdd7a95b7ca4b4f42138b2"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_stack_serializer.html#a95241d2fe1cdd7a95b7ca4b4f42138b2">MongoDB.Bson.Serialization.Serializers.StackSerializer.WithItemSerializer</a></div><div class="ttdeci">StackSerializer&lt; TItem &gt; WithItemSerializer(IBsonSerializer&lt; TItem &gt; itemSerializer)</div><div class="ttdoc">Returns a serializer that has been reconfigured with the specified item serializer.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_serialization_2_serializers_2_stack_serializer_8cs_source.html#l00163">StackSerializer.cs:163</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_stack_serializer_html_aa914fa157ead04131fcd20b3dfdf6d00"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_stack_serializer.html#aa914fa157ead04131fcd20b3dfdf6d00">MongoDB.Bson.Serialization.Serializers.StackSerializer.EnumerateItemsInSerializationOrder</a></div><div class="ttdeci">override IEnumerable EnumerateItemsInSerializationOrder(Stack value)</div><div class="ttdoc">Enumerates the items in serialization order.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_serialization_2_serializers_2_stack_serializer_8cs_source.html#l00095">StackSerializer.cs:95</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_stack_serializer_html_aaf1b3bf745524cdb8986ce810a6d2117"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_stack_serializer.html#aaf1b3bf745524cdb8986ce810a6d2117">MongoDB.Bson.Serialization.Serializers.StackSerializer.StackSerializer</a></div><div class="ttdeci">StackSerializer()</div><div class="ttdoc">Initializes a new instance of the StackSerializer class.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_serialization_2_serializers_2_stack_serializer_8cs_source.html#l00037">StackSerializer.cs:37</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_stack_serializer_html_abdcf898186983a12a66ab7970a2a89ce"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_stack_serializer.html#abdcf898186983a12a66ab7970a2a89ce">MongoDB.Bson.Serialization.Serializers.StackSerializer.WithItemSerializer</a></div><div class="ttdeci">StackSerializer WithItemSerializer(IBsonSerializer itemSerializer)</div><div class="ttdoc">Returns a serializer that has been reconfigured with the specified item serializer.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_serialization_2_serializers_2_stack_serializer_8cs_source.html#l00065">StackSerializer.cs:65</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_stack_serializer_html_ac783865872f20ccc2f750083cd992257"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_stack_serializer.html#ac783865872f20ccc2f750083cd992257">MongoDB.Bson.Serialization.Serializers.StackSerializer.FinalizeResult</a></div><div class="ttdeci">override Stack FinalizeResult(object accumulator)</div><div class="ttdoc">Finalizes the result.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_serialization_2_serializers_2_stack_serializer_8cs_source.html#l00105">StackSerializer.cs:105</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_stack_serializer_html_ad9cb2b2f3776f4f630f55798c0540718"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_stack_serializer.html#ad9cb2b2f3776f4f630f55798c0540718">MongoDB.Bson.Serialization.Serializers.StackSerializer.FinalizeResult</a></div><div class="ttdeci">override Stack&lt; TItem &gt; FinalizeResult(object accumulator)</div><div class="ttdoc">Finalizes the result.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_serialization_2_serializers_2_stack_serializer_8cs_source.html#l00203">StackSerializer.cs:203</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_stack_serializer_html_af859bdf744eb7f0e0c8e7d81260fe200"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_stack_serializer.html#af859bdf744eb7f0e0c8e7d81260fe200">MongoDB.Bson.Serialization.Serializers.StackSerializer.EnumerateItemsInSerializationOrder</a></div><div class="ttdeci">override IEnumerable&lt; TItem &gt; EnumerateItemsInSerializationOrder(Stack&lt; TItem &gt; value)</div><div class="ttdoc">Enumerates the items in serialization order.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_serialization_2_serializers_2_stack_serializer_8cs_source.html#l00193">StackSerializer.cs:193</a></div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_serializer_html"><div class="ttname"><a href="interface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_serializer.html">MongoDB.Bson.Serialization.IBsonSerializer</a></div><div class="ttdoc">An interface implemented by a serializer.</div><div class="ttdef"><b>Definition:</b> <a href="_e_t_server_2_server_2_third_party_2_mongo_d_b_driver_2_mongo_d_b_8_bson_2_serialization_2_i_bson_serializer_8cs_source.html#l00056">IBsonSerializer.cs:57</a></div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_serializer_registry_html"><div class="ttname"><a href="interface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_serializer_registry.html">MongoDB.Bson.Serialization.IBsonSerializerRegistry</a></div><div class="ttdoc">A serializer registry.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_serialization_2_i_bson_serializer_registry_8cs_source.html#l00023">IBsonSerializerRegistry.cs:24</a></div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_child_serializer_configurable_html"><div class="ttname"><a href="interface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_child_serializer_configurable.html">MongoDB.Bson.Serialization.IChildSerializerConfigurable</a></div><div class="ttdoc">Represents a serializer that has a child serializer that configuration attributes can be forwarded to...</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_serialization_2_i_child_serializer_configurable_8cs_source.html#l00025">IChildSerializerConfigurable.cs:26</a></div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_child_serializer_configurable_html_a16fa5ae5a67eb552d4c5a443385a376c"><div class="ttname"><a href="interface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_child_serializer_configurable.html#a16fa5ae5a67eb552d4c5a443385a376c">MongoDB.Bson.Serialization.IChildSerializerConfigurable.ChildSerializer</a></div><div class="ttdeci">IBsonSerializer ChildSerializer</div><div class="ttdoc">Gets the child serializer.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_serialization_2_i_child_serializer_configurable_8cs_source.html#l00033">IChildSerializerConfigurable.cs:33</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_bson_1_1_serialization_1_1_conventions_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_bson_1_1_serialization_1_1_conventions.html">MongoDB.Bson.Serialization.Conventions</a></div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_serialization_2_conventions_2_attribute_convention_pack_8cs_source.html#l00022">AttributeConventionPack.cs:23</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_bson_1_1_serialization_1_1_options_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_bson_1_1_serialization_1_1_options.html">MongoDB.Bson.Serialization.Options</a></div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_serialization_2_options_2_dictionary_representation_8cs_source.html#l00020">DictionaryRepresentation.cs:21</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers.html">MongoDB.Bson.Serialization.Serializers</a></div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_serialization_2_serializers_2_abstract_class_serializer_8cs_source.html#l00022">AbstractClassSerializer.cs:23</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_bson_1_1_serialization_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_bson_1_1_serialization.html">MongoDB.Bson.Serialization</a></div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_serialization_2_attributed_serialization_provider_8cs_source.html#l00021">AttributedSerializationProvider.cs:22</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_bson_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_bson.html">MongoDB.Bson</a></div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_bson_constants_8cs_source.html#l00018">BsonConstants.cs:19</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_html"><div class="ttname"><a href="namespace_mongo_d_b.html">MongoDB</a></div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_bson_constants_8cs_source.html#l00018">BsonConstants.cs:19</a></div></div>
+<div class="ttc" id="anamespace_system_html"><div class="ttname"><a href="namespace_system.html">System</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_method_builder_attribute_8cs_source.html#l00001">AsyncMethodBuilderAttribute.cs:2</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_84bbf7b3c7f28a5a18725745e1505219.html">Assets</a></li><li class="navelem"><a class="el" href="dir_f13b41af88cf68434578284aaf699e39.html">Scripts</a></li><li class="navelem"><a class="el" href="dir_46d134a3bf82cf4dc49ca8f728aea58c.html">Libraries</a></li><li class="navelem"><a class="el" href="dir_73566d0e413307016ca2f8948e23ce26.html">MongoDB</a></li><li class="navelem"><a class="el" href="dir_bf52240e991d83ea827d5d13f9c7b60c.html">MongoDB.Bson</a></li><li class="navelem"><a class="el" href="dir_1185c2f6fa61c6af7acfa07ef22522b3.html">Serialization</a></li><li class="navelem"><a class="el" href="dir_71246bcac4d054e02873b064af4cd7ce.html">Serializers</a></li><li class="navelem"><a class="el" href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_serialization_2_serializers_2_stack_serializer_8cs.html">StackSerializer.cs</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:24:55 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

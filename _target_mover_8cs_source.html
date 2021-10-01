@@ -1,0 +1,182 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: Assets/Scripts/Libraries/ET/Module/Pathfinding/AstarPathfindingProject/ExampleScenes/ExampleScripts/TargetMover.cs 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_target_mover_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">TargetMover.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_target_mover_8cs.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_unity_engine.html">UnityEngine</a>;</div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Linq;</div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_pathfinding.html">Pathfinding</a> {</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        [HelpURL(<span class="stringliteral">&quot;http://arongranberg.com/astar/docs/class_pathfinding_1_1_target_mover.php&quot;</span>)]</div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="class_pathfinding_1_1_target_mover.html">   13</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="class_pathfinding_1_1_target_mover.html">TargetMover</a> : MonoBehaviour {</div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="class_pathfinding_1_1_target_mover.html#acfb10436db512412238c13318c43d82d">   15</a></span>&#160;                <span class="keyword">public</span> LayerMask <a class="code" href="class_pathfinding_1_1_target_mover.html#acfb10436db512412238c13318c43d82d">mask</a>;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="class_pathfinding_1_1_target_mover.html#a1738241485a03ebb1831311853cc2081">   17</a></span>&#160;                <span class="keyword">public</span> Transform <a class="code" href="class_pathfinding_1_1_target_mover.html#a1738241485a03ebb1831311853cc2081">target</a>;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;                <a class="code" href="interface_pathfinding_1_1_i_astar_a_i.html">IAstarAI</a>[] ais;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="class_pathfinding_1_1_target_mover.html#ad2b23b989c1e6634648dd1da2135f6a4">   21</a></span>&#160;                <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code" href="class_pathfinding_1_1_target_mover.html#ad2b23b989c1e6634648dd1da2135f6a4">onlyOnDoubleClick</a>;</div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="class_pathfinding_1_1_target_mover.html#ad8b03455c2e2ba147c8b4196fe230b97">   22</a></span>&#160;                <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code" href="class_pathfinding_1_1_target_mover.html#ad8b03455c2e2ba147c8b4196fe230b97">use2D</a>;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;                Camera cam;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="class_pathfinding_1_1_target_mover.html#aa4cb7d03abebdb3ec1a65384c9031eb0">   26</a></span>&#160;                <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_pathfinding_1_1_target_mover.html#aa4cb7d03abebdb3ec1a65384c9031eb0">Start</a> () {</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;                        <span class="comment">//Cache the Main Camera</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;                        cam = Camera.main;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;                        <span class="comment">// Slightly inefficient way of finding all AIs, but this is just an example script, so it doesn&#39;t matter much.</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;                        <span class="comment">// FindObjectsOfType does not support interfaces unfortunately.</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;                        ais = FindObjectsOfType&lt;MonoBehaviour&gt;().OfType&lt;<a class="code" href="interface_pathfinding_1_1_i_astar_a_i.html">IAstarAI</a>&gt;().ToArray();</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;                        useGUILayout = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;                }</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="class_pathfinding_1_1_target_mover.html#ae288f13662a2419d1b49f760b2e9870e">   35</a></span>&#160;                <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_pathfinding_1_1_target_mover.html#ae288f13662a2419d1b49f760b2e9870e">OnGUI</a> () {</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;                        <span class="keywordflow">if</span> (<a class="code" href="class_pathfinding_1_1_target_mover.html#ad2b23b989c1e6634648dd1da2135f6a4">onlyOnDoubleClick</a> &amp;&amp; cam != <span class="keyword">null</span> &amp;&amp; Event.current.type == EventType.MouseDown &amp;&amp; Event.current.clickCount == 2) {</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;                                <a class="code" href="class_pathfinding_1_1_target_mover.html#a4dd505abc926e483876ed09e9ab52c27">UpdateTargetPosition</a>();</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;                        }</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                }</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                <span class="keywordtype">void</span> Update () {</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;                        <span class="keywordflow">if</span> (!<a class="code" href="class_pathfinding_1_1_target_mover.html#ad2b23b989c1e6634648dd1da2135f6a4">onlyOnDoubleClick</a> &amp;&amp; cam != <span class="keyword">null</span>) {</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                                <a class="code" href="class_pathfinding_1_1_target_mover.html#a4dd505abc926e483876ed09e9ab52c27">UpdateTargetPosition</a>();</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                        }</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                }</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="class_pathfinding_1_1_target_mover.html#a4dd505abc926e483876ed09e9ab52c27">   48</a></span>&#160;                <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_pathfinding_1_1_target_mover.html#a4dd505abc926e483876ed09e9ab52c27">UpdateTargetPosition</a> () {</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                        <a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a> newPosition = <a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a>.<a class="code" href="struct_unity_engine_1_1_vector3.html#a5ee4172032dfc66b99c27713f0122eaa">zero</a>;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                        <span class="keywordtype">bool</span> positionFound = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                        <span class="keywordflow">if</span> (<a class="code" href="class_pathfinding_1_1_target_mover.html#ad8b03455c2e2ba147c8b4196fe230b97">use2D</a>) {</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                                newPosition = cam.ScreenToWorldPoint(Input.mousePosition);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                                newPosition.<a class="code" href="struct_unity_engine_1_1_vector3.html#a8ea2682142b822ddcab52c868796fd3e">z</a> = 0;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                                positionFound = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                                <span class="comment">// Fire a ray through the scene at the mouse position and place the target where it hits</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;                                RaycastHit hit;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                                <span class="keywordflow">if</span> (Physics.Raycast(cam.ScreenPointToRay(Input.mousePosition), out hit, <a class="code" href="_astar_path_editor_8cs.html#a056b29af8a3de2eeb5a1cab758c4ba93">Mathf</a>.Infinity, <a class="code" href="class_pathfinding_1_1_target_mover.html#acfb10436db512412238c13318c43d82d">mask</a>)) {</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                                        newPosition = hit.point;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                                        positionFound = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                                }</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                        }</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                        <span class="keywordflow">if</span> (positionFound &amp;&amp; newPosition != <a class="code" href="class_pathfinding_1_1_target_mover.html#a1738241485a03ebb1831311853cc2081">target</a>.position) {</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                                <a class="code" href="class_pathfinding_1_1_target_mover.html#a1738241485a03ebb1831311853cc2081">target</a>.position = newPosition;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                                <span class="keywordflow">if</span> (<a class="code" href="class_pathfinding_1_1_target_mover.html#ad2b23b989c1e6634648dd1da2135f6a4">onlyOnDoubleClick</a>) {</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                                        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; ais.Length; i++) {</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                                                <span class="keywordflow">if</span> (ais[i] != <span class="keyword">null</span>) ais[i].<a class="code" href="interface_pathfinding_1_1_i_astar_a_i.html#a87be63a6f35302a9831ec07b6b5fbb84">SearchPath</a>();</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                                        }</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                                }</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                        }</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                }</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        }</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;}</div>
+<div class="ttc" id="a_astar_path_editor_8cs_html_a056b29af8a3de2eeb5a1cab758c4ba93"><div class="ttname"><a href="_astar_path_editor_8cs.html#a056b29af8a3de2eeb5a1cab758c4ba93">Mathf</a></div><div class="ttdeci">UnityEngine.Mathf Mathf</div><div class="ttdef"><b>Definition:</b> <a href="_astar_path_editor_8cs_source.html#l00006">AstarPathEditor.cs:6</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_target_mover_html"><div class="ttname"><a href="class_pathfinding_1_1_target_mover.html">Pathfinding.TargetMover</a></div><div class="ttdef"><b>Definition:</b> <a href="_target_mover_8cs_source.html#l00013">TargetMover.cs:13</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_target_mover_html_a1738241485a03ebb1831311853cc2081"><div class="ttname"><a href="class_pathfinding_1_1_target_mover.html#a1738241485a03ebb1831311853cc2081">Pathfinding.TargetMover.target</a></div><div class="ttdeci">Transform target</div><div class="ttdef"><b>Definition:</b> <a href="_target_mover_8cs_source.html#l00017">TargetMover.cs:17</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_target_mover_html_a4dd505abc926e483876ed09e9ab52c27"><div class="ttname"><a href="class_pathfinding_1_1_target_mover.html#a4dd505abc926e483876ed09e9ab52c27">Pathfinding.TargetMover.UpdateTargetPosition</a></div><div class="ttdeci">void UpdateTargetPosition()</div><div class="ttdef"><b>Definition:</b> <a href="_target_mover_8cs_source.html#l00048">TargetMover.cs:48</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_target_mover_html_aa4cb7d03abebdb3ec1a65384c9031eb0"><div class="ttname"><a href="class_pathfinding_1_1_target_mover.html#aa4cb7d03abebdb3ec1a65384c9031eb0">Pathfinding.TargetMover.Start</a></div><div class="ttdeci">void Start()</div><div class="ttdef"><b>Definition:</b> <a href="_target_mover_8cs_source.html#l00026">TargetMover.cs:26</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_target_mover_html_acfb10436db512412238c13318c43d82d"><div class="ttname"><a href="class_pathfinding_1_1_target_mover.html#acfb10436db512412238c13318c43d82d">Pathfinding.TargetMover.mask</a></div><div class="ttdeci">LayerMask mask</div><div class="ttdef"><b>Definition:</b> <a href="_target_mover_8cs_source.html#l00015">TargetMover.cs:15</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_target_mover_html_ad2b23b989c1e6634648dd1da2135f6a4"><div class="ttname"><a href="class_pathfinding_1_1_target_mover.html#ad2b23b989c1e6634648dd1da2135f6a4">Pathfinding.TargetMover.onlyOnDoubleClick</a></div><div class="ttdeci">bool onlyOnDoubleClick</div><div class="ttdef"><b>Definition:</b> <a href="_target_mover_8cs_source.html#l00021">TargetMover.cs:21</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_target_mover_html_ad8b03455c2e2ba147c8b4196fe230b97"><div class="ttname"><a href="class_pathfinding_1_1_target_mover.html#ad8b03455c2e2ba147c8b4196fe230b97">Pathfinding.TargetMover.use2D</a></div><div class="ttdeci">bool use2D</div><div class="ttdef"><b>Definition:</b> <a href="_target_mover_8cs_source.html#l00022">TargetMover.cs:22</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_target_mover_html_ae288f13662a2419d1b49f760b2e9870e"><div class="ttname"><a href="class_pathfinding_1_1_target_mover.html#ae288f13662a2419d1b49f760b2e9870e">Pathfinding.TargetMover.OnGUI</a></div><div class="ttdeci">void OnGUI()</div><div class="ttdef"><b>Definition:</b> <a href="_target_mover_8cs_source.html#l00035">TargetMover.cs:35</a></div></div>
+<div class="ttc" id="ainterface_pathfinding_1_1_i_astar_a_i_html"><div class="ttname"><a href="interface_pathfinding_1_1_i_astar_a_i.html">Pathfinding.IAstarAI</a></div><div class="ttdef"><b>Definition:</b> <a href="_i_astar_a_i_8cs_source.html#l00011">IAstarAI.cs:11</a></div></div>
+<div class="ttc" id="ainterface_pathfinding_1_1_i_astar_a_i_html_a87be63a6f35302a9831ec07b6b5fbb84"><div class="ttname"><a href="interface_pathfinding_1_1_i_astar_a_i.html#a87be63a6f35302a9831ec07b6b5fbb84">Pathfinding.IAstarAI.SearchPath</a></div><div class="ttdeci">void SearchPath()</div></div>
+<div class="ttc" id="anamespace_pathfinding_html"><div class="ttname"><a href="namespace_pathfinding.html">Pathfinding</a></div><div class="ttdef"><b>Definition:</b> <a href="_a_i_base_editor_8cs_source.html#l00004">AIBaseEditor.cs:4</a></div></div>
+<div class="ttc" id="anamespace_system_html"><div class="ttname"><a href="namespace_system.html">System</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_method_builder_attribute_8cs_source.html#l00001">AsyncMethodBuilderAttribute.cs:2</a></div></div>
+<div class="ttc" id="anamespace_unity_engine_html"><div class="ttname"><a href="namespace_unity_engine.html">UnityEngine</a></div><div class="ttdef"><b>Definition:</b> <a href="_mathf_8cs_source.html#l00003">Mathf.cs:4</a></div></div>
+<div class="ttc" id="astruct_unity_engine_1_1_vector3_html"><div class="ttname"><a href="struct_unity_engine_1_1_vector3.html">UnityEngine.Vector3</a></div><div class="ttdef"><b>Definition:</b> <a href="_vector3_8cs_source.html#l00007">Vector3.cs:8</a></div></div>
+<div class="ttc" id="astruct_unity_engine_1_1_vector3_html_a5ee4172032dfc66b99c27713f0122eaa"><div class="ttname"><a href="struct_unity_engine_1_1_vector3.html#a5ee4172032dfc66b99c27713f0122eaa">UnityEngine.Vector3.zero</a></div><div class="ttdeci">static readonly Vector3 zero</div><div class="ttdef"><b>Definition:</b> <a href="_vector3_8cs_source.html#l00011">Vector3.cs:11</a></div></div>
+<div class="ttc" id="astruct_unity_engine_1_1_vector3_html_a8ea2682142b822ddcab52c868796fd3e"><div class="ttname"><a href="struct_unity_engine_1_1_vector3.html#a8ea2682142b822ddcab52c868796fd3e">UnityEngine.Vector3.z</a></div><div class="ttdeci">float z</div><div class="ttdef"><b>Definition:</b> <a href="_vector3_8cs_source.html#l00021">Vector3.cs:21</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_84bbf7b3c7f28a5a18725745e1505219.html">Assets</a></li><li class="navelem"><a class="el" href="dir_f13b41af88cf68434578284aaf699e39.html">Scripts</a></li><li class="navelem"><a class="el" href="dir_46d134a3bf82cf4dc49ca8f728aea58c.html">Libraries</a></li><li class="navelem"><a class="el" href="dir_f6df8f7e58ea5a2220a287b647108730.html">ET</a></li><li class="navelem"><a class="el" href="dir_83296929b1cb48979e134a96af9624b1.html">Module</a></li><li class="navelem"><a class="el" href="dir_7e04bdad0240fbb16a4f5f805ce44f49.html">Pathfinding</a></li><li class="navelem"><a class="el" href="dir_12c2f59e7be642934a5bea5c58ae8c1b.html">AstarPathfindingProject</a></li><li class="navelem"><a class="el" href="dir_b30d9dcdc117350774c9e032fc0cea0d.html">ExampleScenes</a></li><li class="navelem"><a class="el" href="dir_586a2ed90828c417eb80bfe0e0f16894.html">ExampleScripts</a></li><li class="navelem"><a class="el" href="_target_mover_8cs.html">TargetMover.cs</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:24:46 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

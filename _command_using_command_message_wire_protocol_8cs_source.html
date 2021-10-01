@@ -1,0 +1,492 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: ETServer/Server/ThirdParty/MongoDBDriver/MongoDB.Driver.Core/Core/WireProtocol/CommandUsingCommandMessageWireProtocol.cs 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_command_using_command_message_wire_protocol_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">CommandUsingCommandMessageWireProtocol.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_command_using_command_message_wire_protocol_8cs.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/* Copyright 2018-present MongoDB Inc.</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">* Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">* you may not use this file except in compliance with the License.</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">* You may obtain a copy of the License at</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">* http://www.apache.org/licenses/LICENSE-2.0</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">* Unless required by applicable law or agreed to in writing, software</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">* distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">* See the License for the specific language governing permissions and</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">* limitations under the License.</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Collections.Generic;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Linq;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Text;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Threading;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Threading.Tasks;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_mongo_d_b.html">MongoDB</a>.<a class="code" href="namespace_mongo_d_b_1_1_bson.html">Bson</a>;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_mongo_d_b.html">MongoDB</a>.<a class="code" href="namespace_mongo_d_b_1_1_bson.html">Bson</a>.<a class="code" href="namespace_mongo_d_b_1_1_bson_1_1_i_o.html">IO</a>;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_mongo_d_b.html">MongoDB</a>.<a class="code" href="namespace_mongo_d_b_1_1_bson.html">Bson</a>.<a class="code" href="namespace_mongo_d_b_1_1_bson_1_1_serialization.html">Serialization</a>;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_mongo_d_b.html">MongoDB</a>.<a class="code" href="namespace_mongo_d_b_1_1_bson.html">Bson</a>.<a class="code" href="namespace_mongo_d_b_1_1_bson_1_1_serialization.html">Serialization</a>.<a class="code" href="namespace_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers.html">Serializers</a>;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_mongo_d_b.html">MongoDB</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver.html">Driver</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core.html">Core</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_bindings.html">Bindings</a>;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_mongo_d_b.html">MongoDB</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver.html">Driver</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core.html">Core</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_connections.html">Connections</a>;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_mongo_d_b.html">MongoDB</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver.html">Driver</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core.html">Core</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_misc.html">Misc</a>;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_mongo_d_b.html">MongoDB</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver.html">Driver</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core.html">Core</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_operations.html">Operations</a>;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_mongo_d_b.html">MongoDB</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver.html">Driver</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core.html">Core</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_wire_protocol.html">WireProtocol</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_wire_protocol_1_1_messages.html">Messages</a>;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_mongo_d_b.html">MongoDB</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver.html">Driver</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core.html">Core</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_wire_protocol.html">WireProtocol</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_wire_protocol_1_1_messages.html">Messages</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_wire_protocol_1_1_messages_1_1_encoders.html">Encoders</a>;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_wire_protocol.html">MongoDB.Driver.Core.WireProtocol</a></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;{</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keyword">internal</span> <span class="keyword">class </span>CommandUsingCommandMessageWireProtocol&lt;TCommandResult&gt; : IWireProtocol&lt;TCommandResult&gt;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    {</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <span class="comment">// private fields</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <span class="keyword">private</span> readonly <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_document.html">BsonDocument</a> _additionalOptions; <span class="comment">// TODO: can these be supported when using CommandMessage?</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <span class="keyword">private</span> readonly <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_document.html">BsonDocument</a> _command;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <span class="keyword">private</span> readonly List&lt;Type1CommandMessageSection&gt; _commandPayloads;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <span class="keyword">private</span> readonly <a class="code" href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_element_name_validator.html">IElementNameValidator</a> _commandValidator; <span class="comment">// TODO: how can this be supported when using CommandMessage?</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <span class="keyword">private</span> readonly DatabaseNamespace _databaseNamespace;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <span class="keyword">private</span> readonly <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_wire_protocol_1_1_messages_1_1_encoders_1_1_message_encoder_settings.html">MessageEncoderSettings</a> _messageEncoderSettings;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="keyword">private</span> readonly Action&lt;IMessageEncoderPostProcessor&gt; _postWriteAction;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <span class="keyword">private</span> readonly ReadPreference _readPreference;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <span class="keyword">private</span> readonly <a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_wire_protocol.html#a5d6e169b820c4064d9edd7c03567ba91">CommandResponseHandling</a> _responseHandling;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <span class="keyword">private</span> readonly <a class="code" href="interface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_serializer.html">IBsonSerializer&lt;TCommandResult&gt;</a> _resultSerializer;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <span class="keyword">private</span> readonly <a class="code" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_i_core_session.html">ICoreSession</a> _session;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="comment">// constructors</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <span class="keyword">public</span> CommandUsingCommandMessageWireProtocol(</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            <a class="code" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_i_core_session.html">ICoreSession</a> session,</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            ReadPreference readPreference,</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            DatabaseNamespace databaseNamespace,</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_document.html">BsonDocument</a> command,</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            IEnumerable&lt;Type1CommandMessageSection&gt; commandPayloads,</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            <a class="code" href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_element_name_validator.html">IElementNameValidator</a> commandValidator,</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_document.html">BsonDocument</a> additionalOptions,</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            <a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_wire_protocol.html#a5d6e169b820c4064d9edd7c03567ba91">CommandResponseHandling</a> responseHandling,</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;            <a class="code" href="interface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_serializer.html">IBsonSerializer&lt;TCommandResult&gt;</a> resultSerializer,</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_wire_protocol_1_1_messages_1_1_encoders_1_1_message_encoder_settings.html">MessageEncoderSettings</a> messageEncoderSettings,</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            Action&lt;IMessageEncoderPostProcessor&gt; postWriteAction)</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        {</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            <span class="keywordflow">if</span> (responseHandling != <a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_wire_protocol.html#a5d6e169b820c4064d9edd7c03567ba91">CommandResponseHandling</a>.Return &amp;&amp; responseHandling != <a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_wire_protocol.html#a5d6e169b820c4064d9edd7c03567ba91">CommandResponseHandling</a>.NoResponseExpected)</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            {</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> ArgumentException(<span class="stringliteral">&quot;CommandResponseHandling must be Return or NoneExpected.&quot;</span>, nameof(responseHandling));</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            }</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            _session = Ensure.IsNotNull(session, nameof(session));</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            _readPreference = readPreference;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            _databaseNamespace = Ensure.IsNotNull(databaseNamespace, nameof(databaseNamespace));</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;            _command = Ensure.IsNotNull(command, nameof(command));</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            _commandPayloads = commandPayloads?.ToList(); <span class="comment">// can be null</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            _commandValidator = Ensure.IsNotNull(commandValidator, nameof(commandValidator));</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            _additionalOptions = additionalOptions; <span class="comment">// can be null</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            _responseHandling = responseHandling;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            _resultSerializer = Ensure.IsNotNull(resultSerializer, nameof(resultSerializer));</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            _messageEncoderSettings = messageEncoderSettings;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;            _postWriteAction = postWriteAction; <span class="comment">// can be null</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        }</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        <span class="comment">// public methods</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        <span class="keyword">public</span> TCommandResult Execute(<a class="code" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_i_connection.html">IConnection</a> connection, CancellationToken cancellationToken)</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        {</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;            <span class="keywordflow">try</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            {</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                var message = CreateCommandMessage(connection.<a class="code" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_i_connection.html#abbb0540e9e9cb43307a27e179f966ab7">Description</a>);</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                <span class="keywordflow">try</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                {</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                    connection.SendMessage(message, _messageEncoderSettings, cancellationToken);</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                }</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                <span class="keywordflow">finally</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                {</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                    MessageWasProbablySent(message);</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                }</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                <span class="keywordflow">if</span> (message.WrappedMessage.ResponseExpected)</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                {</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;                    var encoderSelector = <span class="keyword">new</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_wire_protocol_1_1_messages_1_1_encoders_1_1_command_response_message_encoder_selector.html">CommandResponseMessageEncoderSelector</a>();</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;                    var response = (<a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_wire_protocol_1_1_messages_1_1_command_response_message.html">CommandResponseMessage</a>)connection.<a class="code" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_i_connection.html#aad71ef033d99ddde917bc343813576ad">ReceiveMessage</a>(message.RequestId, encoderSelector, _messageEncoderSettings, cancellationToken);</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;                    <span class="keywordflow">return</span> ProcessResponse(connection.<a class="code" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_i_connection.html#a291f9939f7241addf7363c3907dd8139">ConnectionId</a>, response.WrappedMessage);</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;                }</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;                <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;                {</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;                    <span class="keywordflow">return</span> <span class="keywordflow">default</span>(TCommandResult);</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;                }</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;            }</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;            <span class="keywordflow">catch</span> (MongoException exception) when (ShouldAddTransientTransactionError(exception))</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;            {</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;                exception.AddErrorLabel(<span class="stringliteral">&quot;TransientTransactionError&quot;</span>);</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;                <span class="keywordflow">throw</span>;</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;            }</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        }</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160; </div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        <span class="keyword">public</span> async Task&lt;TCommandResult&gt; ExecuteAsync(<a class="code" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_i_connection.html">IConnection</a> connection, CancellationToken cancellationToken)</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        {</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;            <span class="keywordflow">try</span></div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;            {</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;                var message = CreateCommandMessage(connection.<a class="code" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_i_connection.html#abbb0540e9e9cb43307a27e179f966ab7">Description</a>);</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160; </div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;                <span class="keywordflow">try</span></div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;                {</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;                    await connection.SendMessageAsync(message, _messageEncoderSettings, cancellationToken).ConfigureAwait(<span class="keyword">false</span>);</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;                }</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;                <span class="keywordflow">finally</span></div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;                {</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;                    MessageWasProbablySent(message);</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;                }</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160; </div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;                <span class="keywordflow">if</span> (message.WrappedMessage.ResponseExpected)</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;                {</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;                    var encoderSelector = <span class="keyword">new</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_wire_protocol_1_1_messages_1_1_encoders_1_1_command_response_message_encoder_selector.html">CommandResponseMessageEncoderSelector</a>();</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;                    var response = (<a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_wire_protocol_1_1_messages_1_1_command_response_message.html">CommandResponseMessage</a>)await connection.<a class="code" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_i_connection.html#a904a266b004d4e53e974bc5e9a9d3de2">ReceiveMessageAsync</a>(message.RequestId, encoderSelector, _messageEncoderSettings, cancellationToken).ConfigureAwait(<span class="keyword">false</span>);</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;                    <span class="keywordflow">return</span> ProcessResponse(connection.<a class="code" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_i_connection.html#a291f9939f7241addf7363c3907dd8139">ConnectionId</a>, response.WrappedMessage);</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;                }</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;                <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;                {</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;                    <span class="keywordflow">return</span> <span class="keywordflow">default</span>(TCommandResult);</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;                }</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;            }</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;            <span class="keywordflow">catch</span> (MongoException exception) when (ShouldAddTransientTransactionError(exception))</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;            {</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;                exception.AddErrorLabel(<span class="stringliteral">&quot;TransientTransactionError&quot;</span>);</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;                <span class="keywordflow">throw</span>;</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;            }</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;        }</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160; </div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        <span class="comment">// private methods</span></div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;        <span class="keyword">private</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_wire_protocol_1_1_messages_1_1_command_request_message.html">CommandRequestMessage</a> CreateCommandMessage(<a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_connection_description.html">ConnectionDescription</a> connectionDescription)</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;        {</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;            var requestId = <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_wire_protocol_1_1_messages_1_1_request_message.html">RequestMessage</a>.<a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_wire_protocol_1_1_messages_1_1_request_message.html#a12e960d558f7cf4bc46adfd5243f4066">GetNextRequestId</a>();</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;            var responseTo = 0;</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;            var sections = CreateSections(connectionDescription);</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;            var moreToCome = _responseHandling == <a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_wire_protocol.html#a5d6e169b820c4064d9edd7c03567ba91">CommandResponseHandling</a>.NoResponseExpected;</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;            var wrappedMessage = <span class="keyword">new</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_wire_protocol_1_1_messages_1_1_command_message.html">CommandMessage</a>(requestId, responseTo, sections, moreToCome)</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;            {</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;                PostWriteAction = _postWriteAction</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;            };</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;            var shouldBeSent = (Func&lt;bool&gt;)(() =&gt; <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160; </div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_wire_protocol_1_1_messages_1_1_command_request_message.html">CommandRequestMessage</a>(wrappedMessage, shouldBeSent);</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;        }</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160; </div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;        <span class="keyword">private</span> IEnumerable&lt;CommandMessageSection&gt; CreateSections(<a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_connection_description.html">ConnectionDescription</a> connectionDescription)</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;        {</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;            var type0Section = CreateType0Section(connectionDescription);</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;            <span class="keywordflow">if</span> (_commandPayloads == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;            {</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">new</span>[] { type0Section };</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;            }</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;            {</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_wire_protocol_1_1_messages_1_1_command_message_section.html">CommandMessageSection</a>[] { type0Section }.Concat(_commandPayloads);</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;            }</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;        }</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160; </div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;        <span class="keyword">private</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_wire_protocol_1_1_messages_1_1_type0_command_message_section.html">Type0CommandMessageSection&lt;BsonDocument&gt;</a> CreateType0Section(<a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_connection_description.html">ConnectionDescription</a> connectionDescription)</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;        {</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;            var extraElements = <span class="keyword">new</span> List&lt;BsonElement&gt;();</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160; </div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;            var dbElement = <span class="keyword">new</span> <a class="code" href="struct_mongo_d_b_1_1_bson_1_1_bson_element.html">BsonElement</a>(<span class="stringliteral">&quot;$db&quot;</span>, _databaseNamespace.DatabaseName);</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;            extraElements.Add(dbElement);</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160; </div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;            <span class="keywordflow">if</span> (_readPreference != <span class="keyword">null</span> &amp;&amp; _readPreference != ReadPreference.Primary)</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;            {</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;                var readPreferenceDocument = QueryHelper.CreateReadPreferenceDocument(_readPreference);</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;                var readPreferenceElement = <span class="keyword">new</span> <a class="code" href="struct_mongo_d_b_1_1_bson_1_1_bson_element.html">BsonElement</a>(<span class="stringliteral">&quot;$readPreference&quot;</span>, readPreferenceDocument);</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;                extraElements.Add(readPreferenceElement);</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;            }</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160; </div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;            <span class="keywordflow">if</span> (_session.Id != <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;            {</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;                var lsidElement = <span class="keyword">new</span> <a class="code" href="struct_mongo_d_b_1_1_bson_1_1_bson_element.html">BsonElement</a>(<span class="stringliteral">&quot;lsid&quot;</span>, _session.Id);</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;                extraElements.Add(lsidElement);</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;            }</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160; </div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;            <span class="keywordflow">if</span> (_session.ClusterTime != <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;            {</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;                var clusterTimeElement = <span class="keyword">new</span> <a class="code" href="struct_mongo_d_b_1_1_bson_1_1_bson_element.html">BsonElement</a>(<span class="stringliteral">&quot;$clusterTime&quot;</span>, _session.ClusterTime);</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;                extraElements.Add(clusterTimeElement);</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;            }</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;            Action&lt;BsonWriterSettings&gt; writerSettingsConfigurator = s =&gt; s.GuidRepresentation = <a class="code" href="namespace_mongo_d_b_1_1_bson.html#a8fd533815d33d4ee0e6176ed1e7d8b63">GuidRepresentation</a>.Unspecified;</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160; </div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;            _session.AboutToSendCommand();</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;            <span class="keywordflow">if</span> (_session.IsInTransaction)</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;            {</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;                var transaction = _session.CurrentTransaction;</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;                extraElements.Add(<span class="keyword">new</span> <a class="code" href="struct_mongo_d_b_1_1_bson_1_1_bson_element.html">BsonElement</a>(<span class="stringliteral">&quot;txnNumber&quot;</span>, transaction.TransactionNumber));</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;                <span class="keywordflow">if</span> (transaction.State == <a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_bindings.html#aed6661f6cea56e7a901bfeca47b4dace">CoreTransactionState</a>.Starting)</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;                {</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;                    extraElements.Add(<span class="keyword">new</span> <a class="code" href="struct_mongo_d_b_1_1_bson_1_1_bson_element.html">BsonElement</a>(<span class="stringliteral">&quot;startTransaction&quot;</span>, <span class="keyword">true</span>));</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;                    var readConcern = ReadConcernHelper.GetReadConcernForFirstCommandInTransaction(_session, connectionDescription);</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;                    <span class="keywordflow">if</span> (readConcern != <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;                    {</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;                        extraElements.Add(<span class="keyword">new</span> <a class="code" href="struct_mongo_d_b_1_1_bson_1_1_bson_element.html">BsonElement</a>(<span class="stringliteral">&quot;readConcern&quot;</span>, readConcern));</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;                    }</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;                }</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;                extraElements.Add(<span class="keyword">new</span> <a class="code" href="struct_mongo_d_b_1_1_bson_1_1_bson_element.html">BsonElement</a>(<span class="stringliteral">&quot;autocommit&quot;</span>, <span class="keyword">false</span>));</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;            }</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160; </div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;            var elementAppendingSerializer = <span class="keyword">new</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_element_appending_serializer.html">ElementAppendingSerializer&lt;BsonDocument&gt;</a>(<a class="code" href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_bson_document_serializer.html">BsonDocumentSerializer</a>.<a class="code" href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_bson_document_serializer.html#ac97fba0a0fc49608305e4b640c4f90ca">Instance</a>, extraElements, writerSettingsConfigurator);</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_wire_protocol_1_1_messages_1_1_type0_command_message_section.html">Type0CommandMessageSection&lt;BsonDocument&gt;</a>(_command, elementAppendingSerializer);</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;        }</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160; </div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> MessageWasProbablySent(<a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_wire_protocol_1_1_messages_1_1_command_request_message.html">CommandRequestMessage</a> message)</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;        {</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;            <span class="keywordflow">if</span> (_session.Id != <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;            {</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;                _session.WasUsed();</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;            }</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160; </div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;            var transaction = _session.CurrentTransaction;</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;            <span class="keywordflow">if</span> (transaction != <span class="keyword">null</span> &amp;&amp; transaction.State == <a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_bindings.html#aed6661f6cea56e7a901bfeca47b4dace">CoreTransactionState</a>.Starting)</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;            {</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;                transaction.SetState(<a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_bindings.html#aed6661f6cea56e7a901bfeca47b4dace">CoreTransactionState</a>.InProgress);</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;            }</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;        }</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160; </div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;        [<a class="code" href="namespace_system.html">System</a>.Diagnostics.CodeAnalysis.SuppressMessage(<span class="stringliteral">&quot;Microsoft.Usage&quot;</span>, <span class="stringliteral">&quot;CA2202:Do not dispose objects multiple times&quot;</span>)]</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;        <span class="keyword">private</span> TCommandResult ProcessResponse(<a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_connection_id.html">ConnectionId</a> connectionId, <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_wire_protocol_1_1_messages_1_1_command_message.html">CommandMessage</a> responseMessage)</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;        {</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;            <span class="keyword">using</span> (<span class="keyword">new</span> CommandMessageDisposer(responseMessage))</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;            {</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;                var rawDocument = responseMessage.<a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_wire_protocol_1_1_messages_1_1_command_message.html#ad6050125a323015a1dcddb0ff0c40a1d">Sections</a>.OfType&lt;<a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_wire_protocol_1_1_messages_1_1_type0_command_message_section.html">Type0CommandMessageSection&lt;RawBsonDocument&gt;</a>&gt;().Single().<a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_wire_protocol_1_1_messages_1_1_type0_command_message_section.html#a91f4dc2e0c901906ffbb98da4054de29">Document</a>;</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160; </div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;                var binaryReaderSettings = <span class="keyword">new</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_binary_reader_settings.html">BsonBinaryReaderSettings</a>();</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;                <span class="keywordflow">if</span> (_messageEncoderSettings != <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;                {</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;                    binaryReaderSettings.Encoding = _messageEncoderSettings.GetOrDefault&lt;UTF8Encoding&gt;(MessageEncoderSettingsName.ReadEncoding, Utf8Encodings.Strict);</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;                    binaryReaderSettings.GuidRepresentation = _messageEncoderSettings.GetOrDefault&lt;<a class="code" href="namespace_mongo_d_b_1_1_bson.html#a8fd533815d33d4ee0e6176ed1e7d8b63">GuidRepresentation</a>&gt;(MessageEncoderSettingsName.GuidRepresentation, <a class="code" href="namespace_mongo_d_b_1_1_bson.html#a8fd533815d33d4ee0e6176ed1e7d8b63">GuidRepresentation</a>.CSharpLegacy);</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;                };</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160; </div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;                <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_value.html">BsonValue</a> clusterTime;</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;                <span class="keywordflow">if</span> (rawDocument.TryGetValue(<span class="stringliteral">&quot;$clusterTime&quot;</span>, out clusterTime))</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;                {</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;                    <span class="comment">// note: we are assuming that _session is an instance of ClusterClockAdvancingClusterTime</span></div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;                    <span class="comment">// and that calling _session.AdvanceClusterTime will have the side effect of advancing the cluster&#39;s ClusterTime also</span></div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;                    var materializedClusterTime = ((<a class="code" href="class_mongo_d_b_1_1_bson_1_1_raw_bson_document.html">RawBsonDocument</a>)clusterTime).Materialize(binaryReaderSettings);</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;                    _session.AdvanceClusterTime(materializedClusterTime);</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;                }</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160; </div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;                <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_value.html">BsonValue</a> operationTime;</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;                <span class="keywordflow">if</span> (rawDocument.TryGetValue(<span class="stringliteral">&quot;operationTime&quot;</span>, out operationTime))</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;                {</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;                    _session.AdvanceOperationTime(operationTime.AsBsonTimestamp);</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;                }</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160; </div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;                <span class="keywordflow">if</span> (!rawDocument.GetValue(<span class="stringliteral">&quot;ok&quot;</span>, <span class="keyword">false</span>).ToBoolean())</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;                {</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;                    var materializedDocument = rawDocument.Materialize(binaryReaderSettings);</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160; </div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;                    var commandName = _command.GetElement(0).Name;</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;                    <span class="keywordflow">if</span> (commandName == <span class="stringliteral">&quot;$query&quot;</span>)</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;                    {</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;                        commandName = _command[<span class="stringliteral">&quot;$query&quot;</span>].<a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_value.html#a5860157b3d63692706ceaa12f9e3694c">AsBsonDocument</a>.<a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_document.html#a13cc654618518cbf512880aae2e5c564">GetElement</a>(0).<a class="code" href="struct_mongo_d_b_1_1_bson_1_1_bson_element.html#a067bc72738ff01f904e98cb919398142">Name</a>;</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;                    }</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160; </div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;                    var notPrimaryOrNodeIsRecoveringException = ExceptionMapper.MapNotPrimaryOrNodeIsRecovering(connectionId, _command, materializedDocument, <span class="stringliteral">&quot;errmsg&quot;</span>);</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;                    <span class="keywordflow">if</span> (notPrimaryOrNodeIsRecoveringException != <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;                    {</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;                        <span class="keywordflow">throw</span> notPrimaryOrNodeIsRecoveringException;</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;                    }</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160; </div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;                    var mappedException = ExceptionMapper.Map(connectionId, materializedDocument);</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;                    <span class="keywordflow">if</span> (mappedException != <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;                    {</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;                        <span class="keywordflow">throw</span> mappedException;</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;                    }</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160; </div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;                    <span class="keywordtype">string</span> message;</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;                    <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_value.html">BsonValue</a> errmsgBsonValue;</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;                    <span class="keywordflow">if</span> (materializedDocument.TryGetValue(<span class="stringliteral">&quot;errmsg&quot;</span>, out errmsgBsonValue) &amp;&amp; errmsgBsonValue.IsString)</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;                    {</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;                        var errmsg = errmsgBsonValue.ToString();</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;                        message = <span class="keywordtype">string</span>.Format(<span class="stringliteral">&quot;Command {0} failed: {1}.&quot;</span>, commandName, errmsg);</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;                    }</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;                    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;                    {</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;                        message = <span class="keywordtype">string</span>.Format(<span class="stringliteral">&quot;Command {0} failed.&quot;</span>, commandName);</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;                    }</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160; </div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;                    <span class="keywordflow">throw</span> <span class="keyword">new</span> MongoCommandException(connectionId, message, _command, materializedDocument);</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;                }</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160; </div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;                <span class="keywordflow">if</span> (rawDocument.Contains(<span class="stringliteral">&quot;writeConcernError&quot;</span>))</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;                {</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;                    var materializedDocument = rawDocument.Materialize(binaryReaderSettings);</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;                    var writeConcernError = materializedDocument[<span class="stringliteral">&quot;writeConcernError&quot;</span>].AsBsonDocument;</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;                    var message = writeConcernError.AsBsonDocument.GetValue(<span class="stringliteral">&quot;errmsg&quot;</span>, <span class="keyword">null</span>)?.AsString;</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;                    var writeConcernResult = <span class="keyword">new</span> WriteConcernResult(materializedDocument);</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;                    <span class="keywordflow">throw</span> <span class="keyword">new</span> MongoWriteConcernException(connectionId, message, writeConcernResult);</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;                }</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160; </div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;                <span class="keyword">using</span> (var stream = <span class="keyword">new</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_byte_buffer_stream.html">ByteBufferStream</a>(rawDocument.Slice, ownsBuffer: <span class="keyword">false</span>))</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;                {</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;                    <span class="keyword">using</span> (var reader = <span class="keyword">new</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_binary_reader.html">BsonBinaryReader</a>(stream, binaryReaderSettings))</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;                    {</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;                        var context = <a class="code" href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_bson_deserialization_context.html">BsonDeserializationContext</a>.<a class="code" href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_bson_deserialization_context.html#a130a9dc1fc69d957c6e79142fe07b8d8">CreateRoot</a>(reader);</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;                        <span class="keywordflow">return</span> _resultSerializer.Deserialize(context);</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;                    }</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;                }</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;            }</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;        }</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160; </div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">bool</span> ShouldAddTransientTransactionError(MongoException exception)</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;        {</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;            <span class="keywordflow">if</span> (_session.IsInTransaction)</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;            {</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;                <span class="keywordflow">if</span> (exception is MongoConnectionException)</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;                {</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;                    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;                }</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;            }</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160; </div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;        }</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;    }</div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;}</div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_bson_document_html"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_bson_document.html">MongoDB.Bson.BsonDocument</a></div><div class="ttdoc">Represents a BSON document.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_document_8cs_source.html#l00034">BsonDocument.cs:35</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_bson_document_html_a13cc654618518cbf512880aae2e5c564"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_bson_document.html#a13cc654618518cbf512880aae2e5c564">MongoDB.Bson.BsonDocument.GetElement</a></div><div class="ttdeci">virtual BsonElement GetElement(int index)</div><div class="ttdoc">Gets an element of this document.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_document_8cs_source.html#l00861">BsonDocument.cs:861</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_bson_value_html"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_bson_value.html">MongoDB.Bson.BsonValue</a></div><div class="ttdoc">Represents a BSON value (this is an abstract class, see the various subclasses).</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_value_8cs_source.html#l00028">BsonValue.cs:29</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_bson_value_html_a5860157b3d63692706ceaa12f9e3694c"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_bson_value.html#a5860157b3d63692706ceaa12f9e3694c">MongoDB.Bson.BsonValue.AsBsonDocument</a></div><div class="ttdeci">BsonDocument AsBsonDocument</div><div class="ttdoc">Casts the BsonValue to a BsonDocument (throws an InvalidCastException if the cast is not valid).</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_value_8cs_source.html#l00091">BsonValue.cs:92</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_binary_reader_html"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_binary_reader.html">MongoDB.Bson.IO.BsonBinaryReader</a></div><div class="ttdoc">Represents a BSON reader for a binary BSON byte array.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_i_o_2_bson_binary_reader_8cs_source.html#l00025">BsonBinaryReader.cs:26</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_binary_reader_settings_html"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_binary_reader_settings.html">MongoDB.Bson.IO.BsonBinaryReaderSettings</a></div><div class="ttdoc">Represents settings for a BsonBinaryReader.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_i_o_2_bson_binary_reader_settings_8cs_source.html#l00027">BsonBinaryReaderSettings.cs:28</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_i_o_1_1_byte_buffer_stream_html"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_byte_buffer_stream.html">MongoDB.Bson.IO.ByteBufferStream</a></div><div class="ttdoc">Represents a Stream backed by an IByteBuffer. Similar to MemoryStream but backed by an IByteBuffer in...</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_i_o_2_byte_buffer_stream_8cs_source.html#l00026">ByteBufferStream.cs:27</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_raw_bson_document_html"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_raw_bson_document.html">MongoDB.Bson.RawBsonDocument</a></div><div class="ttdoc">Represents an immutable BSON document that is represented using only the raw bytes.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_raw_bson_document_8cs_source.html#l00032">RawBsonDocument.cs:33</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_serialization_1_1_bson_deserialization_context_html"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_bson_deserialization_context.html">MongoDB.Bson.Serialization.BsonDeserializationContext</a></div><div class="ttdoc">Represents all the contextual information needed by a serializer to deserialize a value.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_serialization_2_bson_deserialization_context_8cs_source.html#l00024">BsonDeserializationContext.cs:25</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_serialization_1_1_bson_deserialization_context_html_a130a9dc1fc69d957c6e79142fe07b8d8"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_bson_deserialization_context.html#a130a9dc1fc69d957c6e79142fe07b8d8">MongoDB.Bson.Serialization.BsonDeserializationContext.CreateRoot</a></div><div class="ttdeci">static BsonDeserializationContext CreateRoot(IBsonReader reader, Action&lt; Builder &gt; configurator=null)</div><div class="ttdoc">Creates a root context.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_serialization_2_bson_deserialization_context_8cs_source.html#l00099">BsonDeserializationContext.cs:99</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_bson_document_serializer_html"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_bson_document_serializer.html">MongoDB.Bson.Serialization.Serializers.BsonDocumentSerializer</a></div><div class="ttdoc">Represents a serializer for BsonDocuments.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_serialization_2_serializers_2_bson_document_serializer_8cs_source.html#l00027">BsonDocumentSerializer.cs:28</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_bson_document_serializer_html_ac97fba0a0fc49608305e4b640c4f90ca"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_bson_document_serializer.html#ac97fba0a0fc49608305e4b640c4f90ca">MongoDB.Bson.Serialization.Serializers.BsonDocumentSerializer.Instance</a></div><div class="ttdeci">static BsonDocumentSerializer Instance</div><div class="ttdoc">Gets an instance of the BsonDocumentSerializer class.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_serialization_2_serializers_2_bson_document_serializer_8cs_source.html#l00045">BsonDocumentSerializer.cs:46</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_element_appending_serializer_html"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_element_appending_serializer.html">MongoDB.Bson.Serialization.Serializers.ElementAppendingSerializer</a></div><div class="ttdoc">A serializer that serializes a document and appends elements to the end of it.</div><div class="ttdef"><b>Definition:</b> <a href="_e_t_server_2_server_2_third_party_2_mongo_d_b_driver_2_mongo_d_b_8_bson_2_serialization_2_seria0801fdb59e1dde338a6f218c1e37975a_source.html#l00028">ElementAppendingSerializer.cs:29</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_connection_description_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_connection_description.html">MongoDB.Driver.Core.Connections.ConnectionDescription</a></div><div class="ttdoc">Represents information describing a connection.</div><div class="ttdef"><b>Definition:</b> <a href="_connection_description_8cs_source.html#l00025">ConnectionDescription.cs:26</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_connection_id_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_connection_id.html">MongoDB.Driver.Core.Connections.ConnectionId</a></div><div class="ttdoc">Represents a connection identifier.</div><div class="ttdef"><b>Definition:</b> <a href="_connection_id_8cs_source.html#l00041">ConnectionId.cs:42</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_wire_protocol_1_1_messages_1_1_command_message_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_wire_protocol_1_1_messages_1_1_command_message.html">MongoDB.Driver.Core.WireProtocol.Messages.CommandMessage</a></div><div class="ttdoc">Represents a command message.</div><div class="ttdef"><b>Definition:</b> <a href="_command_message_8cs_source.html#l00028">CommandMessage.cs:29</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_wire_protocol_1_1_messages_1_1_command_message_html_ad6050125a323015a1dcddb0ff0c40a1d"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_wire_protocol_1_1_messages_1_1_command_message.html#ad6050125a323015a1dcddb0ff0c40a1d">MongoDB.Driver.Core.WireProtocol.Messages.CommandMessage.Sections</a></div><div class="ttdeci">IReadOnlyList&lt; CommandMessageSection &gt; Sections</div><div class="ttdoc">Gets the sections.</div><div class="ttdef"><b>Definition:</b> <a href="_command_message_8cs_source.html#l00120">CommandMessage.cs:120</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_wire_protocol_1_1_messages_1_1_command_message_section_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_wire_protocol_1_1_messages_1_1_command_message_section.html">MongoDB.Driver.Core.WireProtocol.Messages.CommandMessageSection</a></div><div class="ttdoc">Represents a CommandMessage section.</div><div class="ttdef"><b>Definition:</b> <a href="_command_message_section_8cs_source.html#l00041">CommandMessageSection.cs:42</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_wire_protocol_1_1_messages_1_1_command_request_message_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_wire_protocol_1_1_messages_1_1_command_request_message.html">MongoDB.Driver.Core.WireProtocol.Messages.CommandRequestMessage</a></div><div class="ttdoc">Represents a command request message.</div><div class="ttdef"><b>Definition:</b> <a href="_command_request_message_8cs_source.html#l00030">CommandRequestMessage.cs:31</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_wire_protocol_1_1_messages_1_1_command_response_message_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_wire_protocol_1_1_messages_1_1_command_response_message.html">MongoDB.Driver.Core.WireProtocol.Messages.CommandResponseMessage</a></div><div class="ttdoc">Represents a command response message.</div><div class="ttdef"><b>Definition:</b> <a href="_command_response_message_8cs_source.html#l00030">CommandResponseMessage.cs:31</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_wire_protocol_1_1_messages_1_1_encoders_1_1_command_response_message_encoder_selector_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_wire_protocol_1_1_messages_1_1_encoders_1_1_command_response_message_encoder_selector.html">MongoDB.Driver.Core.WireProtocol.Messages.Encoders.CommandResponseMessageEncoderSelector</a></div><div class="ttdoc">Represents a message encoder selector for CommandResponseMessages.</div><div class="ttdef"><b>Definition:</b> <a href="_command_response_message_encoder_selector_8cs_source.html#l00021">CommandResponseMessageEncoderSelector.cs:22</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_wire_protocol_1_1_messages_1_1_encoders_1_1_message_encoder_settings_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_wire_protocol_1_1_messages_1_1_encoders_1_1_message_encoder_settings.html">MongoDB.Driver.Core.WireProtocol.Messages.Encoders.MessageEncoderSettings</a></div><div class="ttdoc">Represents settings for message encoders.</div><div class="ttdef"><b>Definition:</b> <a href="_message_encoder_settings_8cs_source.html#l00113">MessageEncoderSettings.cs:114</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_wire_protocol_1_1_messages_1_1_request_message_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_wire_protocol_1_1_messages_1_1_request_message.html">MongoDB.Driver.Core.WireProtocol.Messages.RequestMessage</a></div><div class="ttdoc">Represents a base class for request messages.</div><div class="ttdef"><b>Definition:</b> <a href="_request_message_8cs_source.html#l00024">RequestMessage.cs:25</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_wire_protocol_1_1_messages_1_1_request_message_html_a12e960d558f7cf4bc46adfd5243f4066"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_wire_protocol_1_1_messages_1_1_request_message.html#a12e960d558f7cf4bc46adfd5243f4066">MongoDB.Driver.Core.WireProtocol.Messages.RequestMessage.GetNextRequestId</a></div><div class="ttdeci">static int GetNextRequestId()</div><div class="ttdoc">Gets the next request identifier.</div><div class="ttdef"><b>Definition:</b> <a href="_request_message_8cs_source.html#l00047">RequestMessage.cs:47</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_wire_protocol_1_1_messages_1_1_type0_command_message_section_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_wire_protocol_1_1_messages_1_1_type0_command_message_section.html">MongoDB.Driver.Core.WireProtocol.Messages.Type0CommandMessageSection</a></div><div class="ttdoc">Represents a Type 0 CommandMessage section.</div><div class="ttdef"><b>Definition:</b> <a href="_command_message_section_8cs_source.html#l00101">CommandMessageSection.cs:102</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_wire_protocol_1_1_messages_1_1_type0_command_message_section_html_a91f4dc2e0c901906ffbb98da4054de29"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_wire_protocol_1_1_messages_1_1_type0_command_message_section.html#a91f4dc2e0c901906ffbb98da4054de29">MongoDB.Driver.Core.WireProtocol.Messages.Type0CommandMessageSection.Document</a></div><div class="ttdeci">object Document</div><div class="ttdoc">Gets the document.</div><div class="ttdef"><b>Definition:</b> <a href="_command_message_section_8cs_source.html#l00082">CommandMessageSection.cs:82</a></div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_element_name_validator_html"><div class="ttname"><a href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_element_name_validator.html">MongoDB.Bson.IO.IElementNameValidator</a></div><div class="ttdoc">Represents an element name validator. Used by BsonWriters when WriteName is called to determine if th...</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_i_o_2_i_element_name_validator_8cs_source.html#l00022">IElementNameValidator.cs:23</a></div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_serializer_html"><div class="ttname"><a href="interface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_serializer.html">MongoDB.Bson.Serialization.IBsonSerializer&lt; TCommandResult &gt;</a></div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_i_core_session_html"><div class="ttname"><a href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_i_core_session.html">MongoDB.Driver.Core.Bindings.ICoreSession</a></div><div class="ttdoc">The interface for a session in Core.</div><div class="ttdef"><b>Definition:</b> <a href="_i_core_session_8cs_source.html#l00027">ICoreSession.cs:28</a></div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_i_connection_html"><div class="ttname"><a href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_i_connection.html">MongoDB.Driver.Core.Connections.IConnection</a></div><div class="ttdoc">Represents a connection.</div><div class="ttdef"><b>Definition:</b> <a href="_i_connection_8cs_source.html#l00033">IConnection.cs:34</a></div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_i_connection_html_a291f9939f7241addf7363c3907dd8139"><div class="ttname"><a href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_i_connection.html#a291f9939f7241addf7363c3907dd8139">MongoDB.Driver.Core.Connections.IConnection.ConnectionId</a></div><div class="ttdeci">ConnectionId ConnectionId</div><div class="ttdoc">Gets the connection identifier.</div><div class="ttdef"><b>Definition:</b> <a href="_i_connection_8cs_source.html#l00042">IConnection.cs:42</a></div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_i_connection_html_a904a266b004d4e53e974bc5e9a9d3de2"><div class="ttname"><a href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_i_connection.html#a904a266b004d4e53e974bc5e9a9d3de2">MongoDB.Driver.Core.Connections.IConnection.ReceiveMessageAsync</a></div><div class="ttdeci">Task&lt; ResponseMessage &gt; ReceiveMessageAsync(int responseTo, IMessageEncoderSelector encoderSelector, MessageEncoderSettings messageEncoderSettings, CancellationToken cancellationToken)</div><div class="ttdoc">Receives a message.</div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_i_connection_html_aad71ef033d99ddde917bc343813576ad"><div class="ttname"><a href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_i_connection.html#aad71ef033d99ddde917bc343813576ad">MongoDB.Driver.Core.Connections.IConnection.ReceiveMessage</a></div><div class="ttdeci">ResponseMessage ReceiveMessage(int responseTo, IMessageEncoderSelector encoderSelector, MessageEncoderSettings messageEncoderSettings, CancellationToken cancellationToken)</div><div class="ttdoc">Receives a message.</div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_i_connection_html_abbb0540e9e9cb43307a27e179f966ab7"><div class="ttname"><a href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_i_connection.html#abbb0540e9e9cb43307a27e179f966ab7">MongoDB.Driver.Core.Connections.IConnection.Description</a></div><div class="ttdeci">ConnectionDescription Description</div><div class="ttdoc">Gets the connection description.</div><div class="ttdef"><b>Definition:</b> <a href="_i_connection_8cs_source.html#l00050">IConnection.cs:50</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_bson_1_1_i_o_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_bson_1_1_i_o.html">MongoDB.Bson.IO</a></div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_i_o_2_array_element_name_accelerator_8cs_source.html#l00018">ArrayElementNameAccelerator.cs:19</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers.html">MongoDB.Bson.Serialization.Serializers</a></div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_serialization_2_serializers_2_abstract_class_serializer_8cs_source.html#l00022">AbstractClassSerializer.cs:23</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_bson_1_1_serialization_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_bson_1_1_serialization.html">MongoDB.Bson.Serialization</a></div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_serialization_2_attributed_serialization_provider_8cs_source.html#l00021">AttributedSerializationProvider.cs:22</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_bson_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_bson.html">MongoDB.Bson</a></div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_bson_constants_8cs_source.html#l00018">BsonConstants.cs:19</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_bson_html_a8fd533815d33d4ee0e6176ed1e7d8b63"><div class="ttname"><a href="namespace_mongo_d_b_1_1_bson.html#a8fd533815d33d4ee0e6176ed1e7d8b63">MongoDB.Bson.GuidRepresentation</a></div><div class="ttdeci">GuidRepresentation</div><div class="ttdoc">Represents the representation to use when converting a Guid to a BSON binary value.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_guid_representation_8cs_source.html#l00025">GuidRepresentation.cs:26</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_bindings.html">MongoDB.Driver.Core.Bindings</a></div><div class="ttdef"><b>Definition:</b> <a href="_channel_channel_source_8cs_source.html#l00022">ChannelChannelSource.cs:23</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_html_aed6661f6cea56e7a901bfeca47b4dace"><div class="ttname"><a href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_bindings.html#aed6661f6cea56e7a901bfeca47b4dace">MongoDB.Driver.Core.Bindings.CoreTransactionState</a></div><div class="ttdeci">CoreTransactionState</div><div class="ttdoc">Represents the current state of a Core transaction.</div><div class="ttdef"><b>Definition:</b> <a href="_core_transaction_state_8cs_source.html#l00021">CoreTransactionState.cs:22</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_driver_1_1_core_1_1_connections_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_connections.html">MongoDB.Driver.Core.Connections</a></div><div class="ttdef"><b>Definition:</b> <a href="_binary_connection_8cs_source.html#l00035">BinaryConnection.cs:36</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_driver_1_1_core_1_1_misc_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_misc.html">MongoDB.Driver.Core.Misc</a></div><div class="ttdef"><b>Definition:</b> <a href="_array_filters_feature_8cs_source.html#l00020">ArrayFiltersFeature.cs:21</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_driver_1_1_core_1_1_operations_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_operations.html">MongoDB.Driver.Core.Operations</a></div><div class="ttdef"><b>Definition:</b> <a href="_aggregate_explain_operation_8cs_source.html#l00028">AggregateExplainOperation.cs:29</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_driver_1_1_core_1_1_wire_protocol_1_1_messages_1_1_encoders_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_wire_protocol_1_1_messages_1_1_encoders.html">MongoDB.Driver.Core.WireProtocol.Messages.Encoders</a></div><div class="ttdef"><b>Definition:</b> <a href="_binary_message_encoder_factory_8cs_source.html#l00021">BinaryMessageEncoderFactory.cs:22</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_driver_1_1_core_1_1_wire_protocol_1_1_messages_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_wire_protocol_1_1_messages.html">MongoDB.Driver.Core.WireProtocol.Messages</a></div><div class="ttdef"><b>Definition:</b> <a href="_command_message_8cs_source.html#l00022">CommandMessage.cs:23</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_driver_1_1_core_1_1_wire_protocol_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_wire_protocol.html">MongoDB.Driver.Core.WireProtocol</a></div><div class="ttdef"><b>Definition:</b> <a href="_command_response_handling_8cs_source.html#l00023">CommandResponseHandling.cs:24</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_driver_1_1_core_1_1_wire_protocol_html_a5d6e169b820c4064d9edd7c03567ba91"><div class="ttname"><a href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_wire_protocol.html#a5d6e169b820c4064d9edd7c03567ba91">MongoDB.Driver.Core.WireProtocol.CommandResponseHandling</a></div><div class="ttdeci">CommandResponseHandling</div><div class="ttdoc">Instructions for handling the response from a command.</div><div class="ttdef"><b>Definition:</b> <a href="_command_response_handling_8cs_source.html#l00028">CommandResponseHandling.cs:29</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_driver_1_1_core_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_driver_1_1_core.html">MongoDB.Driver.Core</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_queue_8cs_source.html#l00023">AsyncQueue.cs:24</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_driver_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_driver.html">MongoDB.Driver</a></div><div class="ttdef"><b>Definition:</b> <a href="_aggregate_bucket_auto_granularity_8cs_source.html#l00018">AggregateBucketAutoGranularity.cs:19</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_html"><div class="ttname"><a href="namespace_mongo_d_b.html">MongoDB</a></div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_bson_constants_8cs_source.html#l00018">BsonConstants.cs:19</a></div></div>
+<div class="ttc" id="anamespace_system_html"><div class="ttname"><a href="namespace_system.html">System</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_method_builder_attribute_8cs_source.html#l00001">AsyncMethodBuilderAttribute.cs:2</a></div></div>
+<div class="ttc" id="astruct_mongo_d_b_1_1_bson_1_1_bson_element_html"><div class="ttname"><a href="struct_mongo_d_b_1_1_bson_1_1_bson_element.html">MongoDB.Bson.BsonElement</a></div><div class="ttdoc">Represents a BSON element.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_element_8cs_source.html#l00026">BsonElement.cs:27</a></div></div>
+<div class="ttc" id="astruct_mongo_d_b_1_1_bson_1_1_bson_element_html_a067bc72738ff01f904e98cb919398142"><div class="ttname"><a href="struct_mongo_d_b_1_1_bson_1_1_bson_element.html#a067bc72738ff01f904e98cb919398142">MongoDB.Bson.BsonElement.Name</a></div><div class="ttdeci">string Name</div><div class="ttdoc">Gets the name of the element.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_element_8cs_source.html#l00059">BsonElement.cs:60</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_1e261a42b4a2e33df58a15c412684b10.html">ETServer</a></li><li class="navelem"><a class="el" href="dir_473c270c995194c5ad99131d9c901f09.html">Server</a></li><li class="navelem"><a class="el" href="dir_ce426efcf63311ff42488fb2654bd4b4.html">ThirdParty</a></li><li class="navelem"><a class="el" href="dir_a37b2b5f9c8890cc9f6f8392fb0cdff3.html">MongoDBDriver</a></li><li class="navelem"><a class="el" href="dir_3c55113864d48cf4713f3b3197e2f720.html">MongoDB.Driver.Core</a></li><li class="navelem"><a class="el" href="dir_d802212cd82500a65b6eed8667c0c3ad.html">Core</a></li><li class="navelem"><a class="el" href="dir_6e9a1b981056330e79dfb430531fe50b.html">WireProtocol</a></li><li class="navelem"><a class="el" href="_command_using_command_message_wire_protocol_8cs.html">CommandUsingCommandMessageWireProtocol.cs</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:24:58 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

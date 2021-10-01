@@ -1,0 +1,812 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: Assets/Scripts/Libraries/ET/Base/RecyclableMemoryStream/RecyclableMemoryStream.cs 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_recyclable_memory_stream_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">RecyclableMemoryStream.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_recyclable_memory_stream_8cs.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">// The MIT License (MIT)</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">// </span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">// Copyright (c) 2015-2016 Microsoft</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">// </span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">// Permission is hereby granted, free of charge, to any person obtaining a copy</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">// of this software and associated documentation files (the &quot;Software&quot;), to deal</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">// in the Software without restriction, including without limitation the rights</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">// copies of the Software, and to permit persons to whom the Software is</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">// furnished to do so, subject to the following conditions:</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">// </span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">// The above copyright notice and this permission notice shall be included in all</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">// copies or substantial portions of the Software.</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">// </span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">// THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">// SOFTWARE.</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_microsoft_1_1_i_o.html">Microsoft.IO</a></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;{</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Collections.Generic;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Diagnostics.CodeAnalysis;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.IO;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Threading;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream.html">   60</a></span>&#160;    <span class="keyword">public</span> sealed <span class="keyword">class </span><a class="code" href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream.html">RecyclableMemoryStream</a> : MemoryStream</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    {</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="keyword">private</span> <span class="keyword">const</span> <span class="keywordtype">long</span> MaxStreamLength = Int32.MaxValue;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> readonly <span class="keywordtype">byte</span>[] emptyArray = <span class="keyword">new</span> <span class="keywordtype">byte</span>[0];</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <span class="keyword">private</span> readonly List&lt;byte[]&gt; blocks = <span class="keyword">new</span> List&lt;byte[]&gt;(1);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <span class="keyword">private</span> readonly <span class="keywordtype">byte</span>[] byteBuffer = <span class="keyword">new</span> <span class="keywordtype">byte</span>[1];</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <span class="keyword">private</span> readonly <a class="code" href="_deserialize_helper_8cs.html#ad59b2e51d86e62bb22b22d2a6e191df5">Guid</a> id;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <span class="keyword">private</span> readonly <a class="code" href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream_manager.html">RecyclableMemoryStreamManager</a> memoryManager;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        <span class="keyword">private</span> readonly <span class="keywordtype">string</span> tag;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        <span class="keyword">private</span> List&lt;byte[]&gt; dirtyBuffers;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        <span class="comment">// long to allow Interlocked.Read (for .NET Standard 1.4 compat)</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">long</span> disposedState;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">byte</span>[] largeBuffer;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        <span class="keyword">internal</span> <a class="code" href="_deserialize_helper_8cs.html#ad59b2e51d86e62bb22b22d2a6e191df5">Guid</a> Id</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        {</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;            <span class="keyword">get</span></div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;            {</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;                this.CheckDisposed();</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;                <span class="keywordflow">return</span> this.id;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;            }</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        }</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160; </div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        <span class="keyword">internal</span> <span class="keywordtype">string</span> Tag</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        {</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;            <span class="keyword">get</span></div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;            {</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;                this.CheckDisposed();</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;                <span class="keywordflow">return</span> this.tag;</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;            }</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;        }</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160; </div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        <span class="keyword">internal</span> <a class="code" href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream_manager.html">RecyclableMemoryStreamManager</a> MemoryManager</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        {</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;            <span class="keyword">get</span></div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;            {</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;                this.CheckDisposed();</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;                <span class="keywordflow">return</span> this.memoryManager;</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;            }</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;        }</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160; </div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;        <span class="keyword">internal</span> <span class="keywordtype">string</span> AllocationStack { <span class="keyword">get</span>; }</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160; </div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;        <span class="keyword">internal</span> <span class="keywordtype">string</span> DisposeStack { <span class="keyword">get</span>; <span class="keyword">private</span> <span class="keyword">set</span>; }</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160; </div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;<span class="preprocessor">        #region Constructors</span></div>
+<div class="line"><a name="l00158"></a><span class="lineno"><a class="line" href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream.html#ad05567c9ee8c57442c85495f24bfa485">  158</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream.html#ad05567c9ee8c57442c85495f24bfa485">RecyclableMemoryStream</a>(<a class="code" href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream_manager.html">RecyclableMemoryStreamManager</a> memoryManager)</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;            : this(memoryManager, null, 0, null) { }</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160; </div>
+<div class="line"><a name="l00166"></a><span class="lineno"><a class="line" href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream.html#a81ea7f3137bc8b38396d0b1e9033df74">  166</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream.html#a81ea7f3137bc8b38396d0b1e9033df74">RecyclableMemoryStream</a>(<a class="code" href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream_manager.html">RecyclableMemoryStreamManager</a> memoryManager, <span class="keywordtype">string</span> tag)</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;            : this(memoryManager, tag, 0, null) { }</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160; </div>
+<div class="line"><a name="l00175"></a><span class="lineno"><a class="line" href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream.html#a928458059562a9cb5cd367db0b88e6b0">  175</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream.html#a928458059562a9cb5cd367db0b88e6b0">RecyclableMemoryStream</a>(<a class="code" href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream_manager.html">RecyclableMemoryStreamManager</a> memoryManager, <span class="keywordtype">string</span> tag, <span class="keywordtype">int</span> requestedSize)</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;            : this(memoryManager, tag, requestedSize, null) { }</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160; </div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;        <span class="keyword">internal</span> <a class="code" href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream.html#ad05567c9ee8c57442c85495f24bfa485">RecyclableMemoryStream</a>(<a class="code" href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream_manager.html">RecyclableMemoryStreamManager</a> memoryManager, <span class="keywordtype">string</span> tag, <span class="keywordtype">int</span> requestedSize,</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;                                        <span class="keywordtype">byte</span>[] initialLargeBuffer)</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;            : base(emptyArray)</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;        {</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;            this.memoryManager = memoryManager;</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;            this.<span class="keywordtype">id</span> = <a class="code" href="_deserialize_helper_8cs.html#ad59b2e51d86e62bb22b22d2a6e191df5">Guid</a>.NewGuid();</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;            this.tag = tag;</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160; </div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;            <span class="keywordflow">if</span> (requestedSize &lt; memoryManager.<a class="code" href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream_manager.html#abec06ceec69e2e4c2fecf49e6e88a5be">BlockSize</a>)</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;            {</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;                requestedSize = memoryManager.<a class="code" href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream_manager.html#abec06ceec69e2e4c2fecf49e6e88a5be">BlockSize</a>;</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;            }</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160; </div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;            <span class="keywordflow">if</span> (initialLargeBuffer == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;            {</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;                this.EnsureCapacity(requestedSize);</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;            }</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;            {</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;                this.largeBuffer = initialLargeBuffer;</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;            }</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160; </div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;            <span class="keywordflow">if</span> (this.memoryManager.<a class="code" href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream_manager.html#ad5d6baab0812b507fb5928c22bf62292">GenerateCallStacks</a>)</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;            {</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;                this.AllocationStack = Environment.StackTrace;</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;            }</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160; </div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;            RecyclableMemoryStreamManager.Events.Writer.MemoryStreamCreated(this.<span class="keywordtype">id</span>, this.tag, requestedSize);</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;            this.memoryManager.ReportStreamCreated();</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;        }</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;<span class="preprocessor">        #endregion</span></div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160; </div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;<span class="preprocessor">        #region Dispose and Finalize</span></div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;        ~<a class="code" href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream.html#ad05567c9ee8c57442c85495f24bfa485">RecyclableMemoryStream</a>()</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;        {</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;            this.<a class="code" href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream.html#a3f6236dafcb59e1ef583fd4d04eccf81">Dispose</a>(<span class="keyword">false</span>);</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;        }</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160; </div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;        [SuppressMessage(<span class="stringliteral">&quot;Microsoft.Usage&quot;</span>, <span class="stringliteral">&quot;CA1816:CallGCSuppressFinalizeCorrectly&quot;</span>,</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;            Justification = <span class="stringliteral">&quot;We have different disposal semantics, so SuppressFinalize is in a different spot.&quot;</span>)]</div>
+<div class="line"><a name="l00229"></a><span class="lineno"><a class="line" href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream.html#a3f6236dafcb59e1ef583fd4d04eccf81">  229</a></span>&#160;        <span class="keyword">protected</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code" href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream.html#a3f6236dafcb59e1ef583fd4d04eccf81">Dispose</a>(<span class="keywordtype">bool</span> disposing)</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;        {</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;            <span class="keywordflow">if</span> (Interlocked.CompareExchange(ref <span class="keyword">this</span>.disposedState, 1, 0) != 0)</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;            {</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;                <span class="keywordtype">string</span> doubleDisposeStack = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;                <span class="keywordflow">if</span> (this.memoryManager.<a class="code" href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream_manager.html#ad5d6baab0812b507fb5928c22bf62292">GenerateCallStacks</a>)</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;                {</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;                    doubleDisposeStack = Environment.StackTrace;</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;                }</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160; </div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;                <a class="code" href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream_manager.html">RecyclableMemoryStreamManager</a>.<a class="code" href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream_manager_1_1_events.html">Events</a>.<a class="code" href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream_manager_1_1_events.html#a5172c2348c5d02bd8adb00be25c26466">Writer</a>.<a class="code" href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream_manager_1_1_events.html#a12e3f63a7224d53f58ae638fc05ea537">MemoryStreamDoubleDispose</a>(this.<span class="keywordtype">id</span>, this.tag,</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;                                                                                     this.AllocationStack,</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;                                                                                     this.DisposeStack,</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;                                                                                     doubleDisposeStack);</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;                <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;            }</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160; </div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;            <a class="code" href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream_manager.html">RecyclableMemoryStreamManager</a>.<a class="code" href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream_manager_1_1_events.html">Events</a>.<a class="code" href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream_manager_1_1_events.html#a5172c2348c5d02bd8adb00be25c26466">Writer</a>.<a class="code" href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream_manager_1_1_events.html#a7bb2cabbcb4890392e074baf3f01cb8f">MemoryStreamDisposed</a>(this.<span class="keywordtype">id</span>, this.tag);</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160; </div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;            <span class="keywordflow">if</span> (this.memoryManager.<a class="code" href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream_manager.html#ad5d6baab0812b507fb5928c22bf62292">GenerateCallStacks</a>)</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;            {</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;                this.DisposeStack = Environment.StackTrace;</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;            }</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160; </div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;            <span class="keywordflow">if</span> (disposing)</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;            {</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;                this.memoryManager.ReportStreamDisposed();</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160; </div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;                GC.SuppressFinalize(<span class="keyword">this</span>);</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;            }</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;            {</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;                <span class="comment">// We&#39;re being finalized.</span></div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160; </div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;                <a class="code" href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream_manager.html">RecyclableMemoryStreamManager</a>.<a class="code" href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream_manager_1_1_events.html">Events</a>.<a class="code" href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream_manager_1_1_events.html#a5172c2348c5d02bd8adb00be25c26466">Writer</a>.<a class="code" href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream_manager_1_1_events.html#ac44d6f2a6b6889ce40d981fa2df5f5ba">MemoryStreamFinalized</a>(this.<span class="keywordtype">id</span>, this.tag, this.AllocationStack);</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160; </div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;<span class="preprocessor">#if !NETSTANDARD1_4</span></div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;                <span class="keywordflow">if</span> (<a class="code" href="_i_message_adaptor_8cs.html#a005712ac87927f1c9f5a95d35c4bc855">AppDomain</a>.CurrentDomain.IsFinalizingForUnload())</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;                {</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;                    <span class="comment">// If we&#39;re being finalized because of a shutdown, don&#39;t go any further.</span></div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;                    <span class="comment">// We have no idea what&#39;s already been cleaned up. Triggering events may cause</span></div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;                    <span class="comment">// a crash.</span></div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;                    base.Dispose(disposing);</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;                    <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;                }</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160; </div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;                this.memoryManager.ReportStreamFinalized();</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;            }</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160; </div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;            this.memoryManager.ReportStreamLength(this.length);</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160; </div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;            <span class="keywordflow">if</span> (this.largeBuffer != <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;            {</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;                this.memoryManager.ReturnLargeBuffer(this.largeBuffer, this.tag);</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;            }</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160; </div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;            <span class="keywordflow">if</span> (this.dirtyBuffers != <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;            {</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;                <span class="keywordflow">foreach</span> (var buffer <span class="keywordflow">in</span> this.dirtyBuffers)</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;                {</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;                    this.memoryManager.ReturnLargeBuffer(buffer, this.tag);</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;                }</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;            }</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160; </div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;            this.memoryManager.ReturnBlocks(this.blocks, this.tag);</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;            this.blocks.Clear();</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160; </div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;            base.Dispose(disposing);</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;        }</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160; </div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;<span class="preprocessor">#if NETSTANDARD1_4</span></div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream.html#a8b9a7fc20740b4f1a1372e6a1dc72561">Close</a>()</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00306"></a><span class="lineno"><a class="line" href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream.html#a8b9a7fc20740b4f1a1372e6a1dc72561">  306</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code" href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream.html#a8b9a7fc20740b4f1a1372e6a1dc72561">Close</a>()</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;        {</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;            this.<a class="code" href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream.html#a3f6236dafcb59e1ef583fd4d04eccf81">Dispose</a>(<span class="keyword">true</span>);</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;        }</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;<span class="preprocessor">        #endregion</span></div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160; </div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;<span class="preprocessor">        #region MemoryStream overrides</span></div>
+<div class="line"><a name="l00324"></a><span class="lineno"><a class="line" href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream.html#a38916a310a718a763267f1a92dacaf14">  324</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">int</span> <a class="code" href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream.html#a38916a310a718a763267f1a92dacaf14">Capacity</a></div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;        {</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;            <span class="keyword">get</span></div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;            {</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;                this.CheckDisposed();</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;                <span class="keywordflow">if</span> (this.largeBuffer != <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;                {</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;                    <span class="keywordflow">return</span> this.largeBuffer.Length;</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;                }</div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160; </div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;                <span class="keywordtype">long</span> size = (long)this.blocks.Count * <span class="keyword">this</span>.memoryManager.BlockSize;</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;                return (<span class="keywordtype">int</span>)<a class="code" href="namespace_p_f.html#a6cf89bee2694a0f75de4233403192b07">Math</a>.Min(<span class="keywordtype">int</span>.MaxValue, size);</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;            }</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;            <span class="keyword">set</span></div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;            {</div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;                this.CheckDisposed();</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;                this.EnsureCapacity(value);</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;            }</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;        }</div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160; </div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">int</span> length;</div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160; </div>
+<div class="line"><a name="l00350"></a><span class="lineno"><a class="line" href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream.html#a868988898b4a2a4727b371c06e7c4034">  350</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">long</span> <a class="code" href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream.html#a868988898b4a2a4727b371c06e7c4034">Length</a></div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;        {</div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;            <span class="keyword">get</span></div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;            {</div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;                this.CheckDisposed();</div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;                <span class="keywordflow">return</span> this.length;</div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;            }</div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;        }</div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160; </div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">int</span> position;</div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160; </div>
+<div class="line"><a name="l00365"></a><span class="lineno"><a class="line" href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream.html#ad8bf2c20072af98b81fb36dfa4ab3974">  365</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">long</span> <a class="code" href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream.html#ad8bf2c20072af98b81fb36dfa4ab3974">Position</a></div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;        {</div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;            <span class="keyword">get</span></div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;            {</div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;                this.CheckDisposed();</div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;                <span class="keywordflow">return</span> this.position;</div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;            }</div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;            <span class="keyword">set</span></div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;            {</div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;                this.CheckDisposed();</div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;                <span class="keywordflow">if</span> (value &lt; 0)</div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;                {</div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;                    <span class="keywordflow">throw</span> <span class="keyword">new</span> ArgumentOutOfRangeException(<span class="stringliteral">&quot;value&quot;</span>, <span class="stringliteral">&quot;value must be non-negative&quot;</span>);</div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;                }</div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160; </div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;                <span class="keywordflow">if</span> (value &gt; MaxStreamLength)</div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;                {</div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;                    <span class="keywordflow">throw</span> <span class="keyword">new</span> ArgumentOutOfRangeException(<span class="stringliteral">&quot;value&quot;</span>, <span class="stringliteral">&quot;value cannot be more than &quot;</span> + MaxStreamLength);</div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;                }</div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160; </div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;                this.position = (int)value;</div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;            }</div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;        }</div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160; </div>
+<div class="line"><a name="l00392"></a><span class="lineno"><a class="line" href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream.html#a9d0d7534f9a83f51587cd9da631177bb">  392</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">bool</span> <a class="code" href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream.html#a9d0d7534f9a83f51587cd9da631177bb">CanRead</a> =&gt; !this.Disposed;</div>
+<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160; </div>
+<div class="line"><a name="l00397"></a><span class="lineno"><a class="line" href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream.html#ac9a06fdd9197f5d040f9ec2a5714c36d">  397</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">bool</span> <a class="code" href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream.html#ac9a06fdd9197f5d040f9ec2a5714c36d">CanSeek</a> =&gt; !this.Disposed;</div>
+<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160; </div>
+<div class="line"><a name="l00402"></a><span class="lineno"><a class="line" href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream.html#a14b8ab25732ce99a42ab127456958ddc">  402</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">bool</span> <a class="code" href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream.html#a14b8ab25732ce99a42ab127456958ddc">CanTimeout</a> =&gt; <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160; </div>
+<div class="line"><a name="l00407"></a><span class="lineno"><a class="line" href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream.html#ac33a6ae483d341192e6175f08fb2cda8">  407</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">bool</span> <a class="code" href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream.html#ac33a6ae483d341192e6175f08fb2cda8">CanWrite</a> =&gt; !this.Disposed;</div>
+<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160; </div>
+<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;<span class="preprocessor">#if NETSTANDARD1_4</span></div>
+<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;        <span class="keyword">public</span> <span class="keywordtype">byte</span>[] <a class="code" href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream.html#a0619775bcb14bc838b8d5791b25a0a1f">GetBuffer</a>()</div>
+<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00420"></a><span class="lineno"><a class="line" href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream.html#a0619775bcb14bc838b8d5791b25a0a1f">  420</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">byte</span>[] <a class="code" href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream.html#a0619775bcb14bc838b8d5791b25a0a1f">GetBuffer</a>()</div>
+<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;        {</div>
+<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;            this.CheckDisposed();</div>
+<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160; </div>
+<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;            <span class="keywordflow">if</span> (this.largeBuffer != <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;            {</div>
+<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;                <span class="keywordflow">return</span> this.largeBuffer;</div>
+<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;            }</div>
+<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160; </div>
+<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;            <span class="keywordflow">if</span> (this.blocks.Count == 1)</div>
+<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;            {</div>
+<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;                <span class="keywordflow">return</span> this.blocks[0];</div>
+<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;            }</div>
+<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160; </div>
+<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;            <span class="comment">// Buffer needs to reflect the capacity, not the length, because</span></div>
+<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;            <span class="comment">// it&#39;s possible that people will manipulate the buffer directly</span></div>
+<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;            <span class="comment">// and set the length afterward. Capacity sets the expectation</span></div>
+<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;            <span class="comment">// for the size of the buffer.</span></div>
+<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;            var newBuffer = this.memoryManager.GetLargeBuffer(this.<a class="code" href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream.html#a38916a310a718a763267f1a92dacaf14">Capacity</a>, this.tag);</div>
+<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160; </div>
+<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;            <span class="comment">// InternalRead will check for existence of largeBuffer, so make sure we</span></div>
+<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;            <span class="comment">// don&#39;t set it until after we&#39;ve copied the data.</span></div>
+<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;            this.InternalRead(newBuffer, 0, this.length, 0);</div>
+<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;            this.largeBuffer = newBuffer;</div>
+<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160; </div>
+<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;            <span class="keywordflow">if</span> (this.blocks.Count &gt; 0 &amp;&amp; <span class="keyword">this</span>.memoryManager.AggressiveBufferReturn)</div>
+<div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;            {</div>
+<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;                this.memoryManager.ReturnBlocks(this.blocks, this.tag);</div>
+<div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;                this.blocks.Clear();</div>
+<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;            }</div>
+<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160; </div>
+<div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;            <span class="keywordflow">return</span> this.largeBuffer;</div>
+<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;        }</div>
+<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160; </div>
+<div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160;<span class="preprocessor">#pragma warning disable CS0809</span></div>
+<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;        [Obsolete(<span class="stringliteral">&quot;This method has degraded performance vs. GetBuffer and should be avoided.&quot;</span>)]</div>
+<div class="line"><a name="l00463"></a><span class="lineno"><a class="line" href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream.html#afc53ff6988b4ddb36a455548df49c4ce">  463</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">byte</span>[] <a class="code" href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream.html#afc53ff6988b4ddb36a455548df49c4ce">ToArray</a>()</div>
+<div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160;        {</div>
+<div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160;            this.CheckDisposed();</div>
+<div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160;            var newBuffer = <span class="keyword">new</span> <span class="keywordtype">byte</span>[this.<a class="code" href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream.html#a868988898b4a2a4727b371c06e7c4034">Length</a>];</div>
+<div class="line"><a name="l00467"></a><span class="lineno">  467</span>&#160; </div>
+<div class="line"><a name="l00468"></a><span class="lineno">  468</span>&#160;            this.InternalRead(newBuffer, 0, this.length, 0);</div>
+<div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160;            <span class="keywordtype">string</span> stack = this.memoryManager.<a class="code" href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream_manager.html#ad5d6baab0812b507fb5928c22bf62292">GenerateCallStacks</a> ? Environment.StackTrace : <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160;            <a class="code" href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream_manager.html">RecyclableMemoryStreamManager</a>.<a class="code" href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream_manager_1_1_events.html">Events</a>.<a class="code" href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream_manager_1_1_events.html#a5172c2348c5d02bd8adb00be25c26466">Writer</a>.<a class="code" href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream_manager_1_1_events.html#abc76b742c7b1de051ed000cd08e5af56">MemoryStreamToArray</a>(this.<span class="keywordtype">id</span>, this.tag, stack, 0);</div>
+<div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160;            this.memoryManager.ReportStreamToArray();</div>
+<div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160; </div>
+<div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;            <span class="keywordflow">return</span> newBuffer;</div>
+<div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;        }</div>
+<div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160;<span class="preprocessor">#pragma warning restore CS0809</span></div>
+<div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160; </div>
+<div class="line"><a name="l00488"></a><span class="lineno"><a class="line" href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream.html#a8ade8b901a669ac71b2f990f7e91e853">  488</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">int</span> <a class="code" href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream.html#a8ade8b901a669ac71b2f990f7e91e853">Read</a>(<span class="keywordtype">byte</span>[] buffer, <span class="keywordtype">int</span> offset, <span class="keywordtype">int</span> count)</div>
+<div class="line"><a name="l00489"></a><span class="lineno">  489</span>&#160;        {</div>
+<div class="line"><a name="l00490"></a><span class="lineno">  490</span>&#160;            <span class="keywordflow">return</span> this.<a class="code" href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream.html#ad487621cf028bfe85d11795d4eaab9e2">SafeRead</a>(buffer, offset, count, ref this.position);</div>
+<div class="line"><a name="l00491"></a><span class="lineno">  491</span>&#160;        }</div>
+<div class="line"><a name="l00492"></a><span class="lineno">  492</span>&#160; </div>
+<div class="line"><a name="l00505"></a><span class="lineno"><a class="line" href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream.html#ad487621cf028bfe85d11795d4eaab9e2">  505</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">int</span> <a class="code" href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream.html#ad487621cf028bfe85d11795d4eaab9e2">SafeRead</a>(<span class="keywordtype">byte</span>[] buffer, <span class="keywordtype">int</span> offset, <span class="keywordtype">int</span> count, ref <span class="keywordtype">int</span> streamPosition)</div>
+<div class="line"><a name="l00506"></a><span class="lineno">  506</span>&#160;        {</div>
+<div class="line"><a name="l00507"></a><span class="lineno">  507</span>&#160;            this.CheckDisposed();</div>
+<div class="line"><a name="l00508"></a><span class="lineno">  508</span>&#160;            <span class="keywordflow">if</span> (buffer == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00509"></a><span class="lineno">  509</span>&#160;            {</div>
+<div class="line"><a name="l00510"></a><span class="lineno">  510</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> ArgumentNullException(nameof(buffer));</div>
+<div class="line"><a name="l00511"></a><span class="lineno">  511</span>&#160;            }</div>
+<div class="line"><a name="l00512"></a><span class="lineno">  512</span>&#160; </div>
+<div class="line"><a name="l00513"></a><span class="lineno">  513</span>&#160;            <span class="keywordflow">if</span> (offset &lt; 0)</div>
+<div class="line"><a name="l00514"></a><span class="lineno">  514</span>&#160;            {</div>
+<div class="line"><a name="l00515"></a><span class="lineno">  515</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> ArgumentOutOfRangeException(nameof(offset), <span class="stringliteral">&quot;offset cannot be negative&quot;</span>);</div>
+<div class="line"><a name="l00516"></a><span class="lineno">  516</span>&#160;            }</div>
+<div class="line"><a name="l00517"></a><span class="lineno">  517</span>&#160; </div>
+<div class="line"><a name="l00518"></a><span class="lineno">  518</span>&#160;            <span class="keywordflow">if</span> (count &lt; 0)</div>
+<div class="line"><a name="l00519"></a><span class="lineno">  519</span>&#160;            {</div>
+<div class="line"><a name="l00520"></a><span class="lineno">  520</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> ArgumentOutOfRangeException(nameof(count), <span class="stringliteral">&quot;count cannot be negative&quot;</span>);</div>
+<div class="line"><a name="l00521"></a><span class="lineno">  521</span>&#160;            }</div>
+<div class="line"><a name="l00522"></a><span class="lineno">  522</span>&#160; </div>
+<div class="line"><a name="l00523"></a><span class="lineno">  523</span>&#160;            <span class="keywordflow">if</span> (offset + count &gt; buffer.Length)</div>
+<div class="line"><a name="l00524"></a><span class="lineno">  524</span>&#160;            {</div>
+<div class="line"><a name="l00525"></a><span class="lineno">  525</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> ArgumentException(<span class="stringliteral">&quot;buffer length must be at least offset + count&quot;</span>);</div>
+<div class="line"><a name="l00526"></a><span class="lineno">  526</span>&#160;            }</div>
+<div class="line"><a name="l00527"></a><span class="lineno">  527</span>&#160; </div>
+<div class="line"><a name="l00528"></a><span class="lineno">  528</span>&#160;            <span class="keywordtype">int</span> amountRead = this.InternalRead(buffer, offset, count, streamPosition);</div>
+<div class="line"><a name="l00529"></a><span class="lineno">  529</span>&#160;            streamPosition += amountRead;</div>
+<div class="line"><a name="l00530"></a><span class="lineno">  530</span>&#160;            <span class="keywordflow">return</span> amountRead;</div>
+<div class="line"><a name="l00531"></a><span class="lineno">  531</span>&#160;        }</div>
+<div class="line"><a name="l00532"></a><span class="lineno">  532</span>&#160; </div>
+<div class="line"><a name="l00543"></a><span class="lineno"><a class="line" href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream.html#acee500d60bddaa3cf8a17f40ed4ce479">  543</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code" href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream.html#acee500d60bddaa3cf8a17f40ed4ce479">Write</a>(<span class="keywordtype">byte</span>[] buffer, <span class="keywordtype">int</span> offset, <span class="keywordtype">int</span> count)</div>
+<div class="line"><a name="l00544"></a><span class="lineno">  544</span>&#160;        {</div>
+<div class="line"><a name="l00545"></a><span class="lineno">  545</span>&#160;            this.CheckDisposed();</div>
+<div class="line"><a name="l00546"></a><span class="lineno">  546</span>&#160;            <span class="keywordflow">if</span> (buffer == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00547"></a><span class="lineno">  547</span>&#160;            {</div>
+<div class="line"><a name="l00548"></a><span class="lineno">  548</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> ArgumentNullException(nameof(buffer));</div>
+<div class="line"><a name="l00549"></a><span class="lineno">  549</span>&#160;            }</div>
+<div class="line"><a name="l00550"></a><span class="lineno">  550</span>&#160; </div>
+<div class="line"><a name="l00551"></a><span class="lineno">  551</span>&#160;            <span class="keywordflow">if</span> (offset &lt; 0)</div>
+<div class="line"><a name="l00552"></a><span class="lineno">  552</span>&#160;            {</div>
+<div class="line"><a name="l00553"></a><span class="lineno">  553</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> ArgumentOutOfRangeException(nameof(offset), offset,</div>
+<div class="line"><a name="l00554"></a><span class="lineno">  554</span>&#160;                                                      <span class="stringliteral">&quot;Offset must be in the range of 0 - buffer.Length-1&quot;</span>);</div>
+<div class="line"><a name="l00555"></a><span class="lineno">  555</span>&#160;            }</div>
+<div class="line"><a name="l00556"></a><span class="lineno">  556</span>&#160; </div>
+<div class="line"><a name="l00557"></a><span class="lineno">  557</span>&#160;            <span class="keywordflow">if</span> (count &lt; 0)</div>
+<div class="line"><a name="l00558"></a><span class="lineno">  558</span>&#160;            {</div>
+<div class="line"><a name="l00559"></a><span class="lineno">  559</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> ArgumentOutOfRangeException(nameof(count), count, <span class="stringliteral">&quot;count must be non-negative&quot;</span>);</div>
+<div class="line"><a name="l00560"></a><span class="lineno">  560</span>&#160;            }</div>
+<div class="line"><a name="l00561"></a><span class="lineno">  561</span>&#160; </div>
+<div class="line"><a name="l00562"></a><span class="lineno">  562</span>&#160;            <span class="keywordflow">if</span> (count + offset &gt; buffer.Length)</div>
+<div class="line"><a name="l00563"></a><span class="lineno">  563</span>&#160;            {</div>
+<div class="line"><a name="l00564"></a><span class="lineno">  564</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> ArgumentException(<span class="stringliteral">&quot;count must be greater than buffer.Length - offset&quot;</span>);</div>
+<div class="line"><a name="l00565"></a><span class="lineno">  565</span>&#160;            }</div>
+<div class="line"><a name="l00566"></a><span class="lineno">  566</span>&#160; </div>
+<div class="line"><a name="l00567"></a><span class="lineno">  567</span>&#160;            <span class="keywordtype">int</span> blockSize = this.memoryManager.<a class="code" href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream_manager.html#abec06ceec69e2e4c2fecf49e6e88a5be">BlockSize</a>;</div>
+<div class="line"><a name="l00568"></a><span class="lineno">  568</span>&#160;            <span class="keywordtype">long</span> end = (long)this.position + count;</div>
+<div class="line"><a name="l00569"></a><span class="lineno">  569</span>&#160;            <span class="comment">// Check for overflow</span></div>
+<div class="line"><a name="l00570"></a><span class="lineno">  570</span>&#160;            <span class="keywordflow">if</span> (end &gt; MaxStreamLength)</div>
+<div class="line"><a name="l00571"></a><span class="lineno">  571</span>&#160;            {</div>
+<div class="line"><a name="l00572"></a><span class="lineno">  572</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> IOException(<span class="stringliteral">&quot;Maximum capacity exceeded&quot;</span>);</div>
+<div class="line"><a name="l00573"></a><span class="lineno">  573</span>&#160;            }</div>
+<div class="line"><a name="l00574"></a><span class="lineno">  574</span>&#160; </div>
+<div class="line"><a name="l00575"></a><span class="lineno">  575</span>&#160;            <span class="keywordtype">long</span> requiredBuffers = (end + blockSize - 1) / blockSize;</div>
+<div class="line"><a name="l00576"></a><span class="lineno">  576</span>&#160; </div>
+<div class="line"><a name="l00577"></a><span class="lineno">  577</span>&#160;            <span class="keywordflow">if</span> (requiredBuffers * blockSize &gt; MaxStreamLength)</div>
+<div class="line"><a name="l00578"></a><span class="lineno">  578</span>&#160;            {</div>
+<div class="line"><a name="l00579"></a><span class="lineno">  579</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> IOException(<span class="stringliteral">&quot;Maximum capacity exceeded&quot;</span>);</div>
+<div class="line"><a name="l00580"></a><span class="lineno">  580</span>&#160;            }</div>
+<div class="line"><a name="l00581"></a><span class="lineno">  581</span>&#160; </div>
+<div class="line"><a name="l00582"></a><span class="lineno">  582</span>&#160;            this.EnsureCapacity((<span class="keywordtype">int</span>)end);</div>
+<div class="line"><a name="l00583"></a><span class="lineno">  583</span>&#160; </div>
+<div class="line"><a name="l00584"></a><span class="lineno">  584</span>&#160;            <span class="keywordflow">if</span> (this.largeBuffer == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00585"></a><span class="lineno">  585</span>&#160;            {</div>
+<div class="line"><a name="l00586"></a><span class="lineno">  586</span>&#160;                <span class="keywordtype">int</span> bytesRemaining = count;</div>
+<div class="line"><a name="l00587"></a><span class="lineno">  587</span>&#160;                <span class="keywordtype">int</span> bytesWritten = 0;</div>
+<div class="line"><a name="l00588"></a><span class="lineno">  588</span>&#160;                var blockAndOffset = this.GetBlockAndRelativeOffset(this.position);</div>
+<div class="line"><a name="l00589"></a><span class="lineno">  589</span>&#160; </div>
+<div class="line"><a name="l00590"></a><span class="lineno">  590</span>&#160;                <span class="keywordflow">while</span> (bytesRemaining &gt; 0)</div>
+<div class="line"><a name="l00591"></a><span class="lineno">  591</span>&#160;                {</div>
+<div class="line"><a name="l00592"></a><span class="lineno">  592</span>&#160;                    <span class="keywordtype">byte</span>[] currentBlock = this.blocks[blockAndOffset.Block];</div>
+<div class="line"><a name="l00593"></a><span class="lineno">  593</span>&#160;                    <span class="keywordtype">int</span> remainingInBlock = blockSize - blockAndOffset.Offset;</div>
+<div class="line"><a name="l00594"></a><span class="lineno">  594</span>&#160;                    <span class="keywordtype">int</span> amountToWriteInBlock = <a class="code" href="namespace_p_f.html#a6cf89bee2694a0f75de4233403192b07">Math</a>.Min(remainingInBlock, bytesRemaining);</div>
+<div class="line"><a name="l00595"></a><span class="lineno">  595</span>&#160; </div>
+<div class="line"><a name="l00596"></a><span class="lineno">  596</span>&#160;                    Buffer.BlockCopy(buffer, offset + bytesWritten, currentBlock, blockAndOffset.Offset,</div>
+<div class="line"><a name="l00597"></a><span class="lineno">  597</span>&#160;                                     amountToWriteInBlock);</div>
+<div class="line"><a name="l00598"></a><span class="lineno">  598</span>&#160; </div>
+<div class="line"><a name="l00599"></a><span class="lineno">  599</span>&#160;                    bytesRemaining -= amountToWriteInBlock;</div>
+<div class="line"><a name="l00600"></a><span class="lineno">  600</span>&#160;                    bytesWritten += amountToWriteInBlock;</div>
+<div class="line"><a name="l00601"></a><span class="lineno">  601</span>&#160; </div>
+<div class="line"><a name="l00602"></a><span class="lineno">  602</span>&#160;                    ++blockAndOffset.Block;</div>
+<div class="line"><a name="l00603"></a><span class="lineno">  603</span>&#160;                    blockAndOffset.Offset = 0;</div>
+<div class="line"><a name="l00604"></a><span class="lineno">  604</span>&#160;                }</div>
+<div class="line"><a name="l00605"></a><span class="lineno">  605</span>&#160;            }</div>
+<div class="line"><a name="l00606"></a><span class="lineno">  606</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00607"></a><span class="lineno">  607</span>&#160;            {</div>
+<div class="line"><a name="l00608"></a><span class="lineno">  608</span>&#160;                Buffer.BlockCopy(buffer, offset, this.largeBuffer, this.position, count);</div>
+<div class="line"><a name="l00609"></a><span class="lineno">  609</span>&#160;            }</div>
+<div class="line"><a name="l00610"></a><span class="lineno">  610</span>&#160;            this.position = (int)end;</div>
+<div class="line"><a name="l00611"></a><span class="lineno">  611</span>&#160;            this.length = <a class="code" href="namespace_p_f.html#a6cf89bee2694a0f75de4233403192b07">Math</a>.Max(this.position, this.length);</div>
+<div class="line"><a name="l00612"></a><span class="lineno">  612</span>&#160;        }</div>
+<div class="line"><a name="l00613"></a><span class="lineno">  613</span>&#160; </div>
+<div class="line"><a name="l00617"></a><span class="lineno"><a class="line" href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream.html#af79052ca9641bc87ca2380dc9e1054f2">  617</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">string</span> <a class="code" href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream.html#af79052ca9641bc87ca2380dc9e1054f2">ToString</a>()</div>
+<div class="line"><a name="l00618"></a><span class="lineno">  618</span>&#160;        {</div>
+<div class="line"><a name="l00619"></a><span class="lineno">  619</span>&#160;            <span class="keywordflow">return</span> $<span class="stringliteral">&quot;Id = {this.Id}, Tag = {this.Tag}, Length = {this.Length:N0} bytes&quot;</span>;</div>
+<div class="line"><a name="l00620"></a><span class="lineno">  620</span>&#160;        }</div>
+<div class="line"><a name="l00621"></a><span class="lineno">  621</span>&#160; </div>
+<div class="line"><a name="l00627"></a><span class="lineno"><a class="line" href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream.html#aaad4f7da6827d10cd0e199c47f7c1d65">  627</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code" href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream.html#aaad4f7da6827d10cd0e199c47f7c1d65">WriteByte</a>(<span class="keywordtype">byte</span> value)</div>
+<div class="line"><a name="l00628"></a><span class="lineno">  628</span>&#160;        {</div>
+<div class="line"><a name="l00629"></a><span class="lineno">  629</span>&#160;            this.CheckDisposed();</div>
+<div class="line"><a name="l00630"></a><span class="lineno">  630</span>&#160;            this.byteBuffer[0] = value;</div>
+<div class="line"><a name="l00631"></a><span class="lineno">  631</span>&#160;            this.<a class="code" href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream.html#acee500d60bddaa3cf8a17f40ed4ce479">Write</a>(this.byteBuffer, 0, 1);</div>
+<div class="line"><a name="l00632"></a><span class="lineno">  632</span>&#160;        }</div>
+<div class="line"><a name="l00633"></a><span class="lineno">  633</span>&#160; </div>
+<div class="line"><a name="l00639"></a><span class="lineno"><a class="line" href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream.html#a62ac85d46d849597aa962b470426b2e5">  639</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">int</span> <a class="code" href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream.html#a62ac85d46d849597aa962b470426b2e5">ReadByte</a>()</div>
+<div class="line"><a name="l00640"></a><span class="lineno">  640</span>&#160;        {</div>
+<div class="line"><a name="l00641"></a><span class="lineno">  641</span>&#160;            <span class="keywordflow">return</span> this.<a class="code" href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream.html#a797f2d6ec674ee890ae8876bfc762743">SafeReadByte</a>(ref this.position);</div>
+<div class="line"><a name="l00642"></a><span class="lineno">  642</span>&#160;        }</div>
+<div class="line"><a name="l00643"></a><span class="lineno">  643</span>&#160; </div>
+<div class="line"><a name="l00650"></a><span class="lineno"><a class="line" href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream.html#a797f2d6ec674ee890ae8876bfc762743">  650</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">int</span> <a class="code" href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream.html#a797f2d6ec674ee890ae8876bfc762743">SafeReadByte</a>(ref <span class="keywordtype">int</span> streamPosition)</div>
+<div class="line"><a name="l00651"></a><span class="lineno">  651</span>&#160;        {</div>
+<div class="line"><a name="l00652"></a><span class="lineno">  652</span>&#160;            this.CheckDisposed();</div>
+<div class="line"><a name="l00653"></a><span class="lineno">  653</span>&#160;            <span class="keywordflow">if</span> (streamPosition == this.length)</div>
+<div class="line"><a name="l00654"></a><span class="lineno">  654</span>&#160;            {</div>
+<div class="line"><a name="l00655"></a><span class="lineno">  655</span>&#160;                <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a name="l00656"></a><span class="lineno">  656</span>&#160;            }</div>
+<div class="line"><a name="l00657"></a><span class="lineno">  657</span>&#160;            <span class="keywordtype">byte</span> value;</div>
+<div class="line"><a name="l00658"></a><span class="lineno">  658</span>&#160;            <span class="keywordflow">if</span> (this.largeBuffer == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00659"></a><span class="lineno">  659</span>&#160;            {</div>
+<div class="line"><a name="l00660"></a><span class="lineno">  660</span>&#160;                var blockAndOffset = this.GetBlockAndRelativeOffset(streamPosition);</div>
+<div class="line"><a name="l00661"></a><span class="lineno">  661</span>&#160;                value = this.blocks[blockAndOffset.Block][blockAndOffset.Offset];</div>
+<div class="line"><a name="l00662"></a><span class="lineno">  662</span>&#160;            }</div>
+<div class="line"><a name="l00663"></a><span class="lineno">  663</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00664"></a><span class="lineno">  664</span>&#160;            {</div>
+<div class="line"><a name="l00665"></a><span class="lineno">  665</span>&#160;                value = this.largeBuffer[streamPosition];</div>
+<div class="line"><a name="l00666"></a><span class="lineno">  666</span>&#160;            }</div>
+<div class="line"><a name="l00667"></a><span class="lineno">  667</span>&#160;            streamPosition++;</div>
+<div class="line"><a name="l00668"></a><span class="lineno">  668</span>&#160;            <span class="keywordflow">return</span> value;</div>
+<div class="line"><a name="l00669"></a><span class="lineno">  669</span>&#160;        }</div>
+<div class="line"><a name="l00670"></a><span class="lineno">  670</span>&#160; </div>
+<div class="line"><a name="l00676"></a><span class="lineno"><a class="line" href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream.html#a816755404164bb8c29c6f079dfdd23b9">  676</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code" href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream.html#a816755404164bb8c29c6f079dfdd23b9">SetLength</a>(<span class="keywordtype">long</span> value)</div>
+<div class="line"><a name="l00677"></a><span class="lineno">  677</span>&#160;        {</div>
+<div class="line"><a name="l00678"></a><span class="lineno">  678</span>&#160;            this.CheckDisposed();</div>
+<div class="line"><a name="l00679"></a><span class="lineno">  679</span>&#160;            <span class="keywordflow">if</span> (value &lt; 0 || value &gt; MaxStreamLength)</div>
+<div class="line"><a name="l00680"></a><span class="lineno">  680</span>&#160;            {</div>
+<div class="line"><a name="l00681"></a><span class="lineno">  681</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> ArgumentOutOfRangeException(nameof(value),</div>
+<div class="line"><a name="l00682"></a><span class="lineno">  682</span>&#160;                                                      <span class="stringliteral">&quot;value must be non-negative and at most &quot;</span> + MaxStreamLength);</div>
+<div class="line"><a name="l00683"></a><span class="lineno">  683</span>&#160;            }</div>
+<div class="line"><a name="l00684"></a><span class="lineno">  684</span>&#160; </div>
+<div class="line"><a name="l00685"></a><span class="lineno">  685</span>&#160;            this.EnsureCapacity((<span class="keywordtype">int</span>)value);</div>
+<div class="line"><a name="l00686"></a><span class="lineno">  686</span>&#160; </div>
+<div class="line"><a name="l00687"></a><span class="lineno">  687</span>&#160;            this.length = (int)value;</div>
+<div class="line"><a name="l00688"></a><span class="lineno">  688</span>&#160;            <span class="keywordflow">if</span> (this.position &gt; value)</div>
+<div class="line"><a name="l00689"></a><span class="lineno">  689</span>&#160;            {</div>
+<div class="line"><a name="l00690"></a><span class="lineno">  690</span>&#160;                this.position = (int)value;</div>
+<div class="line"><a name="l00691"></a><span class="lineno">  691</span>&#160;            }</div>
+<div class="line"><a name="l00692"></a><span class="lineno">  692</span>&#160;        }</div>
+<div class="line"><a name="l00693"></a><span class="lineno">  693</span>&#160; </div>
+<div class="line"><a name="l00704"></a><span class="lineno"><a class="line" href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream.html#a824000bb2a9f0f87e1f252bf417764e5">  704</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">long</span> <a class="code" href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream.html#a824000bb2a9f0f87e1f252bf417764e5">Seek</a>(<span class="keywordtype">long</span> offset, SeekOrigin loc)</div>
+<div class="line"><a name="l00705"></a><span class="lineno">  705</span>&#160;        {</div>
+<div class="line"><a name="l00706"></a><span class="lineno">  706</span>&#160;            this.CheckDisposed();</div>
+<div class="line"><a name="l00707"></a><span class="lineno">  707</span>&#160;            <span class="keywordflow">if</span> (offset &gt; MaxStreamLength)</div>
+<div class="line"><a name="l00708"></a><span class="lineno">  708</span>&#160;            {</div>
+<div class="line"><a name="l00709"></a><span class="lineno">  709</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> ArgumentOutOfRangeException(nameof(offset), <span class="stringliteral">&quot;offset cannot be larger than &quot;</span> + MaxStreamLength);</div>
+<div class="line"><a name="l00710"></a><span class="lineno">  710</span>&#160;            }</div>
+<div class="line"><a name="l00711"></a><span class="lineno">  711</span>&#160; </div>
+<div class="line"><a name="l00712"></a><span class="lineno">  712</span>&#160;            <span class="keywordtype">int</span> newPosition;</div>
+<div class="line"><a name="l00713"></a><span class="lineno">  713</span>&#160;            <span class="keywordflow">switch</span> (loc)</div>
+<div class="line"><a name="l00714"></a><span class="lineno">  714</span>&#160;            {</div>
+<div class="line"><a name="l00715"></a><span class="lineno">  715</span>&#160;            <span class="keywordflow">case</span> SeekOrigin.Begin:</div>
+<div class="line"><a name="l00716"></a><span class="lineno">  716</span>&#160;                newPosition = (int)offset;</div>
+<div class="line"><a name="l00717"></a><span class="lineno">  717</span>&#160;                <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00718"></a><span class="lineno">  718</span>&#160;            <span class="keywordflow">case</span> SeekOrigin.Current:</div>
+<div class="line"><a name="l00719"></a><span class="lineno">  719</span>&#160;                newPosition = (int)offset + this.position;</div>
+<div class="line"><a name="l00720"></a><span class="lineno">  720</span>&#160;                <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00721"></a><span class="lineno">  721</span>&#160;            <span class="keywordflow">case</span> SeekOrigin.End:</div>
+<div class="line"><a name="l00722"></a><span class="lineno">  722</span>&#160;                newPosition = (int)offset + this.length;</div>
+<div class="line"><a name="l00723"></a><span class="lineno">  723</span>&#160;                <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00724"></a><span class="lineno">  724</span>&#160;            <span class="keywordflow">default</span>:</div>
+<div class="line"><a name="l00725"></a><span class="lineno">  725</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> ArgumentException(<span class="stringliteral">&quot;Invalid seek origin&quot;</span>, nameof(loc));</div>
+<div class="line"><a name="l00726"></a><span class="lineno">  726</span>&#160;            }</div>
+<div class="line"><a name="l00727"></a><span class="lineno">  727</span>&#160;            <span class="keywordflow">if</span> (newPosition &lt; 0)</div>
+<div class="line"><a name="l00728"></a><span class="lineno">  728</span>&#160;            {</div>
+<div class="line"><a name="l00729"></a><span class="lineno">  729</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> IOException(<span class="stringliteral">&quot;Seek before beginning&quot;</span>);</div>
+<div class="line"><a name="l00730"></a><span class="lineno">  730</span>&#160;            }</div>
+<div class="line"><a name="l00731"></a><span class="lineno">  731</span>&#160;            this.position = newPosition;</div>
+<div class="line"><a name="l00732"></a><span class="lineno">  732</span>&#160;            <span class="keywordflow">return</span> this.position;</div>
+<div class="line"><a name="l00733"></a><span class="lineno">  733</span>&#160;        }</div>
+<div class="line"><a name="l00734"></a><span class="lineno">  734</span>&#160; </div>
+<div class="line"><a name="l00740"></a><span class="lineno"><a class="line" href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream.html#a2a26e9f259a0f7f624c1f1867e6101f9">  740</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code" href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream.html#a2a26e9f259a0f7f624c1f1867e6101f9">WriteTo</a>(Stream stream)</div>
+<div class="line"><a name="l00741"></a><span class="lineno">  741</span>&#160;        {</div>
+<div class="line"><a name="l00742"></a><span class="lineno">  742</span>&#160;            this.CheckDisposed();</div>
+<div class="line"><a name="l00743"></a><span class="lineno">  743</span>&#160;            <span class="keywordflow">if</span> (stream == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00744"></a><span class="lineno">  744</span>&#160;            {</div>
+<div class="line"><a name="l00745"></a><span class="lineno">  745</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> ArgumentNullException(nameof(stream));</div>
+<div class="line"><a name="l00746"></a><span class="lineno">  746</span>&#160;            }</div>
+<div class="line"><a name="l00747"></a><span class="lineno">  747</span>&#160; </div>
+<div class="line"><a name="l00748"></a><span class="lineno">  748</span>&#160;            <span class="keywordflow">if</span> (this.largeBuffer == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00749"></a><span class="lineno">  749</span>&#160;            {</div>
+<div class="line"><a name="l00750"></a><span class="lineno">  750</span>&#160;                <span class="keywordtype">int</span> currentBlock = 0;</div>
+<div class="line"><a name="l00751"></a><span class="lineno">  751</span>&#160;                <span class="keywordtype">int</span> bytesRemaining = this.length;</div>
+<div class="line"><a name="l00752"></a><span class="lineno">  752</span>&#160; </div>
+<div class="line"><a name="l00753"></a><span class="lineno">  753</span>&#160;                <span class="keywordflow">while</span> (bytesRemaining &gt; 0)</div>
+<div class="line"><a name="l00754"></a><span class="lineno">  754</span>&#160;                {</div>
+<div class="line"><a name="l00755"></a><span class="lineno">  755</span>&#160;                    <span class="keywordtype">int</span> amountToCopy = <a class="code" href="namespace_p_f.html#a6cf89bee2694a0f75de4233403192b07">Math</a>.Min(this.blocks[currentBlock].<a class="code" href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream.html#a868988898b4a2a4727b371c06e7c4034">Length</a>, bytesRemaining);</div>
+<div class="line"><a name="l00756"></a><span class="lineno">  756</span>&#160;                    stream.Write(this.blocks[currentBlock], 0, amountToCopy);</div>
+<div class="line"><a name="l00757"></a><span class="lineno">  757</span>&#160; </div>
+<div class="line"><a name="l00758"></a><span class="lineno">  758</span>&#160;                    bytesRemaining -= amountToCopy;</div>
+<div class="line"><a name="l00759"></a><span class="lineno">  759</span>&#160; </div>
+<div class="line"><a name="l00760"></a><span class="lineno">  760</span>&#160;                    ++currentBlock;</div>
+<div class="line"><a name="l00761"></a><span class="lineno">  761</span>&#160;                }</div>
+<div class="line"><a name="l00762"></a><span class="lineno">  762</span>&#160;            }</div>
+<div class="line"><a name="l00763"></a><span class="lineno">  763</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00764"></a><span class="lineno">  764</span>&#160;            {</div>
+<div class="line"><a name="l00765"></a><span class="lineno">  765</span>&#160;                stream.Write(this.largeBuffer, 0, this.length);</div>
+<div class="line"><a name="l00766"></a><span class="lineno">  766</span>&#160;            }</div>
+<div class="line"><a name="l00767"></a><span class="lineno">  767</span>&#160;        }</div>
+<div class="line"><a name="l00768"></a><span class="lineno">  768</span>&#160;<span class="preprocessor">        #endregion</span></div>
+<div class="line"><a name="l00769"></a><span class="lineno">  769</span>&#160; </div>
+<div class="line"><a name="l00770"></a><span class="lineno">  770</span>&#160;<span class="preprocessor">        #region Helper Methods</span></div>
+<div class="line"><a name="l00771"></a><span class="lineno">  771</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">bool</span> Disposed =&gt; Interlocked.Read(ref this.disposedState) != 0;</div>
+<div class="line"><a name="l00772"></a><span class="lineno">  772</span>&#160; </div>
+<div class="line"><a name="l00773"></a><span class="lineno">  773</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> CheckDisposed()</div>
+<div class="line"><a name="l00774"></a><span class="lineno">  774</span>&#160;        {</div>
+<div class="line"><a name="l00775"></a><span class="lineno">  775</span>&#160;            <span class="keywordflow">if</span> (this.Disposed)</div>
+<div class="line"><a name="l00776"></a><span class="lineno">  776</span>&#160;            {</div>
+<div class="line"><a name="l00777"></a><span class="lineno">  777</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> ObjectDisposedException($<span class="stringliteral">&quot;The stream with Id {this.id} and Tag {this.tag} is disposed.&quot;</span>);</div>
+<div class="line"><a name="l00778"></a><span class="lineno">  778</span>&#160;            }</div>
+<div class="line"><a name="l00779"></a><span class="lineno">  779</span>&#160;        }</div>
+<div class="line"><a name="l00780"></a><span class="lineno">  780</span>&#160; </div>
+<div class="line"><a name="l00781"></a><span class="lineno">  781</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">int</span> InternalRead(<span class="keywordtype">byte</span>[] buffer, <span class="keywordtype">int</span> offset, <span class="keywordtype">int</span> count, <span class="keywordtype">int</span> fromPosition)</div>
+<div class="line"><a name="l00782"></a><span class="lineno">  782</span>&#160;        {</div>
+<div class="line"><a name="l00783"></a><span class="lineno">  783</span>&#160;            <span class="keywordflow">if</span> (this.length - fromPosition &lt;= 0)</div>
+<div class="line"><a name="l00784"></a><span class="lineno">  784</span>&#160;            {</div>
+<div class="line"><a name="l00785"></a><span class="lineno">  785</span>&#160;                <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00786"></a><span class="lineno">  786</span>&#160;            }</div>
+<div class="line"><a name="l00787"></a><span class="lineno">  787</span>&#160; </div>
+<div class="line"><a name="l00788"></a><span class="lineno">  788</span>&#160;            <span class="keywordtype">int</span> amountToCopy;</div>
+<div class="line"><a name="l00789"></a><span class="lineno">  789</span>&#160; </div>
+<div class="line"><a name="l00790"></a><span class="lineno">  790</span>&#160;            <span class="keywordflow">if</span> (this.largeBuffer == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00791"></a><span class="lineno">  791</span>&#160;            {</div>
+<div class="line"><a name="l00792"></a><span class="lineno">  792</span>&#160;                var blockAndOffset = this.GetBlockAndRelativeOffset(fromPosition);</div>
+<div class="line"><a name="l00793"></a><span class="lineno">  793</span>&#160;                <span class="keywordtype">int</span> bytesWritten = 0;</div>
+<div class="line"><a name="l00794"></a><span class="lineno">  794</span>&#160;                <span class="keywordtype">int</span> bytesRemaining = <a class="code" href="namespace_p_f.html#a6cf89bee2694a0f75de4233403192b07">Math</a>.Min(count, this.length - fromPosition);</div>
+<div class="line"><a name="l00795"></a><span class="lineno">  795</span>&#160; </div>
+<div class="line"><a name="l00796"></a><span class="lineno">  796</span>&#160;                <span class="keywordflow">while</span> (bytesRemaining &gt; 0)</div>
+<div class="line"><a name="l00797"></a><span class="lineno">  797</span>&#160;                {</div>
+<div class="line"><a name="l00798"></a><span class="lineno">  798</span>&#160;                    amountToCopy = <a class="code" href="namespace_p_f.html#a6cf89bee2694a0f75de4233403192b07">Math</a>.Min(this.blocks[blockAndOffset.Block].Length - blockAndOffset.Offset,</div>
+<div class="line"><a name="l00799"></a><span class="lineno">  799</span>&#160;                                                bytesRemaining);</div>
+<div class="line"><a name="l00800"></a><span class="lineno">  800</span>&#160;                    Buffer.BlockCopy(this.blocks[blockAndOffset.Block], blockAndOffset.Offset, buffer,</div>
+<div class="line"><a name="l00801"></a><span class="lineno">  801</span>&#160;                                     bytesWritten + offset, amountToCopy);</div>
+<div class="line"><a name="l00802"></a><span class="lineno">  802</span>&#160; </div>
+<div class="line"><a name="l00803"></a><span class="lineno">  803</span>&#160;                    bytesWritten += amountToCopy;</div>
+<div class="line"><a name="l00804"></a><span class="lineno">  804</span>&#160;                    bytesRemaining -= amountToCopy;</div>
+<div class="line"><a name="l00805"></a><span class="lineno">  805</span>&#160; </div>
+<div class="line"><a name="l00806"></a><span class="lineno">  806</span>&#160;                    ++blockAndOffset.Block;</div>
+<div class="line"><a name="l00807"></a><span class="lineno">  807</span>&#160;                    blockAndOffset.Offset = 0;</div>
+<div class="line"><a name="l00808"></a><span class="lineno">  808</span>&#160;                }</div>
+<div class="line"><a name="l00809"></a><span class="lineno">  809</span>&#160;                <span class="keywordflow">return</span> bytesWritten;</div>
+<div class="line"><a name="l00810"></a><span class="lineno">  810</span>&#160;            }</div>
+<div class="line"><a name="l00811"></a><span class="lineno">  811</span>&#160;            amountToCopy = <a class="code" href="namespace_p_f.html#a6cf89bee2694a0f75de4233403192b07">Math</a>.Min(count, this.length - fromPosition);</div>
+<div class="line"><a name="l00812"></a><span class="lineno">  812</span>&#160;            Buffer.BlockCopy(this.largeBuffer, fromPosition, buffer, offset, amountToCopy);</div>
+<div class="line"><a name="l00813"></a><span class="lineno">  813</span>&#160;            <span class="keywordflow">return</span> amountToCopy;</div>
+<div class="line"><a name="l00814"></a><span class="lineno">  814</span>&#160;        }</div>
+<div class="line"><a name="l00815"></a><span class="lineno">  815</span>&#160; </div>
+<div class="line"><a name="l00816"></a><span class="lineno">  816</span>&#160;        <span class="keyword">private</span> <span class="keyword">struct </span>BlockAndOffset</div>
+<div class="line"><a name="l00817"></a><span class="lineno">  817</span>&#160;        {</div>
+<div class="line"><a name="l00818"></a><span class="lineno">  818</span>&#160;            <span class="keyword">public</span> <span class="keywordtype">int</span> Block;</div>
+<div class="line"><a name="l00819"></a><span class="lineno">  819</span>&#160;            <span class="keyword">public</span> <span class="keywordtype">int</span> Offset;</div>
+<div class="line"><a name="l00820"></a><span class="lineno">  820</span>&#160; </div>
+<div class="line"><a name="l00821"></a><span class="lineno">  821</span>&#160;            <span class="keyword">public</span> BlockAndOffset(<span class="keywordtype">int</span> block, <span class="keywordtype">int</span> offset)</div>
+<div class="line"><a name="l00822"></a><span class="lineno">  822</span>&#160;            {</div>
+<div class="line"><a name="l00823"></a><span class="lineno">  823</span>&#160;                this.Block = block;</div>
+<div class="line"><a name="l00824"></a><span class="lineno">  824</span>&#160;                this.Offset = offset;</div>
+<div class="line"><a name="l00825"></a><span class="lineno">  825</span>&#160;            }</div>
+<div class="line"><a name="l00826"></a><span class="lineno">  826</span>&#160;        }</div>
+<div class="line"><a name="l00827"></a><span class="lineno">  827</span>&#160; </div>
+<div class="line"><a name="l00828"></a><span class="lineno">  828</span>&#160;        <span class="keyword">private</span> BlockAndOffset GetBlockAndRelativeOffset(<span class="keywordtype">int</span> offset)</div>
+<div class="line"><a name="l00829"></a><span class="lineno">  829</span>&#160;        {</div>
+<div class="line"><a name="l00830"></a><span class="lineno">  830</span>&#160;            var blockSize = this.memoryManager.<a class="code" href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream_manager.html#abec06ceec69e2e4c2fecf49e6e88a5be">BlockSize</a>;</div>
+<div class="line"><a name="l00831"></a><span class="lineno">  831</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> BlockAndOffset(offset / blockSize, offset % blockSize);</div>
+<div class="line"><a name="l00832"></a><span class="lineno">  832</span>&#160;        }</div>
+<div class="line"><a name="l00833"></a><span class="lineno">  833</span>&#160; </div>
+<div class="line"><a name="l00834"></a><span class="lineno">  834</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> EnsureCapacity(<span class="keywordtype">int</span> newCapacity)</div>
+<div class="line"><a name="l00835"></a><span class="lineno">  835</span>&#160;        {</div>
+<div class="line"><a name="l00836"></a><span class="lineno">  836</span>&#160;            <span class="keywordflow">if</span> (newCapacity &gt; this.memoryManager.<a class="code" href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream_manager.html#a298c32e18ac4f0cb2b2ef143590a84b5">MaximumStreamCapacity</a> &amp;&amp; <span class="keyword">this</span>.memoryManager.MaximumStreamCapacity &gt; 0)</div>
+<div class="line"><a name="l00837"></a><span class="lineno">  837</span>&#160;            {</div>
+<div class="line"><a name="l00838"></a><span class="lineno">  838</span>&#160;                RecyclableMemoryStreamManager.Events.Writer.MemoryStreamOverCapacity(newCapacity,</div>
+<div class="line"><a name="l00839"></a><span class="lineno">  839</span>&#160;                                                                                    this.memoryManager</div>
+<div class="line"><a name="l00840"></a><span class="lineno">  840</span>&#160;                                                                                        .MaximumStreamCapacity, this.tag,</div>
+<div class="line"><a name="l00841"></a><span class="lineno">  841</span>&#160;                                                                                    this.AllocationStack);</div>
+<div class="line"><a name="l00842"></a><span class="lineno">  842</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> InvalidOperationException(<span class="stringliteral">&quot;Requested capacity is too large: &quot;</span> + newCapacity + <span class="stringliteral">&quot;. Limit is &quot;</span> +</div>
+<div class="line"><a name="l00843"></a><span class="lineno">  843</span>&#160;                                                    this.memoryManager.<a class="code" href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream_manager.html#a298c32e18ac4f0cb2b2ef143590a84b5">MaximumStreamCapacity</a>);</div>
+<div class="line"><a name="l00844"></a><span class="lineno">  844</span>&#160;            }</div>
+<div class="line"><a name="l00845"></a><span class="lineno">  845</span>&#160; </div>
+<div class="line"><a name="l00846"></a><span class="lineno">  846</span>&#160;            <span class="keywordflow">if</span> (this.largeBuffer != <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00847"></a><span class="lineno">  847</span>&#160;            {</div>
+<div class="line"><a name="l00848"></a><span class="lineno">  848</span>&#160;                <span class="keywordflow">if</span> (newCapacity &gt; this.largeBuffer.Length)</div>
+<div class="line"><a name="l00849"></a><span class="lineno">  849</span>&#160;                {</div>
+<div class="line"><a name="l00850"></a><span class="lineno">  850</span>&#160;                    var newBuffer = this.memoryManager.GetLargeBuffer(newCapacity, this.tag);</div>
+<div class="line"><a name="l00851"></a><span class="lineno">  851</span>&#160;                    this.InternalRead(newBuffer, 0, this.length, 0);</div>
+<div class="line"><a name="l00852"></a><span class="lineno">  852</span>&#160;                    this.ReleaseLargeBuffer();</div>
+<div class="line"><a name="l00853"></a><span class="lineno">  853</span>&#160;                    this.largeBuffer = newBuffer;</div>
+<div class="line"><a name="l00854"></a><span class="lineno">  854</span>&#160;                }</div>
+<div class="line"><a name="l00855"></a><span class="lineno">  855</span>&#160;            }</div>
+<div class="line"><a name="l00856"></a><span class="lineno">  856</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00857"></a><span class="lineno">  857</span>&#160;            {</div>
+<div class="line"><a name="l00858"></a><span class="lineno">  858</span>&#160;                <span class="keywordflow">while</span> (this.<a class="code" href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream.html#a38916a310a718a763267f1a92dacaf14">Capacity</a> &lt; newCapacity)</div>
+<div class="line"><a name="l00859"></a><span class="lineno">  859</span>&#160;                {</div>
+<div class="line"><a name="l00860"></a><span class="lineno">  860</span>&#160;                    blocks.Add((this.memoryManager.GetBlock()));</div>
+<div class="line"><a name="l00861"></a><span class="lineno">  861</span>&#160;                }</div>
+<div class="line"><a name="l00862"></a><span class="lineno">  862</span>&#160;            }</div>
+<div class="line"><a name="l00863"></a><span class="lineno">  863</span>&#160;        }</div>
+<div class="line"><a name="l00864"></a><span class="lineno">  864</span>&#160; </div>
+<div class="line"><a name="l00868"></a><span class="lineno">  868</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> ReleaseLargeBuffer()</div>
+<div class="line"><a name="l00869"></a><span class="lineno">  869</span>&#160;        {</div>
+<div class="line"><a name="l00870"></a><span class="lineno">  870</span>&#160;            <span class="keywordflow">if</span> (this.memoryManager.<a class="code" href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream_manager.html#ad58f8fc4709f08fc63d31776d40829f4">AggressiveBufferReturn</a>)</div>
+<div class="line"><a name="l00871"></a><span class="lineno">  871</span>&#160;            {</div>
+<div class="line"><a name="l00872"></a><span class="lineno">  872</span>&#160;                this.memoryManager.ReturnLargeBuffer(this.largeBuffer, this.tag);</div>
+<div class="line"><a name="l00873"></a><span class="lineno">  873</span>&#160;            }</div>
+<div class="line"><a name="l00874"></a><span class="lineno">  874</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00875"></a><span class="lineno">  875</span>&#160;            {</div>
+<div class="line"><a name="l00876"></a><span class="lineno">  876</span>&#160;                <span class="keywordflow">if</span> (this.dirtyBuffers == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00877"></a><span class="lineno">  877</span>&#160;                {</div>
+<div class="line"><a name="l00878"></a><span class="lineno">  878</span>&#160;                    <span class="comment">// We most likely will only ever need space for one</span></div>
+<div class="line"><a name="l00879"></a><span class="lineno">  879</span>&#160;                    this.dirtyBuffers = <span class="keyword">new</span> List&lt;byte[]&gt;(1);</div>
+<div class="line"><a name="l00880"></a><span class="lineno">  880</span>&#160;                }</div>
+<div class="line"><a name="l00881"></a><span class="lineno">  881</span>&#160;                this.dirtyBuffers.Add(this.largeBuffer);</div>
+<div class="line"><a name="l00882"></a><span class="lineno">  882</span>&#160;            }</div>
+<div class="line"><a name="l00883"></a><span class="lineno">  883</span>&#160; </div>
+<div class="line"><a name="l00884"></a><span class="lineno">  884</span>&#160;            this.largeBuffer = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00885"></a><span class="lineno">  885</span>&#160;        }</div>
+<div class="line"><a name="l00886"></a><span class="lineno">  886</span>&#160;<span class="preprocessor">        #endregion</span></div>
+<div class="line"><a name="l00887"></a><span class="lineno">  887</span>&#160;    }</div>
+<div class="line"><a name="l00888"></a><span class="lineno">  888</span>&#160;}</div>
+<div class="ttc" id="a_deserialize_helper_8cs_html_ad59b2e51d86e62bb22b22d2a6e191df5"><div class="ttname"><a href="_deserialize_helper_8cs.html#ad59b2e51d86e62bb22b22d2a6e191df5">Guid</a></div><div class="ttdeci">PF.Guid Guid</div><div class="ttdef"><b>Definition:</b> <a href="_deserialize_helper_8cs_source.html#l00004">DeserializeHelper.cs:4</a></div></div>
+<div class="ttc" id="a_i_message_adaptor_8cs_html_a005712ac87927f1c9f5a95d35c4bc855"><div class="ttname"><a href="_i_message_adaptor_8cs.html#a005712ac87927f1c9f5a95d35c4bc855">AppDomain</a></div><div class="ttdeci">ILRuntime.Runtime.Enviorment.AppDomain AppDomain</div><div class="ttdef"><b>Definition:</b> <a href="_i_message_adaptor_8cs_source.html#l00007">IMessageAdaptor.cs:7</a></div></div>
+<div class="ttc" id="aclass_microsoft_1_1_i_o_1_1_recyclable_memory_stream_html"><div class="ttname"><a href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream.html">Microsoft.IO.RecyclableMemoryStream</a></div><div class="ttdoc">MemoryStream implementation that deals with pooling and managing memory streams which use potentially...</div><div class="ttdef"><b>Definition:</b> <a href="_recyclable_memory_stream_8cs_source.html#l00060">RecyclableMemoryStream.cs:61</a></div></div>
+<div class="ttc" id="aclass_microsoft_1_1_i_o_1_1_recyclable_memory_stream_html_a0619775bcb14bc838b8d5791b25a0a1f"><div class="ttname"><a href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream.html#a0619775bcb14bc838b8d5791b25a0a1f">Microsoft.IO.RecyclableMemoryStream.GetBuffer</a></div><div class="ttdeci">override byte[] GetBuffer()</div><div class="ttdoc">Returns a single buffer containing the contents of the stream. The buffer may be longer than the stre...</div><div class="ttdef"><b>Definition:</b> <a href="_recyclable_memory_stream_8cs_source.html#l00420">RecyclableMemoryStream.cs:420</a></div></div>
+<div class="ttc" id="aclass_microsoft_1_1_i_o_1_1_recyclable_memory_stream_html_a14b8ab25732ce99a42ab127456958ddc"><div class="ttname"><a href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream.html#a14b8ab25732ce99a42ab127456958ddc">Microsoft.IO.RecyclableMemoryStream.CanTimeout</a></div><div class="ttdeci">override bool CanTimeout</div><div class="ttdoc">Always false</div><div class="ttdef"><b>Definition:</b> <a href="_recyclable_memory_stream_8cs_source.html#l00402">RecyclableMemoryStream.cs:402</a></div></div>
+<div class="ttc" id="aclass_microsoft_1_1_i_o_1_1_recyclable_memory_stream_html_a2a26e9f259a0f7f624c1f1867e6101f9"><div class="ttname"><a href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream.html#a2a26e9f259a0f7f624c1f1867e6101f9">Microsoft.IO.RecyclableMemoryStream.WriteTo</a></div><div class="ttdeci">override void WriteTo(Stream stream)</div><div class="ttdoc">Synchronously writes this stream's bytes to the parameter stream.</div><div class="ttdef"><b>Definition:</b> <a href="_recyclable_memory_stream_8cs_source.html#l00740">RecyclableMemoryStream.cs:740</a></div></div>
+<div class="ttc" id="aclass_microsoft_1_1_i_o_1_1_recyclable_memory_stream_html_a38916a310a718a763267f1a92dacaf14"><div class="ttname"><a href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream.html#a38916a310a718a763267f1a92dacaf14">Microsoft.IO.RecyclableMemoryStream.Capacity</a></div><div class="ttdeci">override int Capacity</div><div class="ttdoc">Gets or sets the capacity</div><div class="ttdef"><b>Definition:</b> <a href="_recyclable_memory_stream_8cs_source.html#l00324">RecyclableMemoryStream.cs:325</a></div></div>
+<div class="ttc" id="aclass_microsoft_1_1_i_o_1_1_recyclable_memory_stream_html_a3f6236dafcb59e1ef583fd4d04eccf81"><div class="ttname"><a href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream.html#a3f6236dafcb59e1ef583fd4d04eccf81">Microsoft.IO.RecyclableMemoryStream.Dispose</a></div><div class="ttdeci">override void Dispose(bool disposing)</div><div class="ttdoc">Returns the memory used by this stream back to the pool.</div><div class="ttdef"><b>Definition:</b> <a href="_recyclable_memory_stream_8cs_source.html#l00229">RecyclableMemoryStream.cs:229</a></div></div>
+<div class="ttc" id="aclass_microsoft_1_1_i_o_1_1_recyclable_memory_stream_html_a62ac85d46d849597aa962b470426b2e5"><div class="ttname"><a href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream.html#a62ac85d46d849597aa962b470426b2e5">Microsoft.IO.RecyclableMemoryStream.ReadByte</a></div><div class="ttdeci">override int ReadByte()</div><div class="ttdoc">Reads a single byte from the current position in the stream.</div><div class="ttdef"><b>Definition:</b> <a href="_recyclable_memory_stream_8cs_source.html#l00639">RecyclableMemoryStream.cs:639</a></div></div>
+<div class="ttc" id="aclass_microsoft_1_1_i_o_1_1_recyclable_memory_stream_html_a797f2d6ec674ee890ae8876bfc762743"><div class="ttname"><a href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream.html#a797f2d6ec674ee890ae8876bfc762743">Microsoft.IO.RecyclableMemoryStream.SafeReadByte</a></div><div class="ttdeci">int SafeReadByte(ref int streamPosition)</div><div class="ttdoc">Reads a single byte from the specified position in the stream.</div><div class="ttdef"><b>Definition:</b> <a href="_recyclable_memory_stream_8cs_source.html#l00650">RecyclableMemoryStream.cs:650</a></div></div>
+<div class="ttc" id="aclass_microsoft_1_1_i_o_1_1_recyclable_memory_stream_html_a816755404164bb8c29c6f079dfdd23b9"><div class="ttname"><a href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream.html#a816755404164bb8c29c6f079dfdd23b9">Microsoft.IO.RecyclableMemoryStream.SetLength</a></div><div class="ttdeci">override void SetLength(long value)</div><div class="ttdoc">Sets the length of the stream</div><div class="ttdef"><b>Definition:</b> <a href="_recyclable_memory_stream_8cs_source.html#l00676">RecyclableMemoryStream.cs:676</a></div></div>
+<div class="ttc" id="aclass_microsoft_1_1_i_o_1_1_recyclable_memory_stream_html_a81ea7f3137bc8b38396d0b1e9033df74"><div class="ttname"><a href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream.html#a81ea7f3137bc8b38396d0b1e9033df74">Microsoft.IO.RecyclableMemoryStream.RecyclableMemoryStream</a></div><div class="ttdeci">RecyclableMemoryStream(RecyclableMemoryStreamManager memoryManager, string tag)</div><div class="ttdoc">Allocate a new RecyclableMemoryStream object</div><div class="ttdef"><b>Definition:</b> <a href="_recyclable_memory_stream_8cs_source.html#l00166">RecyclableMemoryStream.cs:166</a></div></div>
+<div class="ttc" id="aclass_microsoft_1_1_i_o_1_1_recyclable_memory_stream_html_a824000bb2a9f0f87e1f252bf417764e5"><div class="ttname"><a href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream.html#a824000bb2a9f0f87e1f252bf417764e5">Microsoft.IO.RecyclableMemoryStream.Seek</a></div><div class="ttdeci">override long Seek(long offset, SeekOrigin loc)</div><div class="ttdoc">Sets the position to the offset from the seek location</div><div class="ttdef"><b>Definition:</b> <a href="_recyclable_memory_stream_8cs_source.html#l00704">RecyclableMemoryStream.cs:704</a></div></div>
+<div class="ttc" id="aclass_microsoft_1_1_i_o_1_1_recyclable_memory_stream_html_a868988898b4a2a4727b371c06e7c4034"><div class="ttname"><a href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream.html#a868988898b4a2a4727b371c06e7c4034">Microsoft.IO.RecyclableMemoryStream.Length</a></div><div class="ttdeci">override long Length</div><div class="ttdoc">Gets the number of bytes written to this stream.</div><div class="ttdef"><b>Definition:</b> <a href="_recyclable_memory_stream_8cs_source.html#l00350">RecyclableMemoryStream.cs:351</a></div></div>
+<div class="ttc" id="aclass_microsoft_1_1_i_o_1_1_recyclable_memory_stream_html_a8ade8b901a669ac71b2f990f7e91e853"><div class="ttname"><a href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream.html#a8ade8b901a669ac71b2f990f7e91e853">Microsoft.IO.RecyclableMemoryStream.Read</a></div><div class="ttdeci">override int Read(byte[] buffer, int offset, int count)</div><div class="ttdoc">Reads from the current position into the provided buffer</div><div class="ttdef"><b>Definition:</b> <a href="_recyclable_memory_stream_8cs_source.html#l00488">RecyclableMemoryStream.cs:488</a></div></div>
+<div class="ttc" id="aclass_microsoft_1_1_i_o_1_1_recyclable_memory_stream_html_a8b9a7fc20740b4f1a1372e6a1dc72561"><div class="ttname"><a href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream.html#a8b9a7fc20740b4f1a1372e6a1dc72561">Microsoft.IO.RecyclableMemoryStream.Close</a></div><div class="ttdeci">override void Close()</div><div class="ttdoc">Equivalent to Dispose</div><div class="ttdef"><b>Definition:</b> <a href="_recyclable_memory_stream_8cs_source.html#l00306">RecyclableMemoryStream.cs:306</a></div></div>
+<div class="ttc" id="aclass_microsoft_1_1_i_o_1_1_recyclable_memory_stream_html_a928458059562a9cb5cd367db0b88e6b0"><div class="ttname"><a href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream.html#a928458059562a9cb5cd367db0b88e6b0">Microsoft.IO.RecyclableMemoryStream.RecyclableMemoryStream</a></div><div class="ttdeci">RecyclableMemoryStream(RecyclableMemoryStreamManager memoryManager, string tag, int requestedSize)</div><div class="ttdoc">Allocate a new RecyclableMemoryStream object</div><div class="ttdef"><b>Definition:</b> <a href="_recyclable_memory_stream_8cs_source.html#l00175">RecyclableMemoryStream.cs:175</a></div></div>
+<div class="ttc" id="aclass_microsoft_1_1_i_o_1_1_recyclable_memory_stream_html_a9d0d7534f9a83f51587cd9da631177bb"><div class="ttname"><a href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream.html#a9d0d7534f9a83f51587cd9da631177bb">Microsoft.IO.RecyclableMemoryStream.CanRead</a></div><div class="ttdeci">override bool CanRead</div><div class="ttdoc">Whether the stream can currently read</div><div class="ttdef"><b>Definition:</b> <a href="_recyclable_memory_stream_8cs_source.html#l00392">RecyclableMemoryStream.cs:392</a></div></div>
+<div class="ttc" id="aclass_microsoft_1_1_i_o_1_1_recyclable_memory_stream_html_aaad4f7da6827d10cd0e199c47f7c1d65"><div class="ttname"><a href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream.html#aaad4f7da6827d10cd0e199c47f7c1d65">Microsoft.IO.RecyclableMemoryStream.WriteByte</a></div><div class="ttdeci">override void WriteByte(byte value)</div><div class="ttdoc">Writes a single byte to the current position in the stream.</div><div class="ttdef"><b>Definition:</b> <a href="_recyclable_memory_stream_8cs_source.html#l00627">RecyclableMemoryStream.cs:627</a></div></div>
+<div class="ttc" id="aclass_microsoft_1_1_i_o_1_1_recyclable_memory_stream_html_ac33a6ae483d341192e6175f08fb2cda8"><div class="ttname"><a href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream.html#ac33a6ae483d341192e6175f08fb2cda8">Microsoft.IO.RecyclableMemoryStream.CanWrite</a></div><div class="ttdeci">override bool CanWrite</div><div class="ttdoc">Whether the stream can currently write</div><div class="ttdef"><b>Definition:</b> <a href="_recyclable_memory_stream_8cs_source.html#l00407">RecyclableMemoryStream.cs:407</a></div></div>
+<div class="ttc" id="aclass_microsoft_1_1_i_o_1_1_recyclable_memory_stream_html_ac9a06fdd9197f5d040f9ec2a5714c36d"><div class="ttname"><a href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream.html#ac9a06fdd9197f5d040f9ec2a5714c36d">Microsoft.IO.RecyclableMemoryStream.CanSeek</a></div><div class="ttdeci">override bool CanSeek</div><div class="ttdoc">Whether the stream can currently seek</div><div class="ttdef"><b>Definition:</b> <a href="_recyclable_memory_stream_8cs_source.html#l00397">RecyclableMemoryStream.cs:397</a></div></div>
+<div class="ttc" id="aclass_microsoft_1_1_i_o_1_1_recyclable_memory_stream_html_acee500d60bddaa3cf8a17f40ed4ce479"><div class="ttname"><a href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream.html#acee500d60bddaa3cf8a17f40ed4ce479">Microsoft.IO.RecyclableMemoryStream.Write</a></div><div class="ttdeci">override void Write(byte[] buffer, int offset, int count)</div><div class="ttdoc">Writes the buffer to the stream</div><div class="ttdef"><b>Definition:</b> <a href="_recyclable_memory_stream_8cs_source.html#l00543">RecyclableMemoryStream.cs:543</a></div></div>
+<div class="ttc" id="aclass_microsoft_1_1_i_o_1_1_recyclable_memory_stream_html_ad05567c9ee8c57442c85495f24bfa485"><div class="ttname"><a href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream.html#ad05567c9ee8c57442c85495f24bfa485">Microsoft.IO.RecyclableMemoryStream.RecyclableMemoryStream</a></div><div class="ttdeci">RecyclableMemoryStream(RecyclableMemoryStreamManager memoryManager)</div><div class="ttdoc">Allocate a new RecyclableMemoryStream object.</div><div class="ttdef"><b>Definition:</b> <a href="_recyclable_memory_stream_8cs_source.html#l00158">RecyclableMemoryStream.cs:158</a></div></div>
+<div class="ttc" id="aclass_microsoft_1_1_i_o_1_1_recyclable_memory_stream_html_ad487621cf028bfe85d11795d4eaab9e2"><div class="ttname"><a href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream.html#ad487621cf028bfe85d11795d4eaab9e2">Microsoft.IO.RecyclableMemoryStream.SafeRead</a></div><div class="ttdeci">int SafeRead(byte[] buffer, int offset, int count, ref int streamPosition)</div><div class="ttdoc">Reads from the specified position into the provided buffer</div><div class="ttdef"><b>Definition:</b> <a href="_recyclable_memory_stream_8cs_source.html#l00505">RecyclableMemoryStream.cs:505</a></div></div>
+<div class="ttc" id="aclass_microsoft_1_1_i_o_1_1_recyclable_memory_stream_html_ad8bf2c20072af98b81fb36dfa4ab3974"><div class="ttname"><a href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream.html#ad8bf2c20072af98b81fb36dfa4ab3974">Microsoft.IO.RecyclableMemoryStream.Position</a></div><div class="ttdeci">override long Position</div><div class="ttdoc">Gets the current position in the stream</div><div class="ttdef"><b>Definition:</b> <a href="_recyclable_memory_stream_8cs_source.html#l00365">RecyclableMemoryStream.cs:366</a></div></div>
+<div class="ttc" id="aclass_microsoft_1_1_i_o_1_1_recyclable_memory_stream_html_af79052ca9641bc87ca2380dc9e1054f2"><div class="ttname"><a href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream.html#af79052ca9641bc87ca2380dc9e1054f2">Microsoft.IO.RecyclableMemoryStream.ToString</a></div><div class="ttdeci">override string ToString()</div><div class="ttdoc">Returns a useful string for debugging. This should not normally be called in actual production code.</div><div class="ttdef"><b>Definition:</b> <a href="_recyclable_memory_stream_8cs_source.html#l00617">RecyclableMemoryStream.cs:617</a></div></div>
+<div class="ttc" id="aclass_microsoft_1_1_i_o_1_1_recyclable_memory_stream_html_afc53ff6988b4ddb36a455548df49c4ce"><div class="ttname"><a href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream.html#afc53ff6988b4ddb36a455548df49c4ce">Microsoft.IO.RecyclableMemoryStream.ToArray</a></div><div class="ttdeci">override byte[] ToArray()</div><div class="ttdoc">Returns a new array with a copy of the buffer's contents. You should almost certainly be using GetBuf...</div><div class="ttdef"><b>Definition:</b> <a href="_recyclable_memory_stream_8cs_source.html#l00463">RecyclableMemoryStream.cs:463</a></div></div>
+<div class="ttc" id="aclass_microsoft_1_1_i_o_1_1_recyclable_memory_stream_manager_1_1_events_html"><div class="ttname"><a href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream_manager_1_1_events.html">Microsoft.IO.RecyclableMemoryStreamManager.Events</a></div><div class="ttdef"><b>Definition:</b> <a href="_events_8cs_source.html#l00031">Events.cs:32</a></div></div>
+<div class="ttc" id="aclass_microsoft_1_1_i_o_1_1_recyclable_memory_stream_manager_1_1_events_html_a12e3f63a7224d53f58ae638fc05ea537"><div class="ttname"><a href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream_manager_1_1_events.html#a12e3f63a7224d53f58ae638fc05ea537">Microsoft.IO.RecyclableMemoryStreamManager.Events.MemoryStreamDoubleDispose</a></div><div class="ttdeci">void MemoryStreamDoubleDispose(Guid guid, string tag, string allocationStack, string disposeStack1, string disposeStack2)</div><div class="ttdef"><b>Definition:</b> <a href="_events_8cs_source.html#l00066">Events.cs:66</a></div></div>
+<div class="ttc" id="aclass_microsoft_1_1_i_o_1_1_recyclable_memory_stream_manager_1_1_events_html_a5172c2348c5d02bd8adb00be25c26466"><div class="ttname"><a href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream_manager_1_1_events.html#a5172c2348c5d02bd8adb00be25c26466">Microsoft.IO.RecyclableMemoryStreamManager.Events.Writer</a></div><div class="ttdeci">static Events Writer</div><div class="ttdef"><b>Definition:</b> <a href="_events_8cs_source.html#l00033">Events.cs:33</a></div></div>
+<div class="ttc" id="aclass_microsoft_1_1_i_o_1_1_recyclable_memory_stream_manager_1_1_events_html_a7bb2cabbcb4890392e074baf3f01cb8f"><div class="ttname"><a href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream_manager_1_1_events.html#a7bb2cabbcb4890392e074baf3f01cb8f">Microsoft.IO.RecyclableMemoryStreamManager.Events.MemoryStreamDisposed</a></div><div class="ttdeci">void MemoryStreamDisposed(Guid guid, string tag)</div><div class="ttdef"><b>Definition:</b> <a href="_events_8cs_source.html#l00057">Events.cs:57</a></div></div>
+<div class="ttc" id="aclass_microsoft_1_1_i_o_1_1_recyclable_memory_stream_manager_1_1_events_html_abc76b742c7b1de051ed000cd08e5af56"><div class="ttname"><a href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream_manager_1_1_events.html#abc76b742c7b1de051ed000cd08e5af56">Microsoft.IO.RecyclableMemoryStreamManager.Events.MemoryStreamToArray</a></div><div class="ttdeci">void MemoryStreamToArray(Guid guid, string tag, string stack, int size)</div><div class="ttdef"><b>Definition:</b> <a href="_events_8cs_source.html#l00086">Events.cs:86</a></div></div>
+<div class="ttc" id="aclass_microsoft_1_1_i_o_1_1_recyclable_memory_stream_manager_1_1_events_html_ac44d6f2a6b6889ce40d981fa2df5f5ba"><div class="ttname"><a href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream_manager_1_1_events.html#ac44d6f2a6b6889ce40d981fa2df5f5ba">Microsoft.IO.RecyclableMemoryStreamManager.Events.MemoryStreamFinalized</a></div><div class="ttdeci">void MemoryStreamFinalized(Guid guid, string tag, string allocationStack)</div><div class="ttdef"><b>Definition:</b> <a href="_events_8cs_source.html#l00077">Events.cs:77</a></div></div>
+<div class="ttc" id="aclass_microsoft_1_1_i_o_1_1_recyclable_memory_stream_manager_html"><div class="ttname"><a href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream_manager.html">Microsoft.IO.RecyclableMemoryStreamManager</a></div><div class="ttdoc">Manages pools of RecyclableMemoryStream objects.</div><div class="ttdef"><b>Definition:</b> <a href="_events_8cs_source.html#l00028">Events.cs:29</a></div></div>
+<div class="ttc" id="aclass_microsoft_1_1_i_o_1_1_recyclable_memory_stream_manager_html_a298c32e18ac4f0cb2b2ef143590a84b5"><div class="ttname"><a href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream_manager.html#a298c32e18ac4f0cb2b2ef143590a84b5">Microsoft.IO.RecyclableMemoryStreamManager.MaximumStreamCapacity</a></div><div class="ttdeci">long MaximumStreamCapacity</div><div class="ttdoc">Maximum stream capacity in bytes. Attempts to set a larger capacity will result in an exception.</div><div class="ttdef"><b>Definition:</b> <a href="_recyclable_memory_stream_manager_8cs_source.html#l00231">RecyclableMemoryStreamManager.cs:231</a></div></div>
+<div class="ttc" id="aclass_microsoft_1_1_i_o_1_1_recyclable_memory_stream_manager_html_abec06ceec69e2e4c2fecf49e6e88a5be"><div class="ttname"><a href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream_manager.html#abec06ceec69e2e4c2fecf49e6e88a5be">Microsoft.IO.RecyclableMemoryStreamManager.BlockSize</a></div><div class="ttdeci">int BlockSize</div><div class="ttdoc">The size of each block. It must be set at creation and cannot be changed.</div><div class="ttdef"><b>Definition:</b> <a href="_recyclable_memory_stream_manager_8cs_source.html#l00159">RecyclableMemoryStreamManager.cs:159</a></div></div>
+<div class="ttc" id="aclass_microsoft_1_1_i_o_1_1_recyclable_memory_stream_manager_html_ad58f8fc4709f08fc63d31776d40829f4"><div class="ttname"><a href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream_manager.html#ad58f8fc4709f08fc63d31776d40829f4">Microsoft.IO.RecyclableMemoryStreamManager.AggressiveBufferReturn</a></div><div class="ttdeci">bool AggressiveBufferReturn</div><div class="ttdoc">Whether dirty buffers can be immediately returned to the buffer pool. E.g. when GetBuffer() is called...</div><div class="ttdef"><b>Definition:</b> <a href="_recyclable_memory_stream_manager_8cs_source.html#l00247">RecyclableMemoryStreamManager.cs:247</a></div></div>
+<div class="ttc" id="aclass_microsoft_1_1_i_o_1_1_recyclable_memory_stream_manager_html_ad5d6baab0812b507fb5928c22bf62292"><div class="ttname"><a href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream_manager.html#ad5d6baab0812b507fb5928c22bf62292">Microsoft.IO.RecyclableMemoryStreamManager.GenerateCallStacks</a></div><div class="ttdeci">bool GenerateCallStacks</div><div class="ttdoc">Whether to save callstacks for stream allocations. This can help in debugging. It should NEVER be tur...</div><div class="ttdef"><b>Definition:</b> <a href="_recyclable_memory_stream_manager_8cs_source.html#l00237">RecyclableMemoryStreamManager.cs:237</a></div></div>
+<div class="ttc" id="anamespace_microsoft_1_1_i_o_html"><div class="ttname"><a href="namespace_microsoft_1_1_i_o.html">Microsoft.IO</a></div><div class="ttdef"><b>Definition:</b> <a href="_events_8cs_source.html#l00023">Events.cs:24</a></div></div>
+<div class="ttc" id="anamespace_p_f_html_a6cf89bee2694a0f75de4233403192b07"><div class="ttname"><a href="namespace_p_f.html#a6cf89bee2694a0f75de4233403192b07">PF.Math</a></div><div class="ttdeci">System.Math Math</div><div class="ttdef"><b>Definition:</b> <a href="_navmesh_base_8cs_source.html#l00006">NavmeshBase.cs:6</a></div></div>
+<div class="ttc" id="anamespace_system_html"><div class="ttname"><a href="namespace_system.html">System</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_method_builder_attribute_8cs_source.html#l00001">AsyncMethodBuilderAttribute.cs:2</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_84bbf7b3c7f28a5a18725745e1505219.html">Assets</a></li><li class="navelem"><a class="el" href="dir_f13b41af88cf68434578284aaf699e39.html">Scripts</a></li><li class="navelem"><a class="el" href="dir_46d134a3bf82cf4dc49ca8f728aea58c.html">Libraries</a></li><li class="navelem"><a class="el" href="dir_f6df8f7e58ea5a2220a287b647108730.html">ET</a></li><li class="navelem"><a class="el" href="dir_8f146fdc844f9009ef2833f837fe8976.html">Base</a></li><li class="navelem"><a class="el" href="dir_1349ebe0e82a81afed52388bafbc5ad6.html">RecyclableMemoryStream</a></li><li class="navelem"><a class="el" href="_recyclable_memory_stream_8cs.html">RecyclableMemoryStream.cs</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:24:45 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

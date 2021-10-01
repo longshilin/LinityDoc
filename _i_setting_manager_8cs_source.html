@@ -1,0 +1,201 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: Assets/Scripts/Libraries/GameFramework/Libraries/GameFramework-2021.05.31/GameFramework/Setting/ISettingManager.cs 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_i_setting_manager_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">ISettingManager.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_i_setting_manager_8cs.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">//------------------------------------------------------------</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">// Game Framework</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">// Copyright © 2013-2021 Jiang Yin. All rights reserved.</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">// Homepage: https://gameframework.cn/</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">// Feedback: mailto:ellan@gameframework.cn</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">//------------------------------------------------------------</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Collections.Generic;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_game_framework_1_1_setting.html">GameFramework.Setting</a></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;{</div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_setting_1_1_i_setting_manager.html">   16</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">interface </span><a class="code" href="interface_game_framework_1_1_setting_1_1_i_setting_manager.html">ISettingManager</a></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    {</div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_setting_1_1_i_setting_manager.html#a9d6dc151037bfdf7d748fa722c4c7128">   21</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="interface_game_framework_1_1_setting_1_1_i_setting_manager.html#a9d6dc151037bfdf7d748fa722c4c7128">Count</a></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        {</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;            <span class="keyword">get</span>;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        }</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_setting_1_1_i_setting_manager.html#a92a93b4a637c81a905464cbd12f433e2">   30</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="interface_game_framework_1_1_setting_1_1_i_setting_manager.html#a92a93b4a637c81a905464cbd12f433e2">SetSettingHelper</a>(<a class="code" href="interface_game_framework_1_1_setting_1_1_i_setting_helper.html">ISettingHelper</a> settingHelper);</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_setting_1_1_i_setting_manager.html#abc10b7064c133f0ef3ca0fff57565560">   36</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="interface_game_framework_1_1_setting_1_1_i_setting_manager.html#abc10b7064c133f0ef3ca0fff57565560">Load</a>();</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_setting_1_1_i_setting_manager.html#a41f45e76f402cdadfeed1a5648268704">   42</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="interface_game_framework_1_1_setting_1_1_i_setting_manager.html#a41f45e76f402cdadfeed1a5648268704">Save</a>();</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_setting_1_1_i_setting_manager.html#a436d4b4f492911d95062836c3de2d6a0">   48</a></span>&#160;        <span class="keywordtype">string</span>[] <a class="code" href="interface_game_framework_1_1_setting_1_1_i_setting_manager.html#a436d4b4f492911d95062836c3de2d6a0">GetAllSettingNames</a>();</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_setting_1_1_i_setting_manager.html#a6f985e3ca49aafb67d4e65b81413e8ae">   54</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="interface_game_framework_1_1_setting_1_1_i_setting_manager.html#a6f985e3ca49aafb67d4e65b81413e8ae">GetAllSettingNames</a>(List&lt;string&gt; results);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_setting_1_1_i_setting_manager.html#a26e0f0439a31b138ef4c88d5ec0b3314">   61</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="interface_game_framework_1_1_setting_1_1_i_setting_manager.html#a26e0f0439a31b138ef4c88d5ec0b3314">HasSetting</a>(<span class="keywordtype">string</span> settingName);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00068"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_setting_1_1_i_setting_manager.html#a7d61e979a096a6b4e8e782d212d414e3">   68</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="interface_game_framework_1_1_setting_1_1_i_setting_manager.html#a7d61e979a096a6b4e8e782d212d414e3">RemoveSetting</a>(<span class="keywordtype">string</span> settingName);</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
+<div class="line"><a name="l00073"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_setting_1_1_i_setting_manager.html#a9c16c455ca2ba60be21075dcfc69035f">   73</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="interface_game_framework_1_1_setting_1_1_i_setting_manager.html#a9c16c455ca2ba60be21075dcfc69035f">RemoveAllSettings</a>();</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
+<div class="line"><a name="l00080"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_setting_1_1_i_setting_manager.html#a423d3477ec03f28ccb51f0f372a4bfe9">   80</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="interface_game_framework_1_1_setting_1_1_i_setting_manager.html#a423d3477ec03f28ccb51f0f372a4bfe9">GetBool</a>(<span class="keywordtype">string</span> settingName);</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
+<div class="line"><a name="l00088"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_setting_1_1_i_setting_manager.html#af258c7d44068a53b39ca431f557d45ed">   88</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="interface_game_framework_1_1_setting_1_1_i_setting_manager.html#af258c7d44068a53b39ca431f557d45ed">GetBool</a>(<span class="keywordtype">string</span> settingName, <span class="keywordtype">bool</span> defaultValue);</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
+<div class="line"><a name="l00095"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_setting_1_1_i_setting_manager.html#ad5a8250dea32891234e70b2c8a0a1992">   95</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="interface_game_framework_1_1_setting_1_1_i_setting_manager.html#ad5a8250dea32891234e70b2c8a0a1992">SetBool</a>(<span class="keywordtype">string</span> settingName, <span class="keywordtype">bool</span> value);</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
+<div class="line"><a name="l00102"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_setting_1_1_i_setting_manager.html#afee4543cfb20966fef20da31e6c99293">  102</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="interface_game_framework_1_1_setting_1_1_i_setting_manager.html#afee4543cfb20966fef20da31e6c99293">GetInt</a>(<span class="keywordtype">string</span> settingName);</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
+<div class="line"><a name="l00110"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_setting_1_1_i_setting_manager.html#a49f208c3a267d03e5cfa38bb1b89f0ee">  110</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="interface_game_framework_1_1_setting_1_1_i_setting_manager.html#a49f208c3a267d03e5cfa38bb1b89f0ee">GetInt</a>(<span class="keywordtype">string</span> settingName, <span class="keywordtype">int</span> defaultValue);</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; </div>
+<div class="line"><a name="l00117"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_setting_1_1_i_setting_manager.html#a96b91e8452a27fcbe3da2d614986be66">  117</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="interface_game_framework_1_1_setting_1_1_i_setting_manager.html#a96b91e8452a27fcbe3da2d614986be66">SetInt</a>(<span class="keywordtype">string</span> settingName, <span class="keywordtype">int</span> value);</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160; </div>
+<div class="line"><a name="l00124"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_setting_1_1_i_setting_manager.html#a14b22f798a31a43951a44e796023afac">  124</a></span>&#160;        <span class="keywordtype">float</span> <a class="code" href="interface_game_framework_1_1_setting_1_1_i_setting_manager.html#a14b22f798a31a43951a44e796023afac">GetFloat</a>(<span class="keywordtype">string</span> settingName);</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160; </div>
+<div class="line"><a name="l00132"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_setting_1_1_i_setting_manager.html#a631f9e681c47893854746e4345e24f34">  132</a></span>&#160;        <span class="keywordtype">float</span> <a class="code" href="interface_game_framework_1_1_setting_1_1_i_setting_manager.html#a631f9e681c47893854746e4345e24f34">GetFloat</a>(<span class="keywordtype">string</span> settingName, <span class="keywordtype">float</span> defaultValue);</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160; </div>
+<div class="line"><a name="l00139"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_setting_1_1_i_setting_manager.html#a38f1e636d77cd3c1775980d3738c4b53">  139</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="interface_game_framework_1_1_setting_1_1_i_setting_manager.html#a38f1e636d77cd3c1775980d3738c4b53">SetFloat</a>(<span class="keywordtype">string</span> settingName, <span class="keywordtype">float</span> value);</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160; </div>
+<div class="line"><a name="l00146"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_setting_1_1_i_setting_manager.html#ae8b6098fdbafd6315d5e49cc49f1916b">  146</a></span>&#160;        <span class="keywordtype">string</span> <a class="code" href="interface_game_framework_1_1_setting_1_1_i_setting_manager.html#ae8b6098fdbafd6315d5e49cc49f1916b">GetString</a>(<span class="keywordtype">string</span> settingName);</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160; </div>
+<div class="line"><a name="l00154"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_setting_1_1_i_setting_manager.html#a5ca47e990c54b20da8e6e8477353f8bb">  154</a></span>&#160;        <span class="keywordtype">string</span> <a class="code" href="interface_game_framework_1_1_setting_1_1_i_setting_manager.html#a5ca47e990c54b20da8e6e8477353f8bb">GetString</a>(<span class="keywordtype">string</span> settingName, <span class="keywordtype">string</span> defaultValue);</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160; </div>
+<div class="line"><a name="l00161"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_setting_1_1_i_setting_manager.html#ab7cf9f7a5018d4c4ee4422d10ace3a7f">  161</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="interface_game_framework_1_1_setting_1_1_i_setting_manager.html#ab7cf9f7a5018d4c4ee4422d10ace3a7f">SetString</a>(<span class="keywordtype">string</span> settingName, <span class="keywordtype">string</span> value);</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160; </div>
+<div class="line"><a name="l00169"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_setting_1_1_i_setting_manager.html#aaef1abaf4be2d94ccc8df6e912eb5c27">  169</a></span>&#160;        T <a class="code" href="interface_game_framework_1_1_setting_1_1_i_setting_manager.html#aaef1abaf4be2d94ccc8df6e912eb5c27">GetObject&lt;T&gt;</a>(<span class="keywordtype">string</span> settingName);</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160; </div>
+<div class="line"><a name="l00177"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_setting_1_1_i_setting_manager.html#ae51c130a6e54ab45a669124ffb9c3de9">  177</a></span>&#160;        <span class="keywordtype">object</span> <a class="code" href="interface_game_framework_1_1_setting_1_1_i_setting_manager.html#ae51c130a6e54ab45a669124ffb9c3de9">GetObject</a>(Type objectType, <span class="keywordtype">string</span> settingName);</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160; </div>
+<div class="line"><a name="l00186"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_setting_1_1_i_setting_manager.html#a37f7e00cde3a3b8a162bd5a4d08e83af">  186</a></span>&#160;        T <a class="code" href="interface_game_framework_1_1_setting_1_1_i_setting_manager.html#aaef1abaf4be2d94ccc8df6e912eb5c27">GetObject&lt;T&gt;</a>(<span class="keywordtype">string</span> settingName, T defaultObj);</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160; </div>
+<div class="line"><a name="l00195"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_setting_1_1_i_setting_manager.html#a4a5f472714fc6c293c0e04c0633b6172">  195</a></span>&#160;        <span class="keywordtype">object</span> <a class="code" href="interface_game_framework_1_1_setting_1_1_i_setting_manager.html#a4a5f472714fc6c293c0e04c0633b6172">GetObject</a>(Type objectType, <span class="keywordtype">string</span> settingName, <span class="keywordtype">object</span> defaultObj);</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160; </div>
+<div class="line"><a name="l00203"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_setting_1_1_i_setting_manager.html#acdf3b2caaeb35a24c02985287cc0cba3">  203</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="interface_game_framework_1_1_setting_1_1_i_setting_manager.html#acdf3b2caaeb35a24c02985287cc0cba3">SetObject&lt;T&gt;</a>(<span class="keywordtype">string</span> settingName, T obj);</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160; </div>
+<div class="line"><a name="l00210"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_setting_1_1_i_setting_manager.html#ad3ef34a5f10371f22044682886dcca8b">  210</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="interface_game_framework_1_1_setting_1_1_i_setting_manager.html#ad3ef34a5f10371f22044682886dcca8b">SetObject</a>(<span class="keywordtype">string</span> settingName, <span class="keywordtype">object</span> obj);</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;    }</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;}</div>
+<div class="ttc" id="ainterface_game_framework_1_1_setting_1_1_i_setting_helper_html"><div class="ttname"><a href="interface_game_framework_1_1_setting_1_1_i_setting_helper.html">GameFramework.Setting.ISettingHelper</a></div><div class="ttdoc">游戏配置辅助器接口。</div><div class="ttdef"><b>Definition:</b> <a href="_i_setting_helper_8cs_source.html#l00016">ISettingHelper.cs:17</a></div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_setting_1_1_i_setting_manager_html"><div class="ttname"><a href="interface_game_framework_1_1_setting_1_1_i_setting_manager.html">GameFramework.Setting.ISettingManager</a></div><div class="ttdoc">游戏配置管理器接口。</div><div class="ttdef"><b>Definition:</b> <a href="_i_setting_manager_8cs_source.html#l00016">ISettingManager.cs:17</a></div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_setting_1_1_i_setting_manager_html_a14b22f798a31a43951a44e796023afac"><div class="ttname"><a href="interface_game_framework_1_1_setting_1_1_i_setting_manager.html#a14b22f798a31a43951a44e796023afac">GameFramework.Setting.ISettingManager.GetFloat</a></div><div class="ttdeci">float GetFloat(string settingName)</div><div class="ttdoc">从指定游戏配置项中读取浮点数值。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_setting_1_1_i_setting_manager_html_a26e0f0439a31b138ef4c88d5ec0b3314"><div class="ttname"><a href="interface_game_framework_1_1_setting_1_1_i_setting_manager.html#a26e0f0439a31b138ef4c88d5ec0b3314">GameFramework.Setting.ISettingManager.HasSetting</a></div><div class="ttdeci">bool HasSetting(string settingName)</div><div class="ttdoc">检查是否存在指定游戏配置项。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_setting_1_1_i_setting_manager_html_a38f1e636d77cd3c1775980d3738c4b53"><div class="ttname"><a href="interface_game_framework_1_1_setting_1_1_i_setting_manager.html#a38f1e636d77cd3c1775980d3738c4b53">GameFramework.Setting.ISettingManager.SetFloat</a></div><div class="ttdeci">void SetFloat(string settingName, float value)</div><div class="ttdoc">向指定游戏配置项写入浮点数值。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_setting_1_1_i_setting_manager_html_a41f45e76f402cdadfeed1a5648268704"><div class="ttname"><a href="interface_game_framework_1_1_setting_1_1_i_setting_manager.html#a41f45e76f402cdadfeed1a5648268704">GameFramework.Setting.ISettingManager.Save</a></div><div class="ttdeci">bool Save()</div><div class="ttdoc">保存游戏配置。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_setting_1_1_i_setting_manager_html_a423d3477ec03f28ccb51f0f372a4bfe9"><div class="ttname"><a href="interface_game_framework_1_1_setting_1_1_i_setting_manager.html#a423d3477ec03f28ccb51f0f372a4bfe9">GameFramework.Setting.ISettingManager.GetBool</a></div><div class="ttdeci">bool GetBool(string settingName)</div><div class="ttdoc">从指定游戏配置项中读取布尔值。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_setting_1_1_i_setting_manager_html_a436d4b4f492911d95062836c3de2d6a0"><div class="ttname"><a href="interface_game_framework_1_1_setting_1_1_i_setting_manager.html#a436d4b4f492911d95062836c3de2d6a0">GameFramework.Setting.ISettingManager.GetAllSettingNames</a></div><div class="ttdeci">string[] GetAllSettingNames()</div><div class="ttdoc">获取所有游戏配置项的名称。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_setting_1_1_i_setting_manager_html_a49f208c3a267d03e5cfa38bb1b89f0ee"><div class="ttname"><a href="interface_game_framework_1_1_setting_1_1_i_setting_manager.html#a49f208c3a267d03e5cfa38bb1b89f0ee">GameFramework.Setting.ISettingManager.GetInt</a></div><div class="ttdeci">int GetInt(string settingName, int defaultValue)</div><div class="ttdoc">从指定游戏配置项中读取整数值。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_setting_1_1_i_setting_manager_html_a4a5f472714fc6c293c0e04c0633b6172"><div class="ttname"><a href="interface_game_framework_1_1_setting_1_1_i_setting_manager.html#a4a5f472714fc6c293c0e04c0633b6172">GameFramework.Setting.ISettingManager.GetObject</a></div><div class="ttdeci">object GetObject(Type objectType, string settingName, object defaultObj)</div><div class="ttdoc">从指定游戏配置项中读取对象。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_setting_1_1_i_setting_manager_html_a5ca47e990c54b20da8e6e8477353f8bb"><div class="ttname"><a href="interface_game_framework_1_1_setting_1_1_i_setting_manager.html#a5ca47e990c54b20da8e6e8477353f8bb">GameFramework.Setting.ISettingManager.GetString</a></div><div class="ttdeci">string GetString(string settingName, string defaultValue)</div><div class="ttdoc">从指定游戏配置项中读取字符串值。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_setting_1_1_i_setting_manager_html_a631f9e681c47893854746e4345e24f34"><div class="ttname"><a href="interface_game_framework_1_1_setting_1_1_i_setting_manager.html#a631f9e681c47893854746e4345e24f34">GameFramework.Setting.ISettingManager.GetFloat</a></div><div class="ttdeci">float GetFloat(string settingName, float defaultValue)</div><div class="ttdoc">从指定游戏配置项中读取浮点数值。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_setting_1_1_i_setting_manager_html_a6f985e3ca49aafb67d4e65b81413e8ae"><div class="ttname"><a href="interface_game_framework_1_1_setting_1_1_i_setting_manager.html#a6f985e3ca49aafb67d4e65b81413e8ae">GameFramework.Setting.ISettingManager.GetAllSettingNames</a></div><div class="ttdeci">void GetAllSettingNames(List&lt; string &gt; results)</div><div class="ttdoc">获取所有游戏配置项的名称。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_setting_1_1_i_setting_manager_html_a7d61e979a096a6b4e8e782d212d414e3"><div class="ttname"><a href="interface_game_framework_1_1_setting_1_1_i_setting_manager.html#a7d61e979a096a6b4e8e782d212d414e3">GameFramework.Setting.ISettingManager.RemoveSetting</a></div><div class="ttdeci">bool RemoveSetting(string settingName)</div><div class="ttdoc">移除指定游戏配置项。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_setting_1_1_i_setting_manager_html_a92a93b4a637c81a905464cbd12f433e2"><div class="ttname"><a href="interface_game_framework_1_1_setting_1_1_i_setting_manager.html#a92a93b4a637c81a905464cbd12f433e2">GameFramework.Setting.ISettingManager.SetSettingHelper</a></div><div class="ttdeci">void SetSettingHelper(ISettingHelper settingHelper)</div><div class="ttdoc">设置游戏配置辅助器。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_setting_1_1_i_setting_manager_html_a96b91e8452a27fcbe3da2d614986be66"><div class="ttname"><a href="interface_game_framework_1_1_setting_1_1_i_setting_manager.html#a96b91e8452a27fcbe3da2d614986be66">GameFramework.Setting.ISettingManager.SetInt</a></div><div class="ttdeci">void SetInt(string settingName, int value)</div><div class="ttdoc">向指定游戏配置项写入整数值。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_setting_1_1_i_setting_manager_html_a9c16c455ca2ba60be21075dcfc69035f"><div class="ttname"><a href="interface_game_framework_1_1_setting_1_1_i_setting_manager.html#a9c16c455ca2ba60be21075dcfc69035f">GameFramework.Setting.ISettingManager.RemoveAllSettings</a></div><div class="ttdeci">void RemoveAllSettings()</div><div class="ttdoc">清空所有游戏配置项。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_setting_1_1_i_setting_manager_html_a9d6dc151037bfdf7d748fa722c4c7128"><div class="ttname"><a href="interface_game_framework_1_1_setting_1_1_i_setting_manager.html#a9d6dc151037bfdf7d748fa722c4c7128">GameFramework.Setting.ISettingManager.Count</a></div><div class="ttdeci">int Count</div><div class="ttdoc">获取游戏配置项数量。</div><div class="ttdef"><b>Definition:</b> <a href="_i_setting_manager_8cs_source.html#l00021">ISettingManager.cs:22</a></div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_setting_1_1_i_setting_manager_html_aaef1abaf4be2d94ccc8df6e912eb5c27"><div class="ttname"><a href="interface_game_framework_1_1_setting_1_1_i_setting_manager.html#aaef1abaf4be2d94ccc8df6e912eb5c27">GameFramework.Setting.ISettingManager.GetObject&lt; T &gt;</a></div><div class="ttdeci">T GetObject&lt; T &gt;(string settingName)</div><div class="ttdoc">从指定游戏配置项中读取对象。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_setting_1_1_i_setting_manager_html_ab7cf9f7a5018d4c4ee4422d10ace3a7f"><div class="ttname"><a href="interface_game_framework_1_1_setting_1_1_i_setting_manager.html#ab7cf9f7a5018d4c4ee4422d10ace3a7f">GameFramework.Setting.ISettingManager.SetString</a></div><div class="ttdeci">void SetString(string settingName, string value)</div><div class="ttdoc">向指定游戏配置项写入字符串值。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_setting_1_1_i_setting_manager_html_abc10b7064c133f0ef3ca0fff57565560"><div class="ttname"><a href="interface_game_framework_1_1_setting_1_1_i_setting_manager.html#abc10b7064c133f0ef3ca0fff57565560">GameFramework.Setting.ISettingManager.Load</a></div><div class="ttdeci">bool Load()</div><div class="ttdoc">加载游戏配置。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_setting_1_1_i_setting_manager_html_acdf3b2caaeb35a24c02985287cc0cba3"><div class="ttname"><a href="interface_game_framework_1_1_setting_1_1_i_setting_manager.html#acdf3b2caaeb35a24c02985287cc0cba3">GameFramework.Setting.ISettingManager.SetObject&lt; T &gt;</a></div><div class="ttdeci">void SetObject&lt; T &gt;(string settingName, T obj)</div><div class="ttdoc">向指定游戏配置项写入对象。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_setting_1_1_i_setting_manager_html_ad3ef34a5f10371f22044682886dcca8b"><div class="ttname"><a href="interface_game_framework_1_1_setting_1_1_i_setting_manager.html#ad3ef34a5f10371f22044682886dcca8b">GameFramework.Setting.ISettingManager.SetObject</a></div><div class="ttdeci">void SetObject(string settingName, object obj)</div><div class="ttdoc">向指定游戏配置项写入对象。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_setting_1_1_i_setting_manager_html_ad5a8250dea32891234e70b2c8a0a1992"><div class="ttname"><a href="interface_game_framework_1_1_setting_1_1_i_setting_manager.html#ad5a8250dea32891234e70b2c8a0a1992">GameFramework.Setting.ISettingManager.SetBool</a></div><div class="ttdeci">void SetBool(string settingName, bool value)</div><div class="ttdoc">向指定游戏配置项写入布尔值。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_setting_1_1_i_setting_manager_html_ae51c130a6e54ab45a669124ffb9c3de9"><div class="ttname"><a href="interface_game_framework_1_1_setting_1_1_i_setting_manager.html#ae51c130a6e54ab45a669124ffb9c3de9">GameFramework.Setting.ISettingManager.GetObject</a></div><div class="ttdeci">object GetObject(Type objectType, string settingName)</div><div class="ttdoc">从指定游戏配置项中读取对象。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_setting_1_1_i_setting_manager_html_ae8b6098fdbafd6315d5e49cc49f1916b"><div class="ttname"><a href="interface_game_framework_1_1_setting_1_1_i_setting_manager.html#ae8b6098fdbafd6315d5e49cc49f1916b">GameFramework.Setting.ISettingManager.GetString</a></div><div class="ttdeci">string GetString(string settingName)</div><div class="ttdoc">从指定游戏配置项中读取字符串值。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_setting_1_1_i_setting_manager_html_af258c7d44068a53b39ca431f557d45ed"><div class="ttname"><a href="interface_game_framework_1_1_setting_1_1_i_setting_manager.html#af258c7d44068a53b39ca431f557d45ed">GameFramework.Setting.ISettingManager.GetBool</a></div><div class="ttdeci">bool GetBool(string settingName, bool defaultValue)</div><div class="ttdoc">从指定游戏配置项中读取布尔值。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_setting_1_1_i_setting_manager_html_afee4543cfb20966fef20da31e6c99293"><div class="ttname"><a href="interface_game_framework_1_1_setting_1_1_i_setting_manager.html#afee4543cfb20966fef20da31e6c99293">GameFramework.Setting.ISettingManager.GetInt</a></div><div class="ttdeci">int GetInt(string settingName)</div><div class="ttdoc">从指定游戏配置项中读取整数值。</div></div>
+<div class="ttc" id="anamespace_game_framework_1_1_setting_html"><div class="ttname"><a href="namespace_game_framework_1_1_setting.html">GameFramework.Setting</a></div><div class="ttdef"><b>Definition:</b> <a href="_i_setting_helper_8cs_source.html#l00011">ISettingHelper.cs:12</a></div></div>
+<div class="ttc" id="anamespace_system_html"><div class="ttname"><a href="namespace_system.html">System</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_method_builder_attribute_8cs_source.html#l00001">AsyncMethodBuilderAttribute.cs:2</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_84bbf7b3c7f28a5a18725745e1505219.html">Assets</a></li><li class="navelem"><a class="el" href="dir_f13b41af88cf68434578284aaf699e39.html">Scripts</a></li><li class="navelem"><a class="el" href="dir_46d134a3bf82cf4dc49ca8f728aea58c.html">Libraries</a></li><li class="navelem"><a class="el" href="dir_7a6862c303020716b3c311e95823547c.html">GameFramework</a></li><li class="navelem"><a class="el" href="dir_bfc6cd8d089c265c897460523cef6560.html">Libraries</a></li><li class="navelem"><a class="el" href="dir_c1104d2df307bba6f9db4e185ff99743.html">GameFramework-2021.05.31</a></li><li class="navelem"><a class="el" href="dir_fe759fdbe5a0d8b8465ec936ca1014c7.html">GameFramework</a></li><li class="navelem"><a class="el" href="dir_1d4d9300af6ae96d9c7b8db8859edd53.html">Setting</a></li><li class="navelem"><a class="el" href="_i_setting_manager_8cs.html">ISettingManager.cs</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:24:48 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

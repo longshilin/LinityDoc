@@ -1,0 +1,5 @@
+var class_mongo_d_b_1_1_driver_1_1_core_1_1_misc_1_1_commands_that_write_accept_write_concern_feature =
+[
+    [ "CommandsThatWriteAcceptWriteConcernFeature", "class_mongo_d_b_1_1_driver_1_1_core_1_1_misc_1_1_commands_that_write_accept_write_concern_feature.html#ab6343399253f9371d3ec1db3d0b6c9a8", null ],
+    [ "ShouldSendWriteConcern", "class_mongo_d_b_1_1_driver_1_1_core_1_1_misc_1_1_commands_that_write_accept_write_concern_feature.html#ab41390d38a51aab0407b9e7005519a24", null ]
+];

@@ -1,0 +1,346 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: Assets/Scripts/Libraries/Google.Protobuf/CodedOutputStream.ComputeSize.cs 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_coded_output_stream_8_compute_size_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">CodedOutputStream.ComputeSize.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_coded_output_stream_8_compute_size_8cs.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#region Copyright notice and license</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">// Protocol Buffers - Google&#39;s data interchange format</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">// Copyright 2008 Google Inc.  All rights reserved.</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">// https://developers.google.com/protocol-buffers/</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">// Redistribution and use in source and binary forms, with or without</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">// modification, are permitted provided that the following conditions are</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">// met:</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">//     * Redistributions of source code must retain the above copyright</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">// notice, this list of conditions and the following disclaimer.</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">//     * Redistributions in binary form must reproduce the above</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">// copyright notice, this list of conditions and the following disclaimer</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">// in the documentation and/or other materials provided with the</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">// distribution.</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">//     * Neither the name of Google Inc. nor the names of its</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">// contributors may be used to endorse or promote products derived from</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">// this software without specific prior written permission.</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">// &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">// LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">// A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">// OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">// SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">// LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">// DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">// THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">// (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment">// OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#endregion</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_google_1_1_protobuf.html">Google.Protobuf</a></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;{</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="comment">// This part of CodedOutputStream provides all the static entry points that are used</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="comment">// by generated code and internally to compute the size of messages prior to being</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="comment">// written to an instance of CodedOutputStream.</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_coded_output_stream.html">   40</a></span>&#160;    <span class="keyword">public</span> sealed <span class="keyword">partial class </span><a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html">CodedOutputStream</a></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    {</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <span class="keyword">private</span> <span class="keyword">const</span> <span class="keywordtype">int</span> LittleEndian64Size = 8;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <span class="keyword">private</span> <span class="keyword">const</span> <span class="keywordtype">int</span> LittleEndian32Size = 4;        </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#ac689c63b85bbba61a3d9681f032027c7">   49</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">int</span> <a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#ac689c63b85bbba61a3d9681f032027c7">ComputeDoubleSize</a>(<span class="keywordtype">double</span> value)</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        {</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            <span class="keywordflow">return</span> LittleEndian64Size;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        }</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a13c4ece4169a428db8694676ea0317b1">   58</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">int</span> <a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a13c4ece4169a428db8694676ea0317b1">ComputeFloatSize</a>(<span class="keywordtype">float</span> value)</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        {</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;            <span class="keywordflow">return</span> LittleEndian32Size;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        }</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a6796173e266a725dda941dc4104f2833">   67</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">int</span> <a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a6796173e266a725dda941dc4104f2833">ComputeUInt64Size</a>(ulong value)</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        {</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#ab8b67ee34b91b873ac8e2c715e4dfa17">ComputeRawVarint64Size</a>(value);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        }</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
+<div class="line"><a name="l00076"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a4eedb68f8ac811cf06649f67e47bd84d">   76</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">int</span> <a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a4eedb68f8ac811cf06649f67e47bd84d">ComputeInt64Size</a>(<span class="keywordtype">long</span> value)</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        {</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#ab8b67ee34b91b873ac8e2c715e4dfa17">ComputeRawVarint64Size</a>((ulong) value);</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        }</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
+<div class="line"><a name="l00085"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#ac5282d0255fc65115a4558346bbb5703">   85</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">int</span> <a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#ac5282d0255fc65115a4558346bbb5703">ComputeInt32Size</a>(<span class="keywordtype">int</span> value)</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        {</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;            <span class="keywordflow">if</span> (value &gt;= 0)</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;            {</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                <span class="keywordflow">return</span> <a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#aedd0de75b8b8f40e66998ea226611255">ComputeRawVarint32Size</a>((uint) value);</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            }</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;            {</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                <span class="comment">// Must sign-extend.</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                <span class="keywordflow">return</span> 10;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;            }</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        }</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
+<div class="line"><a name="l00102"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a809cf165ac2e8e99e8b0e61c01989029">  102</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">int</span> <a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a809cf165ac2e8e99e8b0e61c01989029">ComputeFixed64Size</a>(ulong value)</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        {</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;            <span class="keywordflow">return</span> LittleEndian64Size;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        }</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
+<div class="line"><a name="l00111"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a2647466b8e3401d96f890697745d166a">  111</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">int</span> <a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a2647466b8e3401d96f890697745d166a">ComputeFixed32Size</a>(uint value)</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        {</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;            <span class="keywordflow">return</span> LittleEndian32Size;</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        }</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160; </div>
+<div class="line"><a name="l00120"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#ad55330919f8e03ae48107c96b7e562f0">  120</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">int</span> <a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#ad55330919f8e03ae48107c96b7e562f0">ComputeBoolSize</a>(<span class="keywordtype">bool</span> value)</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        {</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;            <span class="keywordflow">return</span> 1;</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        }</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160; </div>
+<div class="line"><a name="l00129"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a468856512b1784ffef9a1d1dc41c20fd">  129</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">int</span> <a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a468856512b1784ffef9a1d1dc41c20fd">ComputeStringSize</a>(String value)</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        {</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;            <span class="keywordtype">int</span> byteArraySize = Utf8Encoding.GetByteCount(value);</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#af8af9c9101dd1dc9488911b5b88478bd">ComputeLengthSize</a>(byteArraySize) + byteArraySize;</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        }</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160; </div>
+<div class="line"><a name="l00139"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a1ef435e5f302a5f833e4dc3aea1d4405">  139</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">int</span> <a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a1ef435e5f302a5f833e4dc3aea1d4405">ComputeGroupSize</a>(<a class="code" href="interface_google_1_1_protobuf_1_1_i_message.html">IMessage</a> value)</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;        {</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;            <span class="keywordflow">return</span> value.<a class="code" href="interface_google_1_1_protobuf_1_1_i_message.html#aa3561db050d542706279ffb6ed9315ad">CalculateSize</a>();</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;        }</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160; </div>
+<div class="line"><a name="l00148"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#aa8a3d1671e744975606bef6b20a8b038">  148</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">int</span> <a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#aa8a3d1671e744975606bef6b20a8b038">ComputeMessageSize</a>(<a class="code" href="interface_google_1_1_protobuf_1_1_i_message.html">IMessage</a> value)</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        {</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;            <span class="keywordtype">int</span> size = value.<a class="code" href="interface_google_1_1_protobuf_1_1_i_message.html#aa3561db050d542706279ffb6ed9315ad">CalculateSize</a>();</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#af8af9c9101dd1dc9488911b5b88478bd">ComputeLengthSize</a>(size) + size;</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;        }</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160; </div>
+<div class="line"><a name="l00158"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a3897e1e48ad38cb2bb34dd766575caae">  158</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">int</span> <a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a3897e1e48ad38cb2bb34dd766575caae">ComputeBytesSize</a>(<a class="code" href="class_google_1_1_protobuf_1_1_byte_string.html">ByteString</a> value)</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;        {</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#af8af9c9101dd1dc9488911b5b88478bd">ComputeLengthSize</a>(value.<a class="code" href="class_google_1_1_protobuf_1_1_byte_string.html#a68c573fdb98442fde03392e1ada52464">Length</a>) + value.<a class="code" href="class_google_1_1_protobuf_1_1_byte_string.html#a68c573fdb98442fde03392e1ada52464">Length</a>;</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;        }</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160; </div>
+<div class="line"><a name="l00167"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a42a5cab5992491172e8a41ae066cb709">  167</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">int</span> <a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a42a5cab5992491172e8a41ae066cb709">ComputeUInt32Size</a>(uint value)</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;        {</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#aedd0de75b8b8f40e66998ea226611255">ComputeRawVarint32Size</a>(value);</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;        }</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160; </div>
+<div class="line"><a name="l00177"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#add98ee7c8d7cfcfc6b57d36bcbbf0fce">  177</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">int</span> <a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#add98ee7c8d7cfcfc6b57d36bcbbf0fce">ComputeEnumSize</a>(<span class="keywordtype">int</span> value)</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;        {</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;            <span class="comment">// Currently just a pass-through, but it&#39;s nice to separate it logically.</span></div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#ac5282d0255fc65115a4558346bbb5703">ComputeInt32Size</a>(value);</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;        }</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160; </div>
+<div class="line"><a name="l00187"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a4c23d08a95b12e17c1053a057124d58d">  187</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">int</span> <a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a4c23d08a95b12e17c1053a057124d58d">ComputeSFixed32Size</a>(<span class="keywordtype">int</span> value)</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;        {</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;            <span class="keywordflow">return</span> LittleEndian32Size;</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;        }</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160; </div>
+<div class="line"><a name="l00196"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a4c826ff546c5c48c325a9eb839319422">  196</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">int</span> <a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a4c826ff546c5c48c325a9eb839319422">ComputeSFixed64Size</a>(<span class="keywordtype">long</span> value)</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;        {</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;            <span class="keywordflow">return</span> LittleEndian64Size;</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;        }</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160; </div>
+<div class="line"><a name="l00205"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a17293584e93ef4d56a3562bff48a8671">  205</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">int</span> <a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a17293584e93ef4d56a3562bff48a8671">ComputeSInt32Size</a>(<span class="keywordtype">int</span> value)</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;        {</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#aedd0de75b8b8f40e66998ea226611255">ComputeRawVarint32Size</a>(EncodeZigZag32(value));</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;        }</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160; </div>
+<div class="line"><a name="l00214"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#aa887c32df5e1f716e884444c5e3c741a">  214</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">int</span> <a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#aa887c32df5e1f716e884444c5e3c741a">ComputeSInt64Size</a>(<span class="keywordtype">long</span> value)</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;        {</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#ab8b67ee34b91b873ac8e2c715e4dfa17">ComputeRawVarint64Size</a>(EncodeZigZag64(value));</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;        }</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160; </div>
+<div class="line"><a name="l00223"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#af8af9c9101dd1dc9488911b5b88478bd">  223</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">int</span> <a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#af8af9c9101dd1dc9488911b5b88478bd">ComputeLengthSize</a>(<span class="keywordtype">int</span> length)</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;        {</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#aedd0de75b8b8f40e66998ea226611255">ComputeRawVarint32Size</a>((uint) length);</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;        }</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160; </div>
+<div class="line"><a name="l00231"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#aedd0de75b8b8f40e66998ea226611255">  231</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">int</span> <a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#aedd0de75b8b8f40e66998ea226611255">ComputeRawVarint32Size</a>(uint value)</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;        {</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;            <span class="keywordflow">if</span> ((value &amp; (0xffffffff &lt;&lt; 7)) == 0)</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;            {</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;                <span class="keywordflow">return</span> 1;</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;            }</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;            <span class="keywordflow">if</span> ((value &amp; (0xffffffff &lt;&lt; 14)) == 0)</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;            {</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;                <span class="keywordflow">return</span> 2;</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;            }</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;            <span class="keywordflow">if</span> ((value &amp; (0xffffffff &lt;&lt; 21)) == 0)</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;            {</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;                <span class="keywordflow">return</span> 3;</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;            }</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;            <span class="keywordflow">if</span> ((value &amp; (0xffffffff &lt;&lt; 28)) == 0)</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;            {</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;                <span class="keywordflow">return</span> 4;</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;            }</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;            <span class="keywordflow">return</span> 5;</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;        }</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160; </div>
+<div class="line"><a name="l00255"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#ab8b67ee34b91b873ac8e2c715e4dfa17">  255</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">int</span> <a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#ab8b67ee34b91b873ac8e2c715e4dfa17">ComputeRawVarint64Size</a>(ulong value)</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;        {</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;            <span class="keywordflow">if</span> ((value &amp; (0xffffffffffffffffL &lt;&lt; 7)) == 0)</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;            {</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;                <span class="keywordflow">return</span> 1;</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;            }</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;            <span class="keywordflow">if</span> ((value &amp; (0xffffffffffffffffL &lt;&lt; 14)) == 0)</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;            {</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;                <span class="keywordflow">return</span> 2;</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;            }</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;            <span class="keywordflow">if</span> ((value &amp; (0xffffffffffffffffL &lt;&lt; 21)) == 0)</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;            {</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;                <span class="keywordflow">return</span> 3;</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;            }</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;            <span class="keywordflow">if</span> ((value &amp; (0xffffffffffffffffL &lt;&lt; 28)) == 0)</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;            {</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;                <span class="keywordflow">return</span> 4;</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;            }</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;            <span class="keywordflow">if</span> ((value &amp; (0xffffffffffffffffL &lt;&lt; 35)) == 0)</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;            {</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;                <span class="keywordflow">return</span> 5;</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;            }</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;            <span class="keywordflow">if</span> ((value &amp; (0xffffffffffffffffL &lt;&lt; 42)) == 0)</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;            {</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;                <span class="keywordflow">return</span> 6;</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;            }</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;            <span class="keywordflow">if</span> ((value &amp; (0xffffffffffffffffL &lt;&lt; 49)) == 0)</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;            {</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;                <span class="keywordflow">return</span> 7;</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;            }</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;            <span class="keywordflow">if</span> ((value &amp; (0xffffffffffffffffL &lt;&lt; 56)) == 0)</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;            {</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;                <span class="keywordflow">return</span> 8;</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;            }</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;            <span class="keywordflow">if</span> ((value &amp; (0xffffffffffffffffL &lt;&lt; 63)) == 0)</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;            {</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;                <span class="keywordflow">return</span> 9;</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;            }</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;            <span class="keywordflow">return</span> 10;</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;        }</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160; </div>
+<div class="line"><a name="l00299"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a6bcc4933295422cfffd663a403b41699">  299</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">int</span> <a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a6bcc4933295422cfffd663a403b41699">ComputeTagSize</a>(<span class="keywordtype">int</span> fieldNumber)</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;        {</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#aedd0de75b8b8f40e66998ea226611255">ComputeRawVarint32Size</a>(WireFormat.MakeTag(fieldNumber, 0));</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;        }</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;    }</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;}</div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_byte_string_html"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_byte_string.html">Google.Protobuf.ByteString</a></div><div class="ttdoc">Immutable array of bytes.</div><div class="ttdef"><b>Definition:</b> <a href="_byte_string_8cs_source.html#l00047">ByteString.cs:48</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_byte_string_html_a68c573fdb98442fde03392e1ada52464"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_byte_string.html#a68c573fdb98442fde03392e1ada52464">Google.Protobuf.ByteString.Length</a></div><div class="ttdeci">int Length</div><div class="ttdoc">Returns the length of this ByteString in bytes.</div><div class="ttdef"><b>Definition:</b> <a href="_byte_string_8cs_source.html#l00113">ByteString.cs:114</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_coded_output_stream_html"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_coded_output_stream.html">Google.Protobuf.CodedOutputStream</a></div><div class="ttdoc">Encodes and writes protocol message fields.</div><div class="ttdef"><b>Definition:</b> <a href="_coded_output_stream_8_compute_size_8cs_source.html#l00040">CodedOutputStream.ComputeSize.cs:41</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_coded_output_stream_html_a13c4ece4169a428db8694676ea0317b1"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a13c4ece4169a428db8694676ea0317b1">Google.Protobuf.CodedOutputStream.ComputeFloatSize</a></div><div class="ttdeci">static int ComputeFloatSize(float value)</div><div class="ttdoc">Computes the number of bytes that would be needed to encode a float field, including the tag.</div><div class="ttdef"><b>Definition:</b> <a href="_coded_output_stream_8_compute_size_8cs_source.html#l00058">CodedOutputStream.ComputeSize.cs:58</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_coded_output_stream_html_a17293584e93ef4d56a3562bff48a8671"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a17293584e93ef4d56a3562bff48a8671">Google.Protobuf.CodedOutputStream.ComputeSInt32Size</a></div><div class="ttdeci">static int ComputeSInt32Size(int value)</div><div class="ttdoc">Computes the number of bytes that would be needed to encode an sint32 field, including the tag.</div><div class="ttdef"><b>Definition:</b> <a href="_coded_output_stream_8_compute_size_8cs_source.html#l00205">CodedOutputStream.ComputeSize.cs:205</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_coded_output_stream_html_a1ef435e5f302a5f833e4dc3aea1d4405"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a1ef435e5f302a5f833e4dc3aea1d4405">Google.Protobuf.CodedOutputStream.ComputeGroupSize</a></div><div class="ttdeci">static int ComputeGroupSize(IMessage value)</div><div class="ttdoc">Computes the number of bytes that would be needed to encode a group field, including the tag.</div><div class="ttdef"><b>Definition:</b> <a href="_coded_output_stream_8_compute_size_8cs_source.html#l00139">CodedOutputStream.ComputeSize.cs:139</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_coded_output_stream_html_a2647466b8e3401d96f890697745d166a"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a2647466b8e3401d96f890697745d166a">Google.Protobuf.CodedOutputStream.ComputeFixed32Size</a></div><div class="ttdeci">static int ComputeFixed32Size(uint value)</div><div class="ttdoc">Computes the number of bytes that would be needed to encode a fixed32 field, including the tag.</div><div class="ttdef"><b>Definition:</b> <a href="_coded_output_stream_8_compute_size_8cs_source.html#l00111">CodedOutputStream.ComputeSize.cs:111</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_coded_output_stream_html_a3897e1e48ad38cb2bb34dd766575caae"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a3897e1e48ad38cb2bb34dd766575caae">Google.Protobuf.CodedOutputStream.ComputeBytesSize</a></div><div class="ttdeci">static int ComputeBytesSize(ByteString value)</div><div class="ttdoc">Computes the number of bytes that would be needed to encode a bytes field, including the tag.</div><div class="ttdef"><b>Definition:</b> <a href="_coded_output_stream_8_compute_size_8cs_source.html#l00158">CodedOutputStream.ComputeSize.cs:158</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_coded_output_stream_html_a42a5cab5992491172e8a41ae066cb709"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a42a5cab5992491172e8a41ae066cb709">Google.Protobuf.CodedOutputStream.ComputeUInt32Size</a></div><div class="ttdeci">static int ComputeUInt32Size(uint value)</div><div class="ttdoc">Computes the number of bytes that would be needed to encode a uint32 field, including the tag.</div><div class="ttdef"><b>Definition:</b> <a href="_coded_output_stream_8_compute_size_8cs_source.html#l00167">CodedOutputStream.ComputeSize.cs:167</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_coded_output_stream_html_a468856512b1784ffef9a1d1dc41c20fd"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a468856512b1784ffef9a1d1dc41c20fd">Google.Protobuf.CodedOutputStream.ComputeStringSize</a></div><div class="ttdeci">static int ComputeStringSize(String value)</div><div class="ttdoc">Computes the number of bytes that would be needed to encode a string field, including the tag.</div><div class="ttdef"><b>Definition:</b> <a href="_coded_output_stream_8_compute_size_8cs_source.html#l00129">CodedOutputStream.ComputeSize.cs:129</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_coded_output_stream_html_a4c23d08a95b12e17c1053a057124d58d"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a4c23d08a95b12e17c1053a057124d58d">Google.Protobuf.CodedOutputStream.ComputeSFixed32Size</a></div><div class="ttdeci">static int ComputeSFixed32Size(int value)</div><div class="ttdoc">Computes the number of bytes that would be needed to encode an sfixed32 field, including the tag.</div><div class="ttdef"><b>Definition:</b> <a href="_coded_output_stream_8_compute_size_8cs_source.html#l00187">CodedOutputStream.ComputeSize.cs:187</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_coded_output_stream_html_a4c826ff546c5c48c325a9eb839319422"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a4c826ff546c5c48c325a9eb839319422">Google.Protobuf.CodedOutputStream.ComputeSFixed64Size</a></div><div class="ttdeci">static int ComputeSFixed64Size(long value)</div><div class="ttdoc">Computes the number of bytes that would be needed to encode an sfixed64 field, including the tag.</div><div class="ttdef"><b>Definition:</b> <a href="_coded_output_stream_8_compute_size_8cs_source.html#l00196">CodedOutputStream.ComputeSize.cs:196</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_coded_output_stream_html_a4eedb68f8ac811cf06649f67e47bd84d"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a4eedb68f8ac811cf06649f67e47bd84d">Google.Protobuf.CodedOutputStream.ComputeInt64Size</a></div><div class="ttdeci">static int ComputeInt64Size(long value)</div><div class="ttdoc">Computes the number of bytes that would be needed to encode an int64 field, including the tag.</div><div class="ttdef"><b>Definition:</b> <a href="_coded_output_stream_8_compute_size_8cs_source.html#l00076">CodedOutputStream.ComputeSize.cs:76</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_coded_output_stream_html_a6796173e266a725dda941dc4104f2833"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a6796173e266a725dda941dc4104f2833">Google.Protobuf.CodedOutputStream.ComputeUInt64Size</a></div><div class="ttdeci">static int ComputeUInt64Size(ulong value)</div><div class="ttdoc">Computes the number of bytes that would be needed to encode a uint64 field, including the tag.</div><div class="ttdef"><b>Definition:</b> <a href="_coded_output_stream_8_compute_size_8cs_source.html#l00067">CodedOutputStream.ComputeSize.cs:67</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_coded_output_stream_html_a6bcc4933295422cfffd663a403b41699"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a6bcc4933295422cfffd663a403b41699">Google.Protobuf.CodedOutputStream.ComputeTagSize</a></div><div class="ttdeci">static int ComputeTagSize(int fieldNumber)</div><div class="ttdoc">Computes the number of bytes that would be needed to encode a tag.</div><div class="ttdef"><b>Definition:</b> <a href="_coded_output_stream_8_compute_size_8cs_source.html#l00299">CodedOutputStream.ComputeSize.cs:299</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_coded_output_stream_html_a809cf165ac2e8e99e8b0e61c01989029"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a809cf165ac2e8e99e8b0e61c01989029">Google.Protobuf.CodedOutputStream.ComputeFixed64Size</a></div><div class="ttdeci">static int ComputeFixed64Size(ulong value)</div><div class="ttdoc">Computes the number of bytes that would be needed to encode a fixed64 field, including the tag.</div><div class="ttdef"><b>Definition:</b> <a href="_coded_output_stream_8_compute_size_8cs_source.html#l00102">CodedOutputStream.ComputeSize.cs:102</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_coded_output_stream_html_aa887c32df5e1f716e884444c5e3c741a"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_coded_output_stream.html#aa887c32df5e1f716e884444c5e3c741a">Google.Protobuf.CodedOutputStream.ComputeSInt64Size</a></div><div class="ttdeci">static int ComputeSInt64Size(long value)</div><div class="ttdoc">Computes the number of bytes that would be needed to encode an sint64 field, including the tag.</div><div class="ttdef"><b>Definition:</b> <a href="_coded_output_stream_8_compute_size_8cs_source.html#l00214">CodedOutputStream.ComputeSize.cs:214</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_coded_output_stream_html_aa8a3d1671e744975606bef6b20a8b038"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_coded_output_stream.html#aa8a3d1671e744975606bef6b20a8b038">Google.Protobuf.CodedOutputStream.ComputeMessageSize</a></div><div class="ttdeci">static int ComputeMessageSize(IMessage value)</div><div class="ttdoc">Computes the number of bytes that would be needed to encode an embedded message field,...</div><div class="ttdef"><b>Definition:</b> <a href="_coded_output_stream_8_compute_size_8cs_source.html#l00148">CodedOutputStream.ComputeSize.cs:148</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_coded_output_stream_html_ab8b67ee34b91b873ac8e2c715e4dfa17"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_coded_output_stream.html#ab8b67ee34b91b873ac8e2c715e4dfa17">Google.Protobuf.CodedOutputStream.ComputeRawVarint64Size</a></div><div class="ttdeci">static int ComputeRawVarint64Size(ulong value)</div><div class="ttdoc">Computes the number of bytes that would be needed to encode a varint.</div><div class="ttdef"><b>Definition:</b> <a href="_coded_output_stream_8_compute_size_8cs_source.html#l00255">CodedOutputStream.ComputeSize.cs:255</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_coded_output_stream_html_ac5282d0255fc65115a4558346bbb5703"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_coded_output_stream.html#ac5282d0255fc65115a4558346bbb5703">Google.Protobuf.CodedOutputStream.ComputeInt32Size</a></div><div class="ttdeci">static int ComputeInt32Size(int value)</div><div class="ttdoc">Computes the number of bytes that would be needed to encode an int32 field, including the tag.</div><div class="ttdef"><b>Definition:</b> <a href="_coded_output_stream_8_compute_size_8cs_source.html#l00085">CodedOutputStream.ComputeSize.cs:85</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_coded_output_stream_html_ac689c63b85bbba61a3d9681f032027c7"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_coded_output_stream.html#ac689c63b85bbba61a3d9681f032027c7">Google.Protobuf.CodedOutputStream.ComputeDoubleSize</a></div><div class="ttdeci">static int ComputeDoubleSize(double value)</div><div class="ttdoc">Computes the number of bytes that would be needed to encode a double field, including the tag.</div><div class="ttdef"><b>Definition:</b> <a href="_coded_output_stream_8_compute_size_8cs_source.html#l00049">CodedOutputStream.ComputeSize.cs:49</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_coded_output_stream_html_ad55330919f8e03ae48107c96b7e562f0"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_coded_output_stream.html#ad55330919f8e03ae48107c96b7e562f0">Google.Protobuf.CodedOutputStream.ComputeBoolSize</a></div><div class="ttdeci">static int ComputeBoolSize(bool value)</div><div class="ttdoc">Computes the number of bytes that would be needed to encode a bool field, including the tag.</div><div class="ttdef"><b>Definition:</b> <a href="_coded_output_stream_8_compute_size_8cs_source.html#l00120">CodedOutputStream.ComputeSize.cs:120</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_coded_output_stream_html_add98ee7c8d7cfcfc6b57d36bcbbf0fce"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_coded_output_stream.html#add98ee7c8d7cfcfc6b57d36bcbbf0fce">Google.Protobuf.CodedOutputStream.ComputeEnumSize</a></div><div class="ttdeci">static int ComputeEnumSize(int value)</div><div class="ttdoc">Computes the number of bytes that would be needed to encode a enum field, including the tag....</div><div class="ttdef"><b>Definition:</b> <a href="_coded_output_stream_8_compute_size_8cs_source.html#l00177">CodedOutputStream.ComputeSize.cs:177</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_coded_output_stream_html_aedd0de75b8b8f40e66998ea226611255"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_coded_output_stream.html#aedd0de75b8b8f40e66998ea226611255">Google.Protobuf.CodedOutputStream.ComputeRawVarint32Size</a></div><div class="ttdeci">static int ComputeRawVarint32Size(uint value)</div><div class="ttdoc">Computes the number of bytes that would be needed to encode a varint.</div><div class="ttdef"><b>Definition:</b> <a href="_coded_output_stream_8_compute_size_8cs_source.html#l00231">CodedOutputStream.ComputeSize.cs:231</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_coded_output_stream_html_af8af9c9101dd1dc9488911b5b88478bd"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_coded_output_stream.html#af8af9c9101dd1dc9488911b5b88478bd">Google.Protobuf.CodedOutputStream.ComputeLengthSize</a></div><div class="ttdeci">static int ComputeLengthSize(int length)</div><div class="ttdoc">Computes the number of bytes that would be needed to encode a length, as written by WriteLength.</div><div class="ttdef"><b>Definition:</b> <a href="_coded_output_stream_8_compute_size_8cs_source.html#l00223">CodedOutputStream.ComputeSize.cs:223</a></div></div>
+<div class="ttc" id="ainterface_google_1_1_protobuf_1_1_i_message_html"><div class="ttname"><a href="interface_google_1_1_protobuf_1_1_i_message.html">Google.Protobuf.IMessage</a></div><div class="ttdoc">Interface for a Protocol Buffers message, supporting basic operations required for serialization.</div><div class="ttdef"><b>Definition:</b> <a href="_libraries_2_google_8_protobuf_2_i_message_8cs_source.html#l00040">IMessage.cs:41</a></div></div>
+<div class="ttc" id="ainterface_google_1_1_protobuf_1_1_i_message_html_aa3561db050d542706279ffb6ed9315ad"><div class="ttname"><a href="interface_google_1_1_protobuf_1_1_i_message.html#aa3561db050d542706279ffb6ed9315ad">Google.Protobuf.IMessage.CalculateSize</a></div><div class="ttdeci">int CalculateSize()</div><div class="ttdoc">Calculates the size of this message in Protocol Buffer wire format, in bytes.</div></div>
+<div class="ttc" id="anamespace_google_1_1_protobuf_html"><div class="ttname"><a href="namespace_google_1_1_protobuf.html">Google.Protobuf</a></div><div class="ttdef"><b>Definition:</b> <a href="_i_message_adaptor_8cs_source.html#l00010">IMessageAdaptor.cs:11</a></div></div>
+<div class="ttc" id="anamespace_system_html"><div class="ttname"><a href="namespace_system.html">System</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_method_builder_attribute_8cs_source.html#l00001">AsyncMethodBuilderAttribute.cs:2</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_84bbf7b3c7f28a5a18725745e1505219.html">Assets</a></li><li class="navelem"><a class="el" href="dir_f13b41af88cf68434578284aaf699e39.html">Scripts</a></li><li class="navelem"><a class="el" href="dir_46d134a3bf82cf4dc49ca8f728aea58c.html">Libraries</a></li><li class="navelem"><a class="el" href="dir_ee874eb5685beecfc37035b4fc9dfc0c.html">Google.Protobuf</a></li><li class="navelem"><a class="el" href="_coded_output_stream_8_compute_size_8cs.html">CodedOutputStream.ComputeSize.cs</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:24:50 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

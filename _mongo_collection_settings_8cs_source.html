@@ -1,0 +1,412 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: ETServer/Server/ThirdParty/MongoDBDriver/MongoDB.Driver/MongoCollectionSettings.cs 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_mongo_collection_settings_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">MongoCollectionSettings.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_mongo_collection_settings_8cs.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/* Copyright 2010-present MongoDB Inc.</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">* Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">* you may not use this file except in compliance with the License.</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">* You may obtain a copy of the License at</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">* http://www.apache.org/licenses/LICENSE-2.0</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">* Unless required by applicable law or agreed to in writing, software</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">* distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">* See the License for the specific language governing permissions and</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">* limitations under the License.</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Collections.Generic;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Text;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_mongo_d_b.html">MongoDB</a>.<a class="code" href="namespace_mongo_d_b_1_1_bson.html">Bson</a>;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_mongo_d_b.html">MongoDB</a>.<a class="code" href="namespace_mongo_d_b_1_1_bson.html">Bson</a>.<a class="code" href="namespace_mongo_d_b_1_1_bson_1_1_serialization.html">Serialization</a>;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_mongo_d_b.html">MongoDB</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver.html">Driver</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core.html">Core</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_misc.html">Misc</a>;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_mongo_d_b_1_1_driver.html">MongoDB.Driver</a></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;{</div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_mongo_collection_settings.html">   28</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="class_mongo_d_b_1_1_driver_1_1_mongo_collection_settings.html">MongoCollectionSettings</a></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    {</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <span class="comment">// private fields</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <span class="keyword">private</span> <a class="code" href="struct_mongo_d_b_1_1_driver_1_1_setting.html">Setting&lt;bool&gt;</a> _assignIdOnInsert;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <span class="keyword">private</span> <a class="code" href="struct_mongo_d_b_1_1_driver_1_1_setting.html">Setting&lt;GuidRepresentation&gt;</a> _guidRepresentation;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <span class="keyword">private</span> <a class="code" href="struct_mongo_d_b_1_1_driver_1_1_setting.html">Setting&lt;ReadConcern&gt;</a> _readConcern;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="keyword">private</span> <a class="code" href="struct_mongo_d_b_1_1_driver_1_1_setting.html">Setting&lt;UTF8Encoding&gt;</a> _readEncoding;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <span class="keyword">private</span> <a class="code" href="struct_mongo_d_b_1_1_driver_1_1_setting.html">Setting&lt;ReadPreference&gt;</a> _readPreference;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <span class="keyword">private</span> <a class="code" href="struct_mongo_d_b_1_1_driver_1_1_setting.html">Setting&lt;WriteConcern&gt;</a> _writeConcern;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <span class="keyword">private</span> <a class="code" href="struct_mongo_d_b_1_1_driver_1_1_setting.html">Setting&lt;UTF8Encoding&gt;</a> _writeEncoding;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <span class="comment">// the following fields are set when Freeze is called</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">bool</span> _isFrozen;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">int</span> _frozenHashCode;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">string</span> _frozenStringRepresentation;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="comment">// constructors</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_mongo_collection_settings.html#ab933709ca5cac31038834253c1de0449">   48</a></span>&#160;<span class="comment"></span>        <span class="keyword">public</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_mongo_collection_settings.html#ab933709ca5cac31038834253c1de0449">MongoCollectionSettings</a>()</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        {</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        }</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        <span class="comment">// public properties</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_mongo_collection_settings.html#a5c6aff2492a191794d96cd59efefe0c8">   56</a></span>&#160;<span class="comment"></span>        <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_mongo_collection_settings.html#a5c6aff2492a191794d96cd59efefe0c8">AssignIdOnInsert</a></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        {</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            <span class="keyword">get</span> { <span class="keywordflow">return</span> _assignIdOnInsert.<a class="code" href="struct_mongo_d_b_1_1_driver_1_1_setting.html#ae3b7cbe30496b4c3fac361d4e82bcf81">Value</a>; }</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            <span class="keyword">set</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;            {</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                <span class="keywordflow">if</span> (_isFrozen) { <span class="keywordflow">throw</span> <span class="keyword">new</span> InvalidOperationException(<span class="stringliteral">&quot;MongoCollectionSettings is frozen.&quot;</span>); }</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                _assignIdOnInsert.<a class="code" href="struct_mongo_d_b_1_1_driver_1_1_setting.html#ae3b7cbe30496b4c3fac361d4e82bcf81">Value</a> = value;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;            }</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        }</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_mongo_collection_settings.html#a282d9ab1dbb0d940b341efc7f0e69d6c">   69</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="namespace_mongo_d_b_1_1_bson.html#a8fd533815d33d4ee0e6176ed1e7d8b63">GuidRepresentation</a> <a class="code" href="namespace_mongo_d_b_1_1_bson.html#a8fd533815d33d4ee0e6176ed1e7d8b63">GuidRepresentation</a></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        {</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            <span class="keyword">get</span> { <span class="keywordflow">return</span> _guidRepresentation.<a class="code" href="struct_mongo_d_b_1_1_driver_1_1_setting.html#ae3b7cbe30496b4c3fac361d4e82bcf81">Value</a>; }</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;            <span class="keyword">set</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            {</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                <span class="keywordflow">if</span> (_isFrozen) { <span class="keywordflow">throw</span> <span class="keyword">new</span> InvalidOperationException(<span class="stringliteral">&quot;MongoCollectionSettings is frozen.&quot;</span>); }</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                _guidRepresentation.<a class="code" href="struct_mongo_d_b_1_1_driver_1_1_setting.html#ae3b7cbe30496b4c3fac361d4e82bcf81">Value</a> = value;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            }</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        }</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
+<div class="line"><a name="l00082"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_mongo_collection_settings.html#a81cbeb12d8af415467f84ef018350dde">   82</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_mongo_collection_settings.html#a81cbeb12d8af415467f84ef018350dde">IsFrozen</a></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        {</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;            <span class="keyword">get</span> { <span class="keywordflow">return</span> _isFrozen; }</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        }</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
+<div class="line"><a name="l00090"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_mongo_collection_settings.html#a9c25b2b2199a10cebcf3291504364b28">   90</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_read_concern.html">ReadConcern</a> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_read_concern.html">ReadConcern</a></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        {</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;            <span class="keyword">get</span> { <span class="keywordflow">return</span> _readConcern.<a class="code" href="struct_mongo_d_b_1_1_driver_1_1_setting.html#ae3b7cbe30496b4c3fac361d4e82bcf81">Value</a>; }</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;            <span class="keyword">set</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;            {</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                <span class="keywordflow">if</span> (_isFrozen) { <span class="keywordflow">throw</span> <span class="keyword">new</span> InvalidOperationException(<span class="stringliteral">&quot;MongoCollectionSettings is frozen.&quot;</span>); }</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                _readConcern.<a class="code" href="struct_mongo_d_b_1_1_driver_1_1_setting.html#ae3b7cbe30496b4c3fac361d4e82bcf81">Value</a> = Ensure.IsNotNull(value, nameof(value));</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;            }</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        }</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160; </div>
+<div class="line"><a name="l00103"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_mongo_collection_settings.html#a1f63623d99fc0d440c2cf58256fbe0c2">  103</a></span>&#160;        <span class="keyword">public</span> UTF8Encoding <a class="code" href="class_mongo_d_b_1_1_driver_1_1_mongo_collection_settings.html#a1f63623d99fc0d440c2cf58256fbe0c2">ReadEncoding</a></div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        {</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;            <span class="keyword">get</span> { <span class="keywordflow">return</span> _readEncoding.<a class="code" href="struct_mongo_d_b_1_1_driver_1_1_setting.html#ae3b7cbe30496b4c3fac361d4e82bcf81">Value</a>; }</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;            <span class="keyword">set</span></div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;            {</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;                <span class="keywordflow">if</span> (_isFrozen) { <span class="keywordflow">throw</span> <span class="keyword">new</span> InvalidOperationException(<span class="stringliteral">&quot;MongoCollectionSettings is frozen.&quot;</span>); }</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;                _readEncoding.<a class="code" href="struct_mongo_d_b_1_1_driver_1_1_setting.html#ae3b7cbe30496b4c3fac361d4e82bcf81">Value</a> = value;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;            }</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        }</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160; </div>
+<div class="line"><a name="l00116"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_mongo_collection_settings.html#a805c461a8c41b6288fd95fc6404c9f2e">  116</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_read_preference.html">ReadPreference</a> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_read_preference.html">ReadPreference</a></div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        {</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;            <span class="keyword">get</span> { <span class="keywordflow">return</span> _readPreference.<a class="code" href="struct_mongo_d_b_1_1_driver_1_1_setting.html#ae3b7cbe30496b4c3fac361d4e82bcf81">Value</a>; }</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;            <span class="keyword">set</span></div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;            {</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;                <span class="keywordflow">if</span> (_isFrozen) { <span class="keywordflow">throw</span> <span class="keyword">new</span> InvalidOperationException(<span class="stringliteral">&quot;MongoCollectionSettings is frozen.&quot;</span>); }</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;                <span class="keywordflow">if</span> (value == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;                {</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;                    <span class="keywordflow">throw</span> <span class="keyword">new</span> ArgumentNullException(<span class="stringliteral">&quot;value&quot;</span>);</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;                }</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;                _readPreference.<a class="code" href="struct_mongo_d_b_1_1_driver_1_1_setting.html#ae3b7cbe30496b4c3fac361d4e82bcf81">Value</a> = value;</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;            }</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;        }</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160; </div>
+<div class="line"><a name="l00133"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_mongo_collection_settings.html#aca00feed045c68ede034d60bdd2532ae">  133</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="interface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_serializer_registry.html">IBsonSerializerRegistry</a> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_mongo_collection_settings.html#aca00feed045c68ede034d60bdd2532ae">SerializerRegistry</a></div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        {</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;            <span class="keyword">get</span> { <span class="keywordflow">return</span> BsonSerializer.SerializerRegistry; }</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        }</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160; </div>
+<div class="line"><a name="l00141"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_mongo_collection_settings.html#aea2184738fe0474bb75216ad2ece36f4">  141</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_write_concern.html">WriteConcern</a> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_write_concern.html">WriteConcern</a></div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;        {</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;            <span class="keyword">get</span> { <span class="keywordflow">return</span> _writeConcern.<a class="code" href="struct_mongo_d_b_1_1_driver_1_1_setting.html#ae3b7cbe30496b4c3fac361d4e82bcf81">Value</a>; }</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;            <span class="keyword">set</span></div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;            {</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;                <span class="keywordflow">if</span> (_isFrozen) { <span class="keywordflow">throw</span> <span class="keyword">new</span> InvalidOperationException(<span class="stringliteral">&quot;MongoCollectionSettings is frozen.&quot;</span>); }</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;                <span class="keywordflow">if</span> (value == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;                {</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;                    <span class="keywordflow">throw</span> <span class="keyword">new</span> ArgumentNullException(<span class="stringliteral">&quot;value&quot;</span>);</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;                }</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;                _writeConcern.<a class="code" href="struct_mongo_d_b_1_1_driver_1_1_setting.html#ae3b7cbe30496b4c3fac361d4e82bcf81">Value</a> = value;</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;            }</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;        }</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160; </div>
+<div class="line"><a name="l00158"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_mongo_collection_settings.html#aad583ffa691c84b013e69ad291117bcf">  158</a></span>&#160;        <span class="keyword">public</span> UTF8Encoding <a class="code" href="class_mongo_d_b_1_1_driver_1_1_mongo_collection_settings.html#aad583ffa691c84b013e69ad291117bcf">WriteEncoding</a></div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;        {</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;            <span class="keyword">get</span> { <span class="keywordflow">return</span> _writeEncoding.<a class="code" href="struct_mongo_d_b_1_1_driver_1_1_setting.html#ae3b7cbe30496b4c3fac361d4e82bcf81">Value</a>; }</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;            <span class="keyword">set</span></div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;            {</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;                <span class="keywordflow">if</span> (_isFrozen) { <span class="keywordflow">throw</span> <span class="keyword">new</span> InvalidOperationException(<span class="stringliteral">&quot;MongoCollectionSettings is frozen.&quot;</span>); }</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;                _writeEncoding.<a class="code" href="struct_mongo_d_b_1_1_driver_1_1_setting.html#ae3b7cbe30496b4c3fac361d4e82bcf81">Value</a> = value;</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;            }</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;        }</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160; </div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;        <span class="comment">// public methods</span></div>
+<div class="line"><a name="l00173"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_mongo_collection_settings.html#ab711c91ec3778b1ba3bcb4f9974393a2">  173</a></span>&#160;<span class="comment"></span>        <span class="keyword">public</span> <span class="keyword">virtual</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_mongo_collection_settings.html">MongoCollectionSettings</a> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_mongo_collection_settings.html#ab711c91ec3778b1ba3bcb4f9974393a2">Clone</a>()</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;        {</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;            var clone = <span class="keyword">new</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_mongo_collection_settings.html#ab933709ca5cac31038834253c1de0449">MongoCollectionSettings</a>();</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;            clone._assignIdOnInsert = _assignIdOnInsert.Clone();</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;            clone._guidRepresentation = _guidRepresentation.Clone();</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;            clone._readConcern = _readConcern.Clone();</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;            clone._readEncoding = _readEncoding.Clone();</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;            clone._readPreference = _readPreference.Clone();</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;            clone._writeConcern = _writeConcern.Clone();</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;            clone._writeEncoding = _writeEncoding.Clone();</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;            <span class="keywordflow">return</span> clone;</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;        }</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160; </div>
+<div class="line"><a name="l00191"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_mongo_collection_settings.html#ab70cdadc41eee0e68ab7057eba5d42f2">  191</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">bool</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_mongo_collection_settings.html#ab70cdadc41eee0e68ab7057eba5d42f2">Equals</a>(<span class="keywordtype">object</span> obj)</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;        {</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;            var rhs = obj as <a class="code" href="class_mongo_d_b_1_1_driver_1_1_mongo_collection_settings.html#ab933709ca5cac31038834253c1de0449">MongoCollectionSettings</a>;</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;            <span class="keywordflow">if</span> (rhs == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;            {</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;            }</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;            {</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;                <span class="keywordflow">if</span> (_isFrozen &amp;&amp; rhs._isFrozen)</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;                {</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;                    <span class="keywordflow">return</span> _frozenStringRepresentation == rhs._frozenStringRepresentation;</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;                }</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;                <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;                {</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;                    <span class="keywordflow">return</span></div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;                        _assignIdOnInsert.<a class="code" href="struct_mongo_d_b_1_1_driver_1_1_setting.html#ae3b7cbe30496b4c3fac361d4e82bcf81">Value</a> == rhs._assignIdOnInsert.Value &amp;&amp;</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;                        _guidRepresentation.<a class="code" href="struct_mongo_d_b_1_1_driver_1_1_setting.html#ae3b7cbe30496b4c3fac361d4e82bcf81">Value</a> == rhs._guidRepresentation.Value &amp;&amp;</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;                        <span class="keywordtype">object</span>.Equals(_readConcern.<a class="code" href="struct_mongo_d_b_1_1_driver_1_1_setting.html#ae3b7cbe30496b4c3fac361d4e82bcf81">Value</a>, rhs._readConcern.Value) &amp;&amp;</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;                        <span class="keywordtype">object</span>.Equals(_readEncoding, rhs._readEncoding) &amp;&amp;</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;                        _readPreference.<a class="code" href="struct_mongo_d_b_1_1_driver_1_1_setting.html#ae3b7cbe30496b4c3fac361d4e82bcf81">Value</a> == rhs._readPreference.Value &amp;&amp;</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;                        _writeConcern.<a class="code" href="struct_mongo_d_b_1_1_driver_1_1_setting.html#ae3b7cbe30496b4c3fac361d4e82bcf81">Value</a> == rhs._writeConcern.Value &amp;&amp;</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;                        <span class="keywordtype">object</span>.Equals(_writeEncoding, rhs._writeEncoding);</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;                }</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;            }</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;        }</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160; </div>
+<div class="line"><a name="l00222"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_mongo_collection_settings.html#ac0836546eada2bc2eac4872f6b1376ef">  222</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_mongo_collection_settings.html">MongoCollectionSettings</a> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_mongo_collection_settings.html#ac0836546eada2bc2eac4872f6b1376ef">Freeze</a>()</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;        {</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;            <span class="keywordflow">if</span> (!_isFrozen)</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;            {</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;                _frozenHashCode = <a class="code" href="class_mongo_d_b_1_1_driver_1_1_mongo_collection_settings.html#aff74b5fe759ae9825ffa32e34dc4e2df">GetHashCode</a>();</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;                _frozenStringRepresentation = <a class="code" href="class_mongo_d_b_1_1_driver_1_1_mongo_collection_settings.html#a2a1133f34548ddec98ee4f4e84bfaff9">ToString</a>();</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;                _isFrozen = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;            }</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">this</span>;</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;        }</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160; </div>
+<div class="line"><a name="l00237"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_mongo_collection_settings.html#a28b60fef8e39f2491cb2970dedbb5d5b">  237</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_mongo_collection_settings.html">MongoCollectionSettings</a> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_mongo_collection_settings.html#a28b60fef8e39f2491cb2970dedbb5d5b">FrozenCopy</a>()</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;        {</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;            <span class="keywordflow">if</span> (_isFrozen)</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;            {</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">this</span>;</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;            }</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;            {</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;                <span class="keywordflow">return</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_mongo_collection_settings.html#ab711c91ec3778b1ba3bcb4f9974393a2">Clone</a>().<a class="code" href="class_mongo_d_b_1_1_driver_1_1_mongo_collection_settings.html#ac0836546eada2bc2eac4872f6b1376ef">Freeze</a>();</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;            }</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;        }</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160; </div>
+<div class="line"><a name="l00253"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_mongo_collection_settings.html#aff74b5fe759ae9825ffa32e34dc4e2df">  253</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">int</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_mongo_collection_settings.html#aff74b5fe759ae9825ffa32e34dc4e2df">GetHashCode</a>()</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;        {</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;            <span class="keywordflow">if</span> (_isFrozen)</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;            {</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;                <span class="keywordflow">return</span> _frozenHashCode;</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;            }</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160; </div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;            <span class="comment">// see Effective Java by Joshua Bloch</span></div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;            <span class="keywordtype">int</span> hash = 17;</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;            hash = 37 * hash + _assignIdOnInsert.<a class="code" href="struct_mongo_d_b_1_1_driver_1_1_setting.html#ae3b7cbe30496b4c3fac361d4e82bcf81">Value</a>.GetHashCode();</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;            hash = 37 * hash + _guidRepresentation.<a class="code" href="struct_mongo_d_b_1_1_driver_1_1_setting.html#ae3b7cbe30496b4c3fac361d4e82bcf81">Value</a>.GetHashCode();</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;            hash = 37 * hash + ((_readConcern.<a class="code" href="struct_mongo_d_b_1_1_driver_1_1_setting.html#ae3b7cbe30496b4c3fac361d4e82bcf81">Value</a> == <span class="keyword">null</span>) ? 0 : _readConcern.<a class="code" href="struct_mongo_d_b_1_1_driver_1_1_setting.html#ae3b7cbe30496b4c3fac361d4e82bcf81">Value</a>.GetHashCode());</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;            hash = 37 * hash + ((_readEncoding.<a class="code" href="struct_mongo_d_b_1_1_driver_1_1_setting.html#ae3b7cbe30496b4c3fac361d4e82bcf81">Value</a> == <span class="keyword">null</span>) ? 0 : _readEncoding.<a class="code" href="struct_mongo_d_b_1_1_driver_1_1_setting.html#ae3b7cbe30496b4c3fac361d4e82bcf81">Value</a>.GetHashCode());</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;            hash = 37 * hash + ((_readPreference.<a class="code" href="struct_mongo_d_b_1_1_driver_1_1_setting.html#ae3b7cbe30496b4c3fac361d4e82bcf81">Value</a> == <span class="keyword">null</span>) ? 0 : _readPreference.<a class="code" href="struct_mongo_d_b_1_1_driver_1_1_setting.html#ae3b7cbe30496b4c3fac361d4e82bcf81">Value</a>.GetHashCode());</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;            hash = 37 * hash + ((_writeConcern.<a class="code" href="struct_mongo_d_b_1_1_driver_1_1_setting.html#ae3b7cbe30496b4c3fac361d4e82bcf81">Value</a> == <span class="keyword">null</span>) ? 0 : _writeConcern.<a class="code" href="struct_mongo_d_b_1_1_driver_1_1_setting.html#ae3b7cbe30496b4c3fac361d4e82bcf81">Value</a>.GetHashCode());</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;            hash = 37 * hash + ((_writeEncoding.<a class="code" href="struct_mongo_d_b_1_1_driver_1_1_setting.html#ae3b7cbe30496b4c3fac361d4e82bcf81">Value</a> == <span class="keyword">null</span>) ? 0 : _writeEncoding.<a class="code" href="struct_mongo_d_b_1_1_driver_1_1_setting.html#ae3b7cbe30496b4c3fac361d4e82bcf81">Value</a>.GetHashCode());</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;            <span class="keywordflow">return</span> hash;</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;        }</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160; </div>
+<div class="line"><a name="l00276"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_mongo_collection_settings.html#a2a1133f34548ddec98ee4f4e84bfaff9">  276</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">string</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_mongo_collection_settings.html#a2a1133f34548ddec98ee4f4e84bfaff9">ToString</a>()</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;        {</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;            <span class="keywordflow">if</span> (_isFrozen)</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;            {</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;                <span class="keywordflow">return</span> _frozenStringRepresentation;</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;            }</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160; </div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;            var parts = <span class="keyword">new</span> List&lt;string&gt;();</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;            parts.Add(<span class="keywordtype">string</span>.Format(<span class="stringliteral">&quot;AssignIdOnInsert={0}&quot;</span>, _assignIdOnInsert));</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;            parts.Add(<span class="keywordtype">string</span>.Format(<span class="stringliteral">&quot;GuidRepresentation={0}&quot;</span>, _guidRepresentation));</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;            parts.Add(<span class="keywordtype">string</span>.Format(<span class="stringliteral">&quot;ReadConcern={0}&quot;</span>, _readConcern.<a class="code" href="struct_mongo_d_b_1_1_driver_1_1_setting.html#ae3b7cbe30496b4c3fac361d4e82bcf81">Value</a>));</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;            <span class="keywordflow">if</span> (_readEncoding.<a class="code" href="struct_mongo_d_b_1_1_driver_1_1_setting.html#a98e5fe2cbdfc856684df041432b9d409">HasBeenSet</a>)</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;            {</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;                parts.Add(<span class="keywordtype">string</span>.Format(<span class="stringliteral">&quot;ReadEncoding={0}&quot;</span>, (_readEncoding.<a class="code" href="struct_mongo_d_b_1_1_driver_1_1_setting.html#ae3b7cbe30496b4c3fac361d4e82bcf81">Value</a> == <span class="keyword">null</span>) ? <span class="stringliteral">&quot;null&quot;</span> : <span class="stringliteral">&quot;UTF8Encoding&quot;</span>));</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;            }</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;            parts.Add(<span class="keywordtype">string</span>.Format(<span class="stringliteral">&quot;ReadPreference={0}&quot;</span>, _readPreference));</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;            parts.Add(<span class="keywordtype">string</span>.Format(<span class="stringliteral">&quot;WriteConcern={0}&quot;</span>, _writeConcern));</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;            <span class="keywordflow">if</span> (_writeEncoding.<a class="code" href="struct_mongo_d_b_1_1_driver_1_1_setting.html#a98e5fe2cbdfc856684df041432b9d409">HasBeenSet</a>)</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;            {</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;                parts.Add(<span class="keywordtype">string</span>.Format(<span class="stringliteral">&quot;WriteEncoding={0}&quot;</span>, (_writeEncoding.<a class="code" href="struct_mongo_d_b_1_1_driver_1_1_setting.html#ae3b7cbe30496b4c3fac361d4e82bcf81">Value</a> == <span class="keyword">null</span>) ? <span class="stringliteral">&quot;null&quot;</span> : <span class="stringliteral">&quot;UTF8Encoding&quot;</span>));</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;            }</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;            <span class="keywordflow">return</span> <span class="keywordtype">string</span>.Join(<span class="stringliteral">&quot;;&quot;</span>, parts.ToArray());</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;        }</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160; </div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;        <span class="comment">// internal methods</span></div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;        <span class="keyword">internal</span> <span class="keywordtype">void</span> ApplyDefaultValues(<a class="code" href="class_mongo_d_b_1_1_driver_1_1_mongo_database_settings.html">MongoDatabaseSettings</a> databaseSettings)</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;        {</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;            <span class="keywordflow">if</span> (!_assignIdOnInsert.<a class="code" href="struct_mongo_d_b_1_1_driver_1_1_setting.html#a98e5fe2cbdfc856684df041432b9d409">HasBeenSet</a>)</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;            {</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;                <a class="code" href="class_mongo_d_b_1_1_driver_1_1_mongo_collection_settings.html#a5c6aff2492a191794d96cd59efefe0c8">AssignIdOnInsert</a> = MongoDefaults.AssignIdOnInsert;</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;            }</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;            <span class="keywordflow">if</span> (!_guidRepresentation.<a class="code" href="struct_mongo_d_b_1_1_driver_1_1_setting.html#a98e5fe2cbdfc856684df041432b9d409">HasBeenSet</a>)</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;            {</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;                <a class="code" href="namespace_mongo_d_b_1_1_bson.html#a8fd533815d33d4ee0e6176ed1e7d8b63">GuidRepresentation</a> = databaseSettings.<a class="code" href="class_mongo_d_b_1_1_driver_1_1_mongo_database_settings.html#a4691db32dbe750000e6439f5ace9bd0a">GuidRepresentation</a>;</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;            }</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;            <span class="keywordflow">if</span> (!_readConcern.<a class="code" href="struct_mongo_d_b_1_1_driver_1_1_setting.html#a98e5fe2cbdfc856684df041432b9d409">HasBeenSet</a>)</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;            {</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;                <a class="code" href="class_mongo_d_b_1_1_driver_1_1_mongo_collection_settings.html#a9c25b2b2199a10cebcf3291504364b28">ReadConcern</a> = databaseSettings.<a class="code" href="class_mongo_d_b_1_1_driver_1_1_mongo_database_settings.html#a4a8d2355ecffe7748fa906224336361e">ReadConcern</a>;</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;            }</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;            <span class="keywordflow">if</span> (!_readEncoding.<a class="code" href="struct_mongo_d_b_1_1_driver_1_1_setting.html#a98e5fe2cbdfc856684df041432b9d409">HasBeenSet</a>)</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;            {</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;                <a class="code" href="class_mongo_d_b_1_1_driver_1_1_mongo_collection_settings.html#a1f63623d99fc0d440c2cf58256fbe0c2">ReadEncoding</a> = databaseSettings.<a class="code" href="class_mongo_d_b_1_1_driver_1_1_mongo_database_settings.html#a79000f9335830938eb8754a53a417235">ReadEncoding</a>;</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;            }</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;            <span class="keywordflow">if</span> (!_readPreference.<a class="code" href="struct_mongo_d_b_1_1_driver_1_1_setting.html#a98e5fe2cbdfc856684df041432b9d409">HasBeenSet</a>)</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;            {</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;                <a class="code" href="class_mongo_d_b_1_1_driver_1_1_mongo_collection_settings.html#a805c461a8c41b6288fd95fc6404c9f2e">ReadPreference</a> = databaseSettings.<a class="code" href="class_mongo_d_b_1_1_driver_1_1_mongo_database_settings.html#a7afe44f254bda090c81d1548c9612df4">ReadPreference</a>;</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;            }</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;            <span class="keywordflow">if</span> (!_writeConcern.<a class="code" href="struct_mongo_d_b_1_1_driver_1_1_setting.html#a98e5fe2cbdfc856684df041432b9d409">HasBeenSet</a>)</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;            {</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;                <a class="code" href="class_mongo_d_b_1_1_driver_1_1_mongo_collection_settings.html#aea2184738fe0474bb75216ad2ece36f4">WriteConcern</a> = databaseSettings.<a class="code" href="class_mongo_d_b_1_1_driver_1_1_mongo_database_settings.html#a3abbf85fe7c1aa1a0acbebc4ff1f2023">WriteConcern</a>;</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;            }</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;            <span class="keywordflow">if</span> (!_writeEncoding.<a class="code" href="struct_mongo_d_b_1_1_driver_1_1_setting.html#a98e5fe2cbdfc856684df041432b9d409">HasBeenSet</a>)</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;            {</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;                <a class="code" href="class_mongo_d_b_1_1_driver_1_1_mongo_collection_settings.html#aad583ffa691c84b013e69ad291117bcf">WriteEncoding</a> = databaseSettings.<a class="code" href="class_mongo_d_b_1_1_driver_1_1_mongo_database_settings.html#ae57e5faa0881910f0a6c3b0da3532eba">WriteEncoding</a>;</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;            }</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;        }</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;    }</div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;}</div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_mongo_collection_settings_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_mongo_collection_settings.html">MongoDB.Driver.MongoCollectionSettings</a></div><div class="ttdoc">The settings used to access a collection.</div><div class="ttdef"><b>Definition:</b> <a href="_mongo_collection_settings_8cs_source.html#l00028">MongoCollectionSettings.cs:29</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_mongo_collection_settings_html_a1f63623d99fc0d440c2cf58256fbe0c2"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_mongo_collection_settings.html#a1f63623d99fc0d440c2cf58256fbe0c2">MongoDB.Driver.MongoCollectionSettings.ReadEncoding</a></div><div class="ttdeci">UTF8Encoding ReadEncoding</div><div class="ttdoc">Gets or sets the Read Encoding.</div><div class="ttdef"><b>Definition:</b> <a href="_mongo_collection_settings_8cs_source.html#l00103">MongoCollectionSettings.cs:104</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_mongo_collection_settings_html_a28b60fef8e39f2491cb2970dedbb5d5b"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_mongo_collection_settings.html#a28b60fef8e39f2491cb2970dedbb5d5b">MongoDB.Driver.MongoCollectionSettings.FrozenCopy</a></div><div class="ttdeci">MongoCollectionSettings FrozenCopy()</div><div class="ttdoc">Returns a frozen copy of the settings.</div><div class="ttdef"><b>Definition:</b> <a href="_mongo_collection_settings_8cs_source.html#l00237">MongoCollectionSettings.cs:237</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_mongo_collection_settings_html_a2a1133f34548ddec98ee4f4e84bfaff9"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_mongo_collection_settings.html#a2a1133f34548ddec98ee4f4e84bfaff9">MongoDB.Driver.MongoCollectionSettings.ToString</a></div><div class="ttdeci">override string ToString()</div><div class="ttdoc">Returns a string representation of the settings.</div><div class="ttdef"><b>Definition:</b> <a href="_mongo_collection_settings_8cs_source.html#l00276">MongoCollectionSettings.cs:276</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_mongo_collection_settings_html_a5c6aff2492a191794d96cd59efefe0c8"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_mongo_collection_settings.html#a5c6aff2492a191794d96cd59efefe0c8">MongoDB.Driver.MongoCollectionSettings.AssignIdOnInsert</a></div><div class="ttdeci">bool AssignIdOnInsert</div><div class="ttdoc">Gets or sets a value indicating whether the driver should assign Id values when missing.</div><div class="ttdef"><b>Definition:</b> <a href="_mongo_collection_settings_8cs_source.html#l00056">MongoCollectionSettings.cs:57</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_mongo_collection_settings_html_a805c461a8c41b6288fd95fc6404c9f2e"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_mongo_collection_settings.html#a805c461a8c41b6288fd95fc6404c9f2e">MongoDB.Driver.MongoCollectionSettings.ReadPreference</a></div><div class="ttdeci">ReadPreference ReadPreference</div><div class="ttdoc">Gets or sets the read preference to use.</div><div class="ttdef"><b>Definition:</b> <a href="_mongo_collection_settings_8cs_source.html#l00116">MongoCollectionSettings.cs:117</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_mongo_collection_settings_html_a81cbeb12d8af415467f84ef018350dde"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_mongo_collection_settings.html#a81cbeb12d8af415467f84ef018350dde">MongoDB.Driver.MongoCollectionSettings.IsFrozen</a></div><div class="ttdeci">bool IsFrozen</div><div class="ttdoc">Gets a value indicating whether the settings have been frozen to prevent further changes.</div><div class="ttdef"><b>Definition:</b> <a href="_mongo_collection_settings_8cs_source.html#l00082">MongoCollectionSettings.cs:83</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_mongo_collection_settings_html_a9c25b2b2199a10cebcf3291504364b28"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_mongo_collection_settings.html#a9c25b2b2199a10cebcf3291504364b28">MongoDB.Driver.MongoCollectionSettings.ReadConcern</a></div><div class="ttdeci">ReadConcern ReadConcern</div><div class="ttdoc">Gets or sets the read concern.</div><div class="ttdef"><b>Definition:</b> <a href="_mongo_collection_settings_8cs_source.html#l00090">MongoCollectionSettings.cs:91</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_mongo_collection_settings_html_aad583ffa691c84b013e69ad291117bcf"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_mongo_collection_settings.html#aad583ffa691c84b013e69ad291117bcf">MongoDB.Driver.MongoCollectionSettings.WriteEncoding</a></div><div class="ttdeci">UTF8Encoding WriteEncoding</div><div class="ttdoc">Gets or sets the Write Encoding.</div><div class="ttdef"><b>Definition:</b> <a href="_mongo_collection_settings_8cs_source.html#l00158">MongoCollectionSettings.cs:159</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_mongo_collection_settings_html_ab70cdadc41eee0e68ab7057eba5d42f2"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_mongo_collection_settings.html#ab70cdadc41eee0e68ab7057eba5d42f2">MongoDB.Driver.MongoCollectionSettings.Equals</a></div><div class="ttdeci">override bool Equals(object obj)</div><div class="ttdoc">Compares two MongoCollectionSettings instances.</div><div class="ttdef"><b>Definition:</b> <a href="_mongo_collection_settings_8cs_source.html#l00191">MongoCollectionSettings.cs:191</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_mongo_collection_settings_html_ab711c91ec3778b1ba3bcb4f9974393a2"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_mongo_collection_settings.html#ab711c91ec3778b1ba3bcb4f9974393a2">MongoDB.Driver.MongoCollectionSettings.Clone</a></div><div class="ttdeci">virtual MongoCollectionSettings Clone()</div><div class="ttdoc">Creates a clone of the settings.</div><div class="ttdef"><b>Definition:</b> <a href="_mongo_collection_settings_8cs_source.html#l00173">MongoCollectionSettings.cs:173</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_mongo_collection_settings_html_ab933709ca5cac31038834253c1de0449"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_mongo_collection_settings.html#ab933709ca5cac31038834253c1de0449">MongoDB.Driver.MongoCollectionSettings.MongoCollectionSettings</a></div><div class="ttdeci">MongoCollectionSettings()</div><div class="ttdoc">Initializes a new instance of the MongoCollectionSettings class.</div><div class="ttdef"><b>Definition:</b> <a href="_mongo_collection_settings_8cs_source.html#l00048">MongoCollectionSettings.cs:48</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_mongo_collection_settings_html_ac0836546eada2bc2eac4872f6b1376ef"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_mongo_collection_settings.html#ac0836546eada2bc2eac4872f6b1376ef">MongoDB.Driver.MongoCollectionSettings.Freeze</a></div><div class="ttdeci">MongoCollectionSettings Freeze()</div><div class="ttdoc">Freezes the settings.</div><div class="ttdef"><b>Definition:</b> <a href="_mongo_collection_settings_8cs_source.html#l00222">MongoCollectionSettings.cs:222</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_mongo_collection_settings_html_aca00feed045c68ede034d60bdd2532ae"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_mongo_collection_settings.html#aca00feed045c68ede034d60bdd2532ae">MongoDB.Driver.MongoCollectionSettings.SerializerRegistry</a></div><div class="ttdeci">IBsonSerializerRegistry SerializerRegistry</div><div class="ttdoc">Gets the serializer registry.</div><div class="ttdef"><b>Definition:</b> <a href="_mongo_collection_settings_8cs_source.html#l00133">MongoCollectionSettings.cs:134</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_mongo_collection_settings_html_aea2184738fe0474bb75216ad2ece36f4"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_mongo_collection_settings.html#aea2184738fe0474bb75216ad2ece36f4">MongoDB.Driver.MongoCollectionSettings.WriteConcern</a></div><div class="ttdeci">WriteConcern WriteConcern</div><div class="ttdoc">Gets or sets the WriteConcern to use.</div><div class="ttdef"><b>Definition:</b> <a href="_mongo_collection_settings_8cs_source.html#l00141">MongoCollectionSettings.cs:142</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_mongo_collection_settings_html_aff74b5fe759ae9825ffa32e34dc4e2df"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_mongo_collection_settings.html#aff74b5fe759ae9825ffa32e34dc4e2df">MongoDB.Driver.MongoCollectionSettings.GetHashCode</a></div><div class="ttdeci">override int GetHashCode()</div><div class="ttdoc">Gets the hash code.</div><div class="ttdef"><b>Definition:</b> <a href="_mongo_collection_settings_8cs_source.html#l00253">MongoCollectionSettings.cs:253</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_mongo_database_settings_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_mongo_database_settings.html">MongoDB.Driver.MongoDatabaseSettings</a></div><div class="ttdoc">The settings used to access a database.</div><div class="ttdef"><b>Definition:</b> <a href="_mongo_database_settings_8cs_source.html#l00028">MongoDatabaseSettings.cs:29</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_mongo_database_settings_html_a3abbf85fe7c1aa1a0acbebc4ff1f2023"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_mongo_database_settings.html#a3abbf85fe7c1aa1a0acbebc4ff1f2023">MongoDB.Driver.MongoDatabaseSettings.WriteConcern</a></div><div class="ttdeci">WriteConcern WriteConcern</div><div class="ttdoc">Gets or sets the WriteConcern to use.</div><div class="ttdef"><b>Definition:</b> <a href="_mongo_database_settings_8cs_source.html#l00127">MongoDatabaseSettings.cs:128</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_mongo_database_settings_html_a4691db32dbe750000e6439f5ace9bd0a"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_mongo_database_settings.html#a4691db32dbe750000e6439f5ace9bd0a">MongoDB.Driver.MongoDatabaseSettings.GuidRepresentation</a></div><div class="ttdeci">GuidRepresentation GuidRepresentation</div><div class="ttdoc">Gets or sets the representation to use for Guids.</div><div class="ttdef"><b>Definition:</b> <a href="_mongo_database_settings_8cs_source.html#l00055">MongoDatabaseSettings.cs:56</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_mongo_database_settings_html_a4a8d2355ecffe7748fa906224336361e"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_mongo_database_settings.html#a4a8d2355ecffe7748fa906224336361e">MongoDB.Driver.MongoDatabaseSettings.ReadConcern</a></div><div class="ttdeci">ReadConcern ReadConcern</div><div class="ttdoc">Gets or sets the read concern.</div><div class="ttdef"><b>Definition:</b> <a href="_mongo_database_settings_8cs_source.html#l00076">MongoDatabaseSettings.cs:77</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_mongo_database_settings_html_a79000f9335830938eb8754a53a417235"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_mongo_database_settings.html#a79000f9335830938eb8754a53a417235">MongoDB.Driver.MongoDatabaseSettings.ReadEncoding</a></div><div class="ttdeci">UTF8Encoding ReadEncoding</div><div class="ttdoc">Gets or sets the Read Encoding.</div><div class="ttdef"><b>Definition:</b> <a href="_mongo_database_settings_8cs_source.html#l00089">MongoDatabaseSettings.cs:90</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_mongo_database_settings_html_a7afe44f254bda090c81d1548c9612df4"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_mongo_database_settings.html#a7afe44f254bda090c81d1548c9612df4">MongoDB.Driver.MongoDatabaseSettings.ReadPreference</a></div><div class="ttdeci">ReadPreference ReadPreference</div><div class="ttdoc">Gets or sets the read preference.</div><div class="ttdef"><b>Definition:</b> <a href="_mongo_database_settings_8cs_source.html#l00102">MongoDatabaseSettings.cs:103</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_mongo_database_settings_html_ae57e5faa0881910f0a6c3b0da3532eba"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_mongo_database_settings.html#ae57e5faa0881910f0a6c3b0da3532eba">MongoDB.Driver.MongoDatabaseSettings.WriteEncoding</a></div><div class="ttdeci">UTF8Encoding WriteEncoding</div><div class="ttdoc">Gets or sets the Write Encoding.</div><div class="ttdef"><b>Definition:</b> <a href="_mongo_database_settings_8cs_source.html#l00144">MongoDatabaseSettings.cs:145</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_read_concern_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_read_concern.html">MongoDB.Driver.ReadConcern</a></div><div class="ttdoc">Represents a read concern.</div><div class="ttdef"><b>Definition:</b> <a href="_read_concern_8cs_source.html#l00026">ReadConcern.cs:27</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_read_preference_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_read_preference.html">MongoDB.Driver.ReadPreference</a></div><div class="ttdoc">Represents a read preference.</div><div class="ttdef"><b>Definition:</b> <a href="_read_preference_8cs_source.html#l00029">ReadPreference.cs:30</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_write_concern_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_write_concern.html">MongoDB.Driver.WriteConcern</a></div><div class="ttdoc">Represents a write concern.</div><div class="ttdef"><b>Definition:</b> <a href="_write_concern_8cs_source.html#l00027">WriteConcern.cs:28</a></div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_serializer_registry_html"><div class="ttname"><a href="interface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_serializer_registry.html">MongoDB.Bson.Serialization.IBsonSerializerRegistry</a></div><div class="ttdoc">A serializer registry.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_serialization_2_i_bson_serializer_registry_8cs_source.html#l00023">IBsonSerializerRegistry.cs:24</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_bson_1_1_serialization_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_bson_1_1_serialization.html">MongoDB.Bson.Serialization</a></div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_serialization_2_attributed_serialization_provider_8cs_source.html#l00021">AttributedSerializationProvider.cs:22</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_bson_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_bson.html">MongoDB.Bson</a></div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_bson_constants_8cs_source.html#l00018">BsonConstants.cs:19</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_bson_html_a8fd533815d33d4ee0e6176ed1e7d8b63"><div class="ttname"><a href="namespace_mongo_d_b_1_1_bson.html#a8fd533815d33d4ee0e6176ed1e7d8b63">MongoDB.Bson.GuidRepresentation</a></div><div class="ttdeci">GuidRepresentation</div><div class="ttdoc">Represents the representation to use when converting a Guid to a BSON binary value.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_guid_representation_8cs_source.html#l00025">GuidRepresentation.cs:26</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_driver_1_1_core_1_1_misc_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_misc.html">MongoDB.Driver.Core.Misc</a></div><div class="ttdef"><b>Definition:</b> <a href="_array_filters_feature_8cs_source.html#l00020">ArrayFiltersFeature.cs:21</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_driver_1_1_core_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_driver_1_1_core.html">MongoDB.Driver.Core</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_queue_8cs_source.html#l00023">AsyncQueue.cs:24</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_driver_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_driver.html">MongoDB.Driver</a></div><div class="ttdef"><b>Definition:</b> <a href="_aggregate_bucket_auto_granularity_8cs_source.html#l00018">AggregateBucketAutoGranularity.cs:19</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_html"><div class="ttname"><a href="namespace_mongo_d_b.html">MongoDB</a></div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_bson_constants_8cs_source.html#l00018">BsonConstants.cs:19</a></div></div>
+<div class="ttc" id="anamespace_system_html"><div class="ttname"><a href="namespace_system.html">System</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_method_builder_attribute_8cs_source.html#l00001">AsyncMethodBuilderAttribute.cs:2</a></div></div>
+<div class="ttc" id="astruct_mongo_d_b_1_1_driver_1_1_setting_html"><div class="ttname"><a href="struct_mongo_d_b_1_1_driver_1_1_setting.html">MongoDB.Driver.Setting&lt; bool &gt;</a></div></div>
+<div class="ttc" id="astruct_mongo_d_b_1_1_driver_1_1_setting_html_a98e5fe2cbdfc856684df041432b9d409"><div class="ttname"><a href="struct_mongo_d_b_1_1_driver_1_1_setting.html#a98e5fe2cbdfc856684df041432b9d409">MongoDB.Driver.Setting.HasBeenSet</a></div><div class="ttdeci">bool HasBeenSet</div><div class="ttdoc">Gets a value indicating whether the setting has been set.</div><div class="ttdef"><b>Definition:</b> <a href="_setting_8cs_source.html#l00044">Setting.cs:45</a></div></div>
+<div class="ttc" id="astruct_mongo_d_b_1_1_driver_1_1_setting_html_ae3b7cbe30496b4c3fac361d4e82bcf81"><div class="ttname"><a href="struct_mongo_d_b_1_1_driver_1_1_setting.html#ae3b7cbe30496b4c3fac361d4e82bcf81">MongoDB.Driver.Setting.Value</a></div><div class="ttdeci">T Value</div><div class="ttdoc">Gets the value of the setting.</div><div class="ttdef"><b>Definition:</b> <a href="_setting_8cs_source.html#l00032">Setting.cs:33</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_1e261a42b4a2e33df58a15c412684b10.html">ETServer</a></li><li class="navelem"><a class="el" href="dir_473c270c995194c5ad99131d9c901f09.html">Server</a></li><li class="navelem"><a class="el" href="dir_ce426efcf63311ff42488fb2654bd4b4.html">ThirdParty</a></li><li class="navelem"><a class="el" href="dir_a37b2b5f9c8890cc9f6f8392fb0cdff3.html">MongoDBDriver</a></li><li class="navelem"><a class="el" href="dir_42d569251c6b173c0060c74ec4fd3ce0.html">MongoDB.Driver</a></li><li class="navelem"><a class="el" href="_mongo_collection_settings_8cs.html">MongoCollectionSettings.cs</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:25:00 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: Assets/Scripts/Libraries/ET/Component/SceneChangeComponent.cs 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_scene_change_component_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">SceneChangeComponent.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_scene_change_component_8cs.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_unity_engine.html">UnityEngine</a>;</div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_unity_engine.html">UnityEngine</a>.SceneManagement;</div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_e_t_model.html">ETModel</a></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;{</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;        [ObjectSystem]</div>
+<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="class_e_t_model_1_1_scene_change_component_update_system.html">    7</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="class_e_t_model_1_1_scene_change_component_update_system.html">SceneChangeComponentUpdateSystem</a>: <a class="code" href="class_e_t_model_1_1_update_system.html">UpdateSystem</a>&lt;SceneChangeComponent&gt;</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;        {</div>
+<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="class_e_t_model_1_1_scene_change_component_update_system.html#a07c65a616cff5851ded3839ddee8b5d6">    9</a></span>&#160;                <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code" href="class_e_t_model_1_1_scene_change_component_update_system.html#a07c65a616cff5851ded3839ddee8b5d6">Update</a>(<a class="code" href="class_e_t_model_1_1_scene_change_component.html">SceneChangeComponent</a> <span class="keyword">self</span>)</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;                {</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;                        <span class="keywordflow">if</span> (<span class="keyword">self</span>.loadMapOperation.isDone)</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;                        {</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;                                <span class="keyword">self</span>.tcs.SetResult();</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;                        }</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;                }</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        }</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="class_e_t_model_1_1_scene_change_component.html">   18</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="class_e_t_model_1_1_scene_change_component.html">SceneChangeComponent</a>: <a class="code" href="class_e_t_model_1_1_component.html">Component</a></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        {</div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="class_e_t_model_1_1_scene_change_component.html#a9328b291b8495fd2f394c98976eedb99">   20</a></span>&#160;                <span class="keyword">public</span> AsyncOperation <a class="code" href="class_e_t_model_1_1_scene_change_component.html#a9328b291b8495fd2f394c98976eedb99">loadMapOperation</a>;</div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="class_e_t_model_1_1_scene_change_component.html#aac01ded53b99ecdcfa5ba82a3aac8e44">   21</a></span>&#160;                <span class="keyword">public</span> <a class="code" href="class_e_t_model_1_1_e_t_task_completion_source.html">ETTaskCompletionSource</a> <a class="code" href="class_e_t_model_1_1_scene_change_component.html#aac01ded53b99ecdcfa5ba82a3aac8e44">tcs</a>;</div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="class_e_t_model_1_1_scene_change_component.html#ab19efad6f15383ccdcd5a2965a97cd2a">   22</a></span>&#160;            <span class="keyword">public</span> <span class="keywordtype">float</span> <a class="code" href="class_e_t_model_1_1_scene_change_component.html#ab19efad6f15383ccdcd5a2965a97cd2a">deltaTime</a>;</div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="class_e_t_model_1_1_scene_change_component.html#a9885f91b5e58579bba4aec19b260b268">   23</a></span>&#160;            <span class="keyword">public</span> <span class="keywordtype">int</span> <a class="code" href="class_e_t_model_1_1_scene_change_component.html#a9885f91b5e58579bba4aec19b260b268">lastProgress</a> = 0;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="class_e_t_model_1_1_scene_change_component.html#ab266eb187c3f68bec0f668811a1c3749">   25</a></span>&#160;                <span class="keyword">public</span> <a class="code" href="struct_e_t_model_1_1_e_t_task.html">ETTask</a> <a class="code" href="class_e_t_model_1_1_scene_change_component.html#ab266eb187c3f68bec0f668811a1c3749">ChangeSceneAsync</a>(<span class="keywordtype">string</span> sceneName)</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;                {</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;                        this.tcs = <span class="keyword">new</span> <a class="code" href="class_e_t_model_1_1_e_t_task_completion_source.html">ETTaskCompletionSource</a>();</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;                        <span class="comment">// 加载map</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;                        this.loadMapOperation = SceneManager.LoadSceneAsync(sceneName);</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;                        <span class="keywordflow">return</span> this.tcs.<a class="code" href="class_e_t_model_1_1_e_t_task_completion_source.html#abaa1ce98ba9c7fdf69e76f56c9bdb68a">Task</a>;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;                }</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="class_e_t_model_1_1_scene_change_component.html#aeb1dbad10fc7b1c383e316b909eb800f">   33</a></span>&#160;                <span class="keyword">public</span> <span class="keywordtype">int</span> <a class="code" href="class_e_t_model_1_1_scene_change_component.html#aeb1dbad10fc7b1c383e316b909eb800f">Process</a></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;                {</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;                        <span class="keyword">get</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;                        {</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;                                <span class="keywordflow">if</span> (this.loadMapOperation == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;                                {</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                                        <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                                }</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;                                <span class="keywordflow">return</span> (<span class="keywordtype">int</span>)(this.loadMapOperation.progress * 100);</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                        }</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;                }</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="class_e_t_model_1_1_scene_change_component.html#ae07539ef72ed5ab9aedb815a63e2ed17">   45</a></span>&#160;                <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_e_t_model_1_1_scene_change_component.html#ae07539ef72ed5ab9aedb815a63e2ed17">Finish</a>()</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                {</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                        this.tcs.<a class="code" href="class_e_t_model_1_1_e_t_task_completion_source.html#a8dd88e80fc1f4dee003f3332817c8083">SetResult</a>();</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                }</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="class_e_t_model_1_1_scene_change_component.html#ab8e19e7dec9d77a471f21ed544164ef6">   50</a></span>&#160;                <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code" href="class_e_t_model_1_1_scene_change_component.html#ab8e19e7dec9d77a471f21ed544164ef6">Dispose</a>()</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                {</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                        <span class="keywordflow">if</span> (this.<a class="code" href="class_e_t_model_1_1_component.html#ac61fde999c32ea4cf9b97014582d9bdd">IsDisposed</a>)</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                        {</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                                <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                        }</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                        <span class="keywordflow">if</span> (this.<a class="code" href="class_e_t_model_1_1_entity.html">Entity</a>.<a class="code" href="class_e_t_model_1_1_component.html#ac61fde999c32ea4cf9b97014582d9bdd">IsDisposed</a>)</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;                        {</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                                <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                        }</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                        </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                        base.Dispose();</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                        </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                        this.<a class="code" href="class_e_t_model_1_1_entity.html">Entity</a>.<a class="code" href="class_e_t_model_1_1_entity.html#a27ce160423a66fa53b7363c76c44aae7">RemoveComponent</a>&lt;<a class="code" href="class_e_t_model_1_1_scene_change_component.html">SceneChangeComponent</a>&gt;();</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                }</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        }</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;}</div>
+<div class="ttc" id="aclass_e_t_model_1_1_component_html"><div class="ttname"><a href="class_e_t_model_1_1_component.html">ETModel.Component</a></div><div class="ttdef"><b>Definition:</b> <a href="_libraries_2_e_t_2_base_2_object_2_component_8cs_source.html#l00011">Component.cs:12</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_component_html_ac61fde999c32ea4cf9b97014582d9bdd"><div class="ttname"><a href="class_e_t_model_1_1_component.html#ac61fde999c32ea4cf9b97014582d9bdd">ETModel.Component.IsDisposed</a></div><div class="ttdeci">bool IsDisposed</div><div class="ttdef"><b>Definition:</b> <a href="_libraries_2_e_t_2_base_2_object_2_component_8cs_source.html#l00050">Component.cs:51</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_e_t_task_completion_source_html"><div class="ttname"><a href="class_e_t_model_1_1_e_t_task_completion_source.html">ETModel.ETTaskCompletionSource</a></div><div class="ttdef"><b>Definition:</b> <a href="_e_t_task_completion_source_8cs_source.html#l00145">ETTaskCompletionSource.cs:146</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_e_t_task_completion_source_html_a8dd88e80fc1f4dee003f3332817c8083"><div class="ttname"><a href="class_e_t_model_1_1_e_t_task_completion_source.html#a8dd88e80fc1f4dee003f3332817c8083">ETModel.ETTaskCompletionSource.SetResult</a></div><div class="ttdeci">void SetResult()</div><div class="ttdef"><b>Definition:</b> <a href="_e_t_task_completion_source_8cs_source.html#l00061">ETTaskCompletionSource.cs:61</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_e_t_task_completion_source_html_abaa1ce98ba9c7fdf69e76f56c9bdb68a"><div class="ttname"><a href="class_e_t_model_1_1_e_t_task_completion_source.html#abaa1ce98ba9c7fdf69e76f56c9bdb68a">ETModel.ETTaskCompletionSource.Task</a></div><div class="ttdeci">ETTask Task</div><div class="ttdef"><b>Definition:</b> <a href="_e_t_task_completion_source_8cs_source.html#l00023">ETTaskCompletionSource.cs:23</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_entity_html"><div class="ttname"><a href="class_e_t_model_1_1_entity.html">ETModel.Entity</a></div><div class="ttdef"><b>Definition:</b> <a href="_libraries_2_e_t_2_base_2_object_2_entity_8cs_source.html#l00009">Entity.cs:10</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_entity_html_a27ce160423a66fa53b7363c76c44aae7"><div class="ttname"><a href="class_e_t_model_1_1_entity.html#a27ce160423a66fa53b7363c76c44aae7">ETModel.Entity.RemoveComponent</a></div><div class="ttdeci">virtual void RemoveComponent(Type type)</div><div class="ttdef"><b>Definition:</b> <a href="_libraries_2_e_t_2_base_2_object_2_entity_8cs_source.html#l00189">Entity.cs:189</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_scene_change_component_html"><div class="ttname"><a href="class_e_t_model_1_1_scene_change_component.html">ETModel.SceneChangeComponent</a></div><div class="ttdef"><b>Definition:</b> <a href="_scene_change_component_8cs_source.html#l00018">SceneChangeComponent.cs:19</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_scene_change_component_html_a9328b291b8495fd2f394c98976eedb99"><div class="ttname"><a href="class_e_t_model_1_1_scene_change_component.html#a9328b291b8495fd2f394c98976eedb99">ETModel.SceneChangeComponent.loadMapOperation</a></div><div class="ttdeci">AsyncOperation loadMapOperation</div><div class="ttdef"><b>Definition:</b> <a href="_scene_change_component_8cs_source.html#l00020">SceneChangeComponent.cs:20</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_scene_change_component_html_a9885f91b5e58579bba4aec19b260b268"><div class="ttname"><a href="class_e_t_model_1_1_scene_change_component.html#a9885f91b5e58579bba4aec19b260b268">ETModel.SceneChangeComponent.lastProgress</a></div><div class="ttdeci">int lastProgress</div><div class="ttdef"><b>Definition:</b> <a href="_scene_change_component_8cs_source.html#l00023">SceneChangeComponent.cs:23</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_scene_change_component_html_aac01ded53b99ecdcfa5ba82a3aac8e44"><div class="ttname"><a href="class_e_t_model_1_1_scene_change_component.html#aac01ded53b99ecdcfa5ba82a3aac8e44">ETModel.SceneChangeComponent.tcs</a></div><div class="ttdeci">ETTaskCompletionSource tcs</div><div class="ttdef"><b>Definition:</b> <a href="_scene_change_component_8cs_source.html#l00021">SceneChangeComponent.cs:21</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_scene_change_component_html_ab19efad6f15383ccdcd5a2965a97cd2a"><div class="ttname"><a href="class_e_t_model_1_1_scene_change_component.html#ab19efad6f15383ccdcd5a2965a97cd2a">ETModel.SceneChangeComponent.deltaTime</a></div><div class="ttdeci">float deltaTime</div><div class="ttdef"><b>Definition:</b> <a href="_scene_change_component_8cs_source.html#l00022">SceneChangeComponent.cs:22</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_scene_change_component_html_ab266eb187c3f68bec0f668811a1c3749"><div class="ttname"><a href="class_e_t_model_1_1_scene_change_component.html#ab266eb187c3f68bec0f668811a1c3749">ETModel.SceneChangeComponent.ChangeSceneAsync</a></div><div class="ttdeci">ETTask ChangeSceneAsync(string sceneName)</div><div class="ttdef"><b>Definition:</b> <a href="_scene_change_component_8cs_source.html#l00025">SceneChangeComponent.cs:25</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_scene_change_component_html_ab8e19e7dec9d77a471f21ed544164ef6"><div class="ttname"><a href="class_e_t_model_1_1_scene_change_component.html#ab8e19e7dec9d77a471f21ed544164ef6">ETModel.SceneChangeComponent.Dispose</a></div><div class="ttdeci">override void Dispose()</div><div class="ttdef"><b>Definition:</b> <a href="_scene_change_component_8cs_source.html#l00050">SceneChangeComponent.cs:50</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_scene_change_component_html_ae07539ef72ed5ab9aedb815a63e2ed17"><div class="ttname"><a href="class_e_t_model_1_1_scene_change_component.html#ae07539ef72ed5ab9aedb815a63e2ed17">ETModel.SceneChangeComponent.Finish</a></div><div class="ttdeci">void Finish()</div><div class="ttdef"><b>Definition:</b> <a href="_scene_change_component_8cs_source.html#l00045">SceneChangeComponent.cs:45</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_scene_change_component_html_aeb1dbad10fc7b1c383e316b909eb800f"><div class="ttname"><a href="class_e_t_model_1_1_scene_change_component.html#aeb1dbad10fc7b1c383e316b909eb800f">ETModel.SceneChangeComponent.Process</a></div><div class="ttdeci">int Process</div><div class="ttdef"><b>Definition:</b> <a href="_scene_change_component_8cs_source.html#l00033">SceneChangeComponent.cs:34</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_scene_change_component_update_system_html"><div class="ttname"><a href="class_e_t_model_1_1_scene_change_component_update_system.html">ETModel.SceneChangeComponentUpdateSystem</a></div><div class="ttdef"><b>Definition:</b> <a href="_scene_change_component_8cs_source.html#l00007">SceneChangeComponent.cs:8</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_scene_change_component_update_system_html_a07c65a616cff5851ded3839ddee8b5d6"><div class="ttname"><a href="class_e_t_model_1_1_scene_change_component_update_system.html#a07c65a616cff5851ded3839ddee8b5d6">ETModel.SceneChangeComponentUpdateSystem.Update</a></div><div class="ttdeci">override void Update(SceneChangeComponent self)</div><div class="ttdef"><b>Definition:</b> <a href="_scene_change_component_8cs_source.html#l00009">SceneChangeComponent.cs:9</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_update_system_html"><div class="ttname"><a href="class_e_t_model_1_1_update_system.html">ETModel.UpdateSystem</a></div><div class="ttdef"><b>Definition:</b> <a href="_libraries_2_e_t_2_base_2_object_2_i_update_system_8cs_source.html#l00011">IUpdateSystem.cs:12</a></div></div>
+<div class="ttc" id="anamespace_e_t_model_html"><div class="ttname"><a href="namespace_e_t_model.html">ETModel</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_e_t_task_method_builder_8cs_source.html#l00006">AsyncETTaskMethodBuilder.cs:7</a></div></div>
+<div class="ttc" id="anamespace_unity_engine_html"><div class="ttname"><a href="namespace_unity_engine.html">UnityEngine</a></div><div class="ttdef"><b>Definition:</b> <a href="_mathf_8cs_source.html#l00003">Mathf.cs:4</a></div></div>
+<div class="ttc" id="astruct_e_t_model_1_1_e_t_task_html"><div class="ttname"><a href="struct_e_t_model_1_1_e_t_task.html">ETModel.ETTask</a></div><div class="ttdoc">Lightweight unity specified task-like object.</div><div class="ttdef"><b>Definition:</b> <a href="_e_t_task_8cs_source.html#l00133">ETTask.cs:134</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_84bbf7b3c7f28a5a18725745e1505219.html">Assets</a></li><li class="navelem"><a class="el" href="dir_f13b41af88cf68434578284aaf699e39.html">Scripts</a></li><li class="navelem"><a class="el" href="dir_46d134a3bf82cf4dc49ca8f728aea58c.html">Libraries</a></li><li class="navelem"><a class="el" href="dir_f6df8f7e58ea5a2220a287b647108730.html">ET</a></li><li class="navelem"><a class="el" href="dir_c6d537fda3052b5961290fce5d18bfe8.html">Component</a></li><li class="navelem"><a class="el" href="_scene_change_component_8cs.html">SceneChangeComponent.cs</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:24:45 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

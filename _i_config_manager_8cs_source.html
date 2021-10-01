@@ -1,0 +1,187 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: Assets/Scripts/Libraries/GameFramework/Libraries/GameFramework-2021.05.31/GameFramework/Config/IConfigManager.cs 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_i_config_manager_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">IConfigManager.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_i_config_manager_8cs.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">//------------------------------------------------------------</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">// Game Framework</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">// Copyright © 2013-2021 Jiang Yin. All rights reserved.</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">// Homepage: https://gameframework.cn/</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">// Feedback: mailto:ellan@gameframework.cn</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">//------------------------------------------------------------</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_game_framework.html">GameFramework</a>.<a class="code" href="namespace_game_framework_1_1_resource.html">Resource</a>;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_game_framework_1_1_config.html">GameFramework.Config</a></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;{</div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_config_1_1_i_config_manager.html">   15</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">interface </span><a class="code" href="interface_game_framework_1_1_config_1_1_i_config_manager.html">IConfigManager</a> : <a class="code" href="interface_game_framework_1_1_i_data_provider.html">IDataProvider</a>&lt;IConfigManager&gt;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    {</div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_config_1_1_i_config_manager.html#a2287e1af5edc12f5deb729c9179bf84c">   20</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="interface_game_framework_1_1_config_1_1_i_config_manager.html#a2287e1af5edc12f5deb729c9179bf84c">Count</a></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        {</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;            <span class="keyword">get</span>;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        }</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_config_1_1_i_config_manager.html#af45a43e7f8b73be9e29fe56f869789f5">   28</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="interface_game_framework_1_1_config_1_1_i_config_manager.html#af45a43e7f8b73be9e29fe56f869789f5">CachedBytesSize</a></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        {</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;            <span class="keyword">get</span>;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        }</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_config_1_1_i_config_manager.html#ac6c50c28cc44165a1a59f3c863947e54">   37</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="interface_game_framework_1_1_config_1_1_i_config_manager.html#ac6c50c28cc44165a1a59f3c863947e54">SetResourceManager</a>(<a class="code" href="interface_game_framework_1_1_resource_1_1_i_resource_manager.html">IResourceManager</a> resourceManager);</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_config_1_1_i_config_manager.html#a656b5b237eea9f221d282fab1a13ee51">   43</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="interface_game_framework_1_1_config_1_1_i_config_manager.html#a656b5b237eea9f221d282fab1a13ee51">SetDataProviderHelper</a>(<a class="code" href="interface_game_framework_1_1_i_data_provider_helper.html">IDataProviderHelper&lt;IConfigManager&gt;</a> dataProviderHelper);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_config_1_1_i_config_manager.html#a62c5d899efd969a45e2d44ab6172a67c">   49</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="interface_game_framework_1_1_config_1_1_i_config_manager.html#a62c5d899efd969a45e2d44ab6172a67c">SetConfigHelper</a>(<a class="code" href="interface_game_framework_1_1_config_1_1_i_config_helper.html">IConfigHelper</a> configHelper);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_config_1_1_i_config_manager.html#a04d60ab70b9114e34014a85879c8c8dc">   55</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="interface_game_framework_1_1_config_1_1_i_config_manager.html#a04d60ab70b9114e34014a85879c8c8dc">EnsureCachedBytesSize</a>(<span class="keywordtype">int</span> ensureSize);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_config_1_1_i_config_manager.html#ae003e2e12b970e8d9ff20d7252345893">   60</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="interface_game_framework_1_1_config_1_1_i_config_manager.html#ae003e2e12b970e8d9ff20d7252345893">FreeCachedBytes</a>();</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_config_1_1_i_config_manager.html#a37e755c9a36a298bad6cdd52ebe538b0">   67</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="interface_game_framework_1_1_config_1_1_i_config_manager.html#a37e755c9a36a298bad6cdd52ebe538b0">HasConfig</a>(<span class="keywordtype">string</span> configName);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_config_1_1_i_config_manager.html#a7c546a6c1845cb5e8dc2afda4eaa6ffb">   74</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="interface_game_framework_1_1_config_1_1_i_config_manager.html#a7c546a6c1845cb5e8dc2afda4eaa6ffb">GetBool</a>(<span class="keywordtype">string</span> configName);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
+<div class="line"><a name="l00082"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_config_1_1_i_config_manager.html#a6ba4f9293f8451d170fa424c7b251ed1">   82</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="interface_game_framework_1_1_config_1_1_i_config_manager.html#a6ba4f9293f8451d170fa424c7b251ed1">GetBool</a>(<span class="keywordtype">string</span> configName, <span class="keywordtype">bool</span> defaultValue);</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
+<div class="line"><a name="l00089"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_config_1_1_i_config_manager.html#af26867008ca837e9dd522422900bac84">   89</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="interface_game_framework_1_1_config_1_1_i_config_manager.html#af26867008ca837e9dd522422900bac84">GetInt</a>(<span class="keywordtype">string</span> configName);</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
+<div class="line"><a name="l00097"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_config_1_1_i_config_manager.html#adc1cca0fd48ffd376cf6fd2da21ad16f">   97</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="interface_game_framework_1_1_config_1_1_i_config_manager.html#adc1cca0fd48ffd376cf6fd2da21ad16f">GetInt</a>(<span class="keywordtype">string</span> configName, <span class="keywordtype">int</span> defaultValue);</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
+<div class="line"><a name="l00104"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_config_1_1_i_config_manager.html#ae972fbb9ffd06252aa9eada0eac3d585">  104</a></span>&#160;        <span class="keywordtype">float</span> <a class="code" href="interface_game_framework_1_1_config_1_1_i_config_manager.html#ae972fbb9ffd06252aa9eada0eac3d585">GetFloat</a>(<span class="keywordtype">string</span> configName);</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
+<div class="line"><a name="l00112"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_config_1_1_i_config_manager.html#a11fe5c78d4bf1f2a14e11d2b1073601a">  112</a></span>&#160;        <span class="keywordtype">float</span> <a class="code" href="interface_game_framework_1_1_config_1_1_i_config_manager.html#a11fe5c78d4bf1f2a14e11d2b1073601a">GetFloat</a>(<span class="keywordtype">string</span> configName, <span class="keywordtype">float</span> defaultValue);</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160; </div>
+<div class="line"><a name="l00119"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_config_1_1_i_config_manager.html#a640b934f289c62d5e092dde7c049026e">  119</a></span>&#160;        <span class="keywordtype">string</span> <a class="code" href="interface_game_framework_1_1_config_1_1_i_config_manager.html#a640b934f289c62d5e092dde7c049026e">GetString</a>(<span class="keywordtype">string</span> configName);</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160; </div>
+<div class="line"><a name="l00127"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_config_1_1_i_config_manager.html#a406340c34adccb865fe616e529f462bd">  127</a></span>&#160;        <span class="keywordtype">string</span> <a class="code" href="interface_game_framework_1_1_config_1_1_i_config_manager.html#a406340c34adccb865fe616e529f462bd">GetString</a>(<span class="keywordtype">string</span> configName, <span class="keywordtype">string</span> defaultValue);</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160; </div>
+<div class="line"><a name="l00135"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_config_1_1_i_config_manager.html#acd319d89184c0d19b772dec2e9e336b9">  135</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="interface_game_framework_1_1_config_1_1_i_config_manager.html#acd319d89184c0d19b772dec2e9e336b9">AddConfig</a>(<span class="keywordtype">string</span> configName, <span class="keywordtype">string</span> configValue);</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160; </div>
+<div class="line"><a name="l00146"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_config_1_1_i_config_manager.html#a460617d7dc940e45e1a9ed29056bf06d">  146</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="interface_game_framework_1_1_config_1_1_i_config_manager.html#a460617d7dc940e45e1a9ed29056bf06d">AddConfig</a>(<span class="keywordtype">string</span> configName, <span class="keywordtype">bool</span> boolValue, <span class="keywordtype">int</span> intValue, <span class="keywordtype">float</span> floatValue, <span class="keywordtype">string</span> stringValue);</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160; </div>
+<div class="line"><a name="l00153"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_config_1_1_i_config_manager.html#a8966868dccb4fb04882f2985ee47dc45">  153</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="interface_game_framework_1_1_config_1_1_i_config_manager.html#a8966868dccb4fb04882f2985ee47dc45">RemoveConfig</a>(<span class="keywordtype">string</span> configName);</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160; </div>
+<div class="line"><a name="l00158"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_config_1_1_i_config_manager.html#a804f0377608c745b6cd8f58e768a2160">  158</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="interface_game_framework_1_1_config_1_1_i_config_manager.html#a804f0377608c745b6cd8f58e768a2160">RemoveAllConfigs</a>();</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    }</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;}</div>
+<div class="ttc" id="ainterface_game_framework_1_1_config_1_1_i_config_helper_html"><div class="ttname"><a href="interface_game_framework_1_1_config_1_1_i_config_helper.html">GameFramework.Config.IConfigHelper</a></div><div class="ttdoc">全局配置辅助器接口。</div><div class="ttdef"><b>Definition:</b> <a href="_i_config_helper_8cs_source.html#l00013">IConfigHelper.cs:14</a></div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_config_1_1_i_config_manager_html"><div class="ttname"><a href="interface_game_framework_1_1_config_1_1_i_config_manager.html">GameFramework.Config.IConfigManager</a></div><div class="ttdoc">全局配置管理器接口。</div><div class="ttdef"><b>Definition:</b> <a href="_i_config_manager_8cs_source.html#l00015">IConfigManager.cs:16</a></div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_config_1_1_i_config_manager_html_a04d60ab70b9114e34014a85879c8c8dc"><div class="ttname"><a href="interface_game_framework_1_1_config_1_1_i_config_manager.html#a04d60ab70b9114e34014a85879c8c8dc">GameFramework.Config.IConfigManager.EnsureCachedBytesSize</a></div><div class="ttdeci">void EnsureCachedBytesSize(int ensureSize)</div><div class="ttdoc">确保二进制流缓存分配足够大小的内存并缓存。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_config_1_1_i_config_manager_html_a11fe5c78d4bf1f2a14e11d2b1073601a"><div class="ttname"><a href="interface_game_framework_1_1_config_1_1_i_config_manager.html#a11fe5c78d4bf1f2a14e11d2b1073601a">GameFramework.Config.IConfigManager.GetFloat</a></div><div class="ttdeci">float GetFloat(string configName, float defaultValue)</div><div class="ttdoc">从指定全局配置项中读取浮点数值。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_config_1_1_i_config_manager_html_a2287e1af5edc12f5deb729c9179bf84c"><div class="ttname"><a href="interface_game_framework_1_1_config_1_1_i_config_manager.html#a2287e1af5edc12f5deb729c9179bf84c">GameFramework.Config.IConfigManager.Count</a></div><div class="ttdeci">int Count</div><div class="ttdoc">获取全局配置项数量。</div><div class="ttdef"><b>Definition:</b> <a href="_i_config_manager_8cs_source.html#l00020">IConfigManager.cs:21</a></div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_config_1_1_i_config_manager_html_a37e755c9a36a298bad6cdd52ebe538b0"><div class="ttname"><a href="interface_game_framework_1_1_config_1_1_i_config_manager.html#a37e755c9a36a298bad6cdd52ebe538b0">GameFramework.Config.IConfigManager.HasConfig</a></div><div class="ttdeci">bool HasConfig(string configName)</div><div class="ttdoc">检查是否存在指定全局配置项。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_config_1_1_i_config_manager_html_a406340c34adccb865fe616e529f462bd"><div class="ttname"><a href="interface_game_framework_1_1_config_1_1_i_config_manager.html#a406340c34adccb865fe616e529f462bd">GameFramework.Config.IConfigManager.GetString</a></div><div class="ttdeci">string GetString(string configName, string defaultValue)</div><div class="ttdoc">从指定全局配置项中读取字符串值。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_config_1_1_i_config_manager_html_a460617d7dc940e45e1a9ed29056bf06d"><div class="ttname"><a href="interface_game_framework_1_1_config_1_1_i_config_manager.html#a460617d7dc940e45e1a9ed29056bf06d">GameFramework.Config.IConfigManager.AddConfig</a></div><div class="ttdeci">bool AddConfig(string configName, bool boolValue, int intValue, float floatValue, string stringValue)</div><div class="ttdoc">增加指定全局配置项。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_config_1_1_i_config_manager_html_a62c5d899efd969a45e2d44ab6172a67c"><div class="ttname"><a href="interface_game_framework_1_1_config_1_1_i_config_manager.html#a62c5d899efd969a45e2d44ab6172a67c">GameFramework.Config.IConfigManager.SetConfigHelper</a></div><div class="ttdeci">void SetConfigHelper(IConfigHelper configHelper)</div><div class="ttdoc">设置全局配置辅助器。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_config_1_1_i_config_manager_html_a640b934f289c62d5e092dde7c049026e"><div class="ttname"><a href="interface_game_framework_1_1_config_1_1_i_config_manager.html#a640b934f289c62d5e092dde7c049026e">GameFramework.Config.IConfigManager.GetString</a></div><div class="ttdeci">string GetString(string configName)</div><div class="ttdoc">从指定全局配置项中读取字符串值。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_config_1_1_i_config_manager_html_a656b5b237eea9f221d282fab1a13ee51"><div class="ttname"><a href="interface_game_framework_1_1_config_1_1_i_config_manager.html#a656b5b237eea9f221d282fab1a13ee51">GameFramework.Config.IConfigManager.SetDataProviderHelper</a></div><div class="ttdeci">void SetDataProviderHelper(IDataProviderHelper&lt; IConfigManager &gt; dataProviderHelper)</div><div class="ttdoc">设置全局配置数据提供者辅助器。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_config_1_1_i_config_manager_html_a6ba4f9293f8451d170fa424c7b251ed1"><div class="ttname"><a href="interface_game_framework_1_1_config_1_1_i_config_manager.html#a6ba4f9293f8451d170fa424c7b251ed1">GameFramework.Config.IConfigManager.GetBool</a></div><div class="ttdeci">bool GetBool(string configName, bool defaultValue)</div><div class="ttdoc">从指定全局配置项中读取布尔值。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_config_1_1_i_config_manager_html_a7c546a6c1845cb5e8dc2afda4eaa6ffb"><div class="ttname"><a href="interface_game_framework_1_1_config_1_1_i_config_manager.html#a7c546a6c1845cb5e8dc2afda4eaa6ffb">GameFramework.Config.IConfigManager.GetBool</a></div><div class="ttdeci">bool GetBool(string configName)</div><div class="ttdoc">从指定全局配置项中读取布尔值。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_config_1_1_i_config_manager_html_a804f0377608c745b6cd8f58e768a2160"><div class="ttname"><a href="interface_game_framework_1_1_config_1_1_i_config_manager.html#a804f0377608c745b6cd8f58e768a2160">GameFramework.Config.IConfigManager.RemoveAllConfigs</a></div><div class="ttdeci">void RemoveAllConfigs()</div><div class="ttdoc">清空所有全局配置项。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_config_1_1_i_config_manager_html_a8966868dccb4fb04882f2985ee47dc45"><div class="ttname"><a href="interface_game_framework_1_1_config_1_1_i_config_manager.html#a8966868dccb4fb04882f2985ee47dc45">GameFramework.Config.IConfigManager.RemoveConfig</a></div><div class="ttdeci">bool RemoveConfig(string configName)</div><div class="ttdoc">移除指定全局配置项。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_config_1_1_i_config_manager_html_ac6c50c28cc44165a1a59f3c863947e54"><div class="ttname"><a href="interface_game_framework_1_1_config_1_1_i_config_manager.html#ac6c50c28cc44165a1a59f3c863947e54">GameFramework.Config.IConfigManager.SetResourceManager</a></div><div class="ttdeci">void SetResourceManager(IResourceManager resourceManager)</div><div class="ttdoc">设置资源管理器。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_config_1_1_i_config_manager_html_acd319d89184c0d19b772dec2e9e336b9"><div class="ttname"><a href="interface_game_framework_1_1_config_1_1_i_config_manager.html#acd319d89184c0d19b772dec2e9e336b9">GameFramework.Config.IConfigManager.AddConfig</a></div><div class="ttdeci">bool AddConfig(string configName, string configValue)</div><div class="ttdoc">增加指定全局配置项。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_config_1_1_i_config_manager_html_adc1cca0fd48ffd376cf6fd2da21ad16f"><div class="ttname"><a href="interface_game_framework_1_1_config_1_1_i_config_manager.html#adc1cca0fd48ffd376cf6fd2da21ad16f">GameFramework.Config.IConfigManager.GetInt</a></div><div class="ttdeci">int GetInt(string configName, int defaultValue)</div><div class="ttdoc">从指定全局配置项中读取整数值。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_config_1_1_i_config_manager_html_ae003e2e12b970e8d9ff20d7252345893"><div class="ttname"><a href="interface_game_framework_1_1_config_1_1_i_config_manager.html#ae003e2e12b970e8d9ff20d7252345893">GameFramework.Config.IConfigManager.FreeCachedBytes</a></div><div class="ttdeci">void FreeCachedBytes()</div><div class="ttdoc">释放缓存的二进制流。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_config_1_1_i_config_manager_html_ae972fbb9ffd06252aa9eada0eac3d585"><div class="ttname"><a href="interface_game_framework_1_1_config_1_1_i_config_manager.html#ae972fbb9ffd06252aa9eada0eac3d585">GameFramework.Config.IConfigManager.GetFloat</a></div><div class="ttdeci">float GetFloat(string configName)</div><div class="ttdoc">从指定全局配置项中读取浮点数值。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_config_1_1_i_config_manager_html_af26867008ca837e9dd522422900bac84"><div class="ttname"><a href="interface_game_framework_1_1_config_1_1_i_config_manager.html#af26867008ca837e9dd522422900bac84">GameFramework.Config.IConfigManager.GetInt</a></div><div class="ttdeci">int GetInt(string configName)</div><div class="ttdoc">从指定全局配置项中读取整数值。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_config_1_1_i_config_manager_html_af45a43e7f8b73be9e29fe56f869789f5"><div class="ttname"><a href="interface_game_framework_1_1_config_1_1_i_config_manager.html#af45a43e7f8b73be9e29fe56f869789f5">GameFramework.Config.IConfigManager.CachedBytesSize</a></div><div class="ttdeci">int CachedBytesSize</div><div class="ttdoc">获取缓冲二进制流的大小。</div><div class="ttdef"><b>Definition:</b> <a href="_i_config_manager_8cs_source.html#l00028">IConfigManager.cs:29</a></div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_i_data_provider_helper_html"><div class="ttname"><a href="interface_game_framework_1_1_i_data_provider_helper.html">GameFramework.IDataProviderHelper&lt; IConfigManager &gt;</a></div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_i_data_provider_html"><div class="ttname"><a href="interface_game_framework_1_1_i_data_provider.html">GameFramework.IDataProvider</a></div><div class="ttdoc">数据提供者接口。</div><div class="ttdef"><b>Definition:</b> <a href="_i_data_provider_8cs_source.html#l00016">IDataProvider.cs:17</a></div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_resource_1_1_i_resource_manager_html"><div class="ttname"><a href="interface_game_framework_1_1_resource_1_1_i_resource_manager.html">GameFramework.Resource.IResourceManager</a></div><div class="ttdoc">资源管理器接口。</div><div class="ttdef"><b>Definition:</b> <a href="_i_resource_manager_8cs_source.html#l00019">IResourceManager.cs:20</a></div></div>
+<div class="ttc" id="anamespace_game_framework_1_1_config_html"><div class="ttname"><a href="namespace_game_framework_1_1_config.html">GameFramework.Config</a></div><div class="ttdef"><b>Definition:</b> <a href="_config_manager_8_config_data_8cs_source.html#l00010">ConfigManager.ConfigData.cs:11</a></div></div>
+<div class="ttc" id="anamespace_game_framework_1_1_resource_html"><div class="ttname"><a href="namespace_game_framework_1_1_resource.html">GameFramework.Resource</a></div><div class="ttdef"><b>Definition:</b> <a href="_apply_resources_complete_callback_8cs_source.html#l00008">ApplyResourcesCompleteCallback.cs:9</a></div></div>
+<div class="ttc" id="anamespace_game_framework_html"><div class="ttname"><a href="namespace_game_framework.html">GameFramework</a></div><div class="ttdef"><b>Definition:</b> <a href="_data_provider_8cs_source.html#l00011">DataProvider.cs:12</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_84bbf7b3c7f28a5a18725745e1505219.html">Assets</a></li><li class="navelem"><a class="el" href="dir_f13b41af88cf68434578284aaf699e39.html">Scripts</a></li><li class="navelem"><a class="el" href="dir_46d134a3bf82cf4dc49ca8f728aea58c.html">Libraries</a></li><li class="navelem"><a class="el" href="dir_7a6862c303020716b3c311e95823547c.html">GameFramework</a></li><li class="navelem"><a class="el" href="dir_bfc6cd8d089c265c897460523cef6560.html">Libraries</a></li><li class="navelem"><a class="el" href="dir_c1104d2df307bba6f9db4e185ff99743.html">GameFramework-2021.05.31</a></li><li class="navelem"><a class="el" href="dir_fe759fdbe5a0d8b8465ec936ca1014c7.html">GameFramework</a></li><li class="navelem"><a class="el" href="dir_e092efab49d87b500a95ff0d6f9ab8af.html">Config</a></li><li class="navelem"><a class="el" href="_i_config_manager_8cs.html">IConfigManager.cs</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:24:47 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,570 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: Assets/Scripts/Libraries/ET/Module/Pathfinding/Recast/BBTree.cs 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_b_b_tree_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">BBTree.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_b_b_tree_8cs.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">//#define ASTARDEBUG   //&quot;BBTree Debug&quot; If enables, some queries to the tree will show debug lines. Turn off multithreading when using this since DrawLine calls cannot be called from a different thread</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>;</div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_unity_engine.html">UnityEngine</a>;</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_p_f.html">PF</a> {</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="class_p_f_1_1_b_b_tree.html">   13</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="class_p_f_1_1_b_b_tree.html">BBTree</a> : <a class="code" href="interface_p_f_1_1_i_astar_pooled_object.html">IAstarPooledObject</a> {</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;                BBTreeBox[] tree = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;                <a class="code" href="class_p_f_1_1_triangle_mesh_node.html">TriangleMeshNode</a>[] nodeLookup = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;                <span class="keywordtype">int</span> count;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;                <span class="keywordtype">int</span> leafNodes;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;                <span class="keyword">const</span> <span class="keywordtype">int</span> MaximumLeafSize = 4;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="class_p_f_1_1_b_b_tree.html#acf3d680ab8c751d0c50c6ab3baaa4fa2">   25</a></span>&#160;                <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_p_f_1_1_b_b_tree.html#acf3d680ab8c751d0c50c6ab3baaa4fa2">Clear</a> () {</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;                        count = 0;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;                        leafNodes = 0;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;                        <span class="keywordflow">if</span> (tree != <span class="keyword">null</span>) ArrayPool&lt;BBTreeBox&gt;.Release(ref tree);</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;                        <span class="keywordflow">if</span> (nodeLookup != <span class="keyword">null</span>) {</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;                                <span class="comment">// Prevent memory leaks as the pool does not clear the array</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;                                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; nodeLookup.Length; i++) nodeLookup[i] = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;                                ArrayPool&lt;TriangleMeshNode&gt;.Release(ref nodeLookup);</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;                        }</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;                        tree = ArrayPool&lt;BBTreeBox&gt;.Claim(0);</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;                        nodeLookup = ArrayPool&lt;TriangleMeshNode&gt;.Claim(0);</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;                }</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;                <span class="keywordtype">void</span> <a class="code" href="interface_p_f_1_1_i_astar_pooled_object.html">IAstarPooledObject</a>.<a class="code" href="interface_p_f_1_1_i_astar_pooled_object.html#aa32f98100b053effcf68894b485dbdbf">OnEnterPool</a> () {</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                        <a class="code" href="class_p_f_1_1_b_b_tree.html#acf3d680ab8c751d0c50c6ab3baaa4fa2">Clear</a>();</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                }</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                <span class="keywordtype">void</span> EnsureCapacity (<span class="keywordtype">int</span> c) {</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;                        <span class="keywordflow">if</span> (c &gt; tree.Length) {</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                                var newArr = ArrayPool&lt;BBTreeBox&gt;.Claim(c);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                                tree.CopyTo(newArr, 0);</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                                ArrayPool&lt;BBTreeBox&gt;.Release(ref tree);</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                                tree = newArr;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                        }</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                }</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                <span class="keywordtype">void</span> EnsureNodeCapacity (<span class="keywordtype">int</span> c) {</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                        <span class="keywordflow">if</span> (c &gt; nodeLookup.Length) {</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                                var newArr = ArrayPool&lt;TriangleMeshNode&gt;.Claim(c);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                                nodeLookup.CopyTo(newArr, 0);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                                ArrayPool&lt;TriangleMeshNode&gt;.Release(ref nodeLookup);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                                nodeLookup = newArr;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                        }</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;                }</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                <span class="keywordtype">int</span> GetBox (IntRect rect) {</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                        <span class="keywordflow">if</span> (count &gt;= tree.Length) EnsureCapacity(count+1);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                        tree[count] = <span class="keyword">new</span> BBTreeBox(rect);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                        count++;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                        <span class="keywordflow">return</span> count-1;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                }</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno"><a class="line" href="class_p_f_1_1_b_b_tree.html#ad186010d277f492d6a00bda8ac3f0c81">   69</a></span>&#160;                <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_p_f_1_1_b_b_tree.html#ad186010d277f492d6a00bda8ac3f0c81">RebuildFrom</a> (<a class="code" href="class_p_f_1_1_triangle_mesh_node.html">TriangleMeshNode</a>[] nodes) {</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                        <a class="code" href="class_p_f_1_1_b_b_tree.html#acf3d680ab8c751d0c50c6ab3baaa4fa2">Clear</a>();</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                        <span class="keywordflow">if</span> (nodes.Length == 0) <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                        <span class="comment">// We will use approximately 2N tree nodes</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                        EnsureCapacity(<a class="code" href="_astar_path_editor_8cs.html#a056b29af8a3de2eeb5a1cab758c4ba93">Mathf</a>.CeilToInt(nodes.Length * 2.1f));</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                        <span class="comment">// We will use approximately N node references</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                        EnsureNodeCapacity(<a class="code" href="_astar_path_editor_8cs.html#a056b29af8a3de2eeb5a1cab758c4ba93">Mathf</a>.CeilToInt(nodes.Length * 1.1f));</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                        <span class="comment">// This will store the order of the nodes while the tree is being built</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                        <span class="comment">// It turns out that it is a lot faster to do this than to actually modify</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                        <span class="comment">// the nodes and nodeBounds arrays (presumably since that involves shuffling</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                        <span class="comment">// around 20 bytes of memory (sizeof(pointer) + sizeof(IntRect)) per node</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                        <span class="comment">// instead of 4 bytes (sizeof(int)).</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                        <span class="comment">// It also means we don&#39;t have to make a copy of the nodes array since</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                        <span class="comment">// we do not modify it</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                        var permutation = ArrayPool&lt;int&gt;.Claim(nodes.Length);</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; nodes.Length; i++) {</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                                permutation[i] = i;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                        }</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                        <span class="comment">// Precalculate the bounds of the nodes in XZ space.</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                        <span class="comment">// It turns out that calculating the bounds is a bottleneck and precalculating</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                        <span class="comment">// the bounds makes it around 3 times faster to build a tree</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                        var nodeBounds = ArrayPool&lt;IntRect&gt;.Claim(nodes.Length);</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; nodes.Length; i++) {</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                                <a class="code" href="struct_p_f_1_1_int3.html">Int3</a> v0, v1, v2;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;                                nodes[i].<a class="code" href="class_p_f_1_1_triangle_mesh_node.html#aebe92d68a78eb93487474372de06982f">GetVertices</a>(out v0, out v1, out v2);</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                                var rect = <span class="keyword">new</span> <a class="code" href="struct_p_f_1_1_int_rect.html">IntRect</a>(v0.<a class="code" href="struct_p_f_1_1_int3.html#aac321c32c520491b6bf47e9a8b17cd19">x</a>, v0.<a class="code" href="struct_p_f_1_1_int3.html#a06c6667c0c3fc51e9c43560f77828d2c">z</a>, v0.<a class="code" href="struct_p_f_1_1_int3.html#aac321c32c520491b6bf47e9a8b17cd19">x</a>, v0.<a class="code" href="struct_p_f_1_1_int3.html#a06c6667c0c3fc51e9c43560f77828d2c">z</a>);</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;                                rect = rect.ExpandToContain(v1.<a class="code" href="struct_p_f_1_1_int3.html#aac321c32c520491b6bf47e9a8b17cd19">x</a>, v1.<a class="code" href="struct_p_f_1_1_int3.html#a06c6667c0c3fc51e9c43560f77828d2c">z</a>);</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;                                rect = rect.ExpandToContain(v2.<a class="code" href="struct_p_f_1_1_int3.html#aac321c32c520491b6bf47e9a8b17cd19">x</a>, v2.<a class="code" href="struct_p_f_1_1_int3.html#a06c6667c0c3fc51e9c43560f77828d2c">z</a>);</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;                                nodeBounds[i] = rect;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;                        }</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;                        RebuildFromInternal(nodes, permutation, nodeBounds, 0, nodes.Length, <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;                        ArrayPool&lt;int&gt;.Release(ref permutation);</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;                        ArrayPool&lt;IntRect&gt;.Release(ref nodeBounds);</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;                }</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160; </div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;                <span class="keyword">static</span> <span class="keywordtype">int</span> SplitByX (<a class="code" href="class_p_f_1_1_triangle_mesh_node.html">TriangleMeshNode</a>[] nodes, <span class="keywordtype">int</span>[] permutation, <span class="keywordtype">int</span> from, <span class="keywordtype">int</span> to, <span class="keywordtype">int</span> divider) {</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;                        <span class="keywordtype">int</span> mx = to;</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160; </div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;                        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = from; i &lt; mx; i++) {</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;                                <span class="keywordflow">if</span> (nodes[permutation[i]].position.x &gt; divider) {</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;                                        mx--;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;                                        <span class="comment">// Swap items i and mx</span></div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;                                        var tmp = permutation[mx];</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;                                        permutation[mx] = permutation[i];</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;                                        permutation[i] = tmp;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;                                        i--;</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;                                }</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;                        }</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;                        <span class="keywordflow">return</span> mx;</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;                }</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160; </div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;                <span class="keyword">static</span> <span class="keywordtype">int</span> SplitByZ (TriangleMeshNode[] nodes, <span class="keywordtype">int</span>[] permutation, <span class="keywordtype">int</span> from, <span class="keywordtype">int</span> to, <span class="keywordtype">int</span> divider) {</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;                        <span class="keywordtype">int</span> mx = to;</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160; </div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;                        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = from; i &lt; mx; i++) {</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;                                <span class="keywordflow">if</span> (nodes[permutation[i]].position.z &gt; divider) {</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;                                        mx--;</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;                                        <span class="comment">// Swap items i and mx</span></div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;                                        var tmp = permutation[mx];</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;                                        permutation[mx] = permutation[i];</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;                                        permutation[i] = tmp;</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;                                        i--;</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;                                }</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;                        }</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;                        <span class="keywordflow">return</span> mx;</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;                }</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160; </div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;                <span class="keywordtype">int</span> RebuildFromInternal (TriangleMeshNode[] nodes, <span class="keywordtype">int</span>[] permutation, IntRect[] nodeBounds, <span class="keywordtype">int</span> from, <span class="keywordtype">int</span> to, <span class="keywordtype">bool</span> odd) {</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;                        var rect = NodeBounds(permutation, nodeBounds, from, to);</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;                        <span class="keywordtype">int</span> box = GetBox(rect);</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160; </div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;                        <span class="keywordflow">if</span> (to - from &lt;= MaximumLeafSize) {</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;                                var nodeOffset = tree[box].nodeOffset = leafNodes*MaximumLeafSize;</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;                                EnsureNodeCapacity(nodeOffset + MaximumLeafSize);</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;                                leafNodes++;</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;                                <span class="comment">// Assign all nodes to the array. Note that we also need clear unused slots as the array from the pool may contain any information</span></div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;                                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; MaximumLeafSize; i++) {</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;                                        nodeLookup[nodeOffset + i] = i &lt; to - from ? nodes[permutation[from + i]] : <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;                                }</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;                                <span class="keywordflow">return</span> box;</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;                        }</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160; </div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;                        <span class="keywordtype">int</span> splitIndex;</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;                        <span class="keywordflow">if</span> (odd) {</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;                                <span class="comment">// X</span></div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;                                <span class="keywordtype">int</span> divider = (rect.xmin + rect.xmax)/2;</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;                                splitIndex = SplitByX(nodes, permutation, from, to, divider);</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;                        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;                                <span class="comment">// Y/Z</span></div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;                                <span class="keywordtype">int</span> divider = (rect.ymin + rect.ymax)/2;</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;                                splitIndex = SplitByZ(nodes, permutation, from, to, divider);</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;                        }</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160; </div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;                        <span class="keywordflow">if</span> (splitIndex == from || splitIndex == to) {</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;                                <span class="comment">// All nodes were on one side of the divider</span></div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;                                <span class="comment">// Try to split along the other axis</span></div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160; </div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;                                <span class="keywordflow">if</span> (!odd) {</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;                                        <span class="comment">// X</span></div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;                                        <span class="keywordtype">int</span> divider = (rect.xmin + rect.xmax)/2;</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;                                        splitIndex = SplitByX(nodes, permutation, from, to, divider);</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;                                } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;                                        <span class="comment">// Y/Z</span></div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;                                        <span class="keywordtype">int</span> divider = (rect.ymin + rect.ymax)/2;</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;                                        splitIndex = SplitByZ(nodes, permutation, from, to, divider);</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;                                }</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160; </div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;                                <span class="keywordflow">if</span> (splitIndex == from || splitIndex == to) {</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;                                        <span class="comment">// All nodes were on one side of the divider</span></div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;                                        <span class="comment">// Just pick one half</span></div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;                                        splitIndex = (from+to)/2;</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;                                }</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;                        }</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160; </div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;                        tree[box].left = RebuildFromInternal(nodes, permutation, nodeBounds, from, splitIndex, !odd);</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;                        tree[box].right = RebuildFromInternal(nodes, permutation, nodeBounds, splitIndex, to, !odd);</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160; </div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;                        <span class="keywordflow">return</span> box;</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;                }</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160; </div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;                <span class="keyword">static</span> IntRect NodeBounds (<span class="keywordtype">int</span>[] permutation, IntRect[] nodeBounds, <span class="keywordtype">int</span> from, <span class="keywordtype">int</span> to) {</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;                        var rect = nodeBounds[permutation[from]];</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160; </div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;                        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j = from + 1; j &lt; to; j++) {</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;                                var otherRect = nodeBounds[permutation[j]];</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160; </div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;                                <span class="comment">// Equivalent to rect = IntRect.Union(rect, otherRect)</span></div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;                                <span class="comment">// but manually inlining is approximately</span></div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;                                <span class="comment">// 25% faster when building an entire tree.</span></div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;                                <span class="comment">// This code is hot when using navmesh cutting.</span></div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;                                rect.xmin = <a class="code" href="namespace_p_f.html#a6cf89bee2694a0f75de4233403192b07">Math</a>.Min(rect.xmin, otherRect.xmin);</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;                                rect.ymin = <a class="code" href="namespace_p_f.html#a6cf89bee2694a0f75de4233403192b07">Math</a>.Min(rect.ymin, otherRect.ymin);</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;                                rect.xmax = <a class="code" href="namespace_p_f.html#a6cf89bee2694a0f75de4233403192b07">Math</a>.Max(rect.xmax, otherRect.xmax);</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;                                rect.ymax = <a class="code" href="namespace_p_f.html#a6cf89bee2694a0f75de4233403192b07">Math</a>.Max(rect.ymax, otherRect.ymax);</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;                        }</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160; </div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;                        <span class="keywordflow">return</span> rect;</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;                }</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;<span class="preprocessor">#if !SERVER</span></div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;                [<a class="code" href="namespace_system.html">System</a>.Diagnostics.Conditional(<span class="stringliteral">&quot;ASTARDEBUG&quot;</span>)]</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;                <span class="keyword">static</span> <span class="keywordtype">void</span> DrawDebugRect (IntRect rect) {</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;                        <a class="code" href="namespace_unity_engine.html">UnityEngine</a>.Debug.DrawLine(<span class="keyword">new</span> <a class="code" href="_recast_graph_editor_8cs.html#af3326292fdd04d2b384b6d781d9594f6">Vector3</a>(rect.xmin, 0, rect.ymin), <span class="keyword">new</span> <a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a>(rect.xmax, 0, rect.ymin), <a class="code" href="namespace_unity_engine.html">UnityEngine</a>.Color.white);</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;                        <a class="code" href="namespace_unity_engine.html">UnityEngine</a>.Debug.DrawLine(<span class="keyword">new</span> <a class="code" href="_recast_graph_editor_8cs.html#af3326292fdd04d2b384b6d781d9594f6">Vector3</a>(rect.xmin, 0, rect.ymax), <span class="keyword">new</span> <a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a>(rect.xmax, 0, rect.ymax), <a class="code" href="namespace_unity_engine.html">UnityEngine</a>.Color.white);</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;                        <a class="code" href="namespace_unity_engine.html">UnityEngine</a>.Debug.DrawLine(<span class="keyword">new</span> <a class="code" href="_recast_graph_editor_8cs.html#af3326292fdd04d2b384b6d781d9594f6">Vector3</a>(rect.xmin, 0, rect.ymin), <span class="keyword">new</span> <a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a>(rect.xmin, 0, rect.ymax), <a class="code" href="namespace_unity_engine.html">UnityEngine</a>.Color.white);</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;                        <a class="code" href="namespace_unity_engine.html">UnityEngine</a>.Debug.DrawLine(<span class="keyword">new</span> <a class="code" href="_recast_graph_editor_8cs.html#af3326292fdd04d2b384b6d781d9594f6">Vector3</a>(rect.xmax, 0, rect.ymin), <span class="keyword">new</span> <a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a>(rect.xmax, 0, rect.ymax), <a class="code" href="namespace_unity_engine.html">UnityEngine</a>.Color.white);</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;                }</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160; </div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;                [<a class="code" href="namespace_system.html">System</a>.Diagnostics.Conditional(<span class="stringliteral">&quot;ASTARDEBUG&quot;</span>)]</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;                <span class="keyword">static</span> <span class="keywordtype">void</span> DrawDebugNode (TriangleMeshNode node, <span class="keywordtype">float</span> yoffset, <a class="code" href="namespace_unity_engine.html">UnityEngine</a>.Color color) {</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;                        <a class="code" href="namespace_unity_engine.html">UnityEngine</a>.Debug.DrawLine(((<a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a>)node.GetVertex(1) + <a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a>.<a class="code" href="struct_unity_engine_1_1_vector3.html#ac922c88e8328a73b2d01ec8ef15e8bb8">up</a>*yoffset), ((<a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a>)node.GetVertex(2) + <a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a>.<a class="code" href="struct_unity_engine_1_1_vector3.html#ac922c88e8328a73b2d01ec8ef15e8bb8">up</a>*yoffset), color);</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;                        <a class="code" href="namespace_unity_engine.html">UnityEngine</a>.Debug.DrawLine(((<a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a>)node.GetVertex(0) + <a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a>.<a class="code" href="struct_unity_engine_1_1_vector3.html#ac922c88e8328a73b2d01ec8ef15e8bb8">up</a>*yoffset), ((<a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a>)node.GetVertex(1) + <a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a>.<a class="code" href="struct_unity_engine_1_1_vector3.html#ac922c88e8328a73b2d01ec8ef15e8bb8">up</a>*yoffset), color);</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;                        <a class="code" href="namespace_unity_engine.html">UnityEngine</a>.Debug.DrawLine(((<a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a>)node.GetVertex(2) + <a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a>.<a class="code" href="struct_unity_engine_1_1_vector3.html#ac922c88e8328a73b2d01ec8ef15e8bb8">up</a>*yoffset), ((<a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a>)node.GetVertex(0) + <a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a>.<a class="code" href="struct_unity_engine_1_1_vector3.html#ac922c88e8328a73b2d01ec8ef15e8bb8">up</a>*yoffset), color);</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;                }</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160; </div>
+<div class="line"><a name="l00236"></a><span class="lineno"><a class="line" href="class_p_f_1_1_b_b_tree.html#aa80aabac8af1dd79968090e1e86a6d8f">  236</a></span>&#160;                <span class="keyword">public</span> <a class="code" href="struct_p_f_1_1_n_n_info_internal.html">NNInfoInternal</a> <a class="code" href="class_p_f_1_1_b_b_tree.html#aa80aabac8af1dd79968090e1e86a6d8f">QueryClosest</a> (<a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a> p, <a class="code" href="class_p_f_1_1_n_n_constraint.html">NNConstraint</a> constraint, out <span class="keywordtype">float</span> distance) {</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;                        distance = <span class="keywordtype">float</span>.PositiveInfinity;</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;                        <span class="keywordflow">return</span> <a class="code" href="class_p_f_1_1_b_b_tree.html#aa80aabac8af1dd79968090e1e86a6d8f">QueryClosest</a>(p, constraint, ref distance, <span class="keyword">new</span> <a class="code" href="struct_p_f_1_1_n_n_info_internal.html">NNInfoInternal</a>(<span class="keyword">null</span>));</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;                }</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160; </div>
+<div class="line"><a name="l00257"></a><span class="lineno"><a class="line" href="class_p_f_1_1_b_b_tree.html#a037d7ba45f373d461b6d91878bd2aad1">  257</a></span>&#160;                <span class="keyword">public</span> <a class="code" href="struct_p_f_1_1_n_n_info_internal.html">NNInfoInternal</a> <a class="code" href="class_p_f_1_1_b_b_tree.html#a037d7ba45f373d461b6d91878bd2aad1">QueryClosestXZ</a> (<a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a> p, <a class="code" href="class_p_f_1_1_n_n_constraint.html">NNConstraint</a> constraint, ref <span class="keywordtype">float</span> distance, <a class="code" href="struct_p_f_1_1_n_n_info_internal.html">NNInfoInternal</a> previous) {</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;                        var sqrDistance = distance*distance;</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;                        var origSqrDistance = sqrDistance;</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160; </div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;                        <span class="keywordflow">if</span> (count &gt; 0 &amp;&amp; SquaredRectPointDistance(tree[0].rect, p) &lt; sqrDistance) {</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;                                SearchBoxClosestXZ(0, p, ref sqrDistance, constraint, ref previous);</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;                                <span class="comment">// Only update the distance if the squared distance changed as otherwise #distance</span></div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;                                <span class="comment">// might change due to rounding errors even if no better solution was found</span></div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;                                <span class="keywordflow">if</span> (sqrDistance &lt; origSqrDistance) distance = <a class="code" href="_astar_path_editor_8cs.html#a056b29af8a3de2eeb5a1cab758c4ba93">Mathf</a>.Sqrt(sqrDistance);</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;                        }</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;                        <span class="keywordflow">return</span> previous;</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;                }</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160; </div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;                <span class="keywordtype">void</span> SearchBoxClosestXZ (<span class="keywordtype">int</span> boxi, <a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a> p, ref <span class="keywordtype">float</span> closestSqrDist, <a class="code" href="class_p_f_1_1_n_n_constraint.html">NNConstraint</a> constraint, ref <a class="code" href="struct_p_f_1_1_n_n_info_internal.html">NNInfoInternal</a> nnInfo) {</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;                        BBTreeBox box = tree[boxi];</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160; </div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;                        <span class="keywordflow">if</span> (box.IsLeaf) {</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;                                var nodes = nodeLookup;</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;                                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; MaximumLeafSize &amp;&amp; nodes[box.nodeOffset+i] != <span class="keyword">null</span>; i++) {</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;                                        var node = nodes[box.nodeOffset+i];</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;                                        <span class="comment">// Update the NNInfo</span></div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;<span class="preprocessor">#if !SERVER</span></div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;                                        DrawDebugNode(node, 0.2f, <a class="code" href="namespace_unity_engine.html">UnityEngine</a>.Color.red);</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160; </div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;                                        <span class="keywordflow">if</span> (constraint == <span class="keyword">null</span> || constraint.<a class="code" href="class_p_f_1_1_n_n_constraint.html#a57cbe6086469529dbce3ac00e1bb2613">Suitable</a>(node)) {</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;                                                <a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a> closest = node.ClosestPointOnNodeXZ(p);</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;                                                <span class="comment">// XZ squared distance</span></div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;                                                <span class="keywordtype">float</span> dist = (closest.<a class="code" href="struct_unity_engine_1_1_vector3.html#ad4d9171899b7fceadc63c4d04da5734d">x</a>-p.<a class="code" href="struct_unity_engine_1_1_vector3.html#ad4d9171899b7fceadc63c4d04da5734d">x</a>)*(closest.<a class="code" href="struct_unity_engine_1_1_vector3.html#ad4d9171899b7fceadc63c4d04da5734d">x</a>-p.<a class="code" href="struct_unity_engine_1_1_vector3.html#ad4d9171899b7fceadc63c4d04da5734d">x</a>)+(closest.<a class="code" href="struct_unity_engine_1_1_vector3.html#a8ea2682142b822ddcab52c868796fd3e">z</a>-p.<a class="code" href="struct_unity_engine_1_1_vector3.html#a8ea2682142b822ddcab52c868796fd3e">z</a>)*(closest.<a class="code" href="struct_unity_engine_1_1_vector3.html#a8ea2682142b822ddcab52c868796fd3e">z</a>-p.<a class="code" href="struct_unity_engine_1_1_vector3.html#a8ea2682142b822ddcab52c868796fd3e">z</a>);</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160; </div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;                                                <span class="comment">// There&#39;s a theoretical case when the closest point is on the edge of a node which may cause the</span></div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;                                                <span class="comment">// closest point&#39;s xz coordinates to not line up perfectly with p&#39;s xz coordinates even though they should</span></div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;                                                <span class="comment">// (because floating point errors are annoying). So use a tiny margin to cover most of those cases.</span></div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;                                                <span class="keyword">const</span> <span class="keywordtype">float</span> fuzziness = 0.000001f;</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;                                                <span class="keywordflow">if</span> (nnInfo.constrainedNode == <span class="keyword">null</span> || dist &lt; closestSqrDist - fuzziness || (dist &lt;= closestSqrDist + fuzziness &amp;&amp; <a class="code" href="_astar_path_editor_8cs.html#a056b29af8a3de2eeb5a1cab758c4ba93">Mathf</a>.Abs(closest.<a class="code" href="struct_unity_engine_1_1_vector3.html#a7e4565013600fd46a0c50ef86a19e926">y</a> - p.<a class="code" href="struct_unity_engine_1_1_vector3.html#a7e4565013600fd46a0c50ef86a19e926">y</a>) &lt; <a class="code" href="_astar_path_editor_8cs.html#a056b29af8a3de2eeb5a1cab758c4ba93">Mathf</a>.Abs(nnInfo.constClampedPosition.y - p.<a class="code" href="struct_unity_engine_1_1_vector3.html#a7e4565013600fd46a0c50ef86a19e926">y</a>))) {</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;                                                        nnInfo.constrainedNode = node;</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;                                                        nnInfo.constClampedPosition = closest;</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;                                                        closestSqrDist = dist;</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;                                                }</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;                                        }</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;                                }</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;                        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;<span class="preprocessor">#if !SERVER</span></div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;                                DrawDebugRect(box.rect);</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160; </div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;                                <span class="keywordtype">int</span> first = box.left, second = box.right;</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;                                <span class="keywordtype">float</span> firstDist, secondDist;</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;                                GetOrderedChildren(ref first, ref second, out firstDist, out secondDist, p);</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160; </div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;                                <span class="comment">// Search children (closest box first to improve performance)</span></div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;                                <span class="keywordflow">if</span> (firstDist &lt;= closestSqrDist) {</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;                                        SearchBoxClosestXZ(first, p, ref closestSqrDist, constraint, ref nnInfo);</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;                                }</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160; </div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;                                <span class="keywordflow">if</span> (secondDist &lt;= closestSqrDist) {</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;                                        SearchBoxClosestXZ(second, p, ref closestSqrDist, constraint, ref nnInfo);</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;                                }</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;                        }</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;                }</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160; </div>
+<div class="line"><a name="l00330"></a><span class="lineno"><a class="line" href="class_p_f_1_1_b_b_tree.html#a775036668600bccbcb300133d9184fa3">  330</a></span>&#160;                <span class="keyword">public</span> <a class="code" href="struct_p_f_1_1_n_n_info_internal.html">NNInfoInternal</a> <a class="code" href="class_p_f_1_1_b_b_tree.html#a775036668600bccbcb300133d9184fa3">QueryClosest</a> (<a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a> p, <a class="code" href="class_p_f_1_1_n_n_constraint.html">NNConstraint</a> constraint, ref <span class="keywordtype">float</span> distance, <a class="code" href="struct_p_f_1_1_n_n_info_internal.html">NNInfoInternal</a> previous) {</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;                        var sqrDistance = distance*distance;</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;                        var origSqrDistance = sqrDistance;</div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160; </div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;                        <span class="keywordflow">if</span> (count &gt; 0 &amp;&amp; SquaredRectPointDistance(tree[0].rect, p) &lt; sqrDistance) {</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;                                SearchBoxClosest(0, p, ref sqrDistance, constraint, ref previous);</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;                                <span class="comment">// Only update the distance if the squared distance changed as otherwise #distance</span></div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;                                <span class="comment">// might change due to rounding errors even if no better solution was found</span></div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;                                <span class="keywordflow">if</span> (sqrDistance &lt; origSqrDistance) distance = <a class="code" href="_astar_path_editor_8cs.html#a056b29af8a3de2eeb5a1cab758c4ba93">Mathf</a>.Sqrt(sqrDistance);</div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;                        }</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;                        <span class="keywordflow">return</span> previous;</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;                }</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160; </div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;                <span class="keywordtype">void</span> SearchBoxClosest (<span class="keywordtype">int</span> boxi, <a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a> p, ref <span class="keywordtype">float</span> closestSqrDist, <a class="code" href="class_p_f_1_1_n_n_constraint.html">NNConstraint</a> constraint, ref <a class="code" href="struct_p_f_1_1_n_n_info_internal.html">NNInfoInternal</a> nnInfo) {</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;                        BBTreeBox box = tree[boxi];</div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160; </div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;                        <span class="keywordflow">if</span> (box.IsLeaf) {</div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;                                var nodes = nodeLookup;</div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;                                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; MaximumLeafSize &amp;&amp; nodes[box.nodeOffset+i] != <span class="keyword">null</span>; i++) {</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;                                        var node = nodes[box.nodeOffset+i];</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;                                        <a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a> closest = node.ClosestPointOnNode(p);</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;                                        <span class="keywordtype">float</span> dist = (closest-p).sqrMagnitude;</div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;                                        <span class="keywordflow">if</span> (dist &lt; closestSqrDist) {</div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;<span class="preprocessor">#if !SERVER</span></div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;                                                DrawDebugNode(node, 0.2f, <a class="code" href="namespace_unity_engine.html">UnityEngine</a>.Color.red);</div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160; </div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;                                                <span class="keywordflow">if</span> (constraint == <span class="keyword">null</span> || constraint.<a class="code" href="class_p_f_1_1_n_n_constraint.html#a57cbe6086469529dbce3ac00e1bb2613">Suitable</a>(node)) {</div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;                                                        <span class="comment">// Update the NNInfo</span></div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;                                                        nnInfo.constrainedNode = node;</div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;                                                        nnInfo.constClampedPosition = closest;</div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;                                                        closestSqrDist = dist;</div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;                                                }</div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;                                        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;<span class="preprocessor">#if !SERVER</span></div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;                                                DrawDebugNode(node, 0.0f, <a class="code" href="namespace_unity_engine.html">UnityEngine</a>.Color.blue);</div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;                                        }</div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;                                }</div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;                        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;<span class="preprocessor">#if !SERVER</span></div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;                                DrawDebugRect(box.rect);</div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;                                <span class="keywordtype">int</span> first = box.left, second = box.right;</div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;                                <span class="keywordtype">float</span> firstDist, secondDist;</div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;                                GetOrderedChildren(ref first, ref second, out firstDist, out secondDist, p);</div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160; </div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;                                <span class="comment">// Search children (closest box first to improve performance)</span></div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;                                <span class="keywordflow">if</span> (firstDist &lt; closestSqrDist) {</div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;                                        SearchBoxClosest(first, p, ref closestSqrDist, constraint, ref nnInfo);</div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;                                }</div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160; </div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;                                <span class="keywordflow">if</span> (secondDist &lt; closestSqrDist) {</div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;                                        SearchBoxClosest(second, p, ref closestSqrDist, constraint, ref nnInfo);</div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;                                }</div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;                        }</div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;                }</div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160; </div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;                <span class="keywordtype">void</span> GetOrderedChildren (ref <span class="keywordtype">int</span> first, ref <span class="keywordtype">int</span> second, out <span class="keywordtype">float</span> firstDist, out <span class="keywordtype">float</span> secondDist, <a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a> p) {</div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;                        firstDist = SquaredRectPointDistance(tree[first].rect, p);</div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;                        secondDist = SquaredRectPointDistance(tree[second].rect, p);</div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160; </div>
+<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;                        <span class="keywordflow">if</span> (secondDist &lt; firstDist) {</div>
+<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;                                <span class="comment">// Swap</span></div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;                                var tmp = first;</div>
+<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;                                first = second;</div>
+<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;                                second = tmp;</div>
+<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;                                var tmp2 = firstDist;</div>
+<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;                                firstDist = secondDist;</div>
+<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;                                secondDist = tmp2;</div>
+<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;                        }</div>
+<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;                }</div>
+<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160; </div>
+<div class="line"><a name="l00410"></a><span class="lineno"><a class="line" href="class_p_f_1_1_b_b_tree.html#a2b375f652d35b74675408bced365f8d7">  410</a></span>&#160;                <span class="keyword">public</span> <a class="code" href="class_p_f_1_1_triangle_mesh_node.html">TriangleMeshNode</a> <a class="code" href="class_p_f_1_1_b_b_tree.html#a2b375f652d35b74675408bced365f8d7">QueryInside</a> (<a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a> p, <a class="code" href="class_p_f_1_1_n_n_constraint.html">NNConstraint</a> constraint) {</div>
+<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;                        <span class="keywordflow">return</span> count != 0 &amp;&amp; tree[0].Contains(p) ? SearchBoxInside(0, p, constraint) : <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;                }</div>
+<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160; </div>
+<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;                <a class="code" href="class_p_f_1_1_triangle_mesh_node.html">TriangleMeshNode</a> SearchBoxInside (<span class="keywordtype">int</span> boxi, <a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a> p, <a class="code" href="class_p_f_1_1_n_n_constraint.html">NNConstraint</a> constraint) {</div>
+<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;                        BBTreeBox box = tree[boxi];</div>
+<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160; </div>
+<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;                        <span class="keywordflow">if</span> (box.IsLeaf) {</div>
+<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;                                var nodes = nodeLookup;</div>
+<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;                                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; MaximumLeafSize &amp;&amp; nodes[box.nodeOffset+i] != <span class="keyword">null</span>; i++) {</div>
+<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;                                        var node = nodes[box.nodeOffset+i];</div>
+<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;                                        <span class="keywordflow">if</span> (node.ContainsPoint((<a class="code" href="struct_p_f_1_1_int3.html">Int3</a>)p)) {</div>
+<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;<span class="preprocessor">#if !SERVER</span></div>
+<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;                                                DrawDebugNode(node, 0.2f, <a class="code" href="namespace_unity_engine.html">UnityEngine</a>.Color.red);</div>
+<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160; </div>
+<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;                                                <span class="keywordflow">if</span> (constraint == <span class="keyword">null</span> || constraint.<a class="code" href="class_p_f_1_1_n_n_constraint.html#a57cbe6086469529dbce3ac00e1bb2613">Suitable</a>(node)) {</div>
+<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;                                                        <span class="keywordflow">return</span> node;</div>
+<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;                                                }</div>
+<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;                                        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;<span class="preprocessor">#if !SERVER</span></div>
+<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;                                                DrawDebugNode(node, 0.0f, <a class="code" href="namespace_unity_engine.html">UnityEngine</a>.Color.blue);</div>
+<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;                                        }</div>
+<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;                                }</div>
+<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;                        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;<span class="preprocessor">#if !SERVER</span></div>
+<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;                                DrawDebugRect(box.rect);</div>
+<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160; </div>
+<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;                                <span class="comment">//Search children</span></div>
+<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;                                <span class="keywordflow">if</span> (tree[box.left].Contains(p)) {</div>
+<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;                                        var result = SearchBoxInside(box.left, p, constraint);</div>
+<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;                                        <span class="keywordflow">if</span> (result != <span class="keyword">null</span>) <span class="keywordflow">return</span> result;</div>
+<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;                                }</div>
+<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160; </div>
+<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;                                <span class="keywordflow">if</span> (tree[box.right].Contains(p)) {</div>
+<div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;                                        var result = SearchBoxInside(box.right, p, constraint);</div>
+<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;                                        <span class="keywordflow">if</span> (result != <span class="keyword">null</span>) <span class="keywordflow">return</span> result;</div>
+<div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;                                }</div>
+<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;                        }</div>
+<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160; </div>
+<div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;                        <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;                }</div>
+<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160; </div>
+<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;                <span class="keyword">struct </span>BBTreeBox {</div>
+<div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;                        <span class="keyword">public</span> IntRect rect;</div>
+<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160; </div>
+<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;                        <span class="keyword">public</span> <span class="keywordtype">int</span> nodeOffset;</div>
+<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;                        <span class="keyword">public</span> <span class="keywordtype">int</span> left, right;</div>
+<div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160; </div>
+<div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160;                        <span class="keyword">public</span> <span class="keywordtype">bool</span> IsLeaf {</div>
+<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;                                <span class="keyword">get</span> {</div>
+<div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160;                                        <span class="keywordflow">return</span> nodeOffset &gt;= 0;</div>
+<div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160;                                }</div>
+<div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160;                        }</div>
+<div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160; </div>
+<div class="line"><a name="l00467"></a><span class="lineno">  467</span>&#160;                        <span class="keyword">public</span> BBTreeBox (IntRect rect) {</div>
+<div class="line"><a name="l00468"></a><span class="lineno">  468</span>&#160;                                nodeOffset = -1;</div>
+<div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160;                                this.rect = rect;</div>
+<div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160;                                left = right = -1;</div>
+<div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160;                        }</div>
+<div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160; </div>
+<div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;                        <span class="keyword">public</span> <span class="keywordtype">bool</span> Contains (<a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a> point) {</div>
+<div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;                                var pi = (Int3)point;</div>
+<div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160; </div>
+<div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;                                <span class="keywordflow">return</span> rect.Contains(pi.x, pi.z);</div>
+<div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160;                        }</div>
+<div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160;                }</div>
+<div class="line"><a name="l00479"></a><span class="lineno">  479</span>&#160; </div>
+<div class="line"><a name="l00481"></a><span class="lineno">  481</span>&#160;                <span class="keyword">static</span> <span class="keywordtype">float</span> SquaredRectPointDistance (IntRect r, <a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a> p) {</div>
+<div class="line"><a name="l00482"></a><span class="lineno">  482</span>&#160;                        <a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a> po = p;</div>
+<div class="line"><a name="l00483"></a><span class="lineno">  483</span>&#160; </div>
+<div class="line"><a name="l00484"></a><span class="lineno">  484</span>&#160;                        p.<a class="code" href="struct_unity_engine_1_1_vector3.html#ad4d9171899b7fceadc63c4d04da5734d">x</a> = <a class="code" href="namespace_p_f.html#a6cf89bee2694a0f75de4233403192b07">Math</a>.Max(p.<a class="code" href="struct_unity_engine_1_1_vector3.html#ad4d9171899b7fceadc63c4d04da5734d">x</a>, r.xmin*Int3.PrecisionFactor);</div>
+<div class="line"><a name="l00485"></a><span class="lineno">  485</span>&#160;                        p.<a class="code" href="struct_unity_engine_1_1_vector3.html#ad4d9171899b7fceadc63c4d04da5734d">x</a> = <a class="code" href="namespace_p_f.html#a6cf89bee2694a0f75de4233403192b07">Math</a>.Min(p.<a class="code" href="struct_unity_engine_1_1_vector3.html#ad4d9171899b7fceadc63c4d04da5734d">x</a>, r.xmax*Int3.PrecisionFactor);</div>
+<div class="line"><a name="l00486"></a><span class="lineno">  486</span>&#160;                        p.<a class="code" href="struct_unity_engine_1_1_vector3.html#a8ea2682142b822ddcab52c868796fd3e">z</a> = <a class="code" href="namespace_p_f.html#a6cf89bee2694a0f75de4233403192b07">Math</a>.Max(p.<a class="code" href="struct_unity_engine_1_1_vector3.html#a8ea2682142b822ddcab52c868796fd3e">z</a>, r.ymin*Int3.PrecisionFactor);</div>
+<div class="line"><a name="l00487"></a><span class="lineno">  487</span>&#160;                        p.<a class="code" href="struct_unity_engine_1_1_vector3.html#a8ea2682142b822ddcab52c868796fd3e">z</a> = <a class="code" href="namespace_p_f.html#a6cf89bee2694a0f75de4233403192b07">Math</a>.Min(p.<a class="code" href="struct_unity_engine_1_1_vector3.html#a8ea2682142b822ddcab52c868796fd3e">z</a>, r.ymax*Int3.PrecisionFactor);</div>
+<div class="line"><a name="l00488"></a><span class="lineno">  488</span>&#160; </div>
+<div class="line"><a name="l00489"></a><span class="lineno">  489</span>&#160;                        <span class="comment">// XZ squared magnitude comparison</span></div>
+<div class="line"><a name="l00490"></a><span class="lineno">  490</span>&#160;                        <span class="keywordflow">return</span> (p.<a class="code" href="struct_unity_engine_1_1_vector3.html#ad4d9171899b7fceadc63c4d04da5734d">x</a>-po.<a class="code" href="struct_unity_engine_1_1_vector3.html#ad4d9171899b7fceadc63c4d04da5734d">x</a>)*(p.<a class="code" href="struct_unity_engine_1_1_vector3.html#ad4d9171899b7fceadc63c4d04da5734d">x</a>-po.<a class="code" href="struct_unity_engine_1_1_vector3.html#ad4d9171899b7fceadc63c4d04da5734d">x</a>) + (p.<a class="code" href="struct_unity_engine_1_1_vector3.html#a8ea2682142b822ddcab52c868796fd3e">z</a>-po.<a class="code" href="struct_unity_engine_1_1_vector3.html#a8ea2682142b822ddcab52c868796fd3e">z</a>)*(p.<a class="code" href="struct_unity_engine_1_1_vector3.html#a8ea2682142b822ddcab52c868796fd3e">z</a>-po.<a class="code" href="struct_unity_engine_1_1_vector3.html#a8ea2682142b822ddcab52c868796fd3e">z</a>);</div>
+<div class="line"><a name="l00491"></a><span class="lineno">  491</span>&#160;                }</div>
+<div class="line"><a name="l00492"></a><span class="lineno">  492</span>&#160;        }</div>
+<div class="line"><a name="l00493"></a><span class="lineno">  493</span>&#160;}</div>
+<div class="ttc" id="a_astar_path_editor_8cs_html_a056b29af8a3de2eeb5a1cab758c4ba93"><div class="ttname"><a href="_astar_path_editor_8cs.html#a056b29af8a3de2eeb5a1cab758c4ba93">Mathf</a></div><div class="ttdeci">UnityEngine.Mathf Mathf</div><div class="ttdef"><b>Definition:</b> <a href="_astar_path_editor_8cs_source.html#l00006">AstarPathEditor.cs:6</a></div></div>
+<div class="ttc" id="a_recast_graph_editor_8cs_html_af3326292fdd04d2b384b6d781d9594f6"><div class="ttname"><a href="_recast_graph_editor_8cs.html#af3326292fdd04d2b384b6d781d9594f6">Vector3</a></div><div class="ttdeci">UnityEngine.Vector3 Vector3</div><div class="ttdef"><b>Definition:</b> <a href="_recast_graph_editor_8cs_source.html#l00005">RecastGraphEditor.cs:5</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_b_b_tree_html"><div class="ttname"><a href="class_p_f_1_1_b_b_tree.html">PF.BBTree</a></div><div class="ttdef"><b>Definition:</b> <a href="_b_b_tree_8cs_source.html#l00013">BBTree.cs:13</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_b_b_tree_html_a037d7ba45f373d461b6d91878bd2aad1"><div class="ttname"><a href="class_p_f_1_1_b_b_tree.html#a037d7ba45f373d461b6d91878bd2aad1">PF.BBTree.QueryClosestXZ</a></div><div class="ttdeci">NNInfoInternal QueryClosestXZ(Vector3 p, NNConstraint constraint, ref float distance, NNInfoInternal previous)</div><div class="ttdef"><b>Definition:</b> <a href="_b_b_tree_8cs_source.html#l00257">BBTree.cs:257</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_b_b_tree_html_a2b375f652d35b74675408bced365f8d7"><div class="ttname"><a href="class_p_f_1_1_b_b_tree.html#a2b375f652d35b74675408bced365f8d7">PF.BBTree.QueryInside</a></div><div class="ttdeci">TriangleMeshNode QueryInside(Vector3 p, NNConstraint constraint)</div><div class="ttdef"><b>Definition:</b> <a href="_b_b_tree_8cs_source.html#l00410">BBTree.cs:410</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_b_b_tree_html_a775036668600bccbcb300133d9184fa3"><div class="ttname"><a href="class_p_f_1_1_b_b_tree.html#a775036668600bccbcb300133d9184fa3">PF.BBTree.QueryClosest</a></div><div class="ttdeci">NNInfoInternal QueryClosest(Vector3 p, NNConstraint constraint, ref float distance, NNInfoInternal previous)</div><div class="ttdef"><b>Definition:</b> <a href="_b_b_tree_8cs_source.html#l00330">BBTree.cs:330</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_b_b_tree_html_aa80aabac8af1dd79968090e1e86a6d8f"><div class="ttname"><a href="class_p_f_1_1_b_b_tree.html#aa80aabac8af1dd79968090e1e86a6d8f">PF.BBTree.QueryClosest</a></div><div class="ttdeci">NNInfoInternal QueryClosest(Vector3 p, NNConstraint constraint, out float distance)</div><div class="ttdef"><b>Definition:</b> <a href="_b_b_tree_8cs_source.html#l00236">BBTree.cs:236</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_b_b_tree_html_acf3d680ab8c751d0c50c6ab3baaa4fa2"><div class="ttname"><a href="class_p_f_1_1_b_b_tree.html#acf3d680ab8c751d0c50c6ab3baaa4fa2">PF.BBTree.Clear</a></div><div class="ttdeci">void Clear()</div><div class="ttdef"><b>Definition:</b> <a href="_b_b_tree_8cs_source.html#l00025">BBTree.cs:25</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_b_b_tree_html_ad186010d277f492d6a00bda8ac3f0c81"><div class="ttname"><a href="class_p_f_1_1_b_b_tree.html#ad186010d277f492d6a00bda8ac3f0c81">PF.BBTree.RebuildFrom</a></div><div class="ttdeci">void RebuildFrom(TriangleMeshNode[] nodes)</div><div class="ttdef"><b>Definition:</b> <a href="_b_b_tree_8cs_source.html#l00069">BBTree.cs:69</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_n_n_constraint_html"><div class="ttname"><a href="class_p_f_1_1_n_n_constraint.html">PF.NNConstraint</a></div><div class="ttdef"><b>Definition:</b> <a href="_n_n_8cs_source.html#l00007">NN.cs:7</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_n_n_constraint_html_a57cbe6086469529dbce3ac00e1bb2613"><div class="ttname"><a href="class_p_f_1_1_n_n_constraint.html#a57cbe6086469529dbce3ac00e1bb2613">PF.NNConstraint.Suitable</a></div><div class="ttdeci">virtual bool Suitable(GraphNode node)</div><div class="ttdef"><b>Definition:</b> <a href="_n_n_8cs_source.html#l00080">NN.cs:80</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_triangle_mesh_node_html"><div class="ttname"><a href="class_p_f_1_1_triangle_mesh_node.html">PF.TriangleMeshNode</a></div><div class="ttdef"><b>Definition:</b> <a href="_triangle_mesh_node_8cs_source.html#l00021">TriangleMeshNode.cs:21</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_triangle_mesh_node_html_aebe92d68a78eb93487474372de06982f"><div class="ttname"><a href="class_p_f_1_1_triangle_mesh_node.html#aebe92d68a78eb93487474372de06982f">PF.TriangleMeshNode.GetVertices</a></div><div class="ttdeci">void GetVertices(out Int3 v0, out Int3 v1, out Int3 v2)</div><div class="ttdef"><b>Definition:</b> <a href="_triangle_mesh_node_8cs_source.html#l00083">TriangleMeshNode.cs:83</a></div></div>
+<div class="ttc" id="ainterface_p_f_1_1_i_astar_pooled_object_html"><div class="ttname"><a href="interface_p_f_1_1_i_astar_pooled_object.html">PF.IAstarPooledObject</a></div><div class="ttdef"><b>Definition:</b> <a href="_libraries_2_e_t_2_module_2_pathfinding_2_recast_2_object_pool_8cs_source.html#l00010">ObjectPool.cs:10</a></div></div>
+<div class="ttc" id="ainterface_p_f_1_1_i_astar_pooled_object_html_aa32f98100b053effcf68894b485dbdbf"><div class="ttname"><a href="interface_p_f_1_1_i_astar_pooled_object.html#aa32f98100b053effcf68894b485dbdbf">PF.IAstarPooledObject.OnEnterPool</a></div><div class="ttdeci">void OnEnterPool()</div></div>
+<div class="ttc" id="anamespace_p_f_html"><div class="ttname"><a href="namespace_p_f.html">PF</a></div><div class="ttdef"><b>Definition:</b> <a href="_array_pool_8cs_source.html#l00009">ArrayPool.cs:9</a></div></div>
+<div class="ttc" id="anamespace_p_f_html_a6cf89bee2694a0f75de4233403192b07"><div class="ttname"><a href="namespace_p_f.html#a6cf89bee2694a0f75de4233403192b07">PF.Math</a></div><div class="ttdeci">System.Math Math</div><div class="ttdef"><b>Definition:</b> <a href="_navmesh_base_8cs_source.html#l00006">NavmeshBase.cs:6</a></div></div>
+<div class="ttc" id="anamespace_system_html"><div class="ttname"><a href="namespace_system.html">System</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_method_builder_attribute_8cs_source.html#l00001">AsyncMethodBuilderAttribute.cs:2</a></div></div>
+<div class="ttc" id="anamespace_unity_engine_html"><div class="ttname"><a href="namespace_unity_engine.html">UnityEngine</a></div><div class="ttdef"><b>Definition:</b> <a href="_mathf_8cs_source.html#l00003">Mathf.cs:4</a></div></div>
+<div class="ttc" id="astruct_p_f_1_1_int3_html"><div class="ttname"><a href="struct_p_f_1_1_int3.html">PF.Int3</a></div><div class="ttdef"><b>Definition:</b> <a href="_int3_8cs_source.html#l00005">Int3.cs:5</a></div></div>
+<div class="ttc" id="astruct_p_f_1_1_int3_html_a06c6667c0c3fc51e9c43560f77828d2c"><div class="ttname"><a href="struct_p_f_1_1_int3.html#a06c6667c0c3fc51e9c43560f77828d2c">PF.Int3.z</a></div><div class="ttdeci">int z</div><div class="ttdef"><b>Definition:</b> <a href="_int3_8cs_source.html#l00008">Int3.cs:8</a></div></div>
+<div class="ttc" id="astruct_p_f_1_1_int3_html_aac321c32c520491b6bf47e9a8b17cd19"><div class="ttname"><a href="struct_p_f_1_1_int3.html#aac321c32c520491b6bf47e9a8b17cd19">PF.Int3.x</a></div><div class="ttdeci">int x</div><div class="ttdef"><b>Definition:</b> <a href="_int3_8cs_source.html#l00006">Int3.cs:6</a></div></div>
+<div class="ttc" id="astruct_p_f_1_1_int_rect_html"><div class="ttname"><a href="struct_p_f_1_1_int_rect.html">PF.IntRect</a></div><div class="ttdef"><b>Definition:</b> <a href="_int_rect_8cs_source.html#l00009">IntRect.cs:9</a></div></div>
+<div class="ttc" id="astruct_p_f_1_1_n_n_info_internal_html"><div class="ttname"><a href="struct_p_f_1_1_n_n_info_internal.html">PF.NNInfoInternal</a></div><div class="ttdef"><b>Definition:</b> <a href="_n_n_8cs_source.html#l00144">NN.cs:144</a></div></div>
+<div class="ttc" id="astruct_unity_engine_1_1_vector3_html"><div class="ttname"><a href="struct_unity_engine_1_1_vector3.html">UnityEngine.Vector3</a></div><div class="ttdef"><b>Definition:</b> <a href="_vector3_8cs_source.html#l00007">Vector3.cs:8</a></div></div>
+<div class="ttc" id="astruct_unity_engine_1_1_vector3_html_a7e4565013600fd46a0c50ef86a19e926"><div class="ttname"><a href="struct_unity_engine_1_1_vector3.html#a7e4565013600fd46a0c50ef86a19e926">UnityEngine.Vector3.y</a></div><div class="ttdeci">float y</div><div class="ttdef"><b>Definition:</b> <a href="_vector3_8cs_source.html#l00020">Vector3.cs:20</a></div></div>
+<div class="ttc" id="astruct_unity_engine_1_1_vector3_html_a8ea2682142b822ddcab52c868796fd3e"><div class="ttname"><a href="struct_unity_engine_1_1_vector3.html#a8ea2682142b822ddcab52c868796fd3e">UnityEngine.Vector3.z</a></div><div class="ttdeci">float z</div><div class="ttdef"><b>Definition:</b> <a href="_vector3_8cs_source.html#l00021">Vector3.cs:21</a></div></div>
+<div class="ttc" id="astruct_unity_engine_1_1_vector3_html_ac922c88e8328a73b2d01ec8ef15e8bb8"><div class="ttname"><a href="struct_unity_engine_1_1_vector3.html#ac922c88e8328a73b2d01ec8ef15e8bb8">UnityEngine.Vector3.up</a></div><div class="ttdeci">static readonly Vector3 up</div><div class="ttdef"><b>Definition:</b> <a href="_vector3_8cs_source.html#l00013">Vector3.cs:13</a></div></div>
+<div class="ttc" id="astruct_unity_engine_1_1_vector3_html_ad4d9171899b7fceadc63c4d04da5734d"><div class="ttname"><a href="struct_unity_engine_1_1_vector3.html#ad4d9171899b7fceadc63c4d04da5734d">UnityEngine.Vector3.x</a></div><div class="ttdeci">float x</div><div class="ttdef"><b>Definition:</b> <a href="_vector3_8cs_source.html#l00019">Vector3.cs:19</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_84bbf7b3c7f28a5a18725745e1505219.html">Assets</a></li><li class="navelem"><a class="el" href="dir_f13b41af88cf68434578284aaf699e39.html">Scripts</a></li><li class="navelem"><a class="el" href="dir_46d134a3bf82cf4dc49ca8f728aea58c.html">Libraries</a></li><li class="navelem"><a class="el" href="dir_f6df8f7e58ea5a2220a287b647108730.html">ET</a></li><li class="navelem"><a class="el" href="dir_83296929b1cb48979e134a96af9624b1.html">Module</a></li><li class="navelem"><a class="el" href="dir_7e04bdad0240fbb16a4f5f805ce44f49.html">Pathfinding</a></li><li class="navelem"><a class="el" href="dir_0d5e2d3313e129d955335235e3d8ffc0.html">Recast</a></li><li class="navelem"><a class="el" href="_b_b_tree_8cs.html">BBTree.cs</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:24:47 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

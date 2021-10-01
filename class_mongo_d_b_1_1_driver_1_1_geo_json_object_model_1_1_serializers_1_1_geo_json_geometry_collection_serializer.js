@@ -1,0 +1,6 @@
+var class_mongo_d_b_1_1_driver_1_1_geo_json_object_model_1_1_serializers_1_1_geo_json_geometry_collection_serializer =
+[
+    [ "GeoJsonGeometryCollectionSerializer", "class_mongo_d_b_1_1_driver_1_1_geo_json_object_model_1_1_serializers_1_1_geo_json_geometry_collection_serializer.html#a8de347a39713460e5222c4dd928676f3", null ],
+    [ "DeserializeValue", "class_mongo_d_b_1_1_driver_1_1_geo_json_object_model_1_1_serializers_1_1_geo_json_geometry_collection_serializer.html#aab40817a1abe4bf377c5b7be2523dca7", null ],
+    [ "SerializeValue", "class_mongo_d_b_1_1_driver_1_1_geo_json_object_model_1_1_serializers_1_1_geo_json_geometry_collection_serializer.html#af70c0df921a64f41c0151818cce4cf71", null ]
+];

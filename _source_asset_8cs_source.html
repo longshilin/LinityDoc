@@ -1,0 +1,202 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: Assets/Scripts/Libraries/GameFramework/Scripts/Editor/ResourceEditor/SourceAsset.cs 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_source_asset_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">SourceAsset.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_source_asset_8cs.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">//------------------------------------------------------------</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">// Game Framework</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">// Copyright © 2013-2021 Jiang Yin. All rights reserved.</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">// Homepage: https://gameframework.cn/</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">// Feedback: mailto:ellan@gameframework.cn</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">//------------------------------------------------------------</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_game_framework.html">GameFramework</a>;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">using</span> UnityEditor;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_unity_engine.html">UnityEngine</a>;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_unity_game_framework_1_1_editor_1_1_resource_tools.html">UnityGameFramework.Editor.ResourceTools</a></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;{</div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_asset.html">   14</a></span>&#160;    <span class="keyword">public</span> sealed <span class="keyword">class </span><a class="code" href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_asset.html">SourceAsset</a></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    {</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        <span class="keyword">private</span> Texture m_CachedIcon;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_asset.html#a9522bab9614010e212b25adf7019143c">   18</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_asset.html#a9522bab9614010e212b25adf7019143c">SourceAsset</a>(<span class="keywordtype">string</span> guid, <span class="keywordtype">string</span> path, <span class="keywordtype">string</span> name, <a class="code" href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_folder.html">SourceFolder</a> folder)</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        {</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;            <span class="keywordflow">if</span> (folder == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;            {</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> <a class="code" href="class_game_framework_1_1_game_framework_exception.html">GameFrameworkException</a>(<span class="stringliteral">&quot;Source asset folder is invalid.&quot;</span>);</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;            }</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;            <a class="code" href="_deserialize_helper_8cs.html#ad59b2e51d86e62bb22b22d2a6e191df5">Guid</a> = guid;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;            <a class="code" href="_game_main_2_customs_2_custom_helpers_2_process_helper_8cs.html#a5d3f395d3257bcd58335037355f0d7cc">Path</a> = path;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;            <a class="code" href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_asset.html#ac7a7914b58c73249c21b3d66a523f237">Name</a> = name;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;            <a class="code" href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_asset.html#a4f79f324460104603dcb0218b64c30e9">Folder</a> = folder;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;            m_CachedIcon = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        }</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_asset.html#a4d8248a7404ce343e3637c488fa0472a">   32</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">string</span> <a class="code" href="_deserialize_helper_8cs.html#ad59b2e51d86e62bb22b22d2a6e191df5">Guid</a></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        {</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;            <span class="keyword">get</span>;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;            <span class="keyword">private</span> <span class="keyword">set</span>;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        }</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_asset.html#a94001ff5abacfb47e22c209fab8aa951">   38</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">string</span> <a class="code" href="_game_main_2_customs_2_custom_helpers_2_process_helper_8cs.html#a5d3f395d3257bcd58335037355f0d7cc">Path</a></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        {</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            <span class="keyword">get</span>;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            <span class="keyword">private</span> <span class="keyword">set</span>;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        }</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_asset.html#ac7a7914b58c73249c21b3d66a523f237">   44</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">string</span> <a class="code" href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_asset.html#ac7a7914b58c73249c21b3d66a523f237">Name</a></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        {</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;            <span class="keyword">get</span>;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            <span class="keyword">private</span> <span class="keyword">set</span>;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        }</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_asset.html#a4f79f324460104603dcb0218b64c30e9">   50</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_folder.html">SourceFolder</a> <a class="code" href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_asset.html#a4f79f324460104603dcb0218b64c30e9">Folder</a></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        {</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            <span class="keyword">get</span>;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            <span class="keyword">private</span> <span class="keyword">set</span>;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        }</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_asset.html#ac8e314221b75c1593a27c74acb5c9a2d">   56</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">string</span> <a class="code" href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_asset.html#ac8e314221b75c1593a27c74acb5c9a2d">FromRootPath</a></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        {</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            <span class="keyword">get</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            {</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                <span class="keywordflow">return</span> <a class="code" href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_asset.html#a4f79f324460104603dcb0218b64c30e9">Folder</a>.<a class="code" href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_folder.html#a987b1044e43cd67d8ffbb59167b8c8de">Folder</a> == <span class="keyword">null</span> ? <a class="code" href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_asset.html#ac7a7914b58c73249c21b3d66a523f237">Name</a> : <a class="code" href="_unity_web_request_download_agent_helper_8cs.html#a9084eedf9b8c1b9c0fb3e425c1f69c1f">Utility</a>.Text.Format(<span class="stringliteral">&quot;{0}/{1}&quot;</span>, <a class="code" href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_asset.html#a4f79f324460104603dcb0218b64c30e9">Folder</a>.<a class="code" href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_folder.html#a276c46e5e5304d8041fda8399c788da1">FromRootPath</a>, <a class="code" href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_asset.html#ac7a7914b58c73249c21b3d66a523f237">Name</a>);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            }</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        }</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_asset.html#a49af15bbffa654afaccc0456b1218a49">   64</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">int</span> <a class="code" href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_asset.html#a49af15bbffa654afaccc0456b1218a49">Depth</a></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        {</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            <span class="keyword">get</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            {</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                <span class="keywordflow">return</span> <a class="code" href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_asset.html#a4f79f324460104603dcb0218b64c30e9">Folder</a> != <span class="keyword">null</span> ? <a class="code" href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_asset.html#a4f79f324460104603dcb0218b64c30e9">Folder</a>.<a class="code" href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_folder.html#a3298043554387cec0d2f0bf15bc4459e">Depth</a> + 1 : 0;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            }</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        }</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_asset.html#a1c64c81aa5910202cc8c51e6ceebe519">   72</a></span>&#160;        <span class="keyword">public</span> Texture <a class="code" href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_asset.html#a1c64c81aa5910202cc8c51e6ceebe519">Icon</a></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        {</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            <span class="keyword">get</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            {</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                <span class="keywordflow">if</span> (m_CachedIcon == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                {</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                    m_CachedIcon = AssetDatabase.GetCachedIcon(<a class="code" href="_game_main_2_customs_2_custom_helpers_2_process_helper_8cs.html#a5d3f395d3257bcd58335037355f0d7cc">Path</a>);</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                }</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                <span class="keywordflow">return</span> m_CachedIcon;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            }</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        }</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    }</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;}</div>
+<div class="ttc" id="a_deserialize_helper_8cs_html_ad59b2e51d86e62bb22b22d2a6e191df5"><div class="ttname"><a href="_deserialize_helper_8cs.html#ad59b2e51d86e62bb22b22d2a6e191df5">Guid</a></div><div class="ttdeci">PF.Guid Guid</div><div class="ttdef"><b>Definition:</b> <a href="_deserialize_helper_8cs_source.html#l00004">DeserializeHelper.cs:4</a></div></div>
+<div class="ttc" id="a_game_main_2_customs_2_custom_helpers_2_process_helper_8cs_html_a5d3f395d3257bcd58335037355f0d7cc"><div class="ttname"><a href="_game_main_2_customs_2_custom_helpers_2_process_helper_8cs.html#a5d3f395d3257bcd58335037355f0d7cc">Path</a></div><div class="ttdeci">System.IO.Path Path</div><div class="ttdef"><b>Definition:</b> <a href="_game_main_2_customs_2_custom_helpers_2_process_helper_8cs_source.html#l00005">ProcessHelper.cs:5</a></div></div>
+<div class="ttc" id="a_unity_web_request_download_agent_helper_8cs_html_a9084eedf9b8c1b9c0fb3e425c1f69c1f"><div class="ttname"><a href="_unity_web_request_download_agent_helper_8cs.html#a9084eedf9b8c1b9c0fb3e425c1f69c1f">Utility</a></div><div class="ttdeci">GameFramework.Utility Utility</div><div class="ttdef"><b>Definition:</b> <a href="_unity_web_request_download_agent_helper_8cs_source.html#l00016">UnityWebRequestDownloadAgentHelper.cs:16</a></div></div>
+<div class="ttc" id="aclass_game_framework_1_1_game_framework_exception_html"><div class="ttname"><a href="class_game_framework_1_1_game_framework_exception.html">GameFramework.GameFrameworkException</a></div><div class="ttdoc">游戏框架异常类。</div><div class="ttdef"><b>Definition:</b> <a href="_game_framework_exception_8cs_source.html#l00017">GameFrameworkException.cs:18</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_asset_html"><div class="ttname"><a href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_asset.html">UnityGameFramework.Editor.ResourceTools.SourceAsset</a></div><div class="ttdef"><b>Definition:</b> <a href="_source_asset_8cs_source.html#l00014">SourceAsset.cs:15</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_asset_html_a1c64c81aa5910202cc8c51e6ceebe519"><div class="ttname"><a href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_asset.html#a1c64c81aa5910202cc8c51e6ceebe519">UnityGameFramework.Editor.ResourceTools.SourceAsset.Icon</a></div><div class="ttdeci">Texture Icon</div><div class="ttdef"><b>Definition:</b> <a href="_source_asset_8cs_source.html#l00072">SourceAsset.cs:73</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_asset_html_a49af15bbffa654afaccc0456b1218a49"><div class="ttname"><a href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_asset.html#a49af15bbffa654afaccc0456b1218a49">UnityGameFramework.Editor.ResourceTools.SourceAsset.Depth</a></div><div class="ttdeci">int? Depth</div><div class="ttdef"><b>Definition:</b> <a href="_source_asset_8cs_source.html#l00064">SourceAsset.cs:65</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_asset_html_a4f79f324460104603dcb0218b64c30e9"><div class="ttname"><a href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_asset.html#a4f79f324460104603dcb0218b64c30e9">UnityGameFramework.Editor.ResourceTools.SourceAsset.Folder</a></div><div class="ttdeci">SourceFolder Folder</div><div class="ttdef"><b>Definition:</b> <a href="_source_asset_8cs_source.html#l00050">SourceAsset.cs:51</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_asset_html_a9522bab9614010e212b25adf7019143c"><div class="ttname"><a href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_asset.html#a9522bab9614010e212b25adf7019143c">UnityGameFramework.Editor.ResourceTools.SourceAsset.SourceAsset</a></div><div class="ttdeci">SourceAsset(string guid, string path, string name, SourceFolder folder)</div><div class="ttdef"><b>Definition:</b> <a href="_source_asset_8cs_source.html#l00018">SourceAsset.cs:18</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_asset_html_ac7a7914b58c73249c21b3d66a523f237"><div class="ttname"><a href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_asset.html#ac7a7914b58c73249c21b3d66a523f237">UnityGameFramework.Editor.ResourceTools.SourceAsset.Name</a></div><div class="ttdeci">string Name</div><div class="ttdef"><b>Definition:</b> <a href="_source_asset_8cs_source.html#l00044">SourceAsset.cs:45</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_asset_html_ac8e314221b75c1593a27c74acb5c9a2d"><div class="ttname"><a href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_asset.html#ac8e314221b75c1593a27c74acb5c9a2d">UnityGameFramework.Editor.ResourceTools.SourceAsset.FromRootPath</a></div><div class="ttdeci">string? FromRootPath</div><div class="ttdef"><b>Definition:</b> <a href="_source_asset_8cs_source.html#l00056">SourceAsset.cs:57</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_folder_html"><div class="ttname"><a href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_folder.html">UnityGameFramework.Editor.ResourceTools.SourceFolder</a></div><div class="ttdef"><b>Definition:</b> <a href="_source_folder_8cs_source.html#l00015">SourceFolder.cs:16</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_folder_html_a276c46e5e5304d8041fda8399c788da1"><div class="ttname"><a href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_folder.html#a276c46e5e5304d8041fda8399c788da1">UnityGameFramework.Editor.ResourceTools.SourceFolder.FromRootPath</a></div><div class="ttdeci">string?? FromRootPath</div><div class="ttdef"><b>Definition:</b> <a href="_source_folder_8cs_source.html#l00043">SourceFolder.cs:44</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_folder_html_a3298043554387cec0d2f0bf15bc4459e"><div class="ttname"><a href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_folder.html#a3298043554387cec0d2f0bf15bc4459e">UnityGameFramework.Editor.ResourceTools.SourceFolder.Depth</a></div><div class="ttdeci">int? Depth</div><div class="ttdef"><b>Definition:</b> <a href="_source_folder_8cs_source.html#l00051">SourceFolder.cs:52</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_folder_html_a987b1044e43cd67d8ffbb59167b8c8de"><div class="ttname"><a href="class_unity_game_framework_1_1_editor_1_1_resource_tools_1_1_source_folder.html#a987b1044e43cd67d8ffbb59167b8c8de">UnityGameFramework.Editor.ResourceTools.SourceFolder.Folder</a></div><div class="ttdeci">SourceFolder Folder</div><div class="ttdef"><b>Definition:</b> <a href="_source_folder_8cs_source.html#l00037">SourceFolder.cs:38</a></div></div>
+<div class="ttc" id="anamespace_game_framework_html"><div class="ttname"><a href="namespace_game_framework.html">GameFramework</a></div><div class="ttdef"><b>Definition:</b> <a href="_data_provider_8cs_source.html#l00011">DataProvider.cs:12</a></div></div>
+<div class="ttc" id="anamespace_unity_engine_html"><div class="ttname"><a href="namespace_unity_engine.html">UnityEngine</a></div><div class="ttdef"><b>Definition:</b> <a href="_mathf_8cs_source.html#l00003">Mathf.cs:4</a></div></div>
+<div class="ttc" id="anamespace_unity_game_framework_1_1_editor_1_1_resource_tools_html"><div class="ttname"><a href="namespace_unity_game_framework_1_1_editor_1_1_resource_tools.html">UnityGameFramework.Editor.ResourceTools</a></div><div class="ttdef"><b>Definition:</b> <a href="_assets_order_8cs_source.html#l00008">AssetsOrder.cs:9</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_84bbf7b3c7f28a5a18725745e1505219.html">Assets</a></li><li class="navelem"><a class="el" href="dir_f13b41af88cf68434578284aaf699e39.html">Scripts</a></li><li class="navelem"><a class="el" href="dir_46d134a3bf82cf4dc49ca8f728aea58c.html">Libraries</a></li><li class="navelem"><a class="el" href="dir_7a6862c303020716b3c311e95823547c.html">GameFramework</a></li><li class="navelem"><a class="el" href="dir_1d9b7e2b1e68805cdf4440a735859529.html">Scripts</a></li><li class="navelem"><a class="el" href="dir_ba4b5b2d60a8a4f339d75a3db7214d9a.html">Editor</a></li><li class="navelem"><a class="el" href="dir_b3587be0e883d494828af84f09bc008a.html">ResourceEditor</a></li><li class="navelem"><a class="el" href="_source_asset_8cs.html">SourceAsset.cs</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:24:49 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

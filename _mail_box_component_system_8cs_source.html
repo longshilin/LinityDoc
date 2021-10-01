@@ -1,0 +1,225 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: ETServer/Server/Hotfix/Module/Actor/MailBoxComponentSystem.cs 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_mail_box_component_system_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">MailBoxComponentSystem.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_mail_box_component_system_8cs.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>;</div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_e_t_model.html">ETModel</a>;</div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_e_t_hotfix.html">ETHotfix</a></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;{</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;        [ObjectSystem]</div>
+<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="class_e_t_hotfix_1_1_mail_box_component_awake_system.html">    7</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="class_e_t_hotfix_1_1_mail_box_component_awake_system.html">MailBoxComponentAwakeSystem</a> : <a class="code" href="class_e_t_hotfix_1_1_awake_system.html">AwakeSystem</a>&lt;MailBoxComponent&gt;</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;        {</div>
+<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="class_e_t_hotfix_1_1_mail_box_component_awake_system.html#a2ce2d243d753557f51e06e4056a2ccda">    9</a></span>&#160;                <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code" href="class_e_t_hotfix_1_1_mail_box_component_awake_system.html#a2ce2d243d753557f51e06e4056a2ccda">Awake</a>(<a class="code" href="class_e_t_model_1_1_mail_box_component.html">MailBoxComponent</a> <span class="keyword">self</span>)</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;                {</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;                        <span class="keyword">self</span>.MailboxType = MailboxType.MessageDispatcher;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;                        <span class="keyword">self</span>.Queue.Clear();</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;                }</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        }</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        [ObjectSystem]</div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="class_e_t_hotfix_1_1_mail_box_component_awake1_system.html">   17</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="class_e_t_hotfix_1_1_mail_box_component_awake1_system.html">MailBoxComponentAwake1System</a> : <a class="code" href="class_e_t_hotfix_1_1_awake_system.html">AwakeSystem</a>&lt;MailBoxComponent, string&gt;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        {</div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="class_e_t_hotfix_1_1_mail_box_component_awake1_system.html#ad55674ebde2973a9e9dce11b7dda8845">   19</a></span>&#160;                <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code" href="class_e_t_hotfix_1_1_mail_box_component_awake1_system.html#ad55674ebde2973a9e9dce11b7dda8845">Awake</a>(<a class="code" href="class_e_t_model_1_1_mail_box_component.html">MailBoxComponent</a> <span class="keyword">self</span>, <span class="keywordtype">string</span> mailboxType)</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;                {</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;                        <span class="keyword">self</span>.MailboxType = mailboxType;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;                        <span class="keyword">self</span>.Queue.Clear();</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;                }</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        }</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        [ObjectSystem]</div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="class_e_t_hotfix_1_1_mail_box_component_start_system.html">   27</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="class_e_t_hotfix_1_1_mail_box_component_start_system.html">MailBoxComponentStartSystem</a> : <a class="code" href="class_e_t_hotfix_1_1_start_system.html">StartSystem</a>&lt;MailBoxComponent&gt;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        {</div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="class_e_t_hotfix_1_1_mail_box_component_start_system.html#ab08a54a955fc4dad3f0291118b9432bc">   29</a></span>&#160;                <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code" href="class_e_t_hotfix_1_1_mail_box_component_start_system.html#ab08a54a955fc4dad3f0291118b9432bc">Start</a>(<a class="code" href="class_e_t_model_1_1_mail_box_component.html">MailBoxComponent</a> <span class="keyword">self</span>)</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;                {</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;                        <span class="keyword">self</span>.HandleAsync().Coroutine();</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;                }</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        }</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">class </span>MailBoxComponentHelper</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        {</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                <span class="keyword">public</span> <span class="keyword">static</span> async <a class="code" href="struct_e_t_model_1_1_e_t_task.html">ETTask</a> AddLocation(<span class="keyword">this</span> <a class="code" href="class_e_t_model_1_1_mail_box_component.html">MailBoxComponent</a> <span class="keyword">self</span>)</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;                {</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                        await Game.Scene.GetComponent&lt;<a class="code" href="class_e_t_model_1_1_location_proxy_component.html">LocationProxyComponent</a>&gt;().Add(<span class="keyword">self</span>.<a class="code" href="class_e_t_model_1_1_entity.html">Entity</a>.<a class="code" href="class_e_t_model_1_1_component_with_id.html#a5e54a3b2e2f21e66b712ea0fe27e0554">Id</a>, <span class="keyword">self</span>.Entity.InstanceId);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;                }</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                <span class="keyword">public</span> <span class="keyword">static</span> async <a class="code" href="struct_e_t_model_1_1_e_t_task.html">ETTask</a> RemoveLocation(<span class="keyword">this</span> <a class="code" href="class_e_t_model_1_1_mail_box_component.html">MailBoxComponent</a> <span class="keyword">self</span>)</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                {</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                        await Game.Scene.GetComponent&lt;<a class="code" href="class_e_t_model_1_1_location_proxy_component.html">LocationProxyComponent</a>&gt;().Remove(<span class="keyword">self</span>.<a class="code" href="class_e_t_model_1_1_entity.html">Entity</a>.<a class="code" href="class_e_t_model_1_1_component_with_id.html#a5e54a3b2e2f21e66b712ea0fe27e0554">Id</a>);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                }</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> Add(<span class="keyword">this</span> <a class="code" href="class_e_t_model_1_1_mail_box_component.html">MailBoxComponent</a> <span class="keyword">self</span>, <a class="code" href="struct_e_t_model_1_1_actor_message_info.html">ActorMessageInfo</a> info)</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                {</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                        <span class="keyword">self</span>.Queue.Enqueue(info);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                        <span class="keywordflow">if</span> (<span class="keyword">self</span>.Tcs == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                        {</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                                <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                        }</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                        var t = <span class="keyword">self</span>.Tcs;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                        <span class="keyword">self</span>.Tcs = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                        t.SetResult(<span class="keyword">self</span>.Queue.Dequeue());</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                }</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                <span class="keyword">private</span> <span class="keyword">static</span> <a class="code" href="struct_e_t_model_1_1_e_t_task.html">ETTask&lt;ActorMessageInfo&gt;</a> GetAsync(<span class="keyword">this</span> <a class="code" href="class_e_t_model_1_1_mail_box_component.html">MailBoxComponent</a> <span class="keyword">self</span>)</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                {</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                        <span class="keywordflow">if</span> (<span class="keyword">self</span>.Queue.Count &gt; 0)</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                        {</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                                <span class="keywordflow">return</span> <a class="code" href="struct_e_t_model_1_1_e_t_task.html">ETTask</a>.FromResult(<span class="keyword">self</span>.Queue.Dequeue());</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                        }</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                        <span class="keyword">self</span>.Tcs = <span class="keyword">new</span> <a class="code" href="class_e_t_model_1_1_e_t_task_completion_source.html">ETTaskCompletionSource&lt;ActorMessageInfo&gt;</a>();</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                        <span class="keywordflow">return</span> <span class="keyword">self</span>.Tcs.Task;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                }</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                <span class="keyword">public</span> <span class="keyword">static</span> async <a class="code" href="struct_e_t_model_1_1_e_t_void.html">ETVoid</a> HandleAsync(<span class="keyword">this</span> <a class="code" href="class_e_t_model_1_1_mail_box_component.html">MailBoxComponent</a> <span class="keyword">self</span>)</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                {</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                        <a class="code" href="class_e_t_model_1_1_mailbox_dispatcher_component.html">MailboxDispatcherComponent</a> mailboxDispatcherComponent = Game.Scene.GetComponent&lt;<a class="code" href="class_e_t_model_1_1_mailbox_dispatcher_component.html">MailboxDispatcherComponent</a>&gt;();</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                        </div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                        <span class="keywordtype">long</span> instanceId = <span class="keyword">self</span>.<a class="code" href="class_e_t_model_1_1_component.html#a7dca4c332bc4425f88de656a70d23110">InstanceId</a>;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                        </div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                        <span class="keywordflow">while</span> (<span class="keyword">true</span>)</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                        {</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                                <span class="keywordflow">if</span> (<span class="keyword">self</span>.InstanceId != instanceId)</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                                {</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                                        <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                                }</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                                <span class="keywordflow">try</span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                                {</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                                        <a class="code" href="struct_e_t_model_1_1_actor_message_info.html">ActorMessageInfo</a> info = await <span class="keyword">self</span>.GetAsync();</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                                        <span class="comment">// 返回null表示actor已经删除,协程要终止</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                                        <span class="keywordflow">if</span> (info.<a class="code" href="struct_e_t_model_1_1_actor_message_info.html#a684cbe46e33f97e8c03c6c04338b9a2c">Message</a> == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                                        {</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                                                <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                                        }</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                                        <span class="comment">// 根据这个mailbox类型分发给相应的处理</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;                                        await mailboxDispatcherComponent.Handle(<span class="keyword">self</span>, info);</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                                }</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                                <span class="keywordflow">catch</span> (Exception e)</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;                                {</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;                                        <a class="code" href="_login_form_8cs.html#a6208db3ac52d7f107a612679d0d8eca3">Log</a>.Error(e);</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;                                }</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;                        }</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;                }</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        }</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;}</div>
+<div class="ttc" id="a_login_form_8cs_html_a6208db3ac52d7f107a612679d0d8eca3"><div class="ttname"><a href="_login_form_8cs.html#a6208db3ac52d7f107a612679d0d8eca3">Log</a></div><div class="ttdeci">UnityGameFramework.Runtime.Log Log</div><div class="ttdef"><b>Definition:</b> <a href="_login_form_8cs_source.html#l00007">LoginForm.cs:7</a></div></div>
+<div class="ttc" id="aclass_e_t_hotfix_1_1_awake_system_html"><div class="ttname"><a href="class_e_t_hotfix_1_1_awake_system.html">ETHotfix.AwakeSystem</a></div><div class="ttdef"><b>Definition:</b> <a href="_hotfix_2_e_t_network_2_base_2_object_2_i_awake_system_8cs_source.html#l00075">IAwakeSystem.cs:76</a></div></div>
+<div class="ttc" id="aclass_e_t_hotfix_1_1_mail_box_component_awake1_system_html"><div class="ttname"><a href="class_e_t_hotfix_1_1_mail_box_component_awake1_system.html">ETHotfix.MailBoxComponentAwake1System</a></div><div class="ttdef"><b>Definition:</b> <a href="_mail_box_component_system_8cs_source.html#l00017">MailBoxComponentSystem.cs:18</a></div></div>
+<div class="ttc" id="aclass_e_t_hotfix_1_1_mail_box_component_awake1_system_html_ad55674ebde2973a9e9dce11b7dda8845"><div class="ttname"><a href="class_e_t_hotfix_1_1_mail_box_component_awake1_system.html#ad55674ebde2973a9e9dce11b7dda8845">ETHotfix.MailBoxComponentAwake1System.Awake</a></div><div class="ttdeci">override void Awake(MailBoxComponent self, string mailboxType)</div><div class="ttdef"><b>Definition:</b> <a href="_mail_box_component_system_8cs_source.html#l00019">MailBoxComponentSystem.cs:19</a></div></div>
+<div class="ttc" id="aclass_e_t_hotfix_1_1_mail_box_component_awake_system_html"><div class="ttname"><a href="class_e_t_hotfix_1_1_mail_box_component_awake_system.html">ETHotfix.MailBoxComponentAwakeSystem</a></div><div class="ttdef"><b>Definition:</b> <a href="_mail_box_component_system_8cs_source.html#l00007">MailBoxComponentSystem.cs:8</a></div></div>
+<div class="ttc" id="aclass_e_t_hotfix_1_1_mail_box_component_awake_system_html_a2ce2d243d753557f51e06e4056a2ccda"><div class="ttname"><a href="class_e_t_hotfix_1_1_mail_box_component_awake_system.html#a2ce2d243d753557f51e06e4056a2ccda">ETHotfix.MailBoxComponentAwakeSystem.Awake</a></div><div class="ttdeci">override void Awake(MailBoxComponent self)</div><div class="ttdef"><b>Definition:</b> <a href="_mail_box_component_system_8cs_source.html#l00009">MailBoxComponentSystem.cs:9</a></div></div>
+<div class="ttc" id="aclass_e_t_hotfix_1_1_mail_box_component_start_system_html"><div class="ttname"><a href="class_e_t_hotfix_1_1_mail_box_component_start_system.html">ETHotfix.MailBoxComponentStartSystem</a></div><div class="ttdef"><b>Definition:</b> <a href="_mail_box_component_system_8cs_source.html#l00027">MailBoxComponentSystem.cs:28</a></div></div>
+<div class="ttc" id="aclass_e_t_hotfix_1_1_mail_box_component_start_system_html_ab08a54a955fc4dad3f0291118b9432bc"><div class="ttname"><a href="class_e_t_hotfix_1_1_mail_box_component_start_system.html#ab08a54a955fc4dad3f0291118b9432bc">ETHotfix.MailBoxComponentStartSystem.Start</a></div><div class="ttdeci">override void Start(MailBoxComponent self)</div><div class="ttdef"><b>Definition:</b> <a href="_mail_box_component_system_8cs_source.html#l00029">MailBoxComponentSystem.cs:29</a></div></div>
+<div class="ttc" id="aclass_e_t_hotfix_1_1_start_system_html"><div class="ttname"><a href="class_e_t_hotfix_1_1_start_system.html">ETHotfix.StartSystem</a></div><div class="ttdef"><b>Definition:</b> <a href="_hotfix_2_e_t_network_2_base_2_object_2_i_start_system_8cs_source.html#l00011">IStartSystem.cs:12</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_component_html_a7dca4c332bc4425f88de656a70d23110"><div class="ttname"><a href="class_e_t_model_1_1_component.html#a7dca4c332bc4425f88de656a70d23110">ETModel.Component.InstanceId</a></div><div class="ttdeci">long InstanceId</div><div class="ttdef"><b>Definition:</b> <a href="_libraries_2_e_t_2_base_2_object_2_component_8cs_source.html#l00014">Component.cs:14</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_component_with_id_html_a5e54a3b2e2f21e66b712ea0fe27e0554"><div class="ttname"><a href="class_e_t_model_1_1_component_with_id.html#a5e54a3b2e2f21e66b712ea0fe27e0554">ETModel.ComponentWithId.Id</a></div><div class="ttdeci">long Id</div><div class="ttdef"><b>Definition:</b> <a href="_libraries_2_e_t_2_base_2_object_2_component_with_id_8cs_source.html#l00015">ComponentWithId.cs:15</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_e_t_task_completion_source_html"><div class="ttname"><a href="class_e_t_model_1_1_e_t_task_completion_source.html">ETModel.ETTaskCompletionSource</a></div><div class="ttdef"><b>Definition:</b> <a href="_e_t_task_completion_source_8cs_source.html#l00145">ETTaskCompletionSource.cs:146</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_entity_html"><div class="ttname"><a href="class_e_t_model_1_1_entity.html">ETModel.Entity</a></div><div class="ttdef"><b>Definition:</b> <a href="_libraries_2_e_t_2_base_2_object_2_entity_8cs_source.html#l00009">Entity.cs:10</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_location_proxy_component_html"><div class="ttname"><a href="class_e_t_model_1_1_location_proxy_component.html">ETModel.LocationProxyComponent</a></div><div class="ttdef"><b>Definition:</b> <a href="_location_proxy_component_8cs_source.html#l00005">LocationProxyComponent.cs:6</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_mail_box_component_html"><div class="ttname"><a href="class_e_t_model_1_1_mail_box_component.html">ETModel.MailBoxComponent</a></div><div class="ttdoc">挂上这个组件表示该Entity是一个Actor,接收的消息将会队列处理</div><div class="ttdef"><b>Definition:</b> <a href="_mail_box_component_8cs_source.html#l00014">MailBoxComponent.cs:15</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_mailbox_dispatcher_component_html"><div class="ttname"><a href="class_e_t_model_1_1_mailbox_dispatcher_component.html">ETModel.MailboxDispatcherComponent</a></div><div class="ttdoc">mailbox分发组件,不同类型的mailbox交给不同的MailboxHandle处理</div><div class="ttdef"><b>Definition:</b> <a href="_mailbox_dispatcher_component_8cs_source.html#l00008">MailboxDispatcherComponent.cs:9</a></div></div>
+<div class="ttc" id="anamespace_e_t_hotfix_html"><div class="ttname"><a href="namespace_e_t_hotfix.html">ETHotfix</a></div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_hotfix_2_e_t_network_2_base_2_event_2_event_id_type_8cs_source.html#l00001">EventIdType.cs:2</a></div></div>
+<div class="ttc" id="anamespace_e_t_model_html"><div class="ttname"><a href="namespace_e_t_model.html">ETModel</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_e_t_task_method_builder_8cs_source.html#l00006">AsyncETTaskMethodBuilder.cs:7</a></div></div>
+<div class="ttc" id="anamespace_system_html"><div class="ttname"><a href="namespace_system.html">System</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_method_builder_attribute_8cs_source.html#l00001">AsyncMethodBuilderAttribute.cs:2</a></div></div>
+<div class="ttc" id="astruct_e_t_model_1_1_actor_message_info_html"><div class="ttname"><a href="struct_e_t_model_1_1_actor_message_info.html">ETModel.ActorMessageInfo</a></div><div class="ttdef"><b>Definition:</b> <a href="_mail_box_component_8cs_source.html#l00005">MailBoxComponent.cs:6</a></div></div>
+<div class="ttc" id="astruct_e_t_model_1_1_actor_message_info_html_a684cbe46e33f97e8c03c6c04338b9a2c"><div class="ttname"><a href="struct_e_t_model_1_1_actor_message_info.html#a684cbe46e33f97e8c03c6c04338b9a2c">ETModel.ActorMessageInfo.Message</a></div><div class="ttdeci">object Message</div><div class="ttdef"><b>Definition:</b> <a href="_mail_box_component_8cs_source.html#l00008">MailBoxComponent.cs:8</a></div></div>
+<div class="ttc" id="astruct_e_t_model_1_1_e_t_task_html"><div class="ttname"><a href="struct_e_t_model_1_1_e_t_task.html">ETModel.ETTask</a></div><div class="ttdoc">Lightweight unity specified task-like object.</div><div class="ttdef"><b>Definition:</b> <a href="_e_t_task_8cs_source.html#l00133">ETTask.cs:134</a></div></div>
+<div class="ttc" id="astruct_e_t_model_1_1_e_t_void_html"><div class="ttname"><a href="struct_e_t_model_1_1_e_t_void.html">ETModel.ETVoid</a></div><div class="ttdef"><b>Definition:</b> <a href="_e_t_void_8cs_source.html#l00008">ETVoid.cs:9</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_1e261a42b4a2e33df58a15c412684b10.html">ETServer</a></li><li class="navelem"><a class="el" href="dir_473c270c995194c5ad99131d9c901f09.html">Server</a></li><li class="navelem"><a class="el" href="dir_8ba39ddea26488234058f82da6354cdf.html">Hotfix</a></li><li class="navelem"><a class="el" href="dir_2f5801fa7375f68003eb278d004d6f6f.html">Module</a></li><li class="navelem"><a class="el" href="dir_b4b07e2fc375d2b79257ab4e17b9c48c.html">Actor</a></li><li class="navelem"><a class="el" href="_mail_box_component_system_8cs.html">MailBoxComponentSystem.cs</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:24:55 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

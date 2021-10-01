@@ -1,0 +1,178 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: Assets/Scripts/Editor/XCodeAPI/Mods/XMain/LocalData.mm 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_local_data_8mm_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">LocalData.mm</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_local_data_8mm.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#import &quot;<a class="code" href="_local_data_8h.html">LocalData.h</a>&quot;</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#import &quot;<a class="code" href="_keychain_item_wrapper_8h.html">KeychainItemWrapper.h</a>&quot;</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#import &quot;<a class="code" href="_n_s_object_09_util_8h.html">NSObject+Util.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">@implementation </span><a class="code" href="interface_local_data.html">LocalData</a></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">//获取本地数据</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;+ (NSString *)getLocalData:(NSString *)dataKey</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;{</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;        NSString *key = [dataKey copy];</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;        NSString *identifier = [[NSString stringWithFormat:@&quot;DD-%@&quot;, key] retain];</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        <a class="code" href="interface_keychain_item_wrapper.html">KeychainItemWrapper</a> *keychainItem = [[<a class="code" href="interface_keychain_item_wrapper.html">KeychainItemWrapper</a> alloc] initWithIdentifier:identifier accessGroup:nil];</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    NSString *strData = [keychainItem <a class="code" href="interface_keychain_item_wrapper.html#a3441dcde20499615f1a935b7be04f5ed">objectForKey</a>:(id)kSecValueData];</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keywordflow">return</span> strData;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;}</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">//设置本地数据</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;+ (void)setLocalData:(NSString *)dataKey data:(NSString *)data</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;{</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        NSString *key = [dataKey copy];</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        NSString *identifier = [[NSString stringWithFormat:@&quot;DD-%@&quot;, key] retain];</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <a class="code" href="interface_keychain_item_wrapper.html">KeychainItemWrapper</a> *keychainItem = [[<a class="code" href="interface_keychain_item_wrapper.html">KeychainItemWrapper</a> alloc] initWithIdentifier:identifier accessGroup:nil];</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    [keychainItem <a class="code" href="interface_keychain_item_wrapper.html#a0b7eecfe1e527ba72175367ac3a01597">setObject</a>:data <a class="code" href="interface_keychain_item_wrapper.html#a0b7eecfe1e527ba72175367ac3a01597">forKey</a>:(id)kSecValueData];</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    [keychainItem release];</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;}</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">//清除内部已缓存的本地数据</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;+ (void)cleanLocalData:(NSString *)dataKey</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;{</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        NSString *key = [dataKey copy];</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        NSString *identifier = [[NSString stringWithFormat:@&quot;DD-%@&quot;, key] retain];</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <a class="code" href="interface_keychain_item_wrapper.html">KeychainItemWrapper</a> *keychainItem = [[<a class="code" href="interface_keychain_item_wrapper.html">KeychainItemWrapper</a> alloc] initWithIdentifier:identifier accessGroup:nil];</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    [keychainItem <a class="code" href="interface_keychain_item_wrapper.html#a0b7eecfe1e527ba72175367ac3a01597">setObject</a>:@&quot;&quot; <a class="code" href="interface_keychain_item_wrapper.html#a0b7eecfe1e527ba72175367ac3a01597">forKey</a>:(id)kSecValueData];</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    [keychainItem release];</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;}</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="keyword">@end</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;{</div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="_local_data_8mm.html#a96a6ad0c0e4f5609d2e0d657c6df34ca">   44</a></span>&#160;        <span class="keyword">const</span> <span class="keywordtype">char</span>* <a class="code" href="_local_data_8mm.html#a96a6ad0c0e4f5609d2e0d657c6df34ca">_getLocalData</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* dataKey)</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        {</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        NSString *key = [NSString stringWithUTF8String:dataKey];</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                NSString *data =  [<a class="code" href="interface_local_data.html">LocalData</a> <a class="code" href="interface_local_data.html#ae7b383e31f9d2d68fa2c69b8de36f9ec">getLocalData</a>:key];</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                <span class="keyword">const</span> <span class="keywordtype">char</span>* strc = [<a class="code" href="interface_util.html">Util</a> <a class="code" href="interface_util.html#a1d7bcc42c8808eee4c8d579fb5a7d591">CopyString</a>:[data UTF8String]];</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <span class="keywordflow">return</span> strc;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        }</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        </div>
+<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="_local_data_8mm.html#ad1445723914712daf5d23cb5e345ce7e">   52</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="_local_data_8mm.html#ad1445723914712daf5d23cb5e345ce7e">_setLocalData</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* dataKey, <span class="keyword">const</span> <span class="keywordtype">char</span>* data)</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        {</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        NSString *key = [NSString stringWithUTF8String:dataKey];</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        NSString *value = [NSString stringWithUTF8String:data];</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                [<a class="code" href="interface_local_data.html">LocalData</a> <a class="code" href="interface_local_data.html#a7850ad2b7245720e860741c9eacee18c">setLocalData</a>:key <a class="code" href="interface_local_data.html#a7850ad2b7245720e860741c9eacee18c">data</a>:value];</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        }</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        </div>
+<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="interface_local_data.html#a5f35bb707266d3adb8a820c3c7361562">   59</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="_local_data_8mm.html#a7959b098390a09af02cf2e3683542c9b">_cleanLocalData</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* dataKey)</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        {</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        NSString *key = [NSString stringWithUTF8String:dataKey];</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                [<a class="code" href="interface_local_data.html">LocalData</a> <a class="code" href="interface_local_data.html#a5f35bb707266d3adb8a820c3c7361562">cleanLocalData</a>:key];</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        }</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;}</div>
+<div class="ttc" id="a_keychain_item_wrapper_8h_html"><div class="ttname"><a href="_keychain_item_wrapper_8h.html">KeychainItemWrapper.h</a></div></div>
+<div class="ttc" id="a_local_data_8h_html"><div class="ttname"><a href="_local_data_8h.html">LocalData.h</a></div></div>
+<div class="ttc" id="a_local_data_8mm_html_a7959b098390a09af02cf2e3683542c9b"><div class="ttname"><a href="_local_data_8mm.html#a7959b098390a09af02cf2e3683542c9b">_cleanLocalData</a></div><div class="ttdeci">void _cleanLocalData(const char *dataKey)</div><div class="ttdef"><b>Definition:</b> <a href="_local_data_8mm_source.html#l00059">LocalData.mm:59</a></div></div>
+<div class="ttc" id="a_local_data_8mm_html_a96a6ad0c0e4f5609d2e0d657c6df34ca"><div class="ttname"><a href="_local_data_8mm.html#a96a6ad0c0e4f5609d2e0d657c6df34ca">_getLocalData</a></div><div class="ttdeci">const char * _getLocalData(const char *dataKey)</div><div class="ttdef"><b>Definition:</b> <a href="_local_data_8mm_source.html#l00044">LocalData.mm:44</a></div></div>
+<div class="ttc" id="a_local_data_8mm_html_ad1445723914712daf5d23cb5e345ce7e"><div class="ttname"><a href="_local_data_8mm.html#ad1445723914712daf5d23cb5e345ce7e">_setLocalData</a></div><div class="ttdeci">void _setLocalData(const char *dataKey, const char *data)</div><div class="ttdef"><b>Definition:</b> <a href="_local_data_8mm_source.html#l00052">LocalData.mm:52</a></div></div>
+<div class="ttc" id="a_n_s_object_09_util_8h_html"><div class="ttname"><a href="_n_s_object_09_util_8h.html">NSObject+Util.h</a></div></div>
+<div class="ttc" id="ainterface_keychain_item_wrapper_html"><div class="ttname"><a href="interface_keychain_item_wrapper.html">KeychainItemWrapper</a></div><div class="ttdef"><b>Definition:</b> <a href="_keychain_item_wrapper_8h_source.html#l00057">KeychainItemWrapper.h:58</a></div></div>
+<div class="ttc" id="ainterface_keychain_item_wrapper_html_a0b7eecfe1e527ba72175367ac3a01597"><div class="ttname"><a href="interface_keychain_item_wrapper.html#a0b7eecfe1e527ba72175367ac3a01597">-[KeychainItemWrapper setObject:forKey:]</a></div><div class="ttdeci">void setObject:forKey:(id inObject,[forKey] id key)</div><div class="ttdef"><b>Definition:</b> <a href="_keychain_item_wrapper_8m_source.html#l00001">KeychainItemWrapper.m:175</a></div></div>
+<div class="ttc" id="ainterface_keychain_item_wrapper_html_a3441dcde20499615f1a935b7be04f5ed"><div class="ttname"><a href="interface_keychain_item_wrapper.html#a3441dcde20499615f1a935b7be04f5ed">-[KeychainItemWrapper objectForKey:]</a></div><div class="ttdeci">id objectForKey:(id key)</div><div class="ttdef"><b>Definition:</b> <a href="_keychain_item_wrapper_8m_source.html#l00001">KeychainItemWrapper.m:186</a></div></div>
+<div class="ttc" id="ainterface_local_data_html"><div class="ttname"><a href="interface_local_data.html">LocalData</a></div><div class="ttdef"><b>Definition:</b> <a href="_local_data_8h_source.html#l00003">LocalData.h:4</a></div></div>
+<div class="ttc" id="ainterface_local_data_html_a5f35bb707266d3adb8a820c3c7361562"><div class="ttname"><a href="interface_local_data.html#a5f35bb707266d3adb8a820c3c7361562">+[LocalData cleanLocalData:]</a></div><div class="ttdeci">void cleanLocalData:(NSString *dataKey)</div><div class="ttdef"><b>Definition:</b> <a href="_local_data_8mm_source.html#l00059">LocalData.mm:30</a></div></div>
+<div class="ttc" id="ainterface_local_data_html_a7850ad2b7245720e860741c9eacee18c"><div class="ttname"><a href="interface_local_data.html#a7850ad2b7245720e860741c9eacee18c">+[LocalData setLocalData:data:]</a></div><div class="ttdeci">void setLocalData:data:(NSString *dataKey,[data] NSString *data)</div><div class="ttdef"><b>Definition:</b> <a href="_local_data_8mm_source.html#l00059">LocalData.mm:19</a></div></div>
+<div class="ttc" id="ainterface_local_data_html_ae7b383e31f9d2d68fa2c69b8de36f9ec"><div class="ttname"><a href="interface_local_data.html#ae7b383e31f9d2d68fa2c69b8de36f9ec">+[LocalData getLocalData:]</a></div><div class="ttdeci">NSString * getLocalData:(NSString *dataKey)</div><div class="ttdef"><b>Definition:</b> <a href="_local_data_8mm_source.html#l00059">LocalData.mm:8</a></div></div>
+<div class="ttc" id="ainterface_util_html"><div class="ttname"><a href="interface_util.html">Util</a></div><div class="ttdef"><b>Definition:</b> <a href="_n_s_object_09_util_8h_source.html#l00010">NSObject+Util.h:11</a></div></div>
+<div class="ttc" id="ainterface_util_html_a1d7bcc42c8808eee4c8d579fb5a7d591"><div class="ttname"><a href="interface_util.html#a1d7bcc42c8808eee4c8d579fb5a7d591">+[Util CopyString:]</a></div><div class="ttdeci">const char * CopyString:(const char *string)</div><div class="ttdef"><b>Definition:</b> <a href="_n_s_object_09_util_8m_source.html#l00001">NSObject+Util.m:12</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_84bbf7b3c7f28a5a18725745e1505219.html">Assets</a></li><li class="navelem"><a class="el" href="dir_f13b41af88cf68434578284aaf699e39.html">Scripts</a></li><li class="navelem"><a class="el" href="dir_0261d5286017c38b9af36d6d3ff94a53.html">Editor</a></li><li class="navelem"><a class="el" href="dir_26e20bad1c911948ca95b8b7bc9fb7a3.html">XCodeAPI</a></li><li class="navelem"><a class="el" href="dir_ab023d85dbd36041227d024943a14fe6.html">Mods</a></li><li class="navelem"><a class="el" href="dir_e557e6a2201d77fb9194d0421c7605d4.html">XMain</a></li><li class="navelem"><a class="el" href="_local_data_8mm.html">LocalData.mm</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:24:43 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

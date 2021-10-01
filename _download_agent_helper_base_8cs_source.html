@@ -1,0 +1,149 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: Assets/Scripts/Libraries/GameFramework/Scripts/Runtime/Download/DownloadAgentHelperBase.cs 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_download_agent_helper_base_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">DownloadAgentHelperBase.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_download_agent_helper_base_8cs.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">//------------------------------------------------------------</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">// Game Framework</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">// Copyright © 2013-2021 Jiang Yin. All rights reserved.</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">// Homepage: https://gameframework.cn/</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">// Feedback: mailto:ellan@gameframework.cn</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">//------------------------------------------------------------</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_game_framework.html">GameFramework</a>.<a class="code" href="namespace_game_framework_1_1_download.html">Download</a>;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_unity_engine.html">UnityEngine</a>;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_unity_game_framework_1_1_runtime.html">UnityGameFramework.Runtime</a></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;{</div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="class_unity_game_framework_1_1_runtime_1_1_download_agent_helper_base.html">   17</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">class </span><a class="code" href="class_unity_game_framework_1_1_runtime_1_1_download_agent_helper_base.html">DownloadAgentHelperBase</a> : MonoBehaviour, <a class="code" href="interface_game_framework_1_1_download_1_1_i_download_agent_helper.html">IDownloadAgentHelper</a></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    {</div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="class_unity_game_framework_1_1_runtime_1_1_download_agent_helper_base.html#a571a57e03cf826b15cf888e8693bfb3f">   22</a></span>&#160;        <span class="keyword">protected</span> <span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_download_agent_helper_base.html#a571a57e03cf826b15cf888e8693bfb3f">RangeNotSatisfiableErrorCode</a> = 416;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="class_unity_game_framework_1_1_runtime_1_1_download_agent_helper_base.html#af35867b3f73950aa671be9c773fa748d">   27</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">event</span> EventHandler&lt;DownloadAgentHelperUpdateBytesEventArgs&gt; <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_download_agent_helper_base.html#af35867b3f73950aa671be9c773fa748d">DownloadAgentHelperUpdateBytes</a>;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="class_unity_game_framework_1_1_runtime_1_1_download_agent_helper_base.html#a553ea74eec5c6ceb86a3f74d1749807c">   32</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">event</span> EventHandler&lt;DownloadAgentHelperUpdateLengthEventArgs&gt; <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_download_agent_helper_base.html#a553ea74eec5c6ceb86a3f74d1749807c">DownloadAgentHelperUpdateLength</a>;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="class_unity_game_framework_1_1_runtime_1_1_download_agent_helper_base.html#aed1c10844087bb777d5ed358a4e5baab">   37</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">event</span> EventHandler&lt;DownloadAgentHelperCompleteEventArgs&gt; <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_download_agent_helper_base.html#aed1c10844087bb777d5ed358a4e5baab">DownloadAgentHelperComplete</a>;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="class_unity_game_framework_1_1_runtime_1_1_download_agent_helper_base.html#affe1b121f85c70a3d534b955b270eeb4">   42</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">event</span> EventHandler&lt;DownloadAgentHelperErrorEventArgs&gt; <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_download_agent_helper_base.html#affe1b121f85c70a3d534b955b270eeb4">DownloadAgentHelperError</a>;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="class_unity_game_framework_1_1_runtime_1_1_download_agent_helper_base.html#a0d4910e50c361e7ee01b4df0c7d4c2c2">   49</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keywordtype">void</span> <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_download_agent_helper_base.html#a0d4910e50c361e7ee01b4df0c7d4c2c2">Download</a>(<span class="keywordtype">string</span> downloadUri, <span class="keywordtype">object</span> userData);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="class_unity_game_framework_1_1_runtime_1_1_download_agent_helper_base.html#a1bf941bbcb33101cfdc5a682f1144682">   57</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keywordtype">void</span> <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_download_agent_helper_base.html#a1bf941bbcb33101cfdc5a682f1144682">Download</a>(<span class="keywordtype">string</span> downloadUri, <span class="keywordtype">long</span> fromPosition, <span class="keywordtype">object</span> userData);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="class_unity_game_framework_1_1_runtime_1_1_download_agent_helper_base.html#a08ad223a13570b4e8e6b509283ada36c">   66</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keywordtype">void</span> <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_download_agent_helper_base.html#a08ad223a13570b4e8e6b509283ada36c">Download</a>(<span class="keywordtype">string</span> downloadUri, <span class="keywordtype">long</span> fromPosition, <span class="keywordtype">long</span> toPosition, <span class="keywordtype">object</span> userData);</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno"><a class="line" href="class_unity_game_framework_1_1_runtime_1_1_download_agent_helper_base.html#aa7d53c4b47f55c41f6cf2764e4ee065c">   71</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keywordtype">void</span> <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_download_agent_helper_base.html#aa7d53c4b47f55c41f6cf2764e4ee065c">Reset</a>();</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    }</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;}</div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_runtime_1_1_download_agent_helper_base_html"><div class="ttname"><a href="class_unity_game_framework_1_1_runtime_1_1_download_agent_helper_base.html">UnityGameFramework.Runtime.DownloadAgentHelperBase</a></div><div class="ttdoc">下载代理辅助器基类。</div><div class="ttdef"><b>Definition:</b> <a href="_download_agent_helper_base_8cs_source.html#l00017">DownloadAgentHelperBase.cs:18</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_runtime_1_1_download_agent_helper_base_html_a08ad223a13570b4e8e6b509283ada36c"><div class="ttname"><a href="class_unity_game_framework_1_1_runtime_1_1_download_agent_helper_base.html#a08ad223a13570b4e8e6b509283ada36c">UnityGameFramework.Runtime.DownloadAgentHelperBase.Download</a></div><div class="ttdeci">abstract void Download(string downloadUri, long fromPosition, long toPosition, object userData)</div><div class="ttdoc">通过下载代理辅助器下载指定地址的数据。</div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_runtime_1_1_download_agent_helper_base_html_a0d4910e50c361e7ee01b4df0c7d4c2c2"><div class="ttname"><a href="class_unity_game_framework_1_1_runtime_1_1_download_agent_helper_base.html#a0d4910e50c361e7ee01b4df0c7d4c2c2">UnityGameFramework.Runtime.DownloadAgentHelperBase.Download</a></div><div class="ttdeci">abstract void Download(string downloadUri, object userData)</div><div class="ttdoc">通过下载代理辅助器下载指定地址的数据。</div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_runtime_1_1_download_agent_helper_base_html_a1bf941bbcb33101cfdc5a682f1144682"><div class="ttname"><a href="class_unity_game_framework_1_1_runtime_1_1_download_agent_helper_base.html#a1bf941bbcb33101cfdc5a682f1144682">UnityGameFramework.Runtime.DownloadAgentHelperBase.Download</a></div><div class="ttdeci">abstract void Download(string downloadUri, long fromPosition, object userData)</div><div class="ttdoc">通过下载代理辅助器下载指定地址的数据。</div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_runtime_1_1_download_agent_helper_base_html_a553ea74eec5c6ceb86a3f74d1749807c"><div class="ttname"><a href="class_unity_game_framework_1_1_runtime_1_1_download_agent_helper_base.html#a553ea74eec5c6ceb86a3f74d1749807c">UnityGameFramework.Runtime.DownloadAgentHelperBase.DownloadAgentHelperUpdateLength</a></div><div class="ttdeci">abstract EventHandler&lt; DownloadAgentHelperUpdateLengthEventArgs &gt; DownloadAgentHelperUpdateLength</div><div class="ttdoc">下载代理辅助器更新数据大小事件。</div><div class="ttdef"><b>Definition:</b> <a href="_download_agent_helper_base_8cs_source.html#l00032">DownloadAgentHelperBase.cs:32</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_runtime_1_1_download_agent_helper_base_html_a571a57e03cf826b15cf888e8693bfb3f"><div class="ttname"><a href="class_unity_game_framework_1_1_runtime_1_1_download_agent_helper_base.html#a571a57e03cf826b15cf888e8693bfb3f">UnityGameFramework.Runtime.DownloadAgentHelperBase.RangeNotSatisfiableErrorCode</a></div><div class="ttdeci">const int RangeNotSatisfiableErrorCode</div><div class="ttdoc">范围不适用错误码。</div><div class="ttdef"><b>Definition:</b> <a href="_download_agent_helper_base_8cs_source.html#l00022">DownloadAgentHelperBase.cs:22</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_runtime_1_1_download_agent_helper_base_html_aa7d53c4b47f55c41f6cf2764e4ee065c"><div class="ttname"><a href="class_unity_game_framework_1_1_runtime_1_1_download_agent_helper_base.html#aa7d53c4b47f55c41f6cf2764e4ee065c">UnityGameFramework.Runtime.DownloadAgentHelperBase.Reset</a></div><div class="ttdeci">abstract void Reset()</div><div class="ttdoc">重置下载代理辅助器。</div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_runtime_1_1_download_agent_helper_base_html_aed1c10844087bb777d5ed358a4e5baab"><div class="ttname"><a href="class_unity_game_framework_1_1_runtime_1_1_download_agent_helper_base.html#aed1c10844087bb777d5ed358a4e5baab">UnityGameFramework.Runtime.DownloadAgentHelperBase.DownloadAgentHelperComplete</a></div><div class="ttdeci">abstract EventHandler&lt; DownloadAgentHelperCompleteEventArgs &gt; DownloadAgentHelperComplete</div><div class="ttdoc">下载代理辅助器完成事件。</div><div class="ttdef"><b>Definition:</b> <a href="_download_agent_helper_base_8cs_source.html#l00037">DownloadAgentHelperBase.cs:37</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_runtime_1_1_download_agent_helper_base_html_af35867b3f73950aa671be9c773fa748d"><div class="ttname"><a href="class_unity_game_framework_1_1_runtime_1_1_download_agent_helper_base.html#af35867b3f73950aa671be9c773fa748d">UnityGameFramework.Runtime.DownloadAgentHelperBase.DownloadAgentHelperUpdateBytes</a></div><div class="ttdeci">abstract EventHandler&lt; DownloadAgentHelperUpdateBytesEventArgs &gt; DownloadAgentHelperUpdateBytes</div><div class="ttdoc">下载代理辅助器更新数据流事件。</div><div class="ttdef"><b>Definition:</b> <a href="_download_agent_helper_base_8cs_source.html#l00027">DownloadAgentHelperBase.cs:27</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_runtime_1_1_download_agent_helper_base_html_affe1b121f85c70a3d534b955b270eeb4"><div class="ttname"><a href="class_unity_game_framework_1_1_runtime_1_1_download_agent_helper_base.html#affe1b121f85c70a3d534b955b270eeb4">UnityGameFramework.Runtime.DownloadAgentHelperBase.DownloadAgentHelperError</a></div><div class="ttdeci">abstract EventHandler&lt; DownloadAgentHelperErrorEventArgs &gt; DownloadAgentHelperError</div><div class="ttdoc">下载代理辅助器错误事件。</div><div class="ttdef"><b>Definition:</b> <a href="_download_agent_helper_base_8cs_source.html#l00042">DownloadAgentHelperBase.cs:42</a></div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_download_1_1_i_download_agent_helper_html"><div class="ttname"><a href="interface_game_framework_1_1_download_1_1_i_download_agent_helper.html">GameFramework.Download.IDownloadAgentHelper</a></div><div class="ttdoc">下载代理辅助器接口。</div><div class="ttdef"><b>Definition:</b> <a href="_i_download_agent_helper_8cs_source.html#l00015">IDownloadAgentHelper.cs:16</a></div></div>
+<div class="ttc" id="anamespace_game_framework_1_1_download_html"><div class="ttname"><a href="namespace_game_framework_1_1_download.html">GameFramework.Download</a></div><div class="ttdef"><b>Definition:</b> <a href="_download_2_constant_8cs_source.html#l00008">Constant.cs:9</a></div></div>
+<div class="ttc" id="anamespace_game_framework_html"><div class="ttname"><a href="namespace_game_framework.html">GameFramework</a></div><div class="ttdef"><b>Definition:</b> <a href="_data_provider_8cs_source.html#l00011">DataProvider.cs:12</a></div></div>
+<div class="ttc" id="anamespace_system_html"><div class="ttname"><a href="namespace_system.html">System</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_method_builder_attribute_8cs_source.html#l00001">AsyncMethodBuilderAttribute.cs:2</a></div></div>
+<div class="ttc" id="anamespace_unity_engine_html"><div class="ttname"><a href="namespace_unity_engine.html">UnityEngine</a></div><div class="ttdef"><b>Definition:</b> <a href="_mathf_8cs_source.html#l00003">Mathf.cs:4</a></div></div>
+<div class="ttc" id="anamespace_unity_game_framework_1_1_runtime_html"><div class="ttname"><a href="namespace_unity_game_framework_1_1_runtime.html">UnityGameFramework.Runtime</a></div><div class="ttdef"><b>Definition:</b> <a href="_base_component_8cs_source.html#l00014">BaseComponent.cs:15</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_84bbf7b3c7f28a5a18725745e1505219.html">Assets</a></li><li class="navelem"><a class="el" href="dir_f13b41af88cf68434578284aaf699e39.html">Scripts</a></li><li class="navelem"><a class="el" href="dir_46d134a3bf82cf4dc49ca8f728aea58c.html">Libraries</a></li><li class="navelem"><a class="el" href="dir_7a6862c303020716b3c311e95823547c.html">GameFramework</a></li><li class="navelem"><a class="el" href="dir_1d9b7e2b1e68805cdf4440a735859529.html">Scripts</a></li><li class="navelem"><a class="el" href="dir_e81cefffdbcf8632d0c6357d5d83ba40.html">Runtime</a></li><li class="navelem"><a class="el" href="dir_c4da7daa7aa2e264dd4b3764ea6d2e2d.html">Download</a></li><li class="navelem"><a class="el" href="_download_agent_helper_base_8cs.html">DownloadAgentHelperBase.cs</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:24:49 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

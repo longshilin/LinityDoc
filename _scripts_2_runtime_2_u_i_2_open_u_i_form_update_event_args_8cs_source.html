@@ -1,0 +1,210 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: Assets/Scripts/Libraries/GameFramework/Scripts/Runtime/UI/OpenUIFormUpdateEventArgs.cs 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_scripts_2_runtime_2_u_i_2_open_u_i_form_update_event_args_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">OpenUIFormUpdateEventArgs.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_scripts_2_runtime_2_u_i_2_open_u_i_form_update_event_args_8cs.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">//------------------------------------------------------------</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">// Game Framework</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">// Copyright © 2013-2021 Jiang Yin. All rights reserved.</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">// Homepage: https://gameframework.cn/</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">// Feedback: mailto:ellan@gameframework.cn</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">//------------------------------------------------------------</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_game_framework.html">GameFramework</a>;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_game_framework.html">GameFramework</a>.<a class="code" href="namespace_game_framework_1_1_event.html">Event</a>;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_unity_game_framework_1_1_runtime.html">UnityGameFramework.Runtime</a></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;{</div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="class_unity_game_framework_1_1_runtime_1_1_open_u_i_form_update_event_args.html">   16</a></span>&#160;    <span class="keyword">public</span> sealed <span class="keyword">class </span><a class="code" href="class_unity_game_framework_1_1_runtime_1_1_open_u_i_form_update_event_args.html">OpenUIFormUpdateEventArgs</a> : <a class="code" href="class_game_framework_1_1_event_1_1_game_event_args.html">GameEventArgs</a></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    {</div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="class_unity_game_framework_1_1_runtime_1_1_open_u_i_form_update_event_args.html#a00f8ff7e9b98d15316317b41ee61e924">   21</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> readonly <span class="keywordtype">int</span> <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_open_u_i_form_update_event_args.html#a00f8ff7e9b98d15316317b41ee61e924">EventId</a> = typeof(<a class="code" href="class_unity_game_framework_1_1_runtime_1_1_open_u_i_form_update_event_args.html">OpenUIFormUpdateEventArgs</a>).GetHashCode();</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="class_unity_game_framework_1_1_runtime_1_1_open_u_i_form_update_event_args.html#a61f18644a8c46457d68967a50c0b8e8c">   26</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_open_u_i_form_update_event_args.html#a61f18644a8c46457d68967a50c0b8e8c">OpenUIFormUpdateEventArgs</a>()</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        {</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;            <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_open_u_i_form_update_event_args.html#a7a39dd92867e1e2b84151830002bde94">SerialId</a> = 0;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;            <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_open_u_i_form_update_event_args.html#a31e59c7e4bda8e287b43315f8ca16e9c">UIFormAssetName</a> = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;            <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_open_u_i_form_update_event_args.html#a8f9bf7d8fdf1fbdbb20d3c7b554ae3c0">UIGroupName</a> = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;            <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_open_u_i_form_update_event_args.html#a67caf00890a6c9351f401b17f2d17614">PauseCoveredUIForm</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;            <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_open_u_i_form_update_event_args.html#a08165d779abeaea93f331b6a6f74e411">Progress</a> = 0f;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;            <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_open_u_i_form_update_event_args.html#ad66aa491a3ffc97d0f87bd66dbf1b1b0">UserData</a> = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        }</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="class_unity_game_framework_1_1_runtime_1_1_open_u_i_form_update_event_args.html#ae937b70fedefcf3820fa150f44894700">   39</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">int</span> <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_open_u_i_form_update_event_args.html#ae937b70fedefcf3820fa150f44894700">Id</a></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        {</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            <span class="keyword">get</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;            {</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;                <span class="keywordflow">return</span> <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_open_u_i_form_update_event_args.html#a00f8ff7e9b98d15316317b41ee61e924">EventId</a>;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            }</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        }</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="class_unity_game_framework_1_1_runtime_1_1_open_u_i_form_update_event_args.html#a7a39dd92867e1e2b84151830002bde94">   50</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">int</span> <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_open_u_i_form_update_event_args.html#a7a39dd92867e1e2b84151830002bde94">SerialId</a></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        {</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            <span class="keyword">get</span>;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            <span class="keyword">private</span> <span class="keyword">set</span>;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        }</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="class_unity_game_framework_1_1_runtime_1_1_open_u_i_form_update_event_args.html#a31e59c7e4bda8e287b43315f8ca16e9c">   59</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">string</span> <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_open_u_i_form_update_event_args.html#a31e59c7e4bda8e287b43315f8ca16e9c">UIFormAssetName</a></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        {</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            <span class="keyword">get</span>;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            <span class="keyword">private</span> <span class="keyword">set</span>;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        }</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
+<div class="line"><a name="l00068"></a><span class="lineno"><a class="line" href="class_unity_game_framework_1_1_runtime_1_1_open_u_i_form_update_event_args.html#a8f9bf7d8fdf1fbdbb20d3c7b554ae3c0">   68</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">string</span> <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_open_u_i_form_update_event_args.html#a8f9bf7d8fdf1fbdbb20d3c7b554ae3c0">UIGroupName</a></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        {</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            <span class="keyword">get</span>;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            <span class="keyword">private</span> <span class="keyword">set</span>;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        }</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
+<div class="line"><a name="l00077"></a><span class="lineno"><a class="line" href="class_unity_game_framework_1_1_runtime_1_1_open_u_i_form_update_event_args.html#a67caf00890a6c9351f401b17f2d17614">   77</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_open_u_i_form_update_event_args.html#a67caf00890a6c9351f401b17f2d17614">PauseCoveredUIForm</a></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        {</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;            <span class="keyword">get</span>;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            <span class="keyword">private</span> <span class="keyword">set</span>;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        }</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+<div class="line"><a name="l00086"></a><span class="lineno"><a class="line" href="class_unity_game_framework_1_1_runtime_1_1_open_u_i_form_update_event_args.html#a08165d779abeaea93f331b6a6f74e411">   86</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">float</span> <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_open_u_i_form_update_event_args.html#a08165d779abeaea93f331b6a6f74e411">Progress</a></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        {</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;            <span class="keyword">get</span>;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;            <span class="keyword">private</span> <span class="keyword">set</span>;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        }</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
+<div class="line"><a name="l00095"></a><span class="lineno"><a class="line" href="class_unity_game_framework_1_1_runtime_1_1_open_u_i_form_update_event_args.html#ad66aa491a3ffc97d0f87bd66dbf1b1b0">   95</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">object</span> <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_open_u_i_form_update_event_args.html#ad66aa491a3ffc97d0f87bd66dbf1b1b0">UserData</a></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        {</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;            <span class="keyword">get</span>;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;            <span class="keyword">private</span> <span class="keyword">set</span>;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        }</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
+<div class="line"><a name="l00106"></a><span class="lineno"><a class="line" href="class_unity_game_framework_1_1_runtime_1_1_open_u_i_form_update_event_args.html#a3e05dddc672ed09a33cdd148b922bb64">  106</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_open_u_i_form_update_event_args.html">OpenUIFormUpdateEventArgs</a> <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_open_u_i_form_update_event_args.html#a3e05dddc672ed09a33cdd148b922bb64">Create</a>(<a class="code" href="namespace_game_framework.html">GameFramework</a>.<a class="code" href="namespace_game_framework_1_1_u_i.html">UI</a>.<a class="code" href="class_game_framework_1_1_u_i_1_1_open_u_i_form_update_event_args.html">OpenUIFormUpdateEventArgs</a> e)</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        {</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;            <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_open_u_i_form_update_event_args.html">OpenUIFormUpdateEventArgs</a> openUIFormUpdateEventArgs = ReferencePool.Acquire&lt;<a class="code" href="class_unity_game_framework_1_1_runtime_1_1_open_u_i_form_update_event_args.html">OpenUIFormUpdateEventArgs</a>&gt;();</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;            openUIFormUpdateEventArgs.<a class="code" href="class_unity_game_framework_1_1_runtime_1_1_open_u_i_form_update_event_args.html#a7a39dd92867e1e2b84151830002bde94">SerialId</a> = e.SerialId;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;            openUIFormUpdateEventArgs.<a class="code" href="class_unity_game_framework_1_1_runtime_1_1_open_u_i_form_update_event_args.html#a31e59c7e4bda8e287b43315f8ca16e9c">UIFormAssetName</a> = e.UIFormAssetName;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;            openUIFormUpdateEventArgs.<a class="code" href="class_unity_game_framework_1_1_runtime_1_1_open_u_i_form_update_event_args.html#a8f9bf7d8fdf1fbdbb20d3c7b554ae3c0">UIGroupName</a> = e.UIGroupName;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;            openUIFormUpdateEventArgs.<a class="code" href="class_unity_game_framework_1_1_runtime_1_1_open_u_i_form_update_event_args.html#a67caf00890a6c9351f401b17f2d17614">PauseCoveredUIForm</a> = e.PauseCoveredUIForm;</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;            openUIFormUpdateEventArgs.<a class="code" href="class_unity_game_framework_1_1_runtime_1_1_open_u_i_form_update_event_args.html#a08165d779abeaea93f331b6a6f74e411">Progress</a> = e.Progress;</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;            openUIFormUpdateEventArgs.<a class="code" href="class_unity_game_framework_1_1_runtime_1_1_open_u_i_form_update_event_args.html#ad66aa491a3ffc97d0f87bd66dbf1b1b0">UserData</a> = e.UserData;</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;            <span class="keywordflow">return</span> openUIFormUpdateEventArgs;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        }</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160; </div>
+<div class="line"><a name="l00121"></a><span class="lineno"><a class="line" href="class_unity_game_framework_1_1_runtime_1_1_open_u_i_form_update_event_args.html#acd499cf50d989741c0a163ac332c2f3a">  121</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_open_u_i_form_update_event_args.html#acd499cf50d989741c0a163ac332c2f3a">Clear</a>()</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        {</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;            <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_open_u_i_form_update_event_args.html#a7a39dd92867e1e2b84151830002bde94">SerialId</a> = 0;</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;            <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_open_u_i_form_update_event_args.html#a31e59c7e4bda8e287b43315f8ca16e9c">UIFormAssetName</a> = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;            <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_open_u_i_form_update_event_args.html#a8f9bf7d8fdf1fbdbb20d3c7b554ae3c0">UIGroupName</a> = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;            <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_open_u_i_form_update_event_args.html#a67caf00890a6c9351f401b17f2d17614">PauseCoveredUIForm</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;            <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_open_u_i_form_update_event_args.html#a08165d779abeaea93f331b6a6f74e411">Progress</a> = 0f;</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;            <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_open_u_i_form_update_event_args.html#ad66aa491a3ffc97d0f87bd66dbf1b1b0">UserData</a> = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        }</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    }</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;}</div>
+<div class="ttc" id="aclass_game_framework_1_1_event_1_1_game_event_args_html"><div class="ttname"><a href="class_game_framework_1_1_event_1_1_game_event_args.html">GameFramework.Event.GameEventArgs</a></div><div class="ttdoc">游戏逻辑事件基类。</div><div class="ttdef"><b>Definition:</b> <a href="_game_event_args_8cs_source.html#l00013">GameEventArgs.cs:14</a></div></div>
+<div class="ttc" id="aclass_game_framework_1_1_u_i_1_1_open_u_i_form_update_event_args_html"><div class="ttname"><a href="class_game_framework_1_1_u_i_1_1_open_u_i_form_update_event_args.html">GameFramework.UI.OpenUIFormUpdateEventArgs</a></div><div class="ttdoc">打开界面更新事件。</div><div class="ttdef"><b>Definition:</b> <a href="_libraries_2_game_framework-2021_805_831_2_game_framework_2_u_i_2_open_u_i_form_update_event_args_8cs_source.html#l00013">OpenUIFormUpdateEventArgs.cs:14</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_runtime_1_1_open_u_i_form_update_event_args_html"><div class="ttname"><a href="class_unity_game_framework_1_1_runtime_1_1_open_u_i_form_update_event_args.html">UnityGameFramework.Runtime.OpenUIFormUpdateEventArgs</a></div><div class="ttdoc">打开界面更新事件。</div><div class="ttdef"><b>Definition:</b> <a href="_scripts_2_runtime_2_u_i_2_open_u_i_form_update_event_args_8cs_source.html#l00016">OpenUIFormUpdateEventArgs.cs:17</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_runtime_1_1_open_u_i_form_update_event_args_html_a00f8ff7e9b98d15316317b41ee61e924"><div class="ttname"><a href="class_unity_game_framework_1_1_runtime_1_1_open_u_i_form_update_event_args.html#a00f8ff7e9b98d15316317b41ee61e924">UnityGameFramework.Runtime.OpenUIFormUpdateEventArgs.EventId</a></div><div class="ttdeci">static readonly int EventId</div><div class="ttdoc">打开界面更新事件编号。</div><div class="ttdef"><b>Definition:</b> <a href="_scripts_2_runtime_2_u_i_2_open_u_i_form_update_event_args_8cs_source.html#l00021">OpenUIFormUpdateEventArgs.cs:21</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_runtime_1_1_open_u_i_form_update_event_args_html_a08165d779abeaea93f331b6a6f74e411"><div class="ttname"><a href="class_unity_game_framework_1_1_runtime_1_1_open_u_i_form_update_event_args.html#a08165d779abeaea93f331b6a6f74e411">UnityGameFramework.Runtime.OpenUIFormUpdateEventArgs.Progress</a></div><div class="ttdeci">float Progress</div><div class="ttdoc">获取打开界面进度。</div><div class="ttdef"><b>Definition:</b> <a href="_scripts_2_runtime_2_u_i_2_open_u_i_form_update_event_args_8cs_source.html#l00086">OpenUIFormUpdateEventArgs.cs:87</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_runtime_1_1_open_u_i_form_update_event_args_html_a31e59c7e4bda8e287b43315f8ca16e9c"><div class="ttname"><a href="class_unity_game_framework_1_1_runtime_1_1_open_u_i_form_update_event_args.html#a31e59c7e4bda8e287b43315f8ca16e9c">UnityGameFramework.Runtime.OpenUIFormUpdateEventArgs.UIFormAssetName</a></div><div class="ttdeci">string UIFormAssetName</div><div class="ttdoc">获取界面资源名称。</div><div class="ttdef"><b>Definition:</b> <a href="_scripts_2_runtime_2_u_i_2_open_u_i_form_update_event_args_8cs_source.html#l00059">OpenUIFormUpdateEventArgs.cs:60</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_runtime_1_1_open_u_i_form_update_event_args_html_a3e05dddc672ed09a33cdd148b922bb64"><div class="ttname"><a href="class_unity_game_framework_1_1_runtime_1_1_open_u_i_form_update_event_args.html#a3e05dddc672ed09a33cdd148b922bb64">UnityGameFramework.Runtime.OpenUIFormUpdateEventArgs.Create</a></div><div class="ttdeci">static OpenUIFormUpdateEventArgs Create(GameFramework.UI.OpenUIFormUpdateEventArgs e)</div><div class="ttdoc">创建打开界面更新事件。</div><div class="ttdef"><b>Definition:</b> <a href="_scripts_2_runtime_2_u_i_2_open_u_i_form_update_event_args_8cs_source.html#l00106">OpenUIFormUpdateEventArgs.cs:106</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_runtime_1_1_open_u_i_form_update_event_args_html_a61f18644a8c46457d68967a50c0b8e8c"><div class="ttname"><a href="class_unity_game_framework_1_1_runtime_1_1_open_u_i_form_update_event_args.html#a61f18644a8c46457d68967a50c0b8e8c">UnityGameFramework.Runtime.OpenUIFormUpdateEventArgs.OpenUIFormUpdateEventArgs</a></div><div class="ttdeci">OpenUIFormUpdateEventArgs()</div><div class="ttdoc">初始化打开界面更新事件的新实例。</div><div class="ttdef"><b>Definition:</b> <a href="_scripts_2_runtime_2_u_i_2_open_u_i_form_update_event_args_8cs_source.html#l00026">OpenUIFormUpdateEventArgs.cs:26</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_runtime_1_1_open_u_i_form_update_event_args_html_a67caf00890a6c9351f401b17f2d17614"><div class="ttname"><a href="class_unity_game_framework_1_1_runtime_1_1_open_u_i_form_update_event_args.html#a67caf00890a6c9351f401b17f2d17614">UnityGameFramework.Runtime.OpenUIFormUpdateEventArgs.PauseCoveredUIForm</a></div><div class="ttdeci">bool PauseCoveredUIForm</div><div class="ttdoc">获取是否暂停被覆盖的界面。</div><div class="ttdef"><b>Definition:</b> <a href="_scripts_2_runtime_2_u_i_2_open_u_i_form_update_event_args_8cs_source.html#l00077">OpenUIFormUpdateEventArgs.cs:78</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_runtime_1_1_open_u_i_form_update_event_args_html_a7a39dd92867e1e2b84151830002bde94"><div class="ttname"><a href="class_unity_game_framework_1_1_runtime_1_1_open_u_i_form_update_event_args.html#a7a39dd92867e1e2b84151830002bde94">UnityGameFramework.Runtime.OpenUIFormUpdateEventArgs.SerialId</a></div><div class="ttdeci">int SerialId</div><div class="ttdoc">获取界面序列编号。</div><div class="ttdef"><b>Definition:</b> <a href="_scripts_2_runtime_2_u_i_2_open_u_i_form_update_event_args_8cs_source.html#l00050">OpenUIFormUpdateEventArgs.cs:51</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_runtime_1_1_open_u_i_form_update_event_args_html_a8f9bf7d8fdf1fbdbb20d3c7b554ae3c0"><div class="ttname"><a href="class_unity_game_framework_1_1_runtime_1_1_open_u_i_form_update_event_args.html#a8f9bf7d8fdf1fbdbb20d3c7b554ae3c0">UnityGameFramework.Runtime.OpenUIFormUpdateEventArgs.UIGroupName</a></div><div class="ttdeci">string UIGroupName</div><div class="ttdoc">获取界面组名称。</div><div class="ttdef"><b>Definition:</b> <a href="_scripts_2_runtime_2_u_i_2_open_u_i_form_update_event_args_8cs_source.html#l00068">OpenUIFormUpdateEventArgs.cs:69</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_runtime_1_1_open_u_i_form_update_event_args_html_acd499cf50d989741c0a163ac332c2f3a"><div class="ttname"><a href="class_unity_game_framework_1_1_runtime_1_1_open_u_i_form_update_event_args.html#acd499cf50d989741c0a163ac332c2f3a">UnityGameFramework.Runtime.OpenUIFormUpdateEventArgs.Clear</a></div><div class="ttdeci">override void Clear()</div><div class="ttdoc">清理打开界面更新事件。</div><div class="ttdef"><b>Definition:</b> <a href="_scripts_2_runtime_2_u_i_2_open_u_i_form_update_event_args_8cs_source.html#l00121">OpenUIFormUpdateEventArgs.cs:121</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_runtime_1_1_open_u_i_form_update_event_args_html_ad66aa491a3ffc97d0f87bd66dbf1b1b0"><div class="ttname"><a href="class_unity_game_framework_1_1_runtime_1_1_open_u_i_form_update_event_args.html#ad66aa491a3ffc97d0f87bd66dbf1b1b0">UnityGameFramework.Runtime.OpenUIFormUpdateEventArgs.UserData</a></div><div class="ttdeci">object UserData</div><div class="ttdoc">获取用户自定义数据。</div><div class="ttdef"><b>Definition:</b> <a href="_scripts_2_runtime_2_u_i_2_open_u_i_form_update_event_args_8cs_source.html#l00095">OpenUIFormUpdateEventArgs.cs:96</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_runtime_1_1_open_u_i_form_update_event_args_html_ae937b70fedefcf3820fa150f44894700"><div class="ttname"><a href="class_unity_game_framework_1_1_runtime_1_1_open_u_i_form_update_event_args.html#ae937b70fedefcf3820fa150f44894700">UnityGameFramework.Runtime.OpenUIFormUpdateEventArgs.Id</a></div><div class="ttdeci">override int Id</div><div class="ttdoc">获取打开界面更新事件编号。</div><div class="ttdef"><b>Definition:</b> <a href="_scripts_2_runtime_2_u_i_2_open_u_i_form_update_event_args_8cs_source.html#l00039">OpenUIFormUpdateEventArgs.cs:40</a></div></div>
+<div class="ttc" id="anamespace_game_framework_1_1_event_html"><div class="ttname"><a href="namespace_game_framework_1_1_event.html">GameFramework.Event</a></div><div class="ttdef"><b>Definition:</b> <a href="_libraries_2_game_framework_2_libraries_2_game_framework-2021_805_831_2_game_framework_2_event_2_event_manager_8cs_source.html#l00010">EventManager.cs:11</a></div></div>
+<div class="ttc" id="anamespace_game_framework_1_1_u_i_html"><div class="ttname"><a href="namespace_game_framework_1_1_u_i.html">GameFramework.UI</a></div><div class="ttdef"><b>Definition:</b> <a href="_libraries_2_game_framework-2021_805_831_2_game_framework_2_u_i_2_close_u_i_form_complete_event_args_8cs_source.html#l00008">CloseUIFormCompleteEventArgs.cs:9</a></div></div>
+<div class="ttc" id="anamespace_game_framework_html"><div class="ttname"><a href="namespace_game_framework.html">GameFramework</a></div><div class="ttdef"><b>Definition:</b> <a href="_data_provider_8cs_source.html#l00011">DataProvider.cs:12</a></div></div>
+<div class="ttc" id="anamespace_unity_game_framework_1_1_runtime_html"><div class="ttname"><a href="namespace_unity_game_framework_1_1_runtime.html">UnityGameFramework.Runtime</a></div><div class="ttdef"><b>Definition:</b> <a href="_base_component_8cs_source.html#l00014">BaseComponent.cs:15</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_84bbf7b3c7f28a5a18725745e1505219.html">Assets</a></li><li class="navelem"><a class="el" href="dir_f13b41af88cf68434578284aaf699e39.html">Scripts</a></li><li class="navelem"><a class="el" href="dir_46d134a3bf82cf4dc49ca8f728aea58c.html">Libraries</a></li><li class="navelem"><a class="el" href="dir_7a6862c303020716b3c311e95823547c.html">GameFramework</a></li><li class="navelem"><a class="el" href="dir_1d9b7e2b1e68805cdf4440a735859529.html">Scripts</a></li><li class="navelem"><a class="el" href="dir_e81cefffdbcf8632d0c6357d5d83ba40.html">Runtime</a></li><li class="navelem"><a class="el" href="dir_8d1f7f118b389feea37adcd9585f37e3.html">UI</a></li><li class="navelem"><a class="el" href="_scripts_2_runtime_2_u_i_2_open_u_i_form_update_event_args_8cs.html">OpenUIFormUpdateEventArgs.cs</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:24:48 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

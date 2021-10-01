@@ -1,0 +1,222 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: Assets/Scripts/Libraries/ET/Module/Pathfinding/Recast/Pathfinders/FloodPathTracer.cs 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_flood_path_tracer_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">FloodPathTracer.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_flood_path_tracer_8cs.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_unity_engine.html">UnityEngine</a>;</div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_p_f.html">PF</a> {</div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="class_p_f_1_1_flood_path_constraint.html">   12</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="class_p_f_1_1_flood_path_constraint.html">FloodPathConstraint</a> : <a class="code" href="class_p_f_1_1_n_n_constraint.html">NNConstraint</a> {</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;                readonly <a class="code" href="class_p_f_1_1_flood_path.html">FloodPath</a> path;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="class_p_f_1_1_flood_path_constraint.html#a3c61d4acbdf3f6afcb48ed2ee44288bb">   15</a></span>&#160;                <span class="keyword">public</span> <a class="code" href="class_p_f_1_1_flood_path_constraint.html#a3c61d4acbdf3f6afcb48ed2ee44288bb">FloodPathConstraint</a> (<a class="code" href="class_p_f_1_1_flood_path.html">FloodPath</a> path) {</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;                        <span class="keywordflow">if</span> (path == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;                        {</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#if !SERVER</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;                                <a class="code" href="namespace_unity_engine.html">UnityEngine</a>.Debug.LogWarning(<span class="stringliteral">&quot;FloodPathConstraint should not be used with a NULL path&quot;</span>);</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;                        }</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;                        this.path = path;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;                }</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="class_p_f_1_1_flood_path_constraint.html#a582b2f687bfce74daa6e505379a9f1de">   25</a></span>&#160;                <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">bool</span> <a class="code" href="class_p_f_1_1_flood_path_constraint.html#a582b2f687bfce74daa6e505379a9f1de">Suitable</a> (<a class="code" href="class_p_f_1_1_graph_node.html">GraphNode</a> node) {</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;                        <span class="keywordflow">return</span> base.Suitable(node) &amp;&amp; path.HasPathTo(node);</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;                }</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        }</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="class_p_f_1_1_flood_path_tracer.html">   37</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="class_p_f_1_1_flood_path_tracer.html">FloodPathTracer</a> : <a class="code" href="class_p_f_1_1_a_b_path.html">ABPath</a> {</div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="class_p_f_1_1_flood_path_tracer.html#a809b54e3385d2d5f6d8fd318eee803a1">   39</a></span>&#160;                <span class="keyword">protected</span> <a class="code" href="class_p_f_1_1_flood_path.html">FloodPath</a> <a class="code" href="class_p_f_1_1_flood_path_tracer.html#a809b54e3385d2d5f6d8fd318eee803a1">flood</a>;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="class_p_f_1_1_flood_path_tracer.html#a5917e33ca55babeeb4a0189a1116afc1">   41</a></span>&#160;                <span class="keyword">protected</span> <span class="keyword">override</span> <span class="keywordtype">bool</span> <a class="code" href="class_p_f_1_1_flood_path_tracer.html#a5917e33ca55babeeb4a0189a1116afc1">hasEndPoint</a> {</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                        <span class="keyword">get</span> {</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;                                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                        }</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                }</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="class_p_f_1_1_flood_path_tracer.html#a2542b847686e3fbd9805aaa8b77f0fa4">   50</a></span>&#160;                <span class="keyword">public</span> <a class="code" href="class_p_f_1_1_flood_path_tracer.html#a2542b847686e3fbd9805aaa8b77f0fa4">FloodPathTracer</a> () {}</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="class_p_f_1_1_flood_path_tracer.html#a06a593a613ab397f42614acb6ee2627d">   52</a></span>&#160;                <span class="keyword">public</span> <span class="keyword">static</span> <a class="code" href="class_p_f_1_1_flood_path_tracer.html">FloodPathTracer</a> <a class="code" href="class_p_f_1_1_flood_path_tracer.html#a06a593a613ab397f42614acb6ee2627d">Construct</a> (<a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a> start, <a class="code" href="class_p_f_1_1_flood_path.html">FloodPath</a> <a class="code" href="class_p_f_1_1_flood_path_tracer.html#a809b54e3385d2d5f6d8fd318eee803a1">flood</a>, <a class="code" href="namespace_p_f.html#a5916e0e1a39fd1ea09fdf25a70492a02">OnPathDelegate</a> <a class="code" href="class_p_f_1_1_path.html#af6796a7b4072bf7845ae4299215933d7">callback</a> = <span class="keyword">null</span>) {</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                        var p = PathPool.GetPath&lt;<a class="code" href="class_p_f_1_1_flood_path_tracer.html">FloodPathTracer</a>&gt;();</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                        p.<a class="code" href="class_p_f_1_1_flood_path_tracer.html#a97dce8e6cce5449969f3ac16c9b864fb">Setup</a>(start, <a class="code" href="class_p_f_1_1_flood_path_tracer.html#a809b54e3385d2d5f6d8fd318eee803a1">flood</a>, <a class="code" href="class_p_f_1_1_path.html#af6796a7b4072bf7845ae4299215933d7">callback</a>);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                        <span class="keywordflow">return</span> p;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                }</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="class_p_f_1_1_flood_path_tracer.html#a97dce8e6cce5449969f3ac16c9b864fb">   59</a></span>&#160;                <span class="keyword">protected</span> <span class="keywordtype">void</span> <a class="code" href="class_p_f_1_1_flood_path_tracer.html#a97dce8e6cce5449969f3ac16c9b864fb">Setup</a> (<a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a> start, <a class="code" href="class_p_f_1_1_flood_path.html">FloodPath</a> <a class="code" href="class_p_f_1_1_flood_path_tracer.html#a809b54e3385d2d5f6d8fd318eee803a1">flood</a>, <a class="code" href="namespace_p_f.html#a5916e0e1a39fd1ea09fdf25a70492a02">OnPathDelegate</a> <a class="code" href="class_p_f_1_1_path.html#af6796a7b4072bf7845ae4299215933d7">callback</a>) {</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                        this.flood = <a class="code" href="class_p_f_1_1_flood_path_tracer.html#a809b54e3385d2d5f6d8fd318eee803a1">flood</a>;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                        <span class="keywordflow">if</span> (<a class="code" href="class_p_f_1_1_flood_path_tracer.html#a809b54e3385d2d5f6d8fd318eee803a1">flood</a> == <span class="keyword">null</span> || <a class="code" href="class_p_f_1_1_flood_path_tracer.html#a809b54e3385d2d5f6d8fd318eee803a1">flood</a>.PipelineState &lt; <a class="code" href="namespace_p_f.html#a41e3ae15d352e3d178227e2eca48c8a7">PathState</a>.Returned) {</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                                <span class="keywordflow">throw</span> <span class="keyword">new</span> <a class="code" href="namespace_system.html">System</a>.ArgumentException(<span class="stringliteral">&quot;You must supply a calculated FloodPath to the &#39;flood&#39; argument&quot;</span>);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                        }</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                        base.Setup(start, <a class="code" href="class_p_f_1_1_flood_path_tracer.html#a809b54e3385d2d5f6d8fd318eee803a1">flood</a>.<a class="code" href="class_p_f_1_1_flood_path.html#a9f6243f7d407b6167dc164f8e5e095e5">originalStartPoint</a>, <a class="code" href="class_p_f_1_1_path.html#af6796a7b4072bf7845ae4299215933d7">callback</a>);</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                        <a class="code" href="class_p_f_1_1_path.html#a11e585e3e1057a4b85f85415dffc9ea1">nnConstraint</a> = <span class="keyword">new</span> <a class="code" href="class_p_f_1_1_flood_path_constraint.html">FloodPathConstraint</a>(<a class="code" href="class_p_f_1_1_flood_path_tracer.html#a809b54e3385d2d5f6d8fd318eee803a1">flood</a>);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                }</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
+<div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="class_p_f_1_1_flood_path_tracer.html#a377bbbf2ec7dc2ae38cf6490987dd6da">   70</a></span>&#160;                <span class="keyword">protected</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code" href="class_p_f_1_1_flood_path_tracer.html#a377bbbf2ec7dc2ae38cf6490987dd6da">Reset</a> () {</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                        base.Reset();</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                        <a class="code" href="class_p_f_1_1_flood_path_tracer.html#a809b54e3385d2d5f6d8fd318eee803a1">flood</a> = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                }</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
+<div class="line"><a name="l00078"></a><span class="lineno"><a class="line" href="class_p_f_1_1_flood_path_tracer.html#a81a69052f62e0646ed680099dc599a60">   78</a></span>&#160;                <span class="keyword">protected</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code" href="class_p_f_1_1_flood_path_tracer.html#a81a69052f62e0646ed680099dc599a60">Initialize</a> () {</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                        <span class="keywordflow">if</span> (<a class="code" href="class_p_f_1_1_a_b_path.html#aa8feb54122e6839f5d09c08c32ac134b">startNode</a> != <span class="keyword">null</span> &amp;&amp; <a class="code" href="class_p_f_1_1_flood_path_tracer.html#a809b54e3385d2d5f6d8fd318eee803a1">flood</a>.<a class="code" href="class_p_f_1_1_flood_path.html#a7d078a1910472cea5b53c6ce44191cd9">HasPathTo</a>(<a class="code" href="class_p_f_1_1_a_b_path.html#aa8feb54122e6839f5d09c08c32ac134b">startNode</a>)) {</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                                <a class="code" href="class_p_f_1_1_flood_path_tracer.html#a6b590fee9ab1108f2c79e7acf7505b8b">Trace</a>(<a class="code" href="class_p_f_1_1_a_b_path.html#aa8feb54122e6839f5d09c08c32ac134b">startNode</a>);</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                                <a class="code" href="class_p_f_1_1_path.html#a2897005550987fc4d00a530402ad187d">CompleteState</a> = <a class="code" href="namespace_p_f.html#a572ac19cbafd778b6415ed3ff59e37ac">PathCompleteState</a>.Complete;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                                FailWithError(<span class="stringliteral">&quot;Could not find valid start node&quot;</span>);</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                        }</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                }</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
+<div class="line"><a name="l00087"></a><span class="lineno"><a class="line" href="class_p_f_1_1_flood_path_tracer.html#a8fbedcac1823e6860cc82ee088cab01e">   87</a></span>&#160;                <span class="keyword">protected</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code" href="class_p_f_1_1_flood_path_tracer.html#a8fbedcac1823e6860cc82ee088cab01e">CalculateStep</a> (<span class="keywordtype">long</span> targetTick) {</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                        <span class="keywordflow">if</span> (!<a class="code" href="class_p_f_1_1_path.html#a7657c9088a0b86ce2d75707adbd410fd">IsDone</a>()) <span class="keywordflow">throw</span> <span class="keyword">new</span> <a class="code" href="namespace_system.html">System</a>.Exception(<span class="stringliteral">&quot;Something went wrong. At this point the path should be completed&quot;</span>);</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                }</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
+<div class="line"><a name="l00095"></a><span class="lineno"><a class="line" href="class_p_f_1_1_flood_path_tracer.html#a6b590fee9ab1108f2c79e7acf7505b8b">   95</a></span>&#160;                <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_p_f_1_1_flood_path_tracer.html#a6b590fee9ab1108f2c79e7acf7505b8b">Trace</a> (<a class="code" href="class_p_f_1_1_graph_node.html">GraphNode</a> from) {</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                        <a class="code" href="class_p_f_1_1_graph_node.html">GraphNode</a> c = from;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;                        <span class="keywordtype">int</span> count = 0;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                        <span class="keywordflow">while</span> (c != <span class="keyword">null</span>) {</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;                                <a class="code" href="class_p_f_1_1_path.html#af5cbb9ffba21181f539d94c465f39b43">path</a>.Add(c);</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;                                <a class="code" href="class_p_f_1_1_path.html#aaebf4b3927b0b5f972f728ad4ce57831">vectorPath</a>.Add((<a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a>)c.<a class="code" href="class_p_f_1_1_graph_node.html#a66fdcecb3fd3341e07e157838357df90">position</a>);</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;                                c = <a class="code" href="class_p_f_1_1_flood_path_tracer.html#a809b54e3385d2d5f6d8fd318eee803a1">flood</a>.<a class="code" href="class_p_f_1_1_flood_path.html#ad3ee597d500bacf04c36bdae630a65f2">GetParent</a>(c);</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;                                count++;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;                                <span class="keywordflow">if</span> (count &gt; 1024) {</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="preprocessor">#if !SERVER</span></div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;                                        <a class="code" href="namespace_unity_engine.html">UnityEngine</a>.Debug.LogWarning(<span class="stringliteral">&quot;Inifinity loop? &gt;1024 node path. Remove this message if you really have that long paths (FloodPathTracer.cs, Trace function)&quot;</span>);</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;                                        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;                                }</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;                        }</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;                }</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        }</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;}</div>
+<div class="ttc" id="aclass_p_f_1_1_a_b_path_html"><div class="ttname"><a href="class_p_f_1_1_a_b_path.html">PF.ABPath</a></div><div class="ttdef"><b>Definition:</b> <a href="_a_b_path_8cs_source.html#l00012">ABPath.cs:12</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_a_b_path_html_aa8feb54122e6839f5d09c08c32ac134b"><div class="ttname"><a href="class_p_f_1_1_a_b_path.html#aa8feb54122e6839f5d09c08c32ac134b">PF.ABPath.startNode</a></div><div class="ttdeci">GraphNode startNode</div><div class="ttdef"><b>Definition:</b> <a href="_a_b_path_8cs_source.html#l00014">ABPath.cs:14</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_flood_path_constraint_html"><div class="ttname"><a href="class_p_f_1_1_flood_path_constraint.html">PF.FloodPathConstraint</a></div><div class="ttdef"><b>Definition:</b> <a href="_flood_path_tracer_8cs_source.html#l00012">FloodPathTracer.cs:12</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_flood_path_constraint_html_a3c61d4acbdf3f6afcb48ed2ee44288bb"><div class="ttname"><a href="class_p_f_1_1_flood_path_constraint.html#a3c61d4acbdf3f6afcb48ed2ee44288bb">PF.FloodPathConstraint.FloodPathConstraint</a></div><div class="ttdeci">FloodPathConstraint(FloodPath path)</div><div class="ttdef"><b>Definition:</b> <a href="_flood_path_tracer_8cs_source.html#l00015">FloodPathTracer.cs:15</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_flood_path_constraint_html_a582b2f687bfce74daa6e505379a9f1de"><div class="ttname"><a href="class_p_f_1_1_flood_path_constraint.html#a582b2f687bfce74daa6e505379a9f1de">PF.FloodPathConstraint.Suitable</a></div><div class="ttdeci">override bool Suitable(GraphNode node)</div><div class="ttdef"><b>Definition:</b> <a href="_flood_path_tracer_8cs_source.html#l00025">FloodPathTracer.cs:25</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_flood_path_html"><div class="ttname"><a href="class_p_f_1_1_flood_path.html">PF.FloodPath</a></div><div class="ttdef"><b>Definition:</b> <a href="_flood_path_8cs_source.html#l00048">FloodPath.cs:48</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_flood_path_html_a7d078a1910472cea5b53c6ce44191cd9"><div class="ttname"><a href="class_p_f_1_1_flood_path.html#a7d078a1910472cea5b53c6ce44191cd9">PF.FloodPath.HasPathTo</a></div><div class="ttdeci">bool HasPathTo(GraphNode node)</div><div class="ttdef"><b>Definition:</b> <a href="_flood_path_8cs_source.html#l00066">FloodPath.cs:66</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_flood_path_html_a9f6243f7d407b6167dc164f8e5e095e5"><div class="ttname"><a href="class_p_f_1_1_flood_path.html#a9f6243f7d407b6167dc164f8e5e095e5">PF.FloodPath.originalStartPoint</a></div><div class="ttdeci">Vector3 originalStartPoint</div><div class="ttdef"><b>Definition:</b> <a href="_flood_path_8cs_source.html#l00049">FloodPath.cs:49</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_flood_path_html_ad3ee597d500bacf04c36bdae630a65f2"><div class="ttname"><a href="class_p_f_1_1_flood_path.html#ad3ee597d500bacf04c36bdae630a65f2">PF.FloodPath.GetParent</a></div><div class="ttdeci">GraphNode GetParent(GraphNode node)</div><div class="ttdef"><b>Definition:</b> <a href="_flood_path_8cs_source.html#l00070">FloodPath.cs:70</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_flood_path_tracer_html"><div class="ttname"><a href="class_p_f_1_1_flood_path_tracer.html">PF.FloodPathTracer</a></div><div class="ttdef"><b>Definition:</b> <a href="_flood_path_tracer_8cs_source.html#l00037">FloodPathTracer.cs:37</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_flood_path_tracer_html_a06a593a613ab397f42614acb6ee2627d"><div class="ttname"><a href="class_p_f_1_1_flood_path_tracer.html#a06a593a613ab397f42614acb6ee2627d">PF.FloodPathTracer.Construct</a></div><div class="ttdeci">static FloodPathTracer Construct(Vector3 start, FloodPath flood, OnPathDelegate callback=null)</div><div class="ttdef"><b>Definition:</b> <a href="_flood_path_tracer_8cs_source.html#l00052">FloodPathTracer.cs:52</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_flood_path_tracer_html_a2542b847686e3fbd9805aaa8b77f0fa4"><div class="ttname"><a href="class_p_f_1_1_flood_path_tracer.html#a2542b847686e3fbd9805aaa8b77f0fa4">PF.FloodPathTracer.FloodPathTracer</a></div><div class="ttdeci">FloodPathTracer()</div><div class="ttdef"><b>Definition:</b> <a href="_flood_path_tracer_8cs_source.html#l00050">FloodPathTracer.cs:50</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_flood_path_tracer_html_a377bbbf2ec7dc2ae38cf6490987dd6da"><div class="ttname"><a href="class_p_f_1_1_flood_path_tracer.html#a377bbbf2ec7dc2ae38cf6490987dd6da">PF.FloodPathTracer.Reset</a></div><div class="ttdeci">override void Reset()</div><div class="ttdef"><b>Definition:</b> <a href="_flood_path_tracer_8cs_source.html#l00070">FloodPathTracer.cs:70</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_flood_path_tracer_html_a5917e33ca55babeeb4a0189a1116afc1"><div class="ttname"><a href="class_p_f_1_1_flood_path_tracer.html#a5917e33ca55babeeb4a0189a1116afc1">PF.FloodPathTracer.hasEndPoint</a></div><div class="ttdeci">override bool hasEndPoint</div><div class="ttdef"><b>Definition:</b> <a href="_flood_path_tracer_8cs_source.html#l00041">FloodPathTracer.cs:41</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_flood_path_tracer_html_a6b590fee9ab1108f2c79e7acf7505b8b"><div class="ttname"><a href="class_p_f_1_1_flood_path_tracer.html#a6b590fee9ab1108f2c79e7acf7505b8b">PF.FloodPathTracer.Trace</a></div><div class="ttdeci">void Trace(GraphNode from)</div><div class="ttdef"><b>Definition:</b> <a href="_flood_path_tracer_8cs_source.html#l00095">FloodPathTracer.cs:95</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_flood_path_tracer_html_a809b54e3385d2d5f6d8fd318eee803a1"><div class="ttname"><a href="class_p_f_1_1_flood_path_tracer.html#a809b54e3385d2d5f6d8fd318eee803a1">PF.FloodPathTracer.flood</a></div><div class="ttdeci">FloodPath flood</div><div class="ttdef"><b>Definition:</b> <a href="_flood_path_tracer_8cs_source.html#l00039">FloodPathTracer.cs:39</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_flood_path_tracer_html_a81a69052f62e0646ed680099dc599a60"><div class="ttname"><a href="class_p_f_1_1_flood_path_tracer.html#a81a69052f62e0646ed680099dc599a60">PF.FloodPathTracer.Initialize</a></div><div class="ttdeci">override void Initialize()</div><div class="ttdef"><b>Definition:</b> <a href="_flood_path_tracer_8cs_source.html#l00078">FloodPathTracer.cs:78</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_flood_path_tracer_html_a8fbedcac1823e6860cc82ee088cab01e"><div class="ttname"><a href="class_p_f_1_1_flood_path_tracer.html#a8fbedcac1823e6860cc82ee088cab01e">PF.FloodPathTracer.CalculateStep</a></div><div class="ttdeci">override void CalculateStep(long targetTick)</div><div class="ttdef"><b>Definition:</b> <a href="_flood_path_tracer_8cs_source.html#l00087">FloodPathTracer.cs:87</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_flood_path_tracer_html_a97dce8e6cce5449969f3ac16c9b864fb"><div class="ttname"><a href="class_p_f_1_1_flood_path_tracer.html#a97dce8e6cce5449969f3ac16c9b864fb">PF.FloodPathTracer.Setup</a></div><div class="ttdeci">void Setup(Vector3 start, FloodPath flood, OnPathDelegate callback)</div><div class="ttdef"><b>Definition:</b> <a href="_flood_path_tracer_8cs_source.html#l00059">FloodPathTracer.cs:59</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_graph_node_html"><div class="ttname"><a href="class_p_f_1_1_graph_node.html">PF.GraphNode</a></div><div class="ttdef"><b>Definition:</b> <a href="_graph_node_8cs_source.html#l00048">GraphNode.cs:48</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_graph_node_html_a66fdcecb3fd3341e07e157838357df90"><div class="ttname"><a href="class_p_f_1_1_graph_node.html#a66fdcecb3fd3341e07e157838357df90">PF.GraphNode.position</a></div><div class="ttdeci">Int3 position</div><div class="ttdef"><b>Definition:</b> <a href="_graph_node_8cs_source.html#l00131">GraphNode.cs:131</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_n_n_constraint_html"><div class="ttname"><a href="class_p_f_1_1_n_n_constraint.html">PF.NNConstraint</a></div><div class="ttdef"><b>Definition:</b> <a href="_n_n_8cs_source.html#l00007">NN.cs:7</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_path_html_a11e585e3e1057a4b85f85415dffc9ea1"><div class="ttname"><a href="class_p_f_1_1_path.html#a11e585e3e1057a4b85f85415dffc9ea1">PF.Path.nnConstraint</a></div><div class="ttdeci">NNConstraint nnConstraint</div><div class="ttdef"><b>Definition:</b> <a href="_path_8cs_source.html#l00244">Path.cs:244</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_path_html_a2897005550987fc4d00a530402ad187d"><div class="ttname"><a href="class_p_f_1_1_path.html#a2897005550987fc4d00a530402ad187d">PF.Path.CompleteState</a></div><div class="ttdeci">PathCompleteState CompleteState</div><div class="ttdef"><b>Definition:</b> <a href="_path_8cs_source.html#l00181">Path.cs:181</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_path_html_a7657c9088a0b86ce2d75707adbd410fd"><div class="ttname"><a href="class_p_f_1_1_path.html#a7657c9088a0b86ce2d75707adbd410fd">PF.Path.IsDone</a></div><div class="ttdeci">bool IsDone()</div><div class="ttdef"><b>Definition:</b> <a href="_path_8cs_source.html#l00473">Path.cs:473</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_path_html_aaebf4b3927b0b5f972f728ad4ce57831"><div class="ttname"><a href="class_p_f_1_1_path.html#aaebf4b3927b0b5f972f728ad4ce57831">PF.Path.vectorPath</a></div><div class="ttdeci">List&lt; Vector3 &gt; vectorPath</div><div class="ttdef"><b>Definition:</b> <a href="_path_8cs_source.html#l00211">Path.cs:211</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_path_html_af5cbb9ffba21181f539d94c465f39b43"><div class="ttname"><a href="class_p_f_1_1_path.html#af5cbb9ffba21181f539d94c465f39b43">PF.Path.path</a></div><div class="ttdeci">List&lt; GraphNode &gt; path</div><div class="ttdef"><b>Definition:</b> <a href="_path_8cs_source.html#l00208">Path.cs:208</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_path_html_af6796a7b4072bf7845ae4299215933d7"><div class="ttname"><a href="class_p_f_1_1_path.html#af6796a7b4072bf7845ae4299215933d7">PF.Path.callback</a></div><div class="ttdeci">OnPathDelegate callback</div><div class="ttdef"><b>Definition:</b> <a href="_path_8cs_source.html#l00158">Path.cs:158</a></div></div>
+<div class="ttc" id="anamespace_p_f_html"><div class="ttname"><a href="namespace_p_f.html">PF</a></div><div class="ttdef"><b>Definition:</b> <a href="_array_pool_8cs_source.html#l00009">ArrayPool.cs:9</a></div></div>
+<div class="ttc" id="anamespace_p_f_html_a41e3ae15d352e3d178227e2eca48c8a7"><div class="ttname"><a href="namespace_p_f.html#a41e3ae15d352e3d178227e2eca48c8a7">PF.PathState</a></div><div class="ttdeci">PathState</div><div class="ttdef"><b>Definition:</b> <a href="_path_8cs_source.html#l00048">Path.cs:48</a></div></div>
+<div class="ttc" id="anamespace_p_f_html_a572ac19cbafd778b6415ed3ff59e37ac"><div class="ttname"><a href="namespace_p_f.html#a572ac19cbafd778b6415ed3ff59e37ac">PF.PathCompleteState</a></div><div class="ttdeci">PathCompleteState</div><div class="ttdef"><b>Definition:</b> <a href="_path_8cs_source.html#l00057">Path.cs:57</a></div></div>
+<div class="ttc" id="anamespace_p_f_html_a5916e0e1a39fd1ea09fdf25a70492a02"><div class="ttname"><a href="namespace_p_f.html#a5916e0e1a39fd1ea09fdf25a70492a02">PF.OnPathDelegate</a></div><div class="ttdeci">delegate void OnPathDelegate(Path p)</div></div>
+<div class="ttc" id="anamespace_system_html"><div class="ttname"><a href="namespace_system.html">System</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_method_builder_attribute_8cs_source.html#l00001">AsyncMethodBuilderAttribute.cs:2</a></div></div>
+<div class="ttc" id="anamespace_unity_engine_html"><div class="ttname"><a href="namespace_unity_engine.html">UnityEngine</a></div><div class="ttdef"><b>Definition:</b> <a href="_mathf_8cs_source.html#l00003">Mathf.cs:4</a></div></div>
+<div class="ttc" id="astruct_unity_engine_1_1_vector3_html"><div class="ttname"><a href="struct_unity_engine_1_1_vector3.html">UnityEngine.Vector3</a></div><div class="ttdef"><b>Definition:</b> <a href="_vector3_8cs_source.html#l00007">Vector3.cs:8</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_84bbf7b3c7f28a5a18725745e1505219.html">Assets</a></li><li class="navelem"><a class="el" href="dir_f13b41af88cf68434578284aaf699e39.html">Scripts</a></li><li class="navelem"><a class="el" href="dir_46d134a3bf82cf4dc49ca8f728aea58c.html">Libraries</a></li><li class="navelem"><a class="el" href="dir_f6df8f7e58ea5a2220a287b647108730.html">ET</a></li><li class="navelem"><a class="el" href="dir_83296929b1cb48979e134a96af9624b1.html">Module</a></li><li class="navelem"><a class="el" href="dir_7e04bdad0240fbb16a4f5f805ce44f49.html">Pathfinding</a></li><li class="navelem"><a class="el" href="dir_0d5e2d3313e129d955335235e3d8ffc0.html">Recast</a></li><li class="navelem"><a class="el" href="dir_0dcce217e3c3b0d80b7ade43245901ff.html">Pathfinders</a></li><li class="navelem"><a class="el" href="_flood_path_tracer_8cs.html">FloodPathTracer.cs</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:24:47 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

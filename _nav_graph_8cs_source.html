@@ -1,0 +1,284 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: Assets/Scripts/Libraries/ET/Module/Pathfinding/Recast/NavGraph.cs 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_nav_graph_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">NavGraph.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_nav_graph_8cs.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_unity_engine.html">UnityEngine</a>;</div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_p_f.html">PF</a> {</div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="interface_p_f_1_1_i_graph_internals.html">   11</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">interface </span><a class="code" href="interface_p_f_1_1_i_graph_internals.html">IGraphInternals</a> {</div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="interface_p_f_1_1_i_graph_internals.html#a374d30090bd652d4481c3787a76fe28a">   12</a></span>&#160;                <span class="keywordtype">string</span> <a class="code" href="interface_p_f_1_1_i_graph_internals.html#a374d30090bd652d4481c3787a76fe28a">SerializedEditorSettings</a> { <span class="keyword">get</span>; <span class="keyword">set</span>; }</div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="interface_p_f_1_1_i_graph_internals.html#ae057e833d5f593765517a55f29c4a304">   13</a></span>&#160;                <span class="keywordtype">void</span> <a class="code" href="interface_p_f_1_1_i_graph_internals.html#ae057e833d5f593765517a55f29c4a304">OnDestroy</a> ();</div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="interface_p_f_1_1_i_graph_internals.html#abc29d5a342e6461e5b800df243716429">   14</a></span>&#160;                <span class="keywordtype">void</span> <a class="code" href="interface_p_f_1_1_i_graph_internals.html#abc29d5a342e6461e5b800df243716429">DestroyAllNodes</a> ();</div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="interface_p_f_1_1_i_graph_internals.html#ab4c8177ee880fba63d1fa1fb80240cf3">   15</a></span>&#160;                <span class="keywordtype">void</span> <a class="code" href="interface_p_f_1_1_i_graph_internals.html#ab4c8177ee880fba63d1fa1fb80240cf3">SerializeExtraInfo</a> (<a class="code" href="class_p_f_1_1_graph_serialization_context.html">GraphSerializationContext</a> ctx);</div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="interface_p_f_1_1_i_graph_internals.html#a4b5372d03949d898959f12b714a795a4">   16</a></span>&#160;                <span class="keywordtype">void</span> <a class="code" href="interface_p_f_1_1_i_graph_internals.html#a4b5372d03949d898959f12b714a795a4">DeserializeExtraInfo</a> (<a class="code" href="class_p_f_1_1_graph_serialization_context.html">GraphSerializationContext</a> ctx);</div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="interface_p_f_1_1_i_graph_internals.html#a9db8036dd8f0ce20a235381eb67f5394">   17</a></span>&#160;                <span class="keywordtype">void</span> <a class="code" href="interface_p_f_1_1_i_graph_internals.html#a9db8036dd8f0ce20a235381eb67f5394">PostDeserialization</a> (<a class="code" href="class_p_f_1_1_graph_serialization_context.html">GraphSerializationContext</a> ctx);</div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="interface_p_f_1_1_i_graph_internals.html#a706356e0f44580341e1962734fa6deb9">   18</a></span>&#160;                <span class="keywordtype">void</span> <a class="code" href="interface_p_f_1_1_i_graph_internals.html#a706356e0f44580341e1962734fa6deb9">DeserializeSettingsCompatibility</a> (<a class="code" href="class_p_f_1_1_graph_serialization_context.html">GraphSerializationContext</a> ctx);</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        }</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="class_p_f_1_1_nav_graph.html">   22</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">class </span><a class="code" href="class_p_f_1_1_nav_graph.html">NavGraph</a> : <a class="code" href="interface_p_f_1_1_i_graph_internals.html">IGraphInternals</a> {</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;                [JsonMember]</div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="class_p_f_1_1_nav_graph.html#a7c2da05c99ce6eb1876b750935fecb02">   27</a></span>&#160;                <span class="keyword">public</span> <a class="code" href="struct_p_f_1_1_guid.html">Guid</a> <a class="code" href="class_p_f_1_1_nav_graph.html#a7c2da05c99ce6eb1876b750935fecb02">guid</a>;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;                [JsonMember]</div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="class_p_f_1_1_nav_graph.html#a07dd3e57e11a4e6f89692d99c186ee86">   31</a></span>&#160;                <span class="keyword">public</span> uint <a class="code" href="class_p_f_1_1_nav_graph.html#a07dd3e57e11a4e6f89692d99c186ee86">initialPenalty</a>;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;                [JsonMember]</div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="class_p_f_1_1_nav_graph.html#a391a1c35fb04371e9b0a407bd41ddfc1">   35</a></span>&#160;                <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code" href="class_p_f_1_1_nav_graph.html#a391a1c35fb04371e9b0a407bd41ddfc1">open</a>;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="class_p_f_1_1_nav_graph.html#aa50a76da962cc6f9f19042b9fe180534">   38</a></span>&#160;                <span class="keyword">public</span> uint <a class="code" href="class_p_f_1_1_nav_graph.html#aa50a76da962cc6f9f19042b9fe180534">graphIndex</a>;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;                [JsonMember]</div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="class_p_f_1_1_nav_graph.html#a001a750dc862845ee0bed0c2ae8df0c4">   44</a></span>&#160;                <span class="keyword">public</span> <span class="keywordtype">string</span> <a class="code" href="class_p_f_1_1_nav_graph.html#a001a750dc862845ee0bed0c2ae8df0c4">name</a>;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                [JsonMember]</div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="class_p_f_1_1_nav_graph.html#a81ec26eebb5dc6856eff3b1a19ef9fd6">   51</a></span>&#160;                <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code" href="class_p_f_1_1_nav_graph.html#a81ec26eebb5dc6856eff3b1a19ef9fd6">drawGizmos</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                [JsonMember]</div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="class_p_f_1_1_nav_graph.html#a1a71df127d50a42a1cb34389aaed2795">   58</a></span>&#160;                <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code" href="class_p_f_1_1_nav_graph.html#a1a71df127d50a42a1cb34389aaed2795">infoScreenOpen</a>;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                [JsonMember]</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                <span class="keywordtype">string</span> serializedEditorSettings;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="class_p_f_1_1_nav_graph.html#a4457614b5ba94a598fae05acb07b324d">   70</a></span>&#160;                <span class="keyword">public</span> <span class="keyword">virtual</span> <span class="keywordtype">int</span> <a class="code" href="class_p_f_1_1_nav_graph.html#a4457614b5ba94a598fae05acb07b324d">CountNodes</a> () {</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                        <span class="keywordtype">int</span> count = 0;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                        <a class="code" href="class_p_f_1_1_nav_graph.html#a330bdf83610e8e6b8040b8dc9187b7fe">GetNodes</a>(node =&gt; count++);</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                        <span class="keywordflow">return</span> count;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                }</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00078"></a><span class="lineno"><a class="line" href="class_p_f_1_1_nav_graph.html#a330bdf83610e8e6b8040b8dc9187b7fe">   78</a></span>&#160;                <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_p_f_1_1_nav_graph.html#a330bdf83610e8e6b8040b8dc9187b7fe">GetNodes</a> (<a class="code" href="namespace_system.html">System</a>.Func&lt;<a class="code" href="class_p_f_1_1_graph_node.html">GraphNode</a>, <span class="keywordtype">bool</span>&gt; action) {</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                        <span class="keywordtype">bool</span> cont = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                        <a class="code" href="class_p_f_1_1_nav_graph.html#a330bdf83610e8e6b8040b8dc9187b7fe">GetNodes</a>(node =&gt; {</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                                <span class="keywordflow">if</span> (cont) cont &amp;= action(node);</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                        });</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                }</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
+<div class="line"><a name="l00097"></a><span class="lineno"><a class="line" href="class_p_f_1_1_nav_graph.html#a3ae0bc08d769559806462719358bbad8">   97</a></span>&#160;                <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keywordtype">void</span> <a class="code" href="class_p_f_1_1_nav_graph.html#a3ae0bc08d769559806462719358bbad8">GetNodes</a> (<a class="code" href="namespace_system.html">System</a>.Action&lt;<a class="code" href="class_p_f_1_1_graph_node.html">GraphNode</a>&gt; action);</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
+<div class="line"><a name="l00102"></a><span class="lineno"><a class="line" href="class_p_f_1_1_nav_graph.html#a33084bb9076b64fc42397cfceeab8f81">  102</a></span>&#160;                <span class="keyword">public</span> <a class="code" href="struct_p_f_1_1_n_n_info_internal.html">NNInfoInternal</a> <a class="code" href="class_p_f_1_1_nav_graph.html#a33084bb9076b64fc42397cfceeab8f81">GetNearest</a> (<a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a> position, <a class="code" href="class_p_f_1_1_n_n_constraint.html">NNConstraint</a> constraint) {</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;                        <span class="keywordflow">return</span> <a class="code" href="class_p_f_1_1_nav_graph.html#a33084bb9076b64fc42397cfceeab8f81">GetNearest</a>(position, constraint, <span class="keyword">null</span>);</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;                }</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
+<div class="line"><a name="l00111"></a><span class="lineno"><a class="line" href="class_p_f_1_1_nav_graph.html#ae4d6e4ec7a69f9d963a27280e489966f">  111</a></span>&#160;                <span class="keyword">public</span> <span class="keyword">virtual</span> <a class="code" href="struct_p_f_1_1_n_n_info_internal.html">NNInfoInternal</a> <a class="code" href="class_p_f_1_1_nav_graph.html#ae4d6e4ec7a69f9d963a27280e489966f">GetNearest</a> (<a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a> position, <a class="code" href="class_p_f_1_1_n_n_constraint.html">NNConstraint</a> constraint, <a class="code" href="class_p_f_1_1_graph_node.html">GraphNode</a> hint) {</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;                        <span class="comment">// This is a default implementation and it is pretty slow</span></div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;                        <span class="comment">// Graphs usually override this to provide faster and more specialised implementations</span></div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160; </div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;                        <span class="keywordtype">float</span> maxDistSqr = constraint == <span class="keyword">null</span> || constraint.<a class="code" href="class_p_f_1_1_n_n_constraint.html#a82c1d776002ce56d9009be3eba20056f">constrainDistance</a> ? PathFindHelper.GetConfig().maxNearestNodeDistanceSqr : <span class="keywordtype">float</span>.PositiveInfinity;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160; </div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;                        <span class="keywordtype">float</span> minDist = <span class="keywordtype">float</span>.PositiveInfinity;</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;                        <a class="code" href="class_p_f_1_1_graph_node.html">GraphNode</a> minNode = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160; </div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;                        <span class="keywordtype">float</span> minConstDist = <span class="keywordtype">float</span>.PositiveInfinity;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;                        <a class="code" href="class_p_f_1_1_graph_node.html">GraphNode</a> minConstNode = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160; </div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;                        <span class="comment">// Loop through all nodes and find the closest suitable node</span></div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;                        <a class="code" href="class_p_f_1_1_nav_graph.html#a330bdf83610e8e6b8040b8dc9187b7fe">GetNodes</a>(node =&gt; {</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;                                <span class="keywordtype">float</span> dist = (position-(<a class="code" href="_recast_graph_editor_8cs.html#af3326292fdd04d2b384b6d781d9594f6">Vector3</a>)node.position).sqrMagnitude;</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160; </div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;                                <span class="keywordflow">if</span> (dist &lt; minDist) {</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;                                        minDist = dist;</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;                                        minNode = node;</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;                                }</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160; </div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;                                <span class="keywordflow">if</span> (dist &lt; minConstDist &amp;&amp; dist &lt; maxDistSqr &amp;&amp; (constraint == <span class="keyword">null</span> || constraint.<a class="code" href="class_p_f_1_1_n_n_constraint.html#a57cbe6086469529dbce3ac00e1bb2613">Suitable</a>(node))) {</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;                                        minConstDist = dist;</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;                                        minConstNode = node;</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;                                }</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;                        });</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160; </div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;                        var nnInfo = <span class="keyword">new</span> <a class="code" href="struct_p_f_1_1_n_n_info_internal.html">NNInfoInternal</a>(minNode);</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160; </div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;                        nnInfo.constrainedNode = minConstNode;</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160; </div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;                        <span class="keywordflow">if</span> (minConstNode != <span class="keyword">null</span>) {</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;                                nnInfo.constClampedPosition = (<a class="code" href="_recast_graph_editor_8cs.html#af3326292fdd04d2b384b6d781d9594f6">Vector3</a>)minConstNode.<a class="code" href="class_p_f_1_1_graph_node.html#a66fdcecb3fd3341e07e157838357df90">position</a>;</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;                        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (minNode != <span class="keyword">null</span>) {</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;                                nnInfo.constrainedNode = minNode;</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;                                nnInfo.constClampedPosition = (<a class="code" href="_recast_graph_editor_8cs.html#af3326292fdd04d2b384b6d781d9594f6">Vector3</a>)minNode.<a class="code" href="class_p_f_1_1_graph_node.html#a66fdcecb3fd3341e07e157838357df90">position</a>;</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;                        }</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160; </div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;                        <span class="keywordflow">return</span> nnInfo;</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;                }</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160; </div>
+<div class="line"><a name="l00156"></a><span class="lineno"><a class="line" href="class_p_f_1_1_nav_graph.html#abb1443ad7ba8d033f1fe6a43834603b6">  156</a></span>&#160;                <span class="keyword">public</span> <span class="keyword">virtual</span> <a class="code" href="struct_p_f_1_1_n_n_info_internal.html">NNInfoInternal</a> <a class="code" href="class_p_f_1_1_nav_graph.html#abb1443ad7ba8d033f1fe6a43834603b6">GetNearestForce</a> (<a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a> position, <a class="code" href="class_p_f_1_1_n_n_constraint.html">NNConstraint</a> constraint) {</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;                        <span class="keywordflow">return</span> <a class="code" href="class_p_f_1_1_nav_graph.html#a33084bb9076b64fc42397cfceeab8f81">GetNearest</a>(position, constraint);</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;                }</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160; </div>
+<div class="line"><a name="l00166"></a><span class="lineno"><a class="line" href="class_p_f_1_1_nav_graph.html#a064f1cf3e33087c88a19e303256e97ce">  166</a></span>&#160;                <span class="keyword">protected</span> <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_p_f_1_1_nav_graph.html#a064f1cf3e33087c88a19e303256e97ce">OnDestroy</a> () {</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;                        <a class="code" href="class_p_f_1_1_nav_graph.html#ac1b1f455afc9f6d0f3480a816ab5fe67">DestroyAllNodes</a>();</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;                }</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160; </div>
+<div class="line"><a name="l00173"></a><span class="lineno"><a class="line" href="class_p_f_1_1_nav_graph.html#ac1b1f455afc9f6d0f3480a816ab5fe67">  173</a></span>&#160;                <span class="keyword">protected</span> <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_p_f_1_1_nav_graph.html#ac1b1f455afc9f6d0f3480a816ab5fe67">DestroyAllNodes</a> () {</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;                        <a class="code" href="class_p_f_1_1_nav_graph.html#a330bdf83610e8e6b8040b8dc9187b7fe">GetNodes</a>(node =&gt; node.Destroy());</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;                }</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160; </div>
+<div class="line"><a name="l00184"></a><span class="lineno"><a class="line" href="class_p_f_1_1_nav_graph.html#a9c3ef7f34e3355d2c3f39f83dd2c9e6c">  184</a></span>&#160;                <span class="keyword">protected</span> <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_p_f_1_1_nav_graph.html#a9c3ef7f34e3355d2c3f39f83dd2c9e6c">SerializeExtraInfo</a> (<a class="code" href="class_p_f_1_1_graph_serialization_context.html">GraphSerializationContext</a> ctx) {</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;                }</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160; </div>
+<div class="line"><a name="l00190"></a><span class="lineno"><a class="line" href="class_p_f_1_1_nav_graph.html#a1dc61f6775ca689529b873ff29e79aba">  190</a></span>&#160;                <span class="keyword">protected</span> <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_p_f_1_1_nav_graph.html#a1dc61f6775ca689529b873ff29e79aba">DeserializeExtraInfo</a> (<a class="code" href="class_p_f_1_1_graph_serialization_context.html">GraphSerializationContext</a> ctx) {</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;                }</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160; </div>
+<div class="line"><a name="l00196"></a><span class="lineno"><a class="line" href="class_p_f_1_1_nav_graph.html#a4555c3d72edd11a15364d57576bda31a">  196</a></span>&#160;                <span class="keyword">protected</span> <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_p_f_1_1_nav_graph.html#a4555c3d72edd11a15364d57576bda31a">PostDeserialization</a> (<a class="code" href="class_p_f_1_1_graph_serialization_context.html">GraphSerializationContext</a> ctx) {</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;                }</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160; </div>
+<div class="line"><a name="l00203"></a><span class="lineno"><a class="line" href="class_p_f_1_1_nav_graph.html#ad5f0505864fc92d99bc055000b20e9b0">  203</a></span>&#160;                <span class="keyword">protected</span> <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_p_f_1_1_nav_graph.html#ad5f0505864fc92d99bc055000b20e9b0">DeserializeSettingsCompatibility</a> (<a class="code" href="class_p_f_1_1_graph_serialization_context.html">GraphSerializationContext</a> ctx) {</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;                        <a class="code" href="class_p_f_1_1_nav_graph.html#a7c2da05c99ce6eb1876b750935fecb02">guid</a> = <span class="keyword">new</span> <a class="code" href="struct_p_f_1_1_guid.html">Guid</a>(ctx.<a class="code" href="class_p_f_1_1_graph_serialization_context.html#a31f6f85217ee609f269138b64c16b20c">reader</a>.ReadBytes(16));</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;                        <a class="code" href="class_p_f_1_1_nav_graph.html#a07dd3e57e11a4e6f89692d99c186ee86">initialPenalty</a> = ctx.<a class="code" href="class_p_f_1_1_graph_serialization_context.html#a31f6f85217ee609f269138b64c16b20c">reader</a>.ReadUInt32();</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;                        <a class="code" href="class_p_f_1_1_nav_graph.html#a391a1c35fb04371e9b0a407bd41ddfc1">open</a> = ctx.<a class="code" href="class_p_f_1_1_graph_serialization_context.html#a31f6f85217ee609f269138b64c16b20c">reader</a>.ReadBoolean();</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;                        <a class="code" href="class_p_f_1_1_nav_graph.html#a001a750dc862845ee0bed0c2ae8df0c4">name</a> = ctx.<a class="code" href="class_p_f_1_1_graph_serialization_context.html#a31f6f85217ee609f269138b64c16b20c">reader</a>.ReadString();</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;                        <a class="code" href="class_p_f_1_1_nav_graph.html#a81ec26eebb5dc6856eff3b1a19ef9fd6">drawGizmos</a> = ctx.<a class="code" href="class_p_f_1_1_graph_serialization_context.html#a31f6f85217ee609f269138b64c16b20c">reader</a>.ReadBoolean();</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;                        <a class="code" href="class_p_f_1_1_nav_graph.html#a1a71df127d50a42a1cb34389aaed2795">infoScreenOpen</a> = ctx.<a class="code" href="class_p_f_1_1_graph_serialization_context.html#a31f6f85217ee609f269138b64c16b20c">reader</a>.ReadBoolean();</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;                }</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160; </div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;<span class="preprocessor">                #region IGraphInternals implementation</span></div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;                <span class="keywordtype">string</span> <a class="code" href="interface_p_f_1_1_i_graph_internals.html">IGraphInternals</a>.<a class="code" href="interface_p_f_1_1_i_graph_internals.html#a374d30090bd652d4481c3787a76fe28a">SerializedEditorSettings</a> { <span class="keyword">get</span> { <span class="keywordflow">return</span> serializedEditorSettings; } <span class="keyword">set</span> { serializedEditorSettings = value; } }</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;                <span class="keywordtype">void</span> IGraphInternals.OnDestroy () { <a class="code" href="class_p_f_1_1_nav_graph.html#a064f1cf3e33087c88a19e303256e97ce">OnDestroy</a>(); }</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;                <span class="keywordtype">void</span> IGraphInternals.DestroyAllNodes () { <a class="code" href="class_p_f_1_1_nav_graph.html#ac1b1f455afc9f6d0f3480a816ab5fe67">DestroyAllNodes</a>(); }</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;                <span class="keywordtype">void</span> IGraphInternals.SerializeExtraInfo (GraphSerializationContext ctx) { <a class="code" href="class_p_f_1_1_nav_graph.html#a9c3ef7f34e3355d2c3f39f83dd2c9e6c">SerializeExtraInfo</a>(ctx); }</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;                <span class="keywordtype">void</span> IGraphInternals.DeserializeExtraInfo (GraphSerializationContext ctx) { <a class="code" href="class_p_f_1_1_nav_graph.html#a1dc61f6775ca689529b873ff29e79aba">DeserializeExtraInfo</a>(ctx); }</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;                <span class="keywordtype">void</span> IGraphInternals.PostDeserialization (GraphSerializationContext ctx) { <a class="code" href="class_p_f_1_1_nav_graph.html#a4555c3d72edd11a15364d57576bda31a">PostDeserialization</a>(ctx); }</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;                <span class="keywordtype">void</span> IGraphInternals.DeserializeSettingsCompatibility (GraphSerializationContext ctx) { <a class="code" href="class_p_f_1_1_nav_graph.html#ad5f0505864fc92d99bc055000b20e9b0">DeserializeSettingsCompatibility</a>(ctx); }</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160; </div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;<span class="preprocessor">                #endregion</span></div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;        }</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160; </div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160; </div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;}</div>
+<div class="ttc" id="a_recast_graph_editor_8cs_html_af3326292fdd04d2b384b6d781d9594f6"><div class="ttname"><a href="_recast_graph_editor_8cs.html#af3326292fdd04d2b384b6d781d9594f6">Vector3</a></div><div class="ttdeci">UnityEngine.Vector3 Vector3</div><div class="ttdef"><b>Definition:</b> <a href="_recast_graph_editor_8cs_source.html#l00005">RecastGraphEditor.cs:5</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_graph_node_html"><div class="ttname"><a href="class_p_f_1_1_graph_node.html">PF.GraphNode</a></div><div class="ttdef"><b>Definition:</b> <a href="_graph_node_8cs_source.html#l00048">GraphNode.cs:48</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_graph_node_html_a66fdcecb3fd3341e07e157838357df90"><div class="ttname"><a href="class_p_f_1_1_graph_node.html#a66fdcecb3fd3341e07e157838357df90">PF.GraphNode.position</a></div><div class="ttdeci">Int3 position</div><div class="ttdef"><b>Definition:</b> <a href="_graph_node_8cs_source.html#l00131">GraphNode.cs:131</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_graph_serialization_context_html"><div class="ttname"><a href="class_p_f_1_1_graph_serialization_context.html">PF.GraphSerializationContext</a></div><div class="ttdef"><b>Definition:</b> <a href="_json_serializer_8cs_source.html#l00017">JsonSerializer.cs:17</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_graph_serialization_context_html_a31f6f85217ee609f269138b64c16b20c"><div class="ttname"><a href="class_p_f_1_1_graph_serialization_context.html#a31f6f85217ee609f269138b64c16b20c">PF.GraphSerializationContext.reader</a></div><div class="ttdeci">readonly BinaryReader reader</div><div class="ttdef"><b>Definition:</b> <a href="_json_serializer_8cs_source.html#l00023">JsonSerializer.cs:23</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_n_n_constraint_html"><div class="ttname"><a href="class_p_f_1_1_n_n_constraint.html">PF.NNConstraint</a></div><div class="ttdef"><b>Definition:</b> <a href="_n_n_8cs_source.html#l00007">NN.cs:7</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_n_n_constraint_html_a57cbe6086469529dbce3ac00e1bb2613"><div class="ttname"><a href="class_p_f_1_1_n_n_constraint.html#a57cbe6086469529dbce3ac00e1bb2613">PF.NNConstraint.Suitable</a></div><div class="ttdeci">virtual bool Suitable(GraphNode node)</div><div class="ttdef"><b>Definition:</b> <a href="_n_n_8cs_source.html#l00080">NN.cs:80</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_n_n_constraint_html_a82c1d776002ce56d9009be3eba20056f"><div class="ttname"><a href="class_p_f_1_1_n_n_constraint.html#a82c1d776002ce56d9009be3eba20056f">PF.NNConstraint.constrainDistance</a></div><div class="ttdeci">bool constrainDistance</div><div class="ttdef"><b>Definition:</b> <a href="_n_n_8cs_source.html#l00068">NN.cs:68</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_nav_graph_html"><div class="ttname"><a href="class_p_f_1_1_nav_graph.html">PF.NavGraph</a></div><div class="ttdef"><b>Definition:</b> <a href="_nav_graph_8cs_source.html#l00022">NavGraph.cs:22</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_nav_graph_html_a001a750dc862845ee0bed0c2ae8df0c4"><div class="ttname"><a href="class_p_f_1_1_nav_graph.html#a001a750dc862845ee0bed0c2ae8df0c4">PF.NavGraph.name</a></div><div class="ttdeci">string name</div><div class="ttdef"><b>Definition:</b> <a href="_nav_graph_8cs_source.html#l00044">NavGraph.cs:44</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_nav_graph_html_a064f1cf3e33087c88a19e303256e97ce"><div class="ttname"><a href="class_p_f_1_1_nav_graph.html#a064f1cf3e33087c88a19e303256e97ce">PF.NavGraph.OnDestroy</a></div><div class="ttdeci">virtual void OnDestroy()</div><div class="ttdef"><b>Definition:</b> <a href="_nav_graph_8cs_source.html#l00166">NavGraph.cs:166</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_nav_graph_html_a07dd3e57e11a4e6f89692d99c186ee86"><div class="ttname"><a href="class_p_f_1_1_nav_graph.html#a07dd3e57e11a4e6f89692d99c186ee86">PF.NavGraph.initialPenalty</a></div><div class="ttdeci">uint initialPenalty</div><div class="ttdef"><b>Definition:</b> <a href="_nav_graph_8cs_source.html#l00031">NavGraph.cs:31</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_nav_graph_html_a1a71df127d50a42a1cb34389aaed2795"><div class="ttname"><a href="class_p_f_1_1_nav_graph.html#a1a71df127d50a42a1cb34389aaed2795">PF.NavGraph.infoScreenOpen</a></div><div class="ttdeci">bool infoScreenOpen</div><div class="ttdef"><b>Definition:</b> <a href="_nav_graph_8cs_source.html#l00058">NavGraph.cs:58</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_nav_graph_html_a1dc61f6775ca689529b873ff29e79aba"><div class="ttname"><a href="class_p_f_1_1_nav_graph.html#a1dc61f6775ca689529b873ff29e79aba">PF.NavGraph.DeserializeExtraInfo</a></div><div class="ttdeci">virtual void DeserializeExtraInfo(GraphSerializationContext ctx)</div><div class="ttdef"><b>Definition:</b> <a href="_nav_graph_8cs_source.html#l00190">NavGraph.cs:190</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_nav_graph_html_a33084bb9076b64fc42397cfceeab8f81"><div class="ttname"><a href="class_p_f_1_1_nav_graph.html#a33084bb9076b64fc42397cfceeab8f81">PF.NavGraph.GetNearest</a></div><div class="ttdeci">NNInfoInternal GetNearest(Vector3 position, NNConstraint constraint)</div><div class="ttdef"><b>Definition:</b> <a href="_nav_graph_8cs_source.html#l00102">NavGraph.cs:102</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_nav_graph_html_a330bdf83610e8e6b8040b8dc9187b7fe"><div class="ttname"><a href="class_p_f_1_1_nav_graph.html#a330bdf83610e8e6b8040b8dc9187b7fe">PF.NavGraph.GetNodes</a></div><div class="ttdeci">void GetNodes(System.Func&lt; GraphNode, bool &gt; action)</div><div class="ttdef"><b>Definition:</b> <a href="_nav_graph_8cs_source.html#l00078">NavGraph.cs:78</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_nav_graph_html_a391a1c35fb04371e9b0a407bd41ddfc1"><div class="ttname"><a href="class_p_f_1_1_nav_graph.html#a391a1c35fb04371e9b0a407bd41ddfc1">PF.NavGraph.open</a></div><div class="ttdeci">bool open</div><div class="ttdef"><b>Definition:</b> <a href="_nav_graph_8cs_source.html#l00035">NavGraph.cs:35</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_nav_graph_html_a3ae0bc08d769559806462719358bbad8"><div class="ttname"><a href="class_p_f_1_1_nav_graph.html#a3ae0bc08d769559806462719358bbad8">PF.NavGraph.GetNodes</a></div><div class="ttdeci">abstract void GetNodes(System.Action&lt; GraphNode &gt; action)</div></div>
+<div class="ttc" id="aclass_p_f_1_1_nav_graph_html_a4457614b5ba94a598fae05acb07b324d"><div class="ttname"><a href="class_p_f_1_1_nav_graph.html#a4457614b5ba94a598fae05acb07b324d">PF.NavGraph.CountNodes</a></div><div class="ttdeci">virtual int CountNodes()</div><div class="ttdef"><b>Definition:</b> <a href="_nav_graph_8cs_source.html#l00070">NavGraph.cs:70</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_nav_graph_html_a4555c3d72edd11a15364d57576bda31a"><div class="ttname"><a href="class_p_f_1_1_nav_graph.html#a4555c3d72edd11a15364d57576bda31a">PF.NavGraph.PostDeserialization</a></div><div class="ttdeci">virtual void PostDeserialization(GraphSerializationContext ctx)</div><div class="ttdef"><b>Definition:</b> <a href="_nav_graph_8cs_source.html#l00196">NavGraph.cs:196</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_nav_graph_html_a7c2da05c99ce6eb1876b750935fecb02"><div class="ttname"><a href="class_p_f_1_1_nav_graph.html#a7c2da05c99ce6eb1876b750935fecb02">PF.NavGraph.guid</a></div><div class="ttdeci">Guid guid</div><div class="ttdef"><b>Definition:</b> <a href="_nav_graph_8cs_source.html#l00027">NavGraph.cs:27</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_nav_graph_html_a81ec26eebb5dc6856eff3b1a19ef9fd6"><div class="ttname"><a href="class_p_f_1_1_nav_graph.html#a81ec26eebb5dc6856eff3b1a19ef9fd6">PF.NavGraph.drawGizmos</a></div><div class="ttdeci">bool drawGizmos</div><div class="ttdef"><b>Definition:</b> <a href="_nav_graph_8cs_source.html#l00051">NavGraph.cs:51</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_nav_graph_html_a9c3ef7f34e3355d2c3f39f83dd2c9e6c"><div class="ttname"><a href="class_p_f_1_1_nav_graph.html#a9c3ef7f34e3355d2c3f39f83dd2c9e6c">PF.NavGraph.SerializeExtraInfo</a></div><div class="ttdeci">virtual void SerializeExtraInfo(GraphSerializationContext ctx)</div><div class="ttdef"><b>Definition:</b> <a href="_nav_graph_8cs_source.html#l00184">NavGraph.cs:184</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_nav_graph_html_aa50a76da962cc6f9f19042b9fe180534"><div class="ttname"><a href="class_p_f_1_1_nav_graph.html#aa50a76da962cc6f9f19042b9fe180534">PF.NavGraph.graphIndex</a></div><div class="ttdeci">uint graphIndex</div><div class="ttdef"><b>Definition:</b> <a href="_nav_graph_8cs_source.html#l00038">NavGraph.cs:38</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_nav_graph_html_abb1443ad7ba8d033f1fe6a43834603b6"><div class="ttname"><a href="class_p_f_1_1_nav_graph.html#abb1443ad7ba8d033f1fe6a43834603b6">PF.NavGraph.GetNearestForce</a></div><div class="ttdeci">virtual NNInfoInternal GetNearestForce(Vector3 position, NNConstraint constraint)</div><div class="ttdef"><b>Definition:</b> <a href="_nav_graph_8cs_source.html#l00156">NavGraph.cs:156</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_nav_graph_html_ac1b1f455afc9f6d0f3480a816ab5fe67"><div class="ttname"><a href="class_p_f_1_1_nav_graph.html#ac1b1f455afc9f6d0f3480a816ab5fe67">PF.NavGraph.DestroyAllNodes</a></div><div class="ttdeci">virtual void DestroyAllNodes()</div><div class="ttdef"><b>Definition:</b> <a href="_nav_graph_8cs_source.html#l00173">NavGraph.cs:173</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_nav_graph_html_ad5f0505864fc92d99bc055000b20e9b0"><div class="ttname"><a href="class_p_f_1_1_nav_graph.html#ad5f0505864fc92d99bc055000b20e9b0">PF.NavGraph.DeserializeSettingsCompatibility</a></div><div class="ttdeci">virtual void DeserializeSettingsCompatibility(GraphSerializationContext ctx)</div><div class="ttdef"><b>Definition:</b> <a href="_nav_graph_8cs_source.html#l00203">NavGraph.cs:203</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_nav_graph_html_ae4d6e4ec7a69f9d963a27280e489966f"><div class="ttname"><a href="class_p_f_1_1_nav_graph.html#ae4d6e4ec7a69f9d963a27280e489966f">PF.NavGraph.GetNearest</a></div><div class="ttdeci">virtual NNInfoInternal GetNearest(Vector3 position, NNConstraint constraint, GraphNode hint)</div><div class="ttdef"><b>Definition:</b> <a href="_nav_graph_8cs_source.html#l00111">NavGraph.cs:111</a></div></div>
+<div class="ttc" id="ainterface_p_f_1_1_i_graph_internals_html"><div class="ttname"><a href="interface_p_f_1_1_i_graph_internals.html">PF.IGraphInternals</a></div><div class="ttdef"><b>Definition:</b> <a href="_nav_graph_8cs_source.html#l00011">NavGraph.cs:11</a></div></div>
+<div class="ttc" id="ainterface_p_f_1_1_i_graph_internals_html_a374d30090bd652d4481c3787a76fe28a"><div class="ttname"><a href="interface_p_f_1_1_i_graph_internals.html#a374d30090bd652d4481c3787a76fe28a">PF.IGraphInternals.SerializedEditorSettings</a></div><div class="ttdeci">string SerializedEditorSettings</div><div class="ttdef"><b>Definition:</b> <a href="_nav_graph_8cs_source.html#l00012">NavGraph.cs:12</a></div></div>
+<div class="ttc" id="ainterface_p_f_1_1_i_graph_internals_html_a4b5372d03949d898959f12b714a795a4"><div class="ttname"><a href="interface_p_f_1_1_i_graph_internals.html#a4b5372d03949d898959f12b714a795a4">PF.IGraphInternals.DeserializeExtraInfo</a></div><div class="ttdeci">void DeserializeExtraInfo(GraphSerializationContext ctx)</div></div>
+<div class="ttc" id="ainterface_p_f_1_1_i_graph_internals_html_a706356e0f44580341e1962734fa6deb9"><div class="ttname"><a href="interface_p_f_1_1_i_graph_internals.html#a706356e0f44580341e1962734fa6deb9">PF.IGraphInternals.DeserializeSettingsCompatibility</a></div><div class="ttdeci">void DeserializeSettingsCompatibility(GraphSerializationContext ctx)</div></div>
+<div class="ttc" id="ainterface_p_f_1_1_i_graph_internals_html_a9db8036dd8f0ce20a235381eb67f5394"><div class="ttname"><a href="interface_p_f_1_1_i_graph_internals.html#a9db8036dd8f0ce20a235381eb67f5394">PF.IGraphInternals.PostDeserialization</a></div><div class="ttdeci">void PostDeserialization(GraphSerializationContext ctx)</div></div>
+<div class="ttc" id="ainterface_p_f_1_1_i_graph_internals_html_ab4c8177ee880fba63d1fa1fb80240cf3"><div class="ttname"><a href="interface_p_f_1_1_i_graph_internals.html#ab4c8177ee880fba63d1fa1fb80240cf3">PF.IGraphInternals.SerializeExtraInfo</a></div><div class="ttdeci">void SerializeExtraInfo(GraphSerializationContext ctx)</div></div>
+<div class="ttc" id="ainterface_p_f_1_1_i_graph_internals_html_abc29d5a342e6461e5b800df243716429"><div class="ttname"><a href="interface_p_f_1_1_i_graph_internals.html#abc29d5a342e6461e5b800df243716429">PF.IGraphInternals.DestroyAllNodes</a></div><div class="ttdeci">void DestroyAllNodes()</div></div>
+<div class="ttc" id="ainterface_p_f_1_1_i_graph_internals_html_ae057e833d5f593765517a55f29c4a304"><div class="ttname"><a href="interface_p_f_1_1_i_graph_internals.html#ae057e833d5f593765517a55f29c4a304">PF.IGraphInternals.OnDestroy</a></div><div class="ttdeci">void OnDestroy()</div></div>
+<div class="ttc" id="anamespace_p_f_html"><div class="ttname"><a href="namespace_p_f.html">PF</a></div><div class="ttdef"><b>Definition:</b> <a href="_array_pool_8cs_source.html#l00009">ArrayPool.cs:9</a></div></div>
+<div class="ttc" id="anamespace_system_html"><div class="ttname"><a href="namespace_system.html">System</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_method_builder_attribute_8cs_source.html#l00001">AsyncMethodBuilderAttribute.cs:2</a></div></div>
+<div class="ttc" id="anamespace_unity_engine_html"><div class="ttname"><a href="namespace_unity_engine.html">UnityEngine</a></div><div class="ttdef"><b>Definition:</b> <a href="_mathf_8cs_source.html#l00003">Mathf.cs:4</a></div></div>
+<div class="ttc" id="astruct_p_f_1_1_guid_html"><div class="ttname"><a href="struct_p_f_1_1_guid.html">PF.Guid</a></div><div class="ttdef"><b>Definition:</b> <a href="_guid_8cs_source.html#l00005">Guid.cs:5</a></div></div>
+<div class="ttc" id="astruct_p_f_1_1_n_n_info_internal_html"><div class="ttname"><a href="struct_p_f_1_1_n_n_info_internal.html">PF.NNInfoInternal</a></div><div class="ttdef"><b>Definition:</b> <a href="_n_n_8cs_source.html#l00144">NN.cs:144</a></div></div>
+<div class="ttc" id="astruct_unity_engine_1_1_vector3_html"><div class="ttname"><a href="struct_unity_engine_1_1_vector3.html">UnityEngine.Vector3</a></div><div class="ttdef"><b>Definition:</b> <a href="_vector3_8cs_source.html#l00007">Vector3.cs:8</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_84bbf7b3c7f28a5a18725745e1505219.html">Assets</a></li><li class="navelem"><a class="el" href="dir_f13b41af88cf68434578284aaf699e39.html">Scripts</a></li><li class="navelem"><a class="el" href="dir_46d134a3bf82cf4dc49ca8f728aea58c.html">Libraries</a></li><li class="navelem"><a class="el" href="dir_f6df8f7e58ea5a2220a287b647108730.html">ET</a></li><li class="navelem"><a class="el" href="dir_83296929b1cb48979e134a96af9624b1.html">Module</a></li><li class="navelem"><a class="el" href="dir_7e04bdad0240fbb16a4f5f805ce44f49.html">Pathfinding</a></li><li class="navelem"><a class="el" href="dir_0d5e2d3313e129d955335235e3d8ffc0.html">Recast</a></li><li class="navelem"><a class="el" href="_nav_graph_8cs.html">NavGraph.cs</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:24:47 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

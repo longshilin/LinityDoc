@@ -1,0 +1,494 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: Assets/Scripts/Libraries/ET/Module/Pathfinding/Recast/Funnel.cs 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_funnel_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">Funnel.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_funnel_8cs.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Collections.Generic;</div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_unity_engine.html">UnityEngine</a>;</div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_p_f.html">PF</a> {</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="class_p_f_1_1_funnel.html">   10</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="class_p_f_1_1_funnel.html">Funnel</a> {</div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="struct_p_f_1_1_funnel_1_1_funnel_portals.html">   12</a></span>&#160;                <span class="keyword">public</span> <span class="keyword">struct </span><a class="code" href="struct_p_f_1_1_funnel_1_1_funnel_portals.html">FunnelPortals</a> {</div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="struct_p_f_1_1_funnel_1_1_funnel_portals.html#a50b75e0fccd9f99cd7040c276ea718c4">   13</a></span>&#160;                        <span class="keyword">public</span> List&lt;Vector3&gt; <a class="code" href="struct_p_f_1_1_funnel_1_1_funnel_portals.html#a50b75e0fccd9f99cd7040c276ea718c4">left</a>;</div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="struct_p_f_1_1_funnel_1_1_funnel_portals.html#a2f412a0e4d6dfa3278072060c2c51e1b">   14</a></span>&#160;                        <span class="keyword">public</span> List&lt;Vector3&gt; <a class="code" href="struct_p_f_1_1_funnel_1_1_funnel_portals.html#a2f412a0e4d6dfa3278072060c2c51e1b">right</a>;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;                }</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="struct_p_f_1_1_funnel_1_1_path_part.html">   22</a></span>&#160;                <span class="keyword">public</span> <span class="keyword">struct </span><a class="code" href="struct_p_f_1_1_funnel_1_1_path_part.html">PathPart</a> {</div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="struct_p_f_1_1_funnel_1_1_path_part.html#a67d71bb392a2c4a57049f8ea40e60d46">   24</a></span>&#160;                        <span class="keyword">public</span> <span class="keywordtype">int</span> <a class="code" href="struct_p_f_1_1_funnel_1_1_path_part.html#a67d71bb392a2c4a57049f8ea40e60d46">startIndex</a>;</div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="struct_p_f_1_1_funnel_1_1_path_part.html#ad8cc326becdef7f3b519e4cebacf77f3">   26</a></span>&#160;                        <span class="keyword">public</span> <span class="keywordtype">int</span> <a class="code" href="struct_p_f_1_1_funnel_1_1_path_part.html#ad8cc326becdef7f3b519e4cebacf77f3">endIndex</a>;</div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="struct_p_f_1_1_funnel_1_1_path_part.html#a2949810ba3e6da2d506bca6c2c2f1d4a">   27</a></span>&#160;                        <span class="keyword">public</span> <a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a> <a class="code" href="struct_p_f_1_1_funnel_1_1_path_part.html#aa5d6c76f25f6ce6a4d2eb2fa56a66a33">startPoint</a>, <a class="code" href="struct_p_f_1_1_funnel_1_1_path_part.html#a2949810ba3e6da2d506bca6c2c2f1d4a">endPoint</a>;</div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="struct_p_f_1_1_funnel_1_1_path_part.html#a4385b0013069857af2d520dd05479355">   28</a></span>&#160;                        <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code" href="struct_p_f_1_1_funnel_1_1_path_part.html#a4385b0013069857af2d520dd05479355">isLink</a>;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;                }</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="class_p_f_1_1_funnel.html#a65906834f52af36edea16a3c7e17660b">   31</a></span>&#160;                <span class="keyword">public</span> <span class="keyword">static</span> List&lt;PathPart&gt; <a class="code" href="class_p_f_1_1_funnel.html#a65906834f52af36edea16a3c7e17660b">SplitIntoParts</a> (<a class="code" href="class_p_f_1_1_path.html">Path</a> path) {</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;                        var nodes = path.<a class="code" href="class_p_f_1_1_path.html#af5cbb9ffba21181f539d94c465f39b43">path</a>;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;                        var result = ListPool&lt;PathPart&gt;.Claim();</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;                        <span class="keywordflow">if</span> (nodes == <span class="keyword">null</span> || nodes.Count == 0) {</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;                                <span class="keywordflow">return</span> result;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;                        }</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                        <span class="comment">// Loop through the path and split it into</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;                        <span class="comment">// parts joined by links</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; nodes.Count; i++) {</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;                                <span class="keywordflow">if</span> (nodes[i] is <a class="code" href="class_p_f_1_1_triangle_mesh_node.html">TriangleMeshNode</a>) {</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                                        var part = <span class="keyword">new</span> <a class="code" href="struct_p_f_1_1_funnel_1_1_path_part.html">PathPart</a>();</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                                        part.startIndex = i;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                                        uint currentGraphIndex = nodes[i].GraphIndex;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                                        <span class="comment">// Loop up until we find a node in another graph</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                                        <span class="comment">// Ignore NodeLink3 nodes</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                                        <span class="keywordflow">for</span> (; i &lt; nodes.Count; i++) {</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                                                <span class="keywordflow">if</span> (nodes[i].GraphIndex != currentGraphIndex) {</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                                                        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                                                }</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                                        }</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                                        i--;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                                        part.endIndex = i;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                                        <span class="comment">// If this is the first part in the path, use the exact start point</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                                        <span class="comment">// otherwise use the position of the node right before the start of this</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                                        <span class="comment">// part which is likely the end of the link to this part</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                                        <span class="keywordflow">if</span> (part.startIndex == 0) {</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                                                part.startPoint = path.<a class="code" href="class_p_f_1_1_path.html#aaebf4b3927b0b5f972f728ad4ce57831">vectorPath</a>[0];</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                                        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                                                part.startPoint = (<a class="code" href="_recast_graph_editor_8cs.html#af3326292fdd04d2b384b6d781d9594f6">Vector3</a>)nodes[part.startIndex-1].position;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                                        }</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                                        <span class="keywordflow">if</span> (part.endIndex == nodes.Count-1) {</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                                                part.endPoint = path.<a class="code" href="class_p_f_1_1_path.html#aaebf4b3927b0b5f972f728ad4ce57831">vectorPath</a>[path.<a class="code" href="class_p_f_1_1_path.html#aaebf4b3927b0b5f972f728ad4ce57831">vectorPath</a>.Count-1];</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                                        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                                                part.endPoint = (<a class="code" href="_recast_graph_editor_8cs.html#af3326292fdd04d2b384b6d781d9594f6">Vector3</a>)nodes[part.endIndex+1].position;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                                        }</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                                        result.Add(part);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                                } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                                        <span class="keywordflow">throw</span> <span class="keyword">new</span> <a class="code" href="namespace_system.html">System</a>.Exception(<span class="stringliteral">&quot;Unsupported node type or null node&quot;</span>);</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                                }</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                        }</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                        <span class="keywordflow">return</span> result;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                }</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+<div class="line"><a name="l00083"></a><span class="lineno"><a class="line" href="class_p_f_1_1_funnel.html#a22e3837f201aac3cab63dcae4f634da8">   83</a></span>&#160;                <span class="keyword">public</span> <span class="keyword">static</span> <a class="code" href="struct_p_f_1_1_funnel_1_1_funnel_portals.html">FunnelPortals</a> <a class="code" href="class_p_f_1_1_funnel.html#a22e3837f201aac3cab63dcae4f634da8">ConstructFunnelPortals</a> (List&lt;GraphNode&gt; nodes, <a class="code" href="struct_p_f_1_1_funnel_1_1_path_part.html">PathPart</a> part) {</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                        <span class="keywordflow">if</span> (nodes == <span class="keyword">null</span> || nodes.Count == 0) {</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                                <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="struct_p_f_1_1_funnel_1_1_funnel_portals.html">FunnelPortals</a> { left = ListPool&lt;Vector3&gt;.Claim(0), right = ListPool&lt;Vector3&gt;.Claim(0) };</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                        }</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                        <span class="keywordflow">if</span> (part.<a class="code" href="struct_p_f_1_1_funnel_1_1_path_part.html#ad8cc326becdef7f3b519e4cebacf77f3">endIndex</a> &lt; part.<a class="code" href="struct_p_f_1_1_funnel_1_1_path_part.html#a67d71bb392a2c4a57049f8ea40e60d46">startIndex</a> || part.<a class="code" href="struct_p_f_1_1_funnel_1_1_path_part.html#a67d71bb392a2c4a57049f8ea40e60d46">startIndex</a> &lt; 0 || part.<a class="code" href="struct_p_f_1_1_funnel_1_1_path_part.html#ad8cc326becdef7f3b519e4cebacf77f3">endIndex</a> &gt; nodes.Count) <span class="keywordflow">throw</span> <span class="keyword">new</span> <a class="code" href="namespace_system.html">System</a>.ArgumentOutOfRangeException();</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                        <span class="comment">// Claim temporary lists and try to find lists with a high capacity</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                        var left = ListPool&lt;Vector3&gt;.Claim(nodes.Count+1);</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                        var right = ListPool&lt;Vector3&gt;.Claim(nodes.Count+1);</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                        <span class="comment">// Add start point</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                        left.Add(part.<a class="code" href="struct_p_f_1_1_funnel_1_1_path_part.html#aa5d6c76f25f6ce6a4d2eb2fa56a66a33">startPoint</a>);</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                        right.Add(part.<a class="code" href="struct_p_f_1_1_funnel_1_1_path_part.html#aa5d6c76f25f6ce6a4d2eb2fa56a66a33">startPoint</a>);</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                        <span class="comment">// Loop through all nodes in the path (except the last one)</span></div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = part.<a class="code" href="struct_p_f_1_1_funnel_1_1_path_part.html#a67d71bb392a2c4a57049f8ea40e60d46">startIndex</a>; i &lt; part.<a class="code" href="struct_p_f_1_1_funnel_1_1_path_part.html#ad8cc326becdef7f3b519e4cebacf77f3">endIndex</a>; i++) {</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;                                <span class="comment">// Get the portal between path[i] and path[i+1] and add it to the left and right lists</span></div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;                                <span class="keywordtype">bool</span> portalWasAdded = nodes[i].GetPortal(nodes[i+1], left, right, <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;                                <span class="keywordflow">if</span> (!portalWasAdded) {</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;                                        <span class="comment">// Fallback, just use the positions of the nodes</span></div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;                                        left.Add((<a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a>)nodes[i].position);</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;                                        right.Add((<a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a>)nodes[i].position);</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160; </div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;                                        left.Add((<a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a>)nodes[i+1].position);</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;                                        right.Add((<a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a>)nodes[i+1].position);</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;                                }</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;                        }</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160; </div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;                        <span class="comment">// Add end point</span></div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;                        left.Add(part.<a class="code" href="struct_p_f_1_1_funnel_1_1_path_part.html#a2949810ba3e6da2d506bca6c2c2f1d4a">endPoint</a>);</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;                        right.Add(part.<a class="code" href="struct_p_f_1_1_funnel_1_1_path_part.html#a2949810ba3e6da2d506bca6c2c2f1d4a">endPoint</a>);</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160; </div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;                        <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="struct_p_f_1_1_funnel_1_1_funnel_portals.html">FunnelPortals</a> { left = left, right = right };</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;                }</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160; </div>
+<div class="line"><a name="l00120"></a><span class="lineno"><a class="line" href="class_p_f_1_1_funnel.html#a10e5ad1d96afdfc03a985d3d414b5a62">  120</a></span>&#160;                <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_p_f_1_1_funnel.html#a10e5ad1d96afdfc03a985d3d414b5a62">ShrinkPortals</a> (<a class="code" href="struct_p_f_1_1_funnel_1_1_funnel_portals.html">FunnelPortals</a> portals, <span class="keywordtype">float</span> shrink) {</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;                        <span class="keywordflow">if</span> (shrink &lt;= 0.00001f) <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160; </div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;                        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; portals.<a class="code" href="struct_p_f_1_1_funnel_1_1_funnel_portals.html#a50b75e0fccd9f99cd7040c276ea718c4">left</a>.Count; i++) {</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;                                var left = portals.<a class="code" href="struct_p_f_1_1_funnel_1_1_funnel_portals.html#a50b75e0fccd9f99cd7040c276ea718c4">left</a>[i];</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;                                var right = portals.<a class="code" href="struct_p_f_1_1_funnel_1_1_funnel_portals.html#a2f412a0e4d6dfa3278072060c2c51e1b">right</a>[i];</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160; </div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;                                var length = (left - right).magnitude;</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;                                <span class="keywordflow">if</span> (length &gt; 0) {</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;                                        <span class="keywordtype">float</span> s = <a class="code" href="_astar_path_editor_8cs.html#a056b29af8a3de2eeb5a1cab758c4ba93">Mathf</a>.Min(shrink / length, 0.4f);</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;                                        portals.<a class="code" href="struct_p_f_1_1_funnel_1_1_funnel_portals.html#a50b75e0fccd9f99cd7040c276ea718c4">left</a>[i] = <a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a>.<a class="code" href="struct_unity_engine_1_1_vector3.html#af0cef972f3f22b91a25dcfc0be3acf33">Lerp</a>(left, right, s);</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;                                        portals.<a class="code" href="struct_p_f_1_1_funnel_1_1_funnel_portals.html#a2f412a0e4d6dfa3278072060c2c51e1b">right</a>[i] = <a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a>.<a class="code" href="struct_unity_engine_1_1_vector3.html#af0cef972f3f22b91a25dcfc0be3acf33">Lerp</a>(left, right, 1 - s);</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;                                }</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;                        }</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;                }</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160; </div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;                <span class="keyword">static</span> <span class="keywordtype">bool</span> UnwrapHelper (<a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a> portalStart, <a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a> portalEnd, <a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a> prevPoint, <a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a> nextPoint, ref <a class="code" href="struct_unity_engine_1_1_quaternion.html">Quaternion</a> mRot, ref <a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a> mOffset) {</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;                        <span class="comment">// Skip the point if it was on the rotation axis</span></div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;                        <span class="keywordflow">if</span> (VectorMath.IsColinear(portalStart, portalEnd, nextPoint)) {</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;                                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;                        }</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160; </div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;                        var axis = portalEnd - portalStart;</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;                        var sqrMagn = axis.<a class="code" href="struct_unity_engine_1_1_vector3.html#a533a46a32da8f3330173d884fcac5309">sqrMagnitude</a>;</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;                        prevPoint -= <a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a>.<a class="code" href="struct_unity_engine_1_1_vector3.html#a0e469b8901996e29ba121a0bd463c4b2">Dot</a>(prevPoint - portalStart, axis)/sqrMagn * axis;</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;                        nextPoint -= <a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a>.<a class="code" href="struct_unity_engine_1_1_vector3.html#a0e469b8901996e29ba121a0bd463c4b2">Dot</a>(nextPoint - portalStart, axis)/sqrMagn * axis;</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;                        var rot = <a class="code" href="struct_unity_engine_1_1_quaternion.html">Quaternion</a>.<a class="code" href="struct_unity_engine_1_1_quaternion.html#a29260ba6d7be1d7390cc857df2e11b3a">FromToRotation</a>(nextPoint - portalStart, portalStart - prevPoint);</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160; </div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;                        <span class="comment">// The code below is equivalent to these matrix operations (but a lot faster)</span></div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;                        <span class="comment">// This represents a rotation around a line in 3D space</span></div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;                        <span class="comment">//mat = mat * Matrix4x4.TRS(portalStart, rot, Vector3.one) * Matrix4x4.TRS(-portalStart, Quaternion.identity, Vector3.one);</span></div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;                        mOffset += mRot * (portalStart - rot * portalStart);</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;                        mRot *= rot;</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160; </div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;                        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;                }</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160; </div>
+<div class="line"><a name="l00167"></a><span class="lineno"><a class="line" href="class_p_f_1_1_funnel.html#a789915467f36e8914bad2d7fb8948bf4">  167</a></span>&#160;                <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_p_f_1_1_funnel.html#a789915467f36e8914bad2d7fb8948bf4">Unwrap</a> (<a class="code" href="struct_p_f_1_1_funnel_1_1_funnel_portals.html">FunnelPortals</a> funnel, <a class="code" href="struct_unity_engine_1_1_vector2.html">Vector2</a>[] left, <a class="code" href="struct_unity_engine_1_1_vector2.html">Vector2</a>[] right) {</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;                        <span class="keywordtype">int</span> startingIndex = 1;</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;                        var normal = <a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a>.<a class="code" href="struct_unity_engine_1_1_vector3.html#a505e04777a5cb2edb3f8f727177d9a5d">Cross</a>(funnel.<a class="code" href="struct_p_f_1_1_funnel_1_1_funnel_portals.html#a2f412a0e4d6dfa3278072060c2c51e1b">right</a>[1] - funnel.<a class="code" href="struct_p_f_1_1_funnel_1_1_funnel_portals.html#a50b75e0fccd9f99cd7040c276ea718c4">left</a>[0], funnel.<a class="code" href="struct_p_f_1_1_funnel_1_1_funnel_portals.html#a50b75e0fccd9f99cd7040c276ea718c4">left</a>[1] - funnel.<a class="code" href="struct_p_f_1_1_funnel_1_1_funnel_portals.html#a50b75e0fccd9f99cd7040c276ea718c4">left</a>[0]);</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160; </div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;                        <span class="comment">// This handles the case when the starting point is colinear with the first portal.</span></div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;                        <span class="comment">// Note that left.Length is only guaranteed to be at least as large as funnel.left.Count, it may be larger.</span></div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;                        <span class="keywordflow">while</span> (normal.sqrMagnitude &lt;= 0.00000001f &amp;&amp; startingIndex + 1 &lt; funnel.<a class="code" href="struct_p_f_1_1_funnel_1_1_funnel_portals.html#a50b75e0fccd9f99cd7040c276ea718c4">left</a>.Count) {</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;                                startingIndex++;</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;                                normal = <a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a>.<a class="code" href="struct_unity_engine_1_1_vector3.html#a505e04777a5cb2edb3f8f727177d9a5d">Cross</a>(funnel.<a class="code" href="struct_p_f_1_1_funnel_1_1_funnel_portals.html#a2f412a0e4d6dfa3278072060c2c51e1b">right</a>[startingIndex] - funnel.<a class="code" href="struct_p_f_1_1_funnel_1_1_funnel_portals.html#a50b75e0fccd9f99cd7040c276ea718c4">left</a>[0], funnel.<a class="code" href="struct_p_f_1_1_funnel_1_1_funnel_portals.html#a50b75e0fccd9f99cd7040c276ea718c4">left</a>[startingIndex] - funnel.<a class="code" href="struct_p_f_1_1_funnel_1_1_funnel_portals.html#a50b75e0fccd9f99cd7040c276ea718c4">left</a>[0]);</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;                        }</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160; </div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;                        left[0] = right[0] = <a class="code" href="struct_unity_engine_1_1_vector2.html">Vector2</a>.<a class="code" href="struct_unity_engine_1_1_vector2.html#a8e40a869d5a33f669922ef6d33832023">zero</a>;</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160; </div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;                        var portalLeft = funnel.<a class="code" href="struct_p_f_1_1_funnel_1_1_funnel_portals.html#a50b75e0fccd9f99cd7040c276ea718c4">left</a>[1];</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;                        var portalRight = funnel.<a class="code" href="struct_p_f_1_1_funnel_1_1_funnel_portals.html#a2f412a0e4d6dfa3278072060c2c51e1b">right</a>[1];</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;                        var prevPoint = funnel.<a class="code" href="struct_p_f_1_1_funnel_1_1_funnel_portals.html#a50b75e0fccd9f99cd7040c276ea718c4">left</a>[0];</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160; </div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;                        <span class="comment">// The code below is equivalent to this matrix (but a lot faster)</span></div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;                        <span class="comment">// This represents a rotation around a line in 3D space</span></div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;                        <span class="comment">// Matrix4x4 m = Matrix4x4.TRS(Vector3.zero, Quaternion.FromToRotation(normal, Vector3.forward), Vector3.one) * Matrix4x4.TRS(-funnel.right[0], Quaternion.identity, Vector3.one);</span></div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;                        <a class="code" href="struct_unity_engine_1_1_quaternion.html">Quaternion</a> mRot = <a class="code" href="struct_unity_engine_1_1_quaternion.html">Quaternion</a>.<a class="code" href="struct_unity_engine_1_1_quaternion.html#a29260ba6d7be1d7390cc857df2e11b3a">FromToRotation</a>(normal, <a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a>.<a class="code" href="struct_unity_engine_1_1_vector3.html#acd01c55d3ff3bf00dfa650374f803907">forward</a>);</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;                        <a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a> mOffset = mRot * (-funnel.<a class="code" href="struct_p_f_1_1_funnel_1_1_funnel_portals.html#a2f412a0e4d6dfa3278072060c2c51e1b">right</a>[0]);</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160; </div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;                        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 1; i &lt; funnel.<a class="code" href="struct_p_f_1_1_funnel_1_1_funnel_portals.html#a50b75e0fccd9f99cd7040c276ea718c4">left</a>.Count; i++) {</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;                                <span class="keywordflow">if</span> (UnwrapHelper(portalLeft, portalRight, prevPoint, funnel.<a class="code" href="struct_p_f_1_1_funnel_1_1_funnel_portals.html#a50b75e0fccd9f99cd7040c276ea718c4">left</a>[i], ref mRot, ref mOffset)) {</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;                                        prevPoint = portalLeft;</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;                                        portalLeft = funnel.<a class="code" href="struct_p_f_1_1_funnel_1_1_funnel_portals.html#a50b75e0fccd9f99cd7040c276ea718c4">left</a>[i];</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;                                }</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160; </div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;                                left[i] = (mRot * funnel.<a class="code" href="struct_p_f_1_1_funnel_1_1_funnel_portals.html#a50b75e0fccd9f99cd7040c276ea718c4">left</a>[i] + mOffset);</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160; </div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;                                <span class="keywordflow">if</span> (UnwrapHelper(portalLeft, portalRight, prevPoint, funnel.<a class="code" href="struct_p_f_1_1_funnel_1_1_funnel_portals.html#a2f412a0e4d6dfa3278072060c2c51e1b">right</a>[i], ref mRot, ref mOffset)) {</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;                                        prevPoint = portalRight;</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;                                        portalRight = funnel.<a class="code" href="struct_p_f_1_1_funnel_1_1_funnel_portals.html#a2f412a0e4d6dfa3278072060c2c51e1b">right</a>[i];</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;                                }</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160; </div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;                                right[i] = (mRot * funnel.<a class="code" href="struct_p_f_1_1_funnel_1_1_funnel_portals.html#a2f412a0e4d6dfa3278072060c2c51e1b">right</a>[i] + mOffset);</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;                        }</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;                }</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160; </div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;                <span class="keyword">static</span> <span class="keywordtype">int</span> FixFunnel (<a class="code" href="struct_unity_engine_1_1_vector2.html">Vector2</a>[] left, <a class="code" href="struct_unity_engine_1_1_vector2.html">Vector2</a>[] right, <span class="keywordtype">int</span> numPortals) {</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;                        <span class="keywordflow">if</span> (numPortals &gt; left.<a class="code" href="struct_unity_engine_1_1_vector2.html#ace368df118cc0419089498a1c8f06e99">Length</a> || numPortals &gt; right.<a class="code" href="struct_unity_engine_1_1_vector2.html#ace368df118cc0419089498a1c8f06e99">Length</a>) <span class="keywordflow">throw</span> <span class="keyword">new</span> <a class="code" href="namespace_system.html">System</a>.ArgumentException(<span class="stringliteral">&quot;Arrays do not have as many elements as specified&quot;</span>);</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160; </div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;                        <span class="keywordflow">if</span> (numPortals &lt; 3) {</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;                                <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;                        }</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160; </div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;                        <span class="comment">// Remove duplicate vertices</span></div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;                        <span class="keywordtype">int</span> startIndex = 0;</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;                        <span class="keywordflow">while</span> (left[startIndex + 1] == left[startIndex + 2] &amp;&amp; right[startIndex + 1] == right[startIndex + 2]) {</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;                                <span class="comment">// Equivalent to RemoveAt(1) if they would have been lists</span></div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;                                left[startIndex + 1] = left[startIndex + 0];</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;                                right[startIndex + 1] = right[startIndex + 0];</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;                                startIndex++;</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160; </div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;                                <span class="keywordflow">if</span> (numPortals - startIndex &lt; 3) {</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;                                        <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;                                }</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;                        }</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160; </div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;                        <span class="keywordflow">return</span> startIndex;</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;                }</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160; </div>
+<div class="line"><a name="l00233"></a><span class="lineno"><a class="line" href="class_p_f_1_1_funnel.html#a3b5bc7c7a90529cbb0fd66c8cfd9b0ad">  233</a></span>&#160;                <span class="keyword">protected</span> <span class="keyword">static</span> <a class="code" href="struct_unity_engine_1_1_vector2.html">Vector2</a> <a class="code" href="class_p_f_1_1_funnel.html#a3b5bc7c7a90529cbb0fd66c8cfd9b0ad">ToXZ</a> (<a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a> p) {</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;                        <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="_a_i_base_8cs.html#a06bbba33a1577dca9bc9091421acf931">Vector2</a>(p.<a class="code" href="struct_unity_engine_1_1_vector3.html#ad4d9171899b7fceadc63c4d04da5734d">x</a>, p.<a class="code" href="struct_unity_engine_1_1_vector3.html#a8ea2682142b822ddcab52c868796fd3e">z</a>);</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;                }</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160; </div>
+<div class="line"><a name="l00237"></a><span class="lineno"><a class="line" href="class_p_f_1_1_funnel.html#a40d4b5c2c04808315ffc873d8c9626b8">  237</a></span>&#160;                <span class="keyword">protected</span> <span class="keyword">static</span> <a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a> <a class="code" href="class_p_f_1_1_funnel.html#a40d4b5c2c04808315ffc873d8c9626b8">FromXZ</a> (<a class="code" href="struct_unity_engine_1_1_vector2.html">Vector2</a> p) {</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;                        <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="_recast_graph_editor_8cs.html#af3326292fdd04d2b384b6d781d9594f6">Vector3</a>(p.<a class="code" href="struct_unity_engine_1_1_vector2.html#ac74191c1f776537ad229d1ccf3a67925">x</a>, 0, p.<a class="code" href="struct_unity_engine_1_1_vector2.html#afbb5b98e5727ffba74402fc27a58443a">y</a>);</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;                }</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160; </div>
+<div class="line"><a name="l00242"></a><span class="lineno"><a class="line" href="class_p_f_1_1_funnel.html#a3c38baf416de956eb714e5d75bdecec7">  242</a></span>&#160;                <span class="keyword">protected</span> <span class="keyword">static</span> <span class="keywordtype">bool</span> <a class="code" href="class_p_f_1_1_funnel.html#a3c38baf416de956eb714e5d75bdecec7">RightOrColinear</a> (<a class="code" href="struct_unity_engine_1_1_vector2.html">Vector2</a> a, <a class="code" href="struct_unity_engine_1_1_vector2.html">Vector2</a> b) {</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;                        <span class="keywordflow">return</span> (a.<a class="code" href="struct_unity_engine_1_1_vector2.html#ac74191c1f776537ad229d1ccf3a67925">x</a>*b.<a class="code" href="struct_unity_engine_1_1_vector2.html#afbb5b98e5727ffba74402fc27a58443a">y</a> - b.<a class="code" href="struct_unity_engine_1_1_vector2.html#ac74191c1f776537ad229d1ccf3a67925">x</a>*a.<a class="code" href="struct_unity_engine_1_1_vector2.html#afbb5b98e5727ffba74402fc27a58443a">y</a>) &lt;= 0;</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;                }</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160; </div>
+<div class="line"><a name="l00247"></a><span class="lineno"><a class="line" href="class_p_f_1_1_funnel.html#af60beab256f3c8739096cae8820ed298">  247</a></span>&#160;                <span class="keyword">protected</span> <span class="keyword">static</span> <span class="keywordtype">bool</span> <a class="code" href="class_p_f_1_1_funnel.html#af60beab256f3c8739096cae8820ed298">LeftOrColinear</a> (<a class="code" href="struct_unity_engine_1_1_vector2.html">Vector2</a> a, <a class="code" href="struct_unity_engine_1_1_vector2.html">Vector2</a> b) {</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;                        <span class="keywordflow">return</span> (a.<a class="code" href="struct_unity_engine_1_1_vector2.html#ac74191c1f776537ad229d1ccf3a67925">x</a>*b.<a class="code" href="struct_unity_engine_1_1_vector2.html#afbb5b98e5727ffba74402fc27a58443a">y</a> - b.<a class="code" href="struct_unity_engine_1_1_vector2.html#ac74191c1f776537ad229d1ccf3a67925">x</a>*a.<a class="code" href="struct_unity_engine_1_1_vector2.html#afbb5b98e5727ffba74402fc27a58443a">y</a>) &gt;= 0;</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;                }</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160; </div>
+<div class="line"><a name="l00268"></a><span class="lineno"><a class="line" href="class_p_f_1_1_funnel.html#a0f1bc3113c01bd1ac621fe8039b90cea">  268</a></span>&#160;                <span class="keyword">public</span> <span class="keyword">static</span> List&lt;Vector3&gt; <a class="code" href="class_p_f_1_1_funnel.html#a0f1bc3113c01bd1ac621fe8039b90cea">Calculate</a> (<a class="code" href="struct_p_f_1_1_funnel_1_1_funnel_portals.html">FunnelPortals</a> funnel, <span class="keywordtype">bool</span> unwrap, <span class="keywordtype">bool</span> splitAtEveryPortal) {</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;                        <span class="keywordflow">if</span> (funnel.<a class="code" href="struct_p_f_1_1_funnel_1_1_funnel_portals.html#a50b75e0fccd9f99cd7040c276ea718c4">left</a>.Count != funnel.<a class="code" href="struct_p_f_1_1_funnel_1_1_funnel_portals.html#a2f412a0e4d6dfa3278072060c2c51e1b">right</a>.Count) <span class="keywordflow">throw</span> <span class="keyword">new</span> <a class="code" href="namespace_system.html">System</a>.ArgumentException(<span class="stringliteral">&quot;funnel.left.Count != funnel.right.Count&quot;</span>);</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160; </div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;                        <span class="comment">// Get arrays at least as large as the number of portals</span></div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;                        var leftArr = ArrayPool&lt;Vector2&gt;.Claim(funnel.<a class="code" href="struct_p_f_1_1_funnel_1_1_funnel_portals.html#a50b75e0fccd9f99cd7040c276ea718c4">left</a>.Count);</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;                        var rightArr = ArrayPool&lt;Vector2&gt;.Claim(funnel.<a class="code" href="struct_p_f_1_1_funnel_1_1_funnel_portals.html#a50b75e0fccd9f99cd7040c276ea718c4">left</a>.Count);</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160; </div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;                        <span class="keywordflow">if</span> (unwrap) {</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;                                <a class="code" href="class_p_f_1_1_funnel.html#a789915467f36e8914bad2d7fb8948bf4">Unwrap</a>(funnel, leftArr, rightArr);</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;                        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;                                <span class="comment">// Copy to arrays</span></div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;                                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; funnel.<a class="code" href="struct_p_f_1_1_funnel_1_1_funnel_portals.html#a50b75e0fccd9f99cd7040c276ea718c4">left</a>.Count; i++) {</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;                                        leftArr[i] = <a class="code" href="class_p_f_1_1_funnel.html#a3b5bc7c7a90529cbb0fd66c8cfd9b0ad">ToXZ</a>(funnel.<a class="code" href="struct_p_f_1_1_funnel_1_1_funnel_portals.html#a50b75e0fccd9f99cd7040c276ea718c4">left</a>[i]);</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;                                        rightArr[i] = <a class="code" href="class_p_f_1_1_funnel.html#a3b5bc7c7a90529cbb0fd66c8cfd9b0ad">ToXZ</a>(funnel.<a class="code" href="struct_p_f_1_1_funnel_1_1_funnel_portals.html#a2f412a0e4d6dfa3278072060c2c51e1b">right</a>[i]);</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;                                }</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;                        }</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160; </div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;                        <span class="keywordtype">int</span> startIndex = FixFunnel(leftArr, rightArr, funnel.<a class="code" href="struct_p_f_1_1_funnel_1_1_funnel_portals.html#a50b75e0fccd9f99cd7040c276ea718c4">left</a>.Count);</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;                        var intermediateResult = ListPool&lt;int&gt;.Claim();</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;                        <span class="keywordflow">if</span> (startIndex == -1) {</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;                                <span class="comment">// If funnel algorithm failed, fall back to a simple line</span></div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;                                intermediateResult.Add(0);</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;                                intermediateResult.Add(funnel.<a class="code" href="struct_p_f_1_1_funnel_1_1_funnel_portals.html#a50b75e0fccd9f99cd7040c276ea718c4">left</a>.Count - 1);</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;                        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;                                <span class="keywordtype">bool</span> lastCorner;</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;                                <a class="code" href="class_p_f_1_1_funnel.html#a0f1bc3113c01bd1ac621fe8039b90cea">Calculate</a>(leftArr, rightArr, funnel.<a class="code" href="struct_p_f_1_1_funnel_1_1_funnel_portals.html#a50b75e0fccd9f99cd7040c276ea718c4">left</a>.Count, startIndex, intermediateResult, <span class="keywordtype">int</span>.MaxValue, out lastCorner);</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;                        }</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160; </div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;                        <span class="comment">// Get list for the final result</span></div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;                        var result = ListPool&lt;Vector3&gt;.Claim(intermediateResult.Count);</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160; </div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;                        <a class="code" href="struct_unity_engine_1_1_vector2.html">Vector2</a> prev2D = leftArr[0];</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;                        var prevIdx = 0;</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;                        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; intermediateResult.Count; i++) {</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;                                var idx = intermediateResult[i];</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160; </div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;                                <span class="keywordflow">if</span> (splitAtEveryPortal) {</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;                                        <span class="comment">// Check intersections with every portal segment</span></div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;                                        var next2D = idx &gt;= 0 ? leftArr[idx] : rightArr[-idx];</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;                                        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j = prevIdx + 1; j &lt; <a class="code" href="namespace_system.html">System</a>.Math.Abs(idx); j++) {</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;                                                var factor = VectorMath.LineIntersectionFactorXZ(<a class="code" href="class_p_f_1_1_funnel.html#a40d4b5c2c04808315ffc873d8c9626b8">FromXZ</a>(leftArr[j]), <a class="code" href="class_p_f_1_1_funnel.html#a40d4b5c2c04808315ffc873d8c9626b8">FromXZ</a>(rightArr[j]), <a class="code" href="class_p_f_1_1_funnel.html#a40d4b5c2c04808315ffc873d8c9626b8">FromXZ</a>(prev2D), <a class="code" href="class_p_f_1_1_funnel.html#a40d4b5c2c04808315ffc873d8c9626b8">FromXZ</a>(next2D));</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;                                                result.<a class="code" href="struct_unity_engine_1_1_vector2.html#a80286547aa9379881890c0c95aba2c4c">Add</a>(<a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a>.<a class="code" href="struct_unity_engine_1_1_vector3.html#af0cef972f3f22b91a25dcfc0be3acf33">Lerp</a>(funnel.<a class="code" href="struct_p_f_1_1_funnel_1_1_funnel_portals.html#a50b75e0fccd9f99cd7040c276ea718c4">left</a>[j], funnel.<a class="code" href="struct_p_f_1_1_funnel_1_1_funnel_portals.html#a2f412a0e4d6dfa3278072060c2c51e1b">right</a>[j], factor));</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;                                        }</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160; </div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;                                        prevIdx = <a class="code" href="_astar_path_editor_8cs.html#a056b29af8a3de2eeb5a1cab758c4ba93">Mathf</a>.Abs(idx);</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;                                        prev2D = next2D;</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;                                }</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160; </div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;                                <span class="keywordflow">if</span> (idx &gt;= 0) {</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;                                        result.<a class="code" href="struct_unity_engine_1_1_vector2.html#a80286547aa9379881890c0c95aba2c4c">Add</a>(funnel.<a class="code" href="struct_p_f_1_1_funnel_1_1_funnel_portals.html#a50b75e0fccd9f99cd7040c276ea718c4">left</a>[idx]);</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;                                } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;                                        result.<a class="code" href="struct_unity_engine_1_1_vector2.html#a80286547aa9379881890c0c95aba2c4c">Add</a>(funnel.<a class="code" href="struct_p_f_1_1_funnel_1_1_funnel_portals.html#a2f412a0e4d6dfa3278072060c2c51e1b">right</a>[-idx]);</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;                                }</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;                        }</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160; </div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;                        <span class="comment">// Release lists back to the pool</span></div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;                        ListPool&lt;int&gt;.Release(ref intermediateResult);</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;                        ArrayPool&lt;Vector2&gt;.Release(ref leftArr);</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;                        ArrayPool&lt;Vector2&gt;.Release(ref rightArr);</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;                        <span class="keywordflow">return</span> result;</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;                }</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160; </div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;                <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_p_f_1_1_funnel.html#a0f1bc3113c01bd1ac621fe8039b90cea">Calculate</a> (<a class="code" href="struct_unity_engine_1_1_vector2.html">Vector2</a>[] left, <a class="code" href="struct_unity_engine_1_1_vector2.html">Vector2</a>[] right, <span class="keywordtype">int</span> numPortals, <span class="keywordtype">int</span> startIndex, List&lt;int&gt; funnelPath, <span class="keywordtype">int</span> maxCorners, out <span class="keywordtype">bool</span> lastCorner) {</div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;                        <span class="keywordflow">if</span> (left.<a class="code" href="struct_unity_engine_1_1_vector2.html#ace368df118cc0419089498a1c8f06e99">Length</a> != right.<a class="code" href="struct_unity_engine_1_1_vector2.html#ace368df118cc0419089498a1c8f06e99">Length</a>) <span class="keywordflow">throw</span> <span class="keyword">new</span> <a class="code" href="namespace_system.html">System</a>.ArgumentException();</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160; </div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;                        lastCorner = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160; </div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;                        <span class="keywordtype">int</span> apexIndex = startIndex + 0;</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;                        <span class="keywordtype">int</span> rightIndex = startIndex + 1;</div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;                        <span class="keywordtype">int</span> leftIndex = startIndex + 1;</div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160; </div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;                        <a class="code" href="struct_unity_engine_1_1_vector2.html">Vector2</a> portalApex = left[apexIndex];</div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;                        <a class="code" href="struct_unity_engine_1_1_vector2.html">Vector2</a> portalLeft = left[leftIndex];</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;                        <a class="code" href="struct_unity_engine_1_1_vector2.html">Vector2</a> portalRight = right[rightIndex];</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160; </div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;                        funnelPath.<a class="code" href="struct_unity_engine_1_1_vector2.html#a80286547aa9379881890c0c95aba2c4c">Add</a>(apexIndex);</div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160; </div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;                        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = startIndex + 2; i &lt; numPortals; i++) {</div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;                                <span class="keywordflow">if</span> (funnelPath.Count &gt;= maxCorners) {</div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;                                        <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;                                }</div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160; </div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;                                <span class="keywordflow">if</span> (funnelPath.Count &gt; 2000) {</div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;<span class="preprocessor">#if !SERVER</span></div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;                                        <a class="code" href="namespace_unity_engine.html">UnityEngine</a>.Debug.LogWarning(<span class="stringliteral">&quot;Avoiding infinite loop. Remove this check if you have this long paths.&quot;</span>);</div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;                                        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;                                }</div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160; </div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;                                <a class="code" href="struct_unity_engine_1_1_vector2.html">Vector2</a> pLeft = left[i];</div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;                                <a class="code" href="struct_unity_engine_1_1_vector2.html">Vector2</a> pRight = right[i];</div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160; </div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;                                <span class="keywordflow">if</span> (<a class="code" href="class_p_f_1_1_funnel.html#af60beab256f3c8739096cae8820ed298">LeftOrColinear</a>(portalRight - portalApex, pRight - portalApex)) {</div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;                                        <span class="keywordflow">if</span> (portalApex == portalRight || <a class="code" href="class_p_f_1_1_funnel.html#a3c38baf416de956eb714e5d75bdecec7">RightOrColinear</a>(portalLeft - portalApex, pRight - portalApex)) {</div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;                                                portalRight = pRight;</div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;                                                rightIndex = i;</div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;                                        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;                                                portalApex = portalRight = portalLeft;</div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;                                                i = apexIndex = rightIndex = leftIndex;</div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160; </div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;                                                funnelPath.<a class="code" href="struct_unity_engine_1_1_vector2.html#a80286547aa9379881890c0c95aba2c4c">Add</a>(apexIndex);</div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;                                                <span class="keywordflow">continue</span>;</div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;                                        }</div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;                                }</div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160; </div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;                                <span class="keywordflow">if</span> (<a class="code" href="class_p_f_1_1_funnel.html#a3c38baf416de956eb714e5d75bdecec7">RightOrColinear</a>(portalLeft - portalApex, pLeft - portalApex)) {</div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;                                        <span class="keywordflow">if</span> (portalApex == portalLeft || <a class="code" href="class_p_f_1_1_funnel.html#af60beab256f3c8739096cae8820ed298">LeftOrColinear</a>(portalRight - portalApex, pLeft - portalApex)) {</div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;                                                portalLeft = pLeft;</div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;                                                leftIndex = i;</div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;                                        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;                                                portalApex = portalLeft = portalRight;</div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;                                                i = apexIndex = leftIndex = rightIndex;</div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160; </div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;                                                <span class="comment">// Negative value because we are referring</span></div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;                                                <span class="comment">// to the right side</span></div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;                                                funnelPath.<a class="code" href="struct_unity_engine_1_1_vector2.html#a80286547aa9379881890c0c95aba2c4c">Add</a>(-apexIndex);</div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160; </div>
+<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;                                                <span class="keywordflow">continue</span>;</div>
+<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;                                        }</div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;                                }</div>
+<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;                        }</div>
+<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160; </div>
+<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;                        lastCorner = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;                        funnelPath.<a class="code" href="struct_unity_engine_1_1_vector2.html#a80286547aa9379881890c0c95aba2c4c">Add</a>(numPortals-1);</div>
+<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;                }</div>
+<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;        }</div>
+<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;}</div>
+<div class="ttc" id="a_a_i_base_8cs_html_a06bbba33a1577dca9bc9091421acf931"><div class="ttname"><a href="_a_i_base_8cs.html#a06bbba33a1577dca9bc9091421acf931">Vector2</a></div><div class="ttdeci">UnityEngine.Vector2 Vector2</div><div class="ttdef"><b>Definition:</b> <a href="_a_i_base_8cs_source.html#l00006">AIBase.cs:6</a></div></div>
+<div class="ttc" id="a_astar_path_editor_8cs_html_a056b29af8a3de2eeb5a1cab758c4ba93"><div class="ttname"><a href="_astar_path_editor_8cs.html#a056b29af8a3de2eeb5a1cab758c4ba93">Mathf</a></div><div class="ttdeci">UnityEngine.Mathf Mathf</div><div class="ttdef"><b>Definition:</b> <a href="_astar_path_editor_8cs_source.html#l00006">AstarPathEditor.cs:6</a></div></div>
+<div class="ttc" id="a_recast_graph_editor_8cs_html_af3326292fdd04d2b384b6d781d9594f6"><div class="ttname"><a href="_recast_graph_editor_8cs.html#af3326292fdd04d2b384b6d781d9594f6">Vector3</a></div><div class="ttdeci">UnityEngine.Vector3 Vector3</div><div class="ttdef"><b>Definition:</b> <a href="_recast_graph_editor_8cs_source.html#l00005">RecastGraphEditor.cs:5</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_funnel_html"><div class="ttname"><a href="class_p_f_1_1_funnel.html">PF.Funnel</a></div><div class="ttdef"><b>Definition:</b> <a href="_funnel_8cs_source.html#l00010">Funnel.cs:10</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_funnel_html_a0f1bc3113c01bd1ac621fe8039b90cea"><div class="ttname"><a href="class_p_f_1_1_funnel.html#a0f1bc3113c01bd1ac621fe8039b90cea">PF.Funnel.Calculate</a></div><div class="ttdeci">static List&lt; Vector3 &gt; Calculate(FunnelPortals funnel, bool unwrap, bool splitAtEveryPortal)</div><div class="ttdef"><b>Definition:</b> <a href="_funnel_8cs_source.html#l00268">Funnel.cs:268</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_funnel_html_a10e5ad1d96afdfc03a985d3d414b5a62"><div class="ttname"><a href="class_p_f_1_1_funnel.html#a10e5ad1d96afdfc03a985d3d414b5a62">PF.Funnel.ShrinkPortals</a></div><div class="ttdeci">static void ShrinkPortals(FunnelPortals portals, float shrink)</div><div class="ttdef"><b>Definition:</b> <a href="_funnel_8cs_source.html#l00120">Funnel.cs:120</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_funnel_html_a22e3837f201aac3cab63dcae4f634da8"><div class="ttname"><a href="class_p_f_1_1_funnel.html#a22e3837f201aac3cab63dcae4f634da8">PF.Funnel.ConstructFunnelPortals</a></div><div class="ttdeci">static FunnelPortals ConstructFunnelPortals(List&lt; GraphNode &gt; nodes, PathPart part)</div><div class="ttdef"><b>Definition:</b> <a href="_funnel_8cs_source.html#l00083">Funnel.cs:83</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_funnel_html_a3b5bc7c7a90529cbb0fd66c8cfd9b0ad"><div class="ttname"><a href="class_p_f_1_1_funnel.html#a3b5bc7c7a90529cbb0fd66c8cfd9b0ad">PF.Funnel.ToXZ</a></div><div class="ttdeci">static Vector2 ToXZ(Vector3 p)</div><div class="ttdef"><b>Definition:</b> <a href="_funnel_8cs_source.html#l00233">Funnel.cs:233</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_funnel_html_a3c38baf416de956eb714e5d75bdecec7"><div class="ttname"><a href="class_p_f_1_1_funnel.html#a3c38baf416de956eb714e5d75bdecec7">PF.Funnel.RightOrColinear</a></div><div class="ttdeci">static bool RightOrColinear(Vector2 a, Vector2 b)</div><div class="ttdef"><b>Definition:</b> <a href="_funnel_8cs_source.html#l00242">Funnel.cs:242</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_funnel_html_a40d4b5c2c04808315ffc873d8c9626b8"><div class="ttname"><a href="class_p_f_1_1_funnel.html#a40d4b5c2c04808315ffc873d8c9626b8">PF.Funnel.FromXZ</a></div><div class="ttdeci">static Vector3 FromXZ(Vector2 p)</div><div class="ttdef"><b>Definition:</b> <a href="_funnel_8cs_source.html#l00237">Funnel.cs:237</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_funnel_html_a65906834f52af36edea16a3c7e17660b"><div class="ttname"><a href="class_p_f_1_1_funnel.html#a65906834f52af36edea16a3c7e17660b">PF.Funnel.SplitIntoParts</a></div><div class="ttdeci">static List&lt; PathPart &gt; SplitIntoParts(Path path)</div><div class="ttdef"><b>Definition:</b> <a href="_funnel_8cs_source.html#l00031">Funnel.cs:31</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_funnel_html_a789915467f36e8914bad2d7fb8948bf4"><div class="ttname"><a href="class_p_f_1_1_funnel.html#a789915467f36e8914bad2d7fb8948bf4">PF.Funnel.Unwrap</a></div><div class="ttdeci">static void Unwrap(FunnelPortals funnel, Vector2[] left, Vector2[] right)</div><div class="ttdef"><b>Definition:</b> <a href="_funnel_8cs_source.html#l00167">Funnel.cs:167</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_funnel_html_af60beab256f3c8739096cae8820ed298"><div class="ttname"><a href="class_p_f_1_1_funnel.html#af60beab256f3c8739096cae8820ed298">PF.Funnel.LeftOrColinear</a></div><div class="ttdeci">static bool LeftOrColinear(Vector2 a, Vector2 b)</div><div class="ttdef"><b>Definition:</b> <a href="_funnel_8cs_source.html#l00247">Funnel.cs:247</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_path_html"><div class="ttname"><a href="class_p_f_1_1_path.html">PF.Path</a></div><div class="ttdef"><b>Definition:</b> <a href="_path_8cs_source.html#l00133">Path.cs:133</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_path_html_aaebf4b3927b0b5f972f728ad4ce57831"><div class="ttname"><a href="class_p_f_1_1_path.html#aaebf4b3927b0b5f972f728ad4ce57831">PF.Path.vectorPath</a></div><div class="ttdeci">List&lt; Vector3 &gt; vectorPath</div><div class="ttdef"><b>Definition:</b> <a href="_path_8cs_source.html#l00211">Path.cs:211</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_path_html_af5cbb9ffba21181f539d94c465f39b43"><div class="ttname"><a href="class_p_f_1_1_path.html#af5cbb9ffba21181f539d94c465f39b43">PF.Path.path</a></div><div class="ttdeci">List&lt; GraphNode &gt; path</div><div class="ttdef"><b>Definition:</b> <a href="_path_8cs_source.html#l00208">Path.cs:208</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_triangle_mesh_node_html"><div class="ttname"><a href="class_p_f_1_1_triangle_mesh_node.html">PF.TriangleMeshNode</a></div><div class="ttdef"><b>Definition:</b> <a href="_triangle_mesh_node_8cs_source.html#l00021">TriangleMeshNode.cs:21</a></div></div>
+<div class="ttc" id="anamespace_p_f_html"><div class="ttname"><a href="namespace_p_f.html">PF</a></div><div class="ttdef"><b>Definition:</b> <a href="_array_pool_8cs_source.html#l00009">ArrayPool.cs:9</a></div></div>
+<div class="ttc" id="anamespace_system_html"><div class="ttname"><a href="namespace_system.html">System</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_method_builder_attribute_8cs_source.html#l00001">AsyncMethodBuilderAttribute.cs:2</a></div></div>
+<div class="ttc" id="anamespace_unity_engine_html"><div class="ttname"><a href="namespace_unity_engine.html">UnityEngine</a></div><div class="ttdef"><b>Definition:</b> <a href="_mathf_8cs_source.html#l00003">Mathf.cs:4</a></div></div>
+<div class="ttc" id="astruct_p_f_1_1_funnel_1_1_funnel_portals_html"><div class="ttname"><a href="struct_p_f_1_1_funnel_1_1_funnel_portals.html">PF.Funnel.FunnelPortals</a></div><div class="ttdef"><b>Definition:</b> <a href="_funnel_8cs_source.html#l00012">Funnel.cs:12</a></div></div>
+<div class="ttc" id="astruct_p_f_1_1_funnel_1_1_funnel_portals_html_a2f412a0e4d6dfa3278072060c2c51e1b"><div class="ttname"><a href="struct_p_f_1_1_funnel_1_1_funnel_portals.html#a2f412a0e4d6dfa3278072060c2c51e1b">PF.Funnel.FunnelPortals.right</a></div><div class="ttdeci">List&lt; Vector3 &gt; right</div><div class="ttdef"><b>Definition:</b> <a href="_funnel_8cs_source.html#l00014">Funnel.cs:14</a></div></div>
+<div class="ttc" id="astruct_p_f_1_1_funnel_1_1_funnel_portals_html_a50b75e0fccd9f99cd7040c276ea718c4"><div class="ttname"><a href="struct_p_f_1_1_funnel_1_1_funnel_portals.html#a50b75e0fccd9f99cd7040c276ea718c4">PF.Funnel.FunnelPortals.left</a></div><div class="ttdeci">List&lt; Vector3 &gt; left</div><div class="ttdef"><b>Definition:</b> <a href="_funnel_8cs_source.html#l00013">Funnel.cs:13</a></div></div>
+<div class="ttc" id="astruct_p_f_1_1_funnel_1_1_path_part_html"><div class="ttname"><a href="struct_p_f_1_1_funnel_1_1_path_part.html">PF.Funnel.PathPart</a></div><div class="ttdef"><b>Definition:</b> <a href="_funnel_8cs_source.html#l00022">Funnel.cs:22</a></div></div>
+<div class="ttc" id="astruct_p_f_1_1_funnel_1_1_path_part_html_a2949810ba3e6da2d506bca6c2c2f1d4a"><div class="ttname"><a href="struct_p_f_1_1_funnel_1_1_path_part.html#a2949810ba3e6da2d506bca6c2c2f1d4a">PF.Funnel.PathPart.endPoint</a></div><div class="ttdeci">Vector3 endPoint</div><div class="ttdef"><b>Definition:</b> <a href="_funnel_8cs_source.html#l00027">Funnel.cs:27</a></div></div>
+<div class="ttc" id="astruct_p_f_1_1_funnel_1_1_path_part_html_a4385b0013069857af2d520dd05479355"><div class="ttname"><a href="struct_p_f_1_1_funnel_1_1_path_part.html#a4385b0013069857af2d520dd05479355">PF.Funnel.PathPart.isLink</a></div><div class="ttdeci">bool isLink</div><div class="ttdef"><b>Definition:</b> <a href="_funnel_8cs_source.html#l00028">Funnel.cs:28</a></div></div>
+<div class="ttc" id="astruct_p_f_1_1_funnel_1_1_path_part_html_a67d71bb392a2c4a57049f8ea40e60d46"><div class="ttname"><a href="struct_p_f_1_1_funnel_1_1_path_part.html#a67d71bb392a2c4a57049f8ea40e60d46">PF.Funnel.PathPart.startIndex</a></div><div class="ttdeci">int startIndex</div><div class="ttdef"><b>Definition:</b> <a href="_funnel_8cs_source.html#l00024">Funnel.cs:24</a></div></div>
+<div class="ttc" id="astruct_p_f_1_1_funnel_1_1_path_part_html_aa5d6c76f25f6ce6a4d2eb2fa56a66a33"><div class="ttname"><a href="struct_p_f_1_1_funnel_1_1_path_part.html#aa5d6c76f25f6ce6a4d2eb2fa56a66a33">PF.Funnel.PathPart.startPoint</a></div><div class="ttdeci">Vector3 startPoint</div><div class="ttdef"><b>Definition:</b> <a href="_funnel_8cs_source.html#l00027">Funnel.cs:27</a></div></div>
+<div class="ttc" id="astruct_p_f_1_1_funnel_1_1_path_part_html_ad8cc326becdef7f3b519e4cebacf77f3"><div class="ttname"><a href="struct_p_f_1_1_funnel_1_1_path_part.html#ad8cc326becdef7f3b519e4cebacf77f3">PF.Funnel.PathPart.endIndex</a></div><div class="ttdeci">int endIndex</div><div class="ttdef"><b>Definition:</b> <a href="_funnel_8cs_source.html#l00026">Funnel.cs:26</a></div></div>
+<div class="ttc" id="astruct_unity_engine_1_1_quaternion_html"><div class="ttname"><a href="struct_unity_engine_1_1_quaternion.html">UnityEngine.Quaternion</a></div><div class="ttdef"><b>Definition:</b> <a href="_quaternion_8cs_source.html#l00007">Quaternion.cs:8</a></div></div>
+<div class="ttc" id="astruct_unity_engine_1_1_quaternion_html_a29260ba6d7be1d7390cc857df2e11b3a"><div class="ttname"><a href="struct_unity_engine_1_1_quaternion.html#a29260ba6d7be1d7390cc857df2e11b3a">UnityEngine.Quaternion.FromToRotation</a></div><div class="ttdeci">static Quaternion FromToRotation(Vector3 a, Vector3 b)</div><div class="ttdef"><b>Definition:</b> <a href="_quaternion_8cs_source.html#l00397">Quaternion.cs:397</a></div></div>
+<div class="ttc" id="astruct_unity_engine_1_1_vector2_html"><div class="ttname"><a href="struct_unity_engine_1_1_vector2.html">UnityEngine.Vector2</a></div><div class="ttdef"><b>Definition:</b> <a href="_vector2_8cs_source.html#l00007">Vector2.cs:8</a></div></div>
+<div class="ttc" id="astruct_unity_engine_1_1_vector2_html_a80286547aa9379881890c0c95aba2c4c"><div class="ttname"><a href="struct_unity_engine_1_1_vector2.html#a80286547aa9379881890c0c95aba2c4c">UnityEngine.Vector2.Add</a></div><div class="ttdeci">static Vector2 Add(Vector2 value1, Vector2 value2)</div><div class="ttdef"><b>Definition:</b> <a href="_vector2_8cs_source.html#l00332">Vector2.cs:332</a></div></div>
+<div class="ttc" id="astruct_unity_engine_1_1_vector2_html_a8e40a869d5a33f669922ef6d33832023"><div class="ttname"><a href="struct_unity_engine_1_1_vector2.html#a8e40a869d5a33f669922ef6d33832023">UnityEngine.Vector2.zero</a></div><div class="ttdeci">static readonly Vector2 zero</div><div class="ttdef"><b>Definition:</b> <a href="_vector2_8cs_source.html#l00009">Vector2.cs:9</a></div></div>
+<div class="ttc" id="astruct_unity_engine_1_1_vector2_html_ac74191c1f776537ad229d1ccf3a67925"><div class="ttname"><a href="struct_unity_engine_1_1_vector2.html#ac74191c1f776537ad229d1ccf3a67925">UnityEngine.Vector2.x</a></div><div class="ttdeci">float x</div><div class="ttdef"><b>Definition:</b> <a href="_vector2_8cs_source.html#l00012">Vector2.cs:12</a></div></div>
+<div class="ttc" id="astruct_unity_engine_1_1_vector2_html_ace368df118cc0419089498a1c8f06e99"><div class="ttname"><a href="struct_unity_engine_1_1_vector2.html#ace368df118cc0419089498a1c8f06e99">UnityEngine.Vector2.Length</a></div><div class="ttdeci">float Length()</div><div class="ttdef"><b>Definition:</b> <a href="_vector2_8cs_source.html#l00088">Vector2.cs:88</a></div></div>
+<div class="ttc" id="astruct_unity_engine_1_1_vector2_html_afbb5b98e5727ffba74402fc27a58443a"><div class="ttname"><a href="struct_unity_engine_1_1_vector2.html#afbb5b98e5727ffba74402fc27a58443a">UnityEngine.Vector2.y</a></div><div class="ttdeci">float y</div><div class="ttdef"><b>Definition:</b> <a href="_vector2_8cs_source.html#l00013">Vector2.cs:13</a></div></div>
+<div class="ttc" id="astruct_unity_engine_1_1_vector3_html"><div class="ttname"><a href="struct_unity_engine_1_1_vector3.html">UnityEngine.Vector3</a></div><div class="ttdef"><b>Definition:</b> <a href="_vector3_8cs_source.html#l00007">Vector3.cs:8</a></div></div>
+<div class="ttc" id="astruct_unity_engine_1_1_vector3_html_a0e469b8901996e29ba121a0bd463c4b2"><div class="ttname"><a href="struct_unity_engine_1_1_vector3.html#a0e469b8901996e29ba121a0bd463c4b2">UnityEngine.Vector3.Dot</a></div><div class="ttdeci">static float Dot(Vector3 vector1, Vector3 vector2)</div><div class="ttdef"><b>Definition:</b> <a href="_vector3_8cs_source.html#l00129">Vector3.cs:129</a></div></div>
+<div class="ttc" id="astruct_unity_engine_1_1_vector3_html_a505e04777a5cb2edb3f8f727177d9a5d"><div class="ttname"><a href="struct_unity_engine_1_1_vector3.html#a505e04777a5cb2edb3f8f727177d9a5d">UnityEngine.Vector3.Cross</a></div><div class="ttdeci">static Vector3 Cross(Vector3 vector1, Vector3 vector2)</div><div class="ttdef"><b>Definition:</b> <a href="_vector3_8cs_source.html#l00189">Vector3.cs:189</a></div></div>
+<div class="ttc" id="astruct_unity_engine_1_1_vector3_html_a533a46a32da8f3330173d884fcac5309"><div class="ttname"><a href="struct_unity_engine_1_1_vector3.html#a533a46a32da8f3330173d884fcac5309">UnityEngine.Vector3.sqrMagnitude</a></div><div class="ttdeci">float sqrMagnitude</div><div class="ttdef"><b>Definition:</b> <a href="_vector3_8cs_source.html#l00088">Vector3.cs:89</a></div></div>
+<div class="ttc" id="astruct_unity_engine_1_1_vector3_html_a8ea2682142b822ddcab52c868796fd3e"><div class="ttname"><a href="struct_unity_engine_1_1_vector3.html#a8ea2682142b822ddcab52c868796fd3e">UnityEngine.Vector3.z</a></div><div class="ttdeci">float z</div><div class="ttdef"><b>Definition:</b> <a href="_vector3_8cs_source.html#l00021">Vector3.cs:21</a></div></div>
+<div class="ttc" id="astruct_unity_engine_1_1_vector3_html_acd01c55d3ff3bf00dfa650374f803907"><div class="ttname"><a href="struct_unity_engine_1_1_vector3.html#acd01c55d3ff3bf00dfa650374f803907">UnityEngine.Vector3.forward</a></div><div class="ttdeci">static readonly Vector3 forward</div><div class="ttdef"><b>Definition:</b> <a href="_vector3_8cs_source.html#l00017">Vector3.cs:17</a></div></div>
+<div class="ttc" id="astruct_unity_engine_1_1_vector3_html_ad4d9171899b7fceadc63c4d04da5734d"><div class="ttname"><a href="struct_unity_engine_1_1_vector3.html#ad4d9171899b7fceadc63c4d04da5734d">UnityEngine.Vector3.x</a></div><div class="ttdeci">float x</div><div class="ttdef"><b>Definition:</b> <a href="_vector3_8cs_source.html#l00019">Vector3.cs:19</a></div></div>
+<div class="ttc" id="astruct_unity_engine_1_1_vector3_html_af0cef972f3f22b91a25dcfc0be3acf33"><div class="ttname"><a href="struct_unity_engine_1_1_vector3.html#af0cef972f3f22b91a25dcfc0be3acf33">UnityEngine.Vector3.Lerp</a></div><div class="ttdeci">static Vector3 Lerp(Vector3 value1, Vector3 value2, float amount)</div><div class="ttdef"><b>Definition:</b> <a href="_vector3_8cs_source.html#l00294">Vector3.cs:294</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_84bbf7b3c7f28a5a18725745e1505219.html">Assets</a></li><li class="navelem"><a class="el" href="dir_f13b41af88cf68434578284aaf699e39.html">Scripts</a></li><li class="navelem"><a class="el" href="dir_46d134a3bf82cf4dc49ca8f728aea58c.html">Libraries</a></li><li class="navelem"><a class="el" href="dir_f6df8f7e58ea5a2220a287b647108730.html">ET</a></li><li class="navelem"><a class="el" href="dir_83296929b1cb48979e134a96af9624b1.html">Module</a></li><li class="navelem"><a class="el" href="dir_7e04bdad0240fbb16a4f5f805ce44f49.html">Pathfinding</a></li><li class="navelem"><a class="el" href="dir_0d5e2d3313e129d955335235e3d8ffc0.html">Recast</a></li><li class="navelem"><a class="el" href="_funnel_8cs.html">Funnel.cs</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:24:47 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

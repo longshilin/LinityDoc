@@ -1,0 +1,176 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: ETServer/Server/ThirdParty/MongoDBDriver/MongoDB.Driver/IFindFluent.cs 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_i_find_fluent_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">IFindFluent.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_i_find_fluent_8cs.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/* Copyright 2010-present MongoDB Inc.</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">* Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">* you may not use this file except in compliance with the License.</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">* You may obtain a copy of the License at</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">* http://www.apache.org/licenses/LICENSE-2.0</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">* Unless required by applicable law or agreed to in writing, software</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">* distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">* See the License for the specific language governing permissions and</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">* limitations under the License.</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Threading;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Threading.Tasks;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_mongo_d_b.html">MongoDB</a>.<a class="code" href="namespace_mongo_d_b_1_1_bson.html">Bson</a>.<a class="code" href="namespace_mongo_d_b_1_1_bson_1_1_serialization.html">Serialization</a>;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_mongo_d_b_1_1_driver.html">MongoDB.Driver</a></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;{</div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="interface_mongo_d_b_1_1_driver_1_1_i_find_fluent.html">   32</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">interface </span><a class="code" href="interface_mongo_d_b_1_1_driver_1_1_i_find_fluent.html">IFindFluent</a>&lt;TDocument, TProjection&gt; : <a class="code" href="interface_mongo_d_b_1_1_driver_1_1_i_async_cursor_source.html">IAsyncCursorSource</a>&lt;TProjection&gt;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    {</div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="interface_mongo_d_b_1_1_driver_1_1_i_find_fluent.html#a7bb9d82be8f13037bedf5a56a93a3e38">   37</a></span>&#160;        <a class="code" href="class_mongo_d_b_1_1_driver_1_1_filter_definition.html">FilterDefinition&lt;TDocument&gt;</a> <a class="code" href="interface_mongo_d_b_1_1_driver_1_1_i_find_fluent.html#a7bb9d82be8f13037bedf5a56a93a3e38">Filter</a> { <span class="keyword">get</span>; <span class="keyword">set</span>; }</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="interface_mongo_d_b_1_1_driver_1_1_i_find_fluent.html#aa85c7bcc1b4df8cf6c046b12331ac7c3">   42</a></span>&#160;        <a class="code" href="class_mongo_d_b_1_1_driver_1_1_find_options.html">FindOptions&lt;TDocument, TProjection&gt;</a> <a class="code" href="interface_mongo_d_b_1_1_driver_1_1_i_find_fluent.html#a30f610d3991d4e1690ea77d6b4164b55">Options</a> { <span class="keyword">get</span>; }</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <a class="code" href="interface_mongo_d_b_1_1_driver_1_1_i_find_fluent.html">IFindFluent&lt;TDocument, TResult&gt;</a> <a class="code" href="interface_mongo_d_b_1_1_driver_1_1_i_find_fluent.html#aa85c7bcc1b4df8cf6c046b12331ac7c3">As&lt;TResult&gt;</a>(<a class="code" href="interface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_serializer.html">IBsonSerializer&lt;TResult&gt;</a> resultSerializer = <span class="keyword">null</span>);</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        [Obsolete(<span class="stringliteral">&quot;Use CountDocuments instead.&quot;</span>)]</div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="interface_mongo_d_b_1_1_driver_1_1_i_find_fluent.html#adcaf0e03815f7150b5f5cc9787620fae">   58</a></span>&#160;        <span class="keywordtype">long</span> <a class="code" href="interface_mongo_d_b_1_1_driver_1_1_i_find_fluent.html#adcaf0e03815f7150b5f5cc9787620fae">Count</a>(CancellationToken cancellationToken = <span class="keywordflow">default</span>(CancellationToken));</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        [Obsolete(<span class="stringliteral">&quot;Use CountDocumentsAsync instead.&quot;</span>)]</div>
+<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="interface_mongo_d_b_1_1_driver_1_1_i_find_fluent.html#af843c02d0ca7333c441384c262b080a6">   66</a></span>&#160;        Task&lt;long&gt; <a class="code" href="interface_mongo_d_b_1_1_driver_1_1_i_find_fluent.html#af843c02d0ca7333c441384c262b080a6">CountAsync</a>(CancellationToken cancellationToken = <span class="keywordflow">default</span>(CancellationToken));</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00088"></a><span class="lineno"><a class="line" href="interface_mongo_d_b_1_1_driver_1_1_i_find_fluent.html#a8abb7968378fa75f5e75f8df84f95ff2">   88</a></span>&#160;        <span class="keywordtype">long</span> <a class="code" href="interface_mongo_d_b_1_1_driver_1_1_i_find_fluent.html#a8abb7968378fa75f5e75f8df84f95ff2">CountDocuments</a>(CancellationToken cancellationToken = <span class="keywordflow">default</span>(CancellationToken));</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
+<div class="line"><a name="l00110"></a><span class="lineno"><a class="line" href="interface_mongo_d_b_1_1_driver_1_1_i_find_fluent.html#af57d54d7a6f624f4f21ab6fc6f319e42">  110</a></span>&#160;        Task&lt;long&gt; <a class="code" href="interface_mongo_d_b_1_1_driver_1_1_i_find_fluent.html#af57d54d7a6f624f4f21ab6fc6f319e42">CountDocumentsAsync</a>(CancellationToken cancellationToken = <span class="keywordflow">default</span>(CancellationToken));</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; </div>
+<div class="line"><a name="l00117"></a><span class="lineno"><a class="line" href="interface_mongo_d_b_1_1_driver_1_1_i_find_fluent.html#ae9c0246a59f8cb38035cbef73b1a9c67">  117</a></span>&#160;        <a class="code" href="interface_mongo_d_b_1_1_driver_1_1_i_find_fluent.html">IFindFluent&lt;TDocument, TProjection&gt;</a> <a class="code" href="interface_mongo_d_b_1_1_driver_1_1_i_find_fluent.html#ae9c0246a59f8cb38035cbef73b1a9c67">Limit</a>(<span class="keywordtype">int</span>? limit);</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160; </div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        <a class="code" href="interface_mongo_d_b_1_1_driver_1_1_i_find_fluent.html">IFindFluent&lt;TDocument, TNewProjection&gt;</a> <a class="code" href="interface_mongo_d_b_1_1_driver_1_1_i_find_fluent.html#afd15266168b9da112a3491c1ee9d6cf3">Project&lt;TNewProjection&gt;</a>(<a class="code" href="class_mongo_d_b_1_1_driver_1_1_projection_definition.html">ProjectionDefinition&lt;TDocument, TNewProjection&gt;</a> projection);</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160; </div>
+<div class="line"><a name="l00132"></a><span class="lineno"><a class="line" href="interface_mongo_d_b_1_1_driver_1_1_i_find_fluent.html#ac00e578133cba52944295934322032af">  132</a></span>&#160;        <a class="code" href="interface_mongo_d_b_1_1_driver_1_1_i_find_fluent.html">IFindFluent&lt;TDocument, TProjection&gt;</a> <a class="code" href="interface_mongo_d_b_1_1_driver_1_1_i_find_fluent.html#ac00e578133cba52944295934322032af">Skip</a>(<span class="keywordtype">int</span>? skip);</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160; </div>
+<div class="line"><a name="l00139"></a><span class="lineno"><a class="line" href="interface_mongo_d_b_1_1_driver_1_1_i_find_fluent.html#a52263d012682fc7af7c5b106e043f1e0">  139</a></span>&#160;        <a class="code" href="interface_mongo_d_b_1_1_driver_1_1_i_find_fluent.html">IFindFluent&lt;TDocument, TProjection&gt;</a> <a class="code" href="interface_mongo_d_b_1_1_driver_1_1_i_find_fluent.html#a52263d012682fc7af7c5b106e043f1e0">Sort</a>(<a class="code" href="class_mongo_d_b_1_1_driver_1_1_sort_definition.html">SortDefinition&lt;TDocument&gt;</a> sort);</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    }</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160; </div>
+<div class="line"><a name="l00147"></a><span class="lineno"><a class="line" href="interface_mongo_d_b_1_1_driver_1_1_i_ordered_find_fluent.html">  147</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">interface </span><a class="code" href="interface_mongo_d_b_1_1_driver_1_1_i_ordered_find_fluent.html">IOrderedFindFluent</a>&lt;TDocument, TProjection&gt; : <a class="code" href="interface_mongo_d_b_1_1_driver_1_1_i_find_fluent.html">IFindFluent</a>&lt;TDocument, TProjection&gt;</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;    {</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;    }</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;}</div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_filter_definition_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_filter_definition.html">MongoDB.Driver.FilterDefinition</a></div><div class="ttdoc">Base class for filters.</div><div class="ttdef"><b>Definition:</b> <a href="_filter_definition_8cs_source.html#l00032">FilterDefinition.cs:33</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_find_options_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_find_options.html">MongoDB.Driver.FindOptions&lt; TDocument, TProjection &gt;</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_projection_definition_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_projection_definition.html">MongoDB.Driver.ProjectionDefinition</a></div><div class="ttdoc">Base class for projections whose projection type is not yet known.</div><div class="ttdef"><b>Definition:</b> <a href="_projection_definition_8cs_source.html#l00116">ProjectionDefinition.cs:117</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_sort_definition_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_sort_definition.html">MongoDB.Driver.SortDefinition</a></div><div class="ttdoc">Base class for sorts.</div><div class="ttdef"><b>Definition:</b> <a href="_sort_definition_8cs_source.html#l00043">SortDefinition.cs:44</a></div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_serializer_html"><div class="ttname"><a href="interface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_serializer.html">MongoDB.Bson.Serialization.IBsonSerializer&lt; TResult &gt;</a></div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_driver_1_1_i_async_cursor_source_html"><div class="ttname"><a href="interface_mongo_d_b_1_1_driver_1_1_i_async_cursor_source.html">MongoDB.Driver.IAsyncCursorSource</a></div><div class="ttdoc">Represents an operation that will return a cursor when executed.</div><div class="ttdef"><b>Definition:</b> <a href="_i_async_cursor_source_8cs_source.html#l00029">IAsyncCursorSource.cs:30</a></div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_driver_1_1_i_find_fluent_html"><div class="ttname"><a href="interface_mongo_d_b_1_1_driver_1_1_i_find_fluent.html">MongoDB.Driver.IFindFluent</a></div><div class="ttdoc">Fluent interface for find.</div><div class="ttdef"><b>Definition:</b> <a href="_i_find_fluent_8cs_source.html#l00032">IFindFluent.cs:33</a></div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_driver_1_1_i_find_fluent_html_a30f610d3991d4e1690ea77d6b4164b55"><div class="ttname"><a href="interface_mongo_d_b_1_1_driver_1_1_i_find_fluent.html#a30f610d3991d4e1690ea77d6b4164b55">MongoDB.Driver.IFindFluent.Options</a></div><div class="ttdeci">FindOptions&lt; TDocument, TProjection &gt; Options</div><div class="ttdoc">Gets the options.</div><div class="ttdef"><b>Definition:</b> <a href="_i_find_fluent_8cs_source.html#l00042">IFindFluent.cs:42</a></div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_driver_1_1_i_find_fluent_html_a52263d012682fc7af7c5b106e043f1e0"><div class="ttname"><a href="interface_mongo_d_b_1_1_driver_1_1_i_find_fluent.html#a52263d012682fc7af7c5b106e043f1e0">MongoDB.Driver.IFindFluent.Sort</a></div><div class="ttdeci">IFindFluent&lt; TDocument, TProjection &gt; Sort(SortDefinition&lt; TDocument &gt; sort)</div><div class="ttdoc">Sorts the the documents.</div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_driver_1_1_i_find_fluent_html_a7bb9d82be8f13037bedf5a56a93a3e38"><div class="ttname"><a href="interface_mongo_d_b_1_1_driver_1_1_i_find_fluent.html#a7bb9d82be8f13037bedf5a56a93a3e38">MongoDB.Driver.IFindFluent.Filter</a></div><div class="ttdeci">FilterDefinition&lt; TDocument &gt; Filter</div><div class="ttdoc">Gets or sets the filter.</div><div class="ttdef"><b>Definition:</b> <a href="_i_find_fluent_8cs_source.html#l00037">IFindFluent.cs:37</a></div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_driver_1_1_i_find_fluent_html_a8abb7968378fa75f5e75f8df84f95ff2"><div class="ttname"><a href="interface_mongo_d_b_1_1_driver_1_1_i_find_fluent.html#a8abb7968378fa75f5e75f8df84f95ff2">MongoDB.Driver.IFindFluent.CountDocuments</a></div><div class="ttdeci">long CountDocuments(CancellationToken cancellationToken=default(CancellationToken))</div><div class="ttdoc">Counts the number of documents.</div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_driver_1_1_i_find_fluent_html_aa85c7bcc1b4df8cf6c046b12331ac7c3"><div class="ttname"><a href="interface_mongo_d_b_1_1_driver_1_1_i_find_fluent.html#aa85c7bcc1b4df8cf6c046b12331ac7c3">MongoDB.Driver.IFindFluent.As&lt; TResult &gt;</a></div><div class="ttdeci">IFindFluent&lt; TDocument, TResult &gt; As&lt; TResult &gt;(IBsonSerializer&lt; TResult &gt; resultSerializer=null)</div><div class="ttdoc">A simplified type of projection that changes the result type by using a different serializer.</div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_driver_1_1_i_find_fluent_html_ac00e578133cba52944295934322032af"><div class="ttname"><a href="interface_mongo_d_b_1_1_driver_1_1_i_find_fluent.html#ac00e578133cba52944295934322032af">MongoDB.Driver.IFindFluent.Skip</a></div><div class="ttdeci">IFindFluent&lt; TDocument, TProjection &gt; Skip(int? skip)</div><div class="ttdoc">Skips the the specified number of documents.</div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_driver_1_1_i_find_fluent_html_adcaf0e03815f7150b5f5cc9787620fae"><div class="ttname"><a href="interface_mongo_d_b_1_1_driver_1_1_i_find_fluent.html#adcaf0e03815f7150b5f5cc9787620fae">MongoDB.Driver.IFindFluent.Count</a></div><div class="ttdeci">long Count(CancellationToken cancellationToken=default(CancellationToken))</div><div class="ttdoc">Counts the number of documents.</div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_driver_1_1_i_find_fluent_html_ae9c0246a59f8cb38035cbef73b1a9c67"><div class="ttname"><a href="interface_mongo_d_b_1_1_driver_1_1_i_find_fluent.html#ae9c0246a59f8cb38035cbef73b1a9c67">MongoDB.Driver.IFindFluent.Limit</a></div><div class="ttdeci">IFindFluent&lt; TDocument, TProjection &gt; Limit(int? limit)</div><div class="ttdoc">Limits the number of documents.</div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_driver_1_1_i_find_fluent_html_af57d54d7a6f624f4f21ab6fc6f319e42"><div class="ttname"><a href="interface_mongo_d_b_1_1_driver_1_1_i_find_fluent.html#af57d54d7a6f624f4f21ab6fc6f319e42">MongoDB.Driver.IFindFluent.CountDocumentsAsync</a></div><div class="ttdeci">Task&lt; long &gt; CountDocumentsAsync(CancellationToken cancellationToken=default(CancellationToken))</div><div class="ttdoc">Counts the number of documents.</div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_driver_1_1_i_find_fluent_html_af843c02d0ca7333c441384c262b080a6"><div class="ttname"><a href="interface_mongo_d_b_1_1_driver_1_1_i_find_fluent.html#af843c02d0ca7333c441384c262b080a6">MongoDB.Driver.IFindFluent.CountAsync</a></div><div class="ttdeci">Task&lt; long &gt; CountAsync(CancellationToken cancellationToken=default(CancellationToken))</div><div class="ttdoc">Counts the number of documents.</div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_driver_1_1_i_find_fluent_html_afd15266168b9da112a3491c1ee9d6cf3"><div class="ttname"><a href="interface_mongo_d_b_1_1_driver_1_1_i_find_fluent.html#afd15266168b9da112a3491c1ee9d6cf3">MongoDB.Driver.IFindFluent.Project&lt; TNewProjection &gt;</a></div><div class="ttdeci">IFindFluent&lt; TDocument, TNewProjection &gt; Project&lt; TNewProjection &gt;(ProjectionDefinition&lt; TDocument, TNewProjection &gt; projection)</div><div class="ttdoc">Projects the the result.</div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_driver_1_1_i_ordered_find_fluent_html"><div class="ttname"><a href="interface_mongo_d_b_1_1_driver_1_1_i_ordered_find_fluent.html">MongoDB.Driver.IOrderedFindFluent</a></div><div class="ttdoc">Fluent interface for find.</div><div class="ttdef"><b>Definition:</b> <a href="_i_find_fluent_8cs_source.html#l00147">IFindFluent.cs:148</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_bson_1_1_serialization_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_bson_1_1_serialization.html">MongoDB.Bson.Serialization</a></div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_serialization_2_attributed_serialization_provider_8cs_source.html#l00021">AttributedSerializationProvider.cs:22</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_bson_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_bson.html">MongoDB.Bson</a></div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_bson_constants_8cs_source.html#l00018">BsonConstants.cs:19</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_driver_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_driver.html">MongoDB.Driver</a></div><div class="ttdef"><b>Definition:</b> <a href="_aggregate_bucket_auto_granularity_8cs_source.html#l00018">AggregateBucketAutoGranularity.cs:19</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_html"><div class="ttname"><a href="namespace_mongo_d_b.html">MongoDB</a></div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_bson_constants_8cs_source.html#l00018">BsonConstants.cs:19</a></div></div>
+<div class="ttc" id="anamespace_system_html"><div class="ttname"><a href="namespace_system.html">System</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_method_builder_attribute_8cs_source.html#l00001">AsyncMethodBuilderAttribute.cs:2</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_1e261a42b4a2e33df58a15c412684b10.html">ETServer</a></li><li class="navelem"><a class="el" href="dir_473c270c995194c5ad99131d9c901f09.html">Server</a></li><li class="navelem"><a class="el" href="dir_ce426efcf63311ff42488fb2654bd4b4.html">ThirdParty</a></li><li class="navelem"><a class="el" href="dir_a37b2b5f9c8890cc9f6f8392fb0cdff3.html">MongoDBDriver</a></li><li class="navelem"><a class="el" href="dir_42d569251c6b173c0060c74ec4fd3ce0.html">MongoDB.Driver</a></li><li class="navelem"><a class="el" href="_i_find_fluent_8cs.html">IFindFluent.cs</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:24:59 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

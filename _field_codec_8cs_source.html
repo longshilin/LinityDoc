@@ -1,0 +1,377 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: Assets/Scripts/Libraries/Google.Protobuf/FieldCodec.cs 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_field_codec_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">FieldCodec.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_field_codec_8cs.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#region Copyright notice and license</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">// Protocol Buffers - Google&#39;s data interchange format</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">// Copyright 2015 Google Inc.  All rights reserved.</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">// https://developers.google.com/protocol-buffers/</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">// Redistribution and use in source and binary forms, with or without</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">// modification, are permitted provided that the following conditions are</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">// met:</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">//     * Redistributions of source code must retain the above copyright</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">// notice, this list of conditions and the following disclaimer.</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">//     * Redistributions in binary form must reproduce the above</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">// copyright notice, this list of conditions and the following disclaimer</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">// in the documentation and/or other materials provided with the</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">// distribution.</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">//     * Neither the name of Google Inc. nor the names of its</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">// contributors may be used to endorse or promote products derived from</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">// this software without specific prior written permission.</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">// &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">// LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">// A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">// OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">// SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">// LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">// DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">// THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">// (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment">// OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#endregion</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Collections.Generic;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_google_1_1_protobuf.html">Google.Protobuf</a></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;{</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">class </span>FieldCodec</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    {</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <span class="comment">// TODO: Avoid the &quot;dual hit&quot; of lambda expressions: create open delegates instead. (At least test...)</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_field_codec.html#afebd7962701543421e1ef3d0a59df7a8">   50</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <a class="code" href="class_google_1_1_protobuf_1_1_field_codec.html">FieldCodec&lt;string&gt;</a> <a class="code" href="class_google_1_1_protobuf_1_1_field_codec.html#afebd7962701543421e1ef3d0a59df7a8">ForString</a>(uint tag)</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        {</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="class_google_1_1_protobuf_1_1_field_codec.html">FieldCodec&lt;string&gt;</a>(input =&gt; input.ReadString(), (output, value) =&gt; output.WriteString(value), <a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html">CodedOutputStream</a>.<a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a468856512b1784ffef9a1d1dc41c20fd">ComputeStringSize</a>, tag);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        }</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_field_codec.html#a986f44bef5519d85739802852a38b3b4">   60</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <a class="code" href="class_google_1_1_protobuf_1_1_field_codec.html">FieldCodec&lt;ByteString&gt;</a> <a class="code" href="class_google_1_1_protobuf_1_1_field_codec.html#a986f44bef5519d85739802852a38b3b4">ForBytes</a>(uint tag)</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        {</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="class_google_1_1_protobuf_1_1_field_codec.html">FieldCodec&lt;ByteString&gt;</a>(input =&gt; input.ReadBytes(), (output, value) =&gt; output.WriteBytes(value), <a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html">CodedOutputStream</a>.<a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a3897e1e48ad38cb2bb34dd766575caae">ComputeBytesSize</a>, tag);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        }</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
+<div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_field_codec.html#a0201e2958ce0fa95dd53d1012d64d0bc">   70</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <a class="code" href="class_google_1_1_protobuf_1_1_field_codec.html">FieldCodec&lt;bool&gt;</a> <a class="code" href="class_google_1_1_protobuf_1_1_field_codec.html#a0201e2958ce0fa95dd53d1012d64d0bc">ForBool</a>(uint tag)</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        {</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="class_google_1_1_protobuf_1_1_field_codec.html">FieldCodec&lt;bool&gt;</a>(input =&gt; input.ReadBool(), (output, value) =&gt; output.WriteBool(value), <a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html">CodedOutputStream</a>.<a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#ad55330919f8e03ae48107c96b7e562f0">ComputeBoolSize</a>, tag);</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        }</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
+<div class="line"><a name="l00080"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_field_codec.html#ab0a59020b6fe852dd9d8d710ade9425b">   80</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <a class="code" href="class_google_1_1_protobuf_1_1_field_codec.html">FieldCodec&lt;int&gt;</a> <a class="code" href="class_google_1_1_protobuf_1_1_field_codec.html#ab0a59020b6fe852dd9d8d710ade9425b">ForInt32</a>(uint tag)</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        {</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="class_google_1_1_protobuf_1_1_field_codec.html">FieldCodec&lt;int&gt;</a>(input =&gt; input.ReadInt32(), (output, value) =&gt; output.WriteInt32(value), <a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html">CodedOutputStream</a>.<a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#ac5282d0255fc65115a4558346bbb5703">ComputeInt32Size</a>, tag);</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        }</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
+<div class="line"><a name="l00090"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_field_codec.html#a95cf60ae1fdf2709cca4d6159c0daeb0">   90</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <a class="code" href="class_google_1_1_protobuf_1_1_field_codec.html">FieldCodec&lt;int&gt;</a> <a class="code" href="class_google_1_1_protobuf_1_1_field_codec.html#a95cf60ae1fdf2709cca4d6159c0daeb0">ForSInt32</a>(uint tag)</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        {</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="class_google_1_1_protobuf_1_1_field_codec.html">FieldCodec&lt;int&gt;</a>(input =&gt; input.ReadSInt32(), (output, value) =&gt; output.WriteSInt32(value), <a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html">CodedOutputStream</a>.<a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a17293584e93ef4d56a3562bff48a8671">ComputeSInt32Size</a>, tag);</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        }</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
+<div class="line"><a name="l00100"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_field_codec.html#a249720742b914fdd0990b3ee475eb758">  100</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <a class="code" href="class_google_1_1_protobuf_1_1_field_codec.html">FieldCodec&lt;uint&gt;</a> <a class="code" href="class_google_1_1_protobuf_1_1_field_codec.html#a249720742b914fdd0990b3ee475eb758">ForFixed32</a>(uint tag)</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        {</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="class_google_1_1_protobuf_1_1_field_codec.html">FieldCodec&lt;uint&gt;</a>(input =&gt; input.ReadFixed32(), (output, value) =&gt; output.WriteFixed32(value), 4, tag);</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        }</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
+<div class="line"><a name="l00110"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_field_codec.html#a81facb0610e5353701143ed017c6e6d6">  110</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <a class="code" href="class_google_1_1_protobuf_1_1_field_codec.html">FieldCodec&lt;int&gt;</a> <a class="code" href="class_google_1_1_protobuf_1_1_field_codec.html#a81facb0610e5353701143ed017c6e6d6">ForSFixed32</a>(uint tag)</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        {</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="class_google_1_1_protobuf_1_1_field_codec.html">FieldCodec&lt;int&gt;</a>(input =&gt; input.ReadSFixed32(), (output, value) =&gt; output.WriteSFixed32(value), 4, tag);</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        }</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160; </div>
+<div class="line"><a name="l00120"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_field_codec.html#a4a2bee7ab408c30b0b4e90f186b4a86a">  120</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <a class="code" href="class_google_1_1_protobuf_1_1_field_codec.html">FieldCodec&lt;uint&gt;</a> <a class="code" href="class_google_1_1_protobuf_1_1_field_codec.html#a4a2bee7ab408c30b0b4e90f186b4a86a">ForUInt32</a>(uint tag)</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        {</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="class_google_1_1_protobuf_1_1_field_codec.html">FieldCodec&lt;uint&gt;</a>(input =&gt; input.ReadUInt32(), (output, value) =&gt; output.WriteUInt32(value), <a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html">CodedOutputStream</a>.<a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a42a5cab5992491172e8a41ae066cb709">ComputeUInt32Size</a>, tag);</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        }</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160; </div>
+<div class="line"><a name="l00130"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_field_codec.html#a0d45d8654aeec9f716075738ab55057b">  130</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <a class="code" href="class_google_1_1_protobuf_1_1_field_codec.html">FieldCodec&lt;long&gt;</a> <a class="code" href="class_google_1_1_protobuf_1_1_field_codec.html#a0d45d8654aeec9f716075738ab55057b">ForInt64</a>(uint tag)</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        {</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="class_google_1_1_protobuf_1_1_field_codec.html">FieldCodec&lt;long&gt;</a>(input =&gt; input.ReadInt64(), (output, value) =&gt; output.WriteInt64(value), <a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html">CodedOutputStream</a>.<a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a4eedb68f8ac811cf06649f67e47bd84d">ComputeInt64Size</a>, tag);</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        }</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160; </div>
+<div class="line"><a name="l00140"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_field_codec.html#a533fe7ddcfb2d0e3e02995a45f5da076">  140</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <a class="code" href="class_google_1_1_protobuf_1_1_field_codec.html">FieldCodec&lt;long&gt;</a> <a class="code" href="class_google_1_1_protobuf_1_1_field_codec.html#a533fe7ddcfb2d0e3e02995a45f5da076">ForSInt64</a>(uint tag)</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;        {</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="class_google_1_1_protobuf_1_1_field_codec.html">FieldCodec&lt;long&gt;</a>(input =&gt; input.ReadSInt64(), (output, value) =&gt; output.WriteSInt64(value), <a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html">CodedOutputStream</a>.<a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#aa887c32df5e1f716e884444c5e3c741a">ComputeSInt64Size</a>, tag);</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;        }</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160; </div>
+<div class="line"><a name="l00150"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_field_codec.html#a43a981b8f4e20f8a8c7cf46e6e7050cd">  150</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <a class="code" href="class_google_1_1_protobuf_1_1_field_codec.html">FieldCodec&lt;ulong&gt;</a> <a class="code" href="class_google_1_1_protobuf_1_1_field_codec.html#a43a981b8f4e20f8a8c7cf46e6e7050cd">ForFixed64</a>(uint tag)</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;        {</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="class_google_1_1_protobuf_1_1_field_codec.html">FieldCodec&lt;ulong&gt;</a>(input =&gt; input.ReadFixed64(), (output, value) =&gt; output.WriteFixed64(value), 8, tag);</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;        }</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160; </div>
+<div class="line"><a name="l00160"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_field_codec.html#abc8ae9d275909d2db21fe4d3584bb8e1">  160</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <a class="code" href="class_google_1_1_protobuf_1_1_field_codec.html">FieldCodec&lt;long&gt;</a> <a class="code" href="class_google_1_1_protobuf_1_1_field_codec.html#abc8ae9d275909d2db21fe4d3584bb8e1">ForSFixed64</a>(uint tag)</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;        {</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="class_google_1_1_protobuf_1_1_field_codec.html">FieldCodec&lt;long&gt;</a>(input =&gt; input.ReadSFixed64(), (output, value) =&gt; output.WriteSFixed64(value), 8, tag);</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;        }</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160; </div>
+<div class="line"><a name="l00170"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_field_codec.html#a9ed5bddf5fbaf24bdf4f4efa46df993f">  170</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <a class="code" href="class_google_1_1_protobuf_1_1_field_codec.html">FieldCodec&lt;ulong&gt;</a> <a class="code" href="class_google_1_1_protobuf_1_1_field_codec.html#a9ed5bddf5fbaf24bdf4f4efa46df993f">ForUInt64</a>(uint tag)</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;        {</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="class_google_1_1_protobuf_1_1_field_codec.html">FieldCodec&lt;ulong&gt;</a>(input =&gt; input.ReadUInt64(), (output, value) =&gt; output.WriteUInt64(value), <a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html">CodedOutputStream</a>.<a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a6796173e266a725dda941dc4104f2833">ComputeUInt64Size</a>, tag);</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;        }</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160; </div>
+<div class="line"><a name="l00180"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_field_codec.html#a6978f56c4f1311adabeba70bbfb75d24">  180</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <a class="code" href="class_google_1_1_protobuf_1_1_field_codec.html">FieldCodec&lt;float&gt;</a> <a class="code" href="class_google_1_1_protobuf_1_1_field_codec.html#a6978f56c4f1311adabeba70bbfb75d24">ForFloat</a>(uint tag)</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;        {</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="class_google_1_1_protobuf_1_1_field_codec.html">FieldCodec&lt;float&gt;</a>(input =&gt; input.ReadFloat(), (output, value) =&gt; output.WriteFloat(value), <a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html">CodedOutputStream</a>.<a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a13c4ece4169a428db8694676ea0317b1">ComputeFloatSize</a>, tag);</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;        }</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160; </div>
+<div class="line"><a name="l00190"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_field_codec.html#a5b3b7dcfe1090a9ab97bc1cd1873a29d">  190</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <a class="code" href="class_google_1_1_protobuf_1_1_field_codec.html">FieldCodec&lt;double&gt;</a> <a class="code" href="class_google_1_1_protobuf_1_1_field_codec.html#a5b3b7dcfe1090a9ab97bc1cd1873a29d">ForDouble</a>(uint tag)</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;        {</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="class_google_1_1_protobuf_1_1_field_codec.html">FieldCodec&lt;double&gt;</a>(input =&gt; input.ReadDouble(), (output, value) =&gt; output.WriteDouble(value), <a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html">CodedOutputStream</a>.<a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#ac689c63b85bbba61a3d9681f032027c7">ComputeDoubleSize</a>, tag);</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;        }</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160; </div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;        <span class="comment">// Enums are tricky. We can probably use expression trees to build these delegates automatically,</span></div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;        <span class="comment">// but it&#39;s easy to generate the code for it.</span></div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160; </div>
+<div class="line"><a name="l00205"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_field_codec.html#a0ff24f951af8d36556af0458bc81e1a2">  205</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <a class="code" href="class_google_1_1_protobuf_1_1_field_codec.html">FieldCodec&lt;T&gt;</a> <a class="code" href="class_google_1_1_protobuf_1_1_field_codec.html#a0ff24f951af8d36556af0458bc81e1a2">ForEnum&lt;T&gt;</a>(uint tag, Func&lt;T, int&gt; toInt32, Func&lt;int, T&gt; fromInt32)</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;        {</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="class_google_1_1_protobuf_1_1_field_codec.html">FieldCodec&lt;T&gt;</a>(input =&gt; fromInt32(</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;                input.ReadEnum()),</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;                (output, value) =&gt; output.WriteEnum(toInt32(value)),</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;                value =&gt; <a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html">CodedOutputStream</a>.<a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#add98ee7c8d7cfcfc6b57d36bcbbf0fce">ComputeEnumSize</a>(toInt32(value)), tag);</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;        }</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160; </div>
+<div class="line"><a name="l00219"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_field_codec.html#a81e11a36f69b6b95f858f2411e015cc6">  219</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <a class="code" href="class_google_1_1_protobuf_1_1_field_codec.html">FieldCodec&lt;T&gt;</a> <a class="code" href="class_google_1_1_protobuf_1_1_field_codec.html#a81e11a36f69b6b95f858f2411e015cc6">ForMessage&lt;T&gt;</a>(uint tag, <a class="code" href="class_google_1_1_protobuf_1_1_message_parser.html">MessageParser&lt;T&gt;</a> parser) where T : <a class="code" href="interface_google_1_1_protobuf_1_1_i_message.html">IMessage</a></div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;        {</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="class_google_1_1_protobuf_1_1_field_codec.html">FieldCodec&lt;T&gt;</a>(input =&gt; { T message = parser.CreateTemplate(); input.ReadMessage(message); <span class="keywordflow">return</span> message; },</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;                (output, value) =&gt; output.WriteMessage(value), message =&gt; <a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html">CodedOutputStream</a>.<a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#aa8a3d1671e744975606bef6b20a8b038">ComputeMessageSize</a>(message), tag);</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;        }</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;    }</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160; </div>
+<div class="line"><a name="l00241"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_field_codec.html">  241</a></span>&#160;    <span class="keyword">public</span> sealed <span class="keyword">class </span><a class="code" href="class_google_1_1_protobuf_1_1_field_codec.html">FieldCodec</a>&lt;T&gt;</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;    {</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> readonly T DefaultDefault;</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;        <span class="comment">// Only non-nullable value types support packing. This is the simplest way of detecting that.</span></div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> readonly <span class="keywordtype">bool</span> TypeSupportsPacking = <span class="keywordflow">default</span>(T) != <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160; </div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;        <span class="keyword">static</span> <a class="code" href="class_google_1_1_protobuf_1_1_field_codec.html">FieldCodec</a>()</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;        {</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;            <span class="keywordflow">if</span> (typeof(T) == typeof(<span class="keywordtype">string</span>))</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;            {</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;                DefaultDefault = (T)(<span class="keywordtype">object</span>)<span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;            }</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (typeof(T) == typeof(<a class="code" href="class_google_1_1_protobuf_1_1_byte_string.html">ByteString</a>))</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;            {</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;                DefaultDefault = (T)(<span class="keywordtype">object</span>)<a class="code" href="class_google_1_1_protobuf_1_1_byte_string.html">ByteString</a>.<a class="code" href="class_google_1_1_protobuf_1_1_byte_string.html#a13aee24e3f133eecf45c3cfe74cca067">Empty</a>;</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;            }</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;            <span class="comment">// Otherwise it&#39;s the default value of the CLR type</span></div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;        }</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160; </div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;        <span class="keyword">internal</span> <span class="keyword">static</span> <span class="keywordtype">bool</span> IsPackedRepeatedField(uint tag)</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;        {</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;            <span class="keywordflow">return</span> TypeSupportsPacking &amp;&amp; WireFormat.GetTagWireType(tag) == WireFormat.WireType.LengthDelimited;</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;        }</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160; </div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;        <span class="keyword">internal</span> readonly <span class="keywordtype">bool</span> PackedRepeatedField;</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160; </div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;        <span class="keyword">internal</span> readonly Action&lt;CodedOutputStream, T&gt; ValueWriter;</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160; </div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;        <span class="keyword">internal</span> readonly Func&lt;T, int&gt; ValueSizeCalculator;</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160; </div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;        <span class="keyword">internal</span> readonly Func&lt;CodedInputStream, T&gt; ValueReader;</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160; </div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;        <span class="keyword">internal</span> readonly <span class="keywordtype">int</span> FixedSize;</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160; </div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;        <span class="keyword">internal</span> readonly uint Tag;</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160; </div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;        <span class="keyword">internal</span> readonly T DefaultValue;</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160; </div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;        <span class="keyword">private</span> readonly <span class="keywordtype">int</span> tagSize;</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;        </div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;        <span class="keyword">internal</span> <a class="code" href="class_google_1_1_protobuf_1_1_field_codec.html">FieldCodec</a>(</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;                Func&lt;CodedInputStream, T&gt; reader,</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;                Action&lt;CodedOutputStream, T&gt; writer,</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;                <span class="keywordtype">int</span> fixedSize,</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;                uint tag) : <span class="keyword">this</span>(reader, writer, _ =&gt; fixedSize, tag)</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;        {</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;            FixedSize = fixedSize;</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;        }</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160; </div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;        <span class="keyword">internal</span> <a class="code" href="class_google_1_1_protobuf_1_1_field_codec.html">FieldCodec</a>(</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;            Func&lt;CodedInputStream, T&gt; reader,</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;            Action&lt;CodedOutputStream, T&gt; writer,</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;            Func&lt;T, int&gt; sizeCalculator,</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;            uint tag) : <span class="keyword">this</span>(reader, writer, sizeCalculator, tag, DefaultDefault)</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;        {</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;        }</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160; </div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;        <span class="keyword">internal</span> <a class="code" href="class_google_1_1_protobuf_1_1_field_codec.html">FieldCodec</a>(</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;            Func&lt;CodedInputStream, T&gt; reader,</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;            Action&lt;CodedOutputStream, T&gt; writer,</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;            Func&lt;T, int&gt; sizeCalculator,</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;            uint tag,</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;            T defaultValue)</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;        {</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;            ValueReader = reader;</div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;            ValueWriter = writer;</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;            ValueSizeCalculator = sizeCalculator;</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;            FixedSize = 0;</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;            Tag = tag;</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;            DefaultValue = defaultValue;</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;            tagSize = <a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html">CodedOutputStream</a>.<a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#aedd0de75b8b8f40e66998ea226611255">ComputeRawVarint32Size</a>(tag);</div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;            <span class="comment">// Detect packed-ness once, so we can check for it within RepeatedField&lt;T&gt;.</span></div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;            PackedRepeatedField = IsPackedRepeatedField(tag);</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;        }</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160; </div>
+<div class="line"><a name="l00346"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_field_codec.html#a5d0f0177e33cd8081e91d191a8de4c6c">  346</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_google_1_1_protobuf_1_1_field_codec.html#a5d0f0177e33cd8081e91d191a8de4c6c">WriteTagAndValue</a>(<a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html">CodedOutputStream</a> output, T value)</div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;        {</div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;            <span class="keywordflow">if</span> (!IsDefault(value))</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;            {</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;                output.<a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a5a843cc4916c9832a99d9b8b18cea2cc">WriteTag</a>(Tag);</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;                ValueWriter(output, value);</div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;            }</div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;        }</div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160; </div>
+<div class="line"><a name="l00360"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_field_codec.html#a76016727b45d3c0d07fc977d0be4dd85">  360</a></span>&#160;        <span class="keyword">public</span> T <a class="code" href="class_google_1_1_protobuf_1_1_field_codec.html#a76016727b45d3c0d07fc977d0be4dd85">Read</a>(<a class="code" href="class_google_1_1_protobuf_1_1_coded_input_stream.html">CodedInputStream</a> input)</div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;        {</div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;            <span class="keywordflow">return</span> ValueReader(input);</div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;        }</div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160; </div>
+<div class="line"><a name="l00369"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_field_codec.html#a9262dc2092ac70cba3e06daca49e500a">  369</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">int</span> <a class="code" href="class_google_1_1_protobuf_1_1_field_codec.html#a9262dc2092ac70cba3e06daca49e500a">CalculateSizeWithTag</a>(T value)</div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;        {</div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;            <span class="keywordflow">return</span> IsDefault(value) ? 0 : ValueSizeCalculator(value) + tagSize;</div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;        }</div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160; </div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">bool</span> IsDefault(T value)</div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;        {</div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;            <span class="keywordflow">return</span> EqualityComparer&lt;T&gt;.Default.Equals(value, DefaultValue);</div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;        }</div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;    }</div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;}</div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_byte_string_html"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_byte_string.html">Google.Protobuf.ByteString</a></div><div class="ttdoc">Immutable array of bytes.</div><div class="ttdef"><b>Definition:</b> <a href="_byte_string_8cs_source.html#l00047">ByteString.cs:48</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_byte_string_html_a13aee24e3f133eecf45c3cfe74cca067"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_byte_string.html#a13aee24e3f133eecf45c3cfe74cca067">Google.Protobuf.ByteString.Empty</a></div><div class="ttdeci">static ByteString Empty</div><div class="ttdoc">Returns an empty ByteString.</div><div class="ttdef"><b>Definition:</b> <a href="_byte_string_8cs_source.html#l00104">ByteString.cs:105</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_coded_input_stream_html"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_coded_input_stream.html">Google.Protobuf.CodedInputStream</a></div><div class="ttdoc">Reads and decodes protocol message fields.</div><div class="ttdef"><b>Definition:</b> <a href="_coded_input_stream_8cs_source.html#l00054">CodedInputStream.cs:55</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_coded_output_stream_html"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_coded_output_stream.html">Google.Protobuf.CodedOutputStream</a></div><div class="ttdoc">Encodes and writes protocol message fields.</div><div class="ttdef"><b>Definition:</b> <a href="_coded_output_stream_8_compute_size_8cs_source.html#l00040">CodedOutputStream.ComputeSize.cs:41</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_coded_output_stream_html_a13c4ece4169a428db8694676ea0317b1"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a13c4ece4169a428db8694676ea0317b1">Google.Protobuf.CodedOutputStream.ComputeFloatSize</a></div><div class="ttdeci">static int ComputeFloatSize(float value)</div><div class="ttdoc">Computes the number of bytes that would be needed to encode a float field, including the tag.</div><div class="ttdef"><b>Definition:</b> <a href="_coded_output_stream_8_compute_size_8cs_source.html#l00058">CodedOutputStream.ComputeSize.cs:58</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_coded_output_stream_html_a17293584e93ef4d56a3562bff48a8671"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a17293584e93ef4d56a3562bff48a8671">Google.Protobuf.CodedOutputStream.ComputeSInt32Size</a></div><div class="ttdeci">static int ComputeSInt32Size(int value)</div><div class="ttdoc">Computes the number of bytes that would be needed to encode an sint32 field, including the tag.</div><div class="ttdef"><b>Definition:</b> <a href="_coded_output_stream_8_compute_size_8cs_source.html#l00205">CodedOutputStream.ComputeSize.cs:205</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_coded_output_stream_html_a3897e1e48ad38cb2bb34dd766575caae"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a3897e1e48ad38cb2bb34dd766575caae">Google.Protobuf.CodedOutputStream.ComputeBytesSize</a></div><div class="ttdeci">static int ComputeBytesSize(ByteString value)</div><div class="ttdoc">Computes the number of bytes that would be needed to encode a bytes field, including the tag.</div><div class="ttdef"><b>Definition:</b> <a href="_coded_output_stream_8_compute_size_8cs_source.html#l00158">CodedOutputStream.ComputeSize.cs:158</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_coded_output_stream_html_a42a5cab5992491172e8a41ae066cb709"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a42a5cab5992491172e8a41ae066cb709">Google.Protobuf.CodedOutputStream.ComputeUInt32Size</a></div><div class="ttdeci">static int ComputeUInt32Size(uint value)</div><div class="ttdoc">Computes the number of bytes that would be needed to encode a uint32 field, including the tag.</div><div class="ttdef"><b>Definition:</b> <a href="_coded_output_stream_8_compute_size_8cs_source.html#l00167">CodedOutputStream.ComputeSize.cs:167</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_coded_output_stream_html_a468856512b1784ffef9a1d1dc41c20fd"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a468856512b1784ffef9a1d1dc41c20fd">Google.Protobuf.CodedOutputStream.ComputeStringSize</a></div><div class="ttdeci">static int ComputeStringSize(String value)</div><div class="ttdoc">Computes the number of bytes that would be needed to encode a string field, including the tag.</div><div class="ttdef"><b>Definition:</b> <a href="_coded_output_stream_8_compute_size_8cs_source.html#l00129">CodedOutputStream.ComputeSize.cs:129</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_coded_output_stream_html_a4eedb68f8ac811cf06649f67e47bd84d"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a4eedb68f8ac811cf06649f67e47bd84d">Google.Protobuf.CodedOutputStream.ComputeInt64Size</a></div><div class="ttdeci">static int ComputeInt64Size(long value)</div><div class="ttdoc">Computes the number of bytes that would be needed to encode an int64 field, including the tag.</div><div class="ttdef"><b>Definition:</b> <a href="_coded_output_stream_8_compute_size_8cs_source.html#l00076">CodedOutputStream.ComputeSize.cs:76</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_coded_output_stream_html_a5a843cc4916c9832a99d9b8b18cea2cc"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a5a843cc4916c9832a99d9b8b18cea2cc">Google.Protobuf.CodedOutputStream.WriteTag</a></div><div class="ttdeci">void WriteTag(int fieldNumber, WireFormat.WireType type)</div><div class="ttdoc">Encodes and writes a tag.</div><div class="ttdef"><b>Definition:</b> <a href="_coded_output_stream_8cs_source.html#l00391">CodedOutputStream.cs:391</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_coded_output_stream_html_a6796173e266a725dda941dc4104f2833"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a6796173e266a725dda941dc4104f2833">Google.Protobuf.CodedOutputStream.ComputeUInt64Size</a></div><div class="ttdeci">static int ComputeUInt64Size(ulong value)</div><div class="ttdoc">Computes the number of bytes that would be needed to encode a uint64 field, including the tag.</div><div class="ttdef"><b>Definition:</b> <a href="_coded_output_stream_8_compute_size_8cs_source.html#l00067">CodedOutputStream.ComputeSize.cs:67</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_coded_output_stream_html_aa887c32df5e1f716e884444c5e3c741a"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_coded_output_stream.html#aa887c32df5e1f716e884444c5e3c741a">Google.Protobuf.CodedOutputStream.ComputeSInt64Size</a></div><div class="ttdeci">static int ComputeSInt64Size(long value)</div><div class="ttdoc">Computes the number of bytes that would be needed to encode an sint64 field, including the tag.</div><div class="ttdef"><b>Definition:</b> <a href="_coded_output_stream_8_compute_size_8cs_source.html#l00214">CodedOutputStream.ComputeSize.cs:214</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_coded_output_stream_html_aa8a3d1671e744975606bef6b20a8b038"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_coded_output_stream.html#aa8a3d1671e744975606bef6b20a8b038">Google.Protobuf.CodedOutputStream.ComputeMessageSize</a></div><div class="ttdeci">static int ComputeMessageSize(IMessage value)</div><div class="ttdoc">Computes the number of bytes that would be needed to encode an embedded message field,...</div><div class="ttdef"><b>Definition:</b> <a href="_coded_output_stream_8_compute_size_8cs_source.html#l00148">CodedOutputStream.ComputeSize.cs:148</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_coded_output_stream_html_ac5282d0255fc65115a4558346bbb5703"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_coded_output_stream.html#ac5282d0255fc65115a4558346bbb5703">Google.Protobuf.CodedOutputStream.ComputeInt32Size</a></div><div class="ttdeci">static int ComputeInt32Size(int value)</div><div class="ttdoc">Computes the number of bytes that would be needed to encode an int32 field, including the tag.</div><div class="ttdef"><b>Definition:</b> <a href="_coded_output_stream_8_compute_size_8cs_source.html#l00085">CodedOutputStream.ComputeSize.cs:85</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_coded_output_stream_html_ac689c63b85bbba61a3d9681f032027c7"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_coded_output_stream.html#ac689c63b85bbba61a3d9681f032027c7">Google.Protobuf.CodedOutputStream.ComputeDoubleSize</a></div><div class="ttdeci">static int ComputeDoubleSize(double value)</div><div class="ttdoc">Computes the number of bytes that would be needed to encode a double field, including the tag.</div><div class="ttdef"><b>Definition:</b> <a href="_coded_output_stream_8_compute_size_8cs_source.html#l00049">CodedOutputStream.ComputeSize.cs:49</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_coded_output_stream_html_ad55330919f8e03ae48107c96b7e562f0"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_coded_output_stream.html#ad55330919f8e03ae48107c96b7e562f0">Google.Protobuf.CodedOutputStream.ComputeBoolSize</a></div><div class="ttdeci">static int ComputeBoolSize(bool value)</div><div class="ttdoc">Computes the number of bytes that would be needed to encode a bool field, including the tag.</div><div class="ttdef"><b>Definition:</b> <a href="_coded_output_stream_8_compute_size_8cs_source.html#l00120">CodedOutputStream.ComputeSize.cs:120</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_coded_output_stream_html_add98ee7c8d7cfcfc6b57d36bcbbf0fce"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_coded_output_stream.html#add98ee7c8d7cfcfc6b57d36bcbbf0fce">Google.Protobuf.CodedOutputStream.ComputeEnumSize</a></div><div class="ttdeci">static int ComputeEnumSize(int value)</div><div class="ttdoc">Computes the number of bytes that would be needed to encode a enum field, including the tag....</div><div class="ttdef"><b>Definition:</b> <a href="_coded_output_stream_8_compute_size_8cs_source.html#l00177">CodedOutputStream.ComputeSize.cs:177</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_coded_output_stream_html_aedd0de75b8b8f40e66998ea226611255"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_coded_output_stream.html#aedd0de75b8b8f40e66998ea226611255">Google.Protobuf.CodedOutputStream.ComputeRawVarint32Size</a></div><div class="ttdeci">static int ComputeRawVarint32Size(uint value)</div><div class="ttdoc">Computes the number of bytes that would be needed to encode a varint.</div><div class="ttdef"><b>Definition:</b> <a href="_coded_output_stream_8_compute_size_8cs_source.html#l00231">CodedOutputStream.ComputeSize.cs:231</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_field_codec_html"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_field_codec.html">Google.Protobuf.FieldCodec</a></div><div class="ttdoc">Factory methods for FieldCodec&lt;T&gt;.</div><div class="ttdef"><b>Definition:</b> <a href="_field_codec_8cs_source.html#l00241">FieldCodec.cs:242</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_field_codec_html_a0201e2958ce0fa95dd53d1012d64d0bc"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_field_codec.html#a0201e2958ce0fa95dd53d1012d64d0bc">Google.Protobuf.FieldCodec.ForBool</a></div><div class="ttdeci">static FieldCodec&lt; bool &gt; ForBool(uint tag)</div><div class="ttdoc">Retrieves a codec suitable for a bool field with the given tag.</div><div class="ttdef"><b>Definition:</b> <a href="_field_codec_8cs_source.html#l00070">FieldCodec.cs:70</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_field_codec_html_a0d45d8654aeec9f716075738ab55057b"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_field_codec.html#a0d45d8654aeec9f716075738ab55057b">Google.Protobuf.FieldCodec.ForInt64</a></div><div class="ttdeci">static FieldCodec&lt; long &gt; ForInt64(uint tag)</div><div class="ttdoc">Retrieves a codec suitable for an int64 field with the given tag.</div><div class="ttdef"><b>Definition:</b> <a href="_field_codec_8cs_source.html#l00130">FieldCodec.cs:130</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_field_codec_html_a0ff24f951af8d36556af0458bc81e1a2"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_field_codec.html#a0ff24f951af8d36556af0458bc81e1a2">Google.Protobuf.FieldCodec.ForEnum&lt; T &gt;</a></div><div class="ttdeci">static FieldCodec&lt; T &gt; ForEnum&lt; T &gt;(uint tag, Func&lt; T, int &gt; toInt32, Func&lt; int, T &gt; fromInt32)</div><div class="ttdoc">Retrieves a codec suitable for an enum field with the given tag.</div><div class="ttdef"><b>Definition:</b> <a href="_field_codec_8cs_source.html#l00205">FieldCodec.cs:205</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_field_codec_html_a249720742b914fdd0990b3ee475eb758"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_field_codec.html#a249720742b914fdd0990b3ee475eb758">Google.Protobuf.FieldCodec.ForFixed32</a></div><div class="ttdeci">static FieldCodec&lt; uint &gt; ForFixed32(uint tag)</div><div class="ttdoc">Retrieves a codec suitable for a fixed32 field with the given tag.</div><div class="ttdef"><b>Definition:</b> <a href="_field_codec_8cs_source.html#l00100">FieldCodec.cs:100</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_field_codec_html_a43a981b8f4e20f8a8c7cf46e6e7050cd"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_field_codec.html#a43a981b8f4e20f8a8c7cf46e6e7050cd">Google.Protobuf.FieldCodec.ForFixed64</a></div><div class="ttdeci">static FieldCodec&lt; ulong &gt; ForFixed64(uint tag)</div><div class="ttdoc">Retrieves a codec suitable for a fixed64 field with the given tag.</div><div class="ttdef"><b>Definition:</b> <a href="_field_codec_8cs_source.html#l00150">FieldCodec.cs:150</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_field_codec_html_a4a2bee7ab408c30b0b4e90f186b4a86a"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_field_codec.html#a4a2bee7ab408c30b0b4e90f186b4a86a">Google.Protobuf.FieldCodec.ForUInt32</a></div><div class="ttdeci">static FieldCodec&lt; uint &gt; ForUInt32(uint tag)</div><div class="ttdoc">Retrieves a codec suitable for a uint32 field with the given tag.</div><div class="ttdef"><b>Definition:</b> <a href="_field_codec_8cs_source.html#l00120">FieldCodec.cs:120</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_field_codec_html_a533fe7ddcfb2d0e3e02995a45f5da076"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_field_codec.html#a533fe7ddcfb2d0e3e02995a45f5da076">Google.Protobuf.FieldCodec.ForSInt64</a></div><div class="ttdeci">static FieldCodec&lt; long &gt; ForSInt64(uint tag)</div><div class="ttdoc">Retrieves a codec suitable for an sint64 field with the given tag.</div><div class="ttdef"><b>Definition:</b> <a href="_field_codec_8cs_source.html#l00140">FieldCodec.cs:140</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_field_codec_html_a5b3b7dcfe1090a9ab97bc1cd1873a29d"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_field_codec.html#a5b3b7dcfe1090a9ab97bc1cd1873a29d">Google.Protobuf.FieldCodec.ForDouble</a></div><div class="ttdeci">static FieldCodec&lt; double &gt; ForDouble(uint tag)</div><div class="ttdoc">Retrieves a codec suitable for a double field with the given tag.</div><div class="ttdef"><b>Definition:</b> <a href="_field_codec_8cs_source.html#l00190">FieldCodec.cs:190</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_field_codec_html_a5d0f0177e33cd8081e91d191a8de4c6c"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_field_codec.html#a5d0f0177e33cd8081e91d191a8de4c6c">Google.Protobuf.FieldCodec.WriteTagAndValue</a></div><div class="ttdeci">void WriteTagAndValue(CodedOutputStream output, T value)</div><div class="ttdoc">Write a tag and the given value, if the value is not the default.</div><div class="ttdef"><b>Definition:</b> <a href="_field_codec_8cs_source.html#l00346">FieldCodec.cs:346</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_field_codec_html_a6978f56c4f1311adabeba70bbfb75d24"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_field_codec.html#a6978f56c4f1311adabeba70bbfb75d24">Google.Protobuf.FieldCodec.ForFloat</a></div><div class="ttdeci">static FieldCodec&lt; float &gt; ForFloat(uint tag)</div><div class="ttdoc">Retrieves a codec suitable for a float field with the given tag.</div><div class="ttdef"><b>Definition:</b> <a href="_field_codec_8cs_source.html#l00180">FieldCodec.cs:180</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_field_codec_html_a76016727b45d3c0d07fc977d0be4dd85"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_field_codec.html#a76016727b45d3c0d07fc977d0be4dd85">Google.Protobuf.FieldCodec.Read</a></div><div class="ttdeci">T Read(CodedInputStream input)</div><div class="ttdoc">Reads a value of the codec type from the given CodedInputStream.</div><div class="ttdef"><b>Definition:</b> <a href="_field_codec_8cs_source.html#l00360">FieldCodec.cs:360</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_field_codec_html_a81e11a36f69b6b95f858f2411e015cc6"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_field_codec.html#a81e11a36f69b6b95f858f2411e015cc6">Google.Protobuf.FieldCodec.ForMessage&lt; T &gt;</a></div><div class="ttdeci">static FieldCodec&lt; T &gt; ForMessage&lt; T &gt;(uint tag, MessageParser&lt; T &gt; parser)</div><div class="ttdoc">Retrieves a codec suitable for a message field with the given tag.</div><div class="ttdef"><b>Definition:</b> <a href="_field_codec_8cs_source.html#l00219">FieldCodec.cs:219</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_field_codec_html_a81facb0610e5353701143ed017c6e6d6"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_field_codec.html#a81facb0610e5353701143ed017c6e6d6">Google.Protobuf.FieldCodec.ForSFixed32</a></div><div class="ttdeci">static FieldCodec&lt; int &gt; ForSFixed32(uint tag)</div><div class="ttdoc">Retrieves a codec suitable for an sfixed32 field with the given tag.</div><div class="ttdef"><b>Definition:</b> <a href="_field_codec_8cs_source.html#l00110">FieldCodec.cs:110</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_field_codec_html_a9262dc2092ac70cba3e06daca49e500a"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_field_codec.html#a9262dc2092ac70cba3e06daca49e500a">Google.Protobuf.FieldCodec.CalculateSizeWithTag</a></div><div class="ttdeci">int CalculateSizeWithTag(T value)</div><div class="ttdoc">Calculates the size required to write the given value, with a tag, if the value is not the default.</div><div class="ttdef"><b>Definition:</b> <a href="_field_codec_8cs_source.html#l00369">FieldCodec.cs:369</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_field_codec_html_a95cf60ae1fdf2709cca4d6159c0daeb0"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_field_codec.html#a95cf60ae1fdf2709cca4d6159c0daeb0">Google.Protobuf.FieldCodec.ForSInt32</a></div><div class="ttdeci">static FieldCodec&lt; int &gt; ForSInt32(uint tag)</div><div class="ttdoc">Retrieves a codec suitable for an sint32 field with the given tag.</div><div class="ttdef"><b>Definition:</b> <a href="_field_codec_8cs_source.html#l00090">FieldCodec.cs:90</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_field_codec_html_a986f44bef5519d85739802852a38b3b4"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_field_codec.html#a986f44bef5519d85739802852a38b3b4">Google.Protobuf.FieldCodec.ForBytes</a></div><div class="ttdeci">static FieldCodec&lt; ByteString &gt; ForBytes(uint tag)</div><div class="ttdoc">Retrieves a codec suitable for a bytes field with the given tag.</div><div class="ttdef"><b>Definition:</b> <a href="_field_codec_8cs_source.html#l00060">FieldCodec.cs:60</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_field_codec_html_a9ed5bddf5fbaf24bdf4f4efa46df993f"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_field_codec.html#a9ed5bddf5fbaf24bdf4f4efa46df993f">Google.Protobuf.FieldCodec.ForUInt64</a></div><div class="ttdeci">static FieldCodec&lt; ulong &gt; ForUInt64(uint tag)</div><div class="ttdoc">Retrieves a codec suitable for a uint64 field with the given tag.</div><div class="ttdef"><b>Definition:</b> <a href="_field_codec_8cs_source.html#l00170">FieldCodec.cs:170</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_field_codec_html_ab0a59020b6fe852dd9d8d710ade9425b"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_field_codec.html#ab0a59020b6fe852dd9d8d710ade9425b">Google.Protobuf.FieldCodec.ForInt32</a></div><div class="ttdeci">static FieldCodec&lt; int &gt; ForInt32(uint tag)</div><div class="ttdoc">Retrieves a codec suitable for an int32 field with the given tag.</div><div class="ttdef"><b>Definition:</b> <a href="_field_codec_8cs_source.html#l00080">FieldCodec.cs:80</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_field_codec_html_abc8ae9d275909d2db21fe4d3584bb8e1"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_field_codec.html#abc8ae9d275909d2db21fe4d3584bb8e1">Google.Protobuf.FieldCodec.ForSFixed64</a></div><div class="ttdeci">static FieldCodec&lt; long &gt; ForSFixed64(uint tag)</div><div class="ttdoc">Retrieves a codec suitable for an sfixed64 field with the given tag.</div><div class="ttdef"><b>Definition:</b> <a href="_field_codec_8cs_source.html#l00160">FieldCodec.cs:160</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_field_codec_html_afebd7962701543421e1ef3d0a59df7a8"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_field_codec.html#afebd7962701543421e1ef3d0a59df7a8">Google.Protobuf.FieldCodec.ForString</a></div><div class="ttdeci">static FieldCodec&lt; string &gt; ForString(uint tag)</div><div class="ttdoc">Retrieves a codec suitable for a string field with the given tag.</div><div class="ttdef"><b>Definition:</b> <a href="_field_codec_8cs_source.html#l00050">FieldCodec.cs:50</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_message_parser_html"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_message_parser.html">Google.Protobuf.MessageParser</a></div><div class="ttdoc">A general message parser, typically used by reflection-based code as all the methods return simple IM...</div><div class="ttdef"><b>Definition:</b> <a href="_message_parser_8cs_source.html#l00144">MessageParser.cs:145</a></div></div>
+<div class="ttc" id="ainterface_google_1_1_protobuf_1_1_i_message_html"><div class="ttname"><a href="interface_google_1_1_protobuf_1_1_i_message.html">Google.Protobuf.IMessage</a></div><div class="ttdoc">Interface for a Protocol Buffers message, supporting basic operations required for serialization.</div><div class="ttdef"><b>Definition:</b> <a href="_libraries_2_google_8_protobuf_2_i_message_8cs_source.html#l00040">IMessage.cs:41</a></div></div>
+<div class="ttc" id="anamespace_google_1_1_protobuf_html"><div class="ttname"><a href="namespace_google_1_1_protobuf.html">Google.Protobuf</a></div><div class="ttdef"><b>Definition:</b> <a href="_i_message_adaptor_8cs_source.html#l00010">IMessageAdaptor.cs:11</a></div></div>
+<div class="ttc" id="anamespace_system_html"><div class="ttname"><a href="namespace_system.html">System</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_method_builder_attribute_8cs_source.html#l00001">AsyncMethodBuilderAttribute.cs:2</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_84bbf7b3c7f28a5a18725745e1505219.html">Assets</a></li><li class="navelem"><a class="el" href="dir_f13b41af88cf68434578284aaf699e39.html">Scripts</a></li><li class="navelem"><a class="el" href="dir_46d134a3bf82cf4dc49ca8f728aea58c.html">Libraries</a></li><li class="navelem"><a class="el" href="dir_ee874eb5685beecfc37035b4fc9dfc0c.html">Google.Protobuf</a></li><li class="navelem"><a class="el" href="_field_codec_8cs.html">FieldCodec.cs</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:24:50 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

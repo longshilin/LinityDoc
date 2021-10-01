@@ -1,0 +1,6 @@
+var class_mongo_d_b_1_1_driver_1_1_geo_json_object_model_1_1_serializers_1_1_geo_json_named_coordinate_reference_system_serializer =
+[
+    [ "GeoJsonNamedCoordinateReferenceSystemSerializer", "class_mongo_d_b_1_1_driver_1_1_geo_json_object_model_1_1_serializers_1_1_geo_json_named_coordinate_reference_system_serializer.html#a7c8600327387ba5fd841b08c192f6451", null ],
+    [ "DeserializeValue", "class_mongo_d_b_1_1_driver_1_1_geo_json_object_model_1_1_serializers_1_1_geo_json_named_coordinate_reference_system_serializer.html#a62f0d4a46745b7f9446c80697657acac", null ],
+    [ "SerializeValue", "class_mongo_d_b_1_1_driver_1_1_geo_json_object_model_1_1_serializers_1_1_geo_json_named_coordinate_reference_system_serializer.html#a0be3834f3c53459fe76d6ac0dafbf4d4", null ]
+];

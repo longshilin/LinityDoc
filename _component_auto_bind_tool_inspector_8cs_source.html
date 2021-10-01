@@ -1,0 +1,427 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: Assets/Scripts/Editor/MenuUtils/ComponentAutoBindToolInspector.cs 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_component_auto_bind_tool_inspector_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">ComponentAutoBindToolInspector.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_component_auto_bind_tool_inspector_8cs.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Collections;</div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Collections.Generic;</div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_unity_engine.html">UnityEngine</a>;</div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="keyword">using</span> UnityEditor;</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>;</div>
+<div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="_component_auto_bind_tool_inspector_8cs.html#aef19bab18b9814edeef255c43e4f6bbc">    6</a></span>&#160;<span class="keyword">using</span> <a class="code" href="_component_auto_bind_tool_inspector_8cs.html#aef19bab18b9814edeef255c43e4f6bbc">Object</a> = <a class="code" href="namespace_unity_engine.html">UnityEngine</a>.Object;</div>
+<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="_component_auto_bind_tool_inspector_8cs.html#ad426af953351b77176e0bc333bfad10b">    7</a></span>&#160;<span class="keyword">using</span> <a class="code" href="_entity_and_u_i_form_code_generator_8cs.html#ad426af953351b77176e0bc333bfad10b">BindData</a> = <a class="code" href="namespace_linity.html">Linity</a>.<a class="code" href="class_linity_1_1_component_auto_bind_tool.html">ComponentAutoBindTool</a>.BindData;</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_linity_1_1_editor.html">Linity.Editor</a></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;{</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    [CustomEditor(typeof(ComponentAutoBindTool))]</div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="class_linity_1_1_editor_1_1_component_auto_bind_tool_inspector.html">   12</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="class_linity_1_1_editor_1_1_component_auto_bind_tool_inspector.html">ComponentAutoBindToolInspector</a> : UnityEditor.Editor</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    {</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        <span class="keyword">private</span> <a class="code" href="class_linity_1_1_component_auto_bind_tool.html">ComponentAutoBindTool</a> m_Target;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        <span class="keyword">private</span> SerializedProperty m_BindDatas;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        <span class="keyword">private</span> SerializedProperty m_BindComs;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        <span class="keyword">private</span> List&lt;BindData&gt; m_TempList = <span class="keyword">new</span> List&lt;BindData&gt;();</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        <span class="keyword">private</span> List&lt;string&gt; m_TempFiledNames = <span class="keyword">new</span> List&lt;string&gt;();</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <span class="keyword">private</span> List&lt;string&gt; m_TempComponentTypeNames = <span class="keyword">new</span> List&lt;string&gt;();</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <span class="keyword">private</span> Dictionary&lt;string, string&gt; m_PrefixesDict = <span class="keyword">new</span> Dictionary&lt;string, string&gt;()</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        {</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;            {<span class="stringliteral">&quot;Obj&quot;</span>, <span class="stringliteral">&quot;GameObject&quot;</span>},</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;            {<span class="stringliteral">&quot;Trans&quot;</span>, <span class="stringliteral">&quot;Transform&quot;</span>},</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;            {<span class="stringliteral">&quot;OldAnim&quot;</span>, <span class="stringliteral">&quot;Animation&quot;</span>},</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;            {<span class="stringliteral">&quot;NewAnim&quot;</span>, <span class="stringliteral">&quot;Animator&quot;</span>},</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;            {<span class="stringliteral">&quot;Rect&quot;</span>, <span class="stringliteral">&quot;RectTransform&quot;</span>},</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;            {<span class="stringliteral">&quot;Canvas&quot;</span>, <span class="stringliteral">&quot;Canvas&quot;</span>},</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;            {<span class="stringliteral">&quot;Group&quot;</span>, <span class="stringliteral">&quot;CanvasGroup&quot;</span>},</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;            {<span class="stringliteral">&quot;VGroup&quot;</span>, <span class="stringliteral">&quot;VerticalLayoutGroup&quot;</span>},</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;            {<span class="stringliteral">&quot;HGroup&quot;</span>, <span class="stringliteral">&quot;HorizontalLayoutGroup&quot;</span>},</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;            {<span class="stringliteral">&quot;GGroup&quot;</span>, <span class="stringliteral">&quot;GridLayoutGroup&quot;</span>},</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;            {<span class="stringliteral">&quot;TGroup&quot;</span>, <span class="stringliteral">&quot;ToggleGroup&quot;</span>},</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            {<span class="stringliteral">&quot;Btn&quot;</span>, <span class="stringliteral">&quot;Button&quot;</span>},</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            {<span class="stringliteral">&quot;CBtn&quot;</span>, <span class="stringliteral">&quot;CommonButton&quot;</span>},</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;            {<span class="stringliteral">&quot;Img&quot;</span>, <span class="stringliteral">&quot;Image&quot;</span>},</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;            {<span class="stringliteral">&quot;RImg&quot;</span>, <span class="stringliteral">&quot;RawImage&quot;</span>},</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            {<span class="stringliteral">&quot;Txt&quot;</span>, <span class="stringliteral">&quot;Text&quot;</span>},</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            {<span class="stringliteral">&quot;Input&quot;</span>, <span class="stringliteral">&quot;InputField&quot;</span>},</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;            {<span class="stringliteral">&quot;Slider&quot;</span>, <span class="stringliteral">&quot;Slider&quot;</span>},</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            {<span class="stringliteral">&quot;Mask&quot;</span>, <span class="stringliteral">&quot;Mask&quot;</span>},</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            {<span class="stringliteral">&quot;Mask2D&quot;</span>, <span class="stringliteral">&quot;RectMask2D&quot;</span>},</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            {<span class="stringliteral">&quot;Tog&quot;</span>, <span class="stringliteral">&quot;Toggle&quot;</span>},</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;            {<span class="stringliteral">&quot;Sbar&quot;</span>, <span class="stringliteral">&quot;Scrollbar&quot;</span>},</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            {<span class="stringliteral">&quot;SRect&quot;</span>, <span class="stringliteral">&quot;ScrollRect&quot;</span>},</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            {<span class="stringliteral">&quot;Drop&quot;</span>, <span class="stringliteral">&quot;Dropdown&quot;</span>},</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        };</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> OnEnable()</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        {</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            m_Target = (<a class="code" href="class_linity_1_1_component_auto_bind_tool.html">ComponentAutoBindTool</a>) target;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            m_BindDatas = serializedObject.FindProperty(<span class="stringliteral">&quot;BindDatas&quot;</span>);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            m_BindComs = serializedObject.FindProperty(<span class="stringliteral">&quot;m_BindComs&quot;</span>);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        }</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="class_linity_1_1_editor_1_1_component_auto_bind_tool_inspector.html#ac344d9c9fc12b815a5d4aa9df071acbf">   63</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code" href="class_linity_1_1_editor_1_1_component_auto_bind_tool_inspector.html#ac344d9c9fc12b815a5d4aa9df071acbf">OnInspectorGUI</a>()</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        {</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            EditorGUILayout.Space();</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            DrawTopButton();</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            EditorGUILayout.Space();</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            DrawKvData();</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            serializedObject.ApplyModifiedProperties();</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            serializedObject.UpdateIfRequiredOrScript();</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;            EditorGUILayout.Space();</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            var helpInfo = <span class="stringliteral">@&quot;绑定标签比对信息：</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="stringliteral">        Obj       --&gt;   GameObject</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="stringliteral">        Trans     --&gt;   Transform</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="stringliteral">        OldAnim   --&gt;   Animation</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="stringliteral">        NewAnim   --&gt;   Animator</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="stringliteral">           </span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="stringliteral">        Rect      --&gt;   RectTransform</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="stringliteral">        Canvas    --&gt;   Canvas</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="stringliteral">        Group     --&gt;   CanvasGroup</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="stringliteral">        VGroup    --&gt;   VerticalLayoutGroup</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="stringliteral">        HGroup    --&gt;   HorizontalLayoutGroup</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="stringliteral">        GGroup    --&gt;   GridLayoutGroup</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="stringliteral">        TGroup    --&gt;   ToggleGroup</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="stringliteral">           </span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="stringliteral">        Btn       --&gt;   Button</span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="stringliteral">        CBtn      --&gt;   CommonButton</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="stringliteral">        Img       --&gt;   Image</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="stringliteral">        RImg      --&gt;   RawImage</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="stringliteral">        Txt       --&gt;   Text</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="stringliteral">        Input     --&gt;   InputField</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="stringliteral">        Slider    --&gt;   Slider</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="stringliteral">        Mask      --&gt;   Mask</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="stringliteral">        Mask2D    --&gt;   RectMask2D</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="stringliteral">        Tog       --&gt;   Toggle</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="stringliteral">        Sbar      --&gt;   Scrollbar</span></div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="stringliteral">        SRect     --&gt;   ScrollRect</span></div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="stringliteral">        Drop      --&gt;   Dropdown&quot;</span>;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;            EditorGUILayout.HelpBox(helpInfo, MessageType.None, <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        }</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> DrawTopButton()</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        {</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;            EditorGUILayout.BeginHorizontal();</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; </div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;            <span class="keywordflow">if</span> (GUILayout.Button(<span class="stringliteral">&quot;排序&quot;</span>))</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;            {</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;                Sort();</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;            }</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160; </div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;            <span class="keywordflow">if</span> (GUILayout.Button(<span class="stringliteral">&quot;全部删除&quot;</span>))</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;            {</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;                RemoveAll();</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;            }</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160; </div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;            <span class="keywordflow">if</span> (GUILayout.Button(<span class="stringliteral">&quot;删除空引用&quot;</span>))</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;            {</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;                RemoveNull();</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;            }</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160; </div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;            <span class="keywordflow">if</span> (GUILayout.Button(<span class="stringliteral">&quot;自动绑定组件&quot;</span>))</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;            {</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;                <a class="code" href="class_linity_1_1_editor_1_1_component_auto_bind_tool_inspector.html#a1a0c2b329f017ac355f049eb34422d17">AutoBindComponent</a>();</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;            }</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160; </div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;            <span class="keywordflow">if</span> (GUILayout.Button(<span class="stringliteral">&quot;生成绑定代码&quot;</span>))</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;            {</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;                <a class="code" href="class_linity_1_1_editor_1_1_component_auto_bind_tool_inspector.html#af9c54e6f90faaccab6c6c400accac3b9">GenAutoBindCode</a>();</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;            }</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160; </div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;            EditorGUILayout.EndHorizontal();</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        }</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160; </div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> Sort()</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;        {</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;            ComponentAutoBindTool target = (ComponentAutoBindTool) this.target;</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160; </div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;            m_TempList.Clear();</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;            <span class="keywordflow">foreach</span> (<a class="code" href="_entity_and_u_i_form_code_generator_8cs.html#ad426af953351b77176e0bc333bfad10b">BindData</a> data <span class="keywordflow">in</span> target.BindDatas)</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;            {</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;                m_TempList.Add(<span class="keyword">new</span> <a class="code" href="_component_auto_bind_tool_inspector_8cs.html#ad426af953351b77176e0bc333bfad10b">BindData</a>(data.Name, data.BindCom));</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;            }</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160; </div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160; </div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;            m_TempList.Sort((x, y) =&gt; { <span class="keywordflow">return</span> <span class="keywordtype">string</span>.Compare(x.Name, y.Name, StringComparison.Ordinal); });</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160; </div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;            m_BindDatas.ClearArray();</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;            <span class="keywordflow">foreach</span> (<a class="code" href="_entity_and_u_i_form_code_generator_8cs.html#ad426af953351b77176e0bc333bfad10b">BindData</a> data <span class="keywordflow">in</span> m_TempList)</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;            {</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;                AddBindData(data.Name, data.BindCom);</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;            }</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160; </div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;            SyncBindComs();</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;        }</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160; </div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> RemoveAll()</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;        {</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;            m_BindDatas.ClearArray();</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160; </div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;            SyncBindComs();</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;        }</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160; </div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> RemoveNull()</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;        {</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = m_BindDatas.arraySize - 1; i &gt;= 0; i--)</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;            {</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;                SerializedProperty element = m_BindDatas.GetArrayElementAtIndex(i).FindPropertyRelative(<span class="stringliteral">&quot;BindCom&quot;</span>);</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;                <span class="keywordflow">if</span> (element.objectReferenceValue == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;                {</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;                    m_BindDatas.DeleteArrayElementAtIndex(i);</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;                }</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;            }</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160; </div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;            SyncBindComs();</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;        }</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160; </div>
+<div class="line"><a name="l00193"></a><span class="lineno"><a class="line" href="class_linity_1_1_editor_1_1_component_auto_bind_tool_inspector.html#a1a0c2b329f017ac355f049eb34422d17">  193</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_linity_1_1_editor_1_1_component_auto_bind_tool_inspector.html#a1a0c2b329f017ac355f049eb34422d17">AutoBindComponent</a>()</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;        {</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;            m_BindDatas.ClearArray();</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;            Transform[] childs = m_Target.gameObject.GetComponentsInChildren&lt;Transform&gt;();</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160; </div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;            <span class="keywordflow">foreach</span> (Transform child <span class="keywordflow">in</span> childs)</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;            {</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;                m_TempFiledNames.Clear();</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;                m_TempComponentTypeNames.Clear();</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160; </div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;                <span class="keywordflow">if</span> (IsValidBind(child, m_TempFiledNames, m_TempComponentTypeNames))</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;                {</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;                    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; m_TempFiledNames.Count; i++)</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;                    {</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;                        var tempComponentTypeName = m_TempComponentTypeNames[i];</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;                        <span class="keywordflow">if</span> (tempComponentTypeName.Equals(<span class="stringliteral">&quot;GameObject&quot;</span>))</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;                        {</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;                            AddBindData(m_TempFiledNames[i], child);</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;                        }</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;                        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;                        {</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;                            Component com = child.GetComponent(tempComponentTypeName);</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;                            <span class="keywordflow">if</span> (com == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;                            {</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;                                <a class="code" href="_game_main_2_customs_2_custom_helpers_2_process_helper_8cs.html#a0100be52d45f14348918ea69ec09f959">Debug</a>.LogError($<span class="stringliteral">&quot;{child.name}上不存在{tempComponentTypeName}的组件&quot;</span>);</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;                            }</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;                            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;                            {</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;                                AddBindData(m_TempFiledNames[i], child.GetComponent(m_TempComponentTypeNames[i]));</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;                            }</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;                        }</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;                    }</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;                }</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;            }</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160; </div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;            SyncBindComs();</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;        }</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160; </div>
+<div class="line"><a name="l00231"></a><span class="lineno"><a class="line" href="class_linity_1_1_editor_1_1_component_auto_bind_tool_inspector.html#af9c54e6f90faaccab6c6c400accac3b9">  231</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_linity_1_1_editor_1_1_component_auto_bind_tool_inspector.html#af9c54e6f90faaccab6c6c400accac3b9">GenAutoBindCode</a>()</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;        {</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;            <span class="keywordtype">bool</span> isHotfix = m_Target.GetComponent&lt;<a class="code" href="class_linity_1_1_hotfix_u_gui_form.html">HotfixUGuiForm</a>&gt;() != <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;            <span class="keywordtype">string</span> codePath = isHotfix ? Constant.Path.HotfixUIFormCodePath : Constant.Path.UIFormCodePath;</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;            <span class="keywordtype">string</span> nameSpace = isHotfix ? <span class="stringliteral">&quot;Linity.Hotfix&quot;</span> : <span class="stringliteral">&quot;Linity&quot;</span>;</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;            var entityAndUIFormCodeGenerator = CreateInstance&lt;EntityAndUIFormCodeGenerator&gt;();</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;            entityAndUIFormCodeGenerator.GenAutoBindCode(codePath, m_Target.gameObject, nameSpace, <span class="stringliteral">&quot;&quot;</span>, <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;            EditorApplication.delayCall += AssetDatabase.Refresh;</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;            EditorApplication.delayCall += EditorApplication.UnlockReloadAssemblies;</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;        }</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160; </div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">bool</span> IsValidBind(Transform target, List&lt;string&gt; filedNames, List&lt;string&gt; componentTypeNames)</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;        {</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;            <span class="keywordtype">string</span>[] strArray = target.name.Split(<span class="charliteral">&#39;_&#39;</span>);</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160; </div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;            <span class="keywordflow">if</span> (strArray.Length == 1)</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;            {</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;            }</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160; </div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;            <span class="keywordtype">string</span> filedName = strArray[strArray.Length - 1];</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160; </div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; strArray.Length - 1; i++)</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;            {</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;                <span class="keywordtype">string</span> str = strArray[i];</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;                <span class="keywordtype">string</span> comName;</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;                <span class="keywordflow">if</span> (m_PrefixesDict.TryGetValue(str, out comName))</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;                {</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;                    filedNames.Add($<span class="stringliteral">&quot;{str}_{filedName}&quot;</span>);</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;                    componentTypeNames.Add(comName);</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;                }</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;                <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;                {</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;                    <a class="code" href="_game_main_2_customs_2_custom_helpers_2_process_helper_8cs.html#a0100be52d45f14348918ea69ec09f959">Debug</a>.LogError($<span class="stringliteral">&quot;{target.name}的命名中{str}不存在对应的组件类型，绑定失败&quot;</span>);</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;                    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;                }</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;            }</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160; </div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;        }</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160; </div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> DrawKvData()</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;        {</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;            <span class="comment">//绘制key value数据</span></div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160; </div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;            <span class="keywordtype">int</span> needDeleteIndex = -1;</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160; </div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;            EditorGUILayout.BeginVertical();</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;            SerializedProperty property;</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160; </div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; m_BindDatas.arraySize; i++)</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;            {</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;                EditorGUILayout.BeginHorizontal();</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;                EditorGUILayout.LabelField($<span class="stringliteral">&quot;[{i}]&quot;</span>, GUILayout.Width(25));</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;                <span class="keyword">property</span> = m_BindDatas.GetArrayElementAtIndex(i).FindPropertyRelative(<span class="stringliteral">&quot;Name&quot;</span>);</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;                <span class="keyword">property</span>.stringValue = EditorGUILayout.TextField(property.stringValue, GUILayout.Width(150));</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;                <span class="keyword">property</span> = m_BindDatas.GetArrayElementAtIndex(i).FindPropertyRelative(<span class="stringliteral">&quot;BindCom&quot;</span>);</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;                <span class="keyword">property</span>.objectReferenceValue = EditorGUILayout.ObjectField(property.objectReferenceValue, typeof(Component), <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160; </div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;                <span class="keywordflow">if</span> (GUILayout.Button(<span class="stringliteral">&quot;X&quot;</span>))</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;                {</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;                    <span class="comment">//将元素下标添加进删除list</span></div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;                    needDeleteIndex = i;</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;                }</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160; </div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;                EditorGUILayout.EndHorizontal();</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;            }</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160; </div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;            <span class="comment">//删除data</span></div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;            <span class="keywordflow">if</span> (needDeleteIndex != -1)</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;            {</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;                m_BindDatas.DeleteArrayElementAtIndex(needDeleteIndex);</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;                SyncBindComs();</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;            }</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160; </div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;            EditorGUILayout.EndVertical();</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;        }</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160; </div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160; </div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> AddBindData(<span class="keywordtype">string</span> name, Component bindCom)</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;        {</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;            <span class="keywordtype">int</span> index = m_BindDatas.arraySize;</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;            m_BindDatas.InsertArrayElementAtIndex(index);</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;            SerializedProperty element = m_BindDatas.GetArrayElementAtIndex(index);</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;            element.FindPropertyRelative(<span class="stringliteral">&quot;Name&quot;</span>).stringValue = name;</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;            element.FindPropertyRelative(<span class="stringliteral">&quot;BindCom&quot;</span>).objectReferenceValue = bindCom;</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;        }</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160; </div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> SyncBindComs()</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;        {</div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;            m_BindComs.ClearArray();</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160; </div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;            SerializedProperty property;</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; m_BindDatas.arraySize; i++)</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;            {</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;                <span class="keyword">property</span> = m_BindDatas.GetArrayElementAtIndex(i).FindPropertyRelative(<span class="stringliteral">&quot;BindCom&quot;</span>);</div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;                m_BindComs.InsertArrayElementAtIndex(i);</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;                m_BindComs.GetArrayElementAtIndex(i).objectReferenceValue = <span class="keyword">property</span>.objectReferenceValue;</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;            }</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;        }</div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;    }</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;}</div>
+<div class="ttc" id="a_component_auto_bind_tool_inspector_8cs_html_ad426af953351b77176e0bc333bfad10b"><div class="ttname"><a href="_component_auto_bind_tool_inspector_8cs.html#ad426af953351b77176e0bc333bfad10b">BindData</a></div><div class="ttdeci">Linity.ComponentAutoBindTool.BindData BindData</div><div class="ttdef"><b>Definition:</b> <a href="_component_auto_bind_tool_inspector_8cs_source.html#l00007">ComponentAutoBindToolInspector.cs:7</a></div></div>
+<div class="ttc" id="a_component_auto_bind_tool_inspector_8cs_html_aef19bab18b9814edeef255c43e4f6bbc"><div class="ttname"><a href="_component_auto_bind_tool_inspector_8cs.html#aef19bab18b9814edeef255c43e4f6bbc">Object</a></div><div class="ttdeci">UnityEngine.Object Object</div><div class="ttdef"><b>Definition:</b> <a href="_component_auto_bind_tool_inspector_8cs_source.html#l00006">ComponentAutoBindToolInspector.cs:6</a></div></div>
+<div class="ttc" id="a_entity_and_u_i_form_code_generator_8cs_html_ad426af953351b77176e0bc333bfad10b"><div class="ttname"><a href="_entity_and_u_i_form_code_generator_8cs.html#ad426af953351b77176e0bc333bfad10b">BindData</a></div><div class="ttdeci">Linity.ComponentAutoBindTool.BindData BindData</div><div class="ttdef"><b>Definition:</b> <a href="_entity_and_u_i_form_code_generator_8cs_source.html#l00006">EntityAndUIFormCodeGenerator.cs:6</a></div></div>
+<div class="ttc" id="a_game_main_2_customs_2_custom_helpers_2_process_helper_8cs_html_a0100be52d45f14348918ea69ec09f959"><div class="ttname"><a href="_game_main_2_customs_2_custom_helpers_2_process_helper_8cs.html#a0100be52d45f14348918ea69ec09f959">Debug</a></div><div class="ttdeci">UnityEngine.Debug Debug</div><div class="ttdef"><b>Definition:</b> <a href="_game_main_2_customs_2_custom_helpers_2_process_helper_8cs_source.html#l00004">ProcessHelper.cs:4</a></div></div>
+<div class="ttc" id="aclass_linity_1_1_component_auto_bind_tool_html"><div class="ttname"><a href="class_linity_1_1_component_auto_bind_tool.html">Linity.ComponentAutoBindTool</a></div><div class="ttdoc">组件自动绑定工具</div><div class="ttdef"><b>Definition:</b> <a href="_component_auto_bind_tool_8cs_source.html#l00011">ComponentAutoBindTool.cs:12</a></div></div>
+<div class="ttc" id="aclass_linity_1_1_editor_1_1_component_auto_bind_tool_inspector_html"><div class="ttname"><a href="class_linity_1_1_editor_1_1_component_auto_bind_tool_inspector.html">Linity.Editor.ComponentAutoBindToolInspector</a></div><div class="ttdef"><b>Definition:</b> <a href="_component_auto_bind_tool_inspector_8cs_source.html#l00012">ComponentAutoBindToolInspector.cs:13</a></div></div>
+<div class="ttc" id="aclass_linity_1_1_editor_1_1_component_auto_bind_tool_inspector_html_a1a0c2b329f017ac355f049eb34422d17"><div class="ttname"><a href="class_linity_1_1_editor_1_1_component_auto_bind_tool_inspector.html#a1a0c2b329f017ac355f049eb34422d17">Linity.Editor.ComponentAutoBindToolInspector.AutoBindComponent</a></div><div class="ttdeci">void AutoBindComponent()</div><div class="ttdoc">自动绑定组件</div><div class="ttdef"><b>Definition:</b> <a href="_component_auto_bind_tool_inspector_8cs_source.html#l00193">ComponentAutoBindToolInspector.cs:193</a></div></div>
+<div class="ttc" id="aclass_linity_1_1_editor_1_1_component_auto_bind_tool_inspector_html_ac344d9c9fc12b815a5d4aa9df071acbf"><div class="ttname"><a href="class_linity_1_1_editor_1_1_component_auto_bind_tool_inspector.html#ac344d9c9fc12b815a5d4aa9df071acbf">Linity.Editor.ComponentAutoBindToolInspector.OnInspectorGUI</a></div><div class="ttdeci">override void OnInspectorGUI()</div><div class="ttdef"><b>Definition:</b> <a href="_component_auto_bind_tool_inspector_8cs_source.html#l00063">ComponentAutoBindToolInspector.cs:63</a></div></div>
+<div class="ttc" id="aclass_linity_1_1_editor_1_1_component_auto_bind_tool_inspector_html_af9c54e6f90faaccab6c6c400accac3b9"><div class="ttname"><a href="class_linity_1_1_editor_1_1_component_auto_bind_tool_inspector.html#af9c54e6f90faaccab6c6c400accac3b9">Linity.Editor.ComponentAutoBindToolInspector.GenAutoBindCode</a></div><div class="ttdeci">void GenAutoBindCode()</div><div class="ttdef"><b>Definition:</b> <a href="_component_auto_bind_tool_inspector_8cs_source.html#l00231">ComponentAutoBindToolInspector.cs:231</a></div></div>
+<div class="ttc" id="aclass_linity_1_1_hotfix_u_gui_form_html"><div class="ttname"><a href="class_linity_1_1_hotfix_u_gui_form.html">Linity.HotfixUGuiForm</a></div><div class="ttdoc">热更新层UGUI界面</div><div class="ttdef"><b>Definition:</b> <a href="_game_main_2_u_i_2_base_2_hotfix_u_gui_form_8cs_source.html#l00021">HotfixUGuiForm.cs:22</a></div></div>
+<div class="ttc" id="anamespace_linity_1_1_editor_html"><div class="ttname"><a href="namespace_linity_1_1_editor.html">Linity.Editor</a></div><div class="ttdef"><b>Definition:</b> <a href="_entity_and_u_i_form_code_generator_8cs_source.html#l00008">EntityAndUIFormCodeGenerator.cs:9</a></div></div>
+<div class="ttc" id="anamespace_linity_html"><div class="ttname"><a href="namespace_linity.html">Linity</a></div><div class="ttdef"><b>Definition:</b> <a href="_entity_and_u_i_form_code_generator_8cs_source.html#l00008">EntityAndUIFormCodeGenerator.cs:9</a></div></div>
+<div class="ttc" id="anamespace_system_html"><div class="ttname"><a href="namespace_system.html">System</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_method_builder_attribute_8cs_source.html#l00001">AsyncMethodBuilderAttribute.cs:2</a></div></div>
+<div class="ttc" id="anamespace_unity_engine_html"><div class="ttname"><a href="namespace_unity_engine.html">UnityEngine</a></div><div class="ttdef"><b>Definition:</b> <a href="_mathf_8cs_source.html#l00003">Mathf.cs:4</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_84bbf7b3c7f28a5a18725745e1505219.html">Assets</a></li><li class="navelem"><a class="el" href="dir_f13b41af88cf68434578284aaf699e39.html">Scripts</a></li><li class="navelem"><a class="el" href="dir_0261d5286017c38b9af36d6d3ff94a53.html">Editor</a></li><li class="navelem"><a class="el" href="dir_6d1f3918e777c816ee7a1a7134df8345.html">MenuUtils</a></li><li class="navelem"><a class="el" href="_component_auto_bind_tool_inspector_8cs.html">ComponentAutoBindToolInspector.cs</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:24:43 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

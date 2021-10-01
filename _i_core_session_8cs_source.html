@@ -1,0 +1,205 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: ETServer/Server/ThirdParty/MongoDBDriver/MongoDB.Driver.Core/Core/Bindings/ICoreSession.cs 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_i_core_session_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">ICoreSession.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_i_core_session_8cs.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/* Copyright 2017-present MongoDB Inc.</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">* Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">* you may not use this file except in compliance with the License.</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">* You may obtain a copy of the License at</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">* http://www.apache.org/licenses/LICENSE-2.0</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">* Unless required by applicable law or agreed to in writing, software</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">* distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">* See the License for the specific language governing permissions and</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">* limitations under the License.</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Threading;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Threading.Tasks;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_mongo_d_b.html">MongoDB</a>.<a class="code" href="namespace_mongo_d_b_1_1_bson.html">Bson</a>;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_mongo_d_b.html">MongoDB</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver.html">Driver</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core.html">Core</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_clusters.html">Clusters</a>;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_bindings.html">MongoDB.Driver.Core.Bindings</a></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;{</div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_i_core_session.html">   27</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">interface </span><a class="code" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_i_core_session.html">ICoreSession</a> : IDisposable</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    {</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <span class="comment">// properties</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_i_core_session.html#a84a7dc32d860fd565d02125ba8c4a95f">   36</a></span>&#160;<span class="comment"></span>        <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_document.html">BsonDocument</a> <a class="code" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_i_core_session.html#a84a7dc32d860fd565d02125ba8c4a95f">ClusterTime</a> { <span class="keyword">get</span>; }</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_i_core_session.html#abc534d0e731718dc39d40c40a116b5da">   44</a></span>&#160;        <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_core_transaction.html">CoreTransaction</a> <a class="code" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_i_core_session.html#abc534d0e731718dc39d40c40a116b5da">CurrentTransaction</a> { <span class="keyword">get</span>; }</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_i_core_session.html#a250e3102875313f8aee5d09ea47c8883">   52</a></span>&#160;        <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_document.html">BsonDocument</a> <a class="code" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_i_core_session.html#a250e3102875313f8aee5d09ea47c8883">Id</a> { <span class="keyword">get</span>; }</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_i_core_session.html#a991a6010a2da049a047763ec8c9329af">   60</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_i_core_session.html#a991a6010a2da049a047763ec8c9329af">IsCausallyConsistent</a> { <span class="keyword">get</span>; }</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00068"></a><span class="lineno"><a class="line" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_i_core_session.html#ab01343d572849af7786a11652f7c44b7">   68</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_i_core_session.html#ab01343d572849af7786a11652f7c44b7">IsImplicit</a> { <span class="keyword">get</span>; }</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
+<div class="line"><a name="l00076"></a><span class="lineno"><a class="line" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_i_core_session.html#a4ac6326436a5b69b2181bff49af2ec21">   76</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_i_core_session.html#a4ac6326436a5b69b2181bff49af2ec21">IsInTransaction</a> { <span class="keyword">get</span>; }</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
+<div class="line"><a name="l00084"></a><span class="lineno"><a class="line" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_i_core_session.html#ab8c31f2e57266546577bd59a86919672">   84</a></span>&#160;        <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_timestamp.html">BsonTimestamp</a> <a class="code" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_i_core_session.html#ab8c31f2e57266546577bd59a86919672">OperationTime</a> { <span class="keyword">get</span>; }</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
+<div class="line"><a name="l00092"></a><span class="lineno"><a class="line" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_i_core_session.html#a456d17c52ea20f7557a923ae939793b4">   92</a></span>&#160;        <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_core_session_options.html">CoreSessionOptions</a> <a class="code" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_i_core_session.html#a456d17c52ea20f7557a923ae939793b4">Options</a> { <span class="keyword">get</span>; }</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
+<div class="line"><a name="l00100"></a><span class="lineno"><a class="line" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_i_core_session.html#ae9925df63759ec988b1f9883afa13d1d">  100</a></span>&#160;        <a class="code" href="interface_mongo_d_b_1_1_driver_1_1_i_core_server_session.html">ICoreServerSession</a> <a class="code" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_i_core_session.html#ae9925df63759ec988b1f9883afa13d1d">ServerSession</a> { <span class="keyword">get</span>; }</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        <span class="comment">// methods</span></div>
+<div class="line"><a name="l00107"></a><span class="lineno"><a class="line" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_i_core_session.html#a243475d7bf8cb8bce55b75120b9eac6b">  107</a></span>&#160;<span class="comment"></span>        <span class="keywordtype">void</span> <a class="code" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_i_core_session.html#a243475d7bf8cb8bce55b75120b9eac6b">AbortTransaction</a>(CancellationToken cancellationToken = <span class="keywordflow">default</span>(CancellationToken));</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
+<div class="line"><a name="l00114"></a><span class="lineno"><a class="line" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_i_core_session.html#a5d9b1667484480114201e7c698948ca6">  114</a></span>&#160;        Task <a class="code" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_i_core_session.html#a5d9b1667484480114201e7c698948ca6">AbortTransactionAsync</a>(CancellationToken cancellationToken = <span class="keywordflow">default</span>(CancellationToken));</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160; </div>
+<div class="line"><a name="l00119"></a><span class="lineno"><a class="line" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_i_core_session.html#ae659c0ef91b978ff8ba9e18d96ace251">  119</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_i_core_session.html#ae659c0ef91b978ff8ba9e18d96ace251">AboutToSendCommand</a>();</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160; </div>
+<div class="line"><a name="l00125"></a><span class="lineno"><a class="line" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_i_core_session.html#a8ac0b0d5f7e921e3367c3c5e8f99bae7">  125</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_i_core_session.html#a8ac0b0d5f7e921e3367c3c5e8f99bae7">AdvanceClusterTime</a>(<a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_document.html">BsonDocument</a> newClusterTime);</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160; </div>
+<div class="line"><a name="l00131"></a><span class="lineno"><a class="line" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_i_core_session.html#aa27ee6e6e812fea4627bcf850e496663">  131</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_i_core_session.html#aa27ee6e6e812fea4627bcf850e496663">AdvanceOperationTime</a>(<a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_timestamp.html">BsonTimestamp</a> newOperationTime);</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160; </div>
+<div class="line"><a name="l00137"></a><span class="lineno"><a class="line" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_i_core_session.html#a5b0a3e2ea1f905487acdfdffd62ebf4d">  137</a></span>&#160;        <span class="keywordtype">long</span> <a class="code" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_i_core_session.html#a5b0a3e2ea1f905487acdfdffd62ebf4d">AdvanceTransactionNumber</a>();</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160; </div>
+<div class="line"><a name="l00143"></a><span class="lineno"><a class="line" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_i_core_session.html#a34ce526b64884878c18dc5051313756d">  143</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_i_core_session.html#a34ce526b64884878c18dc5051313756d">CommitTransaction</a>(CancellationToken cancellationToken = <span class="keywordflow">default</span>(CancellationToken));</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160; </div>
+<div class="line"><a name="l00150"></a><span class="lineno"><a class="line" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_i_core_session.html#a2a8c9834f7a7b04bb648f85aed9ac10a">  150</a></span>&#160;        Task <a class="code" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_i_core_session.html#a2a8c9834f7a7b04bb648f85aed9ac10a">CommitTransactionAsync</a>(CancellationToken cancellationToken = <span class="keywordflow">default</span>(CancellationToken));</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160; </div>
+<div class="line"><a name="l00156"></a><span class="lineno"><a class="line" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_i_core_session.html#a0fed2fd8749680fb518f9ebf87f6bcfa">  156</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_i_core_session.html#a0fed2fd8749680fb518f9ebf87f6bcfa">StartTransaction</a>(<a class="code" href="class_mongo_d_b_1_1_driver_1_1_transaction_options.html">TransactionOptions</a> transactionOptions = <span class="keyword">null</span>);</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160; </div>
+<div class="line"><a name="l00161"></a><span class="lineno"><a class="line" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_i_core_session.html#af63ce5dae8985f5659c06194b9926527">  161</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_i_core_session.html#af63ce5dae8985f5659c06194b9926527">WasUsed</a>();</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    }</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160; </div>
+<div class="line"><a name="l00168"></a><span class="lineno"><a class="line" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_i_core_session_handle.html">  168</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">interface </span><a class="code" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_i_core_session_handle.html">ICoreSessionHandle</a> : <a class="code" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_i_core_session.html">ICoreSession</a></div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    {</div>
+<div class="line"><a name="l00174"></a><span class="lineno"><a class="line" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_i_core_session_handle.html#a4273ea272434e389ba103d515db33d7c">  174</a></span>&#160;        <a class="code" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_i_core_session_handle.html">ICoreSessionHandle</a> <a class="code" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_i_core_session_handle.html#a4273ea272434e389ba103d515db33d7c">Fork</a>();</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    }</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;}</div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_bson_document_html"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_bson_document.html">MongoDB.Bson.BsonDocument</a></div><div class="ttdoc">Represents a BSON document.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_document_8cs_source.html#l00034">BsonDocument.cs:35</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_bson_timestamp_html"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_bson_timestamp.html">MongoDB.Bson.BsonTimestamp</a></div><div class="ttdoc">Represents a BSON timestamp value.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_timestamp_8cs_source.html#l00027">BsonTimestamp.cs:28</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_core_session_options_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_core_session_options.html">MongoDB.Driver.Core.Bindings.CoreSessionOptions</a></div><div class="ttdoc">Core session options.</div><div class="ttdef"><b>Definition:</b> <a href="_core_session_options_8cs_source.html#l00021">CoreSessionOptions.cs:22</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_core_transaction_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_core_transaction.html">MongoDB.Driver.Core.Bindings.CoreTransaction</a></div><div class="ttdoc">The state of a transaction.</div><div class="ttdef"><b>Definition:</b> <a href="_core_transaction_8cs_source.html#l00021">CoreTransaction.cs:22</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_transaction_options_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_transaction_options.html">MongoDB.Driver.TransactionOptions</a></div><div class="ttdoc">Transaction options.</div><div class="ttdef"><b>Definition:</b> <a href="_transaction_options_8cs_source.html#l00028">TransactionOptions.cs:29</a></div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_i_core_session_handle_html"><div class="ttname"><a href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_i_core_session_handle.html">MongoDB.Driver.Core.Bindings.ICoreSessionHandle</a></div><div class="ttdoc">A handle to a reference counted core session.</div><div class="ttdef"><b>Definition:</b> <a href="_i_core_session_8cs_source.html#l00168">ICoreSession.cs:169</a></div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_i_core_session_handle_html_a4273ea272434e389ba103d515db33d7c"><div class="ttname"><a href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_i_core_session_handle.html#a4273ea272434e389ba103d515db33d7c">MongoDB.Driver.Core.Bindings.ICoreSessionHandle.Fork</a></div><div class="ttdeci">ICoreSessionHandle Fork()</div><div class="ttdoc">Increments the reference count of the underlying session and returns a new handle to it.</div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_i_core_session_html"><div class="ttname"><a href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_i_core_session.html">MongoDB.Driver.Core.Bindings.ICoreSession</a></div><div class="ttdoc">The interface for a session in Core.</div><div class="ttdef"><b>Definition:</b> <a href="_i_core_session_8cs_source.html#l00027">ICoreSession.cs:28</a></div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_i_core_session_html_a0fed2fd8749680fb518f9ebf87f6bcfa"><div class="ttname"><a href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_i_core_session.html#a0fed2fd8749680fb518f9ebf87f6bcfa">MongoDB.Driver.Core.Bindings.ICoreSession.StartTransaction</a></div><div class="ttdeci">void StartTransaction(TransactionOptions transactionOptions=null)</div><div class="ttdoc">Starts a transaction.</div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_i_core_session_html_a243475d7bf8cb8bce55b75120b9eac6b"><div class="ttname"><a href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_i_core_session.html#a243475d7bf8cb8bce55b75120b9eac6b">MongoDB.Driver.Core.Bindings.ICoreSession.AbortTransaction</a></div><div class="ttdeci">void AbortTransaction(CancellationToken cancellationToken=default(CancellationToken))</div><div class="ttdoc">Aborts the transaction.</div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_i_core_session_html_a250e3102875313f8aee5d09ea47c8883"><div class="ttname"><a href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_i_core_session.html#a250e3102875313f8aee5d09ea47c8883">MongoDB.Driver.Core.Bindings.ICoreSession.Id</a></div><div class="ttdeci">BsonDocument Id</div><div class="ttdoc">Gets the session Id.</div><div class="ttdef"><b>Definition:</b> <a href="_i_core_session_8cs_source.html#l00052">ICoreSession.cs:52</a></div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_i_core_session_html_a2a8c9834f7a7b04bb648f85aed9ac10a"><div class="ttname"><a href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_i_core_session.html#a2a8c9834f7a7b04bb648f85aed9ac10a">MongoDB.Driver.Core.Bindings.ICoreSession.CommitTransactionAsync</a></div><div class="ttdeci">Task CommitTransactionAsync(CancellationToken cancellationToken=default(CancellationToken))</div><div class="ttdoc">Commits the transaction.</div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_i_core_session_html_a34ce526b64884878c18dc5051313756d"><div class="ttname"><a href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_i_core_session.html#a34ce526b64884878c18dc5051313756d">MongoDB.Driver.Core.Bindings.ICoreSession.CommitTransaction</a></div><div class="ttdeci">void CommitTransaction(CancellationToken cancellationToken=default(CancellationToken))</div><div class="ttdoc">Commits the transaction.</div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_i_core_session_html_a456d17c52ea20f7557a923ae939793b4"><div class="ttname"><a href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_i_core_session.html#a456d17c52ea20f7557a923ae939793b4">MongoDB.Driver.Core.Bindings.ICoreSession.Options</a></div><div class="ttdeci">CoreSessionOptions Options</div><div class="ttdoc">Gets the session options.</div><div class="ttdef"><b>Definition:</b> <a href="_i_core_session_8cs_source.html#l00092">ICoreSession.cs:92</a></div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_i_core_session_html_a4ac6326436a5b69b2181bff49af2ec21"><div class="ttname"><a href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_i_core_session.html#a4ac6326436a5b69b2181bff49af2ec21">MongoDB.Driver.Core.Bindings.ICoreSession.IsInTransaction</a></div><div class="ttdeci">bool IsInTransaction</div><div class="ttdoc">Gets a value indicating whether this instance is in a transaction.</div><div class="ttdef"><b>Definition:</b> <a href="_i_core_session_8cs_source.html#l00076">ICoreSession.cs:76</a></div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_i_core_session_html_a5b0a3e2ea1f905487acdfdffd62ebf4d"><div class="ttname"><a href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_i_core_session.html#a5b0a3e2ea1f905487acdfdffd62ebf4d">MongoDB.Driver.Core.Bindings.ICoreSession.AdvanceTransactionNumber</a></div><div class="ttdeci">long AdvanceTransactionNumber()</div><div class="ttdoc">Advances the transaction id.</div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_i_core_session_html_a5d9b1667484480114201e7c698948ca6"><div class="ttname"><a href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_i_core_session.html#a5d9b1667484480114201e7c698948ca6">MongoDB.Driver.Core.Bindings.ICoreSession.AbortTransactionAsync</a></div><div class="ttdeci">Task AbortTransactionAsync(CancellationToken cancellationToken=default(CancellationToken))</div><div class="ttdoc">Aborts the transaction.</div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_i_core_session_html_a84a7dc32d860fd565d02125ba8c4a95f"><div class="ttname"><a href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_i_core_session.html#a84a7dc32d860fd565d02125ba8c4a95f">MongoDB.Driver.Core.Bindings.ICoreSession.ClusterTime</a></div><div class="ttdeci">BsonDocument ClusterTime</div><div class="ttdoc">Gets the cluster time.</div><div class="ttdef"><b>Definition:</b> <a href="_i_core_session_8cs_source.html#l00036">ICoreSession.cs:36</a></div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_i_core_session_html_a8ac0b0d5f7e921e3367c3c5e8f99bae7"><div class="ttname"><a href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_i_core_session.html#a8ac0b0d5f7e921e3367c3c5e8f99bae7">MongoDB.Driver.Core.Bindings.ICoreSession.AdvanceClusterTime</a></div><div class="ttdeci">void AdvanceClusterTime(BsonDocument newClusterTime)</div><div class="ttdoc">Advances the cluster time.</div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_i_core_session_html_a991a6010a2da049a047763ec8c9329af"><div class="ttname"><a href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_i_core_session.html#a991a6010a2da049a047763ec8c9329af">MongoDB.Driver.Core.Bindings.ICoreSession.IsCausallyConsistent</a></div><div class="ttdeci">bool IsCausallyConsistent</div><div class="ttdoc">Gets a value indicate whether this instance is causally consistent.</div><div class="ttdef"><b>Definition:</b> <a href="_i_core_session_8cs_source.html#l00060">ICoreSession.cs:60</a></div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_i_core_session_html_aa27ee6e6e812fea4627bcf850e496663"><div class="ttname"><a href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_i_core_session.html#aa27ee6e6e812fea4627bcf850e496663">MongoDB.Driver.Core.Bindings.ICoreSession.AdvanceOperationTime</a></div><div class="ttdeci">void AdvanceOperationTime(BsonTimestamp newOperationTime)</div><div class="ttdoc">Advances the operation time.</div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_i_core_session_html_ab01343d572849af7786a11652f7c44b7"><div class="ttname"><a href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_i_core_session.html#ab01343d572849af7786a11652f7c44b7">MongoDB.Driver.Core.Bindings.ICoreSession.IsImplicit</a></div><div class="ttdeci">bool IsImplicit</div><div class="ttdoc">Gets a value indicating whether this instance is implicit session.</div><div class="ttdef"><b>Definition:</b> <a href="_i_core_session_8cs_source.html#l00068">ICoreSession.cs:68</a></div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_i_core_session_html_ab8c31f2e57266546577bd59a86919672"><div class="ttname"><a href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_i_core_session.html#ab8c31f2e57266546577bd59a86919672">MongoDB.Driver.Core.Bindings.ICoreSession.OperationTime</a></div><div class="ttdeci">BsonTimestamp OperationTime</div><div class="ttdoc">Gets the operation time.</div><div class="ttdef"><b>Definition:</b> <a href="_i_core_session_8cs_source.html#l00084">ICoreSession.cs:84</a></div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_i_core_session_html_abc534d0e731718dc39d40c40a116b5da"><div class="ttname"><a href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_i_core_session.html#abc534d0e731718dc39d40c40a116b5da">MongoDB.Driver.Core.Bindings.ICoreSession.CurrentTransaction</a></div><div class="ttdeci">CoreTransaction CurrentTransaction</div><div class="ttdoc">Gets the current transaction.</div><div class="ttdef"><b>Definition:</b> <a href="_i_core_session_8cs_source.html#l00044">ICoreSession.cs:44</a></div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_i_core_session_html_ae659c0ef91b978ff8ba9e18d96ace251"><div class="ttname"><a href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_i_core_session.html#ae659c0ef91b978ff8ba9e18d96ace251">MongoDB.Driver.Core.Bindings.ICoreSession.AboutToSendCommand</a></div><div class="ttdeci">void AboutToSendCommand()</div><div class="ttdoc">The driver is about to send a command on this session. Called to track session state.</div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_i_core_session_html_ae9925df63759ec988b1f9883afa13d1d"><div class="ttname"><a href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_i_core_session.html#ae9925df63759ec988b1f9883afa13d1d">MongoDB.Driver.Core.Bindings.ICoreSession.ServerSession</a></div><div class="ttdeci">ICoreServerSession ServerSession</div><div class="ttdoc">Gets the server session.</div><div class="ttdef"><b>Definition:</b> <a href="_i_core_session_8cs_source.html#l00100">ICoreSession.cs:100</a></div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_i_core_session_html_af63ce5dae8985f5659c06194b9926527"><div class="ttname"><a href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_i_core_session.html#af63ce5dae8985f5659c06194b9926527">MongoDB.Driver.Core.Bindings.ICoreSession.WasUsed</a></div><div class="ttdeci">void WasUsed()</div><div class="ttdoc">Called by the driver when the session is used (i.e. sent to the server).</div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_driver_1_1_i_core_server_session_html"><div class="ttname"><a href="interface_mongo_d_b_1_1_driver_1_1_i_core_server_session.html">MongoDB.Driver.ICoreServerSession</a></div><div class="ttdoc">The interface for a core server session.</div><div class="ttdef"><b>Definition:</b> <a href="_i_core_server_sesssion_8cs_source.html#l00024">ICoreServerSesssion.cs:25</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_bson_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_bson.html">MongoDB.Bson</a></div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_bson_constants_8cs_source.html#l00018">BsonConstants.cs:19</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_bindings.html">MongoDB.Driver.Core.Bindings</a></div><div class="ttdef"><b>Definition:</b> <a href="_channel_channel_source_8cs_source.html#l00022">ChannelChannelSource.cs:23</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_driver_1_1_core_1_1_clusters_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_clusters.html">MongoDB.Driver.Core.Clusters</a></div><div class="ttdef"><b>Definition:</b> <a href="_cluster_8cs_source.html#l00033">Cluster.cs:34</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_driver_1_1_core_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_driver_1_1_core.html">MongoDB.Driver.Core</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_queue_8cs_source.html#l00023">AsyncQueue.cs:24</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_driver_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_driver.html">MongoDB.Driver</a></div><div class="ttdef"><b>Definition:</b> <a href="_aggregate_bucket_auto_granularity_8cs_source.html#l00018">AggregateBucketAutoGranularity.cs:19</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_html"><div class="ttname"><a href="namespace_mongo_d_b.html">MongoDB</a></div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_bson_constants_8cs_source.html#l00018">BsonConstants.cs:19</a></div></div>
+<div class="ttc" id="anamespace_system_html"><div class="ttname"><a href="namespace_system.html">System</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_method_builder_attribute_8cs_source.html#l00001">AsyncMethodBuilderAttribute.cs:2</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_1e261a42b4a2e33df58a15c412684b10.html">ETServer</a></li><li class="navelem"><a class="el" href="dir_473c270c995194c5ad99131d9c901f09.html">Server</a></li><li class="navelem"><a class="el" href="dir_ce426efcf63311ff42488fb2654bd4b4.html">ThirdParty</a></li><li class="navelem"><a class="el" href="dir_a37b2b5f9c8890cc9f6f8392fb0cdff3.html">MongoDBDriver</a></li><li class="navelem"><a class="el" href="dir_3c55113864d48cf4713f3b3197e2f720.html">MongoDB.Driver.Core</a></li><li class="navelem"><a class="el" href="dir_d802212cd82500a65b6eed8667c0c3ad.html">Core</a></li><li class="navelem"><a class="el" href="dir_8b976ab9146c3be1be150f7b41919213.html">Bindings</a></li><li class="navelem"><a class="el" href="_i_core_session_8cs.html">ICoreSession.cs</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:24:56 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

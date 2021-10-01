@@ -1,0 +1,244 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: Assets/Scripts/Hotfix/ETNetwork/Module/Config/ConfigComponent.cs 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_assets_2_scripts_2_hotfix_2_e_t_network_2_module_2_config_2_config_component_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">ConfigComponent.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_assets_2_scripts_2_hotfix_2_e_t_network_2_module_2_config_2_config_component_8cs.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>;</div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Collections.Generic;</div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_e_t_model.html">ETModel</a>;</div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_e_t_hotfix.html">ETHotfix</a></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;{</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;        [ObjectSystem]</div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="class_e_t_hotfix_1_1_config_component_awake_system.html">    8</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="class_e_t_hotfix_1_1_config_component_awake_system.html">ConfigComponentAwakeSystem</a> : <a class="code" href="class_e_t_hotfix_1_1_awake_system.html">AwakeSystem</a>&lt;ConfigComponent&gt;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;        {</div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="class_e_t_hotfix_1_1_config_component_awake_system.html#adef7d661551a3e2fa1c7342406c9899f">   10</a></span>&#160;                <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code" href="class_e_t_hotfix_1_1_config_component_awake_system.html#adef7d661551a3e2fa1c7342406c9899f">Awake</a>(<a class="code" href="class_e_t_hotfix_1_1_config_component.html">ConfigComponent</a> <span class="keyword">self</span>)</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;                {</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;                        <span class="keyword">self</span>.Awake();</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;                }</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        }</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        [ObjectSystem]</div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="class_e_t_hotfix_1_1_config_component_load_system.html">   17</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="class_e_t_hotfix_1_1_config_component_load_system.html">ConfigComponentLoadSystem</a> : <a class="code" href="class_e_t_hotfix_1_1_load_system.html">LoadSystem</a>&lt;ConfigComponent&gt;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        {</div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="class_e_t_hotfix_1_1_config_component_load_system.html#a6049f85d5b61959141ad137a7ee88b41">   19</a></span>&#160;                <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code" href="class_e_t_hotfix_1_1_config_component_load_system.html#a6049f85d5b61959141ad137a7ee88b41">Load</a>(<a class="code" href="class_e_t_hotfix_1_1_config_component.html">ConfigComponent</a> <span class="keyword">self</span>)</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;                {</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;                        <span class="keyword">self</span>.Load();</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;                }</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        }</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="class_e_t_hotfix_1_1_config_component.html">   28</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="class_e_t_hotfix_1_1_config_component.html">ConfigComponent</a>: <a class="code" href="class_e_t_hotfix_1_1_component.html">Component</a></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        {</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;                <span class="keyword">private</span> readonly Dictionary&lt;Type, ACategory&gt; allConfig = <span class="keyword">new</span> Dictionary&lt;Type, ACategory&gt;();</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="class_e_t_hotfix_1_1_config_component.html#a678dc6e69a156231d5b7bbb2710b923e">   32</a></span>&#160;                <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_e_t_hotfix_1_1_config_component.html#a678dc6e69a156231d5b7bbb2710b923e">Awake</a>()</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;                {</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;                        this.<a class="code" href="class_e_t_hotfix_1_1_config_component.html#a1887aab6bb0d52e1e11b4d0d845aa2bf">Load</a>();</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;                }</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="class_e_t_hotfix_1_1_config_component.html#a1887aab6bb0d52e1e11b4d0d845aa2bf">   37</a></span>&#160;                <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_e_t_hotfix_1_1_config_component.html#a1887aab6bb0d52e1e11b4d0d845aa2bf">Load</a>()</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;                {</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                        this.allConfig.Clear();</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                        List&lt;Type&gt; types = Game.EventSystem.GetTypes();</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                        <span class="keywordflow">foreach</span> (Type type <span class="keywordflow">in</span> types)</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;                        {</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                                <span class="keywordtype">object</span>[] attrs = type.GetCustomAttributes(typeof (<a class="code" href="class_e_t_model_1_1_config_attribute.html">ConfigAttribute</a>), <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                                <span class="keywordflow">if</span> (attrs.Length == 0)</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                                {</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                                        <span class="keywordflow">continue</span>;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                                }</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                                </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                                <a class="code" href="class_e_t_model_1_1_config_attribute.html">ConfigAttribute</a> configAttribute = attrs[0] as <a class="code" href="class_e_t_model_1_1_config_attribute.html">ConfigAttribute</a>;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                                <span class="comment">// 只加载指定的配置</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                                <span class="keywordflow">if</span> (!configAttribute.<a class="code" href="class_e_t_model_1_1_config_attribute.html#a8119a116363f8878abcce54fae942a33">Type</a>.Is(<a class="code" href="namespace_e_t_model.html#a8b40abd315470fe22a31bf9b6fb8974b">AppType</a>.ClientH))</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                                {</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                                        <span class="keywordflow">continue</span>;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                                }</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                                </div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                                <span class="keywordtype">object</span> obj = Activator.CreateInstance(type);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                                <a class="code" href="class_e_t_hotfix_1_1_a_category.html">ACategory</a> iCategory = obj as <a class="code" href="class_e_t_hotfix_1_1_a_category.html">ACategory</a>;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                                <span class="keywordflow">if</span> (iCategory == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                                {</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                                        <span class="keywordflow">throw</span> <span class="keyword">new</span> Exception($<span class="stringliteral">&quot;class: {type.Name} not inherit from ACategory&quot;</span>);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                                }</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                                iCategory.<a class="code" href="class_e_t_hotfix_1_1_a_category.html#a484cd1adc4391cadf576b1e9ee4e8e84">BeginInit</a>();</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                                iCategory.<a class="code" href="class_e_t_hotfix_1_1_a_category.html#a3b94e1572e7413987ae6f68bf981137d">EndInit</a>();</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                                this.allConfig[iCategory.<a class="code" href="class_e_t_hotfix_1_1_a_category.html#a6ad487458c3b809a75cb9dabe745628e">ConfigType</a>] = iCategory;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                        }</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                }</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno"><a class="line" href="class_e_t_hotfix_1_1_config_component.html#ad92ea5b9036feffef51f66c17a92c033">   71</a></span>&#160;                <span class="keyword">public</span> <a class="code" href="interface_e_t_hotfix_1_1_i_config.html">IConfig</a> <a class="code" href="class_e_t_hotfix_1_1_config_component.html#ad92ea5b9036feffef51f66c17a92c033">GetOne</a>(Type type)</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                {</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                        <a class="code" href="class_e_t_hotfix_1_1_a_category.html">ACategory</a> configCategory;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                        <span class="keywordflow">if</span> (!this.allConfig.TryGetValue(type, out configCategory))</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                        {</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                                <span class="keywordflow">throw</span> <span class="keyword">new</span> Exception($<span class="stringliteral">&quot;ConfigComponent not found key: {type.FullName}&quot;</span>);</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                        }</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                        <span class="keywordflow">return</span> configCategory.<a class="code" href="class_e_t_hotfix_1_1_a_category.html#a3c517d8891241271ad8d57f8191373a8">GetOne</a>();</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                }</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
+<div class="line"><a name="l00081"></a><span class="lineno"><a class="line" href="class_e_t_hotfix_1_1_config_component.html#a47dc4b8dd0b9eeb6300630391b8d5ad5">   81</a></span>&#160;                <span class="keyword">public</span> <a class="code" href="interface_e_t_hotfix_1_1_i_config.html">IConfig</a> <a class="code" href="class_e_t_hotfix_1_1_config_component.html#a47dc4b8dd0b9eeb6300630391b8d5ad5">Get</a>(Type type, <span class="keywordtype">int</span> <span class="keywordtype">id</span>)</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                {</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                        <a class="code" href="class_e_t_hotfix_1_1_a_category.html">ACategory</a> configCategory;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                        <span class="keywordflow">if</span> (!this.allConfig.TryGetValue(type, out configCategory))</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                        {</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                                <span class="keywordflow">throw</span> <span class="keyword">new</span> Exception($<span class="stringliteral">&quot;ConfigComponent not found key: {type.FullName}&quot;</span>);</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                        }</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                        <span class="keywordflow">return</span> configCategory.<a class="code" href="class_e_t_hotfix_1_1_a_category.html#a3f39715d551a43d21bb1d531e78d4f05">TryGet</a>(<span class="keywordtype">id</span>);</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                }</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
+<div class="line"><a name="l00092"></a><span class="lineno"><a class="line" href="class_e_t_hotfix_1_1_config_component.html#a41230e1ebb2f1e339f2ce252023321a4">   92</a></span>&#160;                <span class="keyword">public</span> <a class="code" href="interface_e_t_hotfix_1_1_i_config.html">IConfig</a> <a class="code" href="class_e_t_hotfix_1_1_config_component.html#a41230e1ebb2f1e339f2ce252023321a4">TryGet</a>(Type type, <span class="keywordtype">int</span> <span class="keywordtype">id</span>)</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                {</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                        <a class="code" href="class_e_t_hotfix_1_1_a_category.html">ACategory</a> configCategory;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                        <span class="keywordflow">if</span> (!this.allConfig.TryGetValue(type, out configCategory))</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                        {</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;                                <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                        }</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                        <span class="keywordflow">return</span> configCategory.<a class="code" href="class_e_t_hotfix_1_1_a_category.html#a3f39715d551a43d21bb1d531e78d4f05">TryGet</a>(<span class="keywordtype">id</span>);</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;                }</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
+<div class="line"><a name="l00102"></a><span class="lineno"><a class="line" href="class_e_t_hotfix_1_1_config_component.html#a243db4f59af3091a58e8ddcc3c3f7c22">  102</a></span>&#160;                <span class="keyword">public</span> <a class="code" href="interface_e_t_hotfix_1_1_i_config.html">IConfig</a>[] <a class="code" href="class_e_t_hotfix_1_1_config_component.html#a243db4f59af3091a58e8ddcc3c3f7c22">GetAll</a>(Type type)</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;                {</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;                        <a class="code" href="class_e_t_hotfix_1_1_a_category.html">ACategory</a> configCategory;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;                        <span class="keywordflow">if</span> (!this.allConfig.TryGetValue(type, out configCategory))</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;                        {</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;                                <span class="keywordflow">throw</span> <span class="keyword">new</span> Exception($<span class="stringliteral">&quot;ConfigComponent not found key: {type.FullName}&quot;</span>);</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;                        }</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;                        <span class="keywordflow">return</span> configCategory.<a class="code" href="class_e_t_hotfix_1_1_a_category.html#a42dc60fc0bf93da7bccd413de39fc00e">GetAll</a>();</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;                }</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; </div>
+<div class="line"><a name="l00112"></a><span class="lineno"><a class="line" href="class_e_t_hotfix_1_1_config_component.html#a3c9e294bb144e24d0cb567a1133d6a36">  112</a></span>&#160;                <span class="keyword">public</span> <a class="code" href="class_e_t_hotfix_1_1_a_category.html">ACategory</a> <a class="code" href="class_e_t_hotfix_1_1_config_component.html#a3c9e294bb144e24d0cb567a1133d6a36">GetCategory</a>(Type type)</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;                {</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;                        <a class="code" href="class_e_t_hotfix_1_1_a_category.html">ACategory</a> configCategory;</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;                        <span class="keywordtype">bool</span> ret = this.allConfig.TryGetValue(type, out configCategory);</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;                        <span class="keywordflow">return</span> ret? configCategory : <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;                }</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        }</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;}</div>
+<div class="ttc" id="aclass_e_t_hotfix_1_1_a_category_html"><div class="ttname"><a href="class_e_t_hotfix_1_1_a_category.html">ETHotfix.ACategory</a></div><div class="ttdoc">管理该所有的配置</div><div class="ttdef"><b>Definition:</b> <a href="_hotfix_2_e_t_network_2_module_2_config_2_a_category_8cs_source.html#l00020">ACategory.cs:21</a></div></div>
+<div class="ttc" id="aclass_e_t_hotfix_1_1_a_category_html_a3b94e1572e7413987ae6f68bf981137d"><div class="ttname"><a href="class_e_t_hotfix_1_1_a_category.html#a3b94e1572e7413987ae6f68bf981137d">ETHotfix.ACategory.EndInit</a></div><div class="ttdeci">override void EndInit()</div><div class="ttdef"><b>Definition:</b> <a href="_hotfix_2_e_t_network_2_module_2_config_2_a_category_8cs_source.html#l00057">ACategory.cs:57</a></div></div>
+<div class="ttc" id="aclass_e_t_hotfix_1_1_a_category_html_a3c517d8891241271ad8d57f8191373a8"><div class="ttname"><a href="class_e_t_hotfix_1_1_a_category.html#a3c517d8891241271ad8d57f8191373a8">ETHotfix.ACategory.GetOne</a></div><div class="ttdeci">abstract IConfig GetOne()</div></div>
+<div class="ttc" id="aclass_e_t_hotfix_1_1_a_category_html_a3f39715d551a43d21bb1d531e78d4f05"><div class="ttname"><a href="class_e_t_hotfix_1_1_a_category.html#a3f39715d551a43d21bb1d531e78d4f05">ETHotfix.ACategory.TryGet</a></div><div class="ttdeci">abstract IConfig TryGet(int type)</div></div>
+<div class="ttc" id="aclass_e_t_hotfix_1_1_a_category_html_a42dc60fc0bf93da7bccd413de39fc00e"><div class="ttname"><a href="class_e_t_hotfix_1_1_a_category.html#a42dc60fc0bf93da7bccd413de39fc00e">ETHotfix.ACategory.GetAll</a></div><div class="ttdeci">abstract IConfig[] GetAll()</div></div>
+<div class="ttc" id="aclass_e_t_hotfix_1_1_a_category_html_a484cd1adc4391cadf576b1e9ee4e8e84"><div class="ttname"><a href="class_e_t_hotfix_1_1_a_category.html#a484cd1adc4391cadf576b1e9ee4e8e84">ETHotfix.ACategory.BeginInit</a></div><div class="ttdeci">override void BeginInit()</div><div class="ttdef"><b>Definition:</b> <a href="_hotfix_2_e_t_network_2_module_2_config_2_a_category_8cs_source.html#l00024">ACategory.cs:24</a></div></div>
+<div class="ttc" id="aclass_e_t_hotfix_1_1_a_category_html_a6ad487458c3b809a75cb9dabe745628e"><div class="ttname"><a href="class_e_t_hotfix_1_1_a_category.html#a6ad487458c3b809a75cb9dabe745628e">ETHotfix.ACategory.ConfigType</a></div><div class="ttdeci">abstract Type ConfigType</div><div class="ttdef"><b>Definition:</b> <a href="_hotfix_2_e_t_network_2_module_2_config_2_a_category_8cs_source.html#l00010">ACategory.cs:10</a></div></div>
+<div class="ttc" id="aclass_e_t_hotfix_1_1_awake_system_html"><div class="ttname"><a href="class_e_t_hotfix_1_1_awake_system.html">ETHotfix.AwakeSystem</a></div><div class="ttdef"><b>Definition:</b> <a href="_hotfix_2_e_t_network_2_base_2_object_2_i_awake_system_8cs_source.html#l00075">IAwakeSystem.cs:76</a></div></div>
+<div class="ttc" id="aclass_e_t_hotfix_1_1_component_html"><div class="ttname"><a href="class_e_t_hotfix_1_1_component.html">ETHotfix.Component</a></div><div class="ttdef"><b>Definition:</b> <a href="_hotfix_2_e_t_network_2_base_2_object_2_component_8cs_source.html#l00011">Component.cs:12</a></div></div>
+<div class="ttc" id="aclass_e_t_hotfix_1_1_config_component_awake_system_html"><div class="ttname"><a href="class_e_t_hotfix_1_1_config_component_awake_system.html">ETHotfix.ConfigComponentAwakeSystem</a></div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_hotfix_2_e_t_network_2_module_2_config_2_config_component_8cs_source.html#l00008">ConfigComponent.cs:9</a></div></div>
+<div class="ttc" id="aclass_e_t_hotfix_1_1_config_component_awake_system_html_adef7d661551a3e2fa1c7342406c9899f"><div class="ttname"><a href="class_e_t_hotfix_1_1_config_component_awake_system.html#adef7d661551a3e2fa1c7342406c9899f">ETHotfix.ConfigComponentAwakeSystem.Awake</a></div><div class="ttdeci">override void Awake(ConfigComponent self)</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_hotfix_2_e_t_network_2_module_2_config_2_config_component_8cs_source.html#l00010">ConfigComponent.cs:10</a></div></div>
+<div class="ttc" id="aclass_e_t_hotfix_1_1_config_component_html"><div class="ttname"><a href="class_e_t_hotfix_1_1_config_component.html">ETHotfix.ConfigComponent</a></div><div class="ttdoc">Config组件会扫描所有的有ConfigAttribute标签的配置,加载进来</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_hotfix_2_e_t_network_2_module_2_config_2_config_component_8cs_source.html#l00028">ConfigComponent.cs:29</a></div></div>
+<div class="ttc" id="aclass_e_t_hotfix_1_1_config_component_html_a1887aab6bb0d52e1e11b4d0d845aa2bf"><div class="ttname"><a href="class_e_t_hotfix_1_1_config_component.html#a1887aab6bb0d52e1e11b4d0d845aa2bf">ETHotfix.ConfigComponent.Load</a></div><div class="ttdeci">void Load()</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_hotfix_2_e_t_network_2_module_2_config_2_config_component_8cs_source.html#l00037">ConfigComponent.cs:37</a></div></div>
+<div class="ttc" id="aclass_e_t_hotfix_1_1_config_component_html_a243db4f59af3091a58e8ddcc3c3f7c22"><div class="ttname"><a href="class_e_t_hotfix_1_1_config_component.html#a243db4f59af3091a58e8ddcc3c3f7c22">ETHotfix.ConfigComponent.GetAll</a></div><div class="ttdeci">IConfig[] GetAll(Type type)</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_hotfix_2_e_t_network_2_module_2_config_2_config_component_8cs_source.html#l00102">ConfigComponent.cs:102</a></div></div>
+<div class="ttc" id="aclass_e_t_hotfix_1_1_config_component_html_a3c9e294bb144e24d0cb567a1133d6a36"><div class="ttname"><a href="class_e_t_hotfix_1_1_config_component.html#a3c9e294bb144e24d0cb567a1133d6a36">ETHotfix.ConfigComponent.GetCategory</a></div><div class="ttdeci">ACategory GetCategory(Type type)</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_hotfix_2_e_t_network_2_module_2_config_2_config_component_8cs_source.html#l00112">ConfigComponent.cs:112</a></div></div>
+<div class="ttc" id="aclass_e_t_hotfix_1_1_config_component_html_a41230e1ebb2f1e339f2ce252023321a4"><div class="ttname"><a href="class_e_t_hotfix_1_1_config_component.html#a41230e1ebb2f1e339f2ce252023321a4">ETHotfix.ConfigComponent.TryGet</a></div><div class="ttdeci">IConfig TryGet(Type type, int id)</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_hotfix_2_e_t_network_2_module_2_config_2_config_component_8cs_source.html#l00092">ConfigComponent.cs:92</a></div></div>
+<div class="ttc" id="aclass_e_t_hotfix_1_1_config_component_html_a47dc4b8dd0b9eeb6300630391b8d5ad5"><div class="ttname"><a href="class_e_t_hotfix_1_1_config_component.html#a47dc4b8dd0b9eeb6300630391b8d5ad5">ETHotfix.ConfigComponent.Get</a></div><div class="ttdeci">IConfig Get(Type type, int id)</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_hotfix_2_e_t_network_2_module_2_config_2_config_component_8cs_source.html#l00081">ConfigComponent.cs:81</a></div></div>
+<div class="ttc" id="aclass_e_t_hotfix_1_1_config_component_html_a678dc6e69a156231d5b7bbb2710b923e"><div class="ttname"><a href="class_e_t_hotfix_1_1_config_component.html#a678dc6e69a156231d5b7bbb2710b923e">ETHotfix.ConfigComponent.Awake</a></div><div class="ttdeci">void Awake()</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_hotfix_2_e_t_network_2_module_2_config_2_config_component_8cs_source.html#l00032">ConfigComponent.cs:32</a></div></div>
+<div class="ttc" id="aclass_e_t_hotfix_1_1_config_component_html_ad92ea5b9036feffef51f66c17a92c033"><div class="ttname"><a href="class_e_t_hotfix_1_1_config_component.html#ad92ea5b9036feffef51f66c17a92c033">ETHotfix.ConfigComponent.GetOne</a></div><div class="ttdeci">IConfig GetOne(Type type)</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_hotfix_2_e_t_network_2_module_2_config_2_config_component_8cs_source.html#l00071">ConfigComponent.cs:71</a></div></div>
+<div class="ttc" id="aclass_e_t_hotfix_1_1_config_component_load_system_html"><div class="ttname"><a href="class_e_t_hotfix_1_1_config_component_load_system.html">ETHotfix.ConfigComponentLoadSystem</a></div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_hotfix_2_e_t_network_2_module_2_config_2_config_component_8cs_source.html#l00017">ConfigComponent.cs:18</a></div></div>
+<div class="ttc" id="aclass_e_t_hotfix_1_1_config_component_load_system_html_a6049f85d5b61959141ad137a7ee88b41"><div class="ttname"><a href="class_e_t_hotfix_1_1_config_component_load_system.html#a6049f85d5b61959141ad137a7ee88b41">ETHotfix.ConfigComponentLoadSystem.Load</a></div><div class="ttdeci">override void Load(ConfigComponent self)</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_hotfix_2_e_t_network_2_module_2_config_2_config_component_8cs_source.html#l00019">ConfigComponent.cs:19</a></div></div>
+<div class="ttc" id="aclass_e_t_hotfix_1_1_load_system_html"><div class="ttname"><a href="class_e_t_hotfix_1_1_load_system.html">ETHotfix.LoadSystem</a></div><div class="ttdef"><b>Definition:</b> <a href="_hotfix_2_e_t_network_2_base_2_object_2_i_load_system_8cs_source.html#l00011">ILoadSystem.cs:12</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_config_attribute_html"><div class="ttname"><a href="class_e_t_model_1_1_config_attribute.html">ETModel.ConfigAttribute</a></div><div class="ttdef"><b>Definition:</b> <a href="_config_attribute_8cs_source.html#l00006">ConfigAttribute.cs:7</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_config_attribute_html_a8119a116363f8878abcce54fae942a33"><div class="ttname"><a href="class_e_t_model_1_1_config_attribute.html#a8119a116363f8878abcce54fae942a33">ETModel.ConfigAttribute.Type</a></div><div class="ttdeci">AppType Type</div><div class="ttdef"><b>Definition:</b> <a href="_config_attribute_8cs_source.html#l00008">ConfigAttribute.cs:8</a></div></div>
+<div class="ttc" id="ainterface_e_t_hotfix_1_1_i_config_html"><div class="ttname"><a href="interface_e_t_hotfix_1_1_i_config.html">ETHotfix.IConfig</a></div><div class="ttdoc">每个Config的基类</div><div class="ttdef"><b>Definition:</b> <a href="_hotfix_2_e_t_network_2_module_2_config_2_i_config_8cs_source.html#l00006">IConfig.cs:7</a></div></div>
+<div class="ttc" id="anamespace_e_t_hotfix_html"><div class="ttname"><a href="namespace_e_t_hotfix.html">ETHotfix</a></div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_hotfix_2_e_t_network_2_base_2_event_2_event_id_type_8cs_source.html#l00001">EventIdType.cs:2</a></div></div>
+<div class="ttc" id="anamespace_e_t_model_html"><div class="ttname"><a href="namespace_e_t_model.html">ETModel</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_e_t_task_method_builder_8cs_source.html#l00006">AsyncETTaskMethodBuilder.cs:7</a></div></div>
+<div class="ttc" id="anamespace_e_t_model_html_a8b40abd315470fe22a31bf9b6fb8974b"><div class="ttname"><a href="namespace_e_t_model.html#a8b40abd315470fe22a31bf9b6fb8974b">ETModel.AppType</a></div><div class="ttdeci">AppType</div><div class="ttdef"><b>Definition:</b> <a href="_app_type_8cs_source.html#l00007">AppType.cs:8</a></div></div>
+<div class="ttc" id="anamespace_system_html"><div class="ttname"><a href="namespace_system.html">System</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_method_builder_attribute_8cs_source.html#l00001">AsyncMethodBuilderAttribute.cs:2</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_84bbf7b3c7f28a5a18725745e1505219.html">Assets</a></li><li class="navelem"><a class="el" href="dir_f13b41af88cf68434578284aaf699e39.html">Scripts</a></li><li class="navelem"><a class="el" href="dir_75935e138bec93c4cadb3fa5f697868b.html">Hotfix</a></li><li class="navelem"><a class="el" href="dir_12068b0d7fc6e54913aa29a1e91dfa1b.html">ETNetwork</a></li><li class="navelem"><a class="el" href="dir_df851051fd20a6c07d23b2b2946e6d48.html">Module</a></li><li class="navelem"><a class="el" href="dir_ea6ad2f30c44c5db1ecd21370294e589.html">Config</a></li><li class="navelem"><a class="el" href="_assets_2_scripts_2_hotfix_2_e_t_network_2_module_2_config_2_config_component_8cs.html">ConfigComponent.cs</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:24:45 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

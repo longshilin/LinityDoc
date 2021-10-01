@@ -1,0 +1,131 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: Assets/Scripts/Libraries/GameFramework/Scripts/Runtime/Resource/ResourceHelperBase.cs 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_resource_helper_base_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">ResourceHelperBase.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_resource_helper_base_8cs.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">//------------------------------------------------------------</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">// Game Framework</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">// Copyright © 2013-2021 Jiang Yin. All rights reserved.</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">// Homepage: https://gameframework.cn/</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">// Feedback: mailto:ellan@gameframework.cn</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">//------------------------------------------------------------</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_game_framework.html">GameFramework</a>.<a class="code" href="namespace_game_framework_1_1_resource.html">Resource</a>;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_unity_engine.html">UnityEngine</a>;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_unity_game_framework_1_1_runtime.html">UnityGameFramework.Runtime</a></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;{</div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="class_unity_game_framework_1_1_runtime_1_1_resource_helper_base.html">   16</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">class </span><a class="code" href="class_unity_game_framework_1_1_runtime_1_1_resource_helper_base.html">ResourceHelperBase</a> : MonoBehaviour, <a class="code" href="interface_game_framework_1_1_resource_1_1_i_resource_helper.html">IResourceHelper</a></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    {</div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="class_unity_game_framework_1_1_runtime_1_1_resource_helper_base.html#a43fada0bc050573e7714bb71b9abeff0">   24</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keywordtype">void</span> <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_resource_helper_base.html#a43fada0bc050573e7714bb71b9abeff0">LoadBytes</a>(<span class="keywordtype">string</span> fileUri, <a class="code" href="class_game_framework_1_1_resource_1_1_load_bytes_callbacks.html">LoadBytesCallbacks</a> loadBytesCallbacks, <span class="keywordtype">object</span> userData);</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="class_unity_game_framework_1_1_runtime_1_1_resource_helper_base.html#ac4387c84f2acdc1c539bffaa2bea2942">   32</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keywordtype">void</span> <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_resource_helper_base.html#ac4387c84f2acdc1c539bffaa2bea2942">UnloadScene</a>(<span class="keywordtype">string</span> sceneAssetName, <a class="code" href="class_game_framework_1_1_resource_1_1_unload_scene_callbacks.html">UnloadSceneCallbacks</a> unloadSceneCallbacks, <span class="keywordtype">object</span> userData);</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="class_unity_game_framework_1_1_runtime_1_1_resource_helper_base.html#a785d7d4db0c7157b3668c8bbdcbf5be5">   38</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keywordtype">void</span> <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_resource_helper_base.html#a785d7d4db0c7157b3668c8bbdcbf5be5">Release</a>(<span class="keywordtype">object</span> objectToRelease);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    }</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;}</div>
+<div class="ttc" id="aclass_game_framework_1_1_resource_1_1_load_bytes_callbacks_html"><div class="ttname"><a href="class_game_framework_1_1_resource_1_1_load_bytes_callbacks.html">GameFramework.Resource.LoadBytesCallbacks</a></div><div class="ttdoc">加载数据流回调函数集。</div><div class="ttdef"><b>Definition:</b> <a href="_load_bytes_callbacks_8cs_source.html#l00013">LoadBytesCallbacks.cs:14</a></div></div>
+<div class="ttc" id="aclass_game_framework_1_1_resource_1_1_unload_scene_callbacks_html"><div class="ttname"><a href="class_game_framework_1_1_resource_1_1_unload_scene_callbacks.html">GameFramework.Resource.UnloadSceneCallbacks</a></div><div class="ttdoc">卸载场景回调函数集。</div><div class="ttdef"><b>Definition:</b> <a href="_unload_scene_callbacks_8cs_source.html#l00013">UnloadSceneCallbacks.cs:14</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_runtime_1_1_resource_helper_base_html"><div class="ttname"><a href="class_unity_game_framework_1_1_runtime_1_1_resource_helper_base.html">UnityGameFramework.Runtime.ResourceHelperBase</a></div><div class="ttdoc">资源辅助器基类。</div><div class="ttdef"><b>Definition:</b> <a href="_resource_helper_base_8cs_source.html#l00016">ResourceHelperBase.cs:17</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_runtime_1_1_resource_helper_base_html_a43fada0bc050573e7714bb71b9abeff0"><div class="ttname"><a href="class_unity_game_framework_1_1_runtime_1_1_resource_helper_base.html#a43fada0bc050573e7714bb71b9abeff0">UnityGameFramework.Runtime.ResourceHelperBase.LoadBytes</a></div><div class="ttdeci">abstract void LoadBytes(string fileUri, LoadBytesCallbacks loadBytesCallbacks, object userData)</div><div class="ttdoc">直接从指定文件路径加载数据流。</div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_runtime_1_1_resource_helper_base_html_a785d7d4db0c7157b3668c8bbdcbf5be5"><div class="ttname"><a href="class_unity_game_framework_1_1_runtime_1_1_resource_helper_base.html#a785d7d4db0c7157b3668c8bbdcbf5be5">UnityGameFramework.Runtime.ResourceHelperBase.Release</a></div><div class="ttdeci">abstract void Release(object objectToRelease)</div><div class="ttdoc">释放资源。</div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_runtime_1_1_resource_helper_base_html_ac4387c84f2acdc1c539bffaa2bea2942"><div class="ttname"><a href="class_unity_game_framework_1_1_runtime_1_1_resource_helper_base.html#ac4387c84f2acdc1c539bffaa2bea2942">UnityGameFramework.Runtime.ResourceHelperBase.UnloadScene</a></div><div class="ttdeci">abstract void UnloadScene(string sceneAssetName, UnloadSceneCallbacks unloadSceneCallbacks, object userData)</div><div class="ttdoc">卸载场景。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_resource_1_1_i_resource_helper_html"><div class="ttname"><a href="interface_game_framework_1_1_resource_1_1_i_resource_helper.html">GameFramework.Resource.IResourceHelper</a></div><div class="ttdoc">资源辅助器接口。</div><div class="ttdef"><b>Definition:</b> <a href="_i_resource_helper_8cs_source.html#l00013">IResourceHelper.cs:14</a></div></div>
+<div class="ttc" id="anamespace_game_framework_1_1_resource_html"><div class="ttname"><a href="namespace_game_framework_1_1_resource.html">GameFramework.Resource</a></div><div class="ttdef"><b>Definition:</b> <a href="_apply_resources_complete_callback_8cs_source.html#l00008">ApplyResourcesCompleteCallback.cs:9</a></div></div>
+<div class="ttc" id="anamespace_game_framework_html"><div class="ttname"><a href="namespace_game_framework.html">GameFramework</a></div><div class="ttdef"><b>Definition:</b> <a href="_data_provider_8cs_source.html#l00011">DataProvider.cs:12</a></div></div>
+<div class="ttc" id="anamespace_unity_engine_html"><div class="ttname"><a href="namespace_unity_engine.html">UnityEngine</a></div><div class="ttdef"><b>Definition:</b> <a href="_mathf_8cs_source.html#l00003">Mathf.cs:4</a></div></div>
+<div class="ttc" id="anamespace_unity_game_framework_1_1_runtime_html"><div class="ttname"><a href="namespace_unity_game_framework_1_1_runtime.html">UnityGameFramework.Runtime</a></div><div class="ttdef"><b>Definition:</b> <a href="_base_component_8cs_source.html#l00014">BaseComponent.cs:15</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_84bbf7b3c7f28a5a18725745e1505219.html">Assets</a></li><li class="navelem"><a class="el" href="dir_f13b41af88cf68434578284aaf699e39.html">Scripts</a></li><li class="navelem"><a class="el" href="dir_46d134a3bf82cf4dc49ca8f728aea58c.html">Libraries</a></li><li class="navelem"><a class="el" href="dir_7a6862c303020716b3c311e95823547c.html">GameFramework</a></li><li class="navelem"><a class="el" href="dir_1d9b7e2b1e68805cdf4440a735859529.html">Scripts</a></li><li class="navelem"><a class="el" href="dir_e81cefffdbcf8632d0c6357d5d83ba40.html">Runtime</a></li><li class="navelem"><a class="el" href="dir_13e623c1281a9ac69a24018d7baf40d2.html">Resource</a></li><li class="navelem"><a class="el" href="_resource_helper_base_8cs.html">ResourceHelperBase.cs</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:24:50 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

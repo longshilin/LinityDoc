@@ -1,0 +1,1460 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: MongoDB.Bson.IO.BsonStream类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public 成员函数</a>  </div>
+  <div class="headertitle">
+<div class="title">MongoDB.Bson.IO.BsonStream类 参考<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Represents a Stream has additional methods to suport reading and writing BSON values.  
+ <a href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream.html#details">更多...</a></p>
+<div class="dynheader">
+类 MongoDB.Bson.IO.BsonStream 继承关系图:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream.png" usemap="#MongoDB.Bson.IO.BsonStream_map" alt=""/>
+  <map id="MongoDB.Bson.IO.BsonStream_map" name="MongoDB.Bson.IO.BsonStream_map">
+<area href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html" title="A Stream that wraps another Stream while implementing the BsonStream abstract methods." alt="MongoDB.Bson.IO.BsonStreamAdapter" shape="rect" coords="0,112,233,136"/>
+<area href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html" title="A Stream that wraps another Stream while implementing the BsonStream abstract methods." alt="MongoDB.Bson.IO.BsonStreamAdapter" shape="rect" coords="243,112,476,136"/>
+<area href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_byte_buffer_stream.html" title="Represents a Stream backed by an IByteBuffer. Similar to MemoryStream but backed by an IByteBuffer in..." alt="MongoDB.Bson.IO.ByteBufferStream" shape="rect" coords="486,112,719,136"/>
+<area href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_byte_buffer_stream.html" title="Represents a Stream backed by an IByteBuffer. Similar to MemoryStream but backed by an IByteBuffer in..." alt="MongoDB.Bson.IO.ByteBufferStream" shape="rect" coords="729,112,962,136"/>
+  </map>
+</div></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:a250f46d335fa4adc07bb24edd67b1532"><td class="memItemLeft" align="right" valign="top">abstract string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream.html#a250f46d335fa4adc07bb24edd67b1532">ReadCString</a> (UTF8Encoding encoding)</td></tr>
+<tr class="memdesc:a250f46d335fa4adc07bb24edd67b1532"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads a BSON CString from the stream.  <a href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream.html#a250f46d335fa4adc07bb24edd67b1532">更多...</a><br /></td></tr>
+<tr class="separator:a250f46d335fa4adc07bb24edd67b1532"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4997af75bffb544dd6a97051f2ad2b49"><td class="memItemLeft" align="right" valign="top">abstract ArraySegment&lt; byte &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream.html#a4997af75bffb544dd6a97051f2ad2b49">ReadCStringBytes</a> ()</td></tr>
+<tr class="memdesc:a4997af75bffb544dd6a97051f2ad2b49"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads a BSON CString from the stream.  <a href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream.html#a4997af75bffb544dd6a97051f2ad2b49">更多...</a><br /></td></tr>
+<tr class="separator:a4997af75bffb544dd6a97051f2ad2b49"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0f1e477b6d1f4b5888662599449bb8be"><td class="memItemLeft" align="right" valign="top">abstract <a class="el" href="struct_mongo_d_b_1_1_bson_1_1_decimal128.html">Decimal128</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream.html#a0f1e477b6d1f4b5888662599449bb8be">ReadDecimal128</a> ()</td></tr>
+<tr class="memdesc:a0f1e477b6d1f4b5888662599449bb8be"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads a BSON <a class="el" href="struct_mongo_d_b_1_1_bson_1_1_decimal128.html" title="Represents a Decimal128 value.">Decimal128</a> from the stream.  <a href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream.html#a0f1e477b6d1f4b5888662599449bb8be">更多...</a><br /></td></tr>
+<tr class="separator:a0f1e477b6d1f4b5888662599449bb8be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a404fe04acbf03142dfe35086cb17b97d"><td class="memItemLeft" align="right" valign="top">abstract double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream.html#a404fe04acbf03142dfe35086cb17b97d">ReadDouble</a> ()</td></tr>
+<tr class="memdesc:a404fe04acbf03142dfe35086cb17b97d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads a BSON double from the stream.  <a href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream.html#a404fe04acbf03142dfe35086cb17b97d">更多...</a><br /></td></tr>
+<tr class="separator:a404fe04acbf03142dfe35086cb17b97d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a63eecd66182f2c74c1d2352ccc82ac35"><td class="memItemLeft" align="right" valign="top">abstract int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream.html#a63eecd66182f2c74c1d2352ccc82ac35">ReadInt32</a> ()</td></tr>
+<tr class="memdesc:a63eecd66182f2c74c1d2352ccc82ac35"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads a 32-bit BSON integer from the stream.  <a href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream.html#a63eecd66182f2c74c1d2352ccc82ac35">更多...</a><br /></td></tr>
+<tr class="separator:a63eecd66182f2c74c1d2352ccc82ac35"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a50a7a9d32ecafbdd70b6764ec8bce882"><td class="memItemLeft" align="right" valign="top">abstract long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream.html#a50a7a9d32ecafbdd70b6764ec8bce882">ReadInt64</a> ()</td></tr>
+<tr class="memdesc:a50a7a9d32ecafbdd70b6764ec8bce882"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads a 64-bit BSON integer from the stream.  <a href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream.html#a50a7a9d32ecafbdd70b6764ec8bce882">更多...</a><br /></td></tr>
+<tr class="separator:a50a7a9d32ecafbdd70b6764ec8bce882"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acacdfefcc30eba9bac45503a88a920ee"><td class="memItemLeft" align="right" valign="top">abstract <a class="el" href="struct_mongo_d_b_1_1_bson_1_1_object_id.html">ObjectId</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream.html#acacdfefcc30eba9bac45503a88a920ee">ReadObjectId</a> ()</td></tr>
+<tr class="memdesc:acacdfefcc30eba9bac45503a88a920ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads a BSON <a class="el" href="struct_mongo_d_b_1_1_bson_1_1_object_id.html" title="Represents an ObjectId (see also BsonObjectId).">ObjectId</a> from the stream.  <a href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream.html#acacdfefcc30eba9bac45503a88a920ee">更多...</a><br /></td></tr>
+<tr class="separator:acacdfefcc30eba9bac45503a88a920ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a9fa89f96e73838bbc6c36f501b6bd6"><td class="memItemLeft" align="right" valign="top">abstract <a class="el" href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_byte_buffer.html">IByteBuffer</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream.html#a7a9fa89f96e73838bbc6c36f501b6bd6">ReadSlice</a> ()</td></tr>
+<tr class="memdesc:a7a9fa89f96e73838bbc6c36f501b6bd6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads a raw length prefixed slice from the stream.  <a href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream.html#a7a9fa89f96e73838bbc6c36f501b6bd6">更多...</a><br /></td></tr>
+<tr class="separator:a7a9fa89f96e73838bbc6c36f501b6bd6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaa022a4d9009493d52c39b934a9e9274"><td class="memItemLeft" align="right" valign="top">abstract string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream.html#aaa022a4d9009493d52c39b934a9e9274">ReadString</a> (UTF8Encoding encoding)</td></tr>
+<tr class="memdesc:aaa022a4d9009493d52c39b934a9e9274"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads a BSON string from the stream.  <a href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream.html#aaa022a4d9009493d52c39b934a9e9274">更多...</a><br /></td></tr>
+<tr class="separator:aaa022a4d9009493d52c39b934a9e9274"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a64283d3a2640ed069d2ccdda8c507791"><td class="memItemLeft" align="right" valign="top">abstract void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream.html#a64283d3a2640ed069d2ccdda8c507791">SkipCString</a> ()</td></tr>
+<tr class="memdesc:a64283d3a2640ed069d2ccdda8c507791"><td class="mdescLeft">&#160;</td><td class="mdescRight">Skips over a BSON CString leaving the stream positioned just after the terminating null byte.  <a href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream.html#a64283d3a2640ed069d2ccdda8c507791">更多...</a><br /></td></tr>
+<tr class="separator:a64283d3a2640ed069d2ccdda8c507791"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab0f9b85edc60aeef864a437b0883abdd"><td class="memItemLeft" align="right" valign="top">abstract void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream.html#ab0f9b85edc60aeef864a437b0883abdd">WriteCString</a> (string value)</td></tr>
+<tr class="memdesc:ab0f9b85edc60aeef864a437b0883abdd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes a BSON CString to the stream.  <a href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream.html#ab0f9b85edc60aeef864a437b0883abdd">更多...</a><br /></td></tr>
+<tr class="separator:ab0f9b85edc60aeef864a437b0883abdd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af23b6eb6136bd7059a2d6780add2da41"><td class="memItemLeft" align="right" valign="top">abstract void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream.html#af23b6eb6136bd7059a2d6780add2da41">WriteCStringBytes</a> (byte[] value)</td></tr>
+<tr class="memdesc:af23b6eb6136bd7059a2d6780add2da41"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes the CString bytes to the stream.  <a href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream.html#af23b6eb6136bd7059a2d6780add2da41">更多...</a><br /></td></tr>
+<tr class="separator:af23b6eb6136bd7059a2d6780add2da41"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa6146c4d74f23c7c06523dbd997aa9fc"><td class="memItemLeft" align="right" valign="top">abstract void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream.html#aa6146c4d74f23c7c06523dbd997aa9fc">WriteDecimal128</a> (<a class="el" href="struct_mongo_d_b_1_1_bson_1_1_decimal128.html">Decimal128</a> value)</td></tr>
+<tr class="memdesc:aa6146c4d74f23c7c06523dbd997aa9fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes a BSON <a class="el" href="struct_mongo_d_b_1_1_bson_1_1_decimal128.html" title="Represents a Decimal128 value.">Decimal128</a> to the stream.  <a href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream.html#aa6146c4d74f23c7c06523dbd997aa9fc">更多...</a><br /></td></tr>
+<tr class="separator:aa6146c4d74f23c7c06523dbd997aa9fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aefc2112fe05dabd1a44272b40960d3c5"><td class="memItemLeft" align="right" valign="top">abstract void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream.html#aefc2112fe05dabd1a44272b40960d3c5">WriteDouble</a> (double value)</td></tr>
+<tr class="memdesc:aefc2112fe05dabd1a44272b40960d3c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes a BSON double to the stream.  <a href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream.html#aefc2112fe05dabd1a44272b40960d3c5">更多...</a><br /></td></tr>
+<tr class="separator:aefc2112fe05dabd1a44272b40960d3c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5d8870a38fa6c9fab4df706fa6b11f05"><td class="memItemLeft" align="right" valign="top">abstract void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream.html#a5d8870a38fa6c9fab4df706fa6b11f05">WriteInt32</a> (int value)</td></tr>
+<tr class="memdesc:a5d8870a38fa6c9fab4df706fa6b11f05"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes a 32-bit BSON integer to the stream.  <a href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream.html#a5d8870a38fa6c9fab4df706fa6b11f05">更多...</a><br /></td></tr>
+<tr class="separator:a5d8870a38fa6c9fab4df706fa6b11f05"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe7ca0815f5d96d0eb0f07476dd5a160"><td class="memItemLeft" align="right" valign="top">abstract void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream.html#afe7ca0815f5d96d0eb0f07476dd5a160">WriteInt64</a> (long value)</td></tr>
+<tr class="memdesc:afe7ca0815f5d96d0eb0f07476dd5a160"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes a 64-bit BSON integer to the stream.  <a href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream.html#afe7ca0815f5d96d0eb0f07476dd5a160">更多...</a><br /></td></tr>
+<tr class="separator:afe7ca0815f5d96d0eb0f07476dd5a160"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af3fe5430097fe985225dd0b4b6c78b67"><td class="memItemLeft" align="right" valign="top">abstract void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream.html#af3fe5430097fe985225dd0b4b6c78b67">WriteObjectId</a> (<a class="el" href="struct_mongo_d_b_1_1_bson_1_1_object_id.html">ObjectId</a> value)</td></tr>
+<tr class="memdesc:af3fe5430097fe985225dd0b4b6c78b67"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes a BSON <a class="el" href="struct_mongo_d_b_1_1_bson_1_1_object_id.html" title="Represents an ObjectId (see also BsonObjectId).">ObjectId</a> to the stream.  <a href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream.html#af3fe5430097fe985225dd0b4b6c78b67">更多...</a><br /></td></tr>
+<tr class="separator:af3fe5430097fe985225dd0b4b6c78b67"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adeb746f946a02cf2ba1066113493165d"><td class="memItemLeft" align="right" valign="top">abstract void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream.html#adeb746f946a02cf2ba1066113493165d">WriteString</a> (string value, UTF8Encoding encoding)</td></tr>
+<tr class="memdesc:adeb746f946a02cf2ba1066113493165d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes a BSON string to the stream.  <a href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream.html#adeb746f946a02cf2ba1066113493165d">更多...</a><br /></td></tr>
+<tr class="separator:adeb746f946a02cf2ba1066113493165d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a250f46d335fa4adc07bb24edd67b1532"><td class="memItemLeft" align="right" valign="top">abstract string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream.html#a250f46d335fa4adc07bb24edd67b1532">ReadCString</a> (UTF8Encoding encoding)</td></tr>
+<tr class="memdesc:a250f46d335fa4adc07bb24edd67b1532"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads a BSON CString from the stream.  <a href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream.html#a250f46d335fa4adc07bb24edd67b1532">更多...</a><br /></td></tr>
+<tr class="separator:a250f46d335fa4adc07bb24edd67b1532"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4997af75bffb544dd6a97051f2ad2b49"><td class="memItemLeft" align="right" valign="top">abstract ArraySegment&lt; byte &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream.html#a4997af75bffb544dd6a97051f2ad2b49">ReadCStringBytes</a> ()</td></tr>
+<tr class="memdesc:a4997af75bffb544dd6a97051f2ad2b49"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads a BSON CString from the stream.  <a href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream.html#a4997af75bffb544dd6a97051f2ad2b49">更多...</a><br /></td></tr>
+<tr class="separator:a4997af75bffb544dd6a97051f2ad2b49"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0f1e477b6d1f4b5888662599449bb8be"><td class="memItemLeft" align="right" valign="top">abstract <a class="el" href="struct_mongo_d_b_1_1_bson_1_1_decimal128.html">Decimal128</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream.html#a0f1e477b6d1f4b5888662599449bb8be">ReadDecimal128</a> ()</td></tr>
+<tr class="memdesc:a0f1e477b6d1f4b5888662599449bb8be"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads a BSON <a class="el" href="struct_mongo_d_b_1_1_bson_1_1_decimal128.html" title="Represents a Decimal128 value.">Decimal128</a> from the stream.  <a href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream.html#a0f1e477b6d1f4b5888662599449bb8be">更多...</a><br /></td></tr>
+<tr class="separator:a0f1e477b6d1f4b5888662599449bb8be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a404fe04acbf03142dfe35086cb17b97d"><td class="memItemLeft" align="right" valign="top">abstract double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream.html#a404fe04acbf03142dfe35086cb17b97d">ReadDouble</a> ()</td></tr>
+<tr class="memdesc:a404fe04acbf03142dfe35086cb17b97d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads a BSON double from the stream.  <a href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream.html#a404fe04acbf03142dfe35086cb17b97d">更多...</a><br /></td></tr>
+<tr class="separator:a404fe04acbf03142dfe35086cb17b97d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a63eecd66182f2c74c1d2352ccc82ac35"><td class="memItemLeft" align="right" valign="top">abstract int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream.html#a63eecd66182f2c74c1d2352ccc82ac35">ReadInt32</a> ()</td></tr>
+<tr class="memdesc:a63eecd66182f2c74c1d2352ccc82ac35"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads a 32-bit BSON integer from the stream.  <a href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream.html#a63eecd66182f2c74c1d2352ccc82ac35">更多...</a><br /></td></tr>
+<tr class="separator:a63eecd66182f2c74c1d2352ccc82ac35"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a50a7a9d32ecafbdd70b6764ec8bce882"><td class="memItemLeft" align="right" valign="top">abstract long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream.html#a50a7a9d32ecafbdd70b6764ec8bce882">ReadInt64</a> ()</td></tr>
+<tr class="memdesc:a50a7a9d32ecafbdd70b6764ec8bce882"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads a 64-bit BSON integer from the stream.  <a href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream.html#a50a7a9d32ecafbdd70b6764ec8bce882">更多...</a><br /></td></tr>
+<tr class="separator:a50a7a9d32ecafbdd70b6764ec8bce882"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acacdfefcc30eba9bac45503a88a920ee"><td class="memItemLeft" align="right" valign="top">abstract <a class="el" href="struct_mongo_d_b_1_1_bson_1_1_object_id.html">ObjectId</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream.html#acacdfefcc30eba9bac45503a88a920ee">ReadObjectId</a> ()</td></tr>
+<tr class="memdesc:acacdfefcc30eba9bac45503a88a920ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads a BSON <a class="el" href="struct_mongo_d_b_1_1_bson_1_1_object_id.html" title="Represents an ObjectId (see also BsonObjectId).">ObjectId</a> from the stream.  <a href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream.html#acacdfefcc30eba9bac45503a88a920ee">更多...</a><br /></td></tr>
+<tr class="separator:acacdfefcc30eba9bac45503a88a920ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a9fa89f96e73838bbc6c36f501b6bd6"><td class="memItemLeft" align="right" valign="top">abstract <a class="el" href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_byte_buffer.html">IByteBuffer</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream.html#a7a9fa89f96e73838bbc6c36f501b6bd6">ReadSlice</a> ()</td></tr>
+<tr class="memdesc:a7a9fa89f96e73838bbc6c36f501b6bd6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads a raw length prefixed slice from the stream.  <a href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream.html#a7a9fa89f96e73838bbc6c36f501b6bd6">更多...</a><br /></td></tr>
+<tr class="separator:a7a9fa89f96e73838bbc6c36f501b6bd6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaa022a4d9009493d52c39b934a9e9274"><td class="memItemLeft" align="right" valign="top">abstract string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream.html#aaa022a4d9009493d52c39b934a9e9274">ReadString</a> (UTF8Encoding encoding)</td></tr>
+<tr class="memdesc:aaa022a4d9009493d52c39b934a9e9274"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads a BSON string from the stream.  <a href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream.html#aaa022a4d9009493d52c39b934a9e9274">更多...</a><br /></td></tr>
+<tr class="separator:aaa022a4d9009493d52c39b934a9e9274"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a64283d3a2640ed069d2ccdda8c507791"><td class="memItemLeft" align="right" valign="top">abstract void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream.html#a64283d3a2640ed069d2ccdda8c507791">SkipCString</a> ()</td></tr>
+<tr class="memdesc:a64283d3a2640ed069d2ccdda8c507791"><td class="mdescLeft">&#160;</td><td class="mdescRight">Skips over a BSON CString leaving the stream positioned just after the terminating null byte.  <a href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream.html#a64283d3a2640ed069d2ccdda8c507791">更多...</a><br /></td></tr>
+<tr class="separator:a64283d3a2640ed069d2ccdda8c507791"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab0f9b85edc60aeef864a437b0883abdd"><td class="memItemLeft" align="right" valign="top">abstract void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream.html#ab0f9b85edc60aeef864a437b0883abdd">WriteCString</a> (string value)</td></tr>
+<tr class="memdesc:ab0f9b85edc60aeef864a437b0883abdd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes a BSON CString to the stream.  <a href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream.html#ab0f9b85edc60aeef864a437b0883abdd">更多...</a><br /></td></tr>
+<tr class="separator:ab0f9b85edc60aeef864a437b0883abdd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af23b6eb6136bd7059a2d6780add2da41"><td class="memItemLeft" align="right" valign="top">abstract void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream.html#af23b6eb6136bd7059a2d6780add2da41">WriteCStringBytes</a> (byte[] value)</td></tr>
+<tr class="memdesc:af23b6eb6136bd7059a2d6780add2da41"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes the CString bytes to the stream.  <a href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream.html#af23b6eb6136bd7059a2d6780add2da41">更多...</a><br /></td></tr>
+<tr class="separator:af23b6eb6136bd7059a2d6780add2da41"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa6146c4d74f23c7c06523dbd997aa9fc"><td class="memItemLeft" align="right" valign="top">abstract void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream.html#aa6146c4d74f23c7c06523dbd997aa9fc">WriteDecimal128</a> (<a class="el" href="struct_mongo_d_b_1_1_bson_1_1_decimal128.html">Decimal128</a> value)</td></tr>
+<tr class="memdesc:aa6146c4d74f23c7c06523dbd997aa9fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes a BSON <a class="el" href="struct_mongo_d_b_1_1_bson_1_1_decimal128.html" title="Represents a Decimal128 value.">Decimal128</a> to the stream.  <a href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream.html#aa6146c4d74f23c7c06523dbd997aa9fc">更多...</a><br /></td></tr>
+<tr class="separator:aa6146c4d74f23c7c06523dbd997aa9fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aefc2112fe05dabd1a44272b40960d3c5"><td class="memItemLeft" align="right" valign="top">abstract void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream.html#aefc2112fe05dabd1a44272b40960d3c5">WriteDouble</a> (double value)</td></tr>
+<tr class="memdesc:aefc2112fe05dabd1a44272b40960d3c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes a BSON double to the stream.  <a href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream.html#aefc2112fe05dabd1a44272b40960d3c5">更多...</a><br /></td></tr>
+<tr class="separator:aefc2112fe05dabd1a44272b40960d3c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5d8870a38fa6c9fab4df706fa6b11f05"><td class="memItemLeft" align="right" valign="top">abstract void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream.html#a5d8870a38fa6c9fab4df706fa6b11f05">WriteInt32</a> (int value)</td></tr>
+<tr class="memdesc:a5d8870a38fa6c9fab4df706fa6b11f05"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes a 32-bit BSON integer to the stream.  <a href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream.html#a5d8870a38fa6c9fab4df706fa6b11f05">更多...</a><br /></td></tr>
+<tr class="separator:a5d8870a38fa6c9fab4df706fa6b11f05"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe7ca0815f5d96d0eb0f07476dd5a160"><td class="memItemLeft" align="right" valign="top">abstract void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream.html#afe7ca0815f5d96d0eb0f07476dd5a160">WriteInt64</a> (long value)</td></tr>
+<tr class="memdesc:afe7ca0815f5d96d0eb0f07476dd5a160"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes a 64-bit BSON integer to the stream.  <a href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream.html#afe7ca0815f5d96d0eb0f07476dd5a160">更多...</a><br /></td></tr>
+<tr class="separator:afe7ca0815f5d96d0eb0f07476dd5a160"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af3fe5430097fe985225dd0b4b6c78b67"><td class="memItemLeft" align="right" valign="top">abstract void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream.html#af3fe5430097fe985225dd0b4b6c78b67">WriteObjectId</a> (<a class="el" href="struct_mongo_d_b_1_1_bson_1_1_object_id.html">ObjectId</a> value)</td></tr>
+<tr class="memdesc:af3fe5430097fe985225dd0b4b6c78b67"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes a BSON <a class="el" href="struct_mongo_d_b_1_1_bson_1_1_object_id.html" title="Represents an ObjectId (see also BsonObjectId).">ObjectId</a> to the stream.  <a href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream.html#af3fe5430097fe985225dd0b4b6c78b67">更多...</a><br /></td></tr>
+<tr class="separator:af3fe5430097fe985225dd0b4b6c78b67"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adeb746f946a02cf2ba1066113493165d"><td class="memItemLeft" align="right" valign="top">abstract void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream.html#adeb746f946a02cf2ba1066113493165d">WriteString</a> (string value, UTF8Encoding encoding)</td></tr>
+<tr class="memdesc:adeb746f946a02cf2ba1066113493165d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes a BSON string to the stream.  <a href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream.html#adeb746f946a02cf2ba1066113493165d">更多...</a><br /></td></tr>
+<tr class="separator:adeb746f946a02cf2ba1066113493165d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>Represents a Stream has additional methods to suport reading and writing BSON values. </p>
+
+<p class="definition">在文件 <a class="el" href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_i_o_2_bson_stream_8cs_source.html">BsonStream.cs</a> 第 <a class="el" href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_i_o_2_bson_stream_8cs_source.html#l00028">28</a> 行定义.</p>
+</div><h2 class="groupheader">成员函数说明</h2>
+<a id="a250f46d335fa4adc07bb24edd67b1532"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a250f46d335fa4adc07bb24edd67b1532">&#9670;&nbsp;</a></span>ReadCString() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">abstract string MongoDB.Bson.IO.BsonStream.ReadCString </td>
+          <td>(</td>
+          <td class="paramtype">UTF8Encoding&#160;</td>
+          <td class="paramname"><em>encoding</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Reads a BSON CString from the stream. </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">encoding</td><td>The encoding.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>A string.</dd></dl>
+
+<p>在 <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_byte_buffer_stream.html#a897edb1d4f014d80e7f86bc49729e7c4">MongoDB.Bson.IO.ByteBufferStream</a>, <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#a3f5011c75fdd26bde52bee3e51240c3e">MongoDB.Bson.IO.BsonStreamAdapter</a>, <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_byte_buffer_stream.html#a897edb1d4f014d80e7f86bc49729e7c4">MongoDB.Bson.IO.ByteBufferStream</a> , 以及 <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#a3f5011c75fdd26bde52bee3e51240c3e">MongoDB.Bson.IO.BsonStreamAdapter</a> 内被实现.</p>
+
+</div>
+</div>
+<a id="a250f46d335fa4adc07bb24edd67b1532"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a250f46d335fa4adc07bb24edd67b1532">&#9670;&nbsp;</a></span>ReadCString() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">abstract string MongoDB.Bson.IO.BsonStream.ReadCString </td>
+          <td>(</td>
+          <td class="paramtype">UTF8Encoding&#160;</td>
+          <td class="paramname"><em>encoding</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Reads a BSON CString from the stream. </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">encoding</td><td>The encoding.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>A string.</dd></dl>
+
+<p>在 <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_byte_buffer_stream.html#a897edb1d4f014d80e7f86bc49729e7c4">MongoDB.Bson.IO.ByteBufferStream</a>, <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#a3f5011c75fdd26bde52bee3e51240c3e">MongoDB.Bson.IO.BsonStreamAdapter</a>, <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_byte_buffer_stream.html#a897edb1d4f014d80e7f86bc49729e7c4">MongoDB.Bson.IO.ByteBufferStream</a> , 以及 <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#a3f5011c75fdd26bde52bee3e51240c3e">MongoDB.Bson.IO.BsonStreamAdapter</a> 内被实现.</p>
+
+</div>
+</div>
+<a id="a4997af75bffb544dd6a97051f2ad2b49"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4997af75bffb544dd6a97051f2ad2b49">&#9670;&nbsp;</a></span>ReadCStringBytes() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">abstract ArraySegment&lt;byte&gt; MongoDB.Bson.IO.BsonStream.ReadCStringBytes </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Reads a BSON CString from the stream. </p>
+<dl class="section return"><dt>返回</dt><dd>An ArraySegment containing the CString bytes (without the null byte).</dd></dl>
+
+<p>在 <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_byte_buffer_stream.html#a7516f2a428364d295558a145628cd1cb">MongoDB.Bson.IO.ByteBufferStream</a>, <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#a506d8164868a7b2a5e26a56f46a442f7">MongoDB.Bson.IO.BsonStreamAdapter</a>, <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_byte_buffer_stream.html#a7516f2a428364d295558a145628cd1cb">MongoDB.Bson.IO.ByteBufferStream</a> , 以及 <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#a506d8164868a7b2a5e26a56f46a442f7">MongoDB.Bson.IO.BsonStreamAdapter</a> 内被实现.</p>
+
+</div>
+</div>
+<a id="a4997af75bffb544dd6a97051f2ad2b49"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4997af75bffb544dd6a97051f2ad2b49">&#9670;&nbsp;</a></span>ReadCStringBytes() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">abstract ArraySegment&lt;byte&gt; MongoDB.Bson.IO.BsonStream.ReadCStringBytes </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Reads a BSON CString from the stream. </p>
+<dl class="section return"><dt>返回</dt><dd>An ArraySegment containing the CString bytes (without the null byte).</dd></dl>
+
+<p>在 <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_byte_buffer_stream.html#a7516f2a428364d295558a145628cd1cb">MongoDB.Bson.IO.ByteBufferStream</a>, <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#a506d8164868a7b2a5e26a56f46a442f7">MongoDB.Bson.IO.BsonStreamAdapter</a>, <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_byte_buffer_stream.html#a7516f2a428364d295558a145628cd1cb">MongoDB.Bson.IO.ByteBufferStream</a> , 以及 <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#a506d8164868a7b2a5e26a56f46a442f7">MongoDB.Bson.IO.BsonStreamAdapter</a> 内被实现.</p>
+
+</div>
+</div>
+<a id="a0f1e477b6d1f4b5888662599449bb8be"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0f1e477b6d1f4b5888662599449bb8be">&#9670;&nbsp;</a></span>ReadDecimal128() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">abstract <a class="el" href="struct_mongo_d_b_1_1_bson_1_1_decimal128.html">Decimal128</a> MongoDB.Bson.IO.BsonStream.ReadDecimal128 </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Reads a BSON <a class="el" href="struct_mongo_d_b_1_1_bson_1_1_decimal128.html" title="Represents a Decimal128 value.">Decimal128</a> from the stream. </p>
+<dl class="section return"><dt>返回</dt><dd>A <a class="el" href="struct_mongo_d_b_1_1_bson_1_1_decimal128.html" title="Represents a Decimal128 value.">Decimal128</a>.</dd></dl>
+
+<p>在 <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_byte_buffer_stream.html#a25eb0bdfd2f3839a6ca49f2e6b169c43">MongoDB.Bson.IO.ByteBufferStream</a>, <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#ac913bb0f93c24bd9659485d661893030">MongoDB.Bson.IO.BsonStreamAdapter</a>, <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_byte_buffer_stream.html#a25eb0bdfd2f3839a6ca49f2e6b169c43">MongoDB.Bson.IO.ByteBufferStream</a> , 以及 <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#ac913bb0f93c24bd9659485d661893030">MongoDB.Bson.IO.BsonStreamAdapter</a> 内被实现.</p>
+
+</div>
+</div>
+<a id="a0f1e477b6d1f4b5888662599449bb8be"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0f1e477b6d1f4b5888662599449bb8be">&#9670;&nbsp;</a></span>ReadDecimal128() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">abstract <a class="el" href="struct_mongo_d_b_1_1_bson_1_1_decimal128.html">Decimal128</a> MongoDB.Bson.IO.BsonStream.ReadDecimal128 </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Reads a BSON <a class="el" href="struct_mongo_d_b_1_1_bson_1_1_decimal128.html" title="Represents a Decimal128 value.">Decimal128</a> from the stream. </p>
+<dl class="section return"><dt>返回</dt><dd>A <a class="el" href="struct_mongo_d_b_1_1_bson_1_1_decimal128.html" title="Represents a Decimal128 value.">Decimal128</a>.</dd></dl>
+
+<p>在 <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_byte_buffer_stream.html#a25eb0bdfd2f3839a6ca49f2e6b169c43">MongoDB.Bson.IO.ByteBufferStream</a>, <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#ac913bb0f93c24bd9659485d661893030">MongoDB.Bson.IO.BsonStreamAdapter</a>, <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_byte_buffer_stream.html#a25eb0bdfd2f3839a6ca49f2e6b169c43">MongoDB.Bson.IO.ByteBufferStream</a> , 以及 <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#ac913bb0f93c24bd9659485d661893030">MongoDB.Bson.IO.BsonStreamAdapter</a> 内被实现.</p>
+
+</div>
+</div>
+<a id="a404fe04acbf03142dfe35086cb17b97d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a404fe04acbf03142dfe35086cb17b97d">&#9670;&nbsp;</a></span>ReadDouble() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">abstract double MongoDB.Bson.IO.BsonStream.ReadDouble </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Reads a BSON double from the stream. </p>
+<dl class="section return"><dt>返回</dt><dd>A double.</dd></dl>
+
+<p>在 <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_byte_buffer_stream.html#adc8f44ddabfce82b457c52c857195c2c">MongoDB.Bson.IO.ByteBufferStream</a>, <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#af13b664e8bb88518c9822243f540ea11">MongoDB.Bson.IO.BsonStreamAdapter</a>, <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_byte_buffer_stream.html#adc8f44ddabfce82b457c52c857195c2c">MongoDB.Bson.IO.ByteBufferStream</a> , 以及 <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#af13b664e8bb88518c9822243f540ea11">MongoDB.Bson.IO.BsonStreamAdapter</a> 内被实现.</p>
+
+</div>
+</div>
+<a id="a404fe04acbf03142dfe35086cb17b97d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a404fe04acbf03142dfe35086cb17b97d">&#9670;&nbsp;</a></span>ReadDouble() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">abstract double MongoDB.Bson.IO.BsonStream.ReadDouble </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Reads a BSON double from the stream. </p>
+<dl class="section return"><dt>返回</dt><dd>A double.</dd></dl>
+
+<p>在 <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_byte_buffer_stream.html#adc8f44ddabfce82b457c52c857195c2c">MongoDB.Bson.IO.ByteBufferStream</a>, <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#af13b664e8bb88518c9822243f540ea11">MongoDB.Bson.IO.BsonStreamAdapter</a>, <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_byte_buffer_stream.html#adc8f44ddabfce82b457c52c857195c2c">MongoDB.Bson.IO.ByteBufferStream</a> , 以及 <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#af13b664e8bb88518c9822243f540ea11">MongoDB.Bson.IO.BsonStreamAdapter</a> 内被实现.</p>
+
+</div>
+</div>
+<a id="a63eecd66182f2c74c1d2352ccc82ac35"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a63eecd66182f2c74c1d2352ccc82ac35">&#9670;&nbsp;</a></span>ReadInt32() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">abstract int MongoDB.Bson.IO.BsonStream.ReadInt32 </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Reads a 32-bit BSON integer from the stream. </p>
+<dl class="section return"><dt>返回</dt><dd>An int.</dd></dl>
+
+<p>在 <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_byte_buffer_stream.html#a3a8d3f2f4ecc801bfeda5ff5e767164a">MongoDB.Bson.IO.ByteBufferStream</a>, <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#a2e034d526e3374305e21ec711c856c7d">MongoDB.Bson.IO.BsonStreamAdapter</a>, <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_byte_buffer_stream.html#a3a8d3f2f4ecc801bfeda5ff5e767164a">MongoDB.Bson.IO.ByteBufferStream</a> , 以及 <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#a2e034d526e3374305e21ec711c856c7d">MongoDB.Bson.IO.BsonStreamAdapter</a> 内被实现.</p>
+
+</div>
+</div>
+<a id="a63eecd66182f2c74c1d2352ccc82ac35"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a63eecd66182f2c74c1d2352ccc82ac35">&#9670;&nbsp;</a></span>ReadInt32() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">abstract int MongoDB.Bson.IO.BsonStream.ReadInt32 </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Reads a 32-bit BSON integer from the stream. </p>
+<dl class="section return"><dt>返回</dt><dd>An int.</dd></dl>
+
+<p>在 <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_byte_buffer_stream.html#a3a8d3f2f4ecc801bfeda5ff5e767164a">MongoDB.Bson.IO.ByteBufferStream</a>, <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#a2e034d526e3374305e21ec711c856c7d">MongoDB.Bson.IO.BsonStreamAdapter</a>, <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_byte_buffer_stream.html#a3a8d3f2f4ecc801bfeda5ff5e767164a">MongoDB.Bson.IO.ByteBufferStream</a> , 以及 <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#a2e034d526e3374305e21ec711c856c7d">MongoDB.Bson.IO.BsonStreamAdapter</a> 内被实现.</p>
+
+</div>
+</div>
+<a id="a50a7a9d32ecafbdd70b6764ec8bce882"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a50a7a9d32ecafbdd70b6764ec8bce882">&#9670;&nbsp;</a></span>ReadInt64() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">abstract long MongoDB.Bson.IO.BsonStream.ReadInt64 </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Reads a 64-bit BSON integer from the stream. </p>
+<dl class="section return"><dt>返回</dt><dd>A long.</dd></dl>
+
+<p>在 <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_byte_buffer_stream.html#a2f315ede8f0733661c915db23d234bdc">MongoDB.Bson.IO.ByteBufferStream</a>, <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#a23a5cef5b1418c3338fca1c5e1dcb3f2">MongoDB.Bson.IO.BsonStreamAdapter</a>, <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_byte_buffer_stream.html#a2f315ede8f0733661c915db23d234bdc">MongoDB.Bson.IO.ByteBufferStream</a> , 以及 <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#a23a5cef5b1418c3338fca1c5e1dcb3f2">MongoDB.Bson.IO.BsonStreamAdapter</a> 内被实现.</p>
+
+</div>
+</div>
+<a id="a50a7a9d32ecafbdd70b6764ec8bce882"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a50a7a9d32ecafbdd70b6764ec8bce882">&#9670;&nbsp;</a></span>ReadInt64() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">abstract long MongoDB.Bson.IO.BsonStream.ReadInt64 </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Reads a 64-bit BSON integer from the stream. </p>
+<dl class="section return"><dt>返回</dt><dd>A long.</dd></dl>
+
+<p>在 <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_byte_buffer_stream.html#a2f315ede8f0733661c915db23d234bdc">MongoDB.Bson.IO.ByteBufferStream</a>, <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#a23a5cef5b1418c3338fca1c5e1dcb3f2">MongoDB.Bson.IO.BsonStreamAdapter</a>, <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_byte_buffer_stream.html#a2f315ede8f0733661c915db23d234bdc">MongoDB.Bson.IO.ByteBufferStream</a> , 以及 <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#a23a5cef5b1418c3338fca1c5e1dcb3f2">MongoDB.Bson.IO.BsonStreamAdapter</a> 内被实现.</p>
+
+</div>
+</div>
+<a id="acacdfefcc30eba9bac45503a88a920ee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acacdfefcc30eba9bac45503a88a920ee">&#9670;&nbsp;</a></span>ReadObjectId() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">abstract <a class="el" href="struct_mongo_d_b_1_1_bson_1_1_object_id.html">ObjectId</a> MongoDB.Bson.IO.BsonStream.ReadObjectId </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Reads a BSON <a class="el" href="struct_mongo_d_b_1_1_bson_1_1_object_id.html" title="Represents an ObjectId (see also BsonObjectId).">ObjectId</a> from the stream. </p>
+<dl class="section return"><dt>返回</dt><dd>An <a class="el" href="struct_mongo_d_b_1_1_bson_1_1_object_id.html" title="Represents an ObjectId (see also BsonObjectId).">ObjectId</a>.</dd></dl>
+
+<p>在 <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_byte_buffer_stream.html#a1e199f71d41c27ce7d7038e3eeb04c21">MongoDB.Bson.IO.ByteBufferStream</a>, <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#ae5c5f89a8c54a5fef5ada226ba121a3c">MongoDB.Bson.IO.BsonStreamAdapter</a>, <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_byte_buffer_stream.html#a1e199f71d41c27ce7d7038e3eeb04c21">MongoDB.Bson.IO.ByteBufferStream</a> , 以及 <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#ae5c5f89a8c54a5fef5ada226ba121a3c">MongoDB.Bson.IO.BsonStreamAdapter</a> 内被实现.</p>
+
+</div>
+</div>
+<a id="acacdfefcc30eba9bac45503a88a920ee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acacdfefcc30eba9bac45503a88a920ee">&#9670;&nbsp;</a></span>ReadObjectId() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">abstract <a class="el" href="struct_mongo_d_b_1_1_bson_1_1_object_id.html">ObjectId</a> MongoDB.Bson.IO.BsonStream.ReadObjectId </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Reads a BSON <a class="el" href="struct_mongo_d_b_1_1_bson_1_1_object_id.html" title="Represents an ObjectId (see also BsonObjectId).">ObjectId</a> from the stream. </p>
+<dl class="section return"><dt>返回</dt><dd>An <a class="el" href="struct_mongo_d_b_1_1_bson_1_1_object_id.html" title="Represents an ObjectId (see also BsonObjectId).">ObjectId</a>.</dd></dl>
+
+<p>在 <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_byte_buffer_stream.html#a1e199f71d41c27ce7d7038e3eeb04c21">MongoDB.Bson.IO.ByteBufferStream</a>, <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#ae5c5f89a8c54a5fef5ada226ba121a3c">MongoDB.Bson.IO.BsonStreamAdapter</a>, <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_byte_buffer_stream.html#a1e199f71d41c27ce7d7038e3eeb04c21">MongoDB.Bson.IO.ByteBufferStream</a> , 以及 <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#ae5c5f89a8c54a5fef5ada226ba121a3c">MongoDB.Bson.IO.BsonStreamAdapter</a> 内被实现.</p>
+
+</div>
+</div>
+<a id="a7a9fa89f96e73838bbc6c36f501b6bd6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7a9fa89f96e73838bbc6c36f501b6bd6">&#9670;&nbsp;</a></span>ReadSlice() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">abstract <a class="el" href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_byte_buffer.html">IByteBuffer</a> MongoDB.Bson.IO.BsonStream.ReadSlice </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Reads a raw length prefixed slice from the stream. </p>
+<dl class="section return"><dt>返回</dt><dd>A slice.</dd></dl>
+
+<p>在 <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_byte_buffer_stream.html#ab81ccb8984c7cd08221319680e028ece">MongoDB.Bson.IO.ByteBufferStream</a>, <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#a3dd167674a1cfb2ff4d3176e057cb3f2">MongoDB.Bson.IO.BsonStreamAdapter</a>, <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_byte_buffer_stream.html#ab81ccb8984c7cd08221319680e028ece">MongoDB.Bson.IO.ByteBufferStream</a> , 以及 <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#a3dd167674a1cfb2ff4d3176e057cb3f2">MongoDB.Bson.IO.BsonStreamAdapter</a> 内被实现.</p>
+
+</div>
+</div>
+<a id="a7a9fa89f96e73838bbc6c36f501b6bd6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7a9fa89f96e73838bbc6c36f501b6bd6">&#9670;&nbsp;</a></span>ReadSlice() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">abstract <a class="el" href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_byte_buffer.html">IByteBuffer</a> MongoDB.Bson.IO.BsonStream.ReadSlice </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Reads a raw length prefixed slice from the stream. </p>
+<dl class="section return"><dt>返回</dt><dd>A slice.</dd></dl>
+
+<p>在 <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_byte_buffer_stream.html#ab81ccb8984c7cd08221319680e028ece">MongoDB.Bson.IO.ByteBufferStream</a>, <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#a3dd167674a1cfb2ff4d3176e057cb3f2">MongoDB.Bson.IO.BsonStreamAdapter</a>, <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_byte_buffer_stream.html#ab81ccb8984c7cd08221319680e028ece">MongoDB.Bson.IO.ByteBufferStream</a> , 以及 <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#a3dd167674a1cfb2ff4d3176e057cb3f2">MongoDB.Bson.IO.BsonStreamAdapter</a> 内被实现.</p>
+
+</div>
+</div>
+<a id="aaa022a4d9009493d52c39b934a9e9274"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaa022a4d9009493d52c39b934a9e9274">&#9670;&nbsp;</a></span>ReadString() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">abstract string MongoDB.Bson.IO.BsonStream.ReadString </td>
+          <td>(</td>
+          <td class="paramtype">UTF8Encoding&#160;</td>
+          <td class="paramname"><em>encoding</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Reads a BSON string from the stream. </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">encoding</td><td>The encoding.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>A string.</dd></dl>
+
+<p>在 <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_byte_buffer_stream.html#a0eba111346c1fd18e168b37779a50cbb">MongoDB.Bson.IO.ByteBufferStream</a>, <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#a6ca53d2242536a60ed851c05298cad16">MongoDB.Bson.IO.BsonStreamAdapter</a>, <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_byte_buffer_stream.html#a0eba111346c1fd18e168b37779a50cbb">MongoDB.Bson.IO.ByteBufferStream</a> , 以及 <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#a6ca53d2242536a60ed851c05298cad16">MongoDB.Bson.IO.BsonStreamAdapter</a> 内被实现.</p>
+
+</div>
+</div>
+<a id="aaa022a4d9009493d52c39b934a9e9274"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaa022a4d9009493d52c39b934a9e9274">&#9670;&nbsp;</a></span>ReadString() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">abstract string MongoDB.Bson.IO.BsonStream.ReadString </td>
+          <td>(</td>
+          <td class="paramtype">UTF8Encoding&#160;</td>
+          <td class="paramname"><em>encoding</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Reads a BSON string from the stream. </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">encoding</td><td>The encoding.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>A string.</dd></dl>
+
+<p>在 <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_byte_buffer_stream.html#a0eba111346c1fd18e168b37779a50cbb">MongoDB.Bson.IO.ByteBufferStream</a>, <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#a6ca53d2242536a60ed851c05298cad16">MongoDB.Bson.IO.BsonStreamAdapter</a>, <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_byte_buffer_stream.html#a0eba111346c1fd18e168b37779a50cbb">MongoDB.Bson.IO.ByteBufferStream</a> , 以及 <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#a6ca53d2242536a60ed851c05298cad16">MongoDB.Bson.IO.BsonStreamAdapter</a> 内被实现.</p>
+
+</div>
+</div>
+<a id="a64283d3a2640ed069d2ccdda8c507791"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a64283d3a2640ed069d2ccdda8c507791">&#9670;&nbsp;</a></span>SkipCString() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">abstract void MongoDB.Bson.IO.BsonStream.SkipCString </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Skips over a BSON CString leaving the stream positioned just after the terminating null byte. </p>
+
+<p>在 <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_byte_buffer_stream.html#a59dbfddea43134ef0681297eb3f9394f">MongoDB.Bson.IO.ByteBufferStream</a>, <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#a4cb6af2e9a9068830d9da7247e89d25f">MongoDB.Bson.IO.BsonStreamAdapter</a>, <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_byte_buffer_stream.html#a59dbfddea43134ef0681297eb3f9394f">MongoDB.Bson.IO.ByteBufferStream</a> , 以及 <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#a4cb6af2e9a9068830d9da7247e89d25f">MongoDB.Bson.IO.BsonStreamAdapter</a> 内被实现.</p>
+
+</div>
+</div>
+<a id="a64283d3a2640ed069d2ccdda8c507791"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a64283d3a2640ed069d2ccdda8c507791">&#9670;&nbsp;</a></span>SkipCString() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">abstract void MongoDB.Bson.IO.BsonStream.SkipCString </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Skips over a BSON CString leaving the stream positioned just after the terminating null byte. </p>
+
+<p>在 <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_byte_buffer_stream.html#a59dbfddea43134ef0681297eb3f9394f">MongoDB.Bson.IO.ByteBufferStream</a>, <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#a4cb6af2e9a9068830d9da7247e89d25f">MongoDB.Bson.IO.BsonStreamAdapter</a>, <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_byte_buffer_stream.html#a59dbfddea43134ef0681297eb3f9394f">MongoDB.Bson.IO.ByteBufferStream</a> , 以及 <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#a4cb6af2e9a9068830d9da7247e89d25f">MongoDB.Bson.IO.BsonStreamAdapter</a> 内被实现.</p>
+
+</div>
+</div>
+<a id="ab0f9b85edc60aeef864a437b0883abdd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab0f9b85edc60aeef864a437b0883abdd">&#9670;&nbsp;</a></span>WriteCString() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">abstract void MongoDB.Bson.IO.BsonStream.WriteCString </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Writes a BSON CString to the stream. </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>The value.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>在 <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_byte_buffer_stream.html#aa3032c0c8d194db836214f7ab3d27c15">MongoDB.Bson.IO.ByteBufferStream</a>, <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#a2dcfbfcb827baff51c64cce84f6d6783">MongoDB.Bson.IO.BsonStreamAdapter</a>, <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_byte_buffer_stream.html#aa3032c0c8d194db836214f7ab3d27c15">MongoDB.Bson.IO.ByteBufferStream</a> , 以及 <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#a2dcfbfcb827baff51c64cce84f6d6783">MongoDB.Bson.IO.BsonStreamAdapter</a> 内被实现.</p>
+
+</div>
+</div>
+<a id="ab0f9b85edc60aeef864a437b0883abdd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab0f9b85edc60aeef864a437b0883abdd">&#9670;&nbsp;</a></span>WriteCString() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">abstract void MongoDB.Bson.IO.BsonStream.WriteCString </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Writes a BSON CString to the stream. </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>The value.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>在 <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_byte_buffer_stream.html#aa3032c0c8d194db836214f7ab3d27c15">MongoDB.Bson.IO.ByteBufferStream</a>, <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#a2dcfbfcb827baff51c64cce84f6d6783">MongoDB.Bson.IO.BsonStreamAdapter</a>, <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_byte_buffer_stream.html#aa3032c0c8d194db836214f7ab3d27c15">MongoDB.Bson.IO.ByteBufferStream</a> , 以及 <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#a2dcfbfcb827baff51c64cce84f6d6783">MongoDB.Bson.IO.BsonStreamAdapter</a> 内被实现.</p>
+
+</div>
+</div>
+<a id="af23b6eb6136bd7059a2d6780add2da41"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af23b6eb6136bd7059a2d6780add2da41">&#9670;&nbsp;</a></span>WriteCStringBytes() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">abstract void MongoDB.Bson.IO.BsonStream.WriteCStringBytes </td>
+          <td>(</td>
+          <td class="paramtype">byte[]&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Writes the CString bytes to the stream. </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>The value.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>在 <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_byte_buffer_stream.html#a84c2bf40341b0b1775260f0c28892367">MongoDB.Bson.IO.ByteBufferStream</a>, <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#acc3d103b7d7b2c7177556dbd8cb567b7">MongoDB.Bson.IO.BsonStreamAdapter</a>, <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_byte_buffer_stream.html#a84c2bf40341b0b1775260f0c28892367">MongoDB.Bson.IO.ByteBufferStream</a> , 以及 <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#acc3d103b7d7b2c7177556dbd8cb567b7">MongoDB.Bson.IO.BsonStreamAdapter</a> 内被实现.</p>
+
+</div>
+</div>
+<a id="af23b6eb6136bd7059a2d6780add2da41"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af23b6eb6136bd7059a2d6780add2da41">&#9670;&nbsp;</a></span>WriteCStringBytes() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">abstract void MongoDB.Bson.IO.BsonStream.WriteCStringBytes </td>
+          <td>(</td>
+          <td class="paramtype">byte[]&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Writes the CString bytes to the stream. </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>The value.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>在 <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_byte_buffer_stream.html#a84c2bf40341b0b1775260f0c28892367">MongoDB.Bson.IO.ByteBufferStream</a>, <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#acc3d103b7d7b2c7177556dbd8cb567b7">MongoDB.Bson.IO.BsonStreamAdapter</a>, <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_byte_buffer_stream.html#a84c2bf40341b0b1775260f0c28892367">MongoDB.Bson.IO.ByteBufferStream</a> , 以及 <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#acc3d103b7d7b2c7177556dbd8cb567b7">MongoDB.Bson.IO.BsonStreamAdapter</a> 内被实现.</p>
+
+</div>
+</div>
+<a id="aa6146c4d74f23c7c06523dbd997aa9fc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa6146c4d74f23c7c06523dbd997aa9fc">&#9670;&nbsp;</a></span>WriteDecimal128() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">abstract void MongoDB.Bson.IO.BsonStream.WriteDecimal128 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_mongo_d_b_1_1_bson_1_1_decimal128.html">Decimal128</a>&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Writes a BSON <a class="el" href="struct_mongo_d_b_1_1_bson_1_1_decimal128.html" title="Represents a Decimal128 value.">Decimal128</a> to the stream. </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>The value.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>在 <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_byte_buffer_stream.html#a675e97b5225d6b5a8ab80dbc30b1cb3d">MongoDB.Bson.IO.ByteBufferStream</a>, <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#ab46e0925f49d22f1f9d298a516741b36">MongoDB.Bson.IO.BsonStreamAdapter</a>, <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_byte_buffer_stream.html#a675e97b5225d6b5a8ab80dbc30b1cb3d">MongoDB.Bson.IO.ByteBufferStream</a> , 以及 <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#ab46e0925f49d22f1f9d298a516741b36">MongoDB.Bson.IO.BsonStreamAdapter</a> 内被实现.</p>
+
+</div>
+</div>
+<a id="aa6146c4d74f23c7c06523dbd997aa9fc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa6146c4d74f23c7c06523dbd997aa9fc">&#9670;&nbsp;</a></span>WriteDecimal128() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">abstract void MongoDB.Bson.IO.BsonStream.WriteDecimal128 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_mongo_d_b_1_1_bson_1_1_decimal128.html">Decimal128</a>&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Writes a BSON <a class="el" href="struct_mongo_d_b_1_1_bson_1_1_decimal128.html" title="Represents a Decimal128 value.">Decimal128</a> to the stream. </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>The value.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>在 <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_byte_buffer_stream.html#a675e97b5225d6b5a8ab80dbc30b1cb3d">MongoDB.Bson.IO.ByteBufferStream</a>, <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#ab46e0925f49d22f1f9d298a516741b36">MongoDB.Bson.IO.BsonStreamAdapter</a>, <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_byte_buffer_stream.html#a675e97b5225d6b5a8ab80dbc30b1cb3d">MongoDB.Bson.IO.ByteBufferStream</a> , 以及 <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#ab46e0925f49d22f1f9d298a516741b36">MongoDB.Bson.IO.BsonStreamAdapter</a> 内被实现.</p>
+
+</div>
+</div>
+<a id="aefc2112fe05dabd1a44272b40960d3c5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aefc2112fe05dabd1a44272b40960d3c5">&#9670;&nbsp;</a></span>WriteDouble() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">abstract void MongoDB.Bson.IO.BsonStream.WriteDouble </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Writes a BSON double to the stream. </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>The value.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>在 <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_byte_buffer_stream.html#a68cdcf672d3fa760d071db196c3cddbb">MongoDB.Bson.IO.ByteBufferStream</a>, <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#aaa5912d0e2929924132f114bc9c9ca3b">MongoDB.Bson.IO.BsonStreamAdapter</a>, <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_byte_buffer_stream.html#a68cdcf672d3fa760d071db196c3cddbb">MongoDB.Bson.IO.ByteBufferStream</a> , 以及 <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#aaa5912d0e2929924132f114bc9c9ca3b">MongoDB.Bson.IO.BsonStreamAdapter</a> 内被实现.</p>
+
+</div>
+</div>
+<a id="aefc2112fe05dabd1a44272b40960d3c5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aefc2112fe05dabd1a44272b40960d3c5">&#9670;&nbsp;</a></span>WriteDouble() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">abstract void MongoDB.Bson.IO.BsonStream.WriteDouble </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Writes a BSON double to the stream. </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>The value.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>在 <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_byte_buffer_stream.html#a68cdcf672d3fa760d071db196c3cddbb">MongoDB.Bson.IO.ByteBufferStream</a>, <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#aaa5912d0e2929924132f114bc9c9ca3b">MongoDB.Bson.IO.BsonStreamAdapter</a>, <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_byte_buffer_stream.html#a68cdcf672d3fa760d071db196c3cddbb">MongoDB.Bson.IO.ByteBufferStream</a> , 以及 <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#aaa5912d0e2929924132f114bc9c9ca3b">MongoDB.Bson.IO.BsonStreamAdapter</a> 内被实现.</p>
+
+</div>
+</div>
+<a id="a5d8870a38fa6c9fab4df706fa6b11f05"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5d8870a38fa6c9fab4df706fa6b11f05">&#9670;&nbsp;</a></span>WriteInt32() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">abstract void MongoDB.Bson.IO.BsonStream.WriteInt32 </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Writes a 32-bit BSON integer to the stream. </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>The value.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>在 <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_byte_buffer_stream.html#ae1af908500cf51de9f72a78441a7df78">MongoDB.Bson.IO.ByteBufferStream</a>, <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#a14d3a6dd3a845bef9fdaa86d2921f461">MongoDB.Bson.IO.BsonStreamAdapter</a>, <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_byte_buffer_stream.html#ae1af908500cf51de9f72a78441a7df78">MongoDB.Bson.IO.ByteBufferStream</a> , 以及 <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#a14d3a6dd3a845bef9fdaa86d2921f461">MongoDB.Bson.IO.BsonStreamAdapter</a> 内被实现.</p>
+
+</div>
+</div>
+<a id="a5d8870a38fa6c9fab4df706fa6b11f05"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5d8870a38fa6c9fab4df706fa6b11f05">&#9670;&nbsp;</a></span>WriteInt32() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">abstract void MongoDB.Bson.IO.BsonStream.WriteInt32 </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Writes a 32-bit BSON integer to the stream. </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>The value.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>在 <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_byte_buffer_stream.html#ae1af908500cf51de9f72a78441a7df78">MongoDB.Bson.IO.ByteBufferStream</a>, <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#a14d3a6dd3a845bef9fdaa86d2921f461">MongoDB.Bson.IO.BsonStreamAdapter</a>, <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_byte_buffer_stream.html#ae1af908500cf51de9f72a78441a7df78">MongoDB.Bson.IO.ByteBufferStream</a> , 以及 <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#a14d3a6dd3a845bef9fdaa86d2921f461">MongoDB.Bson.IO.BsonStreamAdapter</a> 内被实现.</p>
+
+</div>
+</div>
+<a id="afe7ca0815f5d96d0eb0f07476dd5a160"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afe7ca0815f5d96d0eb0f07476dd5a160">&#9670;&nbsp;</a></span>WriteInt64() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">abstract void MongoDB.Bson.IO.BsonStream.WriteInt64 </td>
+          <td>(</td>
+          <td class="paramtype">long&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Writes a 64-bit BSON integer to the stream. </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>The value.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>在 <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_byte_buffer_stream.html#af29b938abbab641ebd298d080b0770da">MongoDB.Bson.IO.ByteBufferStream</a>, <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#ae7cb9438cfaa4799828fd55b77d2b26c">MongoDB.Bson.IO.BsonStreamAdapter</a>, <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_byte_buffer_stream.html#af29b938abbab641ebd298d080b0770da">MongoDB.Bson.IO.ByteBufferStream</a> , 以及 <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#ae7cb9438cfaa4799828fd55b77d2b26c">MongoDB.Bson.IO.BsonStreamAdapter</a> 内被实现.</p>
+
+</div>
+</div>
+<a id="afe7ca0815f5d96d0eb0f07476dd5a160"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afe7ca0815f5d96d0eb0f07476dd5a160">&#9670;&nbsp;</a></span>WriteInt64() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">abstract void MongoDB.Bson.IO.BsonStream.WriteInt64 </td>
+          <td>(</td>
+          <td class="paramtype">long&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Writes a 64-bit BSON integer to the stream. </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>The value.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>在 <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_byte_buffer_stream.html#af29b938abbab641ebd298d080b0770da">MongoDB.Bson.IO.ByteBufferStream</a>, <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#ae7cb9438cfaa4799828fd55b77d2b26c">MongoDB.Bson.IO.BsonStreamAdapter</a>, <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_byte_buffer_stream.html#af29b938abbab641ebd298d080b0770da">MongoDB.Bson.IO.ByteBufferStream</a> , 以及 <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#ae7cb9438cfaa4799828fd55b77d2b26c">MongoDB.Bson.IO.BsonStreamAdapter</a> 内被实现.</p>
+
+</div>
+</div>
+<a id="af3fe5430097fe985225dd0b4b6c78b67"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af3fe5430097fe985225dd0b4b6c78b67">&#9670;&nbsp;</a></span>WriteObjectId() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">abstract void MongoDB.Bson.IO.BsonStream.WriteObjectId </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_mongo_d_b_1_1_bson_1_1_object_id.html">ObjectId</a>&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Writes a BSON <a class="el" href="struct_mongo_d_b_1_1_bson_1_1_object_id.html" title="Represents an ObjectId (see also BsonObjectId).">ObjectId</a> to the stream. </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>The value.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>在 <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_byte_buffer_stream.html#a80f438036f997e76ad3dc6302da5369f">MongoDB.Bson.IO.ByteBufferStream</a>, <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#ab3b2026dd2abc56558c856f7e092093c">MongoDB.Bson.IO.BsonStreamAdapter</a>, <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_byte_buffer_stream.html#a80f438036f997e76ad3dc6302da5369f">MongoDB.Bson.IO.ByteBufferStream</a> , 以及 <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#ab3b2026dd2abc56558c856f7e092093c">MongoDB.Bson.IO.BsonStreamAdapter</a> 内被实现.</p>
+
+</div>
+</div>
+<a id="af3fe5430097fe985225dd0b4b6c78b67"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af3fe5430097fe985225dd0b4b6c78b67">&#9670;&nbsp;</a></span>WriteObjectId() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">abstract void MongoDB.Bson.IO.BsonStream.WriteObjectId </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_mongo_d_b_1_1_bson_1_1_object_id.html">ObjectId</a>&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Writes a BSON <a class="el" href="struct_mongo_d_b_1_1_bson_1_1_object_id.html" title="Represents an ObjectId (see also BsonObjectId).">ObjectId</a> to the stream. </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>The value.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>在 <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_byte_buffer_stream.html#a80f438036f997e76ad3dc6302da5369f">MongoDB.Bson.IO.ByteBufferStream</a>, <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#ab3b2026dd2abc56558c856f7e092093c">MongoDB.Bson.IO.BsonStreamAdapter</a>, <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_byte_buffer_stream.html#a80f438036f997e76ad3dc6302da5369f">MongoDB.Bson.IO.ByteBufferStream</a> , 以及 <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#ab3b2026dd2abc56558c856f7e092093c">MongoDB.Bson.IO.BsonStreamAdapter</a> 内被实现.</p>
+
+</div>
+</div>
+<a id="adeb746f946a02cf2ba1066113493165d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adeb746f946a02cf2ba1066113493165d">&#9670;&nbsp;</a></span>WriteString() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">abstract void MongoDB.Bson.IO.BsonStream.WriteString </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>value</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">UTF8Encoding&#160;</td>
+          <td class="paramname"><em>encoding</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Writes a BSON string to the stream. </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>The value.</td></tr>
+    <tr><td class="paramname">encoding</td><td>The encoding.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>在 <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_byte_buffer_stream.html#a236937937f08ef3d0e2b4d6a90f19b50">MongoDB.Bson.IO.ByteBufferStream</a>, <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#a219883b9382000b62a6088953ea3aa2a">MongoDB.Bson.IO.BsonStreamAdapter</a>, <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_byte_buffer_stream.html#a236937937f08ef3d0e2b4d6a90f19b50">MongoDB.Bson.IO.ByteBufferStream</a> , 以及 <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#a219883b9382000b62a6088953ea3aa2a">MongoDB.Bson.IO.BsonStreamAdapter</a> 内被实现.</p>
+
+</div>
+</div>
+<a id="adeb746f946a02cf2ba1066113493165d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adeb746f946a02cf2ba1066113493165d">&#9670;&nbsp;</a></span>WriteString() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">abstract void MongoDB.Bson.IO.BsonStream.WriteString </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>value</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">UTF8Encoding&#160;</td>
+          <td class="paramname"><em>encoding</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Writes a BSON string to the stream. </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>The value.</td></tr>
+    <tr><td class="paramname">encoding</td><td>The encoding.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>在 <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_byte_buffer_stream.html#a236937937f08ef3d0e2b4d6a90f19b50">MongoDB.Bson.IO.ByteBufferStream</a>, <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#a219883b9382000b62a6088953ea3aa2a">MongoDB.Bson.IO.BsonStreamAdapter</a>, <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_byte_buffer_stream.html#a236937937f08ef3d0e2b4d6a90f19b50">MongoDB.Bson.IO.ByteBufferStream</a> , 以及 <a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_adapter.html#a219883b9382000b62a6088953ea3aa2a">MongoDB.Bson.IO.BsonStreamAdapter</a> 内被实现.</p>
+
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>Assets/Scripts/Libraries/MongoDB/MongoDB.Bson/IO/<a class="el" href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_i_o_2_bson_stream_8cs_source.html">BsonStream.cs</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespace_mongo_d_b.html">MongoDB</a></li><li class="navelem"><a class="el" href="namespace_mongo_d_b_1_1_bson.html">Bson</a></li><li class="navelem"><a class="el" href="namespace_mongo_d_b_1_1_bson_1_1_i_o.html">IO</a></li><li class="navelem"><a class="el" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream.html">BsonStream</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:25:13 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

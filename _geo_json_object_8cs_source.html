@@ -1,0 +1,181 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: ETServer/Server/ThirdParty/MongoDBDriver/MongoDB.Driver/GeoJsonObjectModel/GeoJsonObject.cs 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_geo_json_object_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">GeoJsonObject.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_geo_json_object_8cs.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/* Copyright 2010-present MongoDB Inc.</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">* Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">* you may not use this file except in compliance with the License.</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">* You may obtain a copy of the License at</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">* http://www.apache.org/licenses/LICENSE-2.0</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">* Unless required by applicable law or agreed to in writing, software</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">* distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">* See the License for the specific language governing permissions and</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">* limitations under the License.</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_mongo_d_b.html">MongoDB</a>.<a class="code" href="namespace_mongo_d_b_1_1_bson.html">Bson</a>;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_mongo_d_b.html">MongoDB</a>.<a class="code" href="namespace_mongo_d_b_1_1_bson.html">Bson</a>.<a class="code" href="namespace_mongo_d_b_1_1_bson_1_1_serialization.html">Serialization</a>.<a class="code" href="namespace_mongo_d_b_1_1_bson_1_1_serialization_1_1_attributes.html">Attributes</a>;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_mongo_d_b.html">MongoDB</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver.html">Driver</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_geo_json_object_model.html">GeoJsonObjectModel</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_geo_json_object_model_1_1_serializers.html">Serializers</a>;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_geo_json_object_model.html">MongoDB.Driver.GeoJsonObjectModel</a></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;{</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    [BsonSerializer(typeof(<a class="code" href="class_mongo_d_b_1_1_driver_1_1_geo_json_object_model_1_1_serializers_1_1_geo_json_object_serializer.html">GeoJsonObjectSerializer&lt;&gt;</a>))]</div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_geo_json_object_model_1_1_geo_json_object.html">   27</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">class </span><a class="code" href="class_mongo_d_b_1_1_driver_1_1_geo_json_object_model_1_1_geo_json_object.html">GeoJsonObject</a>&lt;TCoordinates&gt; where TCoordinates : <a class="code" href="class_mongo_d_b_1_1_driver_1_1_geo_json_object_model_1_1_geo_json_coordinates.html">GeoJsonCoordinates</a></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    {</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <span class="comment">// private fields</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <span class="keyword">private</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_geo_json_object_model_1_1_geo_json_bounding_box.html">GeoJsonBoundingBox&lt;TCoordinates&gt;</a> _boundingBox;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <span class="keyword">private</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_geo_json_object_model_1_1_geo_json_coordinate_reference_system.html">GeoJsonCoordinateReferenceSystem</a> _coordinateReferenceSystem;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <span class="keyword">private</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_document.html">BsonDocument</a> _extraMembers;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="comment">// constructor</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_geo_json_object_model_1_1_geo_json_object.html#a2d7c24132448c646239934173ff19f76">   39</a></span>&#160;<span class="comment"></span>        <span class="keyword">protected</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_geo_json_object_model_1_1_geo_json_object.html#a2d7c24132448c646239934173ff19f76">GeoJsonObject</a>(<a class="code" href="class_mongo_d_b_1_1_driver_1_1_geo_json_object_model_1_1_geo_json_object_args.html">GeoJsonObjectArgs&lt;TCoordinates&gt;</a> args)</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        {</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            <span class="keywordflow">if</span> (args != <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;            {</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;                _boundingBox = args.<a class="code" href="class_mongo_d_b_1_1_driver_1_1_geo_json_object_model_1_1_geo_json_object_args.html#a01844116c9b5bf55104bef2c000b77e6">BoundingBox</a>;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                _coordinateReferenceSystem = args.<a class="code" href="class_mongo_d_b_1_1_driver_1_1_geo_json_object_model_1_1_geo_json_object_args.html#ab85992ac4a584fd70e54753024862ffc">CoordinateReferenceSystem</a>;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                _extraMembers = args.<a class="code" href="class_mongo_d_b_1_1_driver_1_1_geo_json_object_model_1_1_geo_json_object_args.html#a645538d21dcfb3c26c535c8958c2dd83">ExtraMembers</a>;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;            }</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        }</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <span class="comment">// public properties</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_geo_json_object_model_1_1_geo_json_object.html#a32fa6e9229ba35f3de0a6ea6bb09fc98">   53</a></span>&#160;<span class="comment"></span>        <span class="keyword">public</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_geo_json_object_model_1_1_geo_json_bounding_box.html">GeoJsonBoundingBox&lt;TCoordinates&gt;</a> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_geo_json_object_model_1_1_geo_json_object.html#a32fa6e9229ba35f3de0a6ea6bb09fc98">BoundingBox</a></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        {</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            <span class="keyword">get</span> { <span class="keywordflow">return</span> _boundingBox; }</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        }</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_geo_json_object_model_1_1_geo_json_object.html#a26503705b58a69c2687b35c0c91fa8dc">   61</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_geo_json_object_model_1_1_geo_json_coordinate_reference_system.html">GeoJsonCoordinateReferenceSystem</a> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_geo_json_object_model_1_1_geo_json_object.html#a26503705b58a69c2687b35c0c91fa8dc">CoordinateReferenceSystem</a></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        {</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;            <span class="keyword">get</span> { <span class="keywordflow">return</span> _coordinateReferenceSystem; }</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        }</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_geo_json_object_model_1_1_geo_json_object.html#a855b7a6dcd5385166306b401c44f379f">   69</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_document.html">BsonDocument</a> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_geo_json_object_model_1_1_geo_json_object.html#a855b7a6dcd5385166306b401c44f379f">ExtraMembers</a></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        {</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            <span class="keyword">get</span> { <span class="keywordflow">return</span> _extraMembers; }</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        }</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
+<div class="line"><a name="l00077"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_geo_json_object_model_1_1_geo_json_object.html#ab5f39d9f72b15d9cfd8920abf9be8211">   77</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">abstract</span> <a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_geo_json_object_model.html#ad017b86ad7257143b2cce205a4119814">GeoJsonObjectType</a> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_geo_json_object_model_1_1_geo_json_object.html#ab5f39d9f72b15d9cfd8920abf9be8211">Type</a> { <span class="keyword">get</span>; }</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    }</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;}</div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_bson_document_html"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_bson_document.html">MongoDB.Bson.BsonDocument</a></div><div class="ttdoc">Represents a BSON document.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_document_8cs_source.html#l00034">BsonDocument.cs:35</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_geo_json_object_model_1_1_geo_json_bounding_box_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_geo_json_object_model_1_1_geo_json_bounding_box.html">MongoDB.Driver.GeoJsonObjectModel.GeoJsonBoundingBox</a></div><div class="ttdoc">Represents a GeoJson bounding box.</div><div class="ttdef"><b>Definition:</b> <a href="_geo_json_bounding_box_8cs_source.html#l00027">GeoJsonBoundingBox.cs:28</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_geo_json_object_model_1_1_geo_json_coordinate_reference_system_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_geo_json_object_model_1_1_geo_json_coordinate_reference_system.html">MongoDB.Driver.GeoJsonObjectModel.GeoJsonCoordinateReferenceSystem</a></div><div class="ttdoc">Represents a GeoJson coordinate reference system (see subclasses).</div><div class="ttdef"><b>Definition:</b> <a href="_geo_json_coordinate_reference_system_8cs_source.html#l00025">GeoJsonCoordinateReferenceSystem.cs:26</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_geo_json_object_model_1_1_geo_json_coordinates_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_geo_json_object_model_1_1_geo_json_coordinates.html">MongoDB.Driver.GeoJsonObjectModel.GeoJsonCoordinates</a></div><div class="ttdoc">Represents a GeoJson position in some coordinate system (see subclasses).</div><div class="ttdef"><b>Definition:</b> <a href="_geo_json_coordinates_8cs_source.html#l00029">GeoJsonCoordinates.cs:30</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_geo_json_object_model_1_1_geo_json_object_args_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_geo_json_object_model_1_1_geo_json_object_args.html">MongoDB.Driver.GeoJsonObjectModel.GeoJsonObjectArgs</a></div><div class="ttdoc">Represents additional args provided when creating a GeoJson object.</div><div class="ttdef"><b>Definition:</b> <a href="_geo_json_object_args_8cs_source.html#l00024">GeoJsonObjectArgs.cs:25</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_geo_json_object_model_1_1_geo_json_object_args_html_a01844116c9b5bf55104bef2c000b77e6"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_geo_json_object_model_1_1_geo_json_object_args.html#a01844116c9b5bf55104bef2c000b77e6">MongoDB.Driver.GeoJsonObjectModel.GeoJsonObjectArgs.BoundingBox</a></div><div class="ttdeci">GeoJsonBoundingBox&lt; TCoordinates &gt; BoundingBox</div><div class="ttdoc">Gets or sets the bounding box.</div><div class="ttdef"><b>Definition:</b> <a href="_geo_json_object_args_8cs_source.html#l00029">GeoJsonObjectArgs.cs:29</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_geo_json_object_model_1_1_geo_json_object_args_html_a645538d21dcfb3c26c535c8958c2dd83"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_geo_json_object_model_1_1_geo_json_object_args.html#a645538d21dcfb3c26c535c8958c2dd83">MongoDB.Driver.GeoJsonObjectModel.GeoJsonObjectArgs.ExtraMembers</a></div><div class="ttdeci">BsonDocument ExtraMembers</div><div class="ttdoc">Gets or sets the extra members.</div><div class="ttdef"><b>Definition:</b> <a href="_geo_json_object_args_8cs_source.html#l00039">GeoJsonObjectArgs.cs:39</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_geo_json_object_model_1_1_geo_json_object_args_html_ab85992ac4a584fd70e54753024862ffc"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_geo_json_object_model_1_1_geo_json_object_args.html#ab85992ac4a584fd70e54753024862ffc">MongoDB.Driver.GeoJsonObjectModel.GeoJsonObjectArgs.CoordinateReferenceSystem</a></div><div class="ttdeci">GeoJsonCoordinateReferenceSystem CoordinateReferenceSystem</div><div class="ttdoc">Gets or sets the coordinate reference system.</div><div class="ttdef"><b>Definition:</b> <a href="_geo_json_object_args_8cs_source.html#l00034">GeoJsonObjectArgs.cs:34</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_geo_json_object_model_1_1_geo_json_object_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_geo_json_object_model_1_1_geo_json_object.html">MongoDB.Driver.GeoJsonObjectModel.GeoJsonObject</a></div><div class="ttdoc">Represents a GeoJson object (see subclasses).</div><div class="ttdef"><b>Definition:</b> <a href="_geo_json_object_8cs_source.html#l00027">GeoJsonObject.cs:28</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_geo_json_object_model_1_1_geo_json_object_html_a26503705b58a69c2687b35c0c91fa8dc"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_geo_json_object_model_1_1_geo_json_object.html#a26503705b58a69c2687b35c0c91fa8dc">MongoDB.Driver.GeoJsonObjectModel.GeoJsonObject.CoordinateReferenceSystem</a></div><div class="ttdeci">GeoJsonCoordinateReferenceSystem CoordinateReferenceSystem</div><div class="ttdoc">Gets the coordinate reference system.</div><div class="ttdef"><b>Definition:</b> <a href="_geo_json_object_8cs_source.html#l00061">GeoJsonObject.cs:62</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_geo_json_object_model_1_1_geo_json_object_html_a2d7c24132448c646239934173ff19f76"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_geo_json_object_model_1_1_geo_json_object.html#a2d7c24132448c646239934173ff19f76">MongoDB.Driver.GeoJsonObjectModel.GeoJsonObject.GeoJsonObject</a></div><div class="ttdeci">GeoJsonObject(GeoJsonObjectArgs&lt; TCoordinates &gt; args)</div><div class="ttdoc">Initializes a new instance of the GeoJsonObject&lt;TCoordinates&gt; class.</div><div class="ttdef"><b>Definition:</b> <a href="_geo_json_object_8cs_source.html#l00039">GeoJsonObject.cs:39</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_geo_json_object_model_1_1_geo_json_object_html_a32fa6e9229ba35f3de0a6ea6bb09fc98"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_geo_json_object_model_1_1_geo_json_object.html#a32fa6e9229ba35f3de0a6ea6bb09fc98">MongoDB.Driver.GeoJsonObjectModel.GeoJsonObject.BoundingBox</a></div><div class="ttdeci">GeoJsonBoundingBox&lt; TCoordinates &gt; BoundingBox</div><div class="ttdoc">Gets the bounding box.</div><div class="ttdef"><b>Definition:</b> <a href="_geo_json_object_8cs_source.html#l00053">GeoJsonObject.cs:54</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_geo_json_object_model_1_1_geo_json_object_html_a855b7a6dcd5385166306b401c44f379f"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_geo_json_object_model_1_1_geo_json_object.html#a855b7a6dcd5385166306b401c44f379f">MongoDB.Driver.GeoJsonObjectModel.GeoJsonObject.ExtraMembers</a></div><div class="ttdeci">BsonDocument ExtraMembers</div><div class="ttdoc">Gets the extra members.</div><div class="ttdef"><b>Definition:</b> <a href="_geo_json_object_8cs_source.html#l00069">GeoJsonObject.cs:70</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_geo_json_object_model_1_1_geo_json_object_html_ab5f39d9f72b15d9cfd8920abf9be8211"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_geo_json_object_model_1_1_geo_json_object.html#ab5f39d9f72b15d9cfd8920abf9be8211">MongoDB.Driver.GeoJsonObjectModel.GeoJsonObject.Type</a></div><div class="ttdeci">abstract GeoJsonObjectType Type</div><div class="ttdoc">Gets the type of the GeoJson object.</div><div class="ttdef"><b>Definition:</b> <a href="_geo_json_object_8cs_source.html#l00077">GeoJsonObject.cs:77</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_geo_json_object_model_1_1_serializers_1_1_geo_json_object_serializer_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_geo_json_object_model_1_1_serializers_1_1_geo_json_object_serializer.html">MongoDB.Driver.GeoJsonObjectModel.Serializers.GeoJsonObjectSerializer</a></div><div class="ttdoc">Represents a serializer for a GeoJson object.</div><div class="ttdef"><b>Definition:</b> <a href="_geo_json_object_serializer_8cs_source.html#l00027">GeoJsonObjectSerializer.cs:28</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_bson_1_1_serialization_1_1_attributes_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_bson_1_1_serialization_1_1_attributes.html">MongoDB.Bson.Serialization.Attributes</a></div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_serialization_2_attributes_2_bson_constructor_attribute_8cs_source.html#l00018">BsonConstructorAttribute.cs:19</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_bson_1_1_serialization_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_bson_1_1_serialization.html">MongoDB.Bson.Serialization</a></div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_serialization_2_attributed_serialization_provider_8cs_source.html#l00021">AttributedSerializationProvider.cs:22</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_bson_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_bson.html">MongoDB.Bson</a></div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_bson_constants_8cs_source.html#l00018">BsonConstants.cs:19</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_driver_1_1_geo_json_object_model_1_1_serializers_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_driver_1_1_geo_json_object_model_1_1_serializers.html">MongoDB.Driver.GeoJsonObjectModel.Serializers</a></div><div class="ttdef"><b>Definition:</b> <a href="_geo_json2_d_coordinates_serializer_8cs_source.html#l00019">GeoJson2DCoordinatesSerializer.cs:20</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_driver_1_1_geo_json_object_model_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_driver_1_1_geo_json_object_model.html">MongoDB.Driver.GeoJsonObjectModel</a></div><div class="ttdef"><b>Definition:</b> <a href="_geo_json_8cs_source.html#l00018">GeoJson.cs:19</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_driver_1_1_geo_json_object_model_html_ad017b86ad7257143b2cce205a4119814"><div class="ttname"><a href="namespace_mongo_d_b_1_1_driver_1_1_geo_json_object_model.html#ad017b86ad7257143b2cce205a4119814">MongoDB.Driver.GeoJsonObjectModel.GeoJsonObjectType</a></div><div class="ttdeci">GeoJsonObjectType</div><div class="ttdoc">Represents the type of a GeoJson object.</div><div class="ttdef"><b>Definition:</b> <a href="_geo_json_object_type_8cs_source.html#l00021">GeoJsonObjectType.cs:22</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_driver_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_driver.html">MongoDB.Driver</a></div><div class="ttdef"><b>Definition:</b> <a href="_aggregate_bucket_auto_granularity_8cs_source.html#l00018">AggregateBucketAutoGranularity.cs:19</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_html"><div class="ttname"><a href="namespace_mongo_d_b.html">MongoDB</a></div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_bson_constants_8cs_source.html#l00018">BsonConstants.cs:19</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_1e261a42b4a2e33df58a15c412684b10.html">ETServer</a></li><li class="navelem"><a class="el" href="dir_473c270c995194c5ad99131d9c901f09.html">Server</a></li><li class="navelem"><a class="el" href="dir_ce426efcf63311ff42488fb2654bd4b4.html">ThirdParty</a></li><li class="navelem"><a class="el" href="dir_a37b2b5f9c8890cc9f6f8392fb0cdff3.html">MongoDBDriver</a></li><li class="navelem"><a class="el" href="dir_42d569251c6b173c0060c74ec4fd3ce0.html">MongoDB.Driver</a></li><li class="navelem"><a class="el" href="dir_463945f77c3c616e6a34f42dd5dbddb9.html">GeoJsonObjectModel</a></li><li class="navelem"><a class="el" href="_geo_json_object_8cs.html">GeoJsonObject.cs</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:24:59 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

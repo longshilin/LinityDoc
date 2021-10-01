@@ -1,0 +1,147 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: Assets/Scripts/Libraries/ET/Base/OneThreadSynchronizationContext.cs 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_one_thread_synchronization_context_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">OneThreadSynchronizationContext.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_one_thread_synchronization_context_8cs.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>;</div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Collections.Concurrent;</div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Threading;</div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_e_t_model.html">ETModel</a></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;{</div>
+<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="class_e_t_model_1_1_one_thread_synchronization_context.html">    7</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="class_e_t_model_1_1_one_thread_synchronization_context.html">OneThreadSynchronizationContext</a> : SynchronizationContext</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;        {</div>
+<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="class_e_t_model_1_1_one_thread_synchronization_context.html#a44c413bd476e249ee0ba2cfdcd7b50d4">    9</a></span>&#160;                <span class="keyword">public</span> <span class="keyword">static</span> <a class="code" href="class_e_t_model_1_1_one_thread_synchronization_context.html">OneThreadSynchronizationContext</a> <a class="code" href="class_e_t_model_1_1_one_thread_synchronization_context.html#a44c413bd476e249ee0ba2cfdcd7b50d4">Instance</a> { <span class="keyword">get</span>; } = <span class="keyword">new</span> <a class="code" href="class_e_t_model_1_1_one_thread_synchronization_context.html">OneThreadSynchronizationContext</a>();</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;                <span class="keyword">private</span> readonly <span class="keywordtype">int</span> mainThreadId = <a class="code" href="_astar_path_8cs.html#ad4502fb9bea3d7a6a0defaa48674aba5">Thread</a>.CurrentThread.ManagedThreadId;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;                <span class="comment">// 线程同步队列,发送接收socket回调都放到该队列,由poll线程统一执行</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;                <span class="keyword">private</span> readonly ConcurrentQueue&lt;Action&gt; queue = <span class="keyword">new</span> ConcurrentQueue&lt;Action&gt;();</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;                <span class="keyword">private</span> Action a;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="class_e_t_model_1_1_one_thread_synchronization_context.html#a5b1b492d0b15749b567b357b53c0762d">   18</a></span>&#160;                <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_e_t_model_1_1_one_thread_synchronization_context.html#a5b1b492d0b15749b567b357b53c0762d">Update</a>()</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;                {</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;                        <span class="keywordflow">while</span> (<span class="keyword">true</span>)</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;                        {</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;                                <span class="keywordflow">if</span> (!this.queue.TryDequeue(out a))</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;                                {</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;                                        <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;                                }</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;                                a();</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;                        }</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;                }</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="class_e_t_model_1_1_one_thread_synchronization_context.html#ac423b73aec906f5ccda26d6241cf8738">   30</a></span>&#160;                <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code" href="class_e_t_model_1_1_one_thread_synchronization_context.html#ac423b73aec906f5ccda26d6241cf8738">Post</a>(SendOrPostCallback callback, <span class="keywordtype">object</span> state)</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;                {</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;                        <span class="keywordflow">if</span> (<a class="code" href="_astar_path_8cs.html#ad4502fb9bea3d7a6a0defaa48674aba5">Thread</a>.CurrentThread.ManagedThreadId == <span class="keyword">this</span>.mainThreadId)</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;                        {</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;                                callback(state);</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;                                <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;                        }</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;                        </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;                        this.queue.Enqueue(() =&gt; { callback(state); });</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                }</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        }</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;}</div>
+<div class="ttc" id="a_astar_path_8cs_html_ad4502fb9bea3d7a6a0defaa48674aba5"><div class="ttname"><a href="_astar_path_8cs.html#ad4502fb9bea3d7a6a0defaa48674aba5">Thread</a></div><div class="ttdeci">System.Threading.Thread Thread</div><div class="ttdef"><b>Definition:</b> <a href="_astar_path_8cs_source.html#l00014">AstarPath.cs:14</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_one_thread_synchronization_context_html"><div class="ttname"><a href="class_e_t_model_1_1_one_thread_synchronization_context.html">ETModel.OneThreadSynchronizationContext</a></div><div class="ttdef"><b>Definition:</b> <a href="_one_thread_synchronization_context_8cs_source.html#l00007">OneThreadSynchronizationContext.cs:8</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_one_thread_synchronization_context_html_a44c413bd476e249ee0ba2cfdcd7b50d4"><div class="ttname"><a href="class_e_t_model_1_1_one_thread_synchronization_context.html#a44c413bd476e249ee0ba2cfdcd7b50d4">ETModel.OneThreadSynchronizationContext.Instance</a></div><div class="ttdeci">static OneThreadSynchronizationContext Instance</div><div class="ttdef"><b>Definition:</b> <a href="_one_thread_synchronization_context_8cs_source.html#l00009">OneThreadSynchronizationContext.cs:9</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_one_thread_synchronization_context_html_a5b1b492d0b15749b567b357b53c0762d"><div class="ttname"><a href="class_e_t_model_1_1_one_thread_synchronization_context.html#a5b1b492d0b15749b567b357b53c0762d">ETModel.OneThreadSynchronizationContext.Update</a></div><div class="ttdeci">void Update()</div><div class="ttdef"><b>Definition:</b> <a href="_one_thread_synchronization_context_8cs_source.html#l00018">OneThreadSynchronizationContext.cs:18</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_one_thread_synchronization_context_html_ac423b73aec906f5ccda26d6241cf8738"><div class="ttname"><a href="class_e_t_model_1_1_one_thread_synchronization_context.html#ac423b73aec906f5ccda26d6241cf8738">ETModel.OneThreadSynchronizationContext.Post</a></div><div class="ttdeci">override void Post(SendOrPostCallback callback, object state)</div><div class="ttdef"><b>Definition:</b> <a href="_one_thread_synchronization_context_8cs_source.html#l00030">OneThreadSynchronizationContext.cs:30</a></div></div>
+<div class="ttc" id="anamespace_e_t_model_html"><div class="ttname"><a href="namespace_e_t_model.html">ETModel</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_e_t_task_method_builder_8cs_source.html#l00006">AsyncETTaskMethodBuilder.cs:7</a></div></div>
+<div class="ttc" id="anamespace_system_html"><div class="ttname"><a href="namespace_system.html">System</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_method_builder_attribute_8cs_source.html#l00001">AsyncMethodBuilderAttribute.cs:2</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_84bbf7b3c7f28a5a18725745e1505219.html">Assets</a></li><li class="navelem"><a class="el" href="dir_f13b41af88cf68434578284aaf699e39.html">Scripts</a></li><li class="navelem"><a class="el" href="dir_46d134a3bf82cf4dc49ca8f728aea58c.html">Libraries</a></li><li class="navelem"><a class="el" href="dir_f6df8f7e58ea5a2220a287b647108730.html">ET</a></li><li class="navelem"><a class="el" href="dir_8f146fdc844f9009ef2833f837fe8976.html">Base</a></li><li class="navelem"><a class="el" href="_one_thread_synchronization_context_8cs.html">OneThreadSynchronizationContext.cs</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:24:45 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,254 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: Assets/Scripts/Libraries/GameFramework/Scripts/Runtime/WebRequest/WWWWebRequestAgentHelper.cs 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_w_w_w_web_request_agent_helper_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">WWWWebRequestAgentHelper.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_w_w_w_web_request_agent_helper_8cs.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">//------------------------------------------------------------</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">// Game Framework</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">// Copyright © 2013-2021 Jiang Yin. All rights reserved.</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">// Homepage: https://gameframework.cn/</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">// Feedback: mailto:ellan@gameframework.cn</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">//------------------------------------------------------------</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#if !UNITY_2018_3_OR_NEWER</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_game_framework.html">GameFramework</a>;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_game_framework.html">GameFramework</a>.<a class="code" href="namespace_game_framework_1_1_web_request.html">WebRequest</a>;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_unity_engine.html">UnityEngine</a>;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_unity_game_framework_1_1_runtime.html">UnityGameFramework.Runtime</a></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;{</div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="class_unity_game_framework_1_1_runtime_1_1_w_w_w_web_request_agent_helper.html">   20</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="class_unity_game_framework_1_1_runtime_1_1_w_w_w_web_request_agent_helper.html">WWWWebRequestAgentHelper</a> : <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_web_request_agent_helper_base.html">WebRequestAgentHelperBase</a>, IDisposable</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    {</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <span class="keyword">private</span> WWW m_WWW = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">bool</span> m_Disposed = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <span class="keyword">private</span> EventHandler&lt;WebRequestAgentHelperCompleteEventArgs&gt; m_WebRequestAgentHelperCompleteEventHandler = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <span class="keyword">private</span> EventHandler&lt;WebRequestAgentHelperErrorEventArgs&gt; m_WebRequestAgentHelperErrorEventHandler = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="class_unity_game_framework_1_1_runtime_1_1_w_w_w_web_request_agent_helper.html#ae162d6303cb196a08c009e04588148cf">   31</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">event</span> EventHandler&lt;WebRequestAgentHelperCompleteEventArgs&gt; <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_w_w_w_web_request_agent_helper.html#ae162d6303cb196a08c009e04588148cf">WebRequestAgentHelperComplete</a></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        {</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;            add</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;            {</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;                m_WebRequestAgentHelperCompleteEventHandler += value;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;            }</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;            <span class="keyword">remove</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;            {</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                m_WebRequestAgentHelperCompleteEventHandler -= value;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            }</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        }</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="class_unity_game_framework_1_1_runtime_1_1_w_w_w_web_request_agent_helper.html#a07fac8abbf17a5bc5cd2c0872a868890">   46</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">event</span> EventHandler&lt;WebRequestAgentHelperErrorEventArgs&gt; <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_w_w_w_web_request_agent_helper.html#a07fac8abbf17a5bc5cd2c0872a868890">WebRequestAgentHelperError</a></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        {</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            add</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            {</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                m_WebRequestAgentHelperErrorEventHandler += value;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            }</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            <span class="keyword">remove</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            {</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                m_WebRequestAgentHelperErrorEventHandler -= value;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            }</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        }</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="class_unity_game_framework_1_1_runtime_1_1_w_w_w_web_request_agent_helper.html#a10da1452a129dc875580d2309cfc20c5">   63</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_w_w_w_web_request_agent_helper.html#a10da1452a129dc875580d2309cfc20c5">Request</a>(<span class="keywordtype">string</span> webRequestUri, <span class="keywordtype">object</span> userData)</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        {</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            <span class="keywordflow">if</span> (m_WebRequestAgentHelperCompleteEventHandler == <span class="keyword">null</span> || m_WebRequestAgentHelperErrorEventHandler == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            {</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                <a class="code" href="_login_form_8cs.html#a6208db3ac52d7f107a612679d0d8eca3">Log</a>.Fatal(<span class="stringliteral">&quot;Web request agent helper handler is invalid.&quot;</span>);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            }</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            WWWFormInfo wwwFormInfo = (WWWFormInfo)userData;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;            <span class="keywordflow">if</span> (wwwFormInfo.WWWForm == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            {</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                m_WWW = <span class="keyword">new</span> WWW(webRequestUri);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            }</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            {</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                m_WWW = <span class="keyword">new</span> WWW(webRequestUri, wwwFormInfo.WWWForm);</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;            }</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        }</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
+<div class="line"><a name="l00088"></a><span class="lineno"><a class="line" href="class_unity_game_framework_1_1_runtime_1_1_w_w_w_web_request_agent_helper.html#acfdf8c7179d0209caf026b314c67f6ca">   88</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_w_w_w_web_request_agent_helper.html#acfdf8c7179d0209caf026b314c67f6ca">Request</a>(<span class="keywordtype">string</span> webRequestUri, <span class="keywordtype">byte</span>[] postData, <span class="keywordtype">object</span> userData)</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        {</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            <span class="keywordflow">if</span> (m_WebRequestAgentHelperCompleteEventHandler == <span class="keyword">null</span> || m_WebRequestAgentHelperErrorEventHandler == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;            {</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                <a class="code" href="_login_form_8cs.html#a6208db3ac52d7f107a612679d0d8eca3">Log</a>.Fatal(<span class="stringliteral">&quot;Web request agent helper handler is invalid.&quot;</span>);</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;            }</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;            m_WWW = <span class="keyword">new</span> WWW(webRequestUri, postData);</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        }</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
+<div class="line"><a name="l00102"></a><span class="lineno"><a class="line" href="class_unity_game_framework_1_1_runtime_1_1_w_w_w_web_request_agent_helper.html#adb1360567e282d7a6f0df0346645c4c7">  102</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_w_w_w_web_request_agent_helper.html#adb1360567e282d7a6f0df0346645c4c7">Reset</a>()</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        {</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;            <span class="keywordflow">if</span> (m_WWW != <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;            {</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;                m_WWW.Dispose();</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;                m_WWW = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;            }</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        }</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160; </div>
+<div class="line"><a name="l00114"></a><span class="lineno"><a class="line" href="class_unity_game_framework_1_1_runtime_1_1_w_w_w_web_request_agent_helper.html#a670d11bd72f38a2e6ba78ceb74c88f92">  114</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_w_w_w_web_request_agent_helper.html#a670d11bd72f38a2e6ba78ceb74c88f92">Dispose</a>()</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        {</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;            <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_w_w_w_web_request_agent_helper.html#a670d11bd72f38a2e6ba78ceb74c88f92">Dispose</a>(<span class="keyword">true</span>);</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;            GC.SuppressFinalize(<span class="keyword">this</span>);</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        }</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160; </div>
+<div class="line"><a name="l00124"></a><span class="lineno"><a class="line" href="class_unity_game_framework_1_1_runtime_1_1_w_w_w_web_request_agent_helper.html#acecc937d1575bbc9be206211f816309d">  124</a></span>&#160;        <span class="keyword">protected</span> <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_w_w_w_web_request_agent_helper.html#acecc937d1575bbc9be206211f816309d">Dispose</a>(<span class="keywordtype">bool</span> disposing)</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        {</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;            <span class="keywordflow">if</span> (m_Disposed)</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;            {</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;                <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;            }</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160; </div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;            <span class="keywordflow">if</span> (disposing)</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;            {</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;                <span class="keywordflow">if</span> (m_WWW != <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;                {</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;                    m_WWW.Dispose();</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;                    m_WWW = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;                }</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;            }</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160; </div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;            m_Disposed = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;        }</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160; </div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> Update()</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;        {</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;            <span class="keywordflow">if</span> (m_WWW == <span class="keyword">null</span> || !m_WWW.isDone)</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;            {</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;                <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;            }</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160; </div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;            <span class="keywordflow">if</span> (!<span class="keywordtype">string</span>.IsNullOrEmpty(m_WWW.error))</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;            {</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;                <a class="code" href="class_game_framework_1_1_web_request_1_1_web_request_agent_helper_error_event_args.html">WebRequestAgentHelperErrorEventArgs</a> webRequestAgentHelperErrorEventArgs = <a class="code" href="class_game_framework_1_1_web_request_1_1_web_request_agent_helper_error_event_args.html">WebRequestAgentHelperErrorEventArgs</a>.<a class="code" href="class_game_framework_1_1_web_request_1_1_web_request_agent_helper_error_event_args.html#a8af082e14d31783e25f5661ee196f9c1">Create</a>(m_WWW.error);</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;                m_WebRequestAgentHelperErrorEventHandler(<span class="keyword">this</span>, webRequestAgentHelperErrorEventArgs);</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;                ReferencePool.Release(webRequestAgentHelperErrorEventArgs);</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;            }</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;            {</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;                <a class="code" href="class_game_framework_1_1_web_request_1_1_web_request_agent_helper_complete_event_args.html">WebRequestAgentHelperCompleteEventArgs</a> webRequestAgentHelperCompleteEventArgs = <a class="code" href="class_game_framework_1_1_web_request_1_1_web_request_agent_helper_complete_event_args.html">WebRequestAgentHelperCompleteEventArgs</a>.<a class="code" href="class_game_framework_1_1_web_request_1_1_web_request_agent_helper_complete_event_args.html#acc25d3fa4a971fb054f1cdc359f1a92e">Create</a>(m_WWW.bytes);</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;                m_WebRequestAgentHelperCompleteEventHandler(<span class="keyword">this</span>, webRequestAgentHelperCompleteEventArgs);</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;                ReferencePool.Release(webRequestAgentHelperCompleteEventArgs);</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;            }</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;        }</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    }</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;}</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160; </div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="a_login_form_8cs_html_a6208db3ac52d7f107a612679d0d8eca3"><div class="ttname"><a href="_login_form_8cs.html#a6208db3ac52d7f107a612679d0d8eca3">Log</a></div><div class="ttdeci">UnityGameFramework.Runtime.Log Log</div><div class="ttdef"><b>Definition:</b> <a href="_login_form_8cs_source.html#l00007">LoginForm.cs:7</a></div></div>
+<div class="ttc" id="aclass_game_framework_1_1_web_request_1_1_web_request_agent_helper_complete_event_args_html"><div class="ttname"><a href="class_game_framework_1_1_web_request_1_1_web_request_agent_helper_complete_event_args.html">GameFramework.WebRequest.WebRequestAgentHelperCompleteEventArgs</a></div><div class="ttdoc">Web 请求代理辅助器完成事件。</div><div class="ttdef"><b>Definition:</b> <a href="_web_request_agent_helper_complete_event_args_8cs_source.html#l00013">WebRequestAgentHelperCompleteEventArgs.cs:14</a></div></div>
+<div class="ttc" id="aclass_game_framework_1_1_web_request_1_1_web_request_agent_helper_complete_event_args_html_acc25d3fa4a971fb054f1cdc359f1a92e"><div class="ttname"><a href="class_game_framework_1_1_web_request_1_1_web_request_agent_helper_complete_event_args.html#acc25d3fa4a971fb054f1cdc359f1a92e">GameFramework.WebRequest.WebRequestAgentHelperCompleteEventArgs.Create</a></div><div class="ttdeci">static WebRequestAgentHelperCompleteEventArgs Create(byte[] webResponseBytes)</div><div class="ttdoc">创建 Web 请求代理辅助器完成事件。</div><div class="ttdef"><b>Definition:</b> <a href="_web_request_agent_helper_complete_event_args_8cs_source.html#l00030">WebRequestAgentHelperCompleteEventArgs.cs:30</a></div></div>
+<div class="ttc" id="aclass_game_framework_1_1_web_request_1_1_web_request_agent_helper_error_event_args_html"><div class="ttname"><a href="class_game_framework_1_1_web_request_1_1_web_request_agent_helper_error_event_args.html">GameFramework.WebRequest.WebRequestAgentHelperErrorEventArgs</a></div><div class="ttdoc">Web 请求代理辅助器错误事件。</div><div class="ttdef"><b>Definition:</b> <a href="_web_request_agent_helper_error_event_args_8cs_source.html#l00013">WebRequestAgentHelperErrorEventArgs.cs:14</a></div></div>
+<div class="ttc" id="aclass_game_framework_1_1_web_request_1_1_web_request_agent_helper_error_event_args_html_a8af082e14d31783e25f5661ee196f9c1"><div class="ttname"><a href="class_game_framework_1_1_web_request_1_1_web_request_agent_helper_error_event_args.html#a8af082e14d31783e25f5661ee196f9c1">GameFramework.WebRequest.WebRequestAgentHelperErrorEventArgs.Create</a></div><div class="ttdeci">static WebRequestAgentHelperErrorEventArgs Create(string errorMessage)</div><div class="ttdoc">创建 Web 请求代理辅助器错误事件。</div><div class="ttdef"><b>Definition:</b> <a href="_web_request_agent_helper_error_event_args_8cs_source.html#l00037">WebRequestAgentHelperErrorEventArgs.cs:37</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_runtime_1_1_w_w_w_web_request_agent_helper_html"><div class="ttname"><a href="class_unity_game_framework_1_1_runtime_1_1_w_w_w_web_request_agent_helper.html">UnityGameFramework.Runtime.WWWWebRequestAgentHelper</a></div><div class="ttdoc">WWW Web 请求代理辅助器。</div><div class="ttdef"><b>Definition:</b> <a href="_w_w_w_web_request_agent_helper_8cs_source.html#l00020">WWWWebRequestAgentHelper.cs:21</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_runtime_1_1_w_w_w_web_request_agent_helper_html_a07fac8abbf17a5bc5cd2c0872a868890"><div class="ttname"><a href="class_unity_game_framework_1_1_runtime_1_1_w_w_w_web_request_agent_helper.html#a07fac8abbf17a5bc5cd2c0872a868890">UnityGameFramework.Runtime.WWWWebRequestAgentHelper.WebRequestAgentHelperError</a></div><div class="ttdeci">override EventHandler&lt; WebRequestAgentHelperErrorEventArgs &gt; WebRequestAgentHelperError</div><div class="ttdoc">Web 请求代理辅助器错误事件。</div><div class="ttdef"><b>Definition:</b> <a href="_w_w_w_web_request_agent_helper_8cs_source.html#l00046">WWWWebRequestAgentHelper.cs:47</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_runtime_1_1_w_w_w_web_request_agent_helper_html_a10da1452a129dc875580d2309cfc20c5"><div class="ttname"><a href="class_unity_game_framework_1_1_runtime_1_1_w_w_w_web_request_agent_helper.html#a10da1452a129dc875580d2309cfc20c5">UnityGameFramework.Runtime.WWWWebRequestAgentHelper.Request</a></div><div class="ttdeci">override void Request(string webRequestUri, object userData)</div><div class="ttdoc">通过 Web 请求代理辅助器发送请求。</div><div class="ttdef"><b>Definition:</b> <a href="_w_w_w_web_request_agent_helper_8cs_source.html#l00063">WWWWebRequestAgentHelper.cs:63</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_runtime_1_1_w_w_w_web_request_agent_helper_html_a670d11bd72f38a2e6ba78ceb74c88f92"><div class="ttname"><a href="class_unity_game_framework_1_1_runtime_1_1_w_w_w_web_request_agent_helper.html#a670d11bd72f38a2e6ba78ceb74c88f92">UnityGameFramework.Runtime.WWWWebRequestAgentHelper.Dispose</a></div><div class="ttdeci">void Dispose()</div><div class="ttdoc">释放资源。</div><div class="ttdef"><b>Definition:</b> <a href="_w_w_w_web_request_agent_helper_8cs_source.html#l00114">WWWWebRequestAgentHelper.cs:114</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_runtime_1_1_w_w_w_web_request_agent_helper_html_acecc937d1575bbc9be206211f816309d"><div class="ttname"><a href="class_unity_game_framework_1_1_runtime_1_1_w_w_w_web_request_agent_helper.html#acecc937d1575bbc9be206211f816309d">UnityGameFramework.Runtime.WWWWebRequestAgentHelper.Dispose</a></div><div class="ttdeci">virtual void Dispose(bool disposing)</div><div class="ttdoc">释放资源。</div><div class="ttdef"><b>Definition:</b> <a href="_w_w_w_web_request_agent_helper_8cs_source.html#l00124">WWWWebRequestAgentHelper.cs:124</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_runtime_1_1_w_w_w_web_request_agent_helper_html_acfdf8c7179d0209caf026b314c67f6ca"><div class="ttname"><a href="class_unity_game_framework_1_1_runtime_1_1_w_w_w_web_request_agent_helper.html#acfdf8c7179d0209caf026b314c67f6ca">UnityGameFramework.Runtime.WWWWebRequestAgentHelper.Request</a></div><div class="ttdeci">override void Request(string webRequestUri, byte[] postData, object userData)</div><div class="ttdoc">通过 Web 请求代理辅助器发送请求。</div><div class="ttdef"><b>Definition:</b> <a href="_w_w_w_web_request_agent_helper_8cs_source.html#l00088">WWWWebRequestAgentHelper.cs:88</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_runtime_1_1_w_w_w_web_request_agent_helper_html_adb1360567e282d7a6f0df0346645c4c7"><div class="ttname"><a href="class_unity_game_framework_1_1_runtime_1_1_w_w_w_web_request_agent_helper.html#adb1360567e282d7a6f0df0346645c4c7">UnityGameFramework.Runtime.WWWWebRequestAgentHelper.Reset</a></div><div class="ttdeci">override void Reset()</div><div class="ttdoc">重置 Web 请求代理辅助器。</div><div class="ttdef"><b>Definition:</b> <a href="_w_w_w_web_request_agent_helper_8cs_source.html#l00102">WWWWebRequestAgentHelper.cs:102</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_runtime_1_1_w_w_w_web_request_agent_helper_html_ae162d6303cb196a08c009e04588148cf"><div class="ttname"><a href="class_unity_game_framework_1_1_runtime_1_1_w_w_w_web_request_agent_helper.html#ae162d6303cb196a08c009e04588148cf">UnityGameFramework.Runtime.WWWWebRequestAgentHelper.WebRequestAgentHelperComplete</a></div><div class="ttdeci">override EventHandler&lt; WebRequestAgentHelperCompleteEventArgs &gt; WebRequestAgentHelperComplete</div><div class="ttdoc">Web 请求代理辅助器完成事件。</div><div class="ttdef"><b>Definition:</b> <a href="_w_w_w_web_request_agent_helper_8cs_source.html#l00031">WWWWebRequestAgentHelper.cs:32</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_runtime_1_1_web_request_agent_helper_base_html"><div class="ttname"><a href="class_unity_game_framework_1_1_runtime_1_1_web_request_agent_helper_base.html">UnityGameFramework.Runtime.WebRequestAgentHelperBase</a></div><div class="ttdoc">Web 请求代理辅助器基类。</div><div class="ttdef"><b>Definition:</b> <a href="_web_request_agent_helper_base_8cs_source.html#l00017">WebRequestAgentHelperBase.cs:18</a></div></div>
+<div class="ttc" id="anamespace_game_framework_1_1_web_request_html"><div class="ttname"><a href="namespace_game_framework_1_1_web_request.html">GameFramework.WebRequest</a></div><div class="ttdef"><b>Definition:</b> <a href="_web_request_2_constant_8cs_source.html#l00008">Constant.cs:9</a></div></div>
+<div class="ttc" id="anamespace_game_framework_html"><div class="ttname"><a href="namespace_game_framework.html">GameFramework</a></div><div class="ttdef"><b>Definition:</b> <a href="_data_provider_8cs_source.html#l00011">DataProvider.cs:12</a></div></div>
+<div class="ttc" id="anamespace_system_html"><div class="ttname"><a href="namespace_system.html">System</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_method_builder_attribute_8cs_source.html#l00001">AsyncMethodBuilderAttribute.cs:2</a></div></div>
+<div class="ttc" id="anamespace_unity_engine_html"><div class="ttname"><a href="namespace_unity_engine.html">UnityEngine</a></div><div class="ttdef"><b>Definition:</b> <a href="_mathf_8cs_source.html#l00003">Mathf.cs:4</a></div></div>
+<div class="ttc" id="anamespace_unity_game_framework_1_1_runtime_html"><div class="ttname"><a href="namespace_unity_game_framework_1_1_runtime.html">UnityGameFramework.Runtime</a></div><div class="ttdef"><b>Definition:</b> <a href="_base_component_8cs_source.html#l00014">BaseComponent.cs:15</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_84bbf7b3c7f28a5a18725745e1505219.html">Assets</a></li><li class="navelem"><a class="el" href="dir_f13b41af88cf68434578284aaf699e39.html">Scripts</a></li><li class="navelem"><a class="el" href="dir_46d134a3bf82cf4dc49ca8f728aea58c.html">Libraries</a></li><li class="navelem"><a class="el" href="dir_7a6862c303020716b3c311e95823547c.html">GameFramework</a></li><li class="navelem"><a class="el" href="dir_1d9b7e2b1e68805cdf4440a735859529.html">Scripts</a></li><li class="navelem"><a class="el" href="dir_e81cefffdbcf8632d0c6357d5d83ba40.html">Runtime</a></li><li class="navelem"><a class="el" href="dir_ae35d1df91c4527a58d91e038aa708da.html">WebRequest</a></li><li class="navelem"><a class="el" href="_w_w_w_web_request_agent_helper_8cs.html">WWWWebRequestAgentHelper.cs</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:24:50 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

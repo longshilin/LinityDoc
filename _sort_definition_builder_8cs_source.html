@@ -1,0 +1,282 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: ETServer/Server/ThirdParty/MongoDBDriver/MongoDB.Driver/SortDefinitionBuilder.cs 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_sort_definition_builder_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">SortDefinitionBuilder.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_sort_definition_builder_8cs.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/* Copyright 2010-present MongoDB Inc.</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">* Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">* you may not use this file except in compliance with the License.</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">* You may obtain a copy of the License at</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">* http://www.apache.org/licenses/LICENSE-2.0</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">* Unless required by applicable law or agreed to in writing, software</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">* distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">* See the License for the specific language governing permissions and</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">* limitations under the License.</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Collections.Generic;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Linq;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Linq.Expressions;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_mongo_d_b.html">MongoDB</a>.<a class="code" href="namespace_mongo_d_b_1_1_bson.html">Bson</a>;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_mongo_d_b.html">MongoDB</a>.<a class="code" href="namespace_mongo_d_b_1_1_bson.html">Bson</a>.<a class="code" href="namespace_mongo_d_b_1_1_bson_1_1_i_o.html">IO</a>;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_mongo_d_b.html">MongoDB</a>.<a class="code" href="namespace_mongo_d_b_1_1_bson.html">Bson</a>.<a class="code" href="namespace_mongo_d_b_1_1_bson_1_1_serialization.html">Serialization</a>;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_mongo_d_b.html">MongoDB</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver.html">Driver</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core.html">Core</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_misc.html">Misc</a>;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_mongo_d_b_1_1_driver.html">MongoDB.Driver</a></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;{</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">class </span>SortDefinitionExtensions</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    {</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> SortDefinition&lt;TDocument&gt; Ascending&lt;TDocument&gt;(<span class="keyword">this</span> SortDefinition&lt;TDocument&gt; sort, FieldDefinition&lt;TDocument&gt; field)</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        {</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;            var builder = Builders&lt;TDocument&gt;.Sort;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            <span class="keywordflow">return</span> builder.Combine(sort, builder.Ascending(field));</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        }</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> SortDefinition&lt;TDocument&gt; Ascending&lt;TDocument&gt;(<span class="keyword">this</span> SortDefinition&lt;TDocument&gt; sort, Expression&lt;Func&lt;TDocument, object&gt;&gt; field)</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        {</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            var builder = Builders&lt;TDocument&gt;.Sort;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            <span class="keywordflow">return</span> builder.Combine(sort, builder.Ascending(field));</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        }</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> SortDefinition&lt;TDocument&gt; Descending&lt;TDocument&gt;(<span class="keyword">this</span> SortDefinition&lt;TDocument&gt; sort, FieldDefinition&lt;TDocument&gt; field)</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        {</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            var builder = Builders&lt;TDocument&gt;.Sort;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            <span class="keywordflow">return</span> builder.Combine(sort, builder.Descending(field));</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        }</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> SortDefinition&lt;TDocument&gt; Descending&lt;TDocument&gt;(<span class="keyword">this</span> SortDefinition&lt;TDocument&gt; sort, Expression&lt;Func&lt;TDocument, object&gt;&gt; field)</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        {</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;            var builder = Builders&lt;TDocument&gt;.Sort;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;            <span class="keywordflow">return</span> builder.Combine(sort, builder.Descending(field));</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        }</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> SortDefinition&lt;TDocument&gt; MetaTextScore&lt;TDocument&gt;(<span class="keyword">this</span> SortDefinition&lt;TDocument&gt; sort, <span class="keywordtype">string</span> field)</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        {</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;            var builder = Builders&lt;TDocument&gt;.Sort;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;            <span class="keywordflow">return</span> builder.Combine(sort, builder.MetaTextScore(field));</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        }</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    }</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
+<div class="line"><a name="l00113"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_sort_definition_builder.html">  113</a></span>&#160;    <span class="keyword">public</span> sealed <span class="keyword">class </span><a class="code" href="class_mongo_d_b_1_1_driver_1_1_sort_definition_builder.html">SortDefinitionBuilder</a>&lt;TDocument&gt;</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    {</div>
+<div class="line"><a name="l00120"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_sort_definition_builder.html#a3013ad948852a8f25be2297d1c5b212a">  120</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_sort_definition.html">SortDefinition&lt;TDocument&gt;</a> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_sort_definition_builder.html#a3013ad948852a8f25be2297d1c5b212a">Ascending</a>(<a class="code" href="class_mongo_d_b_1_1_driver_1_1_field_definition.html">FieldDefinition&lt;TDocument&gt;</a> field)</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        {</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> DirectionalSortDefinition&lt;TDocument&gt;(field, <a class="code" href="namespace_mongo_d_b_1_1_driver.html#a503c2c6cdf673530cc72be2130342795">SortDirection</a>.Ascending);</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        }</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160; </div>
+<div class="line"><a name="l00130"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_sort_definition_builder.html#a8555c5a3c83f911eb9713504033c3c88">  130</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_sort_definition.html">SortDefinition&lt;TDocument&gt;</a> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_sort_definition_builder.html#a8555c5a3c83f911eb9713504033c3c88">Ascending</a>(Expression&lt;Func&lt;TDocument, object&gt;&gt; field)</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        {</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_sort_definition_builder.html#a3013ad948852a8f25be2297d1c5b212a">Ascending</a>(<span class="keyword">new</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_expression_field_definition.html">ExpressionFieldDefinition&lt;TDocument&gt;</a>(field));</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        }</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160; </div>
+<div class="line"><a name="l00140"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_sort_definition_builder.html#ae1fe03d4ca508974533ec54105004848">  140</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_sort_definition.html">SortDefinition&lt;TDocument&gt;</a> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_sort_definition_builder.html#ae1fe03d4ca508974533ec54105004848">Combine</a>(params <a class="code" href="class_mongo_d_b_1_1_driver_1_1_sort_definition.html">SortDefinition&lt;TDocument&gt;</a>[] sorts)</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;        {</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_sort_definition_builder.html#ae1fe03d4ca508974533ec54105004848">Combine</a>((IEnumerable&lt;<a class="code" href="class_mongo_d_b_1_1_driver_1_1_sort_definition.html">SortDefinition&lt;TDocument&gt;</a>&gt;)sorts);</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;        }</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160; </div>
+<div class="line"><a name="l00150"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_sort_definition_builder.html#abcffdbe3d238d2cd82b721a33fccd72e">  150</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_sort_definition.html">SortDefinition&lt;TDocument&gt;</a> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_sort_definition_builder.html#abcffdbe3d238d2cd82b721a33fccd72e">Combine</a>(IEnumerable&lt;<a class="code" href="class_mongo_d_b_1_1_driver_1_1_sort_definition.html">SortDefinition&lt;TDocument&gt;</a>&gt; sorts)</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;        {</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> CombinedSortDefinition&lt;TDocument&gt;(sorts);</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;        }</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160; </div>
+<div class="line"><a name="l00160"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_sort_definition_builder.html#a4b9b9e0285a8e7f57231532b9114e538">  160</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_sort_definition.html">SortDefinition&lt;TDocument&gt;</a> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_sort_definition_builder.html#a4b9b9e0285a8e7f57231532b9114e538">Descending</a>(<a class="code" href="class_mongo_d_b_1_1_driver_1_1_field_definition.html">FieldDefinition&lt;TDocument&gt;</a> field)</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;        {</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> DirectionalSortDefinition&lt;TDocument&gt;(field, <a class="code" href="namespace_mongo_d_b_1_1_driver.html#a503c2c6cdf673530cc72be2130342795">SortDirection</a>.Descending);</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;        }</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160; </div>
+<div class="line"><a name="l00170"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_sort_definition_builder.html#a52e5b5cc49047f3818ceaafc09b2c9cb">  170</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_sort_definition.html">SortDefinition&lt;TDocument&gt;</a> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_sort_definition_builder.html#a52e5b5cc49047f3818ceaafc09b2c9cb">Descending</a>(Expression&lt;Func&lt;TDocument, object&gt;&gt; field)</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;        {</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_sort_definition_builder.html#a4b9b9e0285a8e7f57231532b9114e538">Descending</a>(<span class="keyword">new</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_expression_field_definition.html">ExpressionFieldDefinition&lt;TDocument&gt;</a>(field));</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;        }</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160; </div>
+<div class="line"><a name="l00181"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_sort_definition_builder.html#a6191bf5071073592691a8cab7f09161f">  181</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_sort_definition.html">SortDefinition&lt;TDocument&gt;</a> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_sort_definition_builder.html#a6191bf5071073592691a8cab7f09161f">MetaTextScore</a>(<span class="keywordtype">string</span> field)</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;        {</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_bson_document_sort_definition.html">BsonDocumentSortDefinition&lt;TDocument&gt;</a>(<span class="keyword">new</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_document.html">BsonDocument</a>(field, <span class="keyword">new</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_document.html">BsonDocument</a>(<span class="stringliteral">&quot;$meta&quot;</span>, <span class="stringliteral">&quot;textScore&quot;</span>)));</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;        }</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;    }</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160; </div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;    <span class="keyword">internal</span> sealed <span class="keyword">class </span>CombinedSortDefinition&lt;TDocument&gt; : SortDefinition&lt;TDocument&gt;</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;    {</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;        <span class="keyword">private</span> readonly List&lt;SortDefinition&lt;TDocument&gt;&gt; _sorts;</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160; </div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;        <span class="keyword">public</span> CombinedSortDefinition(IEnumerable&lt;SortDefinition&lt;TDocument&gt;&gt; sorts)</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;        {</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;            _sorts = Ensure.IsNotNull(sorts, nameof(sorts)).ToList();</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;        }</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160; </div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_document.html">BsonDocument</a> Render(<a class="code" href="interface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_serializer.html">IBsonSerializer&lt;TDocument&gt;</a> documentSerializer, <a class="code" href="interface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_serializer_registry.html">IBsonSerializerRegistry</a> serializerRegistry)</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;        {</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;            var document = <span class="keyword">new</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_document.html">BsonDocument</a>();</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160; </div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;            <span class="keywordflow">foreach</span> (var sort <span class="keywordflow">in</span> _sorts)</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;            {</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;                var renderedSort = sort.Render(documentSerializer, serializerRegistry);</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160; </div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;                <span class="keywordflow">foreach</span> (var element <span class="keywordflow">in</span> renderedSort.Elements)</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;                {</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;                    <span class="comment">// the last sort always wins, and we need to make sure that order is preserved.</span></div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;                    document.Remove(element.Name);</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;                    document.Add(element);</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;                }</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;            }</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160; </div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;            <span class="keywordflow">return</span> document;</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;        }</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;    }</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160; </div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;    <span class="keyword">internal</span> sealed <span class="keyword">class </span>DirectionalSortDefinition&lt;TDocument&gt; : SortDefinition&lt;TDocument&gt;</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;    {</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;        <span class="keyword">private</span> readonly FieldDefinition&lt;TDocument&gt; _field;</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;        <span class="keyword">private</span> readonly <a class="code" href="namespace_mongo_d_b_1_1_driver.html#a503c2c6cdf673530cc72be2130342795">SortDirection</a> _direction;</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160; </div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;        <span class="keyword">public</span> DirectionalSortDefinition(FieldDefinition&lt;TDocument&gt; field, <a class="code" href="namespace_mongo_d_b_1_1_driver.html#a503c2c6cdf673530cc72be2130342795">SortDirection</a> direction)</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;        {</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;            _field = Ensure.IsNotNull(field, nameof(field));</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;            _direction = direction;</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;        }</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160; </div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_document.html">BsonDocument</a> Render(<a class="code" href="interface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_serializer.html">IBsonSerializer&lt;TDocument&gt;</a> documentSerializer, <a class="code" href="interface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_serializer_registry.html">IBsonSerializerRegistry</a> serializerRegistry)</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;        {</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;            var renderedField = _field.Render(documentSerializer, serializerRegistry);</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160; </div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;            <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_value.html">BsonValue</a> value;</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;            <span class="keywordflow">switch</span> (_direction)</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;            {</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;                <span class="keywordflow">case</span> <a class="code" href="namespace_mongo_d_b_1_1_driver.html#a503c2c6cdf673530cc72be2130342795">SortDirection</a>.Ascending:</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;                    value = 1;</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;                    <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;                <span class="keywordflow">case</span> <a class="code" href="namespace_mongo_d_b_1_1_driver.html#a503c2c6cdf673530cc72be2130342795">SortDirection</a>.Descending:</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;                    value = -1;</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;                    <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;                <span class="keywordflow">default</span>:</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;                    <span class="keywordflow">throw</span> <span class="keyword">new</span> InvalidOperationException(<span class="stringliteral">&quot;Unknown value for &quot;</span> + typeof(<a class="code" href="namespace_mongo_d_b_1_1_driver.html#a503c2c6cdf673530cc72be2130342795">SortDirection</a>) + <span class="stringliteral">&quot;.&quot;</span>);</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;            }</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160; </div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_document.html">BsonDocument</a>(renderedField.FieldName, value);</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;        }</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;    }</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;}</div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_bson_document_html"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_bson_document.html">MongoDB.Bson.BsonDocument</a></div><div class="ttdoc">Represents a BSON document.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_document_8cs_source.html#l00034">BsonDocument.cs:35</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_bson_value_html"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_bson_value.html">MongoDB.Bson.BsonValue</a></div><div class="ttdoc">Represents a BSON value (this is an abstract class, see the various subclasses).</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_value_8cs_source.html#l00028">BsonValue.cs:29</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_bson_document_sort_definition_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_bson_document_sort_definition.html">MongoDB.Driver.BsonDocumentSortDefinition</a></div><div class="ttdoc">A BsonDocument based sort.</div><div class="ttdef"><b>Definition:</b> <a href="_sort_definition_8cs_source.html#l00092">SortDefinition.cs:93</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_expression_field_definition_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_expression_field_definition.html">MongoDB.Driver.ExpressionFieldDefinition</a></div><div class="ttdoc">An Expression based field.</div><div class="ttdef"><b>Definition:</b> <a href="_field_definition_8cs_source.html#l00272">FieldDefinition.cs:273</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_field_definition_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_field_definition.html">MongoDB.Driver.FieldDefinition&lt; TDocument &gt;</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_sort_definition_builder_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_sort_definition_builder.html">MongoDB.Driver.SortDefinitionBuilder</a></div><div class="ttdoc">A builder for a SortDefinition&lt;TDocument&gt;.</div><div class="ttdef"><b>Definition:</b> <a href="_sort_definition_builder_8cs_source.html#l00113">SortDefinitionBuilder.cs:114</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_sort_definition_builder_html_a3013ad948852a8f25be2297d1c5b212a"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_sort_definition_builder.html#a3013ad948852a8f25be2297d1c5b212a">MongoDB.Driver.SortDefinitionBuilder.Ascending</a></div><div class="ttdeci">SortDefinition&lt; TDocument &gt; Ascending(FieldDefinition&lt; TDocument &gt; field)</div><div class="ttdoc">Creates an ascending sort.</div><div class="ttdef"><b>Definition:</b> <a href="_sort_definition_builder_8cs_source.html#l00120">SortDefinitionBuilder.cs:120</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_sort_definition_builder_html_a4b9b9e0285a8e7f57231532b9114e538"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_sort_definition_builder.html#a4b9b9e0285a8e7f57231532b9114e538">MongoDB.Driver.SortDefinitionBuilder.Descending</a></div><div class="ttdeci">SortDefinition&lt; TDocument &gt; Descending(FieldDefinition&lt; TDocument &gt; field)</div><div class="ttdoc">Creates a descending sort.</div><div class="ttdef"><b>Definition:</b> <a href="_sort_definition_builder_8cs_source.html#l00160">SortDefinitionBuilder.cs:160</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_sort_definition_builder_html_a52e5b5cc49047f3818ceaafc09b2c9cb"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_sort_definition_builder.html#a52e5b5cc49047f3818ceaafc09b2c9cb">MongoDB.Driver.SortDefinitionBuilder.Descending</a></div><div class="ttdeci">SortDefinition&lt; TDocument &gt; Descending(Expression&lt; Func&lt; TDocument, object &gt;&gt; field)</div><div class="ttdoc">Creates a descending sort.</div><div class="ttdef"><b>Definition:</b> <a href="_sort_definition_builder_8cs_source.html#l00170">SortDefinitionBuilder.cs:170</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_sort_definition_builder_html_a6191bf5071073592691a8cab7f09161f"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_sort_definition_builder.html#a6191bf5071073592691a8cab7f09161f">MongoDB.Driver.SortDefinitionBuilder.MetaTextScore</a></div><div class="ttdeci">SortDefinition&lt; TDocument &gt; MetaTextScore(string field)</div><div class="ttdoc">Creates a descending sort on the computed relevance score of a text search. The name of the key shoul...</div><div class="ttdef"><b>Definition:</b> <a href="_sort_definition_builder_8cs_source.html#l00181">SortDefinitionBuilder.cs:181</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_sort_definition_builder_html_a8555c5a3c83f911eb9713504033c3c88"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_sort_definition_builder.html#a8555c5a3c83f911eb9713504033c3c88">MongoDB.Driver.SortDefinitionBuilder.Ascending</a></div><div class="ttdeci">SortDefinition&lt; TDocument &gt; Ascending(Expression&lt; Func&lt; TDocument, object &gt;&gt; field)</div><div class="ttdoc">Creates an ascending sort.</div><div class="ttdef"><b>Definition:</b> <a href="_sort_definition_builder_8cs_source.html#l00130">SortDefinitionBuilder.cs:130</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_sort_definition_builder_html_abcffdbe3d238d2cd82b721a33fccd72e"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_sort_definition_builder.html#abcffdbe3d238d2cd82b721a33fccd72e">MongoDB.Driver.SortDefinitionBuilder.Combine</a></div><div class="ttdeci">SortDefinition&lt; TDocument &gt; Combine(IEnumerable&lt; SortDefinition&lt; TDocument &gt;&gt; sorts)</div><div class="ttdoc">Creates a combined sort.</div><div class="ttdef"><b>Definition:</b> <a href="_sort_definition_builder_8cs_source.html#l00150">SortDefinitionBuilder.cs:150</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_sort_definition_builder_html_ae1fe03d4ca508974533ec54105004848"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_sort_definition_builder.html#ae1fe03d4ca508974533ec54105004848">MongoDB.Driver.SortDefinitionBuilder.Combine</a></div><div class="ttdeci">SortDefinition&lt; TDocument &gt; Combine(params SortDefinition&lt; TDocument &gt;[] sorts)</div><div class="ttdoc">Creates a combined sort.</div><div class="ttdef"><b>Definition:</b> <a href="_sort_definition_builder_8cs_source.html#l00140">SortDefinitionBuilder.cs:140</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_sort_definition_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_sort_definition.html">MongoDB.Driver.SortDefinition</a></div><div class="ttdoc">Base class for sorts.</div><div class="ttdef"><b>Definition:</b> <a href="_sort_definition_8cs_source.html#l00043">SortDefinition.cs:44</a></div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_serializer_html"><div class="ttname"><a href="interface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_serializer.html">MongoDB.Bson.Serialization.IBsonSerializer&lt; TDocument &gt;</a></div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_serializer_registry_html"><div class="ttname"><a href="interface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_serializer_registry.html">MongoDB.Bson.Serialization.IBsonSerializerRegistry</a></div><div class="ttdoc">A serializer registry.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_serialization_2_i_bson_serializer_registry_8cs_source.html#l00023">IBsonSerializerRegistry.cs:24</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_bson_1_1_i_o_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_bson_1_1_i_o.html">MongoDB.Bson.IO</a></div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_i_o_2_array_element_name_accelerator_8cs_source.html#l00018">ArrayElementNameAccelerator.cs:19</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_bson_1_1_serialization_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_bson_1_1_serialization.html">MongoDB.Bson.Serialization</a></div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_serialization_2_attributed_serialization_provider_8cs_source.html#l00021">AttributedSerializationProvider.cs:22</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_bson_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_bson.html">MongoDB.Bson</a></div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_bson_constants_8cs_source.html#l00018">BsonConstants.cs:19</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_driver_1_1_core_1_1_misc_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_misc.html">MongoDB.Driver.Core.Misc</a></div><div class="ttdef"><b>Definition:</b> <a href="_array_filters_feature_8cs_source.html#l00020">ArrayFiltersFeature.cs:21</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_driver_1_1_core_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_driver_1_1_core.html">MongoDB.Driver.Core</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_queue_8cs_source.html#l00023">AsyncQueue.cs:24</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_driver_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_driver.html">MongoDB.Driver</a></div><div class="ttdef"><b>Definition:</b> <a href="_aggregate_bucket_auto_granularity_8cs_source.html#l00018">AggregateBucketAutoGranularity.cs:19</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_driver_html_a503c2c6cdf673530cc72be2130342795"><div class="ttname"><a href="namespace_mongo_d_b_1_1_driver.html#a503c2c6cdf673530cc72be2130342795">MongoDB.Driver.SortDirection</a></div><div class="ttdeci">SortDirection</div><div class="ttdoc">The direction of the sort.</div><div class="ttdef"><b>Definition:</b> <a href="_sort_definition_8cs_source.html#l00027">SortDefinition.cs:28</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_html"><div class="ttname"><a href="namespace_mongo_d_b.html">MongoDB</a></div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_bson_constants_8cs_source.html#l00018">BsonConstants.cs:19</a></div></div>
+<div class="ttc" id="anamespace_system_html"><div class="ttname"><a href="namespace_system.html">System</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_method_builder_attribute_8cs_source.html#l00001">AsyncMethodBuilderAttribute.cs:2</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_1e261a42b4a2e33df58a15c412684b10.html">ETServer</a></li><li class="navelem"><a class="el" href="dir_473c270c995194c5ad99131d9c901f09.html">Server</a></li><li class="navelem"><a class="el" href="dir_ce426efcf63311ff42488fb2654bd4b4.html">ThirdParty</a></li><li class="navelem"><a class="el" href="dir_a37b2b5f9c8890cc9f6f8392fb0cdff3.html">MongoDBDriver</a></li><li class="navelem"><a class="el" href="dir_42d569251c6b173c0060c74ec4fd3ce0.html">MongoDB.Driver</a></li><li class="navelem"><a class="el" href="_sort_definition_builder_8cs.html">SortDefinitionBuilder.cs</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:25:00 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

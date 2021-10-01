@@ -1,0 +1,202 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: Assets/Scripts/Hotfix/ReferencePool/ReferencePoolInfo.cs 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_hotfix_2_reference_pool_2_reference_pool_info_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">ReferencePoolInfo.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_hotfix_2_reference_pool_2_reference_pool_info_8cs.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">//------------------------------------------------------------</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">// Game Framework</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">// Copyright © 2013-2021 Jiang Yin. All rights reserved.</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">// Homepage: https://gameframework.cn/</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">// Feedback: mailto:ellan@gameframework.cn</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">//------------------------------------------------------------</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.<a class="code" href="namespace_system_1_1_runtime.html">Runtime</a>.InteropServices;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_linity_1_1_hotfix.html">Linity.Hotfix</a></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;{</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    [StructLayout(LayoutKind.Auto)]</div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="struct_linity_1_1_hotfix_1_1_reference_pool_info.html">   17</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">struct </span><a class="code" href="struct_linity_1_1_hotfix_1_1_reference_pool_info.html">ReferencePoolInfo</a></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    {</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <span class="keyword">private</span> readonly <a class="code" href="struct_linity_1_1_hotfix_1_1_reference_pool_info.html#a41b539a3a35ce0855cb3a4ce19747331">Type</a> m_Type;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        <span class="keyword">private</span> readonly <span class="keywordtype">int</span> m_UnusedReferenceCount;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <span class="keyword">private</span> readonly <span class="keywordtype">int</span> m_UsingReferenceCount;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <span class="keyword">private</span> readonly <span class="keywordtype">int</span> m_AcquireReferenceCount;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <span class="keyword">private</span> readonly <span class="keywordtype">int</span> m_ReleaseReferenceCount;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <span class="keyword">private</span> readonly <span class="keywordtype">int</span> m_AddReferenceCount;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <span class="keyword">private</span> readonly <span class="keywordtype">int</span> m_RemoveReferenceCount;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="struct_linity_1_1_hotfix_1_1_reference_pool_info.html#a003e8fdee48283ae37018af38e47240c">   37</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="struct_linity_1_1_hotfix_1_1_reference_pool_info.html#a003e8fdee48283ae37018af38e47240c">ReferencePoolInfo</a>(<a class="code" href="struct_linity_1_1_hotfix_1_1_reference_pool_info.html#a41b539a3a35ce0855cb3a4ce19747331">Type</a> type, <span class="keywordtype">int</span> unusedReferenceCount, <span class="keywordtype">int</span> usingReferenceCount, <span class="keywordtype">int</span> acquireReferenceCount, <span class="keywordtype">int</span> releaseReferenceCount, <span class="keywordtype">int</span> addReferenceCount, <span class="keywordtype">int</span> removeReferenceCount)</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        {</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;            m_Type = type;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            m_UnusedReferenceCount = unusedReferenceCount;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            m_UsingReferenceCount = usingReferenceCount;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;            m_AcquireReferenceCount = acquireReferenceCount;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;            m_ReleaseReferenceCount = releaseReferenceCount;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            m_AddReferenceCount = addReferenceCount;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            m_RemoveReferenceCount = removeReferenceCount;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        }</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="struct_linity_1_1_hotfix_1_1_reference_pool_info.html#a41b539a3a35ce0855cb3a4ce19747331">   51</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="struct_linity_1_1_hotfix_1_1_reference_pool_info.html#a41b539a3a35ce0855cb3a4ce19747331">Type</a> <a class="code" href="struct_linity_1_1_hotfix_1_1_reference_pool_info.html#a41b539a3a35ce0855cb3a4ce19747331">Type</a></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        {</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            <span class="keyword">get</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            {</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                <span class="keywordflow">return</span> m_Type;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            }</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        }</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="struct_linity_1_1_hotfix_1_1_reference_pool_info.html#ac9e29e698e9d4379e85c1ca96cb267a0">   62</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">int</span> <a class="code" href="struct_linity_1_1_hotfix_1_1_reference_pool_info.html#ac9e29e698e9d4379e85c1ca96cb267a0">UnusedReferenceCount</a></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        {</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            <span class="keyword">get</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            {</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                <span class="keywordflow">return</span> m_UnusedReferenceCount;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            }</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        }</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
+<div class="line"><a name="l00073"></a><span class="lineno"><a class="line" href="struct_linity_1_1_hotfix_1_1_reference_pool_info.html#ab8e2d46e217c5c4dafcc3e23f973a810">   73</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">int</span> <a class="code" href="struct_linity_1_1_hotfix_1_1_reference_pool_info.html#ab8e2d46e217c5c4dafcc3e23f973a810">UsingReferenceCount</a></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        {</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            <span class="keyword">get</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            {</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                <span class="keywordflow">return</span> m_UsingReferenceCount;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            }</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        }</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
+<div class="line"><a name="l00084"></a><span class="lineno"><a class="line" href="struct_linity_1_1_hotfix_1_1_reference_pool_info.html#a17533cb1141d41fc604ab102bfb42b41">   84</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">int</span> <a class="code" href="struct_linity_1_1_hotfix_1_1_reference_pool_info.html#a17533cb1141d41fc604ab102bfb42b41">AcquireReferenceCount</a></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        {</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            <span class="keyword">get</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;            {</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                <span class="keywordflow">return</span> m_AcquireReferenceCount;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;            }</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        }</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
+<div class="line"><a name="l00095"></a><span class="lineno"><a class="line" href="struct_linity_1_1_hotfix_1_1_reference_pool_info.html#ae597d53a6631a576919fc693003105f9">   95</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">int</span> <a class="code" href="struct_linity_1_1_hotfix_1_1_reference_pool_info.html#ae597d53a6631a576919fc693003105f9">ReleaseReferenceCount</a></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        {</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;            <span class="keyword">get</span></div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;            {</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                <span class="keywordflow">return</span> m_ReleaseReferenceCount;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;            }</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        }</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
+<div class="line"><a name="l00106"></a><span class="lineno"><a class="line" href="struct_linity_1_1_hotfix_1_1_reference_pool_info.html#a1c60cf0fb7ee8295ac3a6f81c7400369">  106</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">int</span> <a class="code" href="struct_linity_1_1_hotfix_1_1_reference_pool_info.html#a1c60cf0fb7ee8295ac3a6f81c7400369">AddReferenceCount</a></div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        {</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;            <span class="keyword">get</span></div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;            {</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;                <span class="keywordflow">return</span> m_AddReferenceCount;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;            }</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        }</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160; </div>
+<div class="line"><a name="l00117"></a><span class="lineno"><a class="line" href="struct_linity_1_1_hotfix_1_1_reference_pool_info.html#ac66e63d94bd13de5a6042c64cf00354c">  117</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">int</span> <a class="code" href="struct_linity_1_1_hotfix_1_1_reference_pool_info.html#ac66e63d94bd13de5a6042c64cf00354c">RemoveReferenceCount</a></div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        {</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;            <span class="keyword">get</span></div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;            {</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;                <span class="keywordflow">return</span> m_RemoveReferenceCount;</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;            }</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        }</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    }</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;}</div>
+<div class="ttc" id="anamespace_linity_1_1_hotfix_html"><div class="ttname"><a href="namespace_linity_1_1_hotfix.html">Linity.Hotfix</a></div><div class="ttdef"><b>Definition:</b> <a href="_hotfix_2_base_2_variable_2_base_2_generic_variable_8cs_source.html#l00010">GenericVariable.cs:11</a></div></div>
+<div class="ttc" id="anamespace_system_1_1_runtime_html"><div class="ttname"><a href="namespace_system_1_1_runtime.html">System.Runtime</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_method_builder_attribute_8cs_source.html#l00001">AsyncMethodBuilderAttribute.cs:2</a></div></div>
+<div class="ttc" id="anamespace_system_html"><div class="ttname"><a href="namespace_system.html">System</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_method_builder_attribute_8cs_source.html#l00001">AsyncMethodBuilderAttribute.cs:2</a></div></div>
+<div class="ttc" id="astruct_linity_1_1_hotfix_1_1_reference_pool_info_html"><div class="ttname"><a href="struct_linity_1_1_hotfix_1_1_reference_pool_info.html">Linity.Hotfix.ReferencePoolInfo</a></div><div class="ttdoc">引用池信息。</div><div class="ttdef"><b>Definition:</b> <a href="_hotfix_2_reference_pool_2_reference_pool_info_8cs_source.html#l00017">ReferencePoolInfo.cs:18</a></div></div>
+<div class="ttc" id="astruct_linity_1_1_hotfix_1_1_reference_pool_info_html_a003e8fdee48283ae37018af38e47240c"><div class="ttname"><a href="struct_linity_1_1_hotfix_1_1_reference_pool_info.html#a003e8fdee48283ae37018af38e47240c">Linity.Hotfix.ReferencePoolInfo.ReferencePoolInfo</a></div><div class="ttdeci">ReferencePoolInfo(Type type, int unusedReferenceCount, int usingReferenceCount, int acquireReferenceCount, int releaseReferenceCount, int addReferenceCount, int removeReferenceCount)</div><div class="ttdoc">初始化引用池信息的新实例。</div><div class="ttdef"><b>Definition:</b> <a href="_hotfix_2_reference_pool_2_reference_pool_info_8cs_source.html#l00037">ReferencePoolInfo.cs:37</a></div></div>
+<div class="ttc" id="astruct_linity_1_1_hotfix_1_1_reference_pool_info_html_a17533cb1141d41fc604ab102bfb42b41"><div class="ttname"><a href="struct_linity_1_1_hotfix_1_1_reference_pool_info.html#a17533cb1141d41fc604ab102bfb42b41">Linity.Hotfix.ReferencePoolInfo.AcquireReferenceCount</a></div><div class="ttdeci">int AcquireReferenceCount</div><div class="ttdoc">获取获取引用数量。</div><div class="ttdef"><b>Definition:</b> <a href="_hotfix_2_reference_pool_2_reference_pool_info_8cs_source.html#l00084">ReferencePoolInfo.cs:85</a></div></div>
+<div class="ttc" id="astruct_linity_1_1_hotfix_1_1_reference_pool_info_html_a1c60cf0fb7ee8295ac3a6f81c7400369"><div class="ttname"><a href="struct_linity_1_1_hotfix_1_1_reference_pool_info.html#a1c60cf0fb7ee8295ac3a6f81c7400369">Linity.Hotfix.ReferencePoolInfo.AddReferenceCount</a></div><div class="ttdeci">int AddReferenceCount</div><div class="ttdoc">获取增加引用数量。</div><div class="ttdef"><b>Definition:</b> <a href="_hotfix_2_reference_pool_2_reference_pool_info_8cs_source.html#l00106">ReferencePoolInfo.cs:107</a></div></div>
+<div class="ttc" id="astruct_linity_1_1_hotfix_1_1_reference_pool_info_html_a41b539a3a35ce0855cb3a4ce19747331"><div class="ttname"><a href="struct_linity_1_1_hotfix_1_1_reference_pool_info.html#a41b539a3a35ce0855cb3a4ce19747331">Linity.Hotfix.ReferencePoolInfo.Type</a></div><div class="ttdeci">Type Type</div><div class="ttdoc">获取引用池类型。</div><div class="ttdef"><b>Definition:</b> <a href="_hotfix_2_reference_pool_2_reference_pool_info_8cs_source.html#l00051">ReferencePoolInfo.cs:52</a></div></div>
+<div class="ttc" id="astruct_linity_1_1_hotfix_1_1_reference_pool_info_html_ab8e2d46e217c5c4dafcc3e23f973a810"><div class="ttname"><a href="struct_linity_1_1_hotfix_1_1_reference_pool_info.html#ab8e2d46e217c5c4dafcc3e23f973a810">Linity.Hotfix.ReferencePoolInfo.UsingReferenceCount</a></div><div class="ttdeci">int UsingReferenceCount</div><div class="ttdoc">获取正在使用引用数量。</div><div class="ttdef"><b>Definition:</b> <a href="_hotfix_2_reference_pool_2_reference_pool_info_8cs_source.html#l00073">ReferencePoolInfo.cs:74</a></div></div>
+<div class="ttc" id="astruct_linity_1_1_hotfix_1_1_reference_pool_info_html_ac66e63d94bd13de5a6042c64cf00354c"><div class="ttname"><a href="struct_linity_1_1_hotfix_1_1_reference_pool_info.html#ac66e63d94bd13de5a6042c64cf00354c">Linity.Hotfix.ReferencePoolInfo.RemoveReferenceCount</a></div><div class="ttdeci">int RemoveReferenceCount</div><div class="ttdoc">获取移除引用数量。</div><div class="ttdef"><b>Definition:</b> <a href="_hotfix_2_reference_pool_2_reference_pool_info_8cs_source.html#l00117">ReferencePoolInfo.cs:118</a></div></div>
+<div class="ttc" id="astruct_linity_1_1_hotfix_1_1_reference_pool_info_html_ac9e29e698e9d4379e85c1ca96cb267a0"><div class="ttname"><a href="struct_linity_1_1_hotfix_1_1_reference_pool_info.html#ac9e29e698e9d4379e85c1ca96cb267a0">Linity.Hotfix.ReferencePoolInfo.UnusedReferenceCount</a></div><div class="ttdeci">int UnusedReferenceCount</div><div class="ttdoc">获取未使用引用数量。</div><div class="ttdef"><b>Definition:</b> <a href="_hotfix_2_reference_pool_2_reference_pool_info_8cs_source.html#l00062">ReferencePoolInfo.cs:63</a></div></div>
+<div class="ttc" id="astruct_linity_1_1_hotfix_1_1_reference_pool_info_html_ae597d53a6631a576919fc693003105f9"><div class="ttname"><a href="struct_linity_1_1_hotfix_1_1_reference_pool_info.html#ae597d53a6631a576919fc693003105f9">Linity.Hotfix.ReferencePoolInfo.ReleaseReferenceCount</a></div><div class="ttdeci">int ReleaseReferenceCount</div><div class="ttdoc">获取归还引用数量。</div><div class="ttdef"><b>Definition:</b> <a href="_hotfix_2_reference_pool_2_reference_pool_info_8cs_source.html#l00095">ReferencePoolInfo.cs:96</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_84bbf7b3c7f28a5a18725745e1505219.html">Assets</a></li><li class="navelem"><a class="el" href="dir_f13b41af88cf68434578284aaf699e39.html">Scripts</a></li><li class="navelem"><a class="el" href="dir_75935e138bec93c4cadb3fa5f697868b.html">Hotfix</a></li><li class="navelem"><a class="el" href="dir_1953ed92856ac8e5b035b7916fea12b7.html">ReferencePool</a></li><li class="navelem"><a class="el" href="_hotfix_2_reference_pool_2_reference_pool_info_8cs.html">ReferencePoolInfo.cs</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:24:45 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

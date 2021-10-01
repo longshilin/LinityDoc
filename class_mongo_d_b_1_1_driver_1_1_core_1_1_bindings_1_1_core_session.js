@@ -1,0 +1,25 @@
+var class_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_core_session =
+[
+    [ "CoreSession", "class_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_core_session.html#a7d99d4b0764c420168d17c4ab6ea1748", null ],
+    [ "AbortTransaction", "class_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_core_session.html#a3f1f469a0a316b2e89605cf9072526e7", null ],
+    [ "AbortTransactionAsync", "class_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_core_session.html#ac4d73934fbd69a21db9cf71c5175df09", null ],
+    [ "AboutToSendCommand", "class_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_core_session.html#a8949a0df89c6b4f4aac79c62a005fef6", null ],
+    [ "AdvanceClusterTime", "class_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_core_session.html#a6f1efaaad5e7e20c75affbc808c84c68", null ],
+    [ "AdvanceOperationTime", "class_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_core_session.html#ae070346349cc4667c6a5edd7d4eda896", null ],
+    [ "AdvanceTransactionNumber", "class_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_core_session.html#ac5153e14145b3f9a69ea32e389da4bf5", null ],
+    [ "CommitTransaction", "class_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_core_session.html#aa2c426273900fe1010ab879cd95ac381", null ],
+    [ "CommitTransactionAsync", "class_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_core_session.html#adf55f03b993aaf1f39e46d8565bb70b3", null ],
+    [ "Dispose", "class_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_core_session.html#a3fd5640bc579aa39c54288bb5e743a76", null ],
+    [ "StartTransaction", "class_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_core_session.html#a2b6f847704cd446f4f92651815f971e0", null ],
+    [ "WasUsed", "class_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_core_session.html#ae44613ec215b2c93622cb6345759ca0f", null ],
+    [ "Cluster", "class_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_core_session.html#af0ec3925bee1fd590860c920c472f5ad", null ],
+    [ "ClusterTime", "class_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_core_session.html#a8d6f2165b4ef61171ad1b94c1068fe43", null ],
+    [ "CurrentTransaction", "class_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_core_session.html#a15ed5b2b0cd03905fda9ee8e74f9b0c6", null ],
+    [ "Id", "class_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_core_session.html#acdc4cba12e73a7b37e778e9f5c52be97", null ],
+    [ "IsCausallyConsistent", "class_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_core_session.html#a2bd52058e3a8b0a344936ec31840896e", null ],
+    [ "IsImplicit", "class_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_core_session.html#a3f46d5fb5f9f0ba650b5d893bf424f5f", null ],
+    [ "IsInTransaction", "class_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_core_session.html#af177eeaae1c15ed1629b318e691071c8", null ],
+    [ "OperationTime", "class_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_core_session.html#a7c347afbaa4a797382c5e4efa05335cc", null ],
+    [ "Options", "class_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_core_session.html#a51cd7568ec54517c1e596e583efaa52b", null ],
+    [ "ServerSession", "class_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_core_session.html#ae6ddfbac12a7164d0849d5df6334d4cc", null ]
+];

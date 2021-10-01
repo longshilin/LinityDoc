@@ -1,0 +1,484 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: Assets/Scripts/Libraries/GameFramework/Scripts/Runtime/Base/BaseComponent.cs 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_base_component_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">BaseComponent.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_base_component_8cs.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">//------------------------------------------------------------</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">// Game Framework</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">// Copyright © 2013-2021 Jiang Yin. All rights reserved.</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">// Homepage: https://gameframework.cn/</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">// Feedback: mailto:ellan@gameframework.cn</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">//------------------------------------------------------------</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_game_framework.html">GameFramework</a>;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_game_framework.html">GameFramework</a>.<a class="code" href="namespace_game_framework_1_1_localization.html">Localization</a>;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_game_framework.html">GameFramework</a>.<a class="code" href="namespace_game_framework_1_1_resource.html">Resource</a>;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_unity_engine.html">UnityEngine</a>;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="namespace_unity_game_framework_1_1_runtime.html">   14</a></span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_unity_game_framework_1_1_runtime.html">UnityGameFramework.Runtime</a></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;{</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    [DisallowMultipleComponent]</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    [AddComponentMenu(<span class="stringliteral">&quot;Game Framework/Base&quot;</span>)]</div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="class_unity_game_framework_1_1_runtime_1_1_base_component.html">   21</a></span>&#160;    <span class="keyword">public</span> sealed <span class="keyword">class </span><a class="code" href="class_unity_game_framework_1_1_runtime_1_1_base_component.html">BaseComponent</a> : <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_game_framework_component.html">GameFrameworkComponent</a></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    {</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <span class="keyword">private</span> <span class="keyword">const</span> <span class="keywordtype">int</span> DefaultDpi = 96;  <span class="comment">// default windows dpi</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">float</span> m_GameSpeedBeforePause = 1f;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        [SerializeField]</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">bool</span> m_EditorResourceMode = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        [SerializeField]</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <span class="keyword">private</span> <a class="code" href="namespace_game_framework_1_1_localization.html#ad3cfd4367154c84f04c26389b0f811ac">Language</a> m_EditorLanguage = <a class="code" href="namespace_game_framework_1_1_localization.html#ad3cfd4367154c84f04c26389b0f811ac">Language</a>.Unspecified;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        [SerializeField]</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">string</span> m_VersionHelperTypeName = <span class="stringliteral">&quot;UnityGameFramework.Runtime.DefaultVersionHelper&quot;</span>;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        [SerializeField]</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">string</span> m_LogHelperTypeName = <span class="stringliteral">&quot;UnityGameFramework.Runtime.DefaultLogHelper&quot;</span>;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        [SerializeField]</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">string</span> m_CompressionHelperTypeName = <span class="stringliteral">&quot;UnityGameFramework.Runtime.DefaultCompressionHelper&quot;</span>;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        [SerializeField]</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">string</span> m_JsonHelperTypeName = <span class="stringliteral">&quot;UnityGameFramework.Runtime.DefaultJsonHelper&quot;</span>;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        [SerializeField]</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">int</span> m_FrameRate = 30;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        [SerializeField]</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">float</span> m_GameSpeed = 1f;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        [SerializeField]</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">bool</span> m_RunInBackground = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        [SerializeField]</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">bool</span> m_NeverSleep = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="class_unity_game_framework_1_1_runtime_1_1_base_component.html#a1014f5f50c35e6fc3bcfe1ef1994b177">   60</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_base_component.html#a1014f5f50c35e6fc3bcfe1ef1994b177">EditorResourceMode</a></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        {</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            <span class="keyword">get</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;            {</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                <span class="keywordflow">return</span> m_EditorResourceMode;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            }</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            <span class="keyword">set</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            {</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                m_EditorResourceMode = value;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            }</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        }</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
+<div class="line"><a name="l00075"></a><span class="lineno"><a class="line" href="class_unity_game_framework_1_1_runtime_1_1_base_component.html#a70476104a24c065b86d4046ccba65d5d">   75</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="namespace_game_framework_1_1_localization.html#ad3cfd4367154c84f04c26389b0f811ac">Language</a> <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_base_component.html#a70476104a24c065b86d4046ccba65d5d">EditorLanguage</a></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        {</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            <span class="keyword">get</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            {</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                <span class="keywordflow">return</span> m_EditorLanguage;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            }</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            <span class="keyword">set</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            {</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                m_EditorLanguage = value;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;            }</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        }</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
+<div class="line"><a name="l00090"></a><span class="lineno"><a class="line" href="class_unity_game_framework_1_1_runtime_1_1_base_component.html#a769085304b5e5521c07c82d7dd41ba34">   90</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="interface_game_framework_1_1_resource_1_1_i_resource_manager.html">IResourceManager</a> <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_base_component.html#a769085304b5e5521c07c82d7dd41ba34">EditorResourceHelper</a></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        {</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;            <span class="keyword">get</span>;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;            <span class="keyword">set</span>;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        }</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
+<div class="line"><a name="l00099"></a><span class="lineno"><a class="line" href="class_unity_game_framework_1_1_runtime_1_1_base_component.html#ac6500c2fe571e1d4f894de763f42d3ba">   99</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">int</span> <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_base_component.html#ac6500c2fe571e1d4f894de763f42d3ba">FrameRate</a></div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        {</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;            <span class="keyword">get</span></div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;            {</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;                <span class="keywordflow">return</span> m_FrameRate;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;            }</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;            <span class="keyword">set</span></div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;            {</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;                Application.targetFrameRate = m_FrameRate = value;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;            }</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        }</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160; </div>
+<div class="line"><a name="l00114"></a><span class="lineno"><a class="line" href="class_unity_game_framework_1_1_runtime_1_1_base_component.html#a4cd4093bffafa05e465e1a8f6ded8de6">  114</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">float</span> <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_base_component.html#a4cd4093bffafa05e465e1a8f6ded8de6">GameSpeed</a></div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        {</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;            <span class="keyword">get</span></div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;            {</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;                <span class="keywordflow">return</span> m_GameSpeed;</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;            }</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;            <span class="keyword">set</span></div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;            {</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;                Time.timeScale = m_GameSpeed = value &gt;= 0f ? value : 0f;</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;            }</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        }</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160; </div>
+<div class="line"><a name="l00129"></a><span class="lineno"><a class="line" href="class_unity_game_framework_1_1_runtime_1_1_base_component.html#a0489f7baf1d5ceb6e37c43ba5666821b">  129</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_base_component.html#a0489f7baf1d5ceb6e37c43ba5666821b">IsGamePaused</a></div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        {</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;            <span class="keyword">get</span></div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;            {</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;                <span class="keywordflow">return</span> m_GameSpeed &lt;= 0f;</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;            }</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;        }</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160; </div>
+<div class="line"><a name="l00140"></a><span class="lineno"><a class="line" href="class_unity_game_framework_1_1_runtime_1_1_base_component.html#a3f34a0d24b5ce03aadd67d4c365e96f7">  140</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_base_component.html#a3f34a0d24b5ce03aadd67d4c365e96f7">IsNormalGameSpeed</a></div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;        {</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;            <span class="keyword">get</span></div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;            {</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;                <span class="keywordflow">return</span> m_GameSpeed == 1f;</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;            }</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;        }</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160; </div>
+<div class="line"><a name="l00151"></a><span class="lineno"><a class="line" href="class_unity_game_framework_1_1_runtime_1_1_base_component.html#af0b507c3652c3e055eed86ebea681ec9">  151</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_base_component.html#af0b507c3652c3e055eed86ebea681ec9">RunInBackground</a></div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;        {</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;            <span class="keyword">get</span></div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;            {</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;                <span class="keywordflow">return</span> m_RunInBackground;</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;            }</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;            <span class="keyword">set</span></div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;            {</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;                Application.runInBackground = m_RunInBackground = value;</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;            }</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;        }</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160; </div>
+<div class="line"><a name="l00166"></a><span class="lineno"><a class="line" href="class_unity_game_framework_1_1_runtime_1_1_base_component.html#ac95cac1ee592dc4529fab8e6be2a3880">  166</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_base_component.html#ac95cac1ee592dc4529fab8e6be2a3880">NeverSleep</a></div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;        {</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;            <span class="keyword">get</span></div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;            {</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;                <span class="keywordflow">return</span> m_NeverSleep;</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;            }</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;            <span class="keyword">set</span></div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;            {</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;                m_NeverSleep = value;</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;                Screen.sleepTimeout = value ? SleepTimeout.NeverSleep : SleepTimeout.SystemSetting;</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;            }</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;        }</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160; </div>
+<div class="line"><a name="l00182"></a><span class="lineno"><a class="line" href="class_unity_game_framework_1_1_runtime_1_1_base_component.html#a6746ca48fca8f99510c84ab6d4242da8">  182</a></span>&#160;        <span class="keyword">protected</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_base_component.html#a6746ca48fca8f99510c84ab6d4242da8">Awake</a>()</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;        {</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;            base.Awake();</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160; </div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;            InitVersionHelper();</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;            InitLogHelper();</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;            <a class="code" href="_login_form_8cs.html#a6208db3ac52d7f107a612679d0d8eca3">Log</a>.Info(<span class="stringliteral">&quot;Game Framework Version: {0}&quot;</span>, <a class="code" href="namespace_game_framework.html">GameFramework</a>.<a class="code" href="class_game_framework_1_1_version.html">Version</a>.GameFrameworkVersion);</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;            <a class="code" href="_login_form_8cs.html#a6208db3ac52d7f107a612679d0d8eca3">Log</a>.Info(<span class="stringliteral">&quot;Game Version: {0} ({1})&quot;</span>, <a class="code" href="namespace_game_framework.html">GameFramework</a>.<a class="code" href="class_game_framework_1_1_version.html">Version</a>.GameVersion, <a class="code" href="namespace_game_framework.html">GameFramework</a>.<a class="code" href="class_game_framework_1_1_version.html">Version</a>.InternalGameVersion.ToString());</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;            <a class="code" href="_login_form_8cs.html#a6208db3ac52d7f107a612679d0d8eca3">Log</a>.Info(<span class="stringliteral">&quot;Unity Version: {0}&quot;</span>, Application.unityVersion);</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160; </div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;<span class="preprocessor">#if UNITY_5_3_OR_NEWER || UNITY_5_3</span></div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;            InitCompressionHelper();</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;            InitJsonHelper();</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160; </div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;            <a class="code" href="_unity_web_request_download_agent_helper_8cs.html#a9084eedf9b8c1b9c0fb3e425c1f69c1f">Utility</a>.Converter.ScreenDpi = Screen.dpi;</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="_unity_web_request_download_agent_helper_8cs.html#a9084eedf9b8c1b9c0fb3e425c1f69c1f">Utility</a>.Converter.ScreenDpi &lt;= 0)</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;            {</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;                <a class="code" href="_unity_web_request_download_agent_helper_8cs.html#a9084eedf9b8c1b9c0fb3e425c1f69c1f">Utility</a>.Converter.ScreenDpi = DefaultDpi;</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;            }</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160; </div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;            m_EditorResourceMode &amp;= Application.isEditor;</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;            <span class="keywordflow">if</span> (m_EditorResourceMode)</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;            {</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;                <a class="code" href="_login_form_8cs.html#a6208db3ac52d7f107a612679d0d8eca3">Log</a>.Info(<span class="stringliteral">&quot;During this run, Game Framework will use editor resource files, which you should validate first.&quot;</span>);</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;            }</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160; </div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;            Application.targetFrameRate = m_FrameRate;</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;            Time.timeScale = m_GameSpeed;</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;            Application.runInBackground = m_RunInBackground;</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;            Screen.sleepTimeout = m_NeverSleep ? SleepTimeout.NeverSleep : SleepTimeout.SystemSetting;</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;            <a class="code" href="_login_form_8cs.html#a6208db3ac52d7f107a612679d0d8eca3">Log</a>.Error(<span class="stringliteral">&quot;Game Framework only applies with Unity 5.3 and above, but current Unity version is {0}.&quot;</span>, Application.unityVersion);</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;            GameEntry.Shutdown(<a class="code" href="namespace_unity_game_framework_1_1_runtime.html#a4a9403219fee62d17ec96226ec37749a">ShutdownType</a>.Quit);</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;<span class="preprocessor">#if UNITY_5_6_OR_NEWER</span></div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;            Application.lowMemory += OnLowMemory;</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;        }</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160; </div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> Start()</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;        {</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;        }</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160; </div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> Update()</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;        {</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;            GameFrameworkEntry.Update(Time.deltaTime, Time.unscaledDeltaTime);</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;        }</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160; </div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> OnApplicationQuit()</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;        {</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;<span class="preprocessor">#if UNITY_5_6_OR_NEWER</span></div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;            Application.lowMemory -= OnLowMemory;</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;            StopAllCoroutines();</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;        }</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160; </div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> OnDestroy()</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;        {</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;            GameFrameworkEntry.Shutdown();</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;        }</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160; </div>
+<div class="line"><a name="l00246"></a><span class="lineno"><a class="line" href="class_unity_game_framework_1_1_runtime_1_1_base_component.html#a27b582356c7f231f6b9a07513e57de03">  246</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_base_component.html#a27b582356c7f231f6b9a07513e57de03">PauseGame</a>()</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;        {</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="class_unity_game_framework_1_1_runtime_1_1_base_component.html#a0489f7baf1d5ceb6e37c43ba5666821b">IsGamePaused</a>)</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;            {</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;                <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;            }</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160; </div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;            m_GameSpeedBeforePause = <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_base_component.html#a4cd4093bffafa05e465e1a8f6ded8de6">GameSpeed</a>;</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;            <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_base_component.html#a4cd4093bffafa05e465e1a8f6ded8de6">GameSpeed</a> = 0f;</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;        }</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160; </div>
+<div class="line"><a name="l00260"></a><span class="lineno"><a class="line" href="class_unity_game_framework_1_1_runtime_1_1_base_component.html#a3e41b3c43ec2491403a8b01a80d07b91">  260</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_base_component.html#a3e41b3c43ec2491403a8b01a80d07b91">ResumeGame</a>()</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;        {</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;            <span class="keywordflow">if</span> (!<a class="code" href="class_unity_game_framework_1_1_runtime_1_1_base_component.html#a0489f7baf1d5ceb6e37c43ba5666821b">IsGamePaused</a>)</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;            {</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;                <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;            }</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160; </div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;            <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_base_component.html#a4cd4093bffafa05e465e1a8f6ded8de6">GameSpeed</a> = m_GameSpeedBeforePause;</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;        }</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160; </div>
+<div class="line"><a name="l00273"></a><span class="lineno"><a class="line" href="class_unity_game_framework_1_1_runtime_1_1_base_component.html#a866e43097e0103e5519f01670145b5d5">  273</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_base_component.html#a866e43097e0103e5519f01670145b5d5">ResetNormalGameSpeed</a>()</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;        {</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="class_unity_game_framework_1_1_runtime_1_1_base_component.html#a3f34a0d24b5ce03aadd67d4c365e96f7">IsNormalGameSpeed</a>)</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;            {</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;                <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;            }</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160; </div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;            <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_base_component.html#a4cd4093bffafa05e465e1a8f6ded8de6">GameSpeed</a> = 1f;</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;        }</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160; </div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;        <span class="keyword">internal</span> <span class="keywordtype">void</span> Shutdown()</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;        {</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;            Destroy(gameObject);</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;        }</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160; </div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> InitVersionHelper()</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;        {</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;            <span class="keywordflow">if</span> (<span class="keywordtype">string</span>.IsNullOrEmpty(m_VersionHelperTypeName))</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;            {</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;                <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;            }</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160; </div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;            Type versionHelperType = <a class="code" href="_unity_web_request_download_agent_helper_8cs.html#a9084eedf9b8c1b9c0fb3e425c1f69c1f">Utility</a>.Assembly.GetType(m_VersionHelperTypeName);</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;            <span class="keywordflow">if</span> (versionHelperType == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;            {</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> <a class="code" href="class_game_framework_1_1_game_framework_exception.html">GameFrameworkException</a>(<a class="code" href="_unity_web_request_download_agent_helper_8cs.html#a9084eedf9b8c1b9c0fb3e425c1f69c1f">Utility</a>.Text.Format(<span class="stringliteral">&quot;Can not find version helper type &#39;{0}&#39;.&quot;</span>, m_VersionHelperTypeName));</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;            }</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160; </div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;            <a class="code" href="namespace_game_framework.html">GameFramework</a>.<a class="code" href="class_game_framework_1_1_version.html">Version</a>.<a class="code" href="interface_game_framework_1_1_version_1_1_i_version_helper.html">IVersionHelper</a> versionHelper = (<a class="code" href="namespace_game_framework.html">GameFramework</a>.<a class="code" href="class_game_framework_1_1_version.html">Version</a>.<a class="code" href="interface_game_framework_1_1_version_1_1_i_version_helper.html">IVersionHelper</a>)Activator.CreateInstance(versionHelperType);</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;            <span class="keywordflow">if</span> (versionHelper == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;            {</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> <a class="code" href="class_game_framework_1_1_game_framework_exception.html">GameFrameworkException</a>(<a class="code" href="_unity_web_request_download_agent_helper_8cs.html#a9084eedf9b8c1b9c0fb3e425c1f69c1f">Utility</a>.Text.Format(<span class="stringliteral">&quot;Can not create version helper instance &#39;{0}&#39;.&quot;</span>, m_VersionHelperTypeName));</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;            }</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160; </div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;            <a class="code" href="namespace_game_framework.html">GameFramework</a>.<a class="code" href="class_game_framework_1_1_version.html">Version</a>.SetVersionHelper(versionHelper);</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;        }</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160; </div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> InitLogHelper()</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;        {</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;            <span class="keywordflow">if</span> (<span class="keywordtype">string</span>.IsNullOrEmpty(m_LogHelperTypeName))</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;            {</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;                <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;            }</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160; </div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;            <a class="code" href="namespace_mongo_d_b_1_1_bson_1_1_i_o.html#a0fb4b18583b3517bf596f2d4aa07f037aa1fa27779242b4902f7ae3bdd5c6d508">Type</a> logHelperType = <a class="code" href="_unity_web_request_download_agent_helper_8cs.html#a9084eedf9b8c1b9c0fb3e425c1f69c1f">Utility</a>.Assembly.GetType(m_LogHelperTypeName);</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;            <span class="keywordflow">if</span> (logHelperType == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;            {</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> <a class="code" href="class_game_framework_1_1_game_framework_exception.html">GameFrameworkException</a>(<a class="code" href="_unity_web_request_download_agent_helper_8cs.html#a9084eedf9b8c1b9c0fb3e425c1f69c1f">Utility</a>.Text.Format(<span class="stringliteral">&quot;Can not find log helper type &#39;{0}&#39;.&quot;</span>, m_LogHelperTypeName));</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;            }</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160; </div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;            GameFrameworkLog.ILogHelper logHelper = (GameFrameworkLog.ILogHelper)Activator.CreateInstance(logHelperType);</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;            <span class="keywordflow">if</span> (logHelper == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;            {</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> <a class="code" href="class_game_framework_1_1_game_framework_exception.html">GameFrameworkException</a>(<a class="code" href="_unity_web_request_download_agent_helper_8cs.html#a9084eedf9b8c1b9c0fb3e425c1f69c1f">Utility</a>.Text.Format(<span class="stringliteral">&quot;Can not create log helper instance &#39;{0}&#39;.&quot;</span>, m_LogHelperTypeName));</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;            }</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160; </div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;            GameFrameworkLog.SetLogHelper(logHelper);</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;        }</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160; </div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> InitCompressionHelper()</div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;        {</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;            <span class="keywordflow">if</span> (<span class="keywordtype">string</span>.IsNullOrEmpty(m_CompressionHelperTypeName))</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;            {</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;                <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;            }</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160; </div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;            <a class="code" href="namespace_mongo_d_b_1_1_bson_1_1_i_o.html#a0fb4b18583b3517bf596f2d4aa07f037aa1fa27779242b4902f7ae3bdd5c6d508">Type</a> compressionHelperType = <a class="code" href="_unity_web_request_download_agent_helper_8cs.html#a9084eedf9b8c1b9c0fb3e425c1f69c1f">Utility</a>.Assembly.GetType(m_CompressionHelperTypeName);</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;            <span class="keywordflow">if</span> (compressionHelperType == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;            {</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;                <a class="code" href="_login_form_8cs.html#a6208db3ac52d7f107a612679d0d8eca3">Log</a>.Error(<span class="stringliteral">&quot;Can not find compression helper type &#39;{0}&#39;.&quot;</span>, m_CompressionHelperTypeName);</div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;                <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;            }</div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160; </div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;            <a class="code" href="_unity_web_request_download_agent_helper_8cs.html#a9084eedf9b8c1b9c0fb3e425c1f69c1f">Utility</a>.Compression.ICompressionHelper compressionHelper = (<a class="code" href="_unity_web_request_download_agent_helper_8cs.html#a9084eedf9b8c1b9c0fb3e425c1f69c1f">Utility</a>.Compression.ICompressionHelper)Activator.CreateInstance(compressionHelperType);</div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;            <span class="keywordflow">if</span> (compressionHelper == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;            {</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;                <a class="code" href="_login_form_8cs.html#a6208db3ac52d7f107a612679d0d8eca3">Log</a>.Error(<span class="stringliteral">&quot;Can not create compression helper instance &#39;{0}&#39;.&quot;</span>, m_CompressionHelperTypeName);</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;                <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;            }</div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160; </div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;            <a class="code" href="_unity_web_request_download_agent_helper_8cs.html#a9084eedf9b8c1b9c0fb3e425c1f69c1f">Utility</a>.Compression.SetCompressionHelper(compressionHelper);</div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;        }</div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160; </div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> InitJsonHelper()</div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;        {</div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;            <span class="keywordflow">if</span> (<span class="keywordtype">string</span>.IsNullOrEmpty(m_JsonHelperTypeName))</div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;            {</div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;                <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;            }</div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160; </div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;            <a class="code" href="namespace_mongo_d_b_1_1_bson_1_1_i_o.html#a0fb4b18583b3517bf596f2d4aa07f037aa1fa27779242b4902f7ae3bdd5c6d508">Type</a> jsonHelperType = <a class="code" href="_unity_web_request_download_agent_helper_8cs.html#a9084eedf9b8c1b9c0fb3e425c1f69c1f">Utility</a>.Assembly.GetType(m_JsonHelperTypeName);</div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;            <span class="keywordflow">if</span> (jsonHelperType == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;            {</div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;                <a class="code" href="_login_form_8cs.html#a6208db3ac52d7f107a612679d0d8eca3">Log</a>.Error(<span class="stringliteral">&quot;Can not find JSON helper type &#39;{0}&#39;.&quot;</span>, m_JsonHelperTypeName);</div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;                <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;            }</div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160; </div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;            <a class="code" href="_unity_web_request_download_agent_helper_8cs.html#a9084eedf9b8c1b9c0fb3e425c1f69c1f">Utility</a>.Json.IJsonHelper jsonHelper = (<a class="code" href="_unity_web_request_download_agent_helper_8cs.html#a9084eedf9b8c1b9c0fb3e425c1f69c1f">Utility</a>.Json.IJsonHelper)Activator.CreateInstance(jsonHelperType);</div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;            <span class="keywordflow">if</span> (jsonHelper == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;            {</div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;                <a class="code" href="_login_form_8cs.html#a6208db3ac52d7f107a612679d0d8eca3">Log</a>.Error(<span class="stringliteral">&quot;Can not create JSON helper instance &#39;{0}&#39;.&quot;</span>, m_JsonHelperTypeName);</div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;                <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;            }</div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160; </div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;            <a class="code" href="_unity_web_request_download_agent_helper_8cs.html#a9084eedf9b8c1b9c0fb3e425c1f69c1f">Utility</a>.Json.SetJsonHelper(jsonHelper);</div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;        }</div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160; </div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> OnLowMemory()</div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;        {</div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;            <a class="code" href="_login_form_8cs.html#a6208db3ac52d7f107a612679d0d8eca3">Log</a>.Info(<span class="stringliteral">&quot;Low memory reported...&quot;</span>);</div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160; </div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;            ObjectPoolComponent objectPoolComponent = GameEntry.GetComponent&lt;ObjectPoolComponent&gt;();</div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;            <span class="keywordflow">if</span> (objectPoolComponent != <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;            {</div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;                objectPoolComponent.ReleaseAllUnused();</div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;            }</div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160; </div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;            ResourceComponent resourceCompoent = GameEntry.GetComponent&lt;ResourceComponent&gt;();</div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;            <span class="keywordflow">if</span> (resourceCompoent != <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;            {</div>
+<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;                resourceCompoent.ForceUnloadUnusedAssets(<span class="keyword">true</span>);</div>
+<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;            }</div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;        }</div>
+<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;    }</div>
+<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;}</div>
+<div class="ttc" id="a_login_form_8cs_html_a6208db3ac52d7f107a612679d0d8eca3"><div class="ttname"><a href="_login_form_8cs.html#a6208db3ac52d7f107a612679d0d8eca3">Log</a></div><div class="ttdeci">UnityGameFramework.Runtime.Log Log</div><div class="ttdef"><b>Definition:</b> <a href="_login_form_8cs_source.html#l00007">LoginForm.cs:7</a></div></div>
+<div class="ttc" id="a_unity_web_request_download_agent_helper_8cs_html_a9084eedf9b8c1b9c0fb3e425c1f69c1f"><div class="ttname"><a href="_unity_web_request_download_agent_helper_8cs.html#a9084eedf9b8c1b9c0fb3e425c1f69c1f">Utility</a></div><div class="ttdeci">GameFramework.Utility Utility</div><div class="ttdef"><b>Definition:</b> <a href="_unity_web_request_download_agent_helper_8cs_source.html#l00016">UnityWebRequestDownloadAgentHelper.cs:16</a></div></div>
+<div class="ttc" id="aclass_game_framework_1_1_game_framework_exception_html"><div class="ttname"><a href="class_game_framework_1_1_game_framework_exception.html">GameFramework.GameFrameworkException</a></div><div class="ttdoc">游戏框架异常类。</div><div class="ttdef"><b>Definition:</b> <a href="_game_framework_exception_8cs_source.html#l00017">GameFrameworkException.cs:18</a></div></div>
+<div class="ttc" id="aclass_game_framework_1_1_version_html"><div class="ttname"><a href="class_game_framework_1_1_version.html">GameFramework.Version</a></div><div class="ttdef"><b>Definition:</b> <a href="_version_8cs_source.html#l00013">Version.cs:14</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_runtime_1_1_base_component_html"><div class="ttname"><a href="class_unity_game_framework_1_1_runtime_1_1_base_component.html">UnityGameFramework.Runtime.BaseComponent</a></div><div class="ttdoc">基础组件。</div><div class="ttdef"><b>Definition:</b> <a href="_base_component_8cs_source.html#l00021">BaseComponent.cs:22</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_runtime_1_1_base_component_html_a0489f7baf1d5ceb6e37c43ba5666821b"><div class="ttname"><a href="class_unity_game_framework_1_1_runtime_1_1_base_component.html#a0489f7baf1d5ceb6e37c43ba5666821b">UnityGameFramework.Runtime.BaseComponent.IsGamePaused</a></div><div class="ttdeci">bool IsGamePaused</div><div class="ttdoc">获取游戏是否暂停。</div><div class="ttdef"><b>Definition:</b> <a href="_base_component_8cs_source.html#l00129">BaseComponent.cs:130</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_runtime_1_1_base_component_html_a1014f5f50c35e6fc3bcfe1ef1994b177"><div class="ttname"><a href="class_unity_game_framework_1_1_runtime_1_1_base_component.html#a1014f5f50c35e6fc3bcfe1ef1994b177">UnityGameFramework.Runtime.BaseComponent.EditorResourceMode</a></div><div class="ttdeci">bool EditorResourceMode</div><div class="ttdoc">获取或设置是否使用编辑器资源模式（仅编辑器内有效）。</div><div class="ttdef"><b>Definition:</b> <a href="_base_component_8cs_source.html#l00060">BaseComponent.cs:61</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_runtime_1_1_base_component_html_a27b582356c7f231f6b9a07513e57de03"><div class="ttname"><a href="class_unity_game_framework_1_1_runtime_1_1_base_component.html#a27b582356c7f231f6b9a07513e57de03">UnityGameFramework.Runtime.BaseComponent.PauseGame</a></div><div class="ttdeci">void PauseGame()</div><div class="ttdoc">暂停游戏。</div><div class="ttdef"><b>Definition:</b> <a href="_base_component_8cs_source.html#l00246">BaseComponent.cs:246</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_runtime_1_1_base_component_html_a3e41b3c43ec2491403a8b01a80d07b91"><div class="ttname"><a href="class_unity_game_framework_1_1_runtime_1_1_base_component.html#a3e41b3c43ec2491403a8b01a80d07b91">UnityGameFramework.Runtime.BaseComponent.ResumeGame</a></div><div class="ttdeci">void ResumeGame()</div><div class="ttdoc">恢复游戏。</div><div class="ttdef"><b>Definition:</b> <a href="_base_component_8cs_source.html#l00260">BaseComponent.cs:260</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_runtime_1_1_base_component_html_a3f34a0d24b5ce03aadd67d4c365e96f7"><div class="ttname"><a href="class_unity_game_framework_1_1_runtime_1_1_base_component.html#a3f34a0d24b5ce03aadd67d4c365e96f7">UnityGameFramework.Runtime.BaseComponent.IsNormalGameSpeed</a></div><div class="ttdeci">bool IsNormalGameSpeed</div><div class="ttdoc">获取是否正常游戏速度。</div><div class="ttdef"><b>Definition:</b> <a href="_base_component_8cs_source.html#l00140">BaseComponent.cs:141</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_runtime_1_1_base_component_html_a4cd4093bffafa05e465e1a8f6ded8de6"><div class="ttname"><a href="class_unity_game_framework_1_1_runtime_1_1_base_component.html#a4cd4093bffafa05e465e1a8f6ded8de6">UnityGameFramework.Runtime.BaseComponent.GameSpeed</a></div><div class="ttdeci">float? GameSpeed</div><div class="ttdoc">获取或设置游戏速度。</div><div class="ttdef"><b>Definition:</b> <a href="_base_component_8cs_source.html#l00114">BaseComponent.cs:115</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_runtime_1_1_base_component_html_a6746ca48fca8f99510c84ab6d4242da8"><div class="ttname"><a href="class_unity_game_framework_1_1_runtime_1_1_base_component.html#a6746ca48fca8f99510c84ab6d4242da8">UnityGameFramework.Runtime.BaseComponent.Awake</a></div><div class="ttdeci">override void Awake()</div><div class="ttdoc">游戏框架组件初始化。</div><div class="ttdef"><b>Definition:</b> <a href="_base_component_8cs_source.html#l00182">BaseComponent.cs:182</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_runtime_1_1_base_component_html_a70476104a24c065b86d4046ccba65d5d"><div class="ttname"><a href="class_unity_game_framework_1_1_runtime_1_1_base_component.html#a70476104a24c065b86d4046ccba65d5d">UnityGameFramework.Runtime.BaseComponent.EditorLanguage</a></div><div class="ttdeci">Language EditorLanguage</div><div class="ttdoc">获取或设置编辑器语言（仅编辑器内有效）。</div><div class="ttdef"><b>Definition:</b> <a href="_base_component_8cs_source.html#l00075">BaseComponent.cs:76</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_runtime_1_1_base_component_html_a769085304b5e5521c07c82d7dd41ba34"><div class="ttname"><a href="class_unity_game_framework_1_1_runtime_1_1_base_component.html#a769085304b5e5521c07c82d7dd41ba34">UnityGameFramework.Runtime.BaseComponent.EditorResourceHelper</a></div><div class="ttdeci">IResourceManager EditorResourceHelper</div><div class="ttdoc">获取或设置编辑器资源辅助器。</div><div class="ttdef"><b>Definition:</b> <a href="_base_component_8cs_source.html#l00090">BaseComponent.cs:91</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_runtime_1_1_base_component_html_a866e43097e0103e5519f01670145b5d5"><div class="ttname"><a href="class_unity_game_framework_1_1_runtime_1_1_base_component.html#a866e43097e0103e5519f01670145b5d5">UnityGameFramework.Runtime.BaseComponent.ResetNormalGameSpeed</a></div><div class="ttdeci">void ResetNormalGameSpeed()</div><div class="ttdoc">重置为正常游戏速度。</div><div class="ttdef"><b>Definition:</b> <a href="_base_component_8cs_source.html#l00273">BaseComponent.cs:273</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_runtime_1_1_base_component_html_ac6500c2fe571e1d4f894de763f42d3ba"><div class="ttname"><a href="class_unity_game_framework_1_1_runtime_1_1_base_component.html#ac6500c2fe571e1d4f894de763f42d3ba">UnityGameFramework.Runtime.BaseComponent.FrameRate</a></div><div class="ttdeci">int FrameRate</div><div class="ttdoc">获取或设置游戏帧率。</div><div class="ttdef"><b>Definition:</b> <a href="_base_component_8cs_source.html#l00099">BaseComponent.cs:100</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_runtime_1_1_base_component_html_ac95cac1ee592dc4529fab8e6be2a3880"><div class="ttname"><a href="class_unity_game_framework_1_1_runtime_1_1_base_component.html#ac95cac1ee592dc4529fab8e6be2a3880">UnityGameFramework.Runtime.BaseComponent.NeverSleep</a></div><div class="ttdeci">bool? NeverSleep</div><div class="ttdoc">获取或设置是否禁止休眠。</div><div class="ttdef"><b>Definition:</b> <a href="_base_component_8cs_source.html#l00166">BaseComponent.cs:167</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_runtime_1_1_base_component_html_af0b507c3652c3e055eed86ebea681ec9"><div class="ttname"><a href="class_unity_game_framework_1_1_runtime_1_1_base_component.html#af0b507c3652c3e055eed86ebea681ec9">UnityGameFramework.Runtime.BaseComponent.RunInBackground</a></div><div class="ttdeci">bool RunInBackground</div><div class="ttdoc">获取或设置是否允许后台运行。</div><div class="ttdef"><b>Definition:</b> <a href="_base_component_8cs_source.html#l00151">BaseComponent.cs:152</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_runtime_1_1_game_framework_component_html"><div class="ttname"><a href="class_unity_game_framework_1_1_runtime_1_1_game_framework_component.html">UnityGameFramework.Runtime.GameFrameworkComponent</a></div><div class="ttdoc">游戏框架组件抽象类。</div><div class="ttdef"><b>Definition:</b> <a href="_game_framework_component_8cs_source.html#l00015">GameFrameworkComponent.cs:16</a></div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_resource_1_1_i_resource_manager_html"><div class="ttname"><a href="interface_game_framework_1_1_resource_1_1_i_resource_manager.html">GameFramework.Resource.IResourceManager</a></div><div class="ttdoc">资源管理器接口。</div><div class="ttdef"><b>Definition:</b> <a href="_i_resource_manager_8cs_source.html#l00019">IResourceManager.cs:20</a></div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_version_1_1_i_version_helper_html"><div class="ttname"><a href="interface_game_framework_1_1_version_1_1_i_version_helper.html">GameFramework.Version.IVersionHelper</a></div><div class="ttdoc">版本号辅助器接口。</div><div class="ttdef"><b>Definition:</b> <a href="_version_8_i_version_helper_8cs_source.html#l00015">Version.IVersionHelper.cs:16</a></div></div>
+<div class="ttc" id="anamespace_game_framework_1_1_localization_html"><div class="ttname"><a href="namespace_game_framework_1_1_localization.html">GameFramework.Localization</a></div><div class="ttdef"><b>Definition:</b> <a href="_i_localization_helper_8cs_source.html#l00008">ILocalizationHelper.cs:9</a></div></div>
+<div class="ttc" id="anamespace_game_framework_1_1_localization_html_ad3cfd4367154c84f04c26389b0f811ac"><div class="ttname"><a href="namespace_game_framework_1_1_localization.html#ad3cfd4367154c84f04c26389b0f811ac">GameFramework.Localization.Language</a></div><div class="ttdeci">Language</div><div class="ttdoc">本地化语言。</div><div class="ttdef"><b>Definition:</b> <a href="_language_8cs_source.html#l00013">Language.cs:14</a></div></div>
+<div class="ttc" id="anamespace_game_framework_1_1_resource_html"><div class="ttname"><a href="namespace_game_framework_1_1_resource.html">GameFramework.Resource</a></div><div class="ttdef"><b>Definition:</b> <a href="_apply_resources_complete_callback_8cs_source.html#l00008">ApplyResourcesCompleteCallback.cs:9</a></div></div>
+<div class="ttc" id="anamespace_game_framework_html"><div class="ttname"><a href="namespace_game_framework.html">GameFramework</a></div><div class="ttdef"><b>Definition:</b> <a href="_data_provider_8cs_source.html#l00011">DataProvider.cs:12</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_bson_1_1_i_o_html_a0fb4b18583b3517bf596f2d4aa07f037aa1fa27779242b4902f7ae3bdd5c6d508"><div class="ttname"><a href="namespace_mongo_d_b_1_1_bson_1_1_i_o.html#a0fb4b18583b3517bf596f2d4aa07f037aa1fa27779242b4902f7ae3bdd5c6d508">MongoDB.Bson.IO.BsonReaderState.Type</a></div><div class="ttdeci">@ Type</div><div class="ttdoc">The reader is positioned at the type of an element or value.</div></div>
+<div class="ttc" id="anamespace_system_html"><div class="ttname"><a href="namespace_system.html">System</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_method_builder_attribute_8cs_source.html#l00001">AsyncMethodBuilderAttribute.cs:2</a></div></div>
+<div class="ttc" id="anamespace_unity_engine_html"><div class="ttname"><a href="namespace_unity_engine.html">UnityEngine</a></div><div class="ttdef"><b>Definition:</b> <a href="_mathf_8cs_source.html#l00003">Mathf.cs:4</a></div></div>
+<div class="ttc" id="anamespace_unity_game_framework_1_1_runtime_html"><div class="ttname"><a href="namespace_unity_game_framework_1_1_runtime.html">UnityGameFramework.Runtime</a></div><div class="ttdef"><b>Definition:</b> <a href="_base_component_8cs_source.html#l00014">BaseComponent.cs:15</a></div></div>
+<div class="ttc" id="anamespace_unity_game_framework_1_1_runtime_html_a4a9403219fee62d17ec96226ec37749a"><div class="ttname"><a href="namespace_unity_game_framework_1_1_runtime.html#a4a9403219fee62d17ec96226ec37749a">UnityGameFramework.Runtime.ShutdownType</a></div><div class="ttdeci">ShutdownType</div><div class="ttdoc">关闭游戏框架类型。</div><div class="ttdef"><b>Definition:</b> <a href="_shutdown_type_8cs_source.html#l00013">ShutdownType.cs:14</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_84bbf7b3c7f28a5a18725745e1505219.html">Assets</a></li><li class="navelem"><a class="el" href="dir_f13b41af88cf68434578284aaf699e39.html">Scripts</a></li><li class="navelem"><a class="el" href="dir_46d134a3bf82cf4dc49ca8f728aea58c.html">Libraries</a></li><li class="navelem"><a class="el" href="dir_7a6862c303020716b3c311e95823547c.html">GameFramework</a></li><li class="navelem"><a class="el" href="dir_1d9b7e2b1e68805cdf4440a735859529.html">Scripts</a></li><li class="navelem"><a class="el" href="dir_e81cefffdbcf8632d0c6357d5d83ba40.html">Runtime</a></li><li class="navelem"><a class="el" href="dir_3eb9db7e5559e19286e01609a2c46d69.html">Base</a></li><li class="navelem"><a class="el" href="_base_component_8cs.html">BaseComponent.cs</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:24:49 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

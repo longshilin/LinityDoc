@@ -1,0 +1,669 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: Assets/Scripts/Libraries/Google.Protobuf/CodedOutputStream.cs 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_coded_output_stream_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">CodedOutputStream.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_coded_output_stream_8cs.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#region Copyright notice and license</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">// Protocol Buffers - Google&#39;s data interchange format</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">// Copyright 2008 Google Inc.  All rights reserved.</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">// https://developers.google.com/protocol-buffers/</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">// Redistribution and use in source and binary forms, with or without</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">// modification, are permitted provided that the following conditions are</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">// met:</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">//     * Redistributions of source code must retain the above copyright</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">// notice, this list of conditions and the following disclaimer.</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">//     * Redistributions in binary form must reproduce the above</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">// copyright notice, this list of conditions and the following disclaimer</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">// in the documentation and/or other materials provided with the</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">// distribution.</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">//     * Neither the name of Google Inc. nor the names of its</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">// contributors may be used to endorse or promote products derived from</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">// this software without specific prior written permission.</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">// &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">// LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">// A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">// OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">// SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">// LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">// DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">// THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">// (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment">// OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#endregion</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_google.html">Google</a>.<a class="code" href="namespace_google_1_1_protobuf.html">Protobuf</a>.<a class="code" href="namespace_google_1_1_protobuf_1_1_collections.html">Collections</a>;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.IO;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Text;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_google_1_1_protobuf.html">Google.Protobuf</a></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;{</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keyword">public</span> sealed <span class="keyword">partial class </span>CodedOutputStream : IDisposable</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    {</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="comment">// &quot;Local&quot; copy of Encoding.UTF8, for efficiency. (Yes, it makes a difference.)</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <span class="keyword">internal</span> <span class="keyword">static</span> readonly Encoding Utf8Encoding = Encoding.UTF8;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#ae8febc1c11c6e5b1ebf5a3b46ce39ae2">   66</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> readonly <span class="keywordtype">int</span> <a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#ae8febc1c11c6e5b1ebf5a3b46ce39ae2">DefaultBufferSize</a> = 4096;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <span class="keyword">private</span> readonly <span class="keywordtype">bool</span> leaveOpen;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <span class="keyword">private</span> readonly <span class="keywordtype">byte</span>[] buffer;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <span class="keyword">private</span> readonly <span class="keywordtype">int</span> limit;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">int</span> position;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <span class="keyword">private</span> readonly Stream output;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="preprocessor">        #region Construction</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a0061e27696d929c706f3340e0cfc4abe">   80</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a0061e27696d929c706f3340e0cfc4abe">CodedOutputStream</a>(<span class="keywordtype">byte</span>[] flatArray) : this(flatArray, 0, flatArray.Length)</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        {</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        }</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        <span class="keyword">private</span> <a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a0061e27696d929c706f3340e0cfc4abe">CodedOutputStream</a>(<span class="keywordtype">byte</span>[] buffer, <span class="keywordtype">int</span> offset, <span class="keywordtype">int</span> length)</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        {</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;            this.output = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;            this.buffer = buffer;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;            this.position = offset;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;            this.limit = offset + length;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;            leaveOpen = <span class="keyword">true</span>; <span class="comment">// Simple way of avoiding trying to dispose of a null reference</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        }</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        <span class="keyword">private</span> <a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a0061e27696d929c706f3340e0cfc4abe">CodedOutputStream</a>(Stream output, <span class="keywordtype">byte</span>[] buffer, <span class="keywordtype">bool</span> leaveOpen)</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        {</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;            this.output = ProtoPreconditions.CheckNotNull(output, <span class="stringliteral">&quot;output&quot;</span>);</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;            this.buffer = buffer;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;            this.position = 0;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;            this.limit = buffer.Length;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;            this.leaveOpen = leaveOpen;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        }</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
+<div class="line"><a name="l00112"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a34697c1f84a4a3faf4cb69c6f640de0a">  112</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a34697c1f84a4a3faf4cb69c6f640de0a">CodedOutputStream</a>(Stream output) : this(output, <a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#ae8febc1c11c6e5b1ebf5a3b46ce39ae2">DefaultBufferSize</a>, false)</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        {</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        }</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160; </div>
+<div class="line"><a name="l00122"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a2c8ad3a1b282efcd33901cae2abac716">  122</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a2c8ad3a1b282efcd33901cae2abac716">CodedOutputStream</a>(Stream output, <span class="keywordtype">int</span> bufferSize) : this(output, new byte[bufferSize], false)</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        {</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        }</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160; </div>
+<div class="line"><a name="l00132"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a11fb5ce7c9bbd2a8c7bc4e136468e665">  132</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a11fb5ce7c9bbd2a8c7bc4e136468e665">CodedOutputStream</a>(Stream output, <span class="keywordtype">bool</span> leaveOpen) : this(output, <a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#ae8febc1c11c6e5b1ebf5a3b46ce39ae2">DefaultBufferSize</a>, leaveOpen)</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        {</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        }</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160; </div>
+<div class="line"><a name="l00144"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a8e7f83e5483964bfb89614cde47ae899">  144</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a8e7f83e5483964bfb89614cde47ae899">CodedOutputStream</a>(Stream output, <span class="keywordtype">int</span> bufferSize, <span class="keywordtype">bool</span> leaveOpen) : this(output, new byte[bufferSize], leaveOpen)</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;        {</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;        }</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;<span class="preprocessor">        #endregion</span></div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160; </div>
+<div class="line"><a name="l00152"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#adeaf9fee4a12d73d894f57c0d5dd56d6">  152</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">long</span> <a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#adeaf9fee4a12d73d894f57c0d5dd56d6">Position</a></div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;        {</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;            <span class="keyword">get</span></div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;            {</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;                <span class="keywordflow">if</span> (output != <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;                {</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;                    <span class="keywordflow">return</span> output.Position + position;</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;                }</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;                <span class="keywordflow">return</span> position;</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;            }</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;        }</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160; </div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;<span class="preprocessor">        #region Writing of values (not including tags)</span></div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160; </div>
+<div class="line"><a name="l00170"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a0c92a53610293e0d8af4b07c5c6a4176">  170</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a0c92a53610293e0d8af4b07c5c6a4176">WriteDouble</a>(<span class="keywordtype">double</span> value)</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;        {</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;            WriteRawLittleEndian64((ulong)BitConverter.DoubleToInt64Bits(value));</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;        }</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160; </div>
+<div class="line"><a name="l00179"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#ae5094b289513a8b8fbdeb84138d9edc9">  179</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#ae5094b289513a8b8fbdeb84138d9edc9">WriteFloat</a>(<span class="keywordtype">float</span> value)</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;        {</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;            <span class="keywordtype">byte</span>[] rawBytes = BitConverter.GetBytes(value);</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;            <span class="keywordflow">if</span> (!BitConverter.IsLittleEndian)</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;            {</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;                ByteArray.Reverse(rawBytes);</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;            }</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160; </div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;            <span class="keywordflow">if</span> (limit - position &gt;= 4)</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;            {</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;                buffer[position++] = rawBytes[0];</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;                buffer[position++] = rawBytes[1];</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;                buffer[position++] = rawBytes[2];</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;                buffer[position++] = rawBytes[3];</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;            }</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;            {</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;                WriteRawBytes(rawBytes, 0, 4);</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;            }</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;        }</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160; </div>
+<div class="line"><a name="l00204"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#aa0f2c90d0de814272daced1721e1b8ec">  204</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#aa0f2c90d0de814272daced1721e1b8ec">WriteUInt64</a>(ulong value)</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;        {</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;            WriteRawVarint64(value);</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;        }</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160; </div>
+<div class="line"><a name="l00213"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a68ac503a08f6507fea363963d4466d3f">  213</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a68ac503a08f6507fea363963d4466d3f">WriteInt64</a>(<span class="keywordtype">long</span> value)</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;        {</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;            WriteRawVarint64((ulong) value);</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;        }</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160; </div>
+<div class="line"><a name="l00222"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a05b5de7d464c35dfdd09110cda4a6c15">  222</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a05b5de7d464c35dfdd09110cda4a6c15">WriteInt32</a>(<span class="keywordtype">int</span> value)</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;        {</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;            <span class="keywordflow">if</span> (value &gt;= 0)</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;            {</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;                WriteRawVarint32((uint) value);</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;            }</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;            {</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;                <span class="comment">// Must sign-extend.</span></div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;                WriteRawVarint64((ulong) value);</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;            }</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;        }</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160; </div>
+<div class="line"><a name="l00239"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a4c1b14579f63866075bc8f0d244b939b">  239</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a4c1b14579f63866075bc8f0d244b939b">WriteFixed64</a>(ulong value)</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;        {</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;            WriteRawLittleEndian64(value);</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;        }</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160; </div>
+<div class="line"><a name="l00248"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#aba33fadcebad3e9a4174cc29164869d4">  248</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#aba33fadcebad3e9a4174cc29164869d4">WriteFixed32</a>(uint value)</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;        {</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;            WriteRawLittleEndian32(value);</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;        }</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160; </div>
+<div class="line"><a name="l00257"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a87ceae96e25f5fe8101b51df9fca1ef2">  257</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a87ceae96e25f5fe8101b51df9fca1ef2">WriteBool</a>(<span class="keywordtype">bool</span> value)</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;        {</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;            WriteRawByte(value ? (<span class="keywordtype">byte</span>) 1 : (<span class="keywordtype">byte</span>) 0);</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;        }</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160; </div>
+<div class="line"><a name="l00267"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a8d3efb4317c19660d614193bd3d02767">  267</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a8d3efb4317c19660d614193bd3d02767">WriteString</a>(<span class="keywordtype">string</span> value)</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;        {</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;            <span class="comment">// Optimise the case where we have enough space to write</span></div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;            <span class="comment">// the string directly to the buffer, which should be common.</span></div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;            <span class="keywordtype">int</span> length = Utf8Encoding.GetByteCount(value);</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;            <a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a4754e53582528ab8e0d24cabefbfc060">WriteLength</a>(length);</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;            <span class="keywordflow">if</span> (limit - position &gt;= length)</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;            {</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;                <span class="keywordflow">if</span> (length == value.Length) <span class="comment">// Must be all ASCII...</span></div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;                {</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;                    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; length; i++)</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;                    {</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;                        buffer[position + i] = (byte)value[i];</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;                    }</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;                }</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;                <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;                {</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;                    Utf8Encoding.GetBytes(value, 0, value.Length, buffer, position);</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;                }</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;                position += length;</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;            }</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;            {</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;                <span class="keywordtype">byte</span>[] bytes = Utf8Encoding.GetBytes(value);</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;                WriteRawBytes(bytes);</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;            }</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;        }</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160; </div>
+<div class="line"><a name="l00300"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#ada0958dc5c519d5f6ddba960cd0aa475">  300</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#ada0958dc5c519d5f6ddba960cd0aa475">WriteMessage</a>(<a class="code" href="interface_google_1_1_protobuf_1_1_i_message.html">IMessage</a> value)</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;        {</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;            <a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a4754e53582528ab8e0d24cabefbfc060">WriteLength</a>(value.<a class="code" href="interface_google_1_1_protobuf_1_1_i_message.html#aa3561db050d542706279ffb6ed9315ad">CalculateSize</a>());</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;            value.<a class="code" href="interface_google_1_1_protobuf_1_1_i_message.html#aacf62d6cd0823f17c92df16be0c4d90b">WriteTo</a>(<span class="keyword">this</span>);</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;        }</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160; </div>
+<div class="line"><a name="l00311"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a73c513e8da207bd61cf742b0b81c8d8d">  311</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a73c513e8da207bd61cf742b0b81c8d8d">WriteBytes</a>(<a class="code" href="class_google_1_1_protobuf_1_1_byte_string.html">ByteString</a> value)</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;        {</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;            <a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a4754e53582528ab8e0d24cabefbfc060">WriteLength</a>(value.<a class="code" href="class_google_1_1_protobuf_1_1_byte_string.html#a68c573fdb98442fde03392e1ada52464">Length</a>);</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;            value.WriteRawBytesTo(<span class="keyword">this</span>);</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;        }</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160; </div>
+<div class="line"><a name="l00321"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a67369617786065b20ab904b47c19c8f4">  321</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a67369617786065b20ab904b47c19c8f4">WriteUInt32</a>(uint value)</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;        {</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;            WriteRawVarint32(value);</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;        }</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160; </div>
+<div class="line"><a name="l00330"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a6e2e9f70836b2bd01214ee33b810a471">  330</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a6e2e9f70836b2bd01214ee33b810a471">WriteEnum</a>(<span class="keywordtype">int</span> value)</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;        {</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;            <a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a05b5de7d464c35dfdd09110cda4a6c15">WriteInt32</a>(value);</div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;        }</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160; </div>
+<div class="line"><a name="l00339"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#ad22a26a61bf44e3a2ba8cbc31617ebe8">  339</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#ad22a26a61bf44e3a2ba8cbc31617ebe8">WriteSFixed32</a>(<span class="keywordtype">int</span> value)</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;        {</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;            WriteRawLittleEndian32((uint) value);</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;        }</div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160; </div>
+<div class="line"><a name="l00348"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a84736102019e3efeaf0a54258064dcfd">  348</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a84736102019e3efeaf0a54258064dcfd">WriteSFixed64</a>(<span class="keywordtype">long</span> value)</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;        {</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;            WriteRawLittleEndian64((ulong) value);</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;        }</div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160; </div>
+<div class="line"><a name="l00357"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#ada6d2c4e2be096ba42be364b9d22de2f">  357</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#ada6d2c4e2be096ba42be364b9d22de2f">WriteSInt32</a>(<span class="keywordtype">int</span> value)</div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;        {</div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;            WriteRawVarint32(EncodeZigZag32(value));</div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;        }</div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160; </div>
+<div class="line"><a name="l00366"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a1fab747bc94a0a983dce67ebc0e3ba33">  366</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a1fab747bc94a0a983dce67ebc0e3ba33">WriteSInt64</a>(<span class="keywordtype">long</span> value)</div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;        {</div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;            WriteRawVarint64(EncodeZigZag64(value));</div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;        }</div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160; </div>
+<div class="line"><a name="l00378"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a4754e53582528ab8e0d24cabefbfc060">  378</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a4754e53582528ab8e0d24cabefbfc060">WriteLength</a>(<span class="keywordtype">int</span> length)</div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;        {</div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;            WriteRawVarint32((uint) length);</div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;        }</div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160; </div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;<span class="preprocessor">        #endregion</span></div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160; </div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;<span class="preprocessor">        #region Raw tag writing</span></div>
+<div class="line"><a name="l00391"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a5a843cc4916c9832a99d9b8b18cea2cc">  391</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a5a843cc4916c9832a99d9b8b18cea2cc">WriteTag</a>(<span class="keywordtype">int</span> fieldNumber, WireFormat.WireType type)</div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;        {</div>
+<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;            WriteRawVarint32(WireFormat.MakeTag(fieldNumber, type));</div>
+<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;        }</div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160; </div>
+<div class="line"><a name="l00400"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#aced2169716fbd9e150bb8769cc7849dc">  400</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#aced2169716fbd9e150bb8769cc7849dc">WriteTag</a>(uint tag)</div>
+<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;        {</div>
+<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;            WriteRawVarint32(tag);</div>
+<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;        }</div>
+<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160; </div>
+<div class="line"><a name="l00409"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a825a3ba4c4d389c5b7f11cb96d9de538">  409</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a825a3ba4c4d389c5b7f11cb96d9de538">WriteRawTag</a>(<span class="keywordtype">byte</span> b1)</div>
+<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;        {</div>
+<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;            WriteRawByte(b1);</div>
+<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;        }</div>
+<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160; </div>
+<div class="line"><a name="l00419"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#ab1298c1cfe63bb7fdc2e251c88df7504">  419</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#ab1298c1cfe63bb7fdc2e251c88df7504">WriteRawTag</a>(<span class="keywordtype">byte</span> b1, <span class="keywordtype">byte</span> b2)</div>
+<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;        {</div>
+<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;            WriteRawByte(b1);</div>
+<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;            WriteRawByte(b2);</div>
+<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;        }</div>
+<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160; </div>
+<div class="line"><a name="l00431"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a0cfaf7ccf8ac5abb12745b1bfc66c54a">  431</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a0cfaf7ccf8ac5abb12745b1bfc66c54a">WriteRawTag</a>(<span class="keywordtype">byte</span> b1, <span class="keywordtype">byte</span> b2, <span class="keywordtype">byte</span> b3)</div>
+<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;        {</div>
+<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;            WriteRawByte(b1);</div>
+<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;            WriteRawByte(b2);</div>
+<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;            WriteRawByte(b3);</div>
+<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;        }</div>
+<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160; </div>
+<div class="line"><a name="l00445"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a81746d45986647a586ed98e389832a2d">  445</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a81746d45986647a586ed98e389832a2d">WriteRawTag</a>(<span class="keywordtype">byte</span> b1, <span class="keywordtype">byte</span> b2, <span class="keywordtype">byte</span> b3, <span class="keywordtype">byte</span> b4)</div>
+<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;        {</div>
+<div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;            WriteRawByte(b1);</div>
+<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;            WriteRawByte(b2);</div>
+<div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;            WriteRawByte(b3);</div>
+<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;            WriteRawByte(b4);</div>
+<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;        }</div>
+<div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160; </div>
+<div class="line"><a name="l00461"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a6f8d5d1625169788224414ecc9e6aed0">  461</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a6f8d5d1625169788224414ecc9e6aed0">WriteRawTag</a>(<span class="keywordtype">byte</span> b1, <span class="keywordtype">byte</span> b2, <span class="keywordtype">byte</span> b3, <span class="keywordtype">byte</span> b4, <span class="keywordtype">byte</span> b5)</div>
+<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;        {</div>
+<div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160;            WriteRawByte(b1);</div>
+<div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160;            WriteRawByte(b2);</div>
+<div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160;            WriteRawByte(b3);</div>
+<div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160;            WriteRawByte(b4);</div>
+<div class="line"><a name="l00467"></a><span class="lineno">  467</span>&#160;            WriteRawByte(b5);</div>
+<div class="line"><a name="l00468"></a><span class="lineno">  468</span>&#160;        }</div>
+<div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160;<span class="preprocessor">        #endregion</span></div>
+<div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160; </div>
+<div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160;<span class="preprocessor">        #region Underlying writing primitives</span></div>
+<div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160;        <span class="keyword">internal</span> <span class="keywordtype">void</span> WriteRawVarint32(uint value)</div>
+<div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160;        {</div>
+<div class="line"><a name="l00479"></a><span class="lineno">  479</span>&#160;            <span class="comment">// Optimize for the common case of a single byte value</span></div>
+<div class="line"><a name="l00480"></a><span class="lineno">  480</span>&#160;            <span class="keywordflow">if</span> (value &lt; 128 &amp;&amp; position &lt; limit)</div>
+<div class="line"><a name="l00481"></a><span class="lineno">  481</span>&#160;            {</div>
+<div class="line"><a name="l00482"></a><span class="lineno">  482</span>&#160;                buffer[position++] = (byte)value;</div>
+<div class="line"><a name="l00483"></a><span class="lineno">  483</span>&#160;                <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00484"></a><span class="lineno">  484</span>&#160;            }</div>
+<div class="line"><a name="l00485"></a><span class="lineno">  485</span>&#160; </div>
+<div class="line"><a name="l00486"></a><span class="lineno">  486</span>&#160;            <span class="keywordflow">while</span> (value &gt; 127 &amp;&amp; position &lt; limit)</div>
+<div class="line"><a name="l00487"></a><span class="lineno">  487</span>&#160;            {</div>
+<div class="line"><a name="l00488"></a><span class="lineno">  488</span>&#160;                buffer[position++] = (byte) ((value &amp; 0x7F) | 0x80);</div>
+<div class="line"><a name="l00489"></a><span class="lineno">  489</span>&#160;                value &gt;&gt;= 7;</div>
+<div class="line"><a name="l00490"></a><span class="lineno">  490</span>&#160;            }</div>
+<div class="line"><a name="l00491"></a><span class="lineno">  491</span>&#160;            <span class="keywordflow">while</span> (value &gt; 127)</div>
+<div class="line"><a name="l00492"></a><span class="lineno">  492</span>&#160;            {</div>
+<div class="line"><a name="l00493"></a><span class="lineno">  493</span>&#160;                WriteRawByte((<span class="keywordtype">byte</span>) ((value &amp; 0x7F) | 0x80));</div>
+<div class="line"><a name="l00494"></a><span class="lineno">  494</span>&#160;                value &gt;&gt;= 7;</div>
+<div class="line"><a name="l00495"></a><span class="lineno">  495</span>&#160;            }</div>
+<div class="line"><a name="l00496"></a><span class="lineno">  496</span>&#160;            <span class="keywordflow">if</span> (position &lt; limit)</div>
+<div class="line"><a name="l00497"></a><span class="lineno">  497</span>&#160;            {</div>
+<div class="line"><a name="l00498"></a><span class="lineno">  498</span>&#160;                buffer[position++] = (byte) value;</div>
+<div class="line"><a name="l00499"></a><span class="lineno">  499</span>&#160;            }</div>
+<div class="line"><a name="l00500"></a><span class="lineno">  500</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00501"></a><span class="lineno">  501</span>&#160;            {</div>
+<div class="line"><a name="l00502"></a><span class="lineno">  502</span>&#160;                WriteRawByte((<span class="keywordtype">byte</span>) value);</div>
+<div class="line"><a name="l00503"></a><span class="lineno">  503</span>&#160;            }</div>
+<div class="line"><a name="l00504"></a><span class="lineno">  504</span>&#160;        }</div>
+<div class="line"><a name="l00505"></a><span class="lineno">  505</span>&#160; </div>
+<div class="line"><a name="l00506"></a><span class="lineno">  506</span>&#160;        <span class="keyword">internal</span> <span class="keywordtype">void</span> WriteRawVarint64(ulong value)</div>
+<div class="line"><a name="l00507"></a><span class="lineno">  507</span>&#160;        {</div>
+<div class="line"><a name="l00508"></a><span class="lineno">  508</span>&#160;            <span class="keywordflow">while</span> (value &gt; 127 &amp;&amp; position &lt; limit)</div>
+<div class="line"><a name="l00509"></a><span class="lineno">  509</span>&#160;            {</div>
+<div class="line"><a name="l00510"></a><span class="lineno">  510</span>&#160;                buffer[position++] = (byte) ((value &amp; 0x7F) | 0x80);</div>
+<div class="line"><a name="l00511"></a><span class="lineno">  511</span>&#160;                value &gt;&gt;= 7;</div>
+<div class="line"><a name="l00512"></a><span class="lineno">  512</span>&#160;            }</div>
+<div class="line"><a name="l00513"></a><span class="lineno">  513</span>&#160;            <span class="keywordflow">while</span> (value &gt; 127)</div>
+<div class="line"><a name="l00514"></a><span class="lineno">  514</span>&#160;            {</div>
+<div class="line"><a name="l00515"></a><span class="lineno">  515</span>&#160;                WriteRawByte((<span class="keywordtype">byte</span>) ((value &amp; 0x7F) | 0x80));</div>
+<div class="line"><a name="l00516"></a><span class="lineno">  516</span>&#160;                value &gt;&gt;= 7;</div>
+<div class="line"><a name="l00517"></a><span class="lineno">  517</span>&#160;            }</div>
+<div class="line"><a name="l00518"></a><span class="lineno">  518</span>&#160;            <span class="keywordflow">if</span> (position &lt; limit)</div>
+<div class="line"><a name="l00519"></a><span class="lineno">  519</span>&#160;            {</div>
+<div class="line"><a name="l00520"></a><span class="lineno">  520</span>&#160;                buffer[position++] = (byte) value;</div>
+<div class="line"><a name="l00521"></a><span class="lineno">  521</span>&#160;            }</div>
+<div class="line"><a name="l00522"></a><span class="lineno">  522</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00523"></a><span class="lineno">  523</span>&#160;            {</div>
+<div class="line"><a name="l00524"></a><span class="lineno">  524</span>&#160;                WriteRawByte((<span class="keywordtype">byte</span>) value);</div>
+<div class="line"><a name="l00525"></a><span class="lineno">  525</span>&#160;            }</div>
+<div class="line"><a name="l00526"></a><span class="lineno">  526</span>&#160;        }</div>
+<div class="line"><a name="l00527"></a><span class="lineno">  527</span>&#160; </div>
+<div class="line"><a name="l00528"></a><span class="lineno">  528</span>&#160;        <span class="keyword">internal</span> <span class="keywordtype">void</span> WriteRawLittleEndian32(uint value)</div>
+<div class="line"><a name="l00529"></a><span class="lineno">  529</span>&#160;        {</div>
+<div class="line"><a name="l00530"></a><span class="lineno">  530</span>&#160;            <span class="keywordflow">if</span> (position + 4 &gt; limit)</div>
+<div class="line"><a name="l00531"></a><span class="lineno">  531</span>&#160;            {</div>
+<div class="line"><a name="l00532"></a><span class="lineno">  532</span>&#160;                WriteRawByte((<span class="keywordtype">byte</span>) value);</div>
+<div class="line"><a name="l00533"></a><span class="lineno">  533</span>&#160;                WriteRawByte((<span class="keywordtype">byte</span>) (value &gt;&gt; 8));</div>
+<div class="line"><a name="l00534"></a><span class="lineno">  534</span>&#160;                WriteRawByte((<span class="keywordtype">byte</span>) (value &gt;&gt; 16));</div>
+<div class="line"><a name="l00535"></a><span class="lineno">  535</span>&#160;                WriteRawByte((<span class="keywordtype">byte</span>) (value &gt;&gt; 24));</div>
+<div class="line"><a name="l00536"></a><span class="lineno">  536</span>&#160;            }</div>
+<div class="line"><a name="l00537"></a><span class="lineno">  537</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00538"></a><span class="lineno">  538</span>&#160;            {</div>
+<div class="line"><a name="l00539"></a><span class="lineno">  539</span>&#160;                buffer[position++] = ((byte) value);</div>
+<div class="line"><a name="l00540"></a><span class="lineno">  540</span>&#160;                buffer[position++] = ((byte) (value &gt;&gt; 8));</div>
+<div class="line"><a name="l00541"></a><span class="lineno">  541</span>&#160;                buffer[position++] = ((byte) (value &gt;&gt; 16));</div>
+<div class="line"><a name="l00542"></a><span class="lineno">  542</span>&#160;                buffer[position++] = ((byte) (value &gt;&gt; 24));</div>
+<div class="line"><a name="l00543"></a><span class="lineno">  543</span>&#160;            }</div>
+<div class="line"><a name="l00544"></a><span class="lineno">  544</span>&#160;        }</div>
+<div class="line"><a name="l00545"></a><span class="lineno">  545</span>&#160; </div>
+<div class="line"><a name="l00546"></a><span class="lineno">  546</span>&#160;        <span class="keyword">internal</span> <span class="keywordtype">void</span> WriteRawLittleEndian64(ulong value)</div>
+<div class="line"><a name="l00547"></a><span class="lineno">  547</span>&#160;        {</div>
+<div class="line"><a name="l00548"></a><span class="lineno">  548</span>&#160;            <span class="keywordflow">if</span> (position + 8 &gt; limit)</div>
+<div class="line"><a name="l00549"></a><span class="lineno">  549</span>&#160;            {</div>
+<div class="line"><a name="l00550"></a><span class="lineno">  550</span>&#160;                WriteRawByte((<span class="keywordtype">byte</span>) value);</div>
+<div class="line"><a name="l00551"></a><span class="lineno">  551</span>&#160;                WriteRawByte((<span class="keywordtype">byte</span>) (value &gt;&gt; 8));</div>
+<div class="line"><a name="l00552"></a><span class="lineno">  552</span>&#160;                WriteRawByte((<span class="keywordtype">byte</span>) (value &gt;&gt; 16));</div>
+<div class="line"><a name="l00553"></a><span class="lineno">  553</span>&#160;                WriteRawByte((<span class="keywordtype">byte</span>) (value &gt;&gt; 24));</div>
+<div class="line"><a name="l00554"></a><span class="lineno">  554</span>&#160;                WriteRawByte((<span class="keywordtype">byte</span>) (value &gt;&gt; 32));</div>
+<div class="line"><a name="l00555"></a><span class="lineno">  555</span>&#160;                WriteRawByte((<span class="keywordtype">byte</span>) (value &gt;&gt; 40));</div>
+<div class="line"><a name="l00556"></a><span class="lineno">  556</span>&#160;                WriteRawByte((<span class="keywordtype">byte</span>) (value &gt;&gt; 48));</div>
+<div class="line"><a name="l00557"></a><span class="lineno">  557</span>&#160;                WriteRawByte((<span class="keywordtype">byte</span>) (value &gt;&gt; 56));</div>
+<div class="line"><a name="l00558"></a><span class="lineno">  558</span>&#160;            }</div>
+<div class="line"><a name="l00559"></a><span class="lineno">  559</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00560"></a><span class="lineno">  560</span>&#160;            {</div>
+<div class="line"><a name="l00561"></a><span class="lineno">  561</span>&#160;                buffer[position++] = ((byte) value);</div>
+<div class="line"><a name="l00562"></a><span class="lineno">  562</span>&#160;                buffer[position++] = ((byte) (value &gt;&gt; 8));</div>
+<div class="line"><a name="l00563"></a><span class="lineno">  563</span>&#160;                buffer[position++] = ((byte) (value &gt;&gt; 16));</div>
+<div class="line"><a name="l00564"></a><span class="lineno">  564</span>&#160;                buffer[position++] = ((byte) (value &gt;&gt; 24));</div>
+<div class="line"><a name="l00565"></a><span class="lineno">  565</span>&#160;                buffer[position++] = ((byte) (value &gt;&gt; 32));</div>
+<div class="line"><a name="l00566"></a><span class="lineno">  566</span>&#160;                buffer[position++] = ((byte) (value &gt;&gt; 40));</div>
+<div class="line"><a name="l00567"></a><span class="lineno">  567</span>&#160;                buffer[position++] = ((byte) (value &gt;&gt; 48));</div>
+<div class="line"><a name="l00568"></a><span class="lineno">  568</span>&#160;                buffer[position++] = ((byte) (value &gt;&gt; 56));</div>
+<div class="line"><a name="l00569"></a><span class="lineno">  569</span>&#160;            }</div>
+<div class="line"><a name="l00570"></a><span class="lineno">  570</span>&#160;        }</div>
+<div class="line"><a name="l00571"></a><span class="lineno">  571</span>&#160; </div>
+<div class="line"><a name="l00572"></a><span class="lineno">  572</span>&#160;        <span class="keyword">internal</span> <span class="keywordtype">void</span> WriteRawByte(<span class="keywordtype">byte</span> value)</div>
+<div class="line"><a name="l00573"></a><span class="lineno">  573</span>&#160;        {</div>
+<div class="line"><a name="l00574"></a><span class="lineno">  574</span>&#160;            <span class="keywordflow">if</span> (position == limit)</div>
+<div class="line"><a name="l00575"></a><span class="lineno">  575</span>&#160;            {</div>
+<div class="line"><a name="l00576"></a><span class="lineno">  576</span>&#160;                RefreshBuffer();</div>
+<div class="line"><a name="l00577"></a><span class="lineno">  577</span>&#160;            }</div>
+<div class="line"><a name="l00578"></a><span class="lineno">  578</span>&#160; </div>
+<div class="line"><a name="l00579"></a><span class="lineno">  579</span>&#160;            buffer[position++] = value;</div>
+<div class="line"><a name="l00580"></a><span class="lineno">  580</span>&#160;        }</div>
+<div class="line"><a name="l00581"></a><span class="lineno">  581</span>&#160; </div>
+<div class="line"><a name="l00582"></a><span class="lineno">  582</span>&#160;        <span class="keyword">internal</span> <span class="keywordtype">void</span> WriteRawByte(uint value)</div>
+<div class="line"><a name="l00583"></a><span class="lineno">  583</span>&#160;        {</div>
+<div class="line"><a name="l00584"></a><span class="lineno">  584</span>&#160;            WriteRawByte((<span class="keywordtype">byte</span>) value);</div>
+<div class="line"><a name="l00585"></a><span class="lineno">  585</span>&#160;        }</div>
+<div class="line"><a name="l00586"></a><span class="lineno">  586</span>&#160; </div>
+<div class="line"><a name="l00590"></a><span class="lineno">  590</span>&#160;        <span class="keyword">internal</span> <span class="keywordtype">void</span> WriteRawBytes(<span class="keywordtype">byte</span>[] value)</div>
+<div class="line"><a name="l00591"></a><span class="lineno">  591</span>&#160;        {</div>
+<div class="line"><a name="l00592"></a><span class="lineno">  592</span>&#160;            WriteRawBytes(value, 0, value.Length);</div>
+<div class="line"><a name="l00593"></a><span class="lineno">  593</span>&#160;        }</div>
+<div class="line"><a name="l00594"></a><span class="lineno">  594</span>&#160; </div>
+<div class="line"><a name="l00598"></a><span class="lineno">  598</span>&#160;        <span class="keyword">internal</span> <span class="keywordtype">void</span> WriteRawBytes(<span class="keywordtype">byte</span>[] value, <span class="keywordtype">int</span> offset, <span class="keywordtype">int</span> length)</div>
+<div class="line"><a name="l00599"></a><span class="lineno">  599</span>&#160;        {</div>
+<div class="line"><a name="l00600"></a><span class="lineno">  600</span>&#160;            <span class="keywordflow">if</span> (limit - position &gt;= length)</div>
+<div class="line"><a name="l00601"></a><span class="lineno">  601</span>&#160;            {</div>
+<div class="line"><a name="l00602"></a><span class="lineno">  602</span>&#160;                ByteArray.Copy(value, offset, buffer, position, length);</div>
+<div class="line"><a name="l00603"></a><span class="lineno">  603</span>&#160;                <span class="comment">// We have room in the current buffer.</span></div>
+<div class="line"><a name="l00604"></a><span class="lineno">  604</span>&#160;                position += length;</div>
+<div class="line"><a name="l00605"></a><span class="lineno">  605</span>&#160;            }</div>
+<div class="line"><a name="l00606"></a><span class="lineno">  606</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00607"></a><span class="lineno">  607</span>&#160;            {</div>
+<div class="line"><a name="l00608"></a><span class="lineno">  608</span>&#160;                <span class="comment">// Write extends past current buffer.  Fill the rest of this buffer and</span></div>
+<div class="line"><a name="l00609"></a><span class="lineno">  609</span>&#160;                <span class="comment">// flush.</span></div>
+<div class="line"><a name="l00610"></a><span class="lineno">  610</span>&#160;                <span class="keywordtype">int</span> bytesWritten = limit - position;</div>
+<div class="line"><a name="l00611"></a><span class="lineno">  611</span>&#160;                ByteArray.Copy(value, offset, buffer, position, bytesWritten);</div>
+<div class="line"><a name="l00612"></a><span class="lineno">  612</span>&#160;                offset += bytesWritten;</div>
+<div class="line"><a name="l00613"></a><span class="lineno">  613</span>&#160;                length -= bytesWritten;</div>
+<div class="line"><a name="l00614"></a><span class="lineno">  614</span>&#160;                position = limit;</div>
+<div class="line"><a name="l00615"></a><span class="lineno">  615</span>&#160;                RefreshBuffer();</div>
+<div class="line"><a name="l00616"></a><span class="lineno">  616</span>&#160; </div>
+<div class="line"><a name="l00617"></a><span class="lineno">  617</span>&#160;                <span class="comment">// Now deal with the rest.</span></div>
+<div class="line"><a name="l00618"></a><span class="lineno">  618</span>&#160;                <span class="comment">// Since we have an output stream, this is our buffer</span></div>
+<div class="line"><a name="l00619"></a><span class="lineno">  619</span>&#160;                <span class="comment">// and buffer offset == 0</span></div>
+<div class="line"><a name="l00620"></a><span class="lineno">  620</span>&#160;                <span class="keywordflow">if</span> (length &lt;= limit)</div>
+<div class="line"><a name="l00621"></a><span class="lineno">  621</span>&#160;                {</div>
+<div class="line"><a name="l00622"></a><span class="lineno">  622</span>&#160;                    <span class="comment">// Fits in new buffer.</span></div>
+<div class="line"><a name="l00623"></a><span class="lineno">  623</span>&#160;                    ByteArray.Copy(value, offset, buffer, 0, length);</div>
+<div class="line"><a name="l00624"></a><span class="lineno">  624</span>&#160;                    position = length;</div>
+<div class="line"><a name="l00625"></a><span class="lineno">  625</span>&#160;                }</div>
+<div class="line"><a name="l00626"></a><span class="lineno">  626</span>&#160;                <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00627"></a><span class="lineno">  627</span>&#160;                {</div>
+<div class="line"><a name="l00628"></a><span class="lineno">  628</span>&#160;                    <span class="comment">// Write is very big.  Let&#39;s do it all at once.</span></div>
+<div class="line"><a name="l00629"></a><span class="lineno">  629</span>&#160;                    output.Write(value, offset, length);</div>
+<div class="line"><a name="l00630"></a><span class="lineno">  630</span>&#160;                }</div>
+<div class="line"><a name="l00631"></a><span class="lineno">  631</span>&#160;            }</div>
+<div class="line"><a name="l00632"></a><span class="lineno">  632</span>&#160;        }</div>
+<div class="line"><a name="l00633"></a><span class="lineno">  633</span>&#160; </div>
+<div class="line"><a name="l00634"></a><span class="lineno">  634</span>&#160;<span class="preprocessor">        #endregion</span></div>
+<div class="line"><a name="l00635"></a><span class="lineno">  635</span>&#160; </div>
+<div class="line"><a name="l00645"></a><span class="lineno">  645</span>&#160;        <span class="keyword">internal</span> <span class="keyword">static</span> uint EncodeZigZag32(<span class="keywordtype">int</span> n)</div>
+<div class="line"><a name="l00646"></a><span class="lineno">  646</span>&#160;        {</div>
+<div class="line"><a name="l00647"></a><span class="lineno">  647</span>&#160;            <span class="comment">// Note:  the right-shift must be arithmetic</span></div>
+<div class="line"><a name="l00648"></a><span class="lineno">  648</span>&#160;            <span class="keywordflow">return</span> (uint) ((n &lt;&lt; 1) ^ (n &gt;&gt; 31));</div>
+<div class="line"><a name="l00649"></a><span class="lineno">  649</span>&#160;        }</div>
+<div class="line"><a name="l00650"></a><span class="lineno">  650</span>&#160; </div>
+<div class="line"><a name="l00660"></a><span class="lineno">  660</span>&#160;        <span class="keyword">internal</span> <span class="keyword">static</span> ulong EncodeZigZag64(<span class="keywordtype">long</span> n)</div>
+<div class="line"><a name="l00661"></a><span class="lineno">  661</span>&#160;        {</div>
+<div class="line"><a name="l00662"></a><span class="lineno">  662</span>&#160;            <span class="keywordflow">return</span> (ulong) ((n &lt;&lt; 1) ^ (n &gt;&gt; 63));</div>
+<div class="line"><a name="l00663"></a><span class="lineno">  663</span>&#160;        }</div>
+<div class="line"><a name="l00664"></a><span class="lineno">  664</span>&#160; </div>
+<div class="line"><a name="l00665"></a><span class="lineno">  665</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> RefreshBuffer()</div>
+<div class="line"><a name="l00666"></a><span class="lineno">  666</span>&#160;        {</div>
+<div class="line"><a name="l00667"></a><span class="lineno">  667</span>&#160;            <span class="keywordflow">if</span> (output == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00668"></a><span class="lineno">  668</span>&#160;            {</div>
+<div class="line"><a name="l00669"></a><span class="lineno">  669</span>&#160;                <span class="comment">// We&#39;re writing to a single buffer.</span></div>
+<div class="line"><a name="l00670"></a><span class="lineno">  670</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> OutOfSpaceException();</div>
+<div class="line"><a name="l00671"></a><span class="lineno">  671</span>&#160;            }</div>
+<div class="line"><a name="l00672"></a><span class="lineno">  672</span>&#160; </div>
+<div class="line"><a name="l00673"></a><span class="lineno">  673</span>&#160;            <span class="comment">// Since we have an output stream, this is our buffer</span></div>
+<div class="line"><a name="l00674"></a><span class="lineno">  674</span>&#160;            <span class="comment">// and buffer offset == 0</span></div>
+<div class="line"><a name="l00675"></a><span class="lineno">  675</span>&#160;            output.Write(buffer, 0, position);</div>
+<div class="line"><a name="l00676"></a><span class="lineno">  676</span>&#160;            position = 0;</div>
+<div class="line"><a name="l00677"></a><span class="lineno">  677</span>&#160;        }</div>
+<div class="line"><a name="l00678"></a><span class="lineno">  678</span>&#160; </div>
+<div class="line"><a name="l00683"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_coded_output_stream_1_1_out_of_space_exception.html">  683</a></span>&#160;        <span class="keyword">public</span> sealed <span class="keyword">class </span><a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream_1_1_out_of_space_exception.html">OutOfSpaceException</a> : IOException</div>
+<div class="line"><a name="l00684"></a><span class="lineno">  684</span>&#160;        {</div>
+<div class="line"><a name="l00685"></a><span class="lineno">  685</span>&#160;            <span class="keyword">internal</span> <a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream_1_1_out_of_space_exception.html">OutOfSpaceException</a>()</div>
+<div class="line"><a name="l00686"></a><span class="lineno">  686</span>&#160;                : base(<span class="stringliteral">&quot;CodedOutputStream was writing to a flat byte array and ran out of space.&quot;</span>)</div>
+<div class="line"><a name="l00687"></a><span class="lineno">  687</span>&#160;            {</div>
+<div class="line"><a name="l00688"></a><span class="lineno">  688</span>&#160;            }</div>
+<div class="line"><a name="l00689"></a><span class="lineno">  689</span>&#160;        }</div>
+<div class="line"><a name="l00690"></a><span class="lineno">  690</span>&#160; </div>
+<div class="line"><a name="l00706"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#abf64eee0f6b1d6f7f2d558c3fcaa79e7">  706</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#abf64eee0f6b1d6f7f2d558c3fcaa79e7">Dispose</a>()</div>
+<div class="line"><a name="l00707"></a><span class="lineno">  707</span>&#160;        {</div>
+<div class="line"><a name="l00708"></a><span class="lineno">  708</span>&#160;            <a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a91627911515dcbc539b8eca5c261151f">Flush</a>();</div>
+<div class="line"><a name="l00709"></a><span class="lineno">  709</span>&#160;            <span class="keywordflow">if</span> (!leaveOpen)</div>
+<div class="line"><a name="l00710"></a><span class="lineno">  710</span>&#160;            {</div>
+<div class="line"><a name="l00711"></a><span class="lineno">  711</span>&#160;                output.Dispose();</div>
+<div class="line"><a name="l00712"></a><span class="lineno">  712</span>&#160;            }</div>
+<div class="line"><a name="l00713"></a><span class="lineno">  713</span>&#160;        }</div>
+<div class="line"><a name="l00714"></a><span class="lineno">  714</span>&#160; </div>
+<div class="line"><a name="l00718"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a91627911515dcbc539b8eca5c261151f">  718</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a91627911515dcbc539b8eca5c261151f">Flush</a>()</div>
+<div class="line"><a name="l00719"></a><span class="lineno">  719</span>&#160;        {</div>
+<div class="line"><a name="l00720"></a><span class="lineno">  720</span>&#160;            <span class="keywordflow">if</span> (output != <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00721"></a><span class="lineno">  721</span>&#160;            {</div>
+<div class="line"><a name="l00722"></a><span class="lineno">  722</span>&#160;                RefreshBuffer();</div>
+<div class="line"><a name="l00723"></a><span class="lineno">  723</span>&#160;            }</div>
+<div class="line"><a name="l00724"></a><span class="lineno">  724</span>&#160;        }</div>
+<div class="line"><a name="l00725"></a><span class="lineno">  725</span>&#160; </div>
+<div class="line"><a name="l00732"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#aa87c96fbec74c828344e058044fc0767">  732</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#aa87c96fbec74c828344e058044fc0767">CheckNoSpaceLeft</a>()</div>
+<div class="line"><a name="l00733"></a><span class="lineno">  733</span>&#160;        {</div>
+<div class="line"><a name="l00734"></a><span class="lineno">  734</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#ae3cf7bb400d877bdc438844d90568b06">SpaceLeft</a> != 0)</div>
+<div class="line"><a name="l00735"></a><span class="lineno">  735</span>&#160;            {</div>
+<div class="line"><a name="l00736"></a><span class="lineno">  736</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> InvalidOperationException(<span class="stringliteral">&quot;Did not write as much data as expected.&quot;</span>);</div>
+<div class="line"><a name="l00737"></a><span class="lineno">  737</span>&#160;            }</div>
+<div class="line"><a name="l00738"></a><span class="lineno">  738</span>&#160;        }</div>
+<div class="line"><a name="l00739"></a><span class="lineno">  739</span>&#160; </div>
+<div class="line"><a name="l00744"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#ae3cf7bb400d877bdc438844d90568b06">  744</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">int</span> <a class="code" href="class_google_1_1_protobuf_1_1_coded_output_stream.html#ae3cf7bb400d877bdc438844d90568b06">SpaceLeft</a></div>
+<div class="line"><a name="l00745"></a><span class="lineno">  745</span>&#160;        {</div>
+<div class="line"><a name="l00746"></a><span class="lineno">  746</span>&#160;            <span class="keyword">get</span></div>
+<div class="line"><a name="l00747"></a><span class="lineno">  747</span>&#160;            {</div>
+<div class="line"><a name="l00748"></a><span class="lineno">  748</span>&#160;                <span class="keywordflow">if</span> (output == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00749"></a><span class="lineno">  749</span>&#160;                {</div>
+<div class="line"><a name="l00750"></a><span class="lineno">  750</span>&#160;                    <span class="keywordflow">return</span> limit - position;</div>
+<div class="line"><a name="l00751"></a><span class="lineno">  751</span>&#160;                }</div>
+<div class="line"><a name="l00752"></a><span class="lineno">  752</span>&#160;                <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00753"></a><span class="lineno">  753</span>&#160;                {</div>
+<div class="line"><a name="l00754"></a><span class="lineno">  754</span>&#160;                    <span class="keywordflow">throw</span> <span class="keyword">new</span> InvalidOperationException(</div>
+<div class="line"><a name="l00755"></a><span class="lineno">  755</span>&#160;                        <span class="stringliteral">&quot;SpaceLeft can only be called on CodedOutputStreams that are &quot;</span> +</div>
+<div class="line"><a name="l00756"></a><span class="lineno">  756</span>&#160;                        <span class="stringliteral">&quot;writing to a flat array.&quot;</span>);</div>
+<div class="line"><a name="l00757"></a><span class="lineno">  757</span>&#160;                }</div>
+<div class="line"><a name="l00758"></a><span class="lineno">  758</span>&#160;            }</div>
+<div class="line"><a name="l00759"></a><span class="lineno">  759</span>&#160;        }</div>
+<div class="line"><a name="l00760"></a><span class="lineno">  760</span>&#160;    }</div>
+<div class="line"><a name="l00761"></a><span class="lineno">  761</span>&#160;}</div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_byte_string_html"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_byte_string.html">Google.Protobuf.ByteString</a></div><div class="ttdoc">Immutable array of bytes.</div><div class="ttdef"><b>Definition:</b> <a href="_byte_string_8cs_source.html#l00047">ByteString.cs:48</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_byte_string_html_a68c573fdb98442fde03392e1ada52464"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_byte_string.html#a68c573fdb98442fde03392e1ada52464">Google.Protobuf.ByteString.Length</a></div><div class="ttdeci">int Length</div><div class="ttdoc">Returns the length of this ByteString in bytes.</div><div class="ttdef"><b>Definition:</b> <a href="_byte_string_8cs_source.html#l00113">ByteString.cs:114</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_coded_output_stream_1_1_out_of_space_exception_html"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_coded_output_stream_1_1_out_of_space_exception.html">Google.Protobuf.CodedOutputStream.OutOfSpaceException</a></div><div class="ttdoc">Indicates that a CodedOutputStream wrapping a flat byte array ran out of space.</div><div class="ttdef"><b>Definition:</b> <a href="_coded_output_stream_8cs_source.html#l00683">CodedOutputStream.cs:684</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_coded_output_stream_html_a0061e27696d929c706f3340e0cfc4abe"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a0061e27696d929c706f3340e0cfc4abe">Google.Protobuf.CodedOutputStream.CodedOutputStream</a></div><div class="ttdeci">CodedOutputStream(byte[] flatArray)</div><div class="ttdoc">Creates a new CodedOutputStream that writes directly to the given byte array. If more bytes are writt...</div><div class="ttdef"><b>Definition:</b> <a href="_coded_output_stream_8cs_source.html#l00080">CodedOutputStream.cs:80</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_coded_output_stream_html_a05b5de7d464c35dfdd09110cda4a6c15"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a05b5de7d464c35dfdd09110cda4a6c15">Google.Protobuf.CodedOutputStream.WriteInt32</a></div><div class="ttdeci">void WriteInt32(int value)</div><div class="ttdoc">Writes an int32 field value, without a tag, to the stream.</div><div class="ttdef"><b>Definition:</b> <a href="_coded_output_stream_8cs_source.html#l00222">CodedOutputStream.cs:222</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_coded_output_stream_html_a0c92a53610293e0d8af4b07c5c6a4176"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a0c92a53610293e0d8af4b07c5c6a4176">Google.Protobuf.CodedOutputStream.WriteDouble</a></div><div class="ttdeci">void WriteDouble(double value)</div><div class="ttdoc">Writes a double field value, without a tag, to the stream.</div><div class="ttdef"><b>Definition:</b> <a href="_coded_output_stream_8cs_source.html#l00170">CodedOutputStream.cs:170</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_coded_output_stream_html_a0cfaf7ccf8ac5abb12745b1bfc66c54a"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a0cfaf7ccf8ac5abb12745b1bfc66c54a">Google.Protobuf.CodedOutputStream.WriteRawTag</a></div><div class="ttdeci">void WriteRawTag(byte b1, byte b2, byte b3)</div><div class="ttdoc">Writes the given three-byte tag directly to the stream.</div><div class="ttdef"><b>Definition:</b> <a href="_coded_output_stream_8cs_source.html#l00431">CodedOutputStream.cs:431</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_coded_output_stream_html_a11fb5ce7c9bbd2a8c7bc4e136468e665"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a11fb5ce7c9bbd2a8c7bc4e136468e665">Google.Protobuf.CodedOutputStream.CodedOutputStream</a></div><div class="ttdeci">CodedOutputStream(Stream output, bool leaveOpen)</div><div class="ttdoc">Creates a new CodedOutputStream which write to the given stream.</div><div class="ttdef"><b>Definition:</b> <a href="_coded_output_stream_8cs_source.html#l00132">CodedOutputStream.cs:132</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_coded_output_stream_html_a1fab747bc94a0a983dce67ebc0e3ba33"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a1fab747bc94a0a983dce67ebc0e3ba33">Google.Protobuf.CodedOutputStream.WriteSInt64</a></div><div class="ttdeci">void WriteSInt64(long value)</div><div class="ttdoc">Writes an sint64 value, without a tag, to the stream.</div><div class="ttdef"><b>Definition:</b> <a href="_coded_output_stream_8cs_source.html#l00366">CodedOutputStream.cs:366</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_coded_output_stream_html_a2c8ad3a1b282efcd33901cae2abac716"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a2c8ad3a1b282efcd33901cae2abac716">Google.Protobuf.CodedOutputStream.CodedOutputStream</a></div><div class="ttdeci">CodedOutputStream(Stream output, int bufferSize)</div><div class="ttdoc">Creates a new CodedOutputStream which write to the given stream and uses the specified buffer size.</div><div class="ttdef"><b>Definition:</b> <a href="_coded_output_stream_8cs_source.html#l00122">CodedOutputStream.cs:122</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_coded_output_stream_html_a34697c1f84a4a3faf4cb69c6f640de0a"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a34697c1f84a4a3faf4cb69c6f640de0a">Google.Protobuf.CodedOutputStream.CodedOutputStream</a></div><div class="ttdeci">CodedOutputStream(Stream output)</div><div class="ttdoc">Creates a new CodedOutputStream which write to the given stream, and disposes of that stream when the...</div><div class="ttdef"><b>Definition:</b> <a href="_coded_output_stream_8cs_source.html#l00112">CodedOutputStream.cs:112</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_coded_output_stream_html_a4754e53582528ab8e0d24cabefbfc060"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a4754e53582528ab8e0d24cabefbfc060">Google.Protobuf.CodedOutputStream.WriteLength</a></div><div class="ttdeci">void WriteLength(int length)</div><div class="ttdoc">Writes a length (in bytes) for length-delimited data.</div><div class="ttdef"><b>Definition:</b> <a href="_coded_output_stream_8cs_source.html#l00378">CodedOutputStream.cs:378</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_coded_output_stream_html_a4c1b14579f63866075bc8f0d244b939b"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a4c1b14579f63866075bc8f0d244b939b">Google.Protobuf.CodedOutputStream.WriteFixed64</a></div><div class="ttdeci">void WriteFixed64(ulong value)</div><div class="ttdoc">Writes a fixed64 field value, without a tag, to the stream.</div><div class="ttdef"><b>Definition:</b> <a href="_coded_output_stream_8cs_source.html#l00239">CodedOutputStream.cs:239</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_coded_output_stream_html_a5a843cc4916c9832a99d9b8b18cea2cc"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a5a843cc4916c9832a99d9b8b18cea2cc">Google.Protobuf.CodedOutputStream.WriteTag</a></div><div class="ttdeci">void WriteTag(int fieldNumber, WireFormat.WireType type)</div><div class="ttdoc">Encodes and writes a tag.</div><div class="ttdef"><b>Definition:</b> <a href="_coded_output_stream_8cs_source.html#l00391">CodedOutputStream.cs:391</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_coded_output_stream_html_a67369617786065b20ab904b47c19c8f4"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a67369617786065b20ab904b47c19c8f4">Google.Protobuf.CodedOutputStream.WriteUInt32</a></div><div class="ttdeci">void WriteUInt32(uint value)</div><div class="ttdoc">Writes a uint32 value, without a tag, to the stream.</div><div class="ttdef"><b>Definition:</b> <a href="_coded_output_stream_8cs_source.html#l00321">CodedOutputStream.cs:321</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_coded_output_stream_html_a68ac503a08f6507fea363963d4466d3f"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a68ac503a08f6507fea363963d4466d3f">Google.Protobuf.CodedOutputStream.WriteInt64</a></div><div class="ttdeci">void WriteInt64(long value)</div><div class="ttdoc">Writes an int64 field value, without a tag, to the stream.</div><div class="ttdef"><b>Definition:</b> <a href="_coded_output_stream_8cs_source.html#l00213">CodedOutputStream.cs:213</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_coded_output_stream_html_a6e2e9f70836b2bd01214ee33b810a471"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a6e2e9f70836b2bd01214ee33b810a471">Google.Protobuf.CodedOutputStream.WriteEnum</a></div><div class="ttdeci">void WriteEnum(int value)</div><div class="ttdoc">Writes an enum value, without a tag, to the stream.</div><div class="ttdef"><b>Definition:</b> <a href="_coded_output_stream_8cs_source.html#l00330">CodedOutputStream.cs:330</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_coded_output_stream_html_a6f8d5d1625169788224414ecc9e6aed0"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a6f8d5d1625169788224414ecc9e6aed0">Google.Protobuf.CodedOutputStream.WriteRawTag</a></div><div class="ttdeci">void WriteRawTag(byte b1, byte b2, byte b3, byte b4, byte b5)</div><div class="ttdoc">Writes the given five-byte tag directly to the stream.</div><div class="ttdef"><b>Definition:</b> <a href="_coded_output_stream_8cs_source.html#l00461">CodedOutputStream.cs:461</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_coded_output_stream_html_a73c513e8da207bd61cf742b0b81c8d8d"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a73c513e8da207bd61cf742b0b81c8d8d">Google.Protobuf.CodedOutputStream.WriteBytes</a></div><div class="ttdeci">void WriteBytes(ByteString value)</div><div class="ttdoc">Write a byte string, without a tag, to the stream. The data is length-prefixed.</div><div class="ttdef"><b>Definition:</b> <a href="_coded_output_stream_8cs_source.html#l00311">CodedOutputStream.cs:311</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_coded_output_stream_html_a81746d45986647a586ed98e389832a2d"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a81746d45986647a586ed98e389832a2d">Google.Protobuf.CodedOutputStream.WriteRawTag</a></div><div class="ttdeci">void WriteRawTag(byte b1, byte b2, byte b3, byte b4)</div><div class="ttdoc">Writes the given four-byte tag directly to the stream.</div><div class="ttdef"><b>Definition:</b> <a href="_coded_output_stream_8cs_source.html#l00445">CodedOutputStream.cs:445</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_coded_output_stream_html_a825a3ba4c4d389c5b7f11cb96d9de538"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a825a3ba4c4d389c5b7f11cb96d9de538">Google.Protobuf.CodedOutputStream.WriteRawTag</a></div><div class="ttdeci">void WriteRawTag(byte b1)</div><div class="ttdoc">Writes the given single-byte tag directly to the stream.</div><div class="ttdef"><b>Definition:</b> <a href="_coded_output_stream_8cs_source.html#l00409">CodedOutputStream.cs:409</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_coded_output_stream_html_a84736102019e3efeaf0a54258064dcfd"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a84736102019e3efeaf0a54258064dcfd">Google.Protobuf.CodedOutputStream.WriteSFixed64</a></div><div class="ttdeci">void WriteSFixed64(long value)</div><div class="ttdoc">Writes an sfixed64 value, without a tag, to the stream.</div><div class="ttdef"><b>Definition:</b> <a href="_coded_output_stream_8cs_source.html#l00348">CodedOutputStream.cs:348</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_coded_output_stream_html_a87ceae96e25f5fe8101b51df9fca1ef2"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a87ceae96e25f5fe8101b51df9fca1ef2">Google.Protobuf.CodedOutputStream.WriteBool</a></div><div class="ttdeci">void WriteBool(bool value)</div><div class="ttdoc">Writes a bool field value, without a tag, to the stream.</div><div class="ttdef"><b>Definition:</b> <a href="_coded_output_stream_8cs_source.html#l00257">CodedOutputStream.cs:257</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_coded_output_stream_html_a8d3efb4317c19660d614193bd3d02767"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a8d3efb4317c19660d614193bd3d02767">Google.Protobuf.CodedOutputStream.WriteString</a></div><div class="ttdeci">void WriteString(string value)</div><div class="ttdoc">Writes a string field value, without a tag, to the stream. The data is length-prefixed.</div><div class="ttdef"><b>Definition:</b> <a href="_coded_output_stream_8cs_source.html#l00267">CodedOutputStream.cs:267</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_coded_output_stream_html_a8e7f83e5483964bfb89614cde47ae899"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a8e7f83e5483964bfb89614cde47ae899">Google.Protobuf.CodedOutputStream.CodedOutputStream</a></div><div class="ttdeci">CodedOutputStream(Stream output, int bufferSize, bool leaveOpen)</div><div class="ttdoc">Creates a new CodedOutputStream which write to the given stream and uses the specified buffer size.</div><div class="ttdef"><b>Definition:</b> <a href="_coded_output_stream_8cs_source.html#l00144">CodedOutputStream.cs:144</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_coded_output_stream_html_a91627911515dcbc539b8eca5c261151f"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_coded_output_stream.html#a91627911515dcbc539b8eca5c261151f">Google.Protobuf.CodedOutputStream.Flush</a></div><div class="ttdeci">void Flush()</div><div class="ttdoc">Flushes any buffered data to the underlying stream (if there is one).</div><div class="ttdef"><b>Definition:</b> <a href="_coded_output_stream_8cs_source.html#l00718">CodedOutputStream.cs:718</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_coded_output_stream_html_aa0f2c90d0de814272daced1721e1b8ec"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_coded_output_stream.html#aa0f2c90d0de814272daced1721e1b8ec">Google.Protobuf.CodedOutputStream.WriteUInt64</a></div><div class="ttdeci">void WriteUInt64(ulong value)</div><div class="ttdoc">Writes a uint64 field value, without a tag, to the stream.</div><div class="ttdef"><b>Definition:</b> <a href="_coded_output_stream_8cs_source.html#l00204">CodedOutputStream.cs:204</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_coded_output_stream_html_aa87c96fbec74c828344e058044fc0767"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_coded_output_stream.html#aa87c96fbec74c828344e058044fc0767">Google.Protobuf.CodedOutputStream.CheckNoSpaceLeft</a></div><div class="ttdeci">void CheckNoSpaceLeft()</div><div class="ttdoc">Verifies that SpaceLeft returns zero. It's common to create a byte array that is exactly big enough t...</div><div class="ttdef"><b>Definition:</b> <a href="_coded_output_stream_8cs_source.html#l00732">CodedOutputStream.cs:732</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_coded_output_stream_html_ab1298c1cfe63bb7fdc2e251c88df7504"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_coded_output_stream.html#ab1298c1cfe63bb7fdc2e251c88df7504">Google.Protobuf.CodedOutputStream.WriteRawTag</a></div><div class="ttdeci">void WriteRawTag(byte b1, byte b2)</div><div class="ttdoc">Writes the given two-byte tag directly to the stream.</div><div class="ttdef"><b>Definition:</b> <a href="_coded_output_stream_8cs_source.html#l00419">CodedOutputStream.cs:419</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_coded_output_stream_html_aba33fadcebad3e9a4174cc29164869d4"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_coded_output_stream.html#aba33fadcebad3e9a4174cc29164869d4">Google.Protobuf.CodedOutputStream.WriteFixed32</a></div><div class="ttdeci">void WriteFixed32(uint value)</div><div class="ttdoc">Writes a fixed32 field value, without a tag, to the stream.</div><div class="ttdef"><b>Definition:</b> <a href="_coded_output_stream_8cs_source.html#l00248">CodedOutputStream.cs:248</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_coded_output_stream_html_abf64eee0f6b1d6f7f2d558c3fcaa79e7"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_coded_output_stream.html#abf64eee0f6b1d6f7f2d558c3fcaa79e7">Google.Protobuf.CodedOutputStream.Dispose</a></div><div class="ttdeci">void Dispose()</div><div class="ttdoc">Flushes any buffered data and optionally closes the underlying stream, if any.</div><div class="ttdef"><b>Definition:</b> <a href="_coded_output_stream_8cs_source.html#l00706">CodedOutputStream.cs:706</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_coded_output_stream_html_aced2169716fbd9e150bb8769cc7849dc"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_coded_output_stream.html#aced2169716fbd9e150bb8769cc7849dc">Google.Protobuf.CodedOutputStream.WriteTag</a></div><div class="ttdeci">void WriteTag(uint tag)</div><div class="ttdoc">Writes an already-encoded tag.</div><div class="ttdef"><b>Definition:</b> <a href="_coded_output_stream_8cs_source.html#l00400">CodedOutputStream.cs:400</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_coded_output_stream_html_ad22a26a61bf44e3a2ba8cbc31617ebe8"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_coded_output_stream.html#ad22a26a61bf44e3a2ba8cbc31617ebe8">Google.Protobuf.CodedOutputStream.WriteSFixed32</a></div><div class="ttdeci">void WriteSFixed32(int value)</div><div class="ttdoc">Writes an sfixed32 value, without a tag, to the stream.</div><div class="ttdef"><b>Definition:</b> <a href="_coded_output_stream_8cs_source.html#l00339">CodedOutputStream.cs:339</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_coded_output_stream_html_ada0958dc5c519d5f6ddba960cd0aa475"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_coded_output_stream.html#ada0958dc5c519d5f6ddba960cd0aa475">Google.Protobuf.CodedOutputStream.WriteMessage</a></div><div class="ttdeci">void WriteMessage(IMessage value)</div><div class="ttdoc">Writes a message, without a tag, to the stream. The data is length-prefixed.</div><div class="ttdef"><b>Definition:</b> <a href="_coded_output_stream_8cs_source.html#l00300">CodedOutputStream.cs:300</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_coded_output_stream_html_ada6d2c4e2be096ba42be364b9d22de2f"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_coded_output_stream.html#ada6d2c4e2be096ba42be364b9d22de2f">Google.Protobuf.CodedOutputStream.WriteSInt32</a></div><div class="ttdeci">void WriteSInt32(int value)</div><div class="ttdoc">Writes an sint32 value, without a tag, to the stream.</div><div class="ttdef"><b>Definition:</b> <a href="_coded_output_stream_8cs_source.html#l00357">CodedOutputStream.cs:357</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_coded_output_stream_html_adeaf9fee4a12d73d894f57c0d5dd56d6"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_coded_output_stream.html#adeaf9fee4a12d73d894f57c0d5dd56d6">Google.Protobuf.CodedOutputStream.Position</a></div><div class="ttdeci">long Position</div><div class="ttdoc">Returns the current position in the stream, or the position in the output buffer</div><div class="ttdef"><b>Definition:</b> <a href="_coded_output_stream_8cs_source.html#l00152">CodedOutputStream.cs:153</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_coded_output_stream_html_ae3cf7bb400d877bdc438844d90568b06"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_coded_output_stream.html#ae3cf7bb400d877bdc438844d90568b06">Google.Protobuf.CodedOutputStream.SpaceLeft</a></div><div class="ttdeci">int SpaceLeft</div><div class="ttdoc">If writing to a flat array, returns the space left in the array. Otherwise, throws an InvalidOperatio...</div><div class="ttdef"><b>Definition:</b> <a href="_coded_output_stream_8cs_source.html#l00744">CodedOutputStream.cs:745</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_coded_output_stream_html_ae5094b289513a8b8fbdeb84138d9edc9"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_coded_output_stream.html#ae5094b289513a8b8fbdeb84138d9edc9">Google.Protobuf.CodedOutputStream.WriteFloat</a></div><div class="ttdeci">void WriteFloat(float value)</div><div class="ttdoc">Writes a float field value, without a tag, to the stream.</div><div class="ttdef"><b>Definition:</b> <a href="_coded_output_stream_8cs_source.html#l00179">CodedOutputStream.cs:179</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_coded_output_stream_html_ae8febc1c11c6e5b1ebf5a3b46ce39ae2"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_coded_output_stream.html#ae8febc1c11c6e5b1ebf5a3b46ce39ae2">Google.Protobuf.CodedOutputStream.DefaultBufferSize</a></div><div class="ttdeci">static readonly int DefaultBufferSize</div><div class="ttdoc">The buffer size used by CreateInstance(Stream).</div><div class="ttdef"><b>Definition:</b> <a href="_coded_output_stream_8cs_source.html#l00066">CodedOutputStream.cs:66</a></div></div>
+<div class="ttc" id="ainterface_google_1_1_protobuf_1_1_i_message_html"><div class="ttname"><a href="interface_google_1_1_protobuf_1_1_i_message.html">Google.Protobuf.IMessage</a></div><div class="ttdoc">Interface for a Protocol Buffers message, supporting basic operations required for serialization.</div><div class="ttdef"><b>Definition:</b> <a href="_libraries_2_google_8_protobuf_2_i_message_8cs_source.html#l00040">IMessage.cs:41</a></div></div>
+<div class="ttc" id="ainterface_google_1_1_protobuf_1_1_i_message_html_aa3561db050d542706279ffb6ed9315ad"><div class="ttname"><a href="interface_google_1_1_protobuf_1_1_i_message.html#aa3561db050d542706279ffb6ed9315ad">Google.Protobuf.IMessage.CalculateSize</a></div><div class="ttdeci">int CalculateSize()</div><div class="ttdoc">Calculates the size of this message in Protocol Buffer wire format, in bytes.</div></div>
+<div class="ttc" id="ainterface_google_1_1_protobuf_1_1_i_message_html_aacf62d6cd0823f17c92df16be0c4d90b"><div class="ttname"><a href="interface_google_1_1_protobuf_1_1_i_message.html#aacf62d6cd0823f17c92df16be0c4d90b">Google.Protobuf.IMessage.WriteTo</a></div><div class="ttdeci">void WriteTo(CodedOutputStream output)</div><div class="ttdoc">Writes the data to the given coded output stream.</div></div>
+<div class="ttc" id="anamespace_google_1_1_protobuf_1_1_collections_html"><div class="ttname"><a href="namespace_google_1_1_protobuf_1_1_collections.html">Google.Protobuf.Collections</a></div><div class="ttdef"><b>Definition:</b> <a href="_repeated_field_8cs_source.html#l00038">RepeatedField.cs:39</a></div></div>
+<div class="ttc" id="anamespace_google_1_1_protobuf_html"><div class="ttname"><a href="namespace_google_1_1_protobuf.html">Google.Protobuf</a></div><div class="ttdef"><b>Definition:</b> <a href="_i_message_adaptor_8cs_source.html#l00010">IMessageAdaptor.cs:11</a></div></div>
+<div class="ttc" id="anamespace_google_html"><div class="ttname"><a href="namespace_google.html">Google</a></div><div class="ttdef"><b>Definition:</b> <a href="_i_message_adaptor_8cs_source.html#l00010">IMessageAdaptor.cs:11</a></div></div>
+<div class="ttc" id="anamespace_system_html"><div class="ttname"><a href="namespace_system.html">System</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_method_builder_attribute_8cs_source.html#l00001">AsyncMethodBuilderAttribute.cs:2</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_84bbf7b3c7f28a5a18725745e1505219.html">Assets</a></li><li class="navelem"><a class="el" href="dir_f13b41af88cf68434578284aaf699e39.html">Scripts</a></li><li class="navelem"><a class="el" href="dir_46d134a3bf82cf4dc49ca8f728aea58c.html">Libraries</a></li><li class="navelem"><a class="el" href="dir_ee874eb5685beecfc37035b4fc9dfc0c.html">Google.Protobuf</a></li><li class="navelem"><a class="el" href="_coded_output_stream_8cs.html">CodedOutputStream.cs</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:24:50 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

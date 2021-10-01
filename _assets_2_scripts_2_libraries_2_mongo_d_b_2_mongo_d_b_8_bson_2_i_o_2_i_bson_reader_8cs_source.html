@@ -1,0 +1,243 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: Assets/Scripts/Libraries/MongoDB/MongoDB.Bson/IO/IBsonReader.cs 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_i_o_2_i_bson_reader_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">IBsonReader.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_i_o_2_i_bson_reader_8cs.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/* Copyright 2010-present MongoDB Inc.</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">* Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">* you may not use this file except in compliance with the License.</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">* You may obtain a copy of the License at</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">* http://www.apache.org/licenses/LICENSE-2.0</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">* Unless required by applicable law or agreed to in writing, software</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">* distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">* See the License for the specific language governing permissions and</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">* limitations under the License.</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_mongo_d_b_1_1_bson_1_1_i_o.html">MongoDB.Bson.IO</a></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;{</div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html">   23</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">interface </span><a class="code" href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html">IBsonReader</a> : IDisposable</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    {</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <span class="comment">// properties</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html#a643b94aa3cef0bc0e9ccb80a918aeb73">   29</a></span>&#160;<span class="comment"></span>        <a class="code" href="namespace_mongo_d_b_1_1_bson.html#a811d3d494b81b025735495a7790f9d08">BsonType</a> <a class="code" href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html#a643b94aa3cef0bc0e9ccb80a918aeb73">CurrentBsonType</a> { <span class="keyword">get</span>; }</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html#a3507359806bd491dd09b013fe2c2c9e1">   34</a></span>&#160;        <a class="code" href="namespace_mongo_d_b_1_1_bson_1_1_i_o.html#a0fb4b18583b3517bf596f2d4aa07f037">BsonReaderState</a> <a class="code" href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html#a3507359806bd491dd09b013fe2c2c9e1">State</a> { <span class="keyword">get</span>; }</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <span class="comment">// methods</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html#abc5353a3decfab06eb34458857620df4">   40</a></span>&#160;<span class="comment"></span>        <span class="keywordtype">void</span> <a class="code" href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html#abc5353a3decfab06eb34458857620df4">Close</a>();</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html#a2672060a2b92ae94facb5472cd8da953">   46</a></span>&#160;        <a class="code" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_reader_bookmark.html">BsonReaderBookmark</a> <a class="code" href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html#a2672060a2b92ae94facb5472cd8da953">GetBookmark</a>();</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html#a98fd37f3c8d77afafb84fbb5457617c5">   52</a></span>&#160;        <a class="code" href="namespace_mongo_d_b_1_1_bson.html#a811d3d494b81b025735495a7790f9d08">BsonType</a> <a class="code" href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html#a98fd37f3c8d77afafb84fbb5457617c5">GetCurrentBsonType</a>();</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html#a7407f14ebc2fe4b4ca2da40cdea7f131">   60</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html#a7407f14ebc2fe4b4ca2da40cdea7f131">IsAtEndOfFile</a>();</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html#a24d351fa103aaba6ae7d7cc529088852">   66</a></span>&#160;        <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_binary_data.html">BsonBinaryData</a> <a class="code" href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html#a24d351fa103aaba6ae7d7cc529088852">ReadBinaryData</a>();</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html#a5556afd4e2c54ece814c372b5ce0d4fd">   72</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html#a5556afd4e2c54ece814c372b5ce0d4fd">ReadBoolean</a>();</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
+<div class="line"><a name="l00078"></a><span class="lineno"><a class="line" href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html#ad18d9040b58cc406d2f102a6ded1924a">   78</a></span>&#160;        <a class="code" href="namespace_mongo_d_b_1_1_bson.html#a811d3d494b81b025735495a7790f9d08">BsonType</a> <a class="code" href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html#ad18d9040b58cc406d2f102a6ded1924a">ReadBsonType</a>();</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
+<div class="line"><a name="l00084"></a><span class="lineno"><a class="line" href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html#a28b9a02234913e88f77589c2a9fb41a6">   84</a></span>&#160;        <span class="keywordtype">byte</span>[] <a class="code" href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html#a28b9a02234913e88f77589c2a9fb41a6">ReadBytes</a>();</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
+<div class="line"><a name="l00090"></a><span class="lineno"><a class="line" href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html#a5066d2a7213d928e831494c61ce8df91">   90</a></span>&#160;        <span class="keywordtype">long</span> <a class="code" href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html#a5066d2a7213d928e831494c61ce8df91">ReadDateTime</a>();</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
+<div class="line"><a name="l00096"></a><span class="lineno"><a class="line" href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html#a8b2fda55391b1136d8892e0c78bd1e22">   96</a></span>&#160;        <a class="code" href="struct_mongo_d_b_1_1_bson_1_1_decimal128.html">Decimal128</a> <a class="code" href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html#a8b2fda55391b1136d8892e0c78bd1e22">ReadDecimal128</a>();</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
+<div class="line"><a name="l00102"></a><span class="lineno"><a class="line" href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html#a8b045bdde2e1c97d559e5d40fe0b75cb">  102</a></span>&#160;        <span class="keywordtype">double</span> <a class="code" href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html#a8b045bdde2e1c97d559e5d40fe0b75cb">ReadDouble</a>();</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
+<div class="line"><a name="l00107"></a><span class="lineno"><a class="line" href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html#aa993310e088e1c5e27d35dcaaf859f71">  107</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html#aa993310e088e1c5e27d35dcaaf859f71">ReadEndArray</a>();</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
+<div class="line"><a name="l00112"></a><span class="lineno"><a class="line" href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html#a57f33cf9028a5ec422c4b930369b3acc">  112</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html#a57f33cf9028a5ec422c4b930369b3acc">ReadEndDocument</a>();</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160; </div>
+<div class="line"><a name="l00118"></a><span class="lineno"><a class="line" href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html#a11d19cfeb371ba79648545fd03e0252c">  118</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html#a11d19cfeb371ba79648545fd03e0252c">ReadInt32</a>();</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160; </div>
+<div class="line"><a name="l00124"></a><span class="lineno"><a class="line" href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html#a873f118580d530ed955dc0f73e1f4be8">  124</a></span>&#160;        <span class="keywordtype">long</span> <a class="code" href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html#a873f118580d530ed955dc0f73e1f4be8">ReadInt64</a>();</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160; </div>
+<div class="line"><a name="l00130"></a><span class="lineno"><a class="line" href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html#a03fa84a98a58c6ff1431c753fe34fe90">  130</a></span>&#160;        <span class="keywordtype">string</span> <a class="code" href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html#a03fa84a98a58c6ff1431c753fe34fe90">ReadJavaScript</a>();</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160; </div>
+<div class="line"><a name="l00136"></a><span class="lineno"><a class="line" href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html#aa7f1fe74c40f2c664e4a77662f9ce1f6">  136</a></span>&#160;        <span class="keywordtype">string</span> <a class="code" href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html#aa7f1fe74c40f2c664e4a77662f9ce1f6">ReadJavaScriptWithScope</a>();</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160; </div>
+<div class="line"><a name="l00141"></a><span class="lineno"><a class="line" href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html#a6d87c9831f1959fbdfc1b2ed6d571f86">  141</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html#a6d87c9831f1959fbdfc1b2ed6d571f86">ReadMaxKey</a>();</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160; </div>
+<div class="line"><a name="l00146"></a><span class="lineno"><a class="line" href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html#add615c2011a54b637bc8ffb9cde432e5">  146</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html#add615c2011a54b637bc8ffb9cde432e5">ReadMinKey</a>();</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160; </div>
+<div class="line"><a name="l00155"></a><span class="lineno"><a class="line" href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html#a588030898bebf75d80d512a11cba8d74">  155</a></span>&#160;        <span class="keywordtype">string</span> <a class="code" href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html#a588030898bebf75d80d512a11cba8d74">ReadName</a>(<a class="code" href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_name_decoder.html">INameDecoder</a> nameDecoder);</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160; </div>
+<div class="line"><a name="l00160"></a><span class="lineno"><a class="line" href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html#a30e580083d29b93e08aaa1918b9e750b">  160</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html#a30e580083d29b93e08aaa1918b9e750b">ReadNull</a>();</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160; </div>
+<div class="line"><a name="l00166"></a><span class="lineno"><a class="line" href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html#ac5ae4a26aa336f4e16454d8fa23733e6">  166</a></span>&#160;        <a class="code" href="struct_mongo_d_b_1_1_bson_1_1_object_id.html">ObjectId</a> <a class="code" href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html#ac5ae4a26aa336f4e16454d8fa23733e6">ReadObjectId</a>();</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160; </div>
+<div class="line"><a name="l00172"></a><span class="lineno"><a class="line" href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html#aca52bebcccfa4453e9708fe701f6ec0a">  172</a></span>&#160;        <a class="code" href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_byte_buffer.html">IByteBuffer</a> <a class="code" href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html#aca52bebcccfa4453e9708fe701f6ec0a">ReadRawBsonArray</a>();</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160; </div>
+<div class="line"><a name="l00178"></a><span class="lineno"><a class="line" href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html#a8eb57c54b3c53ef75a3e28e3839edd57">  178</a></span>&#160;        <a class="code" href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_byte_buffer.html">IByteBuffer</a> <a class="code" href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html#a8eb57c54b3c53ef75a3e28e3839edd57">ReadRawBsonDocument</a>();</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160; </div>
+<div class="line"><a name="l00184"></a><span class="lineno"><a class="line" href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html#aa1f5668941a64c684e00343e6b37497b">  184</a></span>&#160;        <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_regular_expression.html">BsonRegularExpression</a> <a class="code" href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html#aa1f5668941a64c684e00343e6b37497b">ReadRegularExpression</a>();</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160; </div>
+<div class="line"><a name="l00189"></a><span class="lineno"><a class="line" href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html#ad78d63afa6feff3aa40a7385b5da766e">  189</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html#ad78d63afa6feff3aa40a7385b5da766e">ReadStartArray</a>();</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160; </div>
+<div class="line"><a name="l00194"></a><span class="lineno"><a class="line" href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html#a433770b00e3587edbd1ded7d091ceaf0">  194</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html#a433770b00e3587edbd1ded7d091ceaf0">ReadStartDocument</a>();</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160; </div>
+<div class="line"><a name="l00200"></a><span class="lineno"><a class="line" href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html#a1b1d76069a54b9a90ee71abc4d0a6d83">  200</a></span>&#160;        <span class="keywordtype">string</span> <a class="code" href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html#a1b1d76069a54b9a90ee71abc4d0a6d83">ReadString</a>();</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160; </div>
+<div class="line"><a name="l00206"></a><span class="lineno"><a class="line" href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html#a0554a674b54ae783c25337c9891d1690">  206</a></span>&#160;        <span class="keywordtype">string</span> <a class="code" href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html#a0554a674b54ae783c25337c9891d1690">ReadSymbol</a>();</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160; </div>
+<div class="line"><a name="l00212"></a><span class="lineno"><a class="line" href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html#aafa3b301e7466449274dac01a5ef81d4">  212</a></span>&#160;        <span class="keywordtype">long</span> <a class="code" href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html#aafa3b301e7466449274dac01a5ef81d4">ReadTimestamp</a>();</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160; </div>
+<div class="line"><a name="l00217"></a><span class="lineno"><a class="line" href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html#a567901d9ff99fa2ecc8f0ff846cb513d">  217</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html#a567901d9ff99fa2ecc8f0ff846cb513d">ReadUndefined</a>();</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160; </div>
+<div class="line"><a name="l00223"></a><span class="lineno"><a class="line" href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html#a0815f8fef154c17aae3c437393a294f0">  223</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html#a0815f8fef154c17aae3c437393a294f0">ReturnToBookmark</a>(<a class="code" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_reader_bookmark.html">BsonReaderBookmark</a> bookmark);</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160; </div>
+<div class="line"><a name="l00228"></a><span class="lineno"><a class="line" href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html#aa84defd83da758005d8c7bec9cc77f85">  228</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html#aa84defd83da758005d8c7bec9cc77f85">SkipName</a>();</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160; </div>
+<div class="line"><a name="l00233"></a><span class="lineno"><a class="line" href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html#ad39214be8a714654811855fd2b77c112">  233</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html#ad39214be8a714654811855fd2b77c112">SkipValue</a>();</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;    }</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;}</div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_bson_binary_data_html"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_bson_binary_data.html">MongoDB.Bson.BsonBinaryData</a></div><div class="ttdoc">Represents BSON binary data.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_binary_data_8cs_source.html#l00027">BsonBinaryData.cs:28</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_bson_regular_expression_html"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_bson_regular_expression.html">MongoDB.Bson.BsonRegularExpression</a></div><div class="ttdoc">Represents a BSON regular expression value.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_regular_expression_8cs_source.html#l00027">BsonRegularExpression.cs:28</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_reader_bookmark_html"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_reader_bookmark.html">MongoDB.Bson.IO.BsonReaderBookmark</a></div><div class="ttdoc">Represents a bookmark that can be used to return a reader to the current position and state.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_i_o_2_bson_reader_bookmark_8cs_source.html#l00021">BsonReaderBookmark.cs:22</a></div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader_html"><div class="ttname"><a href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html">MongoDB.Bson.IO.IBsonReader</a></div><div class="ttdoc">Represents a BSON reader.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_i_o_2_i_bson_reader_8cs_source.html#l00023">IBsonReader.cs:24</a></div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader_html_a03fa84a98a58c6ff1431c753fe34fe90"><div class="ttname"><a href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html#a03fa84a98a58c6ff1431c753fe34fe90">MongoDB.Bson.IO.IBsonReader.ReadJavaScript</a></div><div class="ttdeci">string ReadJavaScript()</div><div class="ttdoc">Reads a BSON JavaScript from the reader.</div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader_html_a0554a674b54ae783c25337c9891d1690"><div class="ttname"><a href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html#a0554a674b54ae783c25337c9891d1690">MongoDB.Bson.IO.IBsonReader.ReadSymbol</a></div><div class="ttdeci">string ReadSymbol()</div><div class="ttdoc">Reads a BSON symbol from the reader.</div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader_html_a0815f8fef154c17aae3c437393a294f0"><div class="ttname"><a href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html#a0815f8fef154c17aae3c437393a294f0">MongoDB.Bson.IO.IBsonReader.ReturnToBookmark</a></div><div class="ttdeci">void ReturnToBookmark(BsonReaderBookmark bookmark)</div><div class="ttdoc">Returns the reader to previously bookmarked position and state.</div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader_html_a11d19cfeb371ba79648545fd03e0252c"><div class="ttname"><a href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html#a11d19cfeb371ba79648545fd03e0252c">MongoDB.Bson.IO.IBsonReader.ReadInt32</a></div><div class="ttdeci">int ReadInt32()</div><div class="ttdoc">Reads a BSON Int32 from the reader.</div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader_html_a1b1d76069a54b9a90ee71abc4d0a6d83"><div class="ttname"><a href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html#a1b1d76069a54b9a90ee71abc4d0a6d83">MongoDB.Bson.IO.IBsonReader.ReadString</a></div><div class="ttdeci">string ReadString()</div><div class="ttdoc">Reads a BSON string from the reader.</div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader_html_a24d351fa103aaba6ae7d7cc529088852"><div class="ttname"><a href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html#a24d351fa103aaba6ae7d7cc529088852">MongoDB.Bson.IO.IBsonReader.ReadBinaryData</a></div><div class="ttdeci">BsonBinaryData ReadBinaryData()</div><div class="ttdoc">Reads BSON binary data from the reader.</div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader_html_a2672060a2b92ae94facb5472cd8da953"><div class="ttname"><a href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html#a2672060a2b92ae94facb5472cd8da953">MongoDB.Bson.IO.IBsonReader.GetBookmark</a></div><div class="ttdeci">BsonReaderBookmark GetBookmark()</div><div class="ttdoc">Gets a bookmark to the reader's current position and state.</div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader_html_a28b9a02234913e88f77589c2a9fb41a6"><div class="ttname"><a href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html#a28b9a02234913e88f77589c2a9fb41a6">MongoDB.Bson.IO.IBsonReader.ReadBytes</a></div><div class="ttdeci">byte[] ReadBytes()</div><div class="ttdoc">Reads BSON binary data from the reader.</div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader_html_a30e580083d29b93e08aaa1918b9e750b"><div class="ttname"><a href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html#a30e580083d29b93e08aaa1918b9e750b">MongoDB.Bson.IO.IBsonReader.ReadNull</a></div><div class="ttdeci">void ReadNull()</div><div class="ttdoc">Reads a BSON null from the reader.</div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader_html_a3507359806bd491dd09b013fe2c2c9e1"><div class="ttname"><a href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html#a3507359806bd491dd09b013fe2c2c9e1">MongoDB.Bson.IO.IBsonReader.State</a></div><div class="ttdeci">BsonReaderState State</div><div class="ttdoc">Gets the current state of the reader.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_i_o_2_i_bson_reader_8cs_source.html#l00034">IBsonReader.cs:34</a></div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader_html_a433770b00e3587edbd1ded7d091ceaf0"><div class="ttname"><a href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html#a433770b00e3587edbd1ded7d091ceaf0">MongoDB.Bson.IO.IBsonReader.ReadStartDocument</a></div><div class="ttdeci">void ReadStartDocument()</div><div class="ttdoc">Reads the start of a BSON document.</div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader_html_a5066d2a7213d928e831494c61ce8df91"><div class="ttname"><a href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html#a5066d2a7213d928e831494c61ce8df91">MongoDB.Bson.IO.IBsonReader.ReadDateTime</a></div><div class="ttdeci">long ReadDateTime()</div><div class="ttdoc">Reads a BSON DateTime from the reader.</div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader_html_a5556afd4e2c54ece814c372b5ce0d4fd"><div class="ttname"><a href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html#a5556afd4e2c54ece814c372b5ce0d4fd">MongoDB.Bson.IO.IBsonReader.ReadBoolean</a></div><div class="ttdeci">bool ReadBoolean()</div><div class="ttdoc">Reads a BSON boolean from the reader.</div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader_html_a567901d9ff99fa2ecc8f0ff846cb513d"><div class="ttname"><a href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html#a567901d9ff99fa2ecc8f0ff846cb513d">MongoDB.Bson.IO.IBsonReader.ReadUndefined</a></div><div class="ttdeci">void ReadUndefined()</div><div class="ttdoc">Reads a BSON undefined from the reader.</div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader_html_a57f33cf9028a5ec422c4b930369b3acc"><div class="ttname"><a href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html#a57f33cf9028a5ec422c4b930369b3acc">MongoDB.Bson.IO.IBsonReader.ReadEndDocument</a></div><div class="ttdeci">void ReadEndDocument()</div><div class="ttdoc">Reads the end of a BSON document from the reader.</div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader_html_a588030898bebf75d80d512a11cba8d74"><div class="ttname"><a href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html#a588030898bebf75d80d512a11cba8d74">MongoDB.Bson.IO.IBsonReader.ReadName</a></div><div class="ttdeci">string ReadName(INameDecoder nameDecoder)</div><div class="ttdoc">Reads the name of an element from the reader (using the provided name decoder).</div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader_html_a643b94aa3cef0bc0e9ccb80a918aeb73"><div class="ttname"><a href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html#a643b94aa3cef0bc0e9ccb80a918aeb73">MongoDB.Bson.IO.IBsonReader.CurrentBsonType</a></div><div class="ttdeci">BsonType CurrentBsonType</div><div class="ttdoc">Gets the current BsonType.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_i_o_2_i_bson_reader_8cs_source.html#l00029">IBsonReader.cs:29</a></div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader_html_a6d87c9831f1959fbdfc1b2ed6d571f86"><div class="ttname"><a href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html#a6d87c9831f1959fbdfc1b2ed6d571f86">MongoDB.Bson.IO.IBsonReader.ReadMaxKey</a></div><div class="ttdeci">void ReadMaxKey()</div><div class="ttdoc">Reads a BSON MaxKey from the reader.</div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader_html_a7407f14ebc2fe4b4ca2da40cdea7f131"><div class="ttname"><a href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html#a7407f14ebc2fe4b4ca2da40cdea7f131">MongoDB.Bson.IO.IBsonReader.IsAtEndOfFile</a></div><div class="ttdeci">bool IsAtEndOfFile()</div><div class="ttdoc">Determines whether this reader is at end of file.</div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader_html_a873f118580d530ed955dc0f73e1f4be8"><div class="ttname"><a href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html#a873f118580d530ed955dc0f73e1f4be8">MongoDB.Bson.IO.IBsonReader.ReadInt64</a></div><div class="ttdeci">long ReadInt64()</div><div class="ttdoc">Reads a BSON Int64 from the reader.</div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader_html_a8b045bdde2e1c97d559e5d40fe0b75cb"><div class="ttname"><a href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html#a8b045bdde2e1c97d559e5d40fe0b75cb">MongoDB.Bson.IO.IBsonReader.ReadDouble</a></div><div class="ttdeci">double ReadDouble()</div><div class="ttdoc">Reads a BSON Double from the reader.</div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader_html_a8b2fda55391b1136d8892e0c78bd1e22"><div class="ttname"><a href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html#a8b2fda55391b1136d8892e0c78bd1e22">MongoDB.Bson.IO.IBsonReader.ReadDecimal128</a></div><div class="ttdeci">Decimal128 ReadDecimal128()</div><div class="ttdoc">Reads a BSON Decimal128 from the reader.</div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader_html_a8eb57c54b3c53ef75a3e28e3839edd57"><div class="ttname"><a href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html#a8eb57c54b3c53ef75a3e28e3839edd57">MongoDB.Bson.IO.IBsonReader.ReadRawBsonDocument</a></div><div class="ttdeci">IByteBuffer ReadRawBsonDocument()</div><div class="ttdoc">Reads a raw BSON document.</div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader_html_a98fd37f3c8d77afafb84fbb5457617c5"><div class="ttname"><a href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html#a98fd37f3c8d77afafb84fbb5457617c5">MongoDB.Bson.IO.IBsonReader.GetCurrentBsonType</a></div><div class="ttdeci">BsonType GetCurrentBsonType()</div><div class="ttdoc">Gets the current BsonType (calls ReadBsonType if necessary).</div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader_html_aa1f5668941a64c684e00343e6b37497b"><div class="ttname"><a href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html#aa1f5668941a64c684e00343e6b37497b">MongoDB.Bson.IO.IBsonReader.ReadRegularExpression</a></div><div class="ttdeci">BsonRegularExpression ReadRegularExpression()</div><div class="ttdoc">Reads a BSON regular expression from the reader.</div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader_html_aa7f1fe74c40f2c664e4a77662f9ce1f6"><div class="ttname"><a href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html#aa7f1fe74c40f2c664e4a77662f9ce1f6">MongoDB.Bson.IO.IBsonReader.ReadJavaScriptWithScope</a></div><div class="ttdeci">string ReadJavaScriptWithScope()</div><div class="ttdoc">Reads a BSON JavaScript with scope from the reader (call ReadStartDocument next to read the scope).</div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader_html_aa84defd83da758005d8c7bec9cc77f85"><div class="ttname"><a href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html#aa84defd83da758005d8c7bec9cc77f85">MongoDB.Bson.IO.IBsonReader.SkipName</a></div><div class="ttdeci">void SkipName()</div><div class="ttdoc">Skips the name (reader must be positioned on a name).</div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader_html_aa993310e088e1c5e27d35dcaaf859f71"><div class="ttname"><a href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html#aa993310e088e1c5e27d35dcaaf859f71">MongoDB.Bson.IO.IBsonReader.ReadEndArray</a></div><div class="ttdeci">void ReadEndArray()</div><div class="ttdoc">Reads the end of a BSON array from the reader.</div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader_html_aafa3b301e7466449274dac01a5ef81d4"><div class="ttname"><a href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html#aafa3b301e7466449274dac01a5ef81d4">MongoDB.Bson.IO.IBsonReader.ReadTimestamp</a></div><div class="ttdeci">long ReadTimestamp()</div><div class="ttdoc">Reads a BSON timestamp from the reader.</div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader_html_abc5353a3decfab06eb34458857620df4"><div class="ttname"><a href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html#abc5353a3decfab06eb34458857620df4">MongoDB.Bson.IO.IBsonReader.Close</a></div><div class="ttdeci">void Close()</div><div class="ttdoc">Closes the reader.</div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader_html_ac5ae4a26aa336f4e16454d8fa23733e6"><div class="ttname"><a href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html#ac5ae4a26aa336f4e16454d8fa23733e6">MongoDB.Bson.IO.IBsonReader.ReadObjectId</a></div><div class="ttdeci">ObjectId ReadObjectId()</div><div class="ttdoc">Reads a BSON ObjectId from the reader.</div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader_html_aca52bebcccfa4453e9708fe701f6ec0a"><div class="ttname"><a href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html#aca52bebcccfa4453e9708fe701f6ec0a">MongoDB.Bson.IO.IBsonReader.ReadRawBsonArray</a></div><div class="ttdeci">IByteBuffer ReadRawBsonArray()</div><div class="ttdoc">Reads a raw BSON array.</div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader_html_ad18d9040b58cc406d2f102a6ded1924a"><div class="ttname"><a href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html#ad18d9040b58cc406d2f102a6ded1924a">MongoDB.Bson.IO.IBsonReader.ReadBsonType</a></div><div class="ttdeci">BsonType ReadBsonType()</div><div class="ttdoc">Reads a BsonType from the reader.</div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader_html_ad39214be8a714654811855fd2b77c112"><div class="ttname"><a href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html#ad39214be8a714654811855fd2b77c112">MongoDB.Bson.IO.IBsonReader.SkipValue</a></div><div class="ttdeci">void SkipValue()</div><div class="ttdoc">Skips the value (reader must be positioned on a value).</div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader_html_ad78d63afa6feff3aa40a7385b5da766e"><div class="ttname"><a href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html#ad78d63afa6feff3aa40a7385b5da766e">MongoDB.Bson.IO.IBsonReader.ReadStartArray</a></div><div class="ttdeci">void ReadStartArray()</div><div class="ttdoc">Reads the start of a BSON array.</div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader_html_add615c2011a54b637bc8ffb9cde432e5"><div class="ttname"><a href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_bson_reader.html#add615c2011a54b637bc8ffb9cde432e5">MongoDB.Bson.IO.IBsonReader.ReadMinKey</a></div><div class="ttdeci">void ReadMinKey()</div><div class="ttdoc">Reads a BSON MinKey from the reader.</div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_byte_buffer_html"><div class="ttname"><a href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_byte_buffer.html">MongoDB.Bson.IO.IByteBuffer</a></div><div class="ttdoc">Represents a byte buffer (backed by various means depending on the implementation).</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_i_o_2_i_byte_buffer_8cs_source.html#l00024">IByteBuffer.cs:25</a></div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_name_decoder_html"><div class="ttname"><a href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_name_decoder.html">MongoDB.Bson.IO.INameDecoder</a></div><div class="ttdoc">Represents a name decoder.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_i_o_2_i_name_decoder_8cs_source.html#l00025">INameDecoder.cs:26</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_bson_1_1_i_o_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_bson_1_1_i_o.html">MongoDB.Bson.IO</a></div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_i_o_2_array_element_name_accelerator_8cs_source.html#l00018">ArrayElementNameAccelerator.cs:19</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_bson_1_1_i_o_html_a0fb4b18583b3517bf596f2d4aa07f037"><div class="ttname"><a href="namespace_mongo_d_b_1_1_bson_1_1_i_o.html#a0fb4b18583b3517bf596f2d4aa07f037">MongoDB.Bson.IO.BsonReaderState</a></div><div class="ttdeci">BsonReaderState</div><div class="ttdoc">Represents the state of a reader.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_i_o_2_bson_reader_state_8cs_source.html#l00021">BsonReaderState.cs:22</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_bson_html_a811d3d494b81b025735495a7790f9d08"><div class="ttname"><a href="namespace_mongo_d_b_1_1_bson.html#a811d3d494b81b025735495a7790f9d08">MongoDB.Bson.BsonType</a></div><div class="ttdeci">BsonType</div><div class="ttdoc">Represents the type of a BSON element.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_type_8cs_source.html#l00026">BsonType.cs:27</a></div></div>
+<div class="ttc" id="anamespace_system_html"><div class="ttname"><a href="namespace_system.html">System</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_method_builder_attribute_8cs_source.html#l00001">AsyncMethodBuilderAttribute.cs:2</a></div></div>
+<div class="ttc" id="astruct_mongo_d_b_1_1_bson_1_1_decimal128_html"><div class="ttname"><a href="struct_mongo_d_b_1_1_bson_1_1_decimal128.html">MongoDB.Bson.Decimal128</a></div><div class="ttdoc">Represents a Decimal128 value.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_decimal128_8cs_source.html#l00030">Decimal128.cs:31</a></div></div>
+<div class="ttc" id="astruct_mongo_d_b_1_1_bson_1_1_object_id_html"><div class="ttname"><a href="struct_mongo_d_b_1_1_bson_1_1_object_id.html">MongoDB.Bson.ObjectId</a></div><div class="ttdoc">Represents an ObjectId (see also BsonObjectId).</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_object_id_8cs_source.html#l00030">ObjectId.cs:31</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_84bbf7b3c7f28a5a18725745e1505219.html">Assets</a></li><li class="navelem"><a class="el" href="dir_f13b41af88cf68434578284aaf699e39.html">Scripts</a></li><li class="navelem"><a class="el" href="dir_46d134a3bf82cf4dc49ca8f728aea58c.html">Libraries</a></li><li class="navelem"><a class="el" href="dir_73566d0e413307016ca2f8948e23ce26.html">MongoDB</a></li><li class="navelem"><a class="el" href="dir_bf52240e991d83ea827d5d13f9c7b60c.html">MongoDB.Bson</a></li><li class="navelem"><a class="el" href="dir_1ddeeaf61d6ac8c8c2db9bcbe6f5edd3.html">IO</a></li><li class="navelem"><a class="el" href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_i_o_2_i_bson_reader_8cs.html">IBsonReader.cs</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:24:51 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,4 @@
+var interface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_polymorphic_serializer =
+[
+    [ "IsDiscriminatorCompatibleWithObjectSerializer", "interface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_polymorphic_serializer.html#a04480e9fa0ff1fee81ef56f7d2afef41", null ]
+];

@@ -1,0 +1,398 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: ETServer/Server/ThirdParty/MongoDBDriver/MongoDB.Driver/ProjectionDefinitionBuilder.cs 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_projection_definition_builder_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">ProjectionDefinitionBuilder.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_projection_definition_builder_8cs.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/* Copyright 2010-present MongoDB Inc.</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">* Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">* you may not use this file except in compliance with the License.</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">* You may obtain a copy of the License at</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">* http://www.apache.org/licenses/LICENSE-2.0</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">* Unless required by applicable law or agreed to in writing, software</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">* distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">* See the License for the specific language governing permissions and</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">* limitations under the License.</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Collections.Generic;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Linq;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Linq.Expressions;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_mongo_d_b.html">MongoDB</a>.<a class="code" href="namespace_mongo_d_b_1_1_bson.html">Bson</a>;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_mongo_d_b.html">MongoDB</a>.<a class="code" href="namespace_mongo_d_b_1_1_bson.html">Bson</a>.<a class="code" href="namespace_mongo_d_b_1_1_bson_1_1_serialization.html">Serialization</a>;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_mongo_d_b.html">MongoDB</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver.html">Driver</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core.html">Core</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_misc.html">Misc</a>;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_mongo_d_b_1_1_driver.html">MongoDB.Driver</a></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;{</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">class </span>ProjectionDefinitionExtensions</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    {</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> ProjectionDefinition&lt;TDocument&gt; ElemMatch&lt;TDocument, TItem&gt;(<span class="keyword">this</span> ProjectionDefinition&lt;TDocument&gt; projection, FieldDefinition&lt;TDocument&gt; field, FilterDefinition&lt;TItem&gt; filter)</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        {</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            var builder = Builders&lt;TDocument&gt;.Projection;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            <span class="keywordflow">return</span> builder.Combine(projection, builder.ElemMatch(field, filter));</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        }</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> ProjectionDefinition&lt;TDocument&gt; ElemMatch&lt;TDocument, TItem&gt;(<span class="keyword">this</span> ProjectionDefinition&lt;TDocument&gt; projection, Expression&lt;Func&lt;TDocument, IEnumerable&lt;TItem&gt;&gt;&gt; field, FilterDefinition&lt;TItem&gt; filter)</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        {</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            var builder = Builders&lt;TDocument&gt;.Projection;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            <span class="keywordflow">return</span> builder.Combine(projection, builder.ElemMatch(field, filter));</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        }</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> ProjectionDefinition&lt;TDocument&gt; ElemMatch&lt;TDocument, TItem&gt;(<span class="keyword">this</span> ProjectionDefinition&lt;TDocument&gt; projection, Expression&lt;Func&lt;TDocument, IEnumerable&lt;TItem&gt;&gt;&gt; field, Expression&lt;Func&lt;TItem, bool&gt;&gt; filter)</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        {</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            var builder = Builders&lt;TDocument&gt;.Projection;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;            <span class="keywordflow">return</span> builder.Combine(projection, builder.ElemMatch(field, filter));</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        }</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> ProjectionDefinition&lt;TDocument&gt; Exclude&lt;TDocument&gt;(<span class="keyword">this</span> ProjectionDefinition&lt;TDocument&gt; projection, FieldDefinition&lt;TDocument&gt; field)</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        {</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;            var builder = Builders&lt;TDocument&gt;.Projection;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;            <span class="keywordflow">return</span> builder.Combine(projection, builder.Exclude(field));</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        }</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> ProjectionDefinition&lt;TDocument&gt; Exclude&lt;TDocument&gt;(<span class="keyword">this</span> ProjectionDefinition&lt;TDocument&gt; projection, Expression&lt;Func&lt;TDocument, object&gt;&gt; field)</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        {</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;            var builder = Builders&lt;TDocument&gt;.Projection;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;            <span class="keywordflow">return</span> builder.Combine(projection, builder.Exclude(field));</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        }</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; </div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> ProjectionDefinition&lt;TDocument&gt; Include&lt;TDocument&gt;(<span class="keyword">this</span> ProjectionDefinition&lt;TDocument&gt; projection, FieldDefinition&lt;TDocument&gt; field)</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        {</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;            var builder = Builders&lt;TDocument&gt;.Projection;</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;            <span class="keywordflow">return</span> builder.Combine(projection, builder.Include(field));</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        }</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160; </div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> ProjectionDefinition&lt;TDocument&gt; Include&lt;TDocument&gt;(<span class="keyword">this</span> ProjectionDefinition&lt;TDocument&gt; projection, Expression&lt;Func&lt;TDocument, object&gt;&gt; field)</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;        {</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;            var builder = Builders&lt;TDocument&gt;.Projection;</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;            <span class="keywordflow">return</span> builder.Combine(projection, builder.Include(field));</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;        }</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160; </div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> ProjectionDefinition&lt;TDocument&gt; MetaTextScore&lt;TDocument&gt;(<span class="keyword">this</span> ProjectionDefinition&lt;TDocument&gt; projection, <span class="keywordtype">string</span> field)</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;        {</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;            var builder = Builders&lt;TDocument&gt;.Projection;</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;            <span class="keywordflow">return</span> builder.Combine(projection, builder.MetaTextScore(field));</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;        }</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160; </div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> ProjectionDefinition&lt;TDocument&gt; Slice&lt;TDocument&gt;(<span class="keyword">this</span> ProjectionDefinition&lt;TDocument&gt; projection, FieldDefinition&lt;TDocument&gt; field, <span class="keywordtype">int</span> skip, <span class="keywordtype">int</span>? limit = <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;        {</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;            var builder = Builders&lt;TDocument&gt;.Projection;</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;            <span class="keywordflow">return</span> builder.Combine(projection, builder.Slice(field, skip, limit));</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;        }</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160; </div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> ProjectionDefinition&lt;TDocument&gt; Slice&lt;TDocument&gt;(<span class="keyword">this</span> ProjectionDefinition&lt;TDocument&gt; projection, Expression&lt;Func&lt;TDocument, object&gt;&gt; field, <span class="keywordtype">int</span> skip, <span class="keywordtype">int</span>? limit = <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;        {</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;            var builder = Builders&lt;TDocument&gt;.Projection;</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;            <span class="keywordflow">return</span> builder.Combine(projection, builder.Slice(field, skip, limit));</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;        }</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;    }</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160; </div>
+<div class="line"><a name="l00196"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_projection_definition_builder.html">  196</a></span>&#160;    <span class="keyword">public</span> sealed <span class="keyword">class </span><a class="code" href="class_mongo_d_b_1_1_driver_1_1_projection_definition_builder.html">ProjectionDefinitionBuilder</a>&lt;TSource&gt;</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;    {</div>
+<div class="line"><a name="l00204"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_projection_definition_builder.html#a7cd438273ffc7905d87726011d2975be">  204</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_projection_definition.html">ProjectionDefinition&lt;TSource, TProjection&gt;</a> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_projection_definition_builder.html#a7cd438273ffc7905d87726011d2975be">As&lt;TProjection&gt;</a>(<a class="code" href="interface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_serializer.html">IBsonSerializer&lt;TProjection&gt;</a> projectionSerializer = <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;        {</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_client_side_deserialization_projection_definition.html">ClientSideDeserializationProjectionDefinition&lt;TSource, TProjection&gt;</a>(projectionSerializer);</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;        }</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160; </div>
+<div class="line"><a name="l00216"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_projection_definition_builder.html#ab9bd0ca793902c863df3d2fc4fd3dd56">  216</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_projection_definition.html">ProjectionDefinition&lt;TSource&gt;</a> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_projection_definition_builder.html#ab9bd0ca793902c863df3d2fc4fd3dd56">Combine</a>(params <a class="code" href="class_mongo_d_b_1_1_driver_1_1_projection_definition.html">ProjectionDefinition&lt;TSource&gt;</a>[] projections)</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;        {</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_projection_definition_builder.html#ab9bd0ca793902c863df3d2fc4fd3dd56">Combine</a>((IEnumerable&lt;<a class="code" href="class_mongo_d_b_1_1_driver_1_1_projection_definition.html">ProjectionDefinition&lt;TSource&gt;</a>&gt;)projections);</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;        }</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160; </div>
+<div class="line"><a name="l00228"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_projection_definition_builder.html#abb132e4c0f7d67abf015004071a78f8d">  228</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_projection_definition.html">ProjectionDefinition&lt;TSource&gt;</a> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_projection_definition_builder.html#abb132e4c0f7d67abf015004071a78f8d">Combine</a>(IEnumerable&lt;<a class="code" href="class_mongo_d_b_1_1_driver_1_1_projection_definition.html">ProjectionDefinition&lt;TSource&gt;</a>&gt; projections)</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;        {</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> CombinedProjectionDefinition&lt;TSource&gt;(projections);</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;        }</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160; </div>
+<div class="line"><a name="l00242"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_projection_definition_builder.html#aac7e958831a344fa567e356ba6ca1cc5">  242</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_projection_definition.html">ProjectionDefinition&lt;TSource&gt;</a> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_projection_definition_builder.html#aac7e958831a344fa567e356ba6ca1cc5">ElemMatch&lt;TItem&gt;</a>(<a class="code" href="class_mongo_d_b_1_1_driver_1_1_field_definition.html">FieldDefinition&lt;TSource&gt;</a> field, <a class="code" href="class_mongo_d_b_1_1_driver_1_1_filter_definition.html">FilterDefinition&lt;TItem&gt;</a> filter)</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;        {</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> ElementMatchProjectionDefinition&lt;TSource, TItem&gt;(field, filter);</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;        }</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160; </div>
+<div class="line"><a name="l00256"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_projection_definition_builder.html#afe24c45576afef1523c0fdd246002c88">  256</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_projection_definition.html">ProjectionDefinition&lt;TSource&gt;</a> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_projection_definition_builder.html#aac7e958831a344fa567e356ba6ca1cc5">ElemMatch&lt;TItem&gt;</a>(Expression&lt;Func&lt;TSource, IEnumerable&lt;TItem&gt;&gt;&gt; field, <a class="code" href="class_mongo_d_b_1_1_driver_1_1_filter_definition.html">FilterDefinition&lt;TItem&gt;</a> filter)</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;        {</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;            <span class="keywordflow">return</span> ElemMatch(<span class="keyword">new</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_expression_field_definition.html">ExpressionFieldDefinition&lt;TSource&gt;</a>(field), filter);</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;        }</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160; </div>
+<div class="line"><a name="l00270"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_projection_definition_builder.html#a5c9f36e2264e3b2077b8bcc578982672">  270</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_projection_definition.html">ProjectionDefinition&lt;TSource&gt;</a> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_projection_definition_builder.html#aac7e958831a344fa567e356ba6ca1cc5">ElemMatch&lt;TItem&gt;</a>(Expression&lt;Func&lt;TSource, IEnumerable&lt;TItem&gt;&gt;&gt; field, Expression&lt;Func&lt;TItem, bool&gt;&gt; filter)</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;        {</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;            <span class="keywordflow">return</span> ElemMatch(<span class="keyword">new</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_expression_field_definition.html">ExpressionFieldDefinition&lt;TSource&gt;</a>(field), <span class="keyword">new</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_expression_filter_definition.html">ExpressionFilterDefinition&lt;TItem&gt;</a>(filter));</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;        }</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160; </div>
+<div class="line"><a name="l00282"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_projection_definition_builder.html#ac30f35523f088b7e16c38d140f5d7767">  282</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_projection_definition.html">ProjectionDefinition&lt;TSource&gt;</a> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_projection_definition_builder.html#ac30f35523f088b7e16c38d140f5d7767">Exclude</a>(<a class="code" href="class_mongo_d_b_1_1_driver_1_1_field_definition.html">FieldDefinition&lt;TSource&gt;</a> field)</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;        {</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> SingleFieldProjectionDefinition&lt;TSource&gt;(field, 0);</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;        }</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160; </div>
+<div class="line"><a name="l00294"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_projection_definition_builder.html#a76dba7bb38b15e8fb3d5ecb72ae4d464">  294</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_projection_definition.html">ProjectionDefinition&lt;TSource&gt;</a> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_projection_definition_builder.html#a76dba7bb38b15e8fb3d5ecb72ae4d464">Exclude</a>(Expression&lt;Func&lt;TSource, object&gt;&gt; field)</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;        {</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_projection_definition_builder.html#ac30f35523f088b7e16c38d140f5d7767">Exclude</a>(<span class="keyword">new</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_expression_field_definition.html">ExpressionFieldDefinition&lt;TSource&gt;</a>(field));</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;        }</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160; </div>
+<div class="line"><a name="l00307"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_projection_definition_builder.html#a61367c7caa9a372aa9dec6fd84e05f5d">  307</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_projection_definition.html">ProjectionDefinition&lt;TSource, TProjection&gt;</a> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_projection_definition_builder.html#a61367c7caa9a372aa9dec6fd84e05f5d">Expression&lt;TProjection&gt;</a>(Expression&lt;Func&lt;TSource, TProjection&gt;&gt; expression)</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;        {</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_find_expression_projection_definition.html">FindExpressionProjectionDefinition&lt;TSource, TProjection&gt;</a>(expression);</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;        }</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160; </div>
+<div class="line"><a name="l00319"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_projection_definition_builder.html#a5609ae65fbd45ad58fd79636b35fa8a6">  319</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_projection_definition.html">ProjectionDefinition&lt;TSource&gt;</a> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_projection_definition_builder.html#a5609ae65fbd45ad58fd79636b35fa8a6">Include</a>(<a class="code" href="class_mongo_d_b_1_1_driver_1_1_field_definition.html">FieldDefinition&lt;TSource&gt;</a> field)</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;        {</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> SingleFieldProjectionDefinition&lt;TSource&gt;(field, 1);</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;        }</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160; </div>
+<div class="line"><a name="l00331"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_projection_definition_builder.html#a8dd08eed3196e77123aeaf1f203d1040">  331</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_projection_definition.html">ProjectionDefinition&lt;TSource&gt;</a> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_projection_definition_builder.html#a8dd08eed3196e77123aeaf1f203d1040">Include</a>(Expression&lt;Func&lt;TSource, object&gt;&gt; field)</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;        {</div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_projection_definition_builder.html#a5609ae65fbd45ad58fd79636b35fa8a6">Include</a>(<span class="keyword">new</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_expression_field_definition.html">ExpressionFieldDefinition&lt;TSource&gt;</a>(field));</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;        }</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160; </div>
+<div class="line"><a name="l00343"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_projection_definition_builder.html#ace6271aac1080eb61d3f73b90292a602">  343</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_projection_definition.html">ProjectionDefinition&lt;TSource&gt;</a> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_projection_definition_builder.html#ace6271aac1080eb61d3f73b90292a602">MetaTextScore</a>(<span class="keywordtype">string</span> field)</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;        {</div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> SingleFieldProjectionDefinition&lt;TSource&gt;(field, <span class="keyword">new</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_document.html">BsonDocument</a>(<span class="stringliteral">&quot;$meta&quot;</span>, <span class="stringliteral">&quot;textScore&quot;</span>));</div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;        }</div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160; </div>
+<div class="line"><a name="l00357"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_projection_definition_builder.html#a37855e86f3ef5a4246c73804acc31fd9">  357</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_projection_definition.html">ProjectionDefinition&lt;TSource&gt;</a> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_projection_definition_builder.html#a37855e86f3ef5a4246c73804acc31fd9">Slice</a>(<a class="code" href="class_mongo_d_b_1_1_driver_1_1_field_definition.html">FieldDefinition&lt;TSource&gt;</a> field, <span class="keywordtype">int</span> skip, <span class="keywordtype">int</span>? limit = <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;        {</div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;            var value = limit.HasValue ? (<a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_value.html">BsonValue</a>)<span class="keyword">new</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_array.html">BsonArray</a> { skip, limit.Value } : skip;</div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> SingleFieldProjectionDefinition&lt;TSource&gt;(field, <span class="keyword">new</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_document.html">BsonDocument</a>(<span class="stringliteral">&quot;$slice&quot;</span>, value));</div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;        }</div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160; </div>
+<div class="line"><a name="l00372"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_projection_definition_builder.html#a68a218137d88048a5d5196fe3dbbeb7d">  372</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_projection_definition.html">ProjectionDefinition&lt;TSource&gt;</a> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_projection_definition_builder.html#a68a218137d88048a5d5196fe3dbbeb7d">Slice</a>(Expression&lt;Func&lt;TSource, object&gt;&gt; field, <span class="keywordtype">int</span> skip, <span class="keywordtype">int</span>? limit = <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;        {</div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_projection_definition_builder.html#a37855e86f3ef5a4246c73804acc31fd9">Slice</a>(<span class="keyword">new</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_expression_field_definition.html">ExpressionFieldDefinition&lt;TSource&gt;</a>(field), skip, limit);</div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;        }</div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;    }</div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160; </div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;    <span class="keyword">internal</span> sealed <span class="keyword">class </span>CombinedProjectionDefinition&lt;TSource&gt; : ProjectionDefinition&lt;TSource&gt;</div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;    {</div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;        <span class="keyword">private</span> readonly List&lt;ProjectionDefinition&lt;TSource&gt;&gt; _projections;</div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160; </div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;        <span class="keyword">public</span> CombinedProjectionDefinition(IEnumerable&lt;ProjectionDefinition&lt;TSource&gt;&gt; projections)</div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;        {</div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;            _projections = Ensure.IsNotNull(projections, nameof(projections)).ToList();</div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;        }</div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160; </div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_document.html">BsonDocument</a> Render(<a class="code" href="interface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_serializer.html">IBsonSerializer&lt;TSource&gt;</a> sourceSerializer, <a class="code" href="interface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_serializer_registry.html">IBsonSerializerRegistry</a> serializerRegistry)</div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;        {</div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;            var document = <span class="keyword">new</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_document.html">BsonDocument</a>();</div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160; </div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;            <span class="keywordflow">foreach</span> (var projection <span class="keywordflow">in</span> _projections)</div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;            {</div>
+<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;                var renderedProjection = projection.Render(sourceSerializer, serializerRegistry);</div>
+<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160; </div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;                <span class="keywordflow">foreach</span> (var element <span class="keywordflow">in</span> renderedProjection.Elements)</div>
+<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;                {</div>
+<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;                    <span class="comment">// last one wins</span></div>
+<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;                    document.Remove(element.Name);</div>
+<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;                    document.Add(element);</div>
+<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;                }</div>
+<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;            }</div>
+<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160; </div>
+<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;            <span class="keywordflow">return</span> document;</div>
+<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;        }</div>
+<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;    }</div>
+<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160; </div>
+<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;    <span class="keyword">internal</span> sealed <span class="keyword">class </span>ElementMatchProjectionDefinition&lt;TSource, TItem&gt; : ProjectionDefinition&lt;TSource&gt;</div>
+<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;    {</div>
+<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;        <span class="keyword">private</span> readonly FieldDefinition&lt;TSource&gt; _field;</div>
+<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;        <span class="keyword">private</span> readonly FilterDefinition&lt;TItem&gt; _filter;</div>
+<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160; </div>
+<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;        <span class="keyword">public</span> ElementMatchProjectionDefinition(FieldDefinition&lt;TSource&gt; field, FilterDefinition&lt;TItem&gt; filter)</div>
+<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;        {</div>
+<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;            _field = Ensure.IsNotNull(field, nameof(field));</div>
+<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;            _filter = filter;</div>
+<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;        }</div>
+<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160; </div>
+<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_document.html">BsonDocument</a> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_projection_definition.html#aca293755c440460d5e9bfa18087f3ce8">Render</a>(<a class="code" href="interface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_serializer.html">IBsonSerializer&lt;TSource&gt;</a> sourceSerializer, <a class="code" href="interface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_serializer_registry.html">IBsonSerializerRegistry</a> serializerRegistry)</div>
+<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;        {</div>
+<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;            var renderedField = _field.Render(sourceSerializer, serializerRegistry);</div>
+<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160; </div>
+<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;            <a class="code" href="interface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_serializer.html">IBsonSerializer&lt;TItem&gt;</a> itemSerializer;</div>
+<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;            <span class="keywordflow">if</span> (renderedField.FieldSerializer != <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;            {</div>
+<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;                var arraySerializer = renderedField.FieldSerializer as <a class="code" href="interface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_array_serializer.html">IBsonArraySerializer</a>;</div>
+<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;                <a class="code" href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_bson_serialization_info.html">BsonSerializationInfo</a> itemSerializationInfo;</div>
+<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;                <span class="keywordflow">if</span> (arraySerializer == <span class="keyword">null</span> || !arraySerializer.TryGetItemSerializationInfo(out itemSerializationInfo))</div>
+<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;                {</div>
+<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;                    var message = <span class="keywordtype">string</span>.Format(<span class="stringliteral">&quot;The serializer for field &#39;{0}&#39; must implement IBsonArraySerializer and provide item serialization info.&quot;</span>, renderedField.FieldName);</div>
+<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;                    <span class="keywordflow">throw</span> <span class="keyword">new</span> InvalidOperationException(message);</div>
+<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;                }</div>
+<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;                itemSerializer = (<a class="code" href="interface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_serializer.html">IBsonSerializer&lt;TItem&gt;</a>)itemSerializationInfo.Serializer;</div>
+<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;            }</div>
+<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;            {</div>
+<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;                itemSerializer = serializerRegistry.<a class="code" href="interface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_serializer_registry.html#a4ddc2cee371d4523983b2489419cce3b">GetSerializer</a>&lt;TItem&gt;();</div>
+<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;            }</div>
+<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160; </div>
+<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;            var renderedFilter = _filter.Render(itemSerializer, serializerRegistry);</div>
+<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160; </div>
+<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_document.html">BsonDocument</a>(renderedField.FieldName, <span class="keyword">new</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_document.html">BsonDocument</a>(<span class="stringliteral">&quot;$elemMatch&quot;</span>, renderedFilter));</div>
+<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;        }</div>
+<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;    }</div>
+<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160; </div>
+<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;    <span class="keyword">internal</span> sealed <span class="keyword">class </span>PositionalOperatorProjectionDefinition&lt;TSource&gt; : ProjectionDefinition&lt;TSource&gt;</div>
+<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;    {</div>
+<div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;        <span class="keyword">private</span> readonly FieldDefinition&lt;TSource&gt; _field;</div>
+<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160; </div>
+<div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;        <span class="keyword">public</span> PositionalOperatorProjectionDefinition(FieldDefinition&lt;TSource&gt; field)</div>
+<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;        {</div>
+<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;            _field = Ensure.IsNotNull(field, nameof(field));</div>
+<div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;        }</div>
+<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160; </div>
+<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_document.html">BsonDocument</a> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_projection_definition.html#aca293755c440460d5e9bfa18087f3ce8">Render</a>(<a class="code" href="interface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_serializer.html">IBsonSerializer&lt;TSource&gt;</a> sourceSerializer, <a class="code" href="interface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_serializer_registry.html">IBsonSerializerRegistry</a> serializerRegistry)</div>
+<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;        {</div>
+<div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;            var renderedField = _field.Render(sourceSerializer, serializerRegistry);</div>
+<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_document.html">BsonDocument</a>(renderedField.FieldName + <span class="stringliteral">&quot;.$&quot;</span>, 1);</div>
+<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;        }</div>
+<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;    }</div>
+<div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160; </div>
+<div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160;    <span class="keyword">internal</span> sealed <span class="keyword">class </span>SingleFieldProjectionDefinition&lt;TSource&gt; : ProjectionDefinition&lt;TSource&gt;</div>
+<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;    {</div>
+<div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160;        <span class="keyword">private</span> readonly FieldDefinition&lt;TSource&gt; _field;</div>
+<div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160;        <span class="keyword">private</span> readonly <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_value.html">BsonValue</a> _value;</div>
+<div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160; </div>
+<div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160;        <span class="keyword">public</span> SingleFieldProjectionDefinition(FieldDefinition&lt;TSource&gt; field, <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_value.html">BsonValue</a> value)</div>
+<div class="line"><a name="l00467"></a><span class="lineno">  467</span>&#160;        {</div>
+<div class="line"><a name="l00468"></a><span class="lineno">  468</span>&#160;            _field = Ensure.IsNotNull(field, nameof(field));</div>
+<div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160;            _value = Ensure.IsNotNull(value, nameof(value));</div>
+<div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160;        }</div>
+<div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160; </div>
+<div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_document.html">BsonDocument</a> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_projection_definition.html#aca293755c440460d5e9bfa18087f3ce8">Render</a>(<a class="code" href="interface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_serializer.html">IBsonSerializer&lt;TSource&gt;</a> sourceSerializer, <a class="code" href="interface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_serializer_registry.html">IBsonSerializerRegistry</a> serializerRegistry)</div>
+<div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;        {</div>
+<div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;            var renderedField = _field.Render(sourceSerializer, serializerRegistry);</div>
+<div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_document.html">BsonDocument</a>(renderedField.FieldName, _value);</div>
+<div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;        }</div>
+<div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160;    }</div>
+<div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160;}</div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_bson_array_html"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_bson_array.html">MongoDB.Bson.BsonArray</a></div><div class="ttdoc">Represents a BSON array.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_array_8cs_source.html#l00031">BsonArray.cs:32</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_bson_document_html"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_bson_document.html">MongoDB.Bson.BsonDocument</a></div><div class="ttdoc">Represents a BSON document.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_document_8cs_source.html#l00034">BsonDocument.cs:35</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_bson_value_html"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_bson_value.html">MongoDB.Bson.BsonValue</a></div><div class="ttdoc">Represents a BSON value (this is an abstract class, see the various subclasses).</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_value_8cs_source.html#l00028">BsonValue.cs:29</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_serialization_1_1_bson_serialization_info_html"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_bson_serialization_info.html">MongoDB.Bson.Serialization.BsonSerializationInfo</a></div><div class="ttdoc">Represents the information needed to serialize a member.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_serialization_2_bson_serialization_info_8cs_source.html#l00025">BsonSerializationInfo.cs:26</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_client_side_deserialization_projection_definition_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_client_side_deserialization_projection_definition.html">MongoDB.Driver.ClientSideDeserializationProjectionDefinition</a></div><div class="ttdoc">A client side only projection that is implemented solely by deserializing using a different serialize...</div><div class="ttdef"><b>Definition:</b> <a href="_projection_definition_8cs_source.html#l00477">ProjectionDefinition.cs:478</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_expression_field_definition_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_expression_field_definition.html">MongoDB.Driver.ExpressionFieldDefinition</a></div><div class="ttdoc">An Expression based field.</div><div class="ttdef"><b>Definition:</b> <a href="_field_definition_8cs_source.html#l00272">FieldDefinition.cs:273</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_expression_filter_definition_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_expression_filter_definition.html">MongoDB.Driver.ExpressionFilterDefinition</a></div><div class="ttdoc">An Expression based filter.</div><div class="ttdef"><b>Definition:</b> <a href="_filter_definition_8cs_source.html#l00187">FilterDefinition.cs:188</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_field_definition_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_field_definition.html">MongoDB.Driver.FieldDefinition&lt; TSource &gt;</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_filter_definition_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_filter_definition.html">MongoDB.Driver.FilterDefinition&lt; TItem &gt;</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_find_expression_projection_definition_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_find_expression_projection_definition.html">MongoDB.Driver.FindExpressionProjectionDefinition</a></div><div class="ttdoc">A find Expression based projection.</div><div class="ttdef"><b>Definition:</b> <a href="_projection_definition_8cs_source.html#l00256">ProjectionDefinition.cs:257</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_projection_definition_builder_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_projection_definition_builder.html">MongoDB.Driver.ProjectionDefinitionBuilder</a></div><div class="ttdoc">A builder for a projection.</div><div class="ttdef"><b>Definition:</b> <a href="_projection_definition_builder_8cs_source.html#l00196">ProjectionDefinitionBuilder.cs:197</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_projection_definition_builder_html_a37855e86f3ef5a4246c73804acc31fd9"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_projection_definition_builder.html#a37855e86f3ef5a4246c73804acc31fd9">MongoDB.Driver.ProjectionDefinitionBuilder.Slice</a></div><div class="ttdeci">ProjectionDefinition&lt; TSource &gt; Slice(FieldDefinition&lt; TSource &gt; field, int skip, int? limit=null)</div><div class="ttdoc">Creates an array slice projection.</div><div class="ttdef"><b>Definition:</b> <a href="_projection_definition_builder_8cs_source.html#l00357">ProjectionDefinitionBuilder.cs:357</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_projection_definition_builder_html_a5609ae65fbd45ad58fd79636b35fa8a6"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_projection_definition_builder.html#a5609ae65fbd45ad58fd79636b35fa8a6">MongoDB.Driver.ProjectionDefinitionBuilder.Include</a></div><div class="ttdeci">ProjectionDefinition&lt; TSource &gt; Include(FieldDefinition&lt; TSource &gt; field)</div><div class="ttdoc">Creates a projection that includes a field.</div><div class="ttdef"><b>Definition:</b> <a href="_projection_definition_builder_8cs_source.html#l00319">ProjectionDefinitionBuilder.cs:319</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_projection_definition_builder_html_a61367c7caa9a372aa9dec6fd84e05f5d"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_projection_definition_builder.html#a61367c7caa9a372aa9dec6fd84e05f5d">MongoDB.Driver.ProjectionDefinitionBuilder.Expression&lt; TProjection &gt;</a></div><div class="ttdeci">ProjectionDefinition&lt; TSource, TProjection &gt; Expression&lt; TProjection &gt;(Expression&lt; Func&lt; TSource, TProjection &gt;&gt; expression)</div><div class="ttdoc">Creates a projection based on the expression.</div><div class="ttdef"><b>Definition:</b> <a href="_projection_definition_builder_8cs_source.html#l00307">ProjectionDefinitionBuilder.cs:307</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_projection_definition_builder_html_a68a218137d88048a5d5196fe3dbbeb7d"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_projection_definition_builder.html#a68a218137d88048a5d5196fe3dbbeb7d">MongoDB.Driver.ProjectionDefinitionBuilder.Slice</a></div><div class="ttdeci">ProjectionDefinition&lt; TSource &gt; Slice(Expression&lt; Func&lt; TSource, object &gt;&gt; field, int skip, int? limit=null)</div><div class="ttdoc">Creates an array slice projection.</div><div class="ttdef"><b>Definition:</b> <a href="_projection_definition_builder_8cs_source.html#l00372">ProjectionDefinitionBuilder.cs:372</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_projection_definition_builder_html_a76dba7bb38b15e8fb3d5ecb72ae4d464"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_projection_definition_builder.html#a76dba7bb38b15e8fb3d5ecb72ae4d464">MongoDB.Driver.ProjectionDefinitionBuilder.Exclude</a></div><div class="ttdeci">ProjectionDefinition&lt; TSource &gt; Exclude(Expression&lt; Func&lt; TSource, object &gt;&gt; field)</div><div class="ttdoc">Creates a projection that excludes a field.</div><div class="ttdef"><b>Definition:</b> <a href="_projection_definition_builder_8cs_source.html#l00294">ProjectionDefinitionBuilder.cs:294</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_projection_definition_builder_html_a7cd438273ffc7905d87726011d2975be"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_projection_definition_builder.html#a7cd438273ffc7905d87726011d2975be">MongoDB.Driver.ProjectionDefinitionBuilder.As&lt; TProjection &gt;</a></div><div class="ttdeci">ProjectionDefinition&lt; TSource, TProjection &gt; As&lt; TProjection &gt;(IBsonSerializer&lt; TProjection &gt; projectionSerializer=null)</div><div class="ttdoc">Creates a client side projection that is implemented solely by using a different serializer.</div><div class="ttdef"><b>Definition:</b> <a href="_projection_definition_builder_8cs_source.html#l00204">ProjectionDefinitionBuilder.cs:204</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_projection_definition_builder_html_a8dd08eed3196e77123aeaf1f203d1040"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_projection_definition_builder.html#a8dd08eed3196e77123aeaf1f203d1040">MongoDB.Driver.ProjectionDefinitionBuilder.Include</a></div><div class="ttdeci">ProjectionDefinition&lt; TSource &gt; Include(Expression&lt; Func&lt; TSource, object &gt;&gt; field)</div><div class="ttdoc">Creates a projection that includes a field.</div><div class="ttdef"><b>Definition:</b> <a href="_projection_definition_builder_8cs_source.html#l00331">ProjectionDefinitionBuilder.cs:331</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_projection_definition_builder_html_aac7e958831a344fa567e356ba6ca1cc5"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_projection_definition_builder.html#aac7e958831a344fa567e356ba6ca1cc5">MongoDB.Driver.ProjectionDefinitionBuilder.ElemMatch&lt; TItem &gt;</a></div><div class="ttdeci">ProjectionDefinition&lt; TSource &gt; ElemMatch&lt; TItem &gt;(FieldDefinition&lt; TSource &gt; field, FilterDefinition&lt; TItem &gt; filter)</div><div class="ttdoc">Creates a projection that filters the contents of an array.</div><div class="ttdef"><b>Definition:</b> <a href="_projection_definition_builder_8cs_source.html#l00242">ProjectionDefinitionBuilder.cs:242</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_projection_definition_builder_html_ab9bd0ca793902c863df3d2fc4fd3dd56"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_projection_definition_builder.html#ab9bd0ca793902c863df3d2fc4fd3dd56">MongoDB.Driver.ProjectionDefinitionBuilder.Combine</a></div><div class="ttdeci">ProjectionDefinition&lt; TSource &gt; Combine(params ProjectionDefinition&lt; TSource &gt;[] projections)</div><div class="ttdoc">Combines the specified projections.</div><div class="ttdef"><b>Definition:</b> <a href="_projection_definition_builder_8cs_source.html#l00216">ProjectionDefinitionBuilder.cs:216</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_projection_definition_builder_html_abb132e4c0f7d67abf015004071a78f8d"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_projection_definition_builder.html#abb132e4c0f7d67abf015004071a78f8d">MongoDB.Driver.ProjectionDefinitionBuilder.Combine</a></div><div class="ttdeci">ProjectionDefinition&lt; TSource &gt; Combine(IEnumerable&lt; ProjectionDefinition&lt; TSource &gt;&gt; projections)</div><div class="ttdoc">Combines the specified projections.</div><div class="ttdef"><b>Definition:</b> <a href="_projection_definition_builder_8cs_source.html#l00228">ProjectionDefinitionBuilder.cs:228</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_projection_definition_builder_html_ac30f35523f088b7e16c38d140f5d7767"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_projection_definition_builder.html#ac30f35523f088b7e16c38d140f5d7767">MongoDB.Driver.ProjectionDefinitionBuilder.Exclude</a></div><div class="ttdeci">ProjectionDefinition&lt; TSource &gt; Exclude(FieldDefinition&lt; TSource &gt; field)</div><div class="ttdoc">Creates a projection that excludes a field.</div><div class="ttdef"><b>Definition:</b> <a href="_projection_definition_builder_8cs_source.html#l00282">ProjectionDefinitionBuilder.cs:282</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_projection_definition_builder_html_ace6271aac1080eb61d3f73b90292a602"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_projection_definition_builder.html#ace6271aac1080eb61d3f73b90292a602">MongoDB.Driver.ProjectionDefinitionBuilder.MetaTextScore</a></div><div class="ttdeci">ProjectionDefinition&lt; TSource &gt; MetaTextScore(string field)</div><div class="ttdoc">Creates a text score projection.</div><div class="ttdef"><b>Definition:</b> <a href="_projection_definition_builder_8cs_source.html#l00343">ProjectionDefinitionBuilder.cs:343</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_projection_definition_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_projection_definition.html">MongoDB.Driver.ProjectionDefinition</a></div><div class="ttdoc">Base class for projections whose projection type is not yet known.</div><div class="ttdef"><b>Definition:</b> <a href="_projection_definition_8cs_source.html#l00116">ProjectionDefinition.cs:117</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_projection_definition_html_aca293755c440460d5e9bfa18087f3ce8"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_projection_definition.html#aca293755c440460d5e9bfa18087f3ce8">MongoDB.Driver.ProjectionDefinition&lt; TSource &gt;::Render</a></div><div class="ttdeci">abstract BsonDocument Render(IBsonSerializer&lt; TSource &gt; sourceSerializer, IBsonSerializerRegistry serializerRegistry)</div><div class="ttdoc">Renders the projection to a RenderedProjectionDefinition&lt;TProjection&gt;.</div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_array_serializer_html"><div class="ttname"><a href="interface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_array_serializer.html">MongoDB.Bson.Serialization.IBsonArraySerializer</a></div><div class="ttdoc">Contract for serializers to implement if they serialize an array of items.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_serialization_2_i_bson_array_serializer_8cs_source.html#l00021">IBsonArraySerializer.cs:22</a></div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_serializer_html"><div class="ttname"><a href="interface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_serializer.html">MongoDB.Bson.Serialization.IBsonSerializer&lt; TProjection &gt;</a></div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_serializer_registry_html"><div class="ttname"><a href="interface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_serializer_registry.html">MongoDB.Bson.Serialization.IBsonSerializerRegistry</a></div><div class="ttdoc">A serializer registry.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_serialization_2_i_bson_serializer_registry_8cs_source.html#l00023">IBsonSerializerRegistry.cs:24</a></div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_serializer_registry_html_a4ddc2cee371d4523983b2489419cce3b"><div class="ttname"><a href="interface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_serializer_registry.html#a4ddc2cee371d4523983b2489419cce3b">MongoDB.Bson.Serialization.IBsonSerializerRegistry.GetSerializer</a></div><div class="ttdeci">IBsonSerializer GetSerializer(Type type)</div><div class="ttdoc">Gets the serializer for the specified type .</div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_bson_1_1_serialization_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_bson_1_1_serialization.html">MongoDB.Bson.Serialization</a></div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_serialization_2_attributed_serialization_provider_8cs_source.html#l00021">AttributedSerializationProvider.cs:22</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_bson_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_bson.html">MongoDB.Bson</a></div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_bson_constants_8cs_source.html#l00018">BsonConstants.cs:19</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_driver_1_1_core_1_1_misc_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_misc.html">MongoDB.Driver.Core.Misc</a></div><div class="ttdef"><b>Definition:</b> <a href="_array_filters_feature_8cs_source.html#l00020">ArrayFiltersFeature.cs:21</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_driver_1_1_core_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_driver_1_1_core.html">MongoDB.Driver.Core</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_queue_8cs_source.html#l00023">AsyncQueue.cs:24</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_driver_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_driver.html">MongoDB.Driver</a></div><div class="ttdef"><b>Definition:</b> <a href="_aggregate_bucket_auto_granularity_8cs_source.html#l00018">AggregateBucketAutoGranularity.cs:19</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_html"><div class="ttname"><a href="namespace_mongo_d_b.html">MongoDB</a></div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_bson_constants_8cs_source.html#l00018">BsonConstants.cs:19</a></div></div>
+<div class="ttc" id="anamespace_system_html"><div class="ttname"><a href="namespace_system.html">System</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_method_builder_attribute_8cs_source.html#l00001">AsyncMethodBuilderAttribute.cs:2</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_1e261a42b4a2e33df58a15c412684b10.html">ETServer</a></li><li class="navelem"><a class="el" href="dir_473c270c995194c5ad99131d9c901f09.html">Server</a></li><li class="navelem"><a class="el" href="dir_ce426efcf63311ff42488fb2654bd4b4.html">ThirdParty</a></li><li class="navelem"><a class="el" href="dir_a37b2b5f9c8890cc9f6f8392fb0cdff3.html">MongoDBDriver</a></li><li class="navelem"><a class="el" href="dir_42d569251c6b173c0060c74ec4fd3ce0.html">MongoDB.Driver</a></li><li class="navelem"><a class="el" href="_projection_definition_builder_8cs.html">ProjectionDefinitionBuilder.cs</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:25:00 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

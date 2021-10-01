@@ -1,0 +1,431 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: ETServer/Server/ThirdParty/MongoDBDriver/MongoDB.Driver.Core/Core/Authentication/SaslAuthenticator.cs 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_sasl_authenticator_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">SaslAuthenticator.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_sasl_authenticator_8cs.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/* Copyright 2015-present MongoDB Inc.</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">* Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">* you may not use this file except in compliance with the License.</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">* You may obtain a copy of the License at</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">* http://www.apache.org/licenses/LICENSE-2.0</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">* Unless required by applicable law or agreed to in writing, software</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">* distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">* See the License for the specific language governing permissions and</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">* limitations under the License.</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Collections.Generic;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Threading;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Threading.Tasks;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_mongo_d_b.html">MongoDB</a>.<a class="code" href="namespace_mongo_d_b_1_1_bson.html">Bson</a>;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_mongo_d_b.html">MongoDB</a>.<a class="code" href="namespace_mongo_d_b_1_1_bson.html">Bson</a>.<a class="code" href="namespace_mongo_d_b_1_1_bson_1_1_serialization.html">Serialization</a>.<a class="code" href="namespace_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers.html">Serializers</a>;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_mongo_d_b.html">MongoDB</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver.html">Driver</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core.html">Core</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_connections.html">Connections</a>;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_mongo_d_b.html">MongoDB</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver.html">Driver</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core.html">Core</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_misc.html">Misc</a>;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_mongo_d_b.html">MongoDB</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver.html">Driver</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core.html">Core</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_wire_protocol.html">WireProtocol</a>;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_authentication.html">MongoDB.Driver.Core.Authentication</a></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;{</div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator.html">   31</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">class </span><a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator.html">SaslAuthenticator</a> : <a class="code" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_i_authenticator.html">IAuthenticator</a></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    {</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <span class="comment">// fields</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="keyword">private</span> readonly <a class="code" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator_1_1_i_sasl_mechanism.html">ISaslMechanism</a> _mechanism;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <span class="comment">// constructors</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator.html#a35df3b31e7aacbb6035727084bcd9a40">   41</a></span>&#160;<span class="comment"></span>        <span class="keyword">protected</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator.html#a35df3b31e7aacbb6035727084bcd9a40">SaslAuthenticator</a>(<a class="code" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator_1_1_i_sasl_mechanism.html">ISaslMechanism</a> mechanism)</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        {</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;            _mechanism = Ensure.IsNotNull(mechanism, nameof(mechanism));</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        }</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <span class="comment">// properties</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator.html#a9fd52c97c6e600fe5bbc00ab04cb932f">   48</a></span>&#160;<span class="comment"></span>        <span class="keyword">public</span> <span class="keywordtype">string</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator.html#a9fd52c97c6e600fe5bbc00ab04cb932f">Name</a></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        {</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;            <span class="keyword">get</span> { <span class="keywordflow">return</span> _mechanism.Name; }</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        }</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator.html#ad13352e14c66c4bed66ecd494dcf2635">   59</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keywordtype">string</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator.html#ad13352e14c66c4bed66ecd494dcf2635">DatabaseName</a> { <span class="keyword">get</span>; }</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <span class="comment">// methods</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator.html#a2df6b9e7f58a7a7504f3c4e3da61c9fc">   63</a></span>&#160;<span class="comment"></span>        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator.html#a2df6b9e7f58a7a7504f3c4e3da61c9fc">Authenticate</a>(<a class="code" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_i_connection.html">IConnection</a> connection, <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_connection_description.html">ConnectionDescription</a> description, CancellationToken cancellationToken)</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        {</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            Ensure.IsNotNull(connection, nameof(connection));</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            Ensure.IsNotNull(description, nameof(description));</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            <span class="keyword">using</span> (var conversation = <span class="keyword">new</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator_1_1_sasl_conversation.html">SaslConversation</a>(description.<a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_connection_description.html#afcee7949b87f60081cb3fc4aec2c5151">ConnectionId</a>))</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            {</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                var currentStep = _mechanism.Initialize( connection, conversation, description);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                var command = CreateStartCommand(currentStep);</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                <span class="keywordflow">while</span> (<span class="keyword">true</span>)</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                {</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                    <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_document.html">BsonDocument</a> result;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                    <span class="keywordflow">try</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                    {</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                        var protocol = CreateCommandProtocol(command);</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                        result = protocol.Execute(connection, cancellationToken);</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                    }</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                    <span class="keywordflow">catch</span> (<a class="code" href="class_mongo_d_b_1_1_driver_1_1_mongo_command_exception.html">MongoCommandException</a> ex)</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                    {</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                        <span class="keywordflow">throw</span> CreateException(connection, ex);</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                    }</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                    currentStep = Transition(conversation, currentStep, result);</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                    <span class="keywordflow">if</span> (currentStep == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                    {</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                        <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                    }</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                    command = CreateContinueCommand(currentStep, result);</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                }</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;            }</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        }</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
+<div class="line"><a name="l00098"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator.html#add10a9ad8b5d5f96095417a2922a6b35">   98</a></span>&#160;        <span class="keyword">public</span> async Task <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator.html#add10a9ad8b5d5f96095417a2922a6b35">AuthenticateAsync</a>(<a class="code" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_i_connection.html">IConnection</a> connection, <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_connection_description.html">ConnectionDescription</a> description, CancellationToken cancellationToken)</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        {</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;            Ensure.IsNotNull(connection, nameof(connection));</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;            Ensure.IsNotNull(description, nameof(description));</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;            <span class="keyword">using</span> (var conversation = <span class="keyword">new</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator_1_1_sasl_conversation.html">SaslConversation</a>(description.<a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_connection_description.html#afcee7949b87f60081cb3fc4aec2c5151">ConnectionId</a>))</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;            {</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;                var currentStep = _mechanism.Initialize(connection, conversation, description);</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;                var command = CreateStartCommand(currentStep);</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;                <span class="keywordflow">while</span> (<span class="keyword">true</span>)</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;                {</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;                    <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_document.html">BsonDocument</a> result;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;                    <span class="keywordflow">try</span></div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;                    {</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;                        var protocol = CreateCommandProtocol(command);</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;                        result = await protocol.ExecuteAsync(connection, cancellationToken).ConfigureAwait(<span class="keyword">false</span>);</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;                    }</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;                    <span class="keywordflow">catch</span> (<a class="code" href="class_mongo_d_b_1_1_driver_1_1_mongo_command_exception.html">MongoCommandException</a> ex)</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;                    {</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;                        <span class="keywordflow">throw</span> CreateException(connection, ex);</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;                    }</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160; </div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;                    currentStep = Transition(conversation, currentStep, result);</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;                    <span class="keywordflow">if</span> (currentStep == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;                    {</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;                        <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;                    }</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160; </div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;                    command = CreateContinueCommand(currentStep, result);</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;                }</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;            }</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        }</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160; </div>
+<div class="line"><a name="l00133"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator.html#a5fea5ccc5d8886bbe44a9f938d7005e2">  133</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_document.html">BsonDocument</a> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator.html#a5fea5ccc5d8886bbe44a9f938d7005e2">CustomizeInitialIsMasterCommand</a>(<a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_document.html">BsonDocument</a> isMasterCommand)</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        {</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;            <span class="keywordflow">return</span> isMasterCommand; </div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        }</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160; </div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;        <span class="keyword">private</span> CommandWireProtocol&lt;BsonDocument&gt; CreateCommandProtocol(<a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_document.html">BsonDocument</a> command)</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;        {</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> CommandWireProtocol&lt;BsonDocument&gt;(</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;                <span class="keyword">new</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_database_namespace.html">DatabaseNamespace</a>(<a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator.html#ad13352e14c66c4bed66ecd494dcf2635">DatabaseName</a>),</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;                command,</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;                <span class="keyword">true</span>,</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;                <a class="code" href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_bson_document_serializer.html">BsonDocumentSerializer</a>.<a class="code" href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_bson_document_serializer.html#ac97fba0a0fc49608305e4b640c4f90ca">Instance</a>,</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;                <span class="keyword">null</span>);</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;        }</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160; </div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;        <span class="keyword">private</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_document.html">BsonDocument</a> CreateContinueCommand(ISaslStep currentStep, <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_document.html">BsonDocument</a> result)</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        {</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_document.html">BsonDocument</a></div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;            {</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;                { <span class="stringliteral">&quot;saslContinue&quot;</span>, 1 },</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;                { <span class="stringliteral">&quot;conversationId&quot;</span>, result[<span class="stringliteral">&quot;conversationId&quot;</span>].<a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_value.html#a7b8233c34444c34b5231df5aaee59dc5">AsInt32</a> },</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;                { <span class="stringliteral">&quot;payload&quot;</span>, currentStep.BytesToSendToServer }</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;            };</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;        }</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160; </div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;        <span class="keyword">private</span> MongoAuthenticationException CreateException(<a class="code" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_i_connection.html">IConnection</a> connection, Exception ex)</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;        {</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;            var message = <span class="keywordtype">string</span>.Format(<span class="stringliteral">&quot;Unable to authenticate using sasl protocol mechanism {0}.&quot;</span>, <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator.html#a9fd52c97c6e600fe5bbc00ab04cb932f">Name</a>);</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> MongoAuthenticationException(connection.<a class="code" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_i_connection.html#a291f9939f7241addf7363c3907dd8139">ConnectionId</a>, message, ex);</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;        }</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160; </div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;        <span class="keyword">private</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_document.html">BsonDocument</a> CreateStartCommand(ISaslStep currentStep)</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;        {</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_document.html">BsonDocument</a></div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;            {</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;                { <span class="stringliteral">&quot;saslStart&quot;</span>, 1 },</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;                { <span class="stringliteral">&quot;mechanism&quot;</span>, _mechanism.Name },</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;                { <span class="stringliteral">&quot;payload&quot;</span>, currentStep.BytesToSendToServer }</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;            };</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;        }</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160; </div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;        <span class="keyword">private</span> ISaslStep Transition(SaslConversation conversation, ISaslStep currentStep, <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_document.html">BsonDocument</a> result)</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;        {</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;            <span class="comment">// we might be done here if the client is not expecting a reply from the server</span></div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;            <span class="keywordflow">if</span> (result.<a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_document.html#a7839f38dd50a1779cc9f50497481f1c6">GetValue</a>(<span class="stringliteral">&quot;done&quot;</span>, <span class="keyword">false</span>).<a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_value.html#a361c89c21dcf93c90cee831cb52d8870">ToBoolean</a>() &amp;&amp; currentStep.IsComplete)</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;            {</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;            }</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160; </div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;            currentStep = currentStep.Transition(conversation, result[<span class="stringliteral">&quot;payload&quot;</span>].AsByteArray);</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160; </div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;            <span class="comment">// we might be done here if the client had some final verification it needed to do</span></div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;            <span class="keywordflow">if</span> (result.<a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_document.html#a7839f38dd50a1779cc9f50497481f1c6">GetValue</a>(<span class="stringliteral">&quot;done&quot;</span>, <span class="keyword">false</span>).<a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_value.html#a361c89c21dcf93c90cee831cb52d8870">ToBoolean</a>() &amp;&amp; currentStep.IsComplete)</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;            {</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;            }</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160; </div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;            <span class="keywordflow">return</span> currentStep;</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;        }</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160; </div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;        <span class="comment">// nested classes</span></div>
+<div class="line"><a name="l00197"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator_1_1_sasl_conversation.html">  197</a></span>&#160;<span class="comment"></span>        <span class="keyword">protected</span> sealed <span class="keyword">class </span><a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator_1_1_sasl_conversation.html">SaslConversation</a> : IDisposable</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;        {</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;            <span class="comment">// fields</span></div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;            <span class="keyword">private</span> readonly <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_connection_id.html">ConnectionId</a> _connectionId;</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;            <span class="keyword">private</span> List&lt;IDisposable&gt; _itemsNeedingDisposal;</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;            <span class="keyword">private</span> <span class="keywordtype">bool</span> _isDisposed;</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160; </div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;            <span class="comment">// constructors</span></div>
+<div class="line"><a name="l00209"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator_1_1_sasl_conversation.html#ad8bbb2bd6184fa7dbd771912b8cc843e">  209</a></span>&#160;<span class="comment"></span>            <span class="keyword">public</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator_1_1_sasl_conversation.html#ad8bbb2bd6184fa7dbd771912b8cc843e">SaslConversation</a>(<a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_connection_id.html">ConnectionId</a> connectionId)</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;            {</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;                _connectionId = connectionId;</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;                _itemsNeedingDisposal = <span class="keyword">new</span> List&lt;IDisposable&gt;();</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;            }</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160; </div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;            <span class="comment">// properties</span></div>
+<div class="line"><a name="l00222"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator_1_1_sasl_conversation.html#af4eaeddd12e8d9967df1bb07db6849c8">  222</a></span>&#160;<span class="comment"></span>            <span class="keyword">public</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_connection_id.html">ConnectionId</a> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_connection_id.html">ConnectionId</a></div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;            {</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;                <span class="keyword">get</span> { <span class="keywordflow">return</span> _connectionId; }</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;            }</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160; </div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;            <span class="comment">// methods</span></div>
+<div class="line"><a name="l00229"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator_1_1_sasl_conversation.html#a2d4c3877f8db7730f8b5b1d4eeb9d45f">  229</a></span>&#160;<span class="comment"></span>            <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator_1_1_sasl_conversation.html#a2d4c3877f8db7730f8b5b1d4eeb9d45f">Dispose</a>()</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;            {</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;                <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator_1_1_sasl_conversation.html#a2d4c3877f8db7730f8b5b1d4eeb9d45f">Dispose</a>(<span class="keyword">true</span>);</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;                GC.SuppressFinalize(<span class="keyword">this</span>);</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;            }</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160; </div>
+<div class="line"><a name="l00239"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator_1_1_sasl_conversation.html#ad91619659dcb79ccea415ca4e4f5668e">  239</a></span>&#160;            <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator_1_1_sasl_conversation.html#ad91619659dcb79ccea415ca4e4f5668e">RegisterItemForDisposal</a>(IDisposable item)</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;            {</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;                _itemsNeedingDisposal.Add(item);</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;            }</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160; </div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;            <span class="keyword">private</span> <span class="keywordtype">void</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator_1_1_sasl_conversation.html#a2d4c3877f8db7730f8b5b1d4eeb9d45f">Dispose</a>(<span class="keywordtype">bool</span> disposing)</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;            {</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;                <span class="keywordflow">if</span> (!_isDisposed)</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;                {</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;                    <span class="comment">// disposal should happen in reverse order of registration.</span></div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;                    <span class="keywordflow">if</span> (disposing &amp;&amp; _itemsNeedingDisposal != <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;                    {</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;                        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = _itemsNeedingDisposal.Count - 1; i &gt;= 0; i--)</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;                        {</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;                            _itemsNeedingDisposal[i].Dispose();</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;                        }</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160; </div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;                        _itemsNeedingDisposal.Clear();</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;                        _itemsNeedingDisposal = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;                    }</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160; </div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;                    _isDisposed = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;                }</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;            }</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;        }</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160; </div>
+<div class="line"><a name="l00268"></a><span class="lineno"><a class="line" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator_1_1_i_sasl_mechanism.html">  268</a></span>&#160;        <span class="keyword">protected</span> <span class="keyword">interface </span><a class="code" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator_1_1_i_sasl_mechanism.html">ISaslMechanism</a></div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;        {</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;            <span class="comment">// properties</span></div>
+<div class="line"><a name="l00277"></a><span class="lineno"><a class="line" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator_1_1_i_sasl_mechanism.html#a0f0d05e57d779050cb7d8151d7d311c1">  277</a></span>&#160;<span class="comment"></span>            <span class="keywordtype">string</span> <a class="code" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator_1_1_i_sasl_mechanism.html#a0f0d05e57d779050cb7d8151d7d311c1">Name</a> { <span class="keyword">get</span>; }</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160; </div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;            <span class="comment">// methods</span></div>
+<div class="line"><a name="l00287"></a><span class="lineno"><a class="line" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator_1_1_i_sasl_mechanism.html#aab2e1cf9fa7231b3c4d35acffea57a61">  287</a></span>&#160;<span class="comment"></span>            <a class="code" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator_1_1_i_sasl_step.html">ISaslStep</a> <a class="code" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator_1_1_i_sasl_mechanism.html#aab2e1cf9fa7231b3c4d35acffea57a61">Initialize</a>(<a class="code" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_i_connection.html">IConnection</a> connection, <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator_1_1_sasl_conversation.html">SaslConversation</a> conversation, <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_connection_description.html">ConnectionDescription</a> description);</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;        }</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160; </div>
+<div class="line"><a name="l00293"></a><span class="lineno"><a class="line" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator_1_1_i_sasl_step.html">  293</a></span>&#160;        <span class="keyword">protected</span> <span class="keyword">interface </span><a class="code" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator_1_1_i_sasl_step.html">ISaslStep</a></div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;        {</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;            <span class="comment">// properties</span></div>
+<div class="line"><a name="l00302"></a><span class="lineno"><a class="line" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator_1_1_i_sasl_step.html#abffe64c116da131b77704ec097b02787">  302</a></span>&#160;<span class="comment"></span>            <span class="keywordtype">byte</span>[] <a class="code" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator_1_1_i_sasl_step.html#abffe64c116da131b77704ec097b02787">BytesToSendToServer</a> { <span class="keyword">get</span>; }</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160; </div>
+<div class="line"><a name="l00310"></a><span class="lineno"><a class="line" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator_1_1_i_sasl_step.html#a0419fc165aaa687c82949ac455c9357a">  310</a></span>&#160;            <span class="keywordtype">bool</span> <a class="code" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator_1_1_i_sasl_step.html#a0419fc165aaa687c82949ac455c9357a">IsComplete</a> { <span class="keyword">get</span>; }</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160; </div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;            <span class="comment">// methods</span></div>
+<div class="line"><a name="l00319"></a><span class="lineno"><a class="line" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator_1_1_i_sasl_step.html#a9a390f4b1f904779311548b770a0b572">  319</a></span>&#160;<span class="comment"></span>            <a class="code" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator_1_1_i_sasl_step.html">ISaslStep</a> <a class="code" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator_1_1_i_sasl_step.html#a9a390f4b1f904779311548b770a0b572">Transition</a>(<a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator_1_1_sasl_conversation.html">SaslConversation</a> conversation, <span class="keywordtype">byte</span>[] bytesReceivedFromServer);</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;        }</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160; </div>
+<div class="line"><a name="l00325"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator_1_1_completed_step.html">  325</a></span>&#160;        <span class="keyword">protected</span> <span class="keyword">class </span><a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator_1_1_completed_step.html">CompletedStep</a> : <a class="code" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator_1_1_i_sasl_step.html">ISaslStep</a></div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;        {</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;            <span class="comment">// fields</span></div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;            <span class="keyword">private</span> readonly <span class="keywordtype">byte</span>[] _bytesToSendToServer;</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160; </div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;            <span class="comment">// constructors</span></div>
+<div class="line"><a name="l00334"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator_1_1_completed_step.html#adec78f1bb96c2d204bbad35de84bff37">  334</a></span>&#160;<span class="comment"></span>            <span class="keyword">public</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator_1_1_completed_step.html#adec78f1bb96c2d204bbad35de84bff37">CompletedStep</a>()</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;                : this(new byte[0])</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;            {</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;            }</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160; </div>
+<div class="line"><a name="l00343"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator_1_1_completed_step.html#afac7b3bec5c701d811cf3c0b06aafe73">  343</a></span>&#160;            <span class="keyword">public</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator_1_1_completed_step.html#afac7b3bec5c701d811cf3c0b06aafe73">CompletedStep</a>(<span class="keywordtype">byte</span>[] bytesToSendToServer)</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;            {</div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;                _bytesToSendToServer = bytesToSendToServer;</div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;            }</div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160; </div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;            <span class="comment">// properties</span></div>
+<div class="line"><a name="l00350"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator_1_1_completed_step.html#ae2d0bcd59a83f46cc05e79accff04808">  350</a></span>&#160;<span class="comment"></span>            <span class="keyword">public</span> <span class="keywordtype">byte</span>[] <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator_1_1_completed_step.html#ae2d0bcd59a83f46cc05e79accff04808">BytesToSendToServer</a></div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;            {</div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;                <span class="keyword">get</span> { <span class="keywordflow">return</span> _bytesToSendToServer; }</div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;            }</div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160; </div>
+<div class="line"><a name="l00356"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator_1_1_completed_step.html#a5f1f54d4d32e4073d7ae704e7b901460">  356</a></span>&#160;            <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator_1_1_completed_step.html#a5f1f54d4d32e4073d7ae704e7b901460">IsComplete</a></div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;            {</div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;                <span class="keyword">get</span> { <span class="keywordflow">return</span> <span class="keyword">true</span>; }</div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;            }</div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160; </div>
+<div class="line"><a name="l00362"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator_1_1_completed_step.html#a58e0954a792a6a5428cd30a7f604f43c">  362</a></span>&#160;            <span class="keyword">public</span> <a class="code" href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator_1_1_i_sasl_step.html">ISaslStep</a> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator_1_1_completed_step.html#a58e0954a792a6a5428cd30a7f604f43c">Transition</a>(<a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator_1_1_sasl_conversation.html">SaslConversation</a> conversation, <span class="keywordtype">byte</span>[] bytesReceivedFromServer)</div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;            {</div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> InvalidOperationException(<span class="stringliteral">&quot;Sasl conversation has completed.&quot;</span>);</div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;            }</div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;        }</div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;    }</div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;}</div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_bson_document_html"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_bson_document.html">MongoDB.Bson.BsonDocument</a></div><div class="ttdoc">Represents a BSON document.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_document_8cs_source.html#l00034">BsonDocument.cs:35</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_bson_document_html_a7839f38dd50a1779cc9f50497481f1c6"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_bson_document.html#a7839f38dd50a1779cc9f50497481f1c6">MongoDB.Bson.BsonDocument.GetValue</a></div><div class="ttdeci">virtual BsonValue GetValue(int index)</div><div class="ttdoc">Gets the value of an element.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_document_8cs_source.html#l00915">BsonDocument.cs:915</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_bson_value_html_a361c89c21dcf93c90cee831cb52d8870"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_bson_value.html#a361c89c21dcf93c90cee831cb52d8870">MongoDB.Bson.BsonValue.ToBoolean</a></div><div class="ttdeci">virtual bool ToBoolean()</div><div class="ttdoc">Converts this BsonValue to a Boolean (using the JavaScript definition of truthiness).</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_value_8cs_source.html#l01281">BsonValue.cs:1281</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_bson_value_html_a7b8233c34444c34b5231df5aaee59dc5"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_bson_value.html#a7b8233c34444c34b5231df5aaee59dc5">MongoDB.Bson.BsonValue.AsInt32</a></div><div class="ttdeci">int AsInt32</div><div class="ttdoc">Casts the BsonValue to an Int32 (throws an InvalidCastException if the cast is not valid).</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_value_8cs_source.html#l00228">BsonValue.cs:229</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_bson_document_serializer_html"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_bson_document_serializer.html">MongoDB.Bson.Serialization.Serializers.BsonDocumentSerializer</a></div><div class="ttdoc">Represents a serializer for BsonDocuments.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_serialization_2_serializers_2_bson_document_serializer_8cs_source.html#l00027">BsonDocumentSerializer.cs:28</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_bson_document_serializer_html_ac97fba0a0fc49608305e4b640c4f90ca"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_1_1_bson_document_serializer.html#ac97fba0a0fc49608305e4b640c4f90ca">MongoDB.Bson.Serialization.Serializers.BsonDocumentSerializer.Instance</a></div><div class="ttdeci">static BsonDocumentSerializer Instance</div><div class="ttdoc">Gets an instance of the BsonDocumentSerializer class.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_serialization_2_serializers_2_bson_document_serializer_8cs_source.html#l00045">BsonDocumentSerializer.cs:46</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator_1_1_completed_step_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator_1_1_completed_step.html">MongoDB.Driver.Core.Authentication.SaslAuthenticator.CompletedStep</a></div><div class="ttdoc">Represents a completed SASL step.</div><div class="ttdef"><b>Definition:</b> <a href="_sasl_authenticator_8cs_source.html#l00325">SaslAuthenticator.cs:326</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator_1_1_completed_step_html_a58e0954a792a6a5428cd30a7f604f43c"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator_1_1_completed_step.html#a58e0954a792a6a5428cd30a7f604f43c">MongoDB.Driver.Core.Authentication.SaslAuthenticator.CompletedStep.Transition</a></div><div class="ttdeci">ISaslStep Transition(SaslConversation conversation, byte[] bytesReceivedFromServer)</div><div class="ttdoc">Transitions the SASL conversation to the next step.</div><div class="ttdef"><b>Definition:</b> <a href="_sasl_authenticator_8cs_source.html#l00362">SaslAuthenticator.cs:362</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator_1_1_completed_step_html_a5f1f54d4d32e4073d7ae704e7b901460"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator_1_1_completed_step.html#a5f1f54d4d32e4073d7ae704e7b901460">MongoDB.Driver.Core.Authentication.SaslAuthenticator.CompletedStep.IsComplete</a></div><div class="ttdeci">bool IsComplete</div><div class="ttdef"><b>Definition:</b> <a href="_sasl_authenticator_8cs_source.html#l00356">SaslAuthenticator.cs:357</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator_1_1_completed_step_html_adec78f1bb96c2d204bbad35de84bff37"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator_1_1_completed_step.html#adec78f1bb96c2d204bbad35de84bff37">MongoDB.Driver.Core.Authentication.SaslAuthenticator.CompletedStep.CompletedStep</a></div><div class="ttdeci">CompletedStep()</div><div class="ttdoc">Initializes a new instance of the CompletedStep class.</div><div class="ttdef"><b>Definition:</b> <a href="_sasl_authenticator_8cs_source.html#l00334">SaslAuthenticator.cs:334</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator_1_1_completed_step_html_ae2d0bcd59a83f46cc05e79accff04808"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator_1_1_completed_step.html#ae2d0bcd59a83f46cc05e79accff04808">MongoDB.Driver.Core.Authentication.SaslAuthenticator.CompletedStep.BytesToSendToServer</a></div><div class="ttdeci">byte[] BytesToSendToServer</div><div class="ttdef"><b>Definition:</b> <a href="_sasl_authenticator_8cs_source.html#l00350">SaslAuthenticator.cs:351</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator_1_1_completed_step_html_afac7b3bec5c701d811cf3c0b06aafe73"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator_1_1_completed_step.html#afac7b3bec5c701d811cf3c0b06aafe73">MongoDB.Driver.Core.Authentication.SaslAuthenticator.CompletedStep.CompletedStep</a></div><div class="ttdeci">CompletedStep(byte[] bytesToSendToServer)</div><div class="ttdoc">Initializes a new instance of the CompletedStep class.</div><div class="ttdef"><b>Definition:</b> <a href="_sasl_authenticator_8cs_source.html#l00343">SaslAuthenticator.cs:343</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator_1_1_sasl_conversation_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator_1_1_sasl_conversation.html">MongoDB.Driver.Core.Authentication.SaslAuthenticator.SaslConversation</a></div><div class="ttdoc">Represents a SASL conversation.</div><div class="ttdef"><b>Definition:</b> <a href="_sasl_authenticator_8cs_source.html#l00197">SaslAuthenticator.cs:198</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator_1_1_sasl_conversation_html_a2d4c3877f8db7730f8b5b1d4eeb9d45f"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator_1_1_sasl_conversation.html#a2d4c3877f8db7730f8b5b1d4eeb9d45f">MongoDB.Driver.Core.Authentication.SaslAuthenticator.SaslConversation.Dispose</a></div><div class="ttdeci">void Dispose()</div><div class="ttdef"><b>Definition:</b> <a href="_sasl_authenticator_8cs_source.html#l00229">SaslAuthenticator.cs:229</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator_1_1_sasl_conversation_html_ad8bbb2bd6184fa7dbd771912b8cc843e"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator_1_1_sasl_conversation.html#ad8bbb2bd6184fa7dbd771912b8cc843e">MongoDB.Driver.Core.Authentication.SaslAuthenticator.SaslConversation.SaslConversation</a></div><div class="ttdeci">SaslConversation(ConnectionId connectionId)</div><div class="ttdoc">Initializes a new instance of the SaslConversation class.</div><div class="ttdef"><b>Definition:</b> <a href="_sasl_authenticator_8cs_source.html#l00209">SaslAuthenticator.cs:209</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator_1_1_sasl_conversation_html_ad91619659dcb79ccea415ca4e4f5668e"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator_1_1_sasl_conversation.html#ad91619659dcb79ccea415ca4e4f5668e">MongoDB.Driver.Core.Authentication.SaslAuthenticator.SaslConversation.RegisterItemForDisposal</a></div><div class="ttdeci">void RegisterItemForDisposal(IDisposable item)</div><div class="ttdoc">Registers the item for disposal.</div><div class="ttdef"><b>Definition:</b> <a href="_sasl_authenticator_8cs_source.html#l00239">SaslAuthenticator.cs:239</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator.html">MongoDB.Driver.Core.Authentication.SaslAuthenticator</a></div><div class="ttdoc">Base class for a SASL authenticator.</div><div class="ttdef"><b>Definition:</b> <a href="_sasl_authenticator_8cs_source.html#l00031">SaslAuthenticator.cs:32</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator_html_a2df6b9e7f58a7a7504f3c4e3da61c9fc"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator.html#a2df6b9e7f58a7a7504f3c4e3da61c9fc">MongoDB.Driver.Core.Authentication.SaslAuthenticator.Authenticate</a></div><div class="ttdeci">void Authenticate(IConnection connection, ConnectionDescription description, CancellationToken cancellationToken)</div><div class="ttdoc">Authenticates the connection.</div><div class="ttdef"><b>Definition:</b> <a href="_sasl_authenticator_8cs_source.html#l00063">SaslAuthenticator.cs:63</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator_html_a35df3b31e7aacbb6035727084bcd9a40"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator.html#a35df3b31e7aacbb6035727084bcd9a40">MongoDB.Driver.Core.Authentication.SaslAuthenticator.SaslAuthenticator</a></div><div class="ttdeci">SaslAuthenticator(ISaslMechanism mechanism)</div><div class="ttdoc">Initializes a new instance of the SaslAuthenticator class.</div><div class="ttdef"><b>Definition:</b> <a href="_sasl_authenticator_8cs_source.html#l00041">SaslAuthenticator.cs:41</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator_html_a5fea5ccc5d8886bbe44a9f938d7005e2"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator.html#a5fea5ccc5d8886bbe44a9f938d7005e2">MongoDB.Driver.Core.Authentication.SaslAuthenticator.CustomizeInitialIsMasterCommand</a></div><div class="ttdeci">BsonDocument CustomizeInitialIsMasterCommand(BsonDocument isMasterCommand)</div><div class="ttdoc">Optionally customizes isMaster command.</div><div class="ttdef"><b>Definition:</b> <a href="_sasl_authenticator_8cs_source.html#l00133">SaslAuthenticator.cs:133</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator_html_a9fd52c97c6e600fe5bbc00ab04cb932f"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator.html#a9fd52c97c6e600fe5bbc00ab04cb932f">MongoDB.Driver.Core.Authentication.SaslAuthenticator.Name</a></div><div class="ttdeci">string Name</div><div class="ttdef"><b>Definition:</b> <a href="_sasl_authenticator_8cs_source.html#l00048">SaslAuthenticator.cs:49</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator_html_ad13352e14c66c4bed66ecd494dcf2635"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator.html#ad13352e14c66c4bed66ecd494dcf2635">MongoDB.Driver.Core.Authentication.SaslAuthenticator.DatabaseName</a></div><div class="ttdeci">abstract string DatabaseName</div><div class="ttdoc">Gets the name of the database.</div><div class="ttdef"><b>Definition:</b> <a href="_sasl_authenticator_8cs_source.html#l00059">SaslAuthenticator.cs:59</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator_html_add10a9ad8b5d5f96095417a2922a6b35"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator.html#add10a9ad8b5d5f96095417a2922a6b35">MongoDB.Driver.Core.Authentication.SaslAuthenticator.AuthenticateAsync</a></div><div class="ttdeci">async Task AuthenticateAsync(IConnection connection, ConnectionDescription description, CancellationToken cancellationToken)</div><div class="ttdoc">Authenticates the connection.</div><div class="ttdef"><b>Definition:</b> <a href="_sasl_authenticator_8cs_source.html#l00098">SaslAuthenticator.cs:98</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_connection_description_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_connection_description.html">MongoDB.Driver.Core.Connections.ConnectionDescription</a></div><div class="ttdoc">Represents information describing a connection.</div><div class="ttdef"><b>Definition:</b> <a href="_connection_description_8cs_source.html#l00025">ConnectionDescription.cs:26</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_connection_description_html_afcee7949b87f60081cb3fc4aec2c5151"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_connection_description.html#afcee7949b87f60081cb3fc4aec2c5151">MongoDB.Driver.Core.Connections.ConnectionDescription.ConnectionId</a></div><div class="ttdeci">ConnectionId ConnectionId</div><div class="ttdoc">Gets the connection identifier.</div><div class="ttdef"><b>Definition:</b> <a href="_connection_description_8cs_source.html#l00073">ConnectionDescription.cs:74</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_connection_id_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_connection_id.html">MongoDB.Driver.Core.Connections.ConnectionId</a></div><div class="ttdoc">Represents a connection identifier.</div><div class="ttdef"><b>Definition:</b> <a href="_connection_id_8cs_source.html#l00041">ConnectionId.cs:42</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_database_namespace_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_database_namespace.html">MongoDB.Driver.DatabaseNamespace</a></div><div class="ttdoc">Represents a database namespace.</div><div class="ttdef"><b>Definition:</b> <a href="_database_namespace_8cs_source.html#l00024">DatabaseNamespace.cs:25</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_mongo_command_exception_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_mongo_command_exception.html">MongoDB.Driver.MongoCommandException</a></div><div class="ttdoc">Represents a MongoDB command exception.</div><div class="ttdef"><b>Definition:</b> <a href="_mongo_command_exception_8cs_source.html#l00031">MongoCommandException.cs:32</a></div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_i_authenticator_html"><div class="ttname"><a href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_i_authenticator.html">MongoDB.Driver.Core.Authentication.IAuthenticator</a></div><div class="ttdoc">Represents a connection authenticator.</div><div class="ttdef"><b>Definition:</b> <a href="_i_authenticator_8cs_source.html#l00027">IAuthenticator.cs:28</a></div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator_1_1_i_sasl_mechanism_html"><div class="ttname"><a href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator_1_1_i_sasl_mechanism.html">MongoDB.Driver.Core.Authentication.SaslAuthenticator.ISaslMechanism</a></div><div class="ttdoc">Represents a SASL mechanism.</div><div class="ttdef"><b>Definition:</b> <a href="_sasl_authenticator_8cs_source.html#l00268">SaslAuthenticator.cs:269</a></div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator_1_1_i_sasl_mechanism_html_a0f0d05e57d779050cb7d8151d7d311c1"><div class="ttname"><a href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator_1_1_i_sasl_mechanism.html#a0f0d05e57d779050cb7d8151d7d311c1">MongoDB.Driver.Core.Authentication.SaslAuthenticator.ISaslMechanism.Name</a></div><div class="ttdeci">string Name</div><div class="ttdoc">Gets the name of the mechanism.</div><div class="ttdef"><b>Definition:</b> <a href="_sasl_authenticator_8cs_source.html#l00277">SaslAuthenticator.cs:277</a></div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator_1_1_i_sasl_mechanism_html_aab2e1cf9fa7231b3c4d35acffea57a61"><div class="ttname"><a href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator_1_1_i_sasl_mechanism.html#aab2e1cf9fa7231b3c4d35acffea57a61">MongoDB.Driver.Core.Authentication.SaslAuthenticator.ISaslMechanism.Initialize</a></div><div class="ttdeci">ISaslStep Initialize(IConnection connection, SaslConversation conversation, ConnectionDescription description)</div><div class="ttdoc">Initializes the mechanism.</div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator_1_1_i_sasl_step_html"><div class="ttname"><a href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator_1_1_i_sasl_step.html">MongoDB.Driver.Core.Authentication.SaslAuthenticator.ISaslStep</a></div><div class="ttdoc">Represents a SASL step.</div><div class="ttdef"><b>Definition:</b> <a href="_sasl_authenticator_8cs_source.html#l00293">SaslAuthenticator.cs:294</a></div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator_1_1_i_sasl_step_html_a0419fc165aaa687c82949ac455c9357a"><div class="ttname"><a href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator_1_1_i_sasl_step.html#a0419fc165aaa687c82949ac455c9357a">MongoDB.Driver.Core.Authentication.SaslAuthenticator.ISaslStep.IsComplete</a></div><div class="ttdeci">bool IsComplete</div><div class="ttdoc">Gets a value indicating whether this instance is complete.</div><div class="ttdef"><b>Definition:</b> <a href="_sasl_authenticator_8cs_source.html#l00310">SaslAuthenticator.cs:310</a></div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator_1_1_i_sasl_step_html_a9a390f4b1f904779311548b770a0b572"><div class="ttname"><a href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator_1_1_i_sasl_step.html#a9a390f4b1f904779311548b770a0b572">MongoDB.Driver.Core.Authentication.SaslAuthenticator.ISaslStep.Transition</a></div><div class="ttdeci">ISaslStep Transition(SaslConversation conversation, byte[] bytesReceivedFromServer)</div><div class="ttdoc">Transitions the SASL conversation to the next step.</div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator_1_1_i_sasl_step_html_abffe64c116da131b77704ec097b02787"><div class="ttname"><a href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_1_1_sasl_authenticator_1_1_i_sasl_step.html#abffe64c116da131b77704ec097b02787">MongoDB.Driver.Core.Authentication.SaslAuthenticator.ISaslStep.BytesToSendToServer</a></div><div class="ttdeci">byte[] BytesToSendToServer</div><div class="ttdoc">Gets the bytes to send to server.</div><div class="ttdef"><b>Definition:</b> <a href="_sasl_authenticator_8cs_source.html#l00302">SaslAuthenticator.cs:302</a></div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_i_connection_html"><div class="ttname"><a href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_i_connection.html">MongoDB.Driver.Core.Connections.IConnection</a></div><div class="ttdoc">Represents a connection.</div><div class="ttdef"><b>Definition:</b> <a href="_i_connection_8cs_source.html#l00033">IConnection.cs:34</a></div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_i_connection_html_a291f9939f7241addf7363c3907dd8139"><div class="ttname"><a href="interface_mongo_d_b_1_1_driver_1_1_core_1_1_connections_1_1_i_connection.html#a291f9939f7241addf7363c3907dd8139">MongoDB.Driver.Core.Connections.IConnection.ConnectionId</a></div><div class="ttdeci">ConnectionId ConnectionId</div><div class="ttdoc">Gets the connection identifier.</div><div class="ttdef"><b>Definition:</b> <a href="_i_connection_8cs_source.html#l00042">IConnection.cs:42</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_bson_1_1_serialization_1_1_serializers.html">MongoDB.Bson.Serialization.Serializers</a></div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_serialization_2_serializers_2_abstract_class_serializer_8cs_source.html#l00022">AbstractClassSerializer.cs:23</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_bson_1_1_serialization_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_bson_1_1_serialization.html">MongoDB.Bson.Serialization</a></div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_serialization_2_attributed_serialization_provider_8cs_source.html#l00021">AttributedSerializationProvider.cs:22</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_bson_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_bson.html">MongoDB.Bson</a></div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_bson_constants_8cs_source.html#l00018">BsonConstants.cs:19</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_driver_1_1_core_1_1_authentication_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_authentication.html">MongoDB.Driver.Core.Authentication</a></div><div class="ttdef"><b>Definition:</b> <a href="_authentication_helper_8cs_source.html#l00029">AuthenticationHelper.cs:30</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_driver_1_1_core_1_1_connections_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_connections.html">MongoDB.Driver.Core.Connections</a></div><div class="ttdef"><b>Definition:</b> <a href="_binary_connection_8cs_source.html#l00035">BinaryConnection.cs:36</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_driver_1_1_core_1_1_misc_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_misc.html">MongoDB.Driver.Core.Misc</a></div><div class="ttdef"><b>Definition:</b> <a href="_array_filters_feature_8cs_source.html#l00020">ArrayFiltersFeature.cs:21</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_driver_1_1_core_1_1_wire_protocol_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_wire_protocol.html">MongoDB.Driver.Core.WireProtocol</a></div><div class="ttdef"><b>Definition:</b> <a href="_command_response_handling_8cs_source.html#l00023">CommandResponseHandling.cs:24</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_driver_1_1_core_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_driver_1_1_core.html">MongoDB.Driver.Core</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_queue_8cs_source.html#l00023">AsyncQueue.cs:24</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_driver_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_driver.html">MongoDB.Driver</a></div><div class="ttdef"><b>Definition:</b> <a href="_aggregate_bucket_auto_granularity_8cs_source.html#l00018">AggregateBucketAutoGranularity.cs:19</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_html"><div class="ttname"><a href="namespace_mongo_d_b.html">MongoDB</a></div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_bson_constants_8cs_source.html#l00018">BsonConstants.cs:19</a></div></div>
+<div class="ttc" id="anamespace_system_html"><div class="ttname"><a href="namespace_system.html">System</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_method_builder_attribute_8cs_source.html#l00001">AsyncMethodBuilderAttribute.cs:2</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_1e261a42b4a2e33df58a15c412684b10.html">ETServer</a></li><li class="navelem"><a class="el" href="dir_473c270c995194c5ad99131d9c901f09.html">Server</a></li><li class="navelem"><a class="el" href="dir_ce426efcf63311ff42488fb2654bd4b4.html">ThirdParty</a></li><li class="navelem"><a class="el" href="dir_a37b2b5f9c8890cc9f6f8392fb0cdff3.html">MongoDBDriver</a></li><li class="navelem"><a class="el" href="dir_3c55113864d48cf4713f3b3197e2f720.html">MongoDB.Driver.Core</a></li><li class="navelem"><a class="el" href="dir_d802212cd82500a65b6eed8667c0c3ad.html">Core</a></li><li class="navelem"><a class="el" href="dir_0bfbf6548f49cb91a53ee92be54ede6d.html">Authentication</a></li><li class="navelem"><a class="el" href="_sasl_authenticator_8cs.html">SaslAuthenticator.cs</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:24:56 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

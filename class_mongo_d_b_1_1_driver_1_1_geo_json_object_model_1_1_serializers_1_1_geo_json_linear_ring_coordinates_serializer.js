@@ -1,0 +1,5 @@
+var class_mongo_d_b_1_1_driver_1_1_geo_json_object_model_1_1_serializers_1_1_geo_json_linear_ring_coordinates_serializer =
+[
+    [ "DeserializeValue", "class_mongo_d_b_1_1_driver_1_1_geo_json_object_model_1_1_serializers_1_1_geo_json_linear_ring_coordinates_serializer.html#a0a82899d32965dd5ff75bead566a91ab", null ],
+    [ "SerializeValue", "class_mongo_d_b_1_1_driver_1_1_geo_json_object_model_1_1_serializers_1_1_geo_json_linear_ring_coordinates_serializer.html#a85a26f05a79b79eab6fd041fa62524c8", null ]
+];

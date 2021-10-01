@@ -1,0 +1,222 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: Assets/Scripts/GameMain/Entity/EntityLogic/MyAircraft.cs 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_my_aircraft_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">MyAircraft.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_my_aircraft_8cs.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">//------------------------------------------------------------</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">// Game Framework</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">// Copyright © 2013-2021 Jiang Yin. All rights reserved.</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">// Homepage: https://gameframework.cn/</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">// Feedback: mailto:ellan@gameframework.cn</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">//------------------------------------------------------------</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_unity_engine.html">UnityEngine</a>;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_unity_game_framework.html">UnityGameFramework</a>.<a class="code" href="namespace_unity_game_framework_1_1_runtime.html">Runtime</a>;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_linity.html">Linity</a></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;{</div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="class_linity_1_1_my_aircraft.html">   13</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="class_linity_1_1_my_aircraft.html">MyAircraft</a> : <a class="code" href="class_linity_1_1_aircraft.html">Aircraft</a></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    {</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        [SerializeField] <span class="keyword">private</span> <a class="code" href="class_linity_1_1_my_aircraft_data.html">MyAircraftData</a> m_MyAircraftData = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        <span class="keyword">private</span> Rect m_PlayerMoveBoundary = <span class="keywordflow">default</span>(Rect);</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        <span class="keyword">private</span> <a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a> m_TargetPosition = <a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a>.<a class="code" href="struct_unity_engine_1_1_vector3.html#a5ee4172032dfc66b99c27713f0122eaa">zero</a>;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#if UNITY_2017_3_OR_NEWER</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <span class="keyword">protected</span> <span class="keyword">override</span> <span class="keywordtype">void</span> OnInit(<span class="keywordtype">object</span> userData)</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <span class="keyword">protected</span> <span class="keyword">internal</span> <span class="keyword">override</span> <span class="keywordtype">void</span> OnInit(<span class="keywordtype">object</span> userData)</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        {</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;            base.OnInit(userData);</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        }</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#if UNITY_2017_3_OR_NEWER</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <span class="keyword">protected</span> <span class="keyword">override</span> <span class="keywordtype">void</span> OnShow(<span class="keywordtype">object</span> userData)</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <span class="keyword">protected</span> <span class="keyword">internal</span> <span class="keyword">override</span> <span class="keywordtype">void</span> OnShow(<span class="keywordtype">object</span> userData)</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        {</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;            base.OnShow(userData);</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;            m_MyAircraftData = userData as <a class="code" href="class_linity_1_1_my_aircraft_data.html">MyAircraftData</a>;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;            <span class="keywordflow">if</span> (m_MyAircraftData == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;            {</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                <a class="code" href="_login_form_8cs.html#a6208db3ac52d7f107a612679d0d8eca3">Log</a>.Error(<span class="stringliteral">&quot;My aircraft data is invalid.&quot;</span>);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;                <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;            }</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            <a class="code" href="class_linity_1_1_scrollable_background.html">ScrollableBackground</a> sceneBackground = FindObjectOfType&lt;ScrollableBackground&gt;();</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            <span class="keywordflow">if</span> (sceneBackground == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;            {</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                <a class="code" href="_login_form_8cs.html#a6208db3ac52d7f107a612679d0d8eca3">Log</a>.Warning(<span class="stringliteral">&quot;Can not find scene background.&quot;</span>);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            }</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            m_PlayerMoveBoundary = <span class="keyword">new</span> Rect(sceneBackground.<a class="code" href="class_linity_1_1_scrollable_background.html#af714534b953203a83ab19a11643429c1">PlayerMoveBoundary</a>.bounds.min.x, sceneBackground.<a class="code" href="class_linity_1_1_scrollable_background.html#af714534b953203a83ab19a11643429c1">PlayerMoveBoundary</a>.bounds.min.z,</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                sceneBackground.<a class="code" href="class_linity_1_1_scrollable_background.html#af714534b953203a83ab19a11643429c1">PlayerMoveBoundary</a>.bounds.size.x, sceneBackground.<a class="code" href="class_linity_1_1_scrollable_background.html#af714534b953203a83ab19a11643429c1">PlayerMoveBoundary</a>.bounds.size.z);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            m_TargetPosition = <a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a>.<a class="code" href="struct_unity_engine_1_1_vector3.html#a5ee4172032dfc66b99c27713f0122eaa">zero</a>;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        }</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="preprocessor">#if UNITY_2017_3_OR_NEWER</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <span class="keyword">protected</span> <span class="keyword">override</span> <span class="keywordtype">void</span> OnUpdate(<span class="keywordtype">float</span> elapseSeconds, <span class="keywordtype">float</span> realElapseSeconds)</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <span class="keyword">protected</span> <span class="keyword">internal</span> <span class="keyword">override</span> <span class="keywordtype">void</span> OnUpdate(<span class="keywordtype">float</span> elapseSeconds, <span class="keywordtype">float</span> realElapseSeconds)</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        {</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            base.OnUpdate(elapseSeconds, realElapseSeconds);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            <span class="keywordflow">if</span> (Input.GetMouseButton(0))</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            {</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                <a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a> point = Camera.main.ScreenToWorldPoint(Input.mousePosition);</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                m_TargetPosition = <span class="keyword">new</span> <a class="code" href="_recast_graph_editor_8cs.html#af3326292fdd04d2b384b6d781d9594f6">Vector3</a>(point.<a class="code" href="struct_unity_engine_1_1_vector3.html#ad4d9171899b7fceadc63c4d04da5734d">x</a>, 0f, point.<a class="code" href="struct_unity_engine_1_1_vector3.html#a8ea2682142b822ddcab52c868796fd3e">z</a>);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code" href="class_linity_1_1_aircraft.html#af6ac9ab666906c33fcf3554c0d698baa">m_Weapons</a>.Count; i++)</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                {</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                    <a class="code" href="class_linity_1_1_aircraft.html#af6ac9ab666906c33fcf3554c0d698baa">m_Weapons</a>[i].TryAttack();</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                }</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            }</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            <a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a> direction = m_TargetPosition - <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_entity_logic.html#a6ecaada7d2284ccfd742fe77dfae1ec3">CachedTransform</a>.localPosition;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            <span class="keywordflow">if</span> (direction.<a class="code" href="struct_unity_engine_1_1_vector3.html#a533a46a32da8f3330173d884fcac5309">sqrMagnitude</a> &lt;= <a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a>.kEpsilon)</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            {</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;            }</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            <a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a> speed = <a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a>.ClampMagnitude(direction.<a class="code" href="struct_unity_engine_1_1_vector3.html#a957eb290e6946c6df470c46867bf9ad6">normalized</a> * m_MyAircraftData.<a class="code" href="class_linity_1_1_aircraft_data.html#ab3194b459df3e8021e2fa7a0db8ce7e5">Speed</a> * elapseSeconds, direction.<a class="code" href="struct_unity_engine_1_1_vector3.html#a65fc0bea74f78f4355d5f9db8319cf7b">magnitude</a>);</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_entity_logic.html#a6ecaada7d2284ccfd742fe77dfae1ec3">CachedTransform</a>.localPosition = <span class="keyword">new</span> <a class="code" href="_recast_graph_editor_8cs.html#af3326292fdd04d2b384b6d781d9594f6">Vector3</a></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;            (</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                <a class="code" href="_astar_path_editor_8cs.html#a056b29af8a3de2eeb5a1cab758c4ba93">Mathf</a>.Clamp(<a class="code" href="class_unity_game_framework_1_1_runtime_1_1_entity_logic.html#a6ecaada7d2284ccfd742fe77dfae1ec3">CachedTransform</a>.localPosition.x + speed.<a class="code" href="struct_unity_engine_1_1_vector3.html#ad4d9171899b7fceadc63c4d04da5734d">x</a>, m_PlayerMoveBoundary.xMin, m_PlayerMoveBoundary.xMax),</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                0f,</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                <a class="code" href="_astar_path_editor_8cs.html#a056b29af8a3de2eeb5a1cab758c4ba93">Mathf</a>.Clamp(<a class="code" href="class_unity_game_framework_1_1_runtime_1_1_entity_logic.html#a6ecaada7d2284ccfd742fe77dfae1ec3">CachedTransform</a>.localPosition.z + speed.<a class="code" href="struct_unity_engine_1_1_vector3.html#a8ea2682142b822ddcab52c868796fd3e">z</a>, m_PlayerMoveBoundary.yMin, m_PlayerMoveBoundary.yMax)</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;            );</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        }</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
+<div class="line"><a name="l00090"></a><span class="lineno"><a class="line" href="class_linity_1_1_my_aircraft.html#a1f21113d668026af7e279761d32cbf74">   90</a></span>&#160;        <span class="keyword">protected</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code" href="class_linity_1_1_my_aircraft.html#a1f21113d668026af7e279761d32cbf74">OnDead</a>(<a class="code" href="class_linity_1_1_entity.html">Entity</a> attacker)</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        {</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;            base.OnDead(attacker);</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;            <a class="code" href="class_linity_1_1_game_entry.html">GameEntry</a>.<a class="code" href="class_linity_1_1_game_entry.html#a71687b9ece9525c333b1500c7363de78">UserData</a>.<a class="code" href="class_linity_1_1_user_data.html#a8173388f6c47874f084a0364c66e38ba">IsLive</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        }</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    }</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;}</div>
+<div class="ttc" id="a_astar_path_editor_8cs_html_a056b29af8a3de2eeb5a1cab758c4ba93"><div class="ttname"><a href="_astar_path_editor_8cs.html#a056b29af8a3de2eeb5a1cab758c4ba93">Mathf</a></div><div class="ttdeci">UnityEngine.Mathf Mathf</div><div class="ttdef"><b>Definition:</b> <a href="_astar_path_editor_8cs_source.html#l00006">AstarPathEditor.cs:6</a></div></div>
+<div class="ttc" id="a_login_form_8cs_html_a6208db3ac52d7f107a612679d0d8eca3"><div class="ttname"><a href="_login_form_8cs.html#a6208db3ac52d7f107a612679d0d8eca3">Log</a></div><div class="ttdeci">UnityGameFramework.Runtime.Log Log</div><div class="ttdef"><b>Definition:</b> <a href="_login_form_8cs_source.html#l00007">LoginForm.cs:7</a></div></div>
+<div class="ttc" id="a_recast_graph_editor_8cs_html_af3326292fdd04d2b384b6d781d9594f6"><div class="ttname"><a href="_recast_graph_editor_8cs.html#af3326292fdd04d2b384b6d781d9594f6">Vector3</a></div><div class="ttdeci">UnityEngine.Vector3 Vector3</div><div class="ttdef"><b>Definition:</b> <a href="_recast_graph_editor_8cs_source.html#l00005">RecastGraphEditor.cs:5</a></div></div>
+<div class="ttc" id="aclass_linity_1_1_aircraft_data_html_ab3194b459df3e8021e2fa7a0db8ce7e5"><div class="ttname"><a href="class_linity_1_1_aircraft_data.html#ab3194b459df3e8021e2fa7a0db8ce7e5">Linity.AircraftData.Speed</a></div><div class="ttdeci">float Speed</div><div class="ttdoc">速度。</div><div class="ttdef"><b>Definition:</b> <a href="_aircraft_data_8cs_source.html#l00092">AircraftData.cs:93</a></div></div>
+<div class="ttc" id="aclass_linity_1_1_aircraft_html"><div class="ttname"><a href="class_linity_1_1_aircraft.html">Linity.Aircraft</a></div><div class="ttdoc">战机类。</div><div class="ttdef"><b>Definition:</b> <a href="_aircraft_8cs_source.html#l00018">Aircraft.cs:19</a></div></div>
+<div class="ttc" id="aclass_linity_1_1_aircraft_html_af6ac9ab666906c33fcf3554c0d698baa"><div class="ttname"><a href="class_linity_1_1_aircraft.html#af6ac9ab666906c33fcf3554c0d698baa">Linity.Aircraft.m_Weapons</a></div><div class="ttdeci">List&lt; Weapon &gt; m_Weapons</div><div class="ttdef"><b>Definition:</b> <a href="_aircraft_8cs_source.html#l00027">Aircraft.cs:27</a></div></div>
+<div class="ttc" id="aclass_linity_1_1_entity_html"><div class="ttname"><a href="class_linity_1_1_entity.html">Linity.Entity</a></div><div class="ttdef"><b>Definition:</b> <a href="_game_main_2_entity_2_base_2_entity_logic_2_entity_8cs_source.html#l00014">Entity.cs:15</a></div></div>
+<div class="ttc" id="aclass_linity_1_1_game_entry_html"><div class="ttname"><a href="class_linity_1_1_game_entry.html">Linity.GameEntry</a></div><div class="ttdoc">游戏入口。</div><div class="ttdef"><b>Definition:</b> <a href="_game_entry_8_builtin_8cs_source.html#l00016">GameEntry.Builtin.cs:17</a></div></div>
+<div class="ttc" id="aclass_linity_1_1_game_entry_html_a71687b9ece9525c333b1500c7363de78"><div class="ttname"><a href="class_linity_1_1_game_entry.html#a71687b9ece9525c333b1500c7363de78">Linity.GameEntry.UserData</a></div><div class="ttdeci">static UserData UserData</div><div class="ttdef"><b>Definition:</b> <a href="_game_entry_8_custom_8cs_source.html#l00023">GameEntry.Custom.cs:24</a></div></div>
+<div class="ttc" id="aclass_linity_1_1_my_aircraft_data_html"><div class="ttname"><a href="class_linity_1_1_my_aircraft_data.html">Linity.MyAircraftData</a></div><div class="ttdef"><b>Definition:</b> <a href="_my_aircraft_data_8cs_source.html#l00014">MyAircraftData.cs:15</a></div></div>
+<div class="ttc" id="aclass_linity_1_1_my_aircraft_html"><div class="ttname"><a href="class_linity_1_1_my_aircraft.html">Linity.MyAircraft</a></div><div class="ttdef"><b>Definition:</b> <a href="_my_aircraft_8cs_source.html#l00013">MyAircraft.cs:14</a></div></div>
+<div class="ttc" id="aclass_linity_1_1_my_aircraft_html_a1f21113d668026af7e279761d32cbf74"><div class="ttname"><a href="class_linity_1_1_my_aircraft.html#a1f21113d668026af7e279761d32cbf74">Linity.MyAircraft.OnDead</a></div><div class="ttdeci">override void OnDead(Entity attacker)</div><div class="ttdef"><b>Definition:</b> <a href="_my_aircraft_8cs_source.html#l00090">MyAircraft.cs:90</a></div></div>
+<div class="ttc" id="aclass_linity_1_1_scrollable_background_html"><div class="ttname"><a href="class_linity_1_1_scrollable_background.html">Linity.ScrollableBackground</a></div><div class="ttdef"><b>Definition:</b> <a href="_scrollable_background_8cs_source.html#l00012">ScrollableBackground.cs:13</a></div></div>
+<div class="ttc" id="aclass_linity_1_1_scrollable_background_html_af714534b953203a83ab19a11643429c1"><div class="ttname"><a href="class_linity_1_1_scrollable_background.html#af714534b953203a83ab19a11643429c1">Linity.ScrollableBackground.PlayerMoveBoundary</a></div><div class="ttdeci">BoxCollider PlayerMoveBoundary</div><div class="ttdef"><b>Definition:</b> <a href="_scrollable_background_8cs_source.html#l00052">ScrollableBackground.cs:53</a></div></div>
+<div class="ttc" id="aclass_linity_1_1_user_data_html_a8173388f6c47874f084a0364c66e38ba"><div class="ttname"><a href="class_linity_1_1_user_data.html#a8173388f6c47874f084a0364c66e38ba">Linity.UserData.IsLive</a></div><div class="ttdeci">bool IsLive</div><div class="ttdoc">是否存活</div><div class="ttdef"><b>Definition:</b> <a href="_user_data_8cs_source.html#l00024">UserData.cs:24</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_runtime_1_1_entity_logic_html_a6ecaada7d2284ccfd742fe77dfae1ec3"><div class="ttname"><a href="class_unity_game_framework_1_1_runtime_1_1_entity_logic.html#a6ecaada7d2284ccfd742fe77dfae1ec3">UnityGameFramework.Runtime.EntityLogic.CachedTransform</a></div><div class="ttdeci">Transform CachedTransform</div><div class="ttdoc">获取已缓存的 Transform。</div><div class="ttdef"><b>Definition:</b> <a href="_entity_logic_8cs_source.html#l00091">EntityLogic.cs:92</a></div></div>
+<div class="ttc" id="anamespace_linity_html"><div class="ttname"><a href="namespace_linity.html">Linity</a></div><div class="ttdef"><b>Definition:</b> <a href="_entity_and_u_i_form_code_generator_8cs_source.html#l00008">EntityAndUIFormCodeGenerator.cs:9</a></div></div>
+<div class="ttc" id="anamespace_unity_engine_html"><div class="ttname"><a href="namespace_unity_engine.html">UnityEngine</a></div><div class="ttdef"><b>Definition:</b> <a href="_mathf_8cs_source.html#l00003">Mathf.cs:4</a></div></div>
+<div class="ttc" id="anamespace_unity_game_framework_1_1_runtime_html"><div class="ttname"><a href="namespace_unity_game_framework_1_1_runtime.html">UnityGameFramework.Runtime</a></div><div class="ttdef"><b>Definition:</b> <a href="_base_component_8cs_source.html#l00014">BaseComponent.cs:15</a></div></div>
+<div class="ttc" id="anamespace_unity_game_framework_html"><div class="ttname"><a href="namespace_unity_game_framework.html">UnityGameFramework</a></div><div class="ttdef"><b>Definition:</b> <a href="_base_component_inspector_8cs_source.html#l00014">BaseComponentInspector.cs:15</a></div></div>
+<div class="ttc" id="astruct_unity_engine_1_1_vector3_html"><div class="ttname"><a href="struct_unity_engine_1_1_vector3.html">UnityEngine.Vector3</a></div><div class="ttdef"><b>Definition:</b> <a href="_vector3_8cs_source.html#l00007">Vector3.cs:8</a></div></div>
+<div class="ttc" id="astruct_unity_engine_1_1_vector3_html_a533a46a32da8f3330173d884fcac5309"><div class="ttname"><a href="struct_unity_engine_1_1_vector3.html#a533a46a32da8f3330173d884fcac5309">UnityEngine.Vector3.sqrMagnitude</a></div><div class="ttdeci">float sqrMagnitude</div><div class="ttdef"><b>Definition:</b> <a href="_vector3_8cs_source.html#l00088">Vector3.cs:89</a></div></div>
+<div class="ttc" id="astruct_unity_engine_1_1_vector3_html_a5ee4172032dfc66b99c27713f0122eaa"><div class="ttname"><a href="struct_unity_engine_1_1_vector3.html#a5ee4172032dfc66b99c27713f0122eaa">UnityEngine.Vector3.zero</a></div><div class="ttdeci">static readonly Vector3 zero</div><div class="ttdef"><b>Definition:</b> <a href="_vector3_8cs_source.html#l00011">Vector3.cs:11</a></div></div>
+<div class="ttc" id="astruct_unity_engine_1_1_vector3_html_a65fc0bea74f78f4355d5f9db8319cf7b"><div class="ttname"><a href="struct_unity_engine_1_1_vector3.html#a65fc0bea74f78f4355d5f9db8319cf7b">UnityEngine.Vector3.magnitude</a></div><div class="ttdeci">float magnitude</div><div class="ttdef"><b>Definition:</b> <a href="_vector3_8cs_source.html#l00080">Vector3.cs:81</a></div></div>
+<div class="ttc" id="astruct_unity_engine_1_1_vector3_html_a8ea2682142b822ddcab52c868796fd3e"><div class="ttname"><a href="struct_unity_engine_1_1_vector3.html#a8ea2682142b822ddcab52c868796fd3e">UnityEngine.Vector3.z</a></div><div class="ttdeci">float z</div><div class="ttdef"><b>Definition:</b> <a href="_vector3_8cs_source.html#l00021">Vector3.cs:21</a></div></div>
+<div class="ttc" id="astruct_unity_engine_1_1_vector3_html_a957eb290e6946c6df470c46867bf9ad6"><div class="ttname"><a href="struct_unity_engine_1_1_vector3.html#a957eb290e6946c6df470c46867bf9ad6">UnityEngine.Vector3.normalized</a></div><div class="ttdeci">Vector3 normalized</div><div class="ttdef"><b>Definition:</b> <a href="_vector3_8cs_source.html#l00152">Vector3.cs:153</a></div></div>
+<div class="ttc" id="astruct_unity_engine_1_1_vector3_html_ad4d9171899b7fceadc63c4d04da5734d"><div class="ttname"><a href="struct_unity_engine_1_1_vector3.html#ad4d9171899b7fceadc63c4d04da5734d">UnityEngine.Vector3.x</a></div><div class="ttdeci">float x</div><div class="ttdef"><b>Definition:</b> <a href="_vector3_8cs_source.html#l00019">Vector3.cs:19</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_84bbf7b3c7f28a5a18725745e1505219.html">Assets</a></li><li class="navelem"><a class="el" href="dir_f13b41af88cf68434578284aaf699e39.html">Scripts</a></li><li class="navelem"><a class="el" href="dir_8274910eb5bb242a7532823db7176570.html">GameMain</a></li><li class="navelem"><a class="el" href="dir_cfca2b41e3122feb7eff9c1c763102ac.html">Entity</a></li><li class="navelem"><a class="el" href="dir_d815337ac26fe92a13170d42ad01aef6.html">EntityLogic</a></li><li class="navelem"><a class="el" href="_my_aircraft_8cs.html">MyAircraft.cs</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:24:44 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

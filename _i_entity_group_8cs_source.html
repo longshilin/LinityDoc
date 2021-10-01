@@ -1,0 +1,194 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: Assets/Scripts/Libraries/GameFramework/Libraries/GameFramework-2021.05.31/GameFramework/Entity/IEntityGroup.cs 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_i_entity_group_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">IEntityGroup.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_i_entity_group_8cs.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">//------------------------------------------------------------</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">// Game Framework</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">// Copyright © 2013-2021 Jiang Yin. All rights reserved.</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">// Homepage: https://gameframework.cn/</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">// Feedback: mailto:ellan@gameframework.cn</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">//------------------------------------------------------------</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Collections.Generic;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_game_framework_1_1_entity.html">GameFramework.Entity</a></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;{</div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_entity_1_1_i_entity_group.html">   15</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">interface </span><a class="code" href="interface_game_framework_1_1_entity_1_1_i_entity_group.html">IEntityGroup</a></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    {</div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_entity_1_1_i_entity_group.html#ac7fec0b76a9a3ef6e75ac5c01e66a578">   20</a></span>&#160;        <span class="keywordtype">string</span> <a class="code" href="interface_game_framework_1_1_entity_1_1_i_entity_group.html#ac7fec0b76a9a3ef6e75ac5c01e66a578">Name</a></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        {</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;            <span class="keyword">get</span>;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        }</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_entity_1_1_i_entity_group.html#aeaf5c54bd181757957a2d3f345577619">   28</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="interface_game_framework_1_1_entity_1_1_i_entity_group.html#aeaf5c54bd181757957a2d3f345577619">EntityCount</a></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        {</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;            <span class="keyword">get</span>;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        }</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_entity_1_1_i_entity_group.html#a9343c994e661226ad3ef2b40fa355c56">   36</a></span>&#160;        <span class="keywordtype">float</span> <a class="code" href="interface_game_framework_1_1_entity_1_1_i_entity_group.html#a9343c994e661226ad3ef2b40fa355c56">InstanceAutoReleaseInterval</a></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        {</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;            <span class="keyword">get</span>;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;            <span class="keyword">set</span>;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        }</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_entity_1_1_i_entity_group.html#a6cd0e22e288e8eec4e5fe18a3f8868a4">   45</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="interface_game_framework_1_1_entity_1_1_i_entity_group.html#a6cd0e22e288e8eec4e5fe18a3f8868a4">InstanceCapacity</a></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        {</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            <span class="keyword">get</span>;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            <span class="keyword">set</span>;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        }</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_entity_1_1_i_entity_group.html#aca703e6c0dc245261135fcf298658b98">   54</a></span>&#160;        <span class="keywordtype">float</span> <a class="code" href="interface_game_framework_1_1_entity_1_1_i_entity_group.html#aca703e6c0dc245261135fcf298658b98">InstanceExpireTime</a></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        {</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            <span class="keyword">get</span>;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            <span class="keyword">set</span>;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        }</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
+<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_entity_1_1_i_entity_group.html#a5b35008099c3500308f27860856155b0">   63</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="interface_game_framework_1_1_entity_1_1_i_entity_group.html#a5b35008099c3500308f27860856155b0">InstancePriority</a></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        {</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            <span class="keyword">get</span>;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            <span class="keyword">set</span>;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        }</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_entity_1_1_i_entity_group.html#a56bea82a2edd72234b5033b13df89883">   72</a></span>&#160;        <a class="code" href="interface_game_framework_1_1_entity_1_1_i_entity_group_helper.html">IEntityGroupHelper</a> <a class="code" href="interface_game_framework_1_1_entity_1_1_i_entity_group.html#a56bea82a2edd72234b5033b13df89883">Helper</a></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        {</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            <span class="keyword">get</span>;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        }</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00082"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_entity_1_1_i_entity_group.html#a343de94bb983d1998afa684375b5f16c">   82</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="interface_game_framework_1_1_entity_1_1_i_entity_group.html#a343de94bb983d1998afa684375b5f16c">HasEntity</a>(<span class="keywordtype">int</span> entityId);</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
+<div class="line"><a name="l00089"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_entity_1_1_i_entity_group.html#a8794bf48a1fc01b6df8579a52bb1b036">   89</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="interface_game_framework_1_1_entity_1_1_i_entity_group.html#a8794bf48a1fc01b6df8579a52bb1b036">HasEntity</a>(<span class="keywordtype">string</span> entityAssetName);</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
+<div class="line"><a name="l00096"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_entity_1_1_i_entity_group.html#a5ae0663bdb6ef1d7679b2bd85d1ad796">   96</a></span>&#160;        <a class="code" href="interface_game_framework_1_1_entity_1_1_i_entity.html">IEntity</a> <a class="code" href="interface_game_framework_1_1_entity_1_1_i_entity_group.html#a5ae0663bdb6ef1d7679b2bd85d1ad796">GetEntity</a>(<span class="keywordtype">int</span> entityId);</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
+<div class="line"><a name="l00103"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_entity_1_1_i_entity_group.html#ac2a00e7ec2e81db20bd7a2ec5ce8e8f4">  103</a></span>&#160;        <a class="code" href="interface_game_framework_1_1_entity_1_1_i_entity.html">IEntity</a> <a class="code" href="interface_game_framework_1_1_entity_1_1_i_entity_group.html#ac2a00e7ec2e81db20bd7a2ec5ce8e8f4">GetEntity</a>(<span class="keywordtype">string</span> entityAssetName);</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
+<div class="line"><a name="l00110"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_entity_1_1_i_entity_group.html#a3bc20a05beb6ffa523320e69b9411bda">  110</a></span>&#160;        <a class="code" href="interface_game_framework_1_1_entity_1_1_i_entity.html">IEntity</a>[] <a class="code" href="interface_game_framework_1_1_entity_1_1_i_entity_group.html#a3bc20a05beb6ffa523320e69b9411bda">GetEntities</a>(<span class="keywordtype">string</span> entityAssetName);</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; </div>
+<div class="line"><a name="l00117"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_entity_1_1_i_entity_group.html#ab227784bf527265eee095ac57a07be43">  117</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="interface_game_framework_1_1_entity_1_1_i_entity_group.html#ab227784bf527265eee095ac57a07be43">GetEntities</a>(<span class="keywordtype">string</span> entityAssetName, List&lt;IEntity&gt; results);</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160; </div>
+<div class="line"><a name="l00123"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_entity_1_1_i_entity_group.html#aeab7734772fb4caab01177e1bf7a147c">  123</a></span>&#160;        <a class="code" href="interface_game_framework_1_1_entity_1_1_i_entity.html">IEntity</a>[] <a class="code" href="interface_game_framework_1_1_entity_1_1_i_entity_group.html#aeab7734772fb4caab01177e1bf7a147c">GetAllEntities</a>();</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160; </div>
+<div class="line"><a name="l00129"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_entity_1_1_i_entity_group.html#af3e6d05c4b8dba702feb9b12904a385c">  129</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="interface_game_framework_1_1_entity_1_1_i_entity_group.html#af3e6d05c4b8dba702feb9b12904a385c">GetAllEntities</a>(List&lt;IEntity&gt; results);</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160; </div>
+<div class="line"><a name="l00136"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_entity_1_1_i_entity_group.html#a5fab328e9030027e873c7fcbfbd3e8aa">  136</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="interface_game_framework_1_1_entity_1_1_i_entity_group.html#a5fab328e9030027e873c7fcbfbd3e8aa">SetEntityInstanceLocked</a>(<span class="keywordtype">object</span> entityInstance, <span class="keywordtype">bool</span> locked);</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160; </div>
+<div class="line"><a name="l00143"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_entity_1_1_i_entity_group.html#a439564b2b785edc1fcf1e52cc035030c">  143</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="interface_game_framework_1_1_entity_1_1_i_entity_group.html#a439564b2b785edc1fcf1e52cc035030c">SetEntityInstancePriority</a>(<span class="keywordtype">object</span> entityInstance, <span class="keywordtype">int</span> priority);</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;    }</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;}</div>
+<div class="ttc" id="ainterface_game_framework_1_1_entity_1_1_i_entity_group_helper_html"><div class="ttname"><a href="interface_game_framework_1_1_entity_1_1_i_entity_group_helper.html">GameFramework.Entity.IEntityGroupHelper</a></div><div class="ttdoc">实体组辅助器接口。</div><div class="ttdef"><b>Definition:</b> <a href="_i_entity_group_helper_8cs_source.html#l00013">IEntityGroupHelper.cs:14</a></div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_entity_1_1_i_entity_group_html"><div class="ttname"><a href="interface_game_framework_1_1_entity_1_1_i_entity_group.html">GameFramework.Entity.IEntityGroup</a></div><div class="ttdoc">实体组接口。</div><div class="ttdef"><b>Definition:</b> <a href="_i_entity_group_8cs_source.html#l00015">IEntityGroup.cs:16</a></div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_entity_1_1_i_entity_group_html_a343de94bb983d1998afa684375b5f16c"><div class="ttname"><a href="interface_game_framework_1_1_entity_1_1_i_entity_group.html#a343de94bb983d1998afa684375b5f16c">GameFramework.Entity.IEntityGroup.HasEntity</a></div><div class="ttdeci">bool HasEntity(int entityId)</div><div class="ttdoc">实体组中是否存在实体。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_entity_1_1_i_entity_group_html_a3bc20a05beb6ffa523320e69b9411bda"><div class="ttname"><a href="interface_game_framework_1_1_entity_1_1_i_entity_group.html#a3bc20a05beb6ffa523320e69b9411bda">GameFramework.Entity.IEntityGroup.GetEntities</a></div><div class="ttdeci">IEntity[] GetEntities(string entityAssetName)</div><div class="ttdoc">从实体组中获取实体。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_entity_1_1_i_entity_group_html_a439564b2b785edc1fcf1e52cc035030c"><div class="ttname"><a href="interface_game_framework_1_1_entity_1_1_i_entity_group.html#a439564b2b785edc1fcf1e52cc035030c">GameFramework.Entity.IEntityGroup.SetEntityInstancePriority</a></div><div class="ttdeci">void SetEntityInstancePriority(object entityInstance, int priority)</div><div class="ttdoc">设置实体实例的优先级。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_entity_1_1_i_entity_group_html_a56bea82a2edd72234b5033b13df89883"><div class="ttname"><a href="interface_game_framework_1_1_entity_1_1_i_entity_group.html#a56bea82a2edd72234b5033b13df89883">GameFramework.Entity.IEntityGroup.Helper</a></div><div class="ttdeci">IEntityGroupHelper Helper</div><div class="ttdoc">获取实体组辅助器。</div><div class="ttdef"><b>Definition:</b> <a href="_i_entity_group_8cs_source.html#l00072">IEntityGroup.cs:73</a></div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_entity_1_1_i_entity_group_html_a5ae0663bdb6ef1d7679b2bd85d1ad796"><div class="ttname"><a href="interface_game_framework_1_1_entity_1_1_i_entity_group.html#a5ae0663bdb6ef1d7679b2bd85d1ad796">GameFramework.Entity.IEntityGroup.GetEntity</a></div><div class="ttdeci">IEntity GetEntity(int entityId)</div><div class="ttdoc">从实体组中获取实体。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_entity_1_1_i_entity_group_html_a5b35008099c3500308f27860856155b0"><div class="ttname"><a href="interface_game_framework_1_1_entity_1_1_i_entity_group.html#a5b35008099c3500308f27860856155b0">GameFramework.Entity.IEntityGroup.InstancePriority</a></div><div class="ttdeci">int InstancePriority</div><div class="ttdoc">获取或设置实体组实例对象池的优先级。</div><div class="ttdef"><b>Definition:</b> <a href="_i_entity_group_8cs_source.html#l00063">IEntityGroup.cs:64</a></div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_entity_1_1_i_entity_group_html_a5fab328e9030027e873c7fcbfbd3e8aa"><div class="ttname"><a href="interface_game_framework_1_1_entity_1_1_i_entity_group.html#a5fab328e9030027e873c7fcbfbd3e8aa">GameFramework.Entity.IEntityGroup.SetEntityInstanceLocked</a></div><div class="ttdeci">void SetEntityInstanceLocked(object entityInstance, bool locked)</div><div class="ttdoc">设置实体实例是否被加锁。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_entity_1_1_i_entity_group_html_a6cd0e22e288e8eec4e5fe18a3f8868a4"><div class="ttname"><a href="interface_game_framework_1_1_entity_1_1_i_entity_group.html#a6cd0e22e288e8eec4e5fe18a3f8868a4">GameFramework.Entity.IEntityGroup.InstanceCapacity</a></div><div class="ttdeci">int InstanceCapacity</div><div class="ttdoc">获取或设置实体组实例对象池的容量。</div><div class="ttdef"><b>Definition:</b> <a href="_i_entity_group_8cs_source.html#l00045">IEntityGroup.cs:46</a></div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_entity_1_1_i_entity_group_html_a8794bf48a1fc01b6df8579a52bb1b036"><div class="ttname"><a href="interface_game_framework_1_1_entity_1_1_i_entity_group.html#a8794bf48a1fc01b6df8579a52bb1b036">GameFramework.Entity.IEntityGroup.HasEntity</a></div><div class="ttdeci">bool HasEntity(string entityAssetName)</div><div class="ttdoc">实体组中是否存在实体。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_entity_1_1_i_entity_group_html_a9343c994e661226ad3ef2b40fa355c56"><div class="ttname"><a href="interface_game_framework_1_1_entity_1_1_i_entity_group.html#a9343c994e661226ad3ef2b40fa355c56">GameFramework.Entity.IEntityGroup.InstanceAutoReleaseInterval</a></div><div class="ttdeci">float InstanceAutoReleaseInterval</div><div class="ttdoc">获取或设置实体组实例对象池自动释放可释放对象的间隔秒数。</div><div class="ttdef"><b>Definition:</b> <a href="_i_entity_group_8cs_source.html#l00036">IEntityGroup.cs:37</a></div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_entity_1_1_i_entity_group_html_ab227784bf527265eee095ac57a07be43"><div class="ttname"><a href="interface_game_framework_1_1_entity_1_1_i_entity_group.html#ab227784bf527265eee095ac57a07be43">GameFramework.Entity.IEntityGroup.GetEntities</a></div><div class="ttdeci">void GetEntities(string entityAssetName, List&lt; IEntity &gt; results)</div><div class="ttdoc">从实体组中获取实体。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_entity_1_1_i_entity_group_html_ac2a00e7ec2e81db20bd7a2ec5ce8e8f4"><div class="ttname"><a href="interface_game_framework_1_1_entity_1_1_i_entity_group.html#ac2a00e7ec2e81db20bd7a2ec5ce8e8f4">GameFramework.Entity.IEntityGroup.GetEntity</a></div><div class="ttdeci">IEntity GetEntity(string entityAssetName)</div><div class="ttdoc">从实体组中获取实体。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_entity_1_1_i_entity_group_html_ac7fec0b76a9a3ef6e75ac5c01e66a578"><div class="ttname"><a href="interface_game_framework_1_1_entity_1_1_i_entity_group.html#ac7fec0b76a9a3ef6e75ac5c01e66a578">GameFramework.Entity.IEntityGroup.Name</a></div><div class="ttdeci">string Name</div><div class="ttdoc">获取实体组名称。</div><div class="ttdef"><b>Definition:</b> <a href="_i_entity_group_8cs_source.html#l00020">IEntityGroup.cs:21</a></div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_entity_1_1_i_entity_group_html_aca703e6c0dc245261135fcf298658b98"><div class="ttname"><a href="interface_game_framework_1_1_entity_1_1_i_entity_group.html#aca703e6c0dc245261135fcf298658b98">GameFramework.Entity.IEntityGroup.InstanceExpireTime</a></div><div class="ttdeci">float InstanceExpireTime</div><div class="ttdoc">获取或设置实体组实例对象池对象过期秒数。</div><div class="ttdef"><b>Definition:</b> <a href="_i_entity_group_8cs_source.html#l00054">IEntityGroup.cs:55</a></div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_entity_1_1_i_entity_group_html_aeab7734772fb4caab01177e1bf7a147c"><div class="ttname"><a href="interface_game_framework_1_1_entity_1_1_i_entity_group.html#aeab7734772fb4caab01177e1bf7a147c">GameFramework.Entity.IEntityGroup.GetAllEntities</a></div><div class="ttdeci">IEntity[] GetAllEntities()</div><div class="ttdoc">从实体组中获取所有实体。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_entity_1_1_i_entity_group_html_aeaf5c54bd181757957a2d3f345577619"><div class="ttname"><a href="interface_game_framework_1_1_entity_1_1_i_entity_group.html#aeaf5c54bd181757957a2d3f345577619">GameFramework.Entity.IEntityGroup.EntityCount</a></div><div class="ttdeci">int EntityCount</div><div class="ttdoc">获取实体组中实体数量。</div><div class="ttdef"><b>Definition:</b> <a href="_i_entity_group_8cs_source.html#l00028">IEntityGroup.cs:29</a></div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_entity_1_1_i_entity_group_html_af3e6d05c4b8dba702feb9b12904a385c"><div class="ttname"><a href="interface_game_framework_1_1_entity_1_1_i_entity_group.html#af3e6d05c4b8dba702feb9b12904a385c">GameFramework.Entity.IEntityGroup.GetAllEntities</a></div><div class="ttdeci">void GetAllEntities(List&lt; IEntity &gt; results)</div><div class="ttdoc">从实体组中获取所有实体。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_entity_1_1_i_entity_html"><div class="ttname"><a href="interface_game_framework_1_1_entity_1_1_i_entity.html">GameFramework.Entity.IEntity</a></div><div class="ttdoc">实体接口。</div><div class="ttdef"><b>Definition:</b> <a href="_i_entity_8cs_source.html#l00013">IEntity.cs:14</a></div></div>
+<div class="ttc" id="anamespace_game_framework_1_1_entity_html"><div class="ttname"><a href="namespace_game_framework_1_1_entity.html">GameFramework.Entity</a></div><div class="ttdef"><b>Definition:</b> <a href="_entity_manager_8cs_source.html#l00013">EntityManager.cs:14</a></div></div>
+<div class="ttc" id="anamespace_system_html"><div class="ttname"><a href="namespace_system.html">System</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_method_builder_attribute_8cs_source.html#l00001">AsyncMethodBuilderAttribute.cs:2</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_84bbf7b3c7f28a5a18725745e1505219.html">Assets</a></li><li class="navelem"><a class="el" href="dir_f13b41af88cf68434578284aaf699e39.html">Scripts</a></li><li class="navelem"><a class="el" href="dir_46d134a3bf82cf4dc49ca8f728aea58c.html">Libraries</a></li><li class="navelem"><a class="el" href="dir_7a6862c303020716b3c311e95823547c.html">GameFramework</a></li><li class="navelem"><a class="el" href="dir_bfc6cd8d089c265c897460523cef6560.html">Libraries</a></li><li class="navelem"><a class="el" href="dir_c1104d2df307bba6f9db4e185ff99743.html">GameFramework-2021.05.31</a></li><li class="navelem"><a class="el" href="dir_fe759fdbe5a0d8b8465ec936ca1014c7.html">GameFramework</a></li><li class="navelem"><a class="el" href="dir_8edb0682667a9978a70880f6dfdf6fdd.html">Entity</a></li><li class="navelem"><a class="el" href="_i_entity_group_8cs.html">IEntityGroup.cs</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:24:47 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

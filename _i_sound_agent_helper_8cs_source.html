@@ -1,0 +1,219 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: Assets/Scripts/Libraries/GameFramework/Libraries/GameFramework-2021.05.31/GameFramework/Sound/ISoundAgentHelper.cs 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_i_sound_agent_helper_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">ISoundAgentHelper.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_i_sound_agent_helper_8cs.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">//------------------------------------------------------------</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">// Game Framework</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">// Copyright © 2013-2021 Jiang Yin. All rights reserved.</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">// Homepage: https://gameframework.cn/</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">// Feedback: mailto:ellan@gameframework.cn</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">//------------------------------------------------------------</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_game_framework_1_1_sound.html">GameFramework.Sound</a></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;{</div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_sound_1_1_i_sound_agent_helper.html">   15</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">interface </span><a class="code" href="interface_game_framework_1_1_sound_1_1_i_sound_agent_helper.html">ISoundAgentHelper</a></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    {</div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_sound_1_1_i_sound_agent_helper.html#a6af7488216f1403683be952dd23f17ee">   20</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="interface_game_framework_1_1_sound_1_1_i_sound_agent_helper.html#a6af7488216f1403683be952dd23f17ee">IsPlaying</a></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        {</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;            <span class="keyword">get</span>;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        }</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_sound_1_1_i_sound_agent_helper.html#a9f3261a37cc466ac4a2d573c73c7373e">   28</a></span>&#160;        <span class="keywordtype">float</span> <a class="code" href="interface_game_framework_1_1_sound_1_1_i_sound_agent_helper.html#a9f3261a37cc466ac4a2d573c73c7373e">Length</a></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        {</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;            <span class="keyword">get</span>;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        }</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_sound_1_1_i_sound_agent_helper.html#a48003f089b3d3b04fae7aa1a05601e27">   36</a></span>&#160;        <span class="keywordtype">float</span> <a class="code" href="interface_game_framework_1_1_sound_1_1_i_sound_agent_helper.html#a48003f089b3d3b04fae7aa1a05601e27">Time</a></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        {</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;            <span class="keyword">get</span>;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;            <span class="keyword">set</span>;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        }</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_sound_1_1_i_sound_agent_helper.html#a25fb6c0a1c5041dcafcc3f737e444746">   45</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="interface_game_framework_1_1_sound_1_1_i_sound_agent_helper.html#a25fb6c0a1c5041dcafcc3f737e444746">Mute</a></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        {</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            <span class="keyword">get</span>;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            <span class="keyword">set</span>;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        }</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_sound_1_1_i_sound_agent_helper.html#a7258cf5ef3785603017e5a86effe24ef">   54</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="interface_game_framework_1_1_sound_1_1_i_sound_agent_helper.html#a7258cf5ef3785603017e5a86effe24ef">Loop</a></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        {</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            <span class="keyword">get</span>;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            <span class="keyword">set</span>;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        }</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
+<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_sound_1_1_i_sound_agent_helper.html#aa7d50e90c055a9e7429678a1173aa87c">   63</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="interface_game_framework_1_1_sound_1_1_i_sound_agent_helper.html#aa7d50e90c055a9e7429678a1173aa87c">Priority</a></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        {</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            <span class="keyword">get</span>;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            <span class="keyword">set</span>;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        }</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_sound_1_1_i_sound_agent_helper.html#ada11a9280b9dbbf89febd7f5f2fc2bdd">   72</a></span>&#160;        <span class="keywordtype">float</span> <a class="code" href="interface_game_framework_1_1_sound_1_1_i_sound_agent_helper.html#ada11a9280b9dbbf89febd7f5f2fc2bdd">Volume</a></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        {</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            <span class="keyword">get</span>;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            <span class="keyword">set</span>;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        }</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
+<div class="line"><a name="l00081"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_sound_1_1_i_sound_agent_helper.html#af61a9e1c550aad5b0bb8f1655c5f9819">   81</a></span>&#160;        <span class="keywordtype">float</span> <a class="code" href="interface_game_framework_1_1_sound_1_1_i_sound_agent_helper.html#af61a9e1c550aad5b0bb8f1655c5f9819">Pitch</a></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        {</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;            <span class="keyword">get</span>;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;            <span class="keyword">set</span>;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        }</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
+<div class="line"><a name="l00090"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_sound_1_1_i_sound_agent_helper.html#a0e85e3d018370481077dc415baa8cd50">   90</a></span>&#160;        <span class="keywordtype">float</span> <a class="code" href="interface_game_framework_1_1_sound_1_1_i_sound_agent_helper.html#a0e85e3d018370481077dc415baa8cd50">PanStereo</a></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        {</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;            <span class="keyword">get</span>;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;            <span class="keyword">set</span>;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        }</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
+<div class="line"><a name="l00099"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_sound_1_1_i_sound_agent_helper.html#a9e58e5e2bfc3a6202f22032ab3bef57d">   99</a></span>&#160;        <span class="keywordtype">float</span> <a class="code" href="interface_game_framework_1_1_sound_1_1_i_sound_agent_helper.html#a9e58e5e2bfc3a6202f22032ab3bef57d">SpatialBlend</a></div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        {</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;            <span class="keyword">get</span>;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;            <span class="keyword">set</span>;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        }</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
+<div class="line"><a name="l00108"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_sound_1_1_i_sound_agent_helper.html#a5d0252f2b758a0f4f998691f707608b1">  108</a></span>&#160;        <span class="keywordtype">float</span> <a class="code" href="interface_game_framework_1_1_sound_1_1_i_sound_agent_helper.html#a5d0252f2b758a0f4f998691f707608b1">MaxDistance</a></div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        {</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;            <span class="keyword">get</span>;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;            <span class="keyword">set</span>;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        }</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160; </div>
+<div class="line"><a name="l00117"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_sound_1_1_i_sound_agent_helper.html#a9c08f447091e0bae07d1fb549634961b">  117</a></span>&#160;        <span class="keywordtype">float</span> <a class="code" href="interface_game_framework_1_1_sound_1_1_i_sound_agent_helper.html#a9c08f447091e0bae07d1fb549634961b">DopplerLevel</a></div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        {</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;            <span class="keyword">get</span>;</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;            <span class="keyword">set</span>;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        }</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160; </div>
+<div class="line"><a name="l00126"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_sound_1_1_i_sound_agent_helper.html#a6391587e32085a3663039bc960d916e3">  126</a></span>&#160;        <span class="keyword">event</span> EventHandler&lt;ResetSoundAgentEventArgs&gt; <a class="code" href="interface_game_framework_1_1_sound_1_1_i_sound_agent_helper.html#a6391587e32085a3663039bc960d916e3">ResetSoundAgent</a>;</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160; </div>
+<div class="line"><a name="l00132"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_sound_1_1_i_sound_agent_helper.html#a55165512cf63ef5a752a64ced97fe65c">  132</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="interface_game_framework_1_1_sound_1_1_i_sound_agent_helper.html#a55165512cf63ef5a752a64ced97fe65c">Play</a>(<span class="keywordtype">float</span> fadeInSeconds);</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160; </div>
+<div class="line"><a name="l00138"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_sound_1_1_i_sound_agent_helper.html#a8ed1487a044627dbf04eed8f0c2492da">  138</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="interface_game_framework_1_1_sound_1_1_i_sound_agent_helper.html#a8ed1487a044627dbf04eed8f0c2492da">Stop</a>(<span class="keywordtype">float</span> fadeOutSeconds);</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160; </div>
+<div class="line"><a name="l00144"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_sound_1_1_i_sound_agent_helper.html#a25d2397519e105a0ca0f217ae01ebdd5">  144</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="interface_game_framework_1_1_sound_1_1_i_sound_agent_helper.html#a25d2397519e105a0ca0f217ae01ebdd5">Pause</a>(<span class="keywordtype">float</span> fadeOutSeconds);</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160; </div>
+<div class="line"><a name="l00150"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_sound_1_1_i_sound_agent_helper.html#adcc2074a4352c5a92ba7d02b15d0953e">  150</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="interface_game_framework_1_1_sound_1_1_i_sound_agent_helper.html#adcc2074a4352c5a92ba7d02b15d0953e">Resume</a>(<span class="keywordtype">float</span> fadeInSeconds);</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160; </div>
+<div class="line"><a name="l00155"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_sound_1_1_i_sound_agent_helper.html#ab0ec3345b8614c1f36f3fc574690f443">  155</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="interface_game_framework_1_1_sound_1_1_i_sound_agent_helper.html#ab0ec3345b8614c1f36f3fc574690f443">Reset</a>();</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160; </div>
+<div class="line"><a name="l00162"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_sound_1_1_i_sound_agent_helper.html#a82467be4c621b52cca12358beeacdfd5">  162</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="interface_game_framework_1_1_sound_1_1_i_sound_agent_helper.html#a82467be4c621b52cca12358beeacdfd5">SetSoundAsset</a>(<span class="keywordtype">object</span> soundAsset);</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    }</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;}</div>
+<div class="ttc" id="ainterface_game_framework_1_1_sound_1_1_i_sound_agent_helper_html"><div class="ttname"><a href="interface_game_framework_1_1_sound_1_1_i_sound_agent_helper.html">GameFramework.Sound.ISoundAgentHelper</a></div><div class="ttdoc">声音代理辅助器接口。</div><div class="ttdef"><b>Definition:</b> <a href="_i_sound_agent_helper_8cs_source.html#l00015">ISoundAgentHelper.cs:16</a></div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_sound_1_1_i_sound_agent_helper_html_a0e85e3d018370481077dc415baa8cd50"><div class="ttname"><a href="interface_game_framework_1_1_sound_1_1_i_sound_agent_helper.html#a0e85e3d018370481077dc415baa8cd50">GameFramework.Sound.ISoundAgentHelper.PanStereo</a></div><div class="ttdeci">float PanStereo</div><div class="ttdoc">获取或设置声音立体声声相。</div><div class="ttdef"><b>Definition:</b> <a href="_i_sound_agent_helper_8cs_source.html#l00090">ISoundAgentHelper.cs:91</a></div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_sound_1_1_i_sound_agent_helper_html_a25d2397519e105a0ca0f217ae01ebdd5"><div class="ttname"><a href="interface_game_framework_1_1_sound_1_1_i_sound_agent_helper.html#a25d2397519e105a0ca0f217ae01ebdd5">GameFramework.Sound.ISoundAgentHelper.Pause</a></div><div class="ttdeci">void Pause(float fadeOutSeconds)</div><div class="ttdoc">暂停播放声音。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_sound_1_1_i_sound_agent_helper_html_a25fb6c0a1c5041dcafcc3f737e444746"><div class="ttname"><a href="interface_game_framework_1_1_sound_1_1_i_sound_agent_helper.html#a25fb6c0a1c5041dcafcc3f737e444746">GameFramework.Sound.ISoundAgentHelper.Mute</a></div><div class="ttdeci">bool Mute</div><div class="ttdoc">获取或设置是否静音。</div><div class="ttdef"><b>Definition:</b> <a href="_i_sound_agent_helper_8cs_source.html#l00045">ISoundAgentHelper.cs:46</a></div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_sound_1_1_i_sound_agent_helper_html_a48003f089b3d3b04fae7aa1a05601e27"><div class="ttname"><a href="interface_game_framework_1_1_sound_1_1_i_sound_agent_helper.html#a48003f089b3d3b04fae7aa1a05601e27">GameFramework.Sound.ISoundAgentHelper.Time</a></div><div class="ttdeci">float Time</div><div class="ttdoc">获取或设置播放位置。</div><div class="ttdef"><b>Definition:</b> <a href="_i_sound_agent_helper_8cs_source.html#l00036">ISoundAgentHelper.cs:37</a></div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_sound_1_1_i_sound_agent_helper_html_a55165512cf63ef5a752a64ced97fe65c"><div class="ttname"><a href="interface_game_framework_1_1_sound_1_1_i_sound_agent_helper.html#a55165512cf63ef5a752a64ced97fe65c">GameFramework.Sound.ISoundAgentHelper.Play</a></div><div class="ttdeci">void Play(float fadeInSeconds)</div><div class="ttdoc">播放声音。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_sound_1_1_i_sound_agent_helper_html_a5d0252f2b758a0f4f998691f707608b1"><div class="ttname"><a href="interface_game_framework_1_1_sound_1_1_i_sound_agent_helper.html#a5d0252f2b758a0f4f998691f707608b1">GameFramework.Sound.ISoundAgentHelper.MaxDistance</a></div><div class="ttdeci">float MaxDistance</div><div class="ttdoc">获取或设置声音最大距离。</div><div class="ttdef"><b>Definition:</b> <a href="_i_sound_agent_helper_8cs_source.html#l00108">ISoundAgentHelper.cs:109</a></div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_sound_1_1_i_sound_agent_helper_html_a6391587e32085a3663039bc960d916e3"><div class="ttname"><a href="interface_game_framework_1_1_sound_1_1_i_sound_agent_helper.html#a6391587e32085a3663039bc960d916e3">GameFramework.Sound.ISoundAgentHelper.ResetSoundAgent</a></div><div class="ttdeci">EventHandler&lt; ResetSoundAgentEventArgs &gt; ResetSoundAgent</div><div class="ttdoc">重置声音代理事件。</div><div class="ttdef"><b>Definition:</b> <a href="_i_sound_agent_helper_8cs_source.html#l00126">ISoundAgentHelper.cs:126</a></div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_sound_1_1_i_sound_agent_helper_html_a6af7488216f1403683be952dd23f17ee"><div class="ttname"><a href="interface_game_framework_1_1_sound_1_1_i_sound_agent_helper.html#a6af7488216f1403683be952dd23f17ee">GameFramework.Sound.ISoundAgentHelper.IsPlaying</a></div><div class="ttdeci">bool IsPlaying</div><div class="ttdoc">获取当前是否正在播放。</div><div class="ttdef"><b>Definition:</b> <a href="_i_sound_agent_helper_8cs_source.html#l00020">ISoundAgentHelper.cs:21</a></div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_sound_1_1_i_sound_agent_helper_html_a7258cf5ef3785603017e5a86effe24ef"><div class="ttname"><a href="interface_game_framework_1_1_sound_1_1_i_sound_agent_helper.html#a7258cf5ef3785603017e5a86effe24ef">GameFramework.Sound.ISoundAgentHelper.Loop</a></div><div class="ttdeci">bool Loop</div><div class="ttdoc">获取或设置是否循环播放。</div><div class="ttdef"><b>Definition:</b> <a href="_i_sound_agent_helper_8cs_source.html#l00054">ISoundAgentHelper.cs:55</a></div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_sound_1_1_i_sound_agent_helper_html_a82467be4c621b52cca12358beeacdfd5"><div class="ttname"><a href="interface_game_framework_1_1_sound_1_1_i_sound_agent_helper.html#a82467be4c621b52cca12358beeacdfd5">GameFramework.Sound.ISoundAgentHelper.SetSoundAsset</a></div><div class="ttdeci">bool SetSoundAsset(object soundAsset)</div><div class="ttdoc">设置声音资源。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_sound_1_1_i_sound_agent_helper_html_a8ed1487a044627dbf04eed8f0c2492da"><div class="ttname"><a href="interface_game_framework_1_1_sound_1_1_i_sound_agent_helper.html#a8ed1487a044627dbf04eed8f0c2492da">GameFramework.Sound.ISoundAgentHelper.Stop</a></div><div class="ttdeci">void Stop(float fadeOutSeconds)</div><div class="ttdoc">停止播放声音。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_sound_1_1_i_sound_agent_helper_html_a9c08f447091e0bae07d1fb549634961b"><div class="ttname"><a href="interface_game_framework_1_1_sound_1_1_i_sound_agent_helper.html#a9c08f447091e0bae07d1fb549634961b">GameFramework.Sound.ISoundAgentHelper.DopplerLevel</a></div><div class="ttdeci">float DopplerLevel</div><div class="ttdoc">获取或设置声音多普勒等级。</div><div class="ttdef"><b>Definition:</b> <a href="_i_sound_agent_helper_8cs_source.html#l00117">ISoundAgentHelper.cs:118</a></div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_sound_1_1_i_sound_agent_helper_html_a9e58e5e2bfc3a6202f22032ab3bef57d"><div class="ttname"><a href="interface_game_framework_1_1_sound_1_1_i_sound_agent_helper.html#a9e58e5e2bfc3a6202f22032ab3bef57d">GameFramework.Sound.ISoundAgentHelper.SpatialBlend</a></div><div class="ttdeci">float SpatialBlend</div><div class="ttdoc">获取或设置声音空间混合量。</div><div class="ttdef"><b>Definition:</b> <a href="_i_sound_agent_helper_8cs_source.html#l00099">ISoundAgentHelper.cs:100</a></div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_sound_1_1_i_sound_agent_helper_html_a9f3261a37cc466ac4a2d573c73c7373e"><div class="ttname"><a href="interface_game_framework_1_1_sound_1_1_i_sound_agent_helper.html#a9f3261a37cc466ac4a2d573c73c7373e">GameFramework.Sound.ISoundAgentHelper.Length</a></div><div class="ttdeci">float Length</div><div class="ttdoc">获取声音长度。</div><div class="ttdef"><b>Definition:</b> <a href="_i_sound_agent_helper_8cs_source.html#l00028">ISoundAgentHelper.cs:29</a></div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_sound_1_1_i_sound_agent_helper_html_aa7d50e90c055a9e7429678a1173aa87c"><div class="ttname"><a href="interface_game_framework_1_1_sound_1_1_i_sound_agent_helper.html#aa7d50e90c055a9e7429678a1173aa87c">GameFramework.Sound.ISoundAgentHelper.Priority</a></div><div class="ttdeci">int Priority</div><div class="ttdoc">获取或设置声音优先级。</div><div class="ttdef"><b>Definition:</b> <a href="_i_sound_agent_helper_8cs_source.html#l00063">ISoundAgentHelper.cs:64</a></div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_sound_1_1_i_sound_agent_helper_html_ab0ec3345b8614c1f36f3fc574690f443"><div class="ttname"><a href="interface_game_framework_1_1_sound_1_1_i_sound_agent_helper.html#ab0ec3345b8614c1f36f3fc574690f443">GameFramework.Sound.ISoundAgentHelper.Reset</a></div><div class="ttdeci">void Reset()</div><div class="ttdoc">重置声音代理辅助器。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_sound_1_1_i_sound_agent_helper_html_ada11a9280b9dbbf89febd7f5f2fc2bdd"><div class="ttname"><a href="interface_game_framework_1_1_sound_1_1_i_sound_agent_helper.html#ada11a9280b9dbbf89febd7f5f2fc2bdd">GameFramework.Sound.ISoundAgentHelper.Volume</a></div><div class="ttdeci">float Volume</div><div class="ttdoc">获取或设置音量大小。</div><div class="ttdef"><b>Definition:</b> <a href="_i_sound_agent_helper_8cs_source.html#l00072">ISoundAgentHelper.cs:73</a></div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_sound_1_1_i_sound_agent_helper_html_adcc2074a4352c5a92ba7d02b15d0953e"><div class="ttname"><a href="interface_game_framework_1_1_sound_1_1_i_sound_agent_helper.html#adcc2074a4352c5a92ba7d02b15d0953e">GameFramework.Sound.ISoundAgentHelper.Resume</a></div><div class="ttdeci">void Resume(float fadeInSeconds)</div><div class="ttdoc">恢复播放声音。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_sound_1_1_i_sound_agent_helper_html_af61a9e1c550aad5b0bb8f1655c5f9819"><div class="ttname"><a href="interface_game_framework_1_1_sound_1_1_i_sound_agent_helper.html#af61a9e1c550aad5b0bb8f1655c5f9819">GameFramework.Sound.ISoundAgentHelper.Pitch</a></div><div class="ttdeci">float Pitch</div><div class="ttdoc">获取或设置声音音调。</div><div class="ttdef"><b>Definition:</b> <a href="_i_sound_agent_helper_8cs_source.html#l00081">ISoundAgentHelper.cs:82</a></div></div>
+<div class="ttc" id="anamespace_game_framework_1_1_sound_html"><div class="ttname"><a href="namespace_game_framework_1_1_sound.html">GameFramework.Sound</a></div><div class="ttdef"><b>Definition:</b> <a href="_sound_2_constant_8cs_source.html#l00008">Constant.cs:9</a></div></div>
+<div class="ttc" id="anamespace_system_html"><div class="ttname"><a href="namespace_system.html">System</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_method_builder_attribute_8cs_source.html#l00001">AsyncMethodBuilderAttribute.cs:2</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_84bbf7b3c7f28a5a18725745e1505219.html">Assets</a></li><li class="navelem"><a class="el" href="dir_f13b41af88cf68434578284aaf699e39.html">Scripts</a></li><li class="navelem"><a class="el" href="dir_46d134a3bf82cf4dc49ca8f728aea58c.html">Libraries</a></li><li class="navelem"><a class="el" href="dir_7a6862c303020716b3c311e95823547c.html">GameFramework</a></li><li class="navelem"><a class="el" href="dir_bfc6cd8d089c265c897460523cef6560.html">Libraries</a></li><li class="navelem"><a class="el" href="dir_c1104d2df307bba6f9db4e185ff99743.html">GameFramework-2021.05.31</a></li><li class="navelem"><a class="el" href="dir_fe759fdbe5a0d8b8465ec936ca1014c7.html">GameFramework</a></li><li class="navelem"><a class="el" href="dir_881539471f7709e9297e7481b1bd25f0.html">Sound</a></li><li class="navelem"><a class="el" href="_i_sound_agent_helper_8cs.html">ISoundAgentHelper.cs</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:24:48 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

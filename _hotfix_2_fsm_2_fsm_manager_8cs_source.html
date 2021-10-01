@@ -1,0 +1,404 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: Assets/Scripts/Hotfix/Fsm/FsmManager.cs 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_hotfix_2_fsm_2_fsm_manager_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">FsmManager.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_hotfix_2_fsm_2_fsm_manager_8cs.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">//------------------------------------------------------------</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">// Game Framework</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">// Copyright © 2013-2021 Jiang Yin. All rights reserved.</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">// Homepage: https://gameframework.cn/</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">// Feedback: mailto:ellan@gameframework.cn</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">//------------------------------------------------------------</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Collections.Generic;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_game_framework.html">GameFramework</a>;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_linity_1_1_hotfix.html">Linity.Hotfix</a></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;{</div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="class_linity_1_1_hotfix_1_1_fsm_manager.html">   17</a></span>&#160;    <span class="keyword">public</span> sealed <span class="keyword">class </span><a class="code" href="class_linity_1_1_hotfix_1_1_fsm_manager.html">FsmManager</a> : <a class="code" href="class_linity_1_1_hotfix_1_1_game_framework_module.html">GameFrameworkModule</a>, <a class="code" href="interface_linity_1_1_hotfix_1_1_i_fsm_manager.html">IFsmManager</a></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    {</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <span class="keyword">private</span> readonly Dictionary&lt;TypeNamePair, FsmBase&gt; m_Fsms;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        <span class="keyword">private</span> readonly List&lt;FsmBase&gt; m_TempFsms;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="class_linity_1_1_hotfix_1_1_fsm_manager.html#a71fdb445f1216a934bd4a37cfdc95b32">   25</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_linity_1_1_hotfix_1_1_fsm_manager.html#a71fdb445f1216a934bd4a37cfdc95b32">FsmManager</a>()</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        {</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;            m_Fsms = <span class="keyword">new</span> Dictionary&lt;TypeNamePair, FsmBase&gt;();</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;            m_TempFsms = <span class="keyword">new</span> List&lt;FsmBase&gt;();</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        }</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <span class="keyword">internal</span> <span class="keyword">override</span> <span class="keywordtype">int</span> Priority</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        {</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;            <span class="keyword">get</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;            {</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                <span class="keywordflow">return</span> 60;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            }</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        }</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="class_linity_1_1_hotfix_1_1_fsm_manager.html#aa9ffecdd62e7b95e89d253787a024d31">   46</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">int</span> <a class="code" href="class_linity_1_1_hotfix_1_1_fsm_manager.html#aa9ffecdd62e7b95e89d253787a024d31">Count</a></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        {</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            <span class="keyword">get</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            {</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                <span class="keywordflow">return</span> m_Fsms.Count;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            }</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        }</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <span class="keyword">internal</span> <span class="keyword">override</span> <span class="keywordtype">void</span> Update(<span class="keywordtype">float</span> elapseSeconds, <span class="keywordtype">float</span> realElapseSeconds)</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        {</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            m_TempFsms.Clear();</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            <span class="keywordflow">if</span> (m_Fsms.Count &lt;= 0)</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;            {</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            }</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            <span class="keywordflow">foreach</span> (KeyValuePair&lt;TypeNamePair, FsmBase&gt; fsm <span class="keywordflow">in</span> m_Fsms)</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            {</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                m_TempFsms.Add(fsm.Value);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            }</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;            <span class="keywordflow">foreach</span> (FsmBase fsm <span class="keywordflow">in</span> m_TempFsms)</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            {</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                <span class="keywordflow">if</span> (fsm.IsDestroyed)</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                {</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                    <span class="keywordflow">continue</span>;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                }</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                fsm.Update(elapseSeconds, realElapseSeconds);</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            }</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        }</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        <span class="keyword">internal</span> <span class="keyword">override</span> <span class="keywordtype">void</span> Shutdown()</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        {</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;            <span class="keywordflow">foreach</span> (KeyValuePair&lt;TypeNamePair, FsmBase&gt; fsm <span class="keywordflow">in</span> m_Fsms)</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;            {</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                fsm.Value.Shutdown();</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;            }</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;            m_Fsms.Clear();</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;            m_TempFsms.Clear();</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        }</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
+<div class="line"><a name="l00102"></a><span class="lineno"><a class="line" href="class_linity_1_1_hotfix_1_1_fsm_manager.html#a142dcd3d061c463100a8ce3fdd58d307">  102</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code" href="class_linity_1_1_hotfix_1_1_fsm_manager.html#a142dcd3d061c463100a8ce3fdd58d307">HasFsm&lt;T&gt;</a>() where T : class</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        {</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;            <span class="keywordflow">return</span> InternalHasFsm(<span class="keyword">new</span> TypeNamePair(typeof(T)));</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        }</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
+<div class="line"><a name="l00112"></a><span class="lineno"><a class="line" href="class_linity_1_1_hotfix_1_1_fsm_manager.html#a8ae4b643c8808bce9079d47718c2bf76">  112</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code" href="class_linity_1_1_hotfix_1_1_fsm_manager.html#a8ae4b643c8808bce9079d47718c2bf76">HasFsm</a>(Type ownerType)</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        {</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;            <span class="keywordflow">if</span> (ownerType == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;            {</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> <a class="code" href="class_game_framework_1_1_game_framework_exception.html">GameFrameworkException</a>(<span class="stringliteral">&quot;Owner type is invalid.&quot;</span>);</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;            }</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160; </div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;            <span class="keywordflow">return</span> InternalHasFsm(<span class="keyword">new</span> TypeNamePair(ownerType));</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        }</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160; </div>
+<div class="line"><a name="l00128"></a><span class="lineno"><a class="line" href="class_linity_1_1_hotfix_1_1_fsm_manager.html#a413f598f4cfa49badd05129b4d29b539">  128</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code" href="class_linity_1_1_hotfix_1_1_fsm_manager.html#a142dcd3d061c463100a8ce3fdd58d307">HasFsm&lt;T&gt;</a>(<span class="keywordtype">string</span> name) where T : <span class="keyword">class</span></div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        {</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;            <span class="keywordflow">return</span> InternalHasFsm(<span class="keyword">new</span> TypeNamePair(typeof(T), name));</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        }</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160; </div>
+<div class="line"><a name="l00139"></a><span class="lineno"><a class="line" href="class_linity_1_1_hotfix_1_1_fsm_manager.html#acf82ace7ffdcb1e27f2dc7d7dc9652ed">  139</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code" href="class_linity_1_1_hotfix_1_1_fsm_manager.html#acf82ace7ffdcb1e27f2dc7d7dc9652ed">HasFsm</a>(Type ownerType, <span class="keywordtype">string</span> name)</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;        {</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;            <span class="keywordflow">if</span> (ownerType == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;            {</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> <a class="code" href="class_game_framework_1_1_game_framework_exception.html">GameFrameworkException</a>(<span class="stringliteral">&quot;Owner type is invalid.&quot;</span>);</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;            }</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160; </div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;            <span class="keywordflow">return</span> InternalHasFsm(<span class="keyword">new</span> TypeNamePair(ownerType, name));</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;        }</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160; </div>
+<div class="line"><a name="l00154"></a><span class="lineno"><a class="line" href="class_linity_1_1_hotfix_1_1_fsm_manager.html#aa749836fa41541cda0891397d9782e1c">  154</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="interface_linity_1_1_hotfix_1_1_i_fsm.html">IFsm&lt;T&gt;</a> <a class="code" href="class_linity_1_1_hotfix_1_1_fsm_manager.html#aa749836fa41541cda0891397d9782e1c">GetFsm&lt;T&gt;</a>() where T : class</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;        {</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;            <span class="keywordflow">return</span> (<a class="code" href="interface_linity_1_1_hotfix_1_1_i_fsm.html">IFsm&lt;T&gt;</a>)InternalGetFsm(<span class="keyword">new</span> TypeNamePair(typeof(T)));</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;        }</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160; </div>
+<div class="line"><a name="l00164"></a><span class="lineno"><a class="line" href="class_linity_1_1_hotfix_1_1_fsm_manager.html#a09d47ddbe5506229e930f2f8ffbc2c96">  164</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_linity_1_1_hotfix_1_1_fsm_base.html">FsmBase</a> <a class="code" href="class_linity_1_1_hotfix_1_1_fsm_manager.html#a09d47ddbe5506229e930f2f8ffbc2c96">GetFsm</a>(Type ownerType)</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;        {</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;            <span class="keywordflow">if</span> (ownerType == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;            {</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> <a class="code" href="class_game_framework_1_1_game_framework_exception.html">GameFrameworkException</a>(<span class="stringliteral">&quot;Owner type is invalid.&quot;</span>);</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;            }</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160; </div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;            <span class="keywordflow">return</span> InternalGetFsm(<span class="keyword">new</span> TypeNamePair(ownerType));</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;        }</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160; </div>
+<div class="line"><a name="l00180"></a><span class="lineno"><a class="line" href="class_linity_1_1_hotfix_1_1_fsm_manager.html#af26b7c60cc998cb3d6d532818b625ee4">  180</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="interface_linity_1_1_hotfix_1_1_i_fsm.html">IFsm&lt;T&gt;</a> <a class="code" href="class_linity_1_1_hotfix_1_1_fsm_manager.html#aa749836fa41541cda0891397d9782e1c">GetFsm&lt;T&gt;</a>(<span class="keywordtype">string</span> name) where T : <span class="keyword">class</span></div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;        {</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;            <span class="keywordflow">return</span> (<a class="code" href="interface_linity_1_1_hotfix_1_1_i_fsm.html">IFsm&lt;T&gt;</a>)InternalGetFsm(<span class="keyword">new</span> TypeNamePair(typeof(T), name));</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;        }</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160; </div>
+<div class="line"><a name="l00191"></a><span class="lineno"><a class="line" href="class_linity_1_1_hotfix_1_1_fsm_manager.html#a2826970cca8ee382843aef4feae820e2">  191</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_linity_1_1_hotfix_1_1_fsm_base.html">FsmBase</a> <a class="code" href="class_linity_1_1_hotfix_1_1_fsm_manager.html#a2826970cca8ee382843aef4feae820e2">GetFsm</a>(Type ownerType, <span class="keywordtype">string</span> name)</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;        {</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;            <span class="keywordflow">if</span> (ownerType == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;            {</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> <a class="code" href="class_game_framework_1_1_game_framework_exception.html">GameFrameworkException</a>(<span class="stringliteral">&quot;Owner type is invalid.&quot;</span>);</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;            }</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160; </div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;            <span class="keywordflow">return</span> InternalGetFsm(<span class="keyword">new</span> TypeNamePair(ownerType, name));</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;        }</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160; </div>
+<div class="line"><a name="l00205"></a><span class="lineno"><a class="line" href="class_linity_1_1_hotfix_1_1_fsm_manager.html#a642da8b84a894052bbbd589ca6a0ec45">  205</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_linity_1_1_hotfix_1_1_fsm_base.html">FsmBase</a>[] <a class="code" href="class_linity_1_1_hotfix_1_1_fsm_manager.html#a642da8b84a894052bbbd589ca6a0ec45">GetAllFsms</a>()</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;        {</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;            <span class="keywordtype">int</span> index = 0;</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;            <a class="code" href="class_linity_1_1_hotfix_1_1_fsm_base.html">FsmBase</a>[] results = <span class="keyword">new</span> <a class="code" href="class_linity_1_1_hotfix_1_1_fsm_base.html">FsmBase</a>[m_Fsms.Count];</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;            <span class="keywordflow">foreach</span> (KeyValuePair&lt;TypeNamePair, FsmBase&gt; fsm <span class="keywordflow">in</span> m_Fsms)</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;            {</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;                results[index++] = fsm.Value;</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;            }</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160; </div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;            <span class="keywordflow">return</span> results;</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;        }</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160; </div>
+<div class="line"><a name="l00221"></a><span class="lineno"><a class="line" href="class_linity_1_1_hotfix_1_1_fsm_manager.html#afc8e64bda106cf3826f18a1801a87240">  221</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_linity_1_1_hotfix_1_1_fsm_manager.html#afc8e64bda106cf3826f18a1801a87240">GetAllFsms</a>(List&lt;FsmBase&gt; results)</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;        {</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;            <span class="keywordflow">if</span> (results == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;            {</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> <a class="code" href="class_game_framework_1_1_game_framework_exception.html">GameFrameworkException</a>(<span class="stringliteral">&quot;Results is invalid.&quot;</span>);</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;            }</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160; </div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;            results.Clear();</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;            <span class="keywordflow">foreach</span> (KeyValuePair&lt;TypeNamePair, FsmBase&gt; fsm <span class="keywordflow">in</span> m_Fsms)</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;            {</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;                results.Add(fsm.Value);</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;            }</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;        }</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160; </div>
+<div class="line"><a name="l00242"></a><span class="lineno"><a class="line" href="class_linity_1_1_hotfix_1_1_fsm_manager.html#a3338eee81884c167bb5978b217587b7c">  242</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="interface_linity_1_1_hotfix_1_1_i_fsm.html">IFsm&lt;T&gt;</a> <a class="code" href="class_linity_1_1_hotfix_1_1_fsm_manager.html#a3338eee81884c167bb5978b217587b7c">CreateFsm&lt;T&gt;</a>(T owner, params <a class="code" href="class_linity_1_1_hotfix_1_1_fsm_state.html">FsmState&lt;T&gt;</a>[] states) where T : <span class="keyword">class</span></div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;        {</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;            <span class="keywordflow">return</span> CreateFsm(<span class="keywordtype">string</span>.Empty, owner, states);</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;        }</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160; </div>
+<div class="line"><a name="l00255"></a><span class="lineno"><a class="line" href="class_linity_1_1_hotfix_1_1_fsm_manager.html#a95648672ba1bc00f9c347beb593cff54">  255</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="interface_linity_1_1_hotfix_1_1_i_fsm.html">IFsm&lt;T&gt;</a> <a class="code" href="class_linity_1_1_hotfix_1_1_fsm_manager.html#a3338eee81884c167bb5978b217587b7c">CreateFsm&lt;T&gt;</a>(<span class="keywordtype">string</span> name, T owner, params <a class="code" href="class_linity_1_1_hotfix_1_1_fsm_state.html">FsmState&lt;T&gt;</a>[] states) where T : <span class="keyword">class</span></div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;        {</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;            TypeNamePair typeNamePair = <span class="keyword">new</span> TypeNamePair(typeof(T), name);</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="class_linity_1_1_hotfix_1_1_fsm_manager.html#a142dcd3d061c463100a8ce3fdd58d307">HasFsm&lt;T&gt;</a>(name))</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;            {</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> <a class="code" href="class_game_framework_1_1_game_framework_exception.html">GameFrameworkException</a>(<a class="code" href="namespace_game_framework.html">GameFramework</a>.<a class="code" href="class_game_framework_1_1_utility.html">Utility</a>.<a class="code" href="class_game_framework_1_1_utility_1_1_text.html">Text</a>.Format(<span class="stringliteral">&quot;Already exist FSM &#39;{0}&#39;.&quot;</span>, typeNamePair.ToString()));</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;            }</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160; </div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;            Fsm&lt;T&gt; fsm = Fsm&lt;T&gt;.Create(name, owner, states);</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;            m_Fsms.Add(typeNamePair, fsm);</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;            <span class="keywordflow">return</span> fsm;</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;        }</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160; </div>
+<div class="line"><a name="l00275"></a><span class="lineno"><a class="line" href="class_linity_1_1_hotfix_1_1_fsm_manager.html#a4300f70d7e87ab1c31a571fc96162225">  275</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="interface_linity_1_1_hotfix_1_1_i_fsm.html">IFsm&lt;T&gt;</a> <a class="code" href="class_linity_1_1_hotfix_1_1_fsm_manager.html#a3338eee81884c167bb5978b217587b7c">CreateFsm&lt;T&gt;</a>(T owner, List&lt;<a class="code" href="class_linity_1_1_hotfix_1_1_fsm_state.html">FsmState&lt;T&gt;</a>&gt; states) where T : <span class="keyword">class</span></div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;        {</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;            <span class="keywordflow">return</span> CreateFsm(<span class="keywordtype">string</span>.Empty, owner, states);</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;        }</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160; </div>
+<div class="line"><a name="l00288"></a><span class="lineno"><a class="line" href="class_linity_1_1_hotfix_1_1_fsm_manager.html#af325e64a08ce3494d9f7fe476dcbddec">  288</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="interface_linity_1_1_hotfix_1_1_i_fsm.html">IFsm&lt;T&gt;</a> <a class="code" href="class_linity_1_1_hotfix_1_1_fsm_manager.html#a3338eee81884c167bb5978b217587b7c">CreateFsm&lt;T&gt;</a>(<span class="keywordtype">string</span> name, T owner, List&lt;<a class="code" href="class_linity_1_1_hotfix_1_1_fsm_state.html">FsmState&lt;T&gt;</a>&gt; states) where T : <span class="keyword">class</span></div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;        {</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;            TypeNamePair typeNamePair = <span class="keyword">new</span> TypeNamePair(typeof(T), name);</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="class_linity_1_1_hotfix_1_1_fsm_manager.html#a142dcd3d061c463100a8ce3fdd58d307">HasFsm&lt;T&gt;</a>(name))</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;            {</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> <a class="code" href="class_game_framework_1_1_game_framework_exception.html">GameFrameworkException</a>(<a class="code" href="namespace_game_framework.html">GameFramework</a>.<a class="code" href="class_game_framework_1_1_utility.html">Utility</a>.<a class="code" href="class_game_framework_1_1_utility_1_1_text.html">Text</a>.Format(<span class="stringliteral">&quot;Already exist FSM &#39;{0}&#39;.&quot;</span>, typeNamePair));</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;            }</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160; </div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;            Fsm&lt;T&gt; fsm = Fsm&lt;T&gt;.Create(name, owner, states);</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;            m_Fsms.Add(typeNamePair, fsm);</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;            <span class="keywordflow">return</span> fsm;</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;        }</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160; </div>
+<div class="line"><a name="l00306"></a><span class="lineno"><a class="line" href="class_linity_1_1_hotfix_1_1_fsm_manager.html#ab89cd7982e7f961a5767064e6c586149">  306</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code" href="class_linity_1_1_hotfix_1_1_fsm_manager.html#ab89cd7982e7f961a5767064e6c586149">DestroyFsm&lt;T&gt;</a>() where T : class</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;        {</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;            <span class="keywordflow">return</span> InternalDestroyFsm(<span class="keyword">new</span> TypeNamePair(typeof(T)));</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;        }</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160; </div>
+<div class="line"><a name="l00316"></a><span class="lineno"><a class="line" href="class_linity_1_1_hotfix_1_1_fsm_manager.html#ad51e8a28121a964e544ab0692a2299f0">  316</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code" href="class_linity_1_1_hotfix_1_1_fsm_manager.html#ad51e8a28121a964e544ab0692a2299f0">DestroyFsm</a>(Type ownerType)</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;        {</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;            <span class="keywordflow">if</span> (ownerType == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;            {</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> <a class="code" href="class_game_framework_1_1_game_framework_exception.html">GameFrameworkException</a>(<span class="stringliteral">&quot;Owner type is invalid.&quot;</span>);</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;            }</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160; </div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;            <span class="keywordflow">return</span> InternalDestroyFsm(<span class="keyword">new</span> TypeNamePair(ownerType));</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;        }</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160; </div>
+<div class="line"><a name="l00332"></a><span class="lineno"><a class="line" href="class_linity_1_1_hotfix_1_1_fsm_manager.html#ac82b990a17f390715c25bac9c9cde1d5">  332</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code" href="class_linity_1_1_hotfix_1_1_fsm_manager.html#ab89cd7982e7f961a5767064e6c586149">DestroyFsm&lt;T&gt;</a>(<span class="keywordtype">string</span> name) where T : <span class="keyword">class</span></div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;        {</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;            <span class="keywordflow">return</span> InternalDestroyFsm(<span class="keyword">new</span> TypeNamePair(typeof(T), name));</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;        }</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160; </div>
+<div class="line"><a name="l00343"></a><span class="lineno"><a class="line" href="class_linity_1_1_hotfix_1_1_fsm_manager.html#a99d68ee1836eb5a04b6f259cc8396677">  343</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code" href="class_linity_1_1_hotfix_1_1_fsm_manager.html#a99d68ee1836eb5a04b6f259cc8396677">DestroyFsm</a>(Type ownerType, <span class="keywordtype">string</span> name)</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;        {</div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;            <span class="keywordflow">if</span> (ownerType == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;            {</div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> <a class="code" href="class_game_framework_1_1_game_framework_exception.html">GameFrameworkException</a>(<span class="stringliteral">&quot;Owner type is invalid.&quot;</span>);</div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;            }</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160; </div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;            <span class="keywordflow">return</span> InternalDestroyFsm(<span class="keyword">new</span> TypeNamePair(ownerType, name));</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;        }</div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160; </div>
+<div class="line"><a name="l00359"></a><span class="lineno"><a class="line" href="class_linity_1_1_hotfix_1_1_fsm_manager.html#abcfe3bf4061dcc5d080d28a1ec666bda">  359</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code" href="class_linity_1_1_hotfix_1_1_fsm_manager.html#ab89cd7982e7f961a5767064e6c586149">DestroyFsm&lt;T&gt;</a>(<a class="code" href="interface_linity_1_1_hotfix_1_1_i_fsm.html">IFsm&lt;T&gt;</a> fsm) where T : <span class="keyword">class</span></div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;        {</div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;            <span class="keywordflow">if</span> (fsm == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;            {</div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> <a class="code" href="class_game_framework_1_1_game_framework_exception.html">GameFrameworkException</a>(<span class="stringliteral">&quot;FSM is invalid.&quot;</span>);</div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;            }</div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160; </div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;            <span class="keywordflow">return</span> InternalDestroyFsm(<span class="keyword">new</span> TypeNamePair(typeof(T), fsm.Name));</div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;        }</div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160; </div>
+<div class="line"><a name="l00374"></a><span class="lineno"><a class="line" href="class_linity_1_1_hotfix_1_1_fsm_manager.html#a9ae78a54684a2c48c5ac7477fe6341c3">  374</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code" href="class_linity_1_1_hotfix_1_1_fsm_manager.html#a9ae78a54684a2c48c5ac7477fe6341c3">DestroyFsm</a>(<a class="code" href="class_linity_1_1_hotfix_1_1_fsm_base.html">FsmBase</a> fsm)</div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;        {</div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;            <span class="keywordflow">if</span> (fsm == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;            {</div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> <a class="code" href="class_game_framework_1_1_game_framework_exception.html">GameFrameworkException</a>(<span class="stringliteral">&quot;FSM is invalid.&quot;</span>);</div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;            }</div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160; </div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;            <span class="keywordflow">return</span> InternalDestroyFsm(<span class="keyword">new</span> TypeNamePair(fsm.<a class="code" href="class_linity_1_1_hotfix_1_1_fsm_base.html#a38a1cfee09a2482d5dd40e73194c21fb">OwnerType</a>, fsm.<a class="code" href="class_linity_1_1_hotfix_1_1_fsm_base.html#ae3d6c353a81cc8cc6f4eff1ace2e9d20">Name</a>));</div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;        }</div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160; </div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">bool</span> InternalHasFsm(TypeNamePair typeNamePair)</div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;        {</div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;            <span class="keywordflow">return</span> m_Fsms.ContainsKey(typeNamePair);</div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;        }</div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160; </div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;        <span class="keyword">private</span> FsmBase InternalGetFsm(TypeNamePair typeNamePair)</div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;        {</div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;            FsmBase fsm = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;            <span class="keywordflow">if</span> (m_Fsms.TryGetValue(typeNamePair, out fsm))</div>
+<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;            {</div>
+<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;                <span class="keywordflow">return</span> fsm;</div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;            }</div>
+<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160; </div>
+<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;        }</div>
+<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160; </div>
+<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">bool</span> InternalDestroyFsm(TypeNamePair typeNamePair)</div>
+<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;        {</div>
+<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;            FsmBase fsm = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;            <span class="keywordflow">if</span> (m_Fsms.TryGetValue(typeNamePair, out fsm))</div>
+<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;            {</div>
+<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;                fsm.Shutdown();</div>
+<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;                <span class="keywordflow">return</span> m_Fsms.Remove(typeNamePair);</div>
+<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;            }</div>
+<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160; </div>
+<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;        }</div>
+<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;    }</div>
+<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;}</div>
+<div class="ttc" id="aclass_game_framework_1_1_game_framework_exception_html"><div class="ttname"><a href="class_game_framework_1_1_game_framework_exception.html">GameFramework.GameFrameworkException</a></div><div class="ttdoc">游戏框架异常类。</div><div class="ttdef"><b>Definition:</b> <a href="_game_framework_exception_8cs_source.html#l00017">GameFrameworkException.cs:18</a></div></div>
+<div class="ttc" id="aclass_game_framework_1_1_utility_1_1_text_html"><div class="ttname"><a href="class_game_framework_1_1_utility_1_1_text.html">GameFramework.Utility.Text</a></div><div class="ttdef"><b>Definition:</b> <a href="_utility_8_text_8cs_source.html#l00018">Utility.Text.cs:19</a></div></div>
+<div class="ttc" id="aclass_game_framework_1_1_utility_html"><div class="ttname"><a href="class_game_framework_1_1_utility.html">GameFramework.Utility</a></div><div class="ttdef"><b>Definition:</b> <a href="_utility_8_assembly_8cs_source.html#l00013">Utility.Assembly.cs:14</a></div></div>
+<div class="ttc" id="aclass_linity_1_1_hotfix_1_1_fsm_base_html"><div class="ttname"><a href="class_linity_1_1_hotfix_1_1_fsm_base.html">Linity.Hotfix.FsmBase</a></div><div class="ttdoc">有限状态机基类。</div><div class="ttdef"><b>Definition:</b> <a href="_hotfix_2_fsm_2_fsm_base_8cs_source.html#l00015">FsmBase.cs:16</a></div></div>
+<div class="ttc" id="aclass_linity_1_1_hotfix_1_1_fsm_base_html_a38a1cfee09a2482d5dd40e73194c21fb"><div class="ttname"><a href="class_linity_1_1_hotfix_1_1_fsm_base.html#a38a1cfee09a2482d5dd40e73194c21fb">Linity.Hotfix.FsmBase.OwnerType</a></div><div class="ttdeci">abstract Type OwnerType</div><div class="ttdoc">获取有限状态机持有者类型。</div><div class="ttdef"><b>Definition:</b> <a href="_hotfix_2_fsm_2_fsm_base_8cs_source.html#l00056">FsmBase.cs:57</a></div></div>
+<div class="ttc" id="aclass_linity_1_1_hotfix_1_1_fsm_base_html_ae3d6c353a81cc8cc6f4eff1ace2e9d20"><div class="ttname"><a href="class_linity_1_1_hotfix_1_1_fsm_base.html#ae3d6c353a81cc8cc6f4eff1ace2e9d20">Linity.Hotfix.FsmBase.Name</a></div><div class="ttdeci">string?? Name</div><div class="ttdoc">获取有限状态机名称。</div><div class="ttdef"><b>Definition:</b> <a href="_hotfix_2_fsm_2_fsm_base_8cs_source.html#l00030">FsmBase.cs:31</a></div></div>
+<div class="ttc" id="aclass_linity_1_1_hotfix_1_1_fsm_manager_html"><div class="ttname"><a href="class_linity_1_1_hotfix_1_1_fsm_manager.html">Linity.Hotfix.FsmManager</a></div><div class="ttdoc">有限状态机管理器。</div><div class="ttdef"><b>Definition:</b> <a href="_hotfix_2_fsm_2_fsm_manager_8cs_source.html#l00017">FsmManager.cs:18</a></div></div>
+<div class="ttc" id="aclass_linity_1_1_hotfix_1_1_fsm_manager_html_a09d47ddbe5506229e930f2f8ffbc2c96"><div class="ttname"><a href="class_linity_1_1_hotfix_1_1_fsm_manager.html#a09d47ddbe5506229e930f2f8ffbc2c96">Linity.Hotfix.FsmManager.GetFsm</a></div><div class="ttdeci">FsmBase GetFsm(Type ownerType)</div><div class="ttdoc">获取有限状态机。</div><div class="ttdef"><b>Definition:</b> <a href="_hotfix_2_fsm_2_fsm_manager_8cs_source.html#l00164">FsmManager.cs:164</a></div></div>
+<div class="ttc" id="aclass_linity_1_1_hotfix_1_1_fsm_manager_html_a142dcd3d061c463100a8ce3fdd58d307"><div class="ttname"><a href="class_linity_1_1_hotfix_1_1_fsm_manager.html#a142dcd3d061c463100a8ce3fdd58d307">Linity.Hotfix.FsmManager.HasFsm&lt; T &gt;</a></div><div class="ttdeci">bool HasFsm&lt; T &gt;()</div><div class="ttdoc">检查是否存在有限状态机。</div><div class="ttdef"><b>Definition:</b> <a href="_hotfix_2_fsm_2_fsm_manager_8cs_source.html#l00102">FsmManager.cs:102</a></div></div>
+<div class="ttc" id="aclass_linity_1_1_hotfix_1_1_fsm_manager_html_a2826970cca8ee382843aef4feae820e2"><div class="ttname"><a href="class_linity_1_1_hotfix_1_1_fsm_manager.html#a2826970cca8ee382843aef4feae820e2">Linity.Hotfix.FsmManager.GetFsm</a></div><div class="ttdeci">FsmBase GetFsm(Type ownerType, string name)</div><div class="ttdoc">获取有限状态机。</div><div class="ttdef"><b>Definition:</b> <a href="_hotfix_2_fsm_2_fsm_manager_8cs_source.html#l00191">FsmManager.cs:191</a></div></div>
+<div class="ttc" id="aclass_linity_1_1_hotfix_1_1_fsm_manager_html_a3338eee81884c167bb5978b217587b7c"><div class="ttname"><a href="class_linity_1_1_hotfix_1_1_fsm_manager.html#a3338eee81884c167bb5978b217587b7c">Linity.Hotfix.FsmManager.CreateFsm&lt; T &gt;</a></div><div class="ttdeci">IFsm&lt; T &gt; CreateFsm&lt; T &gt;(T owner, params FsmState&lt; T &gt;[] states)</div><div class="ttdoc">创建有限状态机。</div><div class="ttdef"><b>Definition:</b> <a href="_hotfix_2_fsm_2_fsm_manager_8cs_source.html#l00242">FsmManager.cs:242</a></div></div>
+<div class="ttc" id="aclass_linity_1_1_hotfix_1_1_fsm_manager_html_a642da8b84a894052bbbd589ca6a0ec45"><div class="ttname"><a href="class_linity_1_1_hotfix_1_1_fsm_manager.html#a642da8b84a894052bbbd589ca6a0ec45">Linity.Hotfix.FsmManager.GetAllFsms</a></div><div class="ttdeci">FsmBase[] GetAllFsms()</div><div class="ttdoc">获取所有有限状态机。</div><div class="ttdef"><b>Definition:</b> <a href="_hotfix_2_fsm_2_fsm_manager_8cs_source.html#l00205">FsmManager.cs:205</a></div></div>
+<div class="ttc" id="aclass_linity_1_1_hotfix_1_1_fsm_manager_html_a71fdb445f1216a934bd4a37cfdc95b32"><div class="ttname"><a href="class_linity_1_1_hotfix_1_1_fsm_manager.html#a71fdb445f1216a934bd4a37cfdc95b32">Linity.Hotfix.FsmManager.FsmManager</a></div><div class="ttdeci">FsmManager()</div><div class="ttdoc">初始化有限状态机管理器的新实例。</div><div class="ttdef"><b>Definition:</b> <a href="_hotfix_2_fsm_2_fsm_manager_8cs_source.html#l00025">FsmManager.cs:25</a></div></div>
+<div class="ttc" id="aclass_linity_1_1_hotfix_1_1_fsm_manager_html_a8ae4b643c8808bce9079d47718c2bf76"><div class="ttname"><a href="class_linity_1_1_hotfix_1_1_fsm_manager.html#a8ae4b643c8808bce9079d47718c2bf76">Linity.Hotfix.FsmManager.HasFsm</a></div><div class="ttdeci">bool HasFsm(Type ownerType)</div><div class="ttdoc">检查是否存在有限状态机。</div><div class="ttdef"><b>Definition:</b> <a href="_hotfix_2_fsm_2_fsm_manager_8cs_source.html#l00112">FsmManager.cs:112</a></div></div>
+<div class="ttc" id="aclass_linity_1_1_hotfix_1_1_fsm_manager_html_a99d68ee1836eb5a04b6f259cc8396677"><div class="ttname"><a href="class_linity_1_1_hotfix_1_1_fsm_manager.html#a99d68ee1836eb5a04b6f259cc8396677">Linity.Hotfix.FsmManager.DestroyFsm</a></div><div class="ttdeci">bool DestroyFsm(Type ownerType, string name)</div><div class="ttdoc">销毁有限状态机。</div><div class="ttdef"><b>Definition:</b> <a href="_hotfix_2_fsm_2_fsm_manager_8cs_source.html#l00343">FsmManager.cs:343</a></div></div>
+<div class="ttc" id="aclass_linity_1_1_hotfix_1_1_fsm_manager_html_a9ae78a54684a2c48c5ac7477fe6341c3"><div class="ttname"><a href="class_linity_1_1_hotfix_1_1_fsm_manager.html#a9ae78a54684a2c48c5ac7477fe6341c3">Linity.Hotfix.FsmManager.DestroyFsm</a></div><div class="ttdeci">bool DestroyFsm(FsmBase fsm)</div><div class="ttdoc">销毁有限状态机。</div><div class="ttdef"><b>Definition:</b> <a href="_hotfix_2_fsm_2_fsm_manager_8cs_source.html#l00374">FsmManager.cs:374</a></div></div>
+<div class="ttc" id="aclass_linity_1_1_hotfix_1_1_fsm_manager_html_aa749836fa41541cda0891397d9782e1c"><div class="ttname"><a href="class_linity_1_1_hotfix_1_1_fsm_manager.html#aa749836fa41541cda0891397d9782e1c">Linity.Hotfix.FsmManager.GetFsm&lt; T &gt;</a></div><div class="ttdeci">IFsm&lt; T &gt; GetFsm&lt; T &gt;()</div><div class="ttdoc">获取有限状态机。</div><div class="ttdef"><b>Definition:</b> <a href="_hotfix_2_fsm_2_fsm_manager_8cs_source.html#l00154">FsmManager.cs:154</a></div></div>
+<div class="ttc" id="aclass_linity_1_1_hotfix_1_1_fsm_manager_html_aa9ffecdd62e7b95e89d253787a024d31"><div class="ttname"><a href="class_linity_1_1_hotfix_1_1_fsm_manager.html#aa9ffecdd62e7b95e89d253787a024d31">Linity.Hotfix.FsmManager.Count</a></div><div class="ttdeci">int Count</div><div class="ttdoc">获取有限状态机数量。</div><div class="ttdef"><b>Definition:</b> <a href="_hotfix_2_fsm_2_fsm_manager_8cs_source.html#l00046">FsmManager.cs:47</a></div></div>
+<div class="ttc" id="aclass_linity_1_1_hotfix_1_1_fsm_manager_html_ab89cd7982e7f961a5767064e6c586149"><div class="ttname"><a href="class_linity_1_1_hotfix_1_1_fsm_manager.html#ab89cd7982e7f961a5767064e6c586149">Linity.Hotfix.FsmManager.DestroyFsm&lt; T &gt;</a></div><div class="ttdeci">bool DestroyFsm&lt; T &gt;()</div><div class="ttdoc">销毁有限状态机。</div><div class="ttdef"><b>Definition:</b> <a href="_hotfix_2_fsm_2_fsm_manager_8cs_source.html#l00306">FsmManager.cs:306</a></div></div>
+<div class="ttc" id="aclass_linity_1_1_hotfix_1_1_fsm_manager_html_acf82ace7ffdcb1e27f2dc7d7dc9652ed"><div class="ttname"><a href="class_linity_1_1_hotfix_1_1_fsm_manager.html#acf82ace7ffdcb1e27f2dc7d7dc9652ed">Linity.Hotfix.FsmManager.HasFsm</a></div><div class="ttdeci">bool HasFsm(Type ownerType, string name)</div><div class="ttdoc">检查是否存在有限状态机。</div><div class="ttdef"><b>Definition:</b> <a href="_hotfix_2_fsm_2_fsm_manager_8cs_source.html#l00139">FsmManager.cs:139</a></div></div>
+<div class="ttc" id="aclass_linity_1_1_hotfix_1_1_fsm_manager_html_ad51e8a28121a964e544ab0692a2299f0"><div class="ttname"><a href="class_linity_1_1_hotfix_1_1_fsm_manager.html#ad51e8a28121a964e544ab0692a2299f0">Linity.Hotfix.FsmManager.DestroyFsm</a></div><div class="ttdeci">bool DestroyFsm(Type ownerType)</div><div class="ttdoc">销毁有限状态机。</div><div class="ttdef"><b>Definition:</b> <a href="_hotfix_2_fsm_2_fsm_manager_8cs_source.html#l00316">FsmManager.cs:316</a></div></div>
+<div class="ttc" id="aclass_linity_1_1_hotfix_1_1_fsm_manager_html_afc8e64bda106cf3826f18a1801a87240"><div class="ttname"><a href="class_linity_1_1_hotfix_1_1_fsm_manager.html#afc8e64bda106cf3826f18a1801a87240">Linity.Hotfix.FsmManager.GetAllFsms</a></div><div class="ttdeci">void GetAllFsms(List&lt; FsmBase &gt; results)</div><div class="ttdoc">获取所有有限状态机。</div><div class="ttdef"><b>Definition:</b> <a href="_hotfix_2_fsm_2_fsm_manager_8cs_source.html#l00221">FsmManager.cs:221</a></div></div>
+<div class="ttc" id="aclass_linity_1_1_hotfix_1_1_fsm_state_html"><div class="ttname"><a href="class_linity_1_1_hotfix_1_1_fsm_state.html">Linity.Hotfix.FsmState</a></div><div class="ttdoc">有限状态机状态基类。</div><div class="ttdef"><b>Definition:</b> <a href="_hotfix_2_fsm_2_fsm_state_8cs_source.html#l00017">FsmState.cs:18</a></div></div>
+<div class="ttc" id="aclass_linity_1_1_hotfix_1_1_game_framework_module_html"><div class="ttname"><a href="class_linity_1_1_hotfix_1_1_game_framework_module.html">Linity.Hotfix.GameFrameworkModule</a></div><div class="ttdoc">游戏框架模块抽象类。</div><div class="ttdef"><b>Definition:</b> <a href="_hotfix_2_fsm_2_game_framework_module_8cs_source.html#l00013">GameFrameworkModule.cs:14</a></div></div>
+<div class="ttc" id="ainterface_linity_1_1_hotfix_1_1_i_fsm_html"><div class="ttname"><a href="interface_linity_1_1_hotfix_1_1_i_fsm.html">Linity.Hotfix.IFsm</a></div><div class="ttdoc">有限状态机接口。</div><div class="ttdef"><b>Definition:</b> <a href="_hotfix_2_fsm_2_i_fsm_8cs_source.html#l00017">IFsm.cs:18</a></div></div>
+<div class="ttc" id="ainterface_linity_1_1_hotfix_1_1_i_fsm_manager_html"><div class="ttname"><a href="interface_linity_1_1_hotfix_1_1_i_fsm_manager.html">Linity.Hotfix.IFsmManager</a></div><div class="ttdoc">有限状态机管理器。</div><div class="ttdef"><b>Definition:</b> <a href="_hotfix_2_fsm_2_i_fsm_manager_8cs_source.html#l00016">IFsmManager.cs:17</a></div></div>
+<div class="ttc" id="anamespace_game_framework_html"><div class="ttname"><a href="namespace_game_framework.html">GameFramework</a></div><div class="ttdef"><b>Definition:</b> <a href="_data_provider_8cs_source.html#l00011">DataProvider.cs:12</a></div></div>
+<div class="ttc" id="anamespace_linity_1_1_hotfix_html"><div class="ttname"><a href="namespace_linity_1_1_hotfix.html">Linity.Hotfix</a></div><div class="ttdef"><b>Definition:</b> <a href="_hotfix_2_base_2_variable_2_base_2_generic_variable_8cs_source.html#l00010">GenericVariable.cs:11</a></div></div>
+<div class="ttc" id="anamespace_system_html"><div class="ttname"><a href="namespace_system.html">System</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_method_builder_attribute_8cs_source.html#l00001">AsyncMethodBuilderAttribute.cs:2</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_84bbf7b3c7f28a5a18725745e1505219.html">Assets</a></li><li class="navelem"><a class="el" href="dir_f13b41af88cf68434578284aaf699e39.html">Scripts</a></li><li class="navelem"><a class="el" href="dir_75935e138bec93c4cadb3fa5f697868b.html">Hotfix</a></li><li class="navelem"><a class="el" href="dir_b393c7b16d25b079e46e652e41c7c54b.html">Fsm</a></li><li class="navelem"><a class="el" href="_hotfix_2_fsm_2_fsm_manager_8cs.html">FsmManager.cs</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:24:45 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: ETServer/Server/ThirdParty/MongoDBDriver/MongoDB.Driver.Core/Core/Bindings/CoreTransaction.cs 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_core_transaction_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">CoreTransaction.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_core_transaction_8cs.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/* Copyright 2018-present MongoDB Inc.</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">* Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">* you may not use this file except in compliance with the License.</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">* You may obtain a copy of the License at</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">* http://www.apache.org/licenses/LICENSE-2.0</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">* Unless required by applicable law or agreed to in writing, software</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">* distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">* See the License for the specific language governing permissions and</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">* limitations under the License.</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_bindings.html">MongoDB.Driver.Core.Bindings</a></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;{</div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_core_transaction.html">   21</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_core_transaction.html">CoreTransaction</a></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    {</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <span class="comment">// private fields</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">bool</span> _isEmpty;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <span class="keyword">private</span> <a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_bindings.html#aed6661f6cea56e7a901bfeca47b4dace">CoreTransactionState</a> _state;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <span class="keyword">private</span> readonly <span class="keywordtype">long</span> _transactionNumber;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <span class="keyword">private</span> readonly <a class="code" href="class_mongo_d_b_1_1_driver_1_1_transaction_options.html">TransactionOptions</a> _transactionOptions;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <span class="comment">// public constructors</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_core_transaction.html#aeb07fae5d23b89787a4887f850a5746d">   35</a></span>&#160;<span class="comment"></span>        <span class="keyword">public</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_core_transaction.html#aeb07fae5d23b89787a4887f850a5746d">CoreTransaction</a>(<span class="keywordtype">long</span> transactionNumber, <a class="code" href="class_mongo_d_b_1_1_driver_1_1_transaction_options.html">TransactionOptions</a> transactionOptions)</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        {</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;            _transactionNumber = transactionNumber;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;            _transactionOptions = transactionOptions;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;            _state = <a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_bindings.html#aed6661f6cea56e7a901bfeca47b4dace">CoreTransactionState</a>.Starting;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            _isEmpty = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        }</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <span class="comment">// public properties</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_core_transaction.html#aaa24ca62627a888ee964d7a2c1a47be8">   50</a></span>&#160;<span class="comment"></span>        <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_core_transaction.html#aaa24ca62627a888ee964d7a2c1a47be8">IsEmpty</a> =&gt; _isEmpty;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_core_transaction.html#a5ed6ad033f2f8f28d0ebd6ee8db6dc45">   58</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_bindings.html#aed6661f6cea56e7a901bfeca47b4dace">CoreTransactionState</a> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_core_transaction.html#a5ed6ad033f2f8f28d0ebd6ee8db6dc45">State</a> =&gt; _state;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_core_transaction.html#aaac42e5446ad94a0cb2dc713e4256a7d">   66</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">long</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_core_transaction.html#aaac42e5446ad94a0cb2dc713e4256a7d">TransactionNumber</a> =&gt; _transactionNumber;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_core_transaction.html#aa6d0d97e81570402a291b749d326eb7e">   74</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_transaction_options.html">TransactionOptions</a> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_transaction_options.html">TransactionOptions</a> =&gt; _transactionOptions;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        <span class="comment">// internal methods</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <span class="keyword">internal</span> <span class="keywordtype">void</span> SetState(<a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_bindings.html#aed6661f6cea56e7a901bfeca47b4dace">CoreTransactionState</a> state)</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        {</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;            _state = state;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            <span class="keywordflow">if</span> (state == <a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_bindings.html#aed6661f6cea56e7a901bfeca47b4dace">CoreTransactionState</a>.InProgress)</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            {</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                _isEmpty = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;            }</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        }</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    }</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;}</div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_core_transaction_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_core_transaction.html">MongoDB.Driver.Core.Bindings.CoreTransaction</a></div><div class="ttdoc">The state of a transaction.</div><div class="ttdef"><b>Definition:</b> <a href="_core_transaction_8cs_source.html#l00021">CoreTransaction.cs:22</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_core_transaction_html_a5ed6ad033f2f8f28d0ebd6ee8db6dc45"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_core_transaction.html#a5ed6ad033f2f8f28d0ebd6ee8db6dc45">MongoDB.Driver.Core.Bindings.CoreTransaction.State</a></div><div class="ttdeci">CoreTransactionState State</div><div class="ttdoc">Gets the transaction state.</div><div class="ttdef"><b>Definition:</b> <a href="_core_transaction_8cs_source.html#l00058">CoreTransaction.cs:58</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_core_transaction_html_aaa24ca62627a888ee964d7a2c1a47be8"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_core_transaction.html#aaa24ca62627a888ee964d7a2c1a47be8">MongoDB.Driver.Core.Bindings.CoreTransaction.IsEmpty</a></div><div class="ttdeci">bool IsEmpty</div><div class="ttdoc">Gets a value indicating whether the transaction is empty.</div><div class="ttdef"><b>Definition:</b> <a href="_core_transaction_8cs_source.html#l00050">CoreTransaction.cs:50</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_core_transaction_html_aaac42e5446ad94a0cb2dc713e4256a7d"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_core_transaction.html#aaac42e5446ad94a0cb2dc713e4256a7d">MongoDB.Driver.Core.Bindings.CoreTransaction.TransactionNumber</a></div><div class="ttdeci">long TransactionNumber</div><div class="ttdoc">Gets the transaction number.</div><div class="ttdef"><b>Definition:</b> <a href="_core_transaction_8cs_source.html#l00066">CoreTransaction.cs:66</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_core_transaction_html_aeb07fae5d23b89787a4887f850a5746d"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_1_1_core_transaction.html#aeb07fae5d23b89787a4887f850a5746d">MongoDB.Driver.Core.Bindings.CoreTransaction.CoreTransaction</a></div><div class="ttdeci">CoreTransaction(long transactionNumber, TransactionOptions transactionOptions)</div><div class="ttdoc">Initializes a new instance of the CoreTransaction class.</div><div class="ttdef"><b>Definition:</b> <a href="_core_transaction_8cs_source.html#l00035">CoreTransaction.cs:35</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_transaction_options_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_transaction_options.html">MongoDB.Driver.TransactionOptions</a></div><div class="ttdoc">Transaction options.</div><div class="ttdef"><b>Definition:</b> <a href="_transaction_options_8cs_source.html#l00028">TransactionOptions.cs:29</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_bindings.html">MongoDB.Driver.Core.Bindings</a></div><div class="ttdef"><b>Definition:</b> <a href="_channel_channel_source_8cs_source.html#l00022">ChannelChannelSource.cs:23</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_driver_1_1_core_1_1_bindings_html_aed6661f6cea56e7a901bfeca47b4dace"><div class="ttname"><a href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_bindings.html#aed6661f6cea56e7a901bfeca47b4dace">MongoDB.Driver.Core.Bindings.CoreTransactionState</a></div><div class="ttdeci">CoreTransactionState</div><div class="ttdoc">Represents the current state of a Core transaction.</div><div class="ttdef"><b>Definition:</b> <a href="_core_transaction_state_8cs_source.html#l00021">CoreTransactionState.cs:22</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_1e261a42b4a2e33df58a15c412684b10.html">ETServer</a></li><li class="navelem"><a class="el" href="dir_473c270c995194c5ad99131d9c901f09.html">Server</a></li><li class="navelem"><a class="el" href="dir_ce426efcf63311ff42488fb2654bd4b4.html">ThirdParty</a></li><li class="navelem"><a class="el" href="dir_a37b2b5f9c8890cc9f6f8392fb0cdff3.html">MongoDBDriver</a></li><li class="navelem"><a class="el" href="dir_3c55113864d48cf4713f3b3197e2f720.html">MongoDB.Driver.Core</a></li><li class="navelem"><a class="el" href="dir_d802212cd82500a65b6eed8667c0c3ad.html">Core</a></li><li class="navelem"><a class="el" href="dir_8b976ab9146c3be1be150f7b41919213.html">Bindings</a></li><li class="navelem"><a class="el" href="_core_transaction_8cs.html">CoreTransaction.cs</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:24:56 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

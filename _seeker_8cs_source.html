@@ -1,0 +1,445 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: Assets/Scripts/Libraries/ET/Module/Pathfinding/AstarPathfindingProject/Core/AI/Seeker.cs 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_seeker_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">Seeker.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_seeker_8cs.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_unity_engine.html">UnityEngine</a>;</div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Collections.Generic;</div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_p_f.html">PF</a>;</div>
+<div class="line"><a name="l00004"></a><span class="lineno"><a class="line" href="_seeker_8cs.html#af3326292fdd04d2b384b6d781d9594f6">    4</a></span>&#160;<span class="keyword">using</span> <a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a> = <a class="code" href="namespace_unity_engine.html">UnityEngine</a>.<a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a>;</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#if UNITY_5_5_OR_NEWER</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_unity_engine.html">UnityEngine</a>.Profiling;</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_pathfinding.html">Pathfinding</a> {</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        [AddComponentMenu(<span class="stringliteral">&quot;Pathfinding/Seeker&quot;</span>)]</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        [HelpURL(<span class="stringliteral">&quot;http://arongranberg.com/astar/docs/class_pathfinding_1_1_seeker.php&quot;</span>)]</div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="class_pathfinding_1_1_seeker.html">   22</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="class_pathfinding_1_1_seeker.html">Seeker</a> : <a class="code" href="class_pathfinding_1_1_versioned_mono_behaviour.html">VersionedMonoBehaviour</a> {</div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="class_pathfinding_1_1_seeker.html#a4ca778b5432249f8f3341f0d5a64e7b7">   28</a></span>&#160;                <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code" href="class_pathfinding_1_1_seeker.html#a4ca778b5432249f8f3341f0d5a64e7b7">drawGizmos</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="class_pathfinding_1_1_seeker.html#a51b9fd61f51d696fdbe5d2d96a2654fc">   40</a></span>&#160;                <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code" href="class_pathfinding_1_1_seeker.html#a51b9fd61f51d696fdbe5d2d96a2654fc">detailedGizmos</a>;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;                [HideInInspector]</div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="class_pathfinding_1_1_seeker.html#abfc7c16c5b42ad9b80b38e6a64ff5c9f">   44</a></span>&#160;                <span class="keyword">public</span> <a class="code" href="class_pathfinding_1_1_start_end_modifier.html">StartEndModifier</a> <a class="code" href="class_pathfinding_1_1_seeker.html#abfc7c16c5b42ad9b80b38e6a64ff5c9f">startEndModifier</a> = <span class="keyword">new</span> <a class="code" href="class_pathfinding_1_1_start_end_modifier.html">StartEndModifier</a>();</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                [HideInInspector]</div>
+<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="class_pathfinding_1_1_seeker.html#aef0e642de18c0efbfbc0ed2a855ffc8c">   52</a></span>&#160;                <span class="keyword">public</span> <span class="keywordtype">int</span> <a class="code" href="class_pathfinding_1_1_seeker.html#aef0e642de18c0efbfbc0ed2a855ffc8c">traversableTags</a> = -1;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                [HideInInspector]</div>
+<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="class_pathfinding_1_1_seeker.html#a7b9ea82c6b0e4dac2a77c1a20e21507e">   63</a></span>&#160;                <span class="keyword">public</span> <span class="keywordtype">int</span>[] <a class="code" href="class_pathfinding_1_1_seeker.html#a7b9ea82c6b0e4dac2a77c1a20e21507e">tagPenalties</a> = <span class="keyword">new</span> <span class="keywordtype">int</span>[32];</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                [HideInInspector]</div>
+<div class="line"><a name="l00088"></a><span class="lineno"><a class="line" href="class_pathfinding_1_1_seeker.html#adf8617879918afe3adbf22f3fe094742">   88</a></span>&#160;                <span class="keyword">public</span> <span class="keywordtype">int</span> <a class="code" href="class_pathfinding_1_1_seeker.html#adf8617879918afe3adbf22f3fe094742">graphMask</a> = -1;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
+<div class="line"><a name="l00094"></a><span class="lineno"><a class="line" href="class_pathfinding_1_1_seeker.html#ae27c1c3ddc0f49a7a5992421757141ac">   94</a></span>&#160;                <span class="keyword">public</span> <a class="code" href="namespace_p_f.html#a5916e0e1a39fd1ea09fdf25a70492a02">OnPathDelegate</a> <a class="code" href="class_pathfinding_1_1_seeker.html#ae27c1c3ddc0f49a7a5992421757141ac">pathCallback</a>;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
+<div class="line"><a name="l00097"></a><span class="lineno"><a class="line" href="class_pathfinding_1_1_seeker.html#a96a371502edf992cf02ff6d0f6d5f8d6">   97</a></span>&#160;                <span class="keyword">public</span> <a class="code" href="namespace_p_f.html#a5916e0e1a39fd1ea09fdf25a70492a02">OnPathDelegate</a> <a class="code" href="class_pathfinding_1_1_seeker.html#a96a371502edf992cf02ff6d0f6d5f8d6">preProcessPath</a>;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
+<div class="line"><a name="l00101"></a><span class="lineno"><a class="line" href="class_pathfinding_1_1_seeker.html#aef9866fa33291cfd9832581fb0b985e0">  101</a></span>&#160;                <span class="keyword">public</span> <a class="code" href="namespace_p_f.html#a5916e0e1a39fd1ea09fdf25a70492a02">OnPathDelegate</a> <a class="code" href="class_pathfinding_1_1_seeker.html#aef9866fa33291cfd9832581fb0b985e0">postProcessPath</a>;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;                [<a class="code" href="namespace_system.html">System</a>.NonSerialized]</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;                List&lt;Vector3&gt; lastCompletedVectorPath;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;                [<a class="code" href="namespace_system.html">System</a>.NonSerialized]</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;                List&lt;GraphNode&gt; lastCompletedNodePath;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160; </div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;                [<a class="code" href="namespace_system.html">System</a>.NonSerialized]</div>
+<div class="line"><a name="l00113"></a><span class="lineno"><a class="line" href="class_pathfinding_1_1_seeker.html#a9943363045e338a08c4d19f2f253b893">  113</a></span>&#160;                <span class="keyword">protected</span> <a class="code" href="class_p_f_1_1_path.html">Path</a> <a class="code" href="class_pathfinding_1_1_seeker.html#a9943363045e338a08c4d19f2f253b893">path</a>;</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160; </div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;                [<a class="code" href="namespace_system.html">System</a>.NonSerialized]</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;                <span class="keyword">private</span> <a class="code" href="class_p_f_1_1_path.html">Path</a> prevPath;</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160; </div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;                <span class="keyword">private</span> readonly <a class="code" href="namespace_p_f.html#a5916e0e1a39fd1ea09fdf25a70492a02">OnPathDelegate</a> onPathDelegate;</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;                <span class="keyword">private</span> readonly <a class="code" href="namespace_p_f.html#a5916e0e1a39fd1ea09fdf25a70492a02">OnPathDelegate</a> onPartialPathDelegate;</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160; </div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;                <span class="keyword">private</span> <a class="code" href="namespace_p_f.html#a5916e0e1a39fd1ea09fdf25a70492a02">OnPathDelegate</a> tmpPathCallback;</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160; </div>
+<div class="line"><a name="l00128"></a><span class="lineno"><a class="line" href="class_pathfinding_1_1_seeker.html#a3645d9881aac3038080fa24f8cc7035c">  128</a></span>&#160;                <span class="keyword">protected</span> uint <a class="code" href="class_pathfinding_1_1_seeker.html#a3645d9881aac3038080fa24f8cc7035c">lastPathID</a>;</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160; </div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;                readonly List&lt;IPathModifier&gt; modifiers = <span class="keyword">new</span> List&lt;IPathModifier&gt;();</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160; </div>
+<div class="line"><a name="l00133"></a><span class="lineno"><a class="line" href="class_pathfinding_1_1_seeker.html#a92d7e564c78c98672ca3816814b27b47">  133</a></span>&#160;                <span class="keyword">public</span> <span class="keyword">enum</span> <a class="code" href="class_pathfinding_1_1_seeker.html#a92d7e564c78c98672ca3816814b27b47">ModifierPass</a> {</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;                        PreProcess,</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;                        <span class="comment">// An obsolete item occupied index 1 previously</span></div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;                        <a class="code" href="class_pathfinding_1_1_seeker.html#a08442fcc82b5fe25c48679fe7cf5b3c0">PostProcess</a> = 2,</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;                }</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160; </div>
+<div class="line"><a name="l00139"></a><span class="lineno"><a class="line" href="class_pathfinding_1_1_seeker.html#a0e7d2a94b7f2d21d77304de97c770211">  139</a></span>&#160;                <span class="keyword">public</span> <a class="code" href="class_pathfinding_1_1_seeker.html#a0e7d2a94b7f2d21d77304de97c770211">Seeker</a> () {</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;                        onPathDelegate = OnPathComplete;</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;                        onPartialPathDelegate = OnPartialPathComplete;</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;                }</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160; </div>
+<div class="line"><a name="l00145"></a><span class="lineno"><a class="line" href="class_pathfinding_1_1_seeker.html#a5ee8fd1e2aec7898e144f3dc5155bad1">  145</a></span>&#160;                <span class="keyword">protected</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code" href="class_pathfinding_1_1_seeker.html#a5ee8fd1e2aec7898e144f3dc5155bad1">Awake</a> () {</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;                        base.Awake();</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;                        <a class="code" href="class_pathfinding_1_1_seeker.html#abfc7c16c5b42ad9b80b38e6a64ff5c9f">startEndModifier</a>.<a class="code" href="class_pathfinding_1_1_path_modifier.html#ad75d8430eebd18415601d9835c295c4a">Awake</a>(<span class="keyword">this</span>);</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;                }</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160; </div>
+<div class="line"><a name="l00155"></a><span class="lineno"><a class="line" href="class_pathfinding_1_1_seeker.html#ac242d0478c60c5c20498ebc6d7a22816">  155</a></span>&#160;                <span class="keyword">public</span> <a class="code" href="class_p_f_1_1_path.html">Path</a> <a class="code" href="class_pathfinding_1_1_seeker.html#ac242d0478c60c5c20498ebc6d7a22816">GetCurrentPath</a> () {</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;                        <span class="keywordflow">return</span> <a class="code" href="class_pathfinding_1_1_seeker.html#a9943363045e338a08c4d19f2f253b893">path</a>;</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;                }</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160; </div>
+<div class="line"><a name="l00169"></a><span class="lineno"><a class="line" href="class_pathfinding_1_1_seeker.html#a1078076bcf8a878a34ed4bad0a13b61a">  169</a></span>&#160;                <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_pathfinding_1_1_seeker.html#a1078076bcf8a878a34ed4bad0a13b61a">CancelCurrentPathRequest</a> (<span class="keywordtype">bool</span> pool = <span class="keyword">true</span>) {</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;                        <span class="keywordflow">if</span> (!<a class="code" href="class_pathfinding_1_1_seeker.html#a87a58441a763af9b9796da928521e420">IsDone</a>()) {</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;                                <a class="code" href="class_pathfinding_1_1_seeker.html#a9943363045e338a08c4d19f2f253b893">path</a>.FailWithError(<span class="stringliteral">&quot;Canceled by script (Seeker.CancelCurrentPathRequest)&quot;</span>);</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;                                <span class="keywordflow">if</span> (pool) {</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;                                        <span class="comment">// Make sure the path has had its reference count incremented and decremented once.</span></div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;                                        <span class="comment">// If this is not done the system will think no pooling is used at all and will not pool the path.</span></div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;                                        <span class="comment">// The particular object that is used as the parameter (in this case &#39;path&#39;) doesn&#39;t matter at all</span></div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;                                        <span class="comment">// it just has to be *some* object.</span></div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;                                        <a class="code" href="class_pathfinding_1_1_seeker.html#a9943363045e338a08c4d19f2f253b893">path</a>.<a class="code" href="class_p_f_1_1_path.html#ad5f2274aa778cf41cd856e43bb862c5a">Claim</a>(<a class="code" href="class_pathfinding_1_1_seeker.html#a9943363045e338a08c4d19f2f253b893">path</a>);</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;                                        <a class="code" href="class_pathfinding_1_1_seeker.html#a9943363045e338a08c4d19f2f253b893">path</a>.<a class="code" href="class_p_f_1_1_path.html#a4f7f5417702fd8d2f685855f0d7efb9c">Release</a>(<a class="code" href="class_pathfinding_1_1_seeker.html#a9943363045e338a08c4d19f2f253b893">path</a>);</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;                                }</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;                        }</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;                }</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160; </div>
+<div class="line"><a name="l00190"></a><span class="lineno"><a class="line" href="class_pathfinding_1_1_seeker.html#a673df10738a3bb7b0184e69eae73e262">  190</a></span>&#160;                <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_pathfinding_1_1_seeker.html#a673df10738a3bb7b0184e69eae73e262">OnDestroy</a> () {</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;                        <a class="code" href="class_pathfinding_1_1_seeker.html#a297eaf56d65ff3d8325d8f041d8cddb3">ReleaseClaimedPath</a>();</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;                        <a class="code" href="class_pathfinding_1_1_seeker.html#abfc7c16c5b42ad9b80b38e6a64ff5c9f">startEndModifier</a>.<a class="code" href="class_pathfinding_1_1_path_modifier.html#a9b583e774853fed08b1e929d581eaf86">OnDestroy</a>(<span class="keyword">this</span>);</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;                }</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160; </div>
+<div class="line"><a name="l00204"></a><span class="lineno"><a class="line" href="class_pathfinding_1_1_seeker.html#a297eaf56d65ff3d8325d8f041d8cddb3">  204</a></span>&#160;                <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_pathfinding_1_1_seeker.html#a297eaf56d65ff3d8325d8f041d8cddb3">ReleaseClaimedPath</a> () {</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;                        <span class="keywordflow">if</span> (prevPath != <span class="keyword">null</span>) {</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;                                prevPath.<a class="code" href="class_p_f_1_1_path.html#a4f7f5417702fd8d2f685855f0d7efb9c">Release</a>(<span class="keyword">this</span>, <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;                                prevPath = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;                        }</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;                }</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160; </div>
+<div class="line"><a name="l00212"></a><span class="lineno"><a class="line" href="class_pathfinding_1_1_seeker.html#a44d9a5064b283cc8bb2ef17cff737392">  212</a></span>&#160;                <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_pathfinding_1_1_seeker.html#a44d9a5064b283cc8bb2ef17cff737392">RegisterModifier</a> (<a class="code" href="interface_pathfinding_1_1_i_path_modifier.html">IPathModifier</a> modifier) {</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;                        modifiers.Add(modifier);</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160; </div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;                        <span class="comment">// Sort the modifiers based on their specified order</span></div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;                        modifiers.Sort((a, b) =&gt; a.Order.CompareTo(b.Order));</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;                }</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160; </div>
+<div class="line"><a name="l00220"></a><span class="lineno"><a class="line" href="class_pathfinding_1_1_seeker.html#a07aaf4719bdf9ba4291046e7d18758d5">  220</a></span>&#160;                <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_pathfinding_1_1_seeker.html#a07aaf4719bdf9ba4291046e7d18758d5">DeregisterModifier</a> (<a class="code" href="interface_pathfinding_1_1_i_path_modifier.html">IPathModifier</a> modifier) {</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;                        modifiers.Remove(modifier);</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;                }</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160; </div>
+<div class="line"><a name="l00230"></a><span class="lineno"><a class="line" href="class_pathfinding_1_1_seeker.html#a08442fcc82b5fe25c48679fe7cf5b3c0">  230</a></span>&#160;                <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_pathfinding_1_1_seeker.html#a08442fcc82b5fe25c48679fe7cf5b3c0">PostProcess</a> (<a class="code" href="class_p_f_1_1_path.html">Path</a> <a class="code" href="class_pathfinding_1_1_seeker.html#a9943363045e338a08c4d19f2f253b893">path</a>) {</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;                        <a class="code" href="class_pathfinding_1_1_seeker.html#a619862969dc5a2512dfc0d67a82aa071">RunModifiers</a>(<a class="code" href="class_pathfinding_1_1_seeker.html#a92d7e564c78c98672ca3816814b27b47">ModifierPass</a>.PostProcess, <a class="code" href="class_pathfinding_1_1_seeker.html#a9943363045e338a08c4d19f2f253b893">path</a>);</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;                }</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160; </div>
+<div class="line"><a name="l00235"></a><span class="lineno"><a class="line" href="class_pathfinding_1_1_seeker.html#a619862969dc5a2512dfc0d67a82aa071">  235</a></span>&#160;                <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_pathfinding_1_1_seeker.html#a619862969dc5a2512dfc0d67a82aa071">RunModifiers</a> (<a class="code" href="class_pathfinding_1_1_seeker.html#a92d7e564c78c98672ca3816814b27b47">ModifierPass</a> pass, <a class="code" href="class_p_f_1_1_path.html">Path</a> <a class="code" href="class_pathfinding_1_1_seeker.html#a9943363045e338a08c4d19f2f253b893">path</a>) {</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;                        <span class="keywordflow">if</span> (pass == <a class="code" href="class_pathfinding_1_1_seeker.html#a92d7e564c78c98672ca3816814b27b47">ModifierPass</a>.PreProcess) {</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;                                <span class="keywordflow">if</span> (<a class="code" href="class_pathfinding_1_1_seeker.html#a96a371502edf992cf02ff6d0f6d5f8d6">preProcessPath</a> != <span class="keyword">null</span>) <a class="code" href="class_pathfinding_1_1_seeker.html#a96a371502edf992cf02ff6d0f6d5f8d6">preProcessPath</a>(<a class="code" href="class_pathfinding_1_1_seeker.html#a9943363045e338a08c4d19f2f253b893">path</a>);</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;                                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; modifiers.Count; i++) modifiers[i].PreProcess(<a class="code" href="class_pathfinding_1_1_seeker.html#a9943363045e338a08c4d19f2f253b893">path</a>);</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;                        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (pass == <a class="code" href="class_pathfinding_1_1_seeker.html#a92d7e564c78c98672ca3816814b27b47">ModifierPass</a>.PostProcess) {</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;                                Profiler.BeginSample(<span class="stringliteral">&quot;Running Path Modifiers&quot;</span>);</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;                                <span class="comment">// Call delegates if they exist</span></div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;                                <span class="keywordflow">if</span> (<a class="code" href="class_pathfinding_1_1_seeker.html#aef9866fa33291cfd9832581fb0b985e0">postProcessPath</a> != <span class="keyword">null</span>) <a class="code" href="class_pathfinding_1_1_seeker.html#aef9866fa33291cfd9832581fb0b985e0">postProcessPath</a>(<a class="code" href="class_pathfinding_1_1_seeker.html#a9943363045e338a08c4d19f2f253b893">path</a>);</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;                                <span class="comment">// Loop through all modifiers and apply post processing</span></div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;                                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; modifiers.Count; i++) modifiers[i].Apply(<a class="code" href="class_pathfinding_1_1_seeker.html#a9943363045e338a08c4d19f2f253b893">path</a>);</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;                                Profiler.EndSample();</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;                        }</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;                }</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160; </div>
+<div class="line"><a name="l00258"></a><span class="lineno"><a class="line" href="class_pathfinding_1_1_seeker.html#a87a58441a763af9b9796da928521e420">  258</a></span>&#160;                <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code" href="class_pathfinding_1_1_seeker.html#a87a58441a763af9b9796da928521e420">IsDone</a> () {</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;                        <span class="keywordflow">return</span> <a class="code" href="class_pathfinding_1_1_seeker.html#a9943363045e338a08c4d19f2f253b893">path</a> == <span class="keyword">null</span> || <a class="code" href="class_pathfinding_1_1_seeker.html#a9943363045e338a08c4d19f2f253b893">path</a>.PipelineState &gt;= <a class="code" href="namespace_p_f.html#a41e3ae15d352e3d178227e2eca48c8a7">PathState</a>.Returned;</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;                }</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160; </div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;                <span class="keywordtype">void</span> OnPathComplete (<a class="code" href="class_p_f_1_1_path.html">Path</a> <a class="code" href="class_pathfinding_1_1_seeker.html#a9943363045e338a08c4d19f2f253b893">path</a>) {</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;                        OnPathComplete(<a class="code" href="class_pathfinding_1_1_seeker.html#a9943363045e338a08c4d19f2f253b893">path</a>, <span class="keyword">true</span>, <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;                }</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160; </div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;                <span class="keywordtype">void</span> OnPathComplete (<a class="code" href="class_p_f_1_1_path.html">Path</a> p, <span class="keywordtype">bool</span> runModifiers, <span class="keywordtype">bool</span> sendCallbacks) {</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;                        <span class="keywordflow">if</span> (p != <span class="keyword">null</span> &amp;&amp; p != <a class="code" href="class_pathfinding_1_1_seeker.html#a9943363045e338a08c4d19f2f253b893">path</a> &amp;&amp; sendCallbacks) {</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;                                <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;                        }</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160; </div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;                        <span class="keywordflow">if</span> (<span class="keyword">this</span> == <span class="keyword">null</span> || p == <span class="keyword">null</span> || p != <a class="code" href="class_pathfinding_1_1_seeker.html#a9943363045e338a08c4d19f2f253b893">path</a>)</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;                                <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;                        <span class="keywordflow">if</span> (!<a class="code" href="class_pathfinding_1_1_seeker.html#a9943363045e338a08c4d19f2f253b893">path</a>.<a class="code" href="class_p_f_1_1_path.html#a9a6a7eb4c58359b9a6c858de9337d3cd">error</a> &amp;&amp; runModifiers) {</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;                                <span class="comment">// This will send the path for post processing to modifiers attached to this Seeker</span></div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;                                <a class="code" href="class_pathfinding_1_1_seeker.html#a619862969dc5a2512dfc0d67a82aa071">RunModifiers</a>(<a class="code" href="class_pathfinding_1_1_seeker.html#a92d7e564c78c98672ca3816814b27b47">ModifierPass</a>.PostProcess, <a class="code" href="class_pathfinding_1_1_seeker.html#a9943363045e338a08c4d19f2f253b893">path</a>);</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;                        }</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;                        </div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;                        <span class="keywordflow">if</span> (sendCallbacks) {</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;                                p.<a class="code" href="class_p_f_1_1_path.html#ad5f2274aa778cf41cd856e43bb862c5a">Claim</a>(<span class="keyword">this</span>);</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160; </div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;                                lastCompletedNodePath = p.<a class="code" href="class_p_f_1_1_path.html#af5cbb9ffba21181f539d94c465f39b43">path</a>;</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;                                lastCompletedVectorPath = p.<a class="code" href="class_p_f_1_1_path.html#aaebf4b3927b0b5f972f728ad4ce57831">vectorPath</a>;</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160; </div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;                                <span class="comment">// This will send the path to the callback (if any) specified when calling StartPath</span></div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;                                <span class="keywordflow">if</span> (tmpPathCallback != <span class="keyword">null</span>) {</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;                                        tmpPathCallback(p);</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;                                }</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160; </div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;                                <span class="comment">// This will send the path to any script which has registered to the callback</span></div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;                                <span class="keywordflow">if</span> (<a class="code" href="class_pathfinding_1_1_seeker.html#ae27c1c3ddc0f49a7a5992421757141ac">pathCallback</a> != <span class="keyword">null</span>) {</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;                                        <a class="code" href="class_pathfinding_1_1_seeker.html#ae27c1c3ddc0f49a7a5992421757141ac">pathCallback</a>(p);</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;                                }</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160; </div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;                                <span class="comment">// Recycle the previous path to reduce the load on the GC</span></div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;                                <span class="keywordflow">if</span> (prevPath != <span class="keyword">null</span>) {</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;                                        prevPath.<a class="code" href="class_p_f_1_1_path.html#a4f7f5417702fd8d2f685855f0d7efb9c">Release</a>(<span class="keyword">this</span>, <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;                                }</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160; </div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;                                prevPath = p;</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160; </div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;                                <span class="comment">// If not drawing gizmos, then storing prevPath is quite unecessary</span></div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;                                <span class="comment">// So clear it and set prevPath to null</span></div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;                                <span class="keywordflow">if</span> (!<a class="code" href="class_pathfinding_1_1_seeker.html#a4ca778b5432249f8f3341f0d5a64e7b7">drawGizmos</a>) <a class="code" href="class_pathfinding_1_1_seeker.html#a297eaf56d65ff3d8325d8f041d8cddb3">ReleaseClaimedPath</a>();</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;                        }</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;                }</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160; </div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;                <span class="keywordtype">void</span> OnPartialPathComplete (<a class="code" href="class_p_f_1_1_path.html">Path</a> p) {</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;                        OnPathComplete(p, <span class="keyword">true</span>, <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;                }</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160; </div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;                <span class="keywordtype">void</span> OnMultiPathComplete (<a class="code" href="class_p_f_1_1_path.html">Path</a> p) {</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;                        OnPathComplete(p, <span class="keyword">false</span>, <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;                }</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160; </div>
+<div class="line"><a name="l00333"></a><span class="lineno"><a class="line" href="class_pathfinding_1_1_seeker.html#af03d3f47e6b3180ab13f78c709f42ed5">  333</a></span>&#160;                <span class="keyword">public</span> <a class="code" href="class_p_f_1_1_path.html">Path</a> <a class="code" href="class_pathfinding_1_1_seeker.html#af03d3f47e6b3180ab13f78c709f42ed5">StartPath</a> (<a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a> start, <a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a> end) {</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;                        <span class="keywordflow">return</span> <a class="code" href="class_pathfinding_1_1_seeker.html#af03d3f47e6b3180ab13f78c709f42ed5">StartPath</a>(start, end, <span class="keyword">null</span>);</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;                }</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160; </div>
+<div class="line"><a name="l00345"></a><span class="lineno"><a class="line" href="class_pathfinding_1_1_seeker.html#accb9df83d2e36ebca8e53dae4e0da9a3">  345</a></span>&#160;                <span class="keyword">public</span> <a class="code" href="class_p_f_1_1_path.html">Path</a> <a class="code" href="class_pathfinding_1_1_seeker.html#accb9df83d2e36ebca8e53dae4e0da9a3">StartPath</a> (<a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a> start, <a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a> end, <a class="code" href="namespace_p_f.html#a5916e0e1a39fd1ea09fdf25a70492a02">OnPathDelegate</a> callback) {</div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;                        <span class="keywordflow">return</span> <a class="code" href="class_pathfinding_1_1_seeker.html#af03d3f47e6b3180ab13f78c709f42ed5">StartPath</a>(<a class="code" href="class_p_f_1_1_a_b_path.html">ABPath</a>.<a class="code" href="class_p_f_1_1_a_b_path.html#ac9c7c256966f9b8b73561ad249c0a94e">Construct</a>(start, end, <span class="keyword">null</span>), callback);</div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;                }</div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160; </div>
+<div class="line"><a name="l00358"></a><span class="lineno"><a class="line" href="class_pathfinding_1_1_seeker.html#ab70e4989e862bb93996a55a5c971662e">  358</a></span>&#160;                <span class="keyword">public</span> <a class="code" href="class_p_f_1_1_path.html">Path</a> <a class="code" href="class_pathfinding_1_1_seeker.html#ab70e4989e862bb93996a55a5c971662e">StartPath</a> (<a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a> start, <a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a> end, <a class="code" href="namespace_p_f.html#a5916e0e1a39fd1ea09fdf25a70492a02">OnPathDelegate</a> callback, <span class="keywordtype">int</span> <a class="code" href="class_pathfinding_1_1_seeker.html#adf8617879918afe3adbf22f3fe094742">graphMask</a>) {</div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;                        <span class="keywordflow">return</span> <a class="code" href="class_pathfinding_1_1_seeker.html#af03d3f47e6b3180ab13f78c709f42ed5">StartPath</a>(<a class="code" href="class_p_f_1_1_a_b_path.html">ABPath</a>.<a class="code" href="class_p_f_1_1_a_b_path.html#ac9c7c256966f9b8b73561ad249c0a94e">Construct</a>(start, end, <span class="keyword">null</span>), callback, <a class="code" href="class_pathfinding_1_1_seeker.html#adf8617879918afe3adbf22f3fe094742">graphMask</a>);</div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;                }</div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160; </div>
+<div class="line"><a name="l00375"></a><span class="lineno"><a class="line" href="class_pathfinding_1_1_seeker.html#a225404a0e090e3842cd86abb0ea952fc">  375</a></span>&#160;                <span class="keyword">public</span> <a class="code" href="class_p_f_1_1_path.html">Path</a> <a class="code" href="class_pathfinding_1_1_seeker.html#a225404a0e090e3842cd86abb0ea952fc">StartPath</a> (<a class="code" href="class_p_f_1_1_path.html">Path</a> p, <a class="code" href="namespace_p_f.html#a5916e0e1a39fd1ea09fdf25a70492a02">OnPathDelegate</a> callback = <span class="keyword">null</span>) {</div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;                        <span class="comment">// Set the graph mask only if the user has not changed it from the default value.</span></div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;                        <span class="comment">// This is not perfect as the user may have wanted it to be precisely -1</span></div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;                        <span class="comment">// however it is the best detection that I can do.</span></div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;                        <span class="comment">// The non-default check is primarily for compatibility reasons to avoid breaking peoples existing code.</span></div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;                        <span class="comment">// The StartPath overloads with an explicit graphMask field should be used instead to set the graphMask.</span></div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;                        <span class="keywordflow">if</span> (p.<a class="code" href="class_p_f_1_1_path.html#a11e585e3e1057a4b85f85415dffc9ea1">nnConstraint</a>.<a class="code" href="class_p_f_1_1_n_n_constraint.html#a2dece9ccfc6621ee2a41a3ec4bfaab79">graphMask</a> == -1) p.<a class="code" href="class_p_f_1_1_path.html#a11e585e3e1057a4b85f85415dffc9ea1">nnConstraint</a>.<a class="code" href="class_p_f_1_1_n_n_constraint.html#a2dece9ccfc6621ee2a41a3ec4bfaab79">graphMask</a> = <a class="code" href="class_pathfinding_1_1_seeker.html#adf8617879918afe3adbf22f3fe094742">graphMask</a>;</div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;                        StartPathInternal(p, callback);</div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;                        <span class="keywordflow">return</span> p;</div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;                }</div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160; </div>
+<div class="line"><a name="l00398"></a><span class="lineno"><a class="line" href="class_pathfinding_1_1_seeker.html#a73b21707010cee1d32d7f0d6b76c0c5a">  398</a></span>&#160;                <span class="keyword">public</span> <a class="code" href="class_p_f_1_1_path.html">Path</a> <a class="code" href="class_pathfinding_1_1_seeker.html#a73b21707010cee1d32d7f0d6b76c0c5a">StartPath</a> (<a class="code" href="class_p_f_1_1_path.html">Path</a> p, <a class="code" href="namespace_p_f.html#a5916e0e1a39fd1ea09fdf25a70492a02">OnPathDelegate</a> callback, <span class="keywordtype">int</span> <a class="code" href="class_pathfinding_1_1_seeker.html#adf8617879918afe3adbf22f3fe094742">graphMask</a>) {</div>
+<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;                        p.<a class="code" href="class_p_f_1_1_path.html#a11e585e3e1057a4b85f85415dffc9ea1">nnConstraint</a>.<a class="code" href="class_p_f_1_1_n_n_constraint.html#a2dece9ccfc6621ee2a41a3ec4bfaab79">graphMask</a> = <a class="code" href="class_pathfinding_1_1_seeker.html#adf8617879918afe3adbf22f3fe094742">graphMask</a>;</div>
+<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;                        StartPathInternal(p, callback);</div>
+<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;                        <span class="keywordflow">return</span> p;</div>
+<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;                }</div>
+<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160; </div>
+<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;                <span class="keywordtype">void</span> StartPathInternal (<a class="code" href="class_p_f_1_1_path.html">Path</a> p, <a class="code" href="namespace_p_f.html#a5916e0e1a39fd1ea09fdf25a70492a02">OnPathDelegate</a> callback) {</div>
+<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;                        var mtp = p as <a class="code" href="class_p_f_1_1_multi_target_path.html">MultiTargetPath</a>;</div>
+<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160; </div>
+<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;                        <span class="keywordflow">if</span> (mtp != <span class="keyword">null</span>) {</div>
+<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;                                <span class="comment">// TODO: Allocation, cache</span></div>
+<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;                                var callbacks = <span class="keyword">new</span> <a class="code" href="namespace_p_f.html#a5916e0e1a39fd1ea09fdf25a70492a02">OnPathDelegate</a>[mtp.targetPoints.Length];</div>
+<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160; </div>
+<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;                                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; callbacks.Length; i++) {</div>
+<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;                                        callbacks[i] = onPartialPathDelegate;</div>
+<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;                                }</div>
+<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160; </div>
+<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;                                mtp.callbacks = callbacks;</div>
+<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;                                p.<a class="code" href="class_p_f_1_1_path.html#af6796a7b4072bf7845ae4299215933d7">callback</a> += OnMultiPathComplete;</div>
+<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;                        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;                                p.<a class="code" href="class_p_f_1_1_path.html#af6796a7b4072bf7845ae4299215933d7">callback</a> += onPathDelegate;</div>
+<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;                        }</div>
+<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160; </div>
+<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;                        p.<a class="code" href="class_p_f_1_1_path.html#a0a966c1c47d5e7d1cb91df0fcd0dc6ef">enabledTags</a> = <a class="code" href="class_pathfinding_1_1_seeker.html#aef0e642de18c0efbfbc0ed2a855ffc8c">traversableTags</a>;</div>
+<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;                        p.<a class="code" href="class_p_f_1_1_path.html#a1d84254b3f6a41b7d24944bec6bc9b6d">tagPenalties</a> = <a class="code" href="class_pathfinding_1_1_seeker.html#a7b9ea82c6b0e4dac2a77c1a20e21507e">tagPenalties</a>;</div>
+<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160; </div>
+<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;                        <span class="comment">// Cancel a previously requested path is it has not been processed yet and also make sure that it has not been recycled and used somewhere else</span></div>
+<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;                        <span class="keywordflow">if</span> (<a class="code" href="class_pathfinding_1_1_seeker.html#a9943363045e338a08c4d19f2f253b893">path</a> != <span class="keyword">null</span> &amp;&amp; <a class="code" href="class_pathfinding_1_1_seeker.html#a9943363045e338a08c4d19f2f253b893">path</a>.PipelineState &lt;= <a class="code" href="namespace_p_f.html#a41e3ae15d352e3d178227e2eca48c8a7">PathState</a>.Processing &amp;&amp; <a class="code" href="class_pathfinding_1_1_seeker.html#a9943363045e338a08c4d19f2f253b893">path</a>.<a class="code" href="class_p_f_1_1_path.html#a2897005550987fc4d00a530402ad187d">CompleteState</a> != <a class="code" href="namespace_p_f.html#a572ac19cbafd778b6415ed3ff59e37ac">PathCompleteState</a>.Error &amp;&amp; <a class="code" href="class_pathfinding_1_1_seeker.html#a3645d9881aac3038080fa24f8cc7035c">lastPathID</a> == <a class="code" href="class_pathfinding_1_1_seeker.html#a9943363045e338a08c4d19f2f253b893">path</a>.pathID) {</div>
+<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;                                <a class="code" href="class_pathfinding_1_1_seeker.html#a9943363045e338a08c4d19f2f253b893">path</a>.FailWithError(<span class="stringliteral">&quot;Canceled path because a new one was requested.\n&quot;</span>+</div>
+<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;                                        <span class="stringliteral">&quot;This happens when a new path is requested from the seeker when one was already being calculated.\n&quot;</span> +</div>
+<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;                                        <span class="stringliteral">&quot;For example if a unit got a new order, you might request a new path directly instead of waiting for the now&quot;</span> +</div>
+<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;                                        <span class="stringliteral">&quot; invalid path to be calculated. Which is probably what you want.\n&quot;</span> +</div>
+<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;                                        <span class="stringliteral">&quot;If you are getting this a lot, you might want to consider how you are scheduling path requests.&quot;</span>);</div>
+<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;                                <span class="comment">// No callback will be sent for the canceled path</span></div>
+<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;                        }</div>
+<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160; </div>
+<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;                        <span class="comment">// Set p as the active path</span></div>
+<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;                        <a class="code" href="class_pathfinding_1_1_seeker.html#a9943363045e338a08c4d19f2f253b893">path</a> = p;</div>
+<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;                        tmpPathCallback = callback;</div>
+<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160; </div>
+<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;                        <span class="comment">// Save the path id so we can make sure that if we cancel a path (see above) it should not have been recycled yet.</span></div>
+<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;                        <a class="code" href="class_pathfinding_1_1_seeker.html#a3645d9881aac3038080fa24f8cc7035c">lastPathID</a> = <a class="code" href="class_pathfinding_1_1_seeker.html#a9943363045e338a08c4d19f2f253b893">path</a>.pathID;</div>
+<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160; </div>
+<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;                        <span class="comment">// Pre process the path</span></div>
+<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;                        <a class="code" href="class_pathfinding_1_1_seeker.html#a619862969dc5a2512dfc0d67a82aa071">RunModifiers</a>(<a class="code" href="class_pathfinding_1_1_seeker.html#a92d7e564c78c98672ca3816814b27b47">ModifierPass</a>.PreProcess, <a class="code" href="class_pathfinding_1_1_seeker.html#a9943363045e338a08c4d19f2f253b893">path</a>);</div>
+<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160; </div>
+<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;                        <span class="comment">// Send the request to the pathfinder</span></div>
+<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;                        <a class="code" href="class_astar_path.html">AstarPath</a>.<a class="code" href="class_astar_path.html#aff2addb8d4dcda803cbdcffbdd94c833">StartPath</a>(<a class="code" href="class_pathfinding_1_1_seeker.html#a9943363045e338a08c4d19f2f253b893">path</a>);</div>
+<div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;                }</div>
+<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160; </div>
+<div class="line"><a name="l00450"></a><span class="lineno"><a class="line" href="class_pathfinding_1_1_seeker.html#a3445cdb658d77e3b724f4a20dab43bb9">  450</a></span>&#160;                <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_pathfinding_1_1_seeker.html#a3445cdb658d77e3b724f4a20dab43bb9">OnDrawGizmos</a> () {</div>
+<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;                        <span class="keywordflow">if</span> (lastCompletedNodePath == <span class="keyword">null</span> || !<a class="code" href="class_pathfinding_1_1_seeker.html#a4ca778b5432249f8f3341f0d5a64e7b7">drawGizmos</a>) {</div>
+<div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;                                <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;                        }</div>
+<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160; </div>
+<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;                        <span class="keywordflow">if</span> (<a class="code" href="class_pathfinding_1_1_seeker.html#a51b9fd61f51d696fdbe5d2d96a2654fc">detailedGizmos</a>) {</div>
+<div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;                                Gizmos.color = <span class="keyword">new</span> Color(0.7<a class="code" href="namespace_p_f.html#a38ee93e7af925fe8ecc187410f8b96efa800618943025315f869e4e1f09471012">F</a>, 0.5<a class="code" href="namespace_p_f.html#a38ee93e7af925fe8ecc187410f8b96efa800618943025315f869e4e1f09471012">F</a>, 0.1<a class="code" href="namespace_p_f.html#a38ee93e7af925fe8ecc187410f8b96efa800618943025315f869e4e1f09471012">F</a>, 0.5<a class="code" href="namespace_p_f.html#a38ee93e7af925fe8ecc187410f8b96efa800618943025315f869e4e1f09471012">F</a>);</div>
+<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160; </div>
+<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;                                <span class="keywordflow">if</span> (lastCompletedNodePath != <span class="keyword">null</span>) {</div>
+<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;                                        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; lastCompletedNodePath.Count-1; i++) {</div>
+<div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160;                                                Gizmos.DrawLine((<a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a>)lastCompletedNodePath[i].position, (<a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a>)lastCompletedNodePath[i+1].position);</div>
+<div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160;                                        }</div>
+<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;                                }</div>
+<div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160;                        }</div>
+<div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160; </div>
+<div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160;                        Gizmos.color = <span class="keyword">new</span> Color(0, 1<a class="code" href="namespace_p_f.html#a38ee93e7af925fe8ecc187410f8b96efa800618943025315f869e4e1f09471012">F</a>, 0, 1<a class="code" href="namespace_p_f.html#a38ee93e7af925fe8ecc187410f8b96efa800618943025315f869e4e1f09471012">F</a>);</div>
+<div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160; </div>
+<div class="line"><a name="l00467"></a><span class="lineno">  467</span>&#160;                        <span class="keywordflow">if</span> (lastCompletedVectorPath != <span class="keyword">null</span>) {</div>
+<div class="line"><a name="l00468"></a><span class="lineno">  468</span>&#160;                                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; lastCompletedVectorPath.Count-1; i++) {</div>
+<div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160;                                        Gizmos.DrawLine(lastCompletedVectorPath[i], lastCompletedVectorPath[i+1]);</div>
+<div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160;                                }</div>
+<div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160;                        }</div>
+<div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160;                }</div>
+<div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;        }</div>
+<div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;}</div>
+<div class="ttc" id="aclass_astar_path_html"><div class="ttname"><a href="class_astar_path.html">AstarPath</a></div><div class="ttdef"><b>Definition:</b> <a href="_astar_path_8cs_source.html#l00029">AstarPath.cs:29</a></div></div>
+<div class="ttc" id="aclass_astar_path_html_aff2addb8d4dcda803cbdcffbdd94c833"><div class="ttname"><a href="class_astar_path.html#aff2addb8d4dcda803cbdcffbdd94c833">AstarPath.StartPath</a></div><div class="ttdeci">static void StartPath(Path path, bool pushToFront=false)</div><div class="ttdef"><b>Definition:</b> <a href="_astar_path_8cs_source.html#l01559">AstarPath.cs:1559</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_a_b_path_html"><div class="ttname"><a href="class_p_f_1_1_a_b_path.html">PF.ABPath</a></div><div class="ttdef"><b>Definition:</b> <a href="_a_b_path_8cs_source.html#l00012">ABPath.cs:12</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_a_b_path_html_ac9c7c256966f9b8b73561ad249c0a94e"><div class="ttname"><a href="class_p_f_1_1_a_b_path.html#ac9c7c256966f9b8b73561ad249c0a94e">PF.ABPath.Construct</a></div><div class="ttdeci">static ABPath Construct(Vector3 start, Vector3 end, OnPathDelegate callback=null)</div><div class="ttdef"><b>Definition:</b> <a href="_a_b_path_8cs_source.html#l00081">ABPath.cs:81</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_multi_target_path_html"><div class="ttname"><a href="class_p_f_1_1_multi_target_path.html">PF.MultiTargetPath</a></div><div class="ttdef"><b>Definition:</b> <a href="_multi_target_path_8cs_source.html#l00027">MultiTargetPath.cs:27</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_n_n_constraint_html_a2dece9ccfc6621ee2a41a3ec4bfaab79"><div class="ttname"><a href="class_p_f_1_1_n_n_constraint.html#a2dece9ccfc6621ee2a41a3ec4bfaab79">PF.NNConstraint.graphMask</a></div><div class="ttdeci">int graphMask</div><div class="ttdef"><b>Definition:</b> <a href="_n_n_8cs_source.html#l00021">NN.cs:21</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_path_html"><div class="ttname"><a href="class_p_f_1_1_path.html">PF.Path</a></div><div class="ttdef"><b>Definition:</b> <a href="_path_8cs_source.html#l00133">Path.cs:133</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_path_html_a0a966c1c47d5e7d1cb91df0fcd0dc6ef"><div class="ttname"><a href="class_p_f_1_1_path.html#a0a966c1c47d5e7d1cb91df0fcd0dc6ef">PF.Path.enabledTags</a></div><div class="ttdeci">int enabledTags</div><div class="ttdef"><b>Definition:</b> <a href="_path_8cs_source.html#l00281">Path.cs:281</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_path_html_a11e585e3e1057a4b85f85415dffc9ea1"><div class="ttname"><a href="class_p_f_1_1_path.html#a11e585e3e1057a4b85f85415dffc9ea1">PF.Path.nnConstraint</a></div><div class="ttdeci">NNConstraint nnConstraint</div><div class="ttdef"><b>Definition:</b> <a href="_path_8cs_source.html#l00244">Path.cs:244</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_path_html_a1d84254b3f6a41b7d24944bec6bc9b6d"><div class="ttname"><a href="class_p_f_1_1_path.html#a1d84254b3f6a41b7d24944bec6bc9b6d">PF.Path.tagPenalties</a></div><div class="ttdeci">int[] tagPenalties</div><div class="ttdef"><b>Definition:</b> <a href="_path_8cs_source.html#l00307">Path.cs:307</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_path_html_a2897005550987fc4d00a530402ad187d"><div class="ttname"><a href="class_p_f_1_1_path.html#a2897005550987fc4d00a530402ad187d">PF.Path.CompleteState</a></div><div class="ttdeci">PathCompleteState CompleteState</div><div class="ttdef"><b>Definition:</b> <a href="_path_8cs_source.html#l00181">Path.cs:181</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_path_html_a4f7f5417702fd8d2f685855f0d7efb9c"><div class="ttname"><a href="class_p_f_1_1_path.html#a4f7f5417702fd8d2f685855f0d7efb9c">PF.Path.Release</a></div><div class="ttdeci">void Release(System.Object o, bool silent=false)</div><div class="ttdef"><b>Definition:</b> <a href="_path_8cs_source.html#l00670">Path.cs:670</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_path_html_a9a6a7eb4c58359b9a6c858de9337d3cd"><div class="ttname"><a href="class_p_f_1_1_path.html#a9a6a7eb4c58359b9a6c858de9337d3cd">PF.Path.error</a></div><div class="ttdeci">bool error</div><div class="ttdef"><b>Definition:</b> <a href="_path_8cs_source.html#l00198">Path.cs:198</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_path_html_aaebf4b3927b0b5f972f728ad4ce57831"><div class="ttname"><a href="class_p_f_1_1_path.html#aaebf4b3927b0b5f972f728ad4ce57831">PF.Path.vectorPath</a></div><div class="ttdeci">List&lt; Vector3 &gt; vectorPath</div><div class="ttdef"><b>Definition:</b> <a href="_path_8cs_source.html#l00211">Path.cs:211</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_path_html_ad5f2274aa778cf41cd856e43bb862c5a"><div class="ttname"><a href="class_p_f_1_1_path.html#ad5f2274aa778cf41cd856e43bb862c5a">PF.Path.Claim</a></div><div class="ttdeci">void Claim(System.Object o)</div><div class="ttdef"><b>Definition:</b> <a href="_path_8cs_source.html#l00633">Path.cs:633</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_path_html_af5cbb9ffba21181f539d94c465f39b43"><div class="ttname"><a href="class_p_f_1_1_path.html#af5cbb9ffba21181f539d94c465f39b43">PF.Path.path</a></div><div class="ttdeci">List&lt; GraphNode &gt; path</div><div class="ttdef"><b>Definition:</b> <a href="_path_8cs_source.html#l00208">Path.cs:208</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_path_html_af6796a7b4072bf7845ae4299215933d7"><div class="ttname"><a href="class_p_f_1_1_path.html#af6796a7b4072bf7845ae4299215933d7">PF.Path.callback</a></div><div class="ttdeci">OnPathDelegate callback</div><div class="ttdef"><b>Definition:</b> <a href="_path_8cs_source.html#l00158">Path.cs:158</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_path_modifier_html_a9b583e774853fed08b1e929d581eaf86"><div class="ttname"><a href="class_pathfinding_1_1_path_modifier.html#a9b583e774853fed08b1e929d581eaf86">Pathfinding.PathModifier.OnDestroy</a></div><div class="ttdeci">void OnDestroy(Seeker seeker)</div><div class="ttdef"><b>Definition:</b> <a href="_modifiers_8cs_source.html#l00034">Modifiers.cs:34</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_path_modifier_html_ad75d8430eebd18415601d9835c295c4a"><div class="ttname"><a href="class_pathfinding_1_1_path_modifier.html#ad75d8430eebd18415601d9835c295c4a">Pathfinding.PathModifier.Awake</a></div><div class="ttdeci">void Awake(Seeker seeker)</div><div class="ttdef"><b>Definition:</b> <a href="_modifiers_8cs_source.html#l00027">Modifiers.cs:27</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_seeker_html"><div class="ttname"><a href="class_pathfinding_1_1_seeker.html">Pathfinding.Seeker</a></div><div class="ttdef"><b>Definition:</b> <a href="_seeker_8cs_source.html#l00022">Seeker.cs:22</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_seeker_html_a07aaf4719bdf9ba4291046e7d18758d5"><div class="ttname"><a href="class_pathfinding_1_1_seeker.html#a07aaf4719bdf9ba4291046e7d18758d5">Pathfinding.Seeker.DeregisterModifier</a></div><div class="ttdeci">void DeregisterModifier(IPathModifier modifier)</div><div class="ttdef"><b>Definition:</b> <a href="_seeker_8cs_source.html#l00220">Seeker.cs:220</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_seeker_html_a08442fcc82b5fe25c48679fe7cf5b3c0"><div class="ttname"><a href="class_pathfinding_1_1_seeker.html#a08442fcc82b5fe25c48679fe7cf5b3c0">Pathfinding.Seeker.PostProcess</a></div><div class="ttdeci">void PostProcess(Path path)</div><div class="ttdef"><b>Definition:</b> <a href="_seeker_8cs_source.html#l00230">Seeker.cs:230</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_seeker_html_a0e7d2a94b7f2d21d77304de97c770211"><div class="ttname"><a href="class_pathfinding_1_1_seeker.html#a0e7d2a94b7f2d21d77304de97c770211">Pathfinding.Seeker.Seeker</a></div><div class="ttdeci">Seeker()</div><div class="ttdef"><b>Definition:</b> <a href="_seeker_8cs_source.html#l00139">Seeker.cs:139</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_seeker_html_a1078076bcf8a878a34ed4bad0a13b61a"><div class="ttname"><a href="class_pathfinding_1_1_seeker.html#a1078076bcf8a878a34ed4bad0a13b61a">Pathfinding.Seeker.CancelCurrentPathRequest</a></div><div class="ttdeci">void CancelCurrentPathRequest(bool pool=true)</div><div class="ttdef"><b>Definition:</b> <a href="_seeker_8cs_source.html#l00169">Seeker.cs:169</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_seeker_html_a225404a0e090e3842cd86abb0ea952fc"><div class="ttname"><a href="class_pathfinding_1_1_seeker.html#a225404a0e090e3842cd86abb0ea952fc">Pathfinding.Seeker.StartPath</a></div><div class="ttdeci">Path StartPath(Path p, OnPathDelegate callback=null)</div><div class="ttdef"><b>Definition:</b> <a href="_seeker_8cs_source.html#l00375">Seeker.cs:375</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_seeker_html_a297eaf56d65ff3d8325d8f041d8cddb3"><div class="ttname"><a href="class_pathfinding_1_1_seeker.html#a297eaf56d65ff3d8325d8f041d8cddb3">Pathfinding.Seeker.ReleaseClaimedPath</a></div><div class="ttdeci">void ReleaseClaimedPath()</div><div class="ttdef"><b>Definition:</b> <a href="_seeker_8cs_source.html#l00204">Seeker.cs:204</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_seeker_html_a3445cdb658d77e3b724f4a20dab43bb9"><div class="ttname"><a href="class_pathfinding_1_1_seeker.html#a3445cdb658d77e3b724f4a20dab43bb9">Pathfinding.Seeker.OnDrawGizmos</a></div><div class="ttdeci">void OnDrawGizmos()</div><div class="ttdef"><b>Definition:</b> <a href="_seeker_8cs_source.html#l00450">Seeker.cs:450</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_seeker_html_a3645d9881aac3038080fa24f8cc7035c"><div class="ttname"><a href="class_pathfinding_1_1_seeker.html#a3645d9881aac3038080fa24f8cc7035c">Pathfinding.Seeker.lastPathID</a></div><div class="ttdeci">uint lastPathID</div><div class="ttdef"><b>Definition:</b> <a href="_seeker_8cs_source.html#l00128">Seeker.cs:128</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_seeker_html_a44d9a5064b283cc8bb2ef17cff737392"><div class="ttname"><a href="class_pathfinding_1_1_seeker.html#a44d9a5064b283cc8bb2ef17cff737392">Pathfinding.Seeker.RegisterModifier</a></div><div class="ttdeci">void RegisterModifier(IPathModifier modifier)</div><div class="ttdef"><b>Definition:</b> <a href="_seeker_8cs_source.html#l00212">Seeker.cs:212</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_seeker_html_a4ca778b5432249f8f3341f0d5a64e7b7"><div class="ttname"><a href="class_pathfinding_1_1_seeker.html#a4ca778b5432249f8f3341f0d5a64e7b7">Pathfinding.Seeker.drawGizmos</a></div><div class="ttdeci">bool drawGizmos</div><div class="ttdef"><b>Definition:</b> <a href="_seeker_8cs_source.html#l00028">Seeker.cs:28</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_seeker_html_a51b9fd61f51d696fdbe5d2d96a2654fc"><div class="ttname"><a href="class_pathfinding_1_1_seeker.html#a51b9fd61f51d696fdbe5d2d96a2654fc">Pathfinding.Seeker.detailedGizmos</a></div><div class="ttdeci">bool detailedGizmos</div><div class="ttdef"><b>Definition:</b> <a href="_seeker_8cs_source.html#l00040">Seeker.cs:40</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_seeker_html_a5ee8fd1e2aec7898e144f3dc5155bad1"><div class="ttname"><a href="class_pathfinding_1_1_seeker.html#a5ee8fd1e2aec7898e144f3dc5155bad1">Pathfinding.Seeker.Awake</a></div><div class="ttdeci">override void Awake()</div><div class="ttdef"><b>Definition:</b> <a href="_seeker_8cs_source.html#l00145">Seeker.cs:145</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_seeker_html_a619862969dc5a2512dfc0d67a82aa071"><div class="ttname"><a href="class_pathfinding_1_1_seeker.html#a619862969dc5a2512dfc0d67a82aa071">Pathfinding.Seeker.RunModifiers</a></div><div class="ttdeci">void RunModifiers(ModifierPass pass, Path path)</div><div class="ttdef"><b>Definition:</b> <a href="_seeker_8cs_source.html#l00235">Seeker.cs:235</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_seeker_html_a673df10738a3bb7b0184e69eae73e262"><div class="ttname"><a href="class_pathfinding_1_1_seeker.html#a673df10738a3bb7b0184e69eae73e262">Pathfinding.Seeker.OnDestroy</a></div><div class="ttdeci">void OnDestroy()</div><div class="ttdef"><b>Definition:</b> <a href="_seeker_8cs_source.html#l00190">Seeker.cs:190</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_seeker_html_a73b21707010cee1d32d7f0d6b76c0c5a"><div class="ttname"><a href="class_pathfinding_1_1_seeker.html#a73b21707010cee1d32d7f0d6b76c0c5a">Pathfinding.Seeker.StartPath</a></div><div class="ttdeci">Path StartPath(Path p, OnPathDelegate callback, int graphMask)</div><div class="ttdef"><b>Definition:</b> <a href="_seeker_8cs_source.html#l00398">Seeker.cs:398</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_seeker_html_a7b9ea82c6b0e4dac2a77c1a20e21507e"><div class="ttname"><a href="class_pathfinding_1_1_seeker.html#a7b9ea82c6b0e4dac2a77c1a20e21507e">Pathfinding.Seeker.tagPenalties</a></div><div class="ttdeci">int[] tagPenalties</div><div class="ttdef"><b>Definition:</b> <a href="_seeker_8cs_source.html#l00063">Seeker.cs:63</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_seeker_html_a87a58441a763af9b9796da928521e420"><div class="ttname"><a href="class_pathfinding_1_1_seeker.html#a87a58441a763af9b9796da928521e420">Pathfinding.Seeker.IsDone</a></div><div class="ttdeci">bool IsDone()</div><div class="ttdef"><b>Definition:</b> <a href="_seeker_8cs_source.html#l00258">Seeker.cs:258</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_seeker_html_a92d7e564c78c98672ca3816814b27b47"><div class="ttname"><a href="class_pathfinding_1_1_seeker.html#a92d7e564c78c98672ca3816814b27b47">Pathfinding.Seeker.ModifierPass</a></div><div class="ttdeci">ModifierPass</div><div class="ttdef"><b>Definition:</b> <a href="_seeker_8cs_source.html#l00133">Seeker.cs:133</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_seeker_html_a96a371502edf992cf02ff6d0f6d5f8d6"><div class="ttname"><a href="class_pathfinding_1_1_seeker.html#a96a371502edf992cf02ff6d0f6d5f8d6">Pathfinding.Seeker.preProcessPath</a></div><div class="ttdeci">OnPathDelegate preProcessPath</div><div class="ttdef"><b>Definition:</b> <a href="_seeker_8cs_source.html#l00097">Seeker.cs:97</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_seeker_html_a9943363045e338a08c4d19f2f253b893"><div class="ttname"><a href="class_pathfinding_1_1_seeker.html#a9943363045e338a08c4d19f2f253b893">Pathfinding.Seeker.path</a></div><div class="ttdeci">Path path</div><div class="ttdef"><b>Definition:</b> <a href="_seeker_8cs_source.html#l00113">Seeker.cs:113</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_seeker_html_ab70e4989e862bb93996a55a5c971662e"><div class="ttname"><a href="class_pathfinding_1_1_seeker.html#ab70e4989e862bb93996a55a5c971662e">Pathfinding.Seeker.StartPath</a></div><div class="ttdeci">Path StartPath(Vector3 start, Vector3 end, OnPathDelegate callback, int graphMask)</div><div class="ttdef"><b>Definition:</b> <a href="_seeker_8cs_source.html#l00358">Seeker.cs:358</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_seeker_html_abfc7c16c5b42ad9b80b38e6a64ff5c9f"><div class="ttname"><a href="class_pathfinding_1_1_seeker.html#abfc7c16c5b42ad9b80b38e6a64ff5c9f">Pathfinding.Seeker.startEndModifier</a></div><div class="ttdeci">StartEndModifier startEndModifier</div><div class="ttdef"><b>Definition:</b> <a href="_seeker_8cs_source.html#l00044">Seeker.cs:44</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_seeker_html_ac242d0478c60c5c20498ebc6d7a22816"><div class="ttname"><a href="class_pathfinding_1_1_seeker.html#ac242d0478c60c5c20498ebc6d7a22816">Pathfinding.Seeker.GetCurrentPath</a></div><div class="ttdeci">Path GetCurrentPath()</div><div class="ttdef"><b>Definition:</b> <a href="_seeker_8cs_source.html#l00155">Seeker.cs:155</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_seeker_html_accb9df83d2e36ebca8e53dae4e0da9a3"><div class="ttname"><a href="class_pathfinding_1_1_seeker.html#accb9df83d2e36ebca8e53dae4e0da9a3">Pathfinding.Seeker.StartPath</a></div><div class="ttdeci">Path StartPath(Vector3 start, Vector3 end, OnPathDelegate callback)</div><div class="ttdef"><b>Definition:</b> <a href="_seeker_8cs_source.html#l00345">Seeker.cs:345</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_seeker_html_adf8617879918afe3adbf22f3fe094742"><div class="ttname"><a href="class_pathfinding_1_1_seeker.html#adf8617879918afe3adbf22f3fe094742">Pathfinding.Seeker.graphMask</a></div><div class="ttdeci">int graphMask</div><div class="ttdef"><b>Definition:</b> <a href="_seeker_8cs_source.html#l00088">Seeker.cs:88</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_seeker_html_ae27c1c3ddc0f49a7a5992421757141ac"><div class="ttname"><a href="class_pathfinding_1_1_seeker.html#ae27c1c3ddc0f49a7a5992421757141ac">Pathfinding.Seeker.pathCallback</a></div><div class="ttdeci">OnPathDelegate pathCallback</div><div class="ttdef"><b>Definition:</b> <a href="_seeker_8cs_source.html#l00094">Seeker.cs:94</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_seeker_html_aef0e642de18c0efbfbc0ed2a855ffc8c"><div class="ttname"><a href="class_pathfinding_1_1_seeker.html#aef0e642de18c0efbfbc0ed2a855ffc8c">Pathfinding.Seeker.traversableTags</a></div><div class="ttdeci">int traversableTags</div><div class="ttdef"><b>Definition:</b> <a href="_seeker_8cs_source.html#l00052">Seeker.cs:52</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_seeker_html_aef9866fa33291cfd9832581fb0b985e0"><div class="ttname"><a href="class_pathfinding_1_1_seeker.html#aef9866fa33291cfd9832581fb0b985e0">Pathfinding.Seeker.postProcessPath</a></div><div class="ttdeci">OnPathDelegate postProcessPath</div><div class="ttdef"><b>Definition:</b> <a href="_seeker_8cs_source.html#l00101">Seeker.cs:101</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_seeker_html_af03d3f47e6b3180ab13f78c709f42ed5"><div class="ttname"><a href="class_pathfinding_1_1_seeker.html#af03d3f47e6b3180ab13f78c709f42ed5">Pathfinding.Seeker.StartPath</a></div><div class="ttdeci">Path StartPath(Vector3 start, Vector3 end)</div><div class="ttdef"><b>Definition:</b> <a href="_seeker_8cs_source.html#l00333">Seeker.cs:333</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_start_end_modifier_html"><div class="ttname"><a href="class_pathfinding_1_1_start_end_modifier.html">Pathfinding.StartEndModifier</a></div><div class="ttdef"><b>Definition:</b> <a href="_start_end_modifier_8cs_source.html#l00021">StartEndModifier.cs:21</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_versioned_mono_behaviour_html"><div class="ttname"><a href="class_pathfinding_1_1_versioned_mono_behaviour.html">Pathfinding.VersionedMonoBehaviour</a></div><div class="ttdef"><b>Definition:</b> <a href="_versioned_mono_behaviour_8cs_source.html#l00010">VersionedMonoBehaviour.cs:10</a></div></div>
+<div class="ttc" id="ainterface_pathfinding_1_1_i_path_modifier_html"><div class="ttname"><a href="interface_pathfinding_1_1_i_path_modifier.html">Pathfinding.IPathModifier</a></div><div class="ttdef"><b>Definition:</b> <a href="_modifiers_8cs_source.html#l00008">Modifiers.cs:8</a></div></div>
+<div class="ttc" id="anamespace_p_f_html"><div class="ttname"><a href="namespace_p_f.html">PF</a></div><div class="ttdef"><b>Definition:</b> <a href="_array_pool_8cs_source.html#l00009">ArrayPool.cs:9</a></div></div>
+<div class="ttc" id="anamespace_p_f_html_a38ee93e7af925fe8ecc187410f8b96efa800618943025315f869e4e1f09471012"><div class="ttname"><a href="namespace_p_f.html#a38ee93e7af925fe8ecc187410f8b96efa800618943025315f869e4e1f09471012">PF.GraphDebugMode.F</a></div><div class="ttdeci">@ F</div></div>
+<div class="ttc" id="anamespace_p_f_html_a41e3ae15d352e3d178227e2eca48c8a7"><div class="ttname"><a href="namespace_p_f.html#a41e3ae15d352e3d178227e2eca48c8a7">PF.PathState</a></div><div class="ttdeci">PathState</div><div class="ttdef"><b>Definition:</b> <a href="_path_8cs_source.html#l00048">Path.cs:48</a></div></div>
+<div class="ttc" id="anamespace_p_f_html_a572ac19cbafd778b6415ed3ff59e37ac"><div class="ttname"><a href="namespace_p_f.html#a572ac19cbafd778b6415ed3ff59e37ac">PF.PathCompleteState</a></div><div class="ttdeci">PathCompleteState</div><div class="ttdef"><b>Definition:</b> <a href="_path_8cs_source.html#l00057">Path.cs:57</a></div></div>
+<div class="ttc" id="anamespace_p_f_html_a5916e0e1a39fd1ea09fdf25a70492a02"><div class="ttname"><a href="namespace_p_f.html#a5916e0e1a39fd1ea09fdf25a70492a02">PF.OnPathDelegate</a></div><div class="ttdeci">delegate void OnPathDelegate(Path p)</div></div>
+<div class="ttc" id="anamespace_pathfinding_html"><div class="ttname"><a href="namespace_pathfinding.html">Pathfinding</a></div><div class="ttdef"><b>Definition:</b> <a href="_a_i_base_editor_8cs_source.html#l00004">AIBaseEditor.cs:4</a></div></div>
+<div class="ttc" id="anamespace_system_html"><div class="ttname"><a href="namespace_system.html">System</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_method_builder_attribute_8cs_source.html#l00001">AsyncMethodBuilderAttribute.cs:2</a></div></div>
+<div class="ttc" id="anamespace_unity_engine_html"><div class="ttname"><a href="namespace_unity_engine.html">UnityEngine</a></div><div class="ttdef"><b>Definition:</b> <a href="_mathf_8cs_source.html#l00003">Mathf.cs:4</a></div></div>
+<div class="ttc" id="astruct_unity_engine_1_1_vector3_html"><div class="ttname"><a href="struct_unity_engine_1_1_vector3.html">UnityEngine.Vector3</a></div><div class="ttdef"><b>Definition:</b> <a href="_vector3_8cs_source.html#l00007">Vector3.cs:8</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_84bbf7b3c7f28a5a18725745e1505219.html">Assets</a></li><li class="navelem"><a class="el" href="dir_f13b41af88cf68434578284aaf699e39.html">Scripts</a></li><li class="navelem"><a class="el" href="dir_46d134a3bf82cf4dc49ca8f728aea58c.html">Libraries</a></li><li class="navelem"><a class="el" href="dir_f6df8f7e58ea5a2220a287b647108730.html">ET</a></li><li class="navelem"><a class="el" href="dir_83296929b1cb48979e134a96af9624b1.html">Module</a></li><li class="navelem"><a class="el" href="dir_7e04bdad0240fbb16a4f5f805ce44f49.html">Pathfinding</a></li><li class="navelem"><a class="el" href="dir_12c2f59e7be642934a5bea5c58ae8c1b.html">AstarPathfindingProject</a></li><li class="navelem"><a class="el" href="dir_00177d857ff2a6f262586fd2fafd8818.html">Core</a></li><li class="navelem"><a class="el" href="dir_f4e1259af3b1fd8b7c56b0473c2f61b6.html">AI</a></li><li class="navelem"><a class="el" href="_seeker_8cs.html">Seeker.cs</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:24:46 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

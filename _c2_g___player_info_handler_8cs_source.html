@@ -1,0 +1,144 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: ETServer/Server/Hotfix/Handler/C2G_PlayerInfoHandler.cs 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_c2_g___player_info_handler_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">C2G_PlayerInfoHandler.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_c2_g___player_info_handler_8cs.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>;</div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_e_t_model.html">ETModel</a>;</div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_e_t_hotfix.html">ETHotfix</a></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;{</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;        <span class="comment">// 用来测试消息包含复杂类型，是否产生gc</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;        [MessageHandler(<a class="code" href="namespace_e_t_model.html#a8b40abd315470fe22a31bf9b6fb8974b">AppType</a>.Gate)]</div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="class_e_t_hotfix_1_1_c2_g___player_info_handler.html">    8</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="class_e_t_hotfix_1_1_c2_g___player_info_handler.html">C2G_PlayerInfoHandler</a> : <a class="code" href="class_e_t_model_1_1_a_m_rpc_handler.html">AMRpcHandler</a>&lt;C2G_PlayerInfo, G2C_PlayerInfo&gt;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;        {</div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="class_e_t_hotfix_1_1_c2_g___player_info_handler.html#ab831a7a13390c67970916256d2a73c29">   10</a></span>&#160;                <span class="keyword">protected</span> <span class="keyword">override</span> async <a class="code" href="struct_e_t_model_1_1_e_t_task.html">ETTask</a> <a class="code" href="class_e_t_hotfix_1_1_c2_g___player_info_handler.html#ab831a7a13390c67970916256d2a73c29">Run</a>(<a class="code" href="class_e_t_hotfix_1_1_session.html">Session</a> session, <a class="code" href="class_e_t_hotfix_1_1_c2_g___player_info.html">C2G_PlayerInfo</a> request, <a class="code" href="class_e_t_hotfix_1_1_g2_c___player_info.html">G2C_PlayerInfo</a> response, Action reply)</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;                {</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;                        response.<a class="code" href="class_e_t_hotfix_1_1_g2_c___player_info.html#aa7bcb9ad8e572118f8878e8d3cc65310">PlayerInfo</a> = <span class="keyword">new</span> <a class="code" href="class_e_t_hotfix_1_1_player_info.html">PlayerInfo</a>();</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;                        response.<a class="code" href="class_e_t_hotfix_1_1_g2_c___player_info.html#a4e8658670b768c926bddb37fd0e915ab">PlayerInfos</a>.Add(<span class="keyword">new</span> <a class="code" href="class_e_t_hotfix_1_1_player_info.html">PlayerInfo</a>() {RpcId = 1});</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;                        response.<a class="code" href="class_e_t_hotfix_1_1_g2_c___player_info.html#a4e8658670b768c926bddb37fd0e915ab">PlayerInfos</a>.Add(<span class="keyword">new</span> <a class="code" href="class_e_t_hotfix_1_1_player_info.html">PlayerInfo</a>() {RpcId = 2});</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;                        response.<a class="code" href="class_e_t_hotfix_1_1_g2_c___player_info.html#a4e8658670b768c926bddb37fd0e915ab">PlayerInfos</a>.Add(<span class="keyword">new</span> <a class="code" href="class_e_t_hotfix_1_1_player_info.html">PlayerInfo</a>() {RpcId = 3});</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;                        response.<a class="code" href="class_e_t_hotfix_1_1_g2_c___player_info.html#ae18e523aaab0253544d65f9d334d56d9">TestRepeatedInt32</a>.Add(4);</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;                        response.<a class="code" href="class_e_t_hotfix_1_1_g2_c___player_info.html#ae18e523aaab0253544d65f9d334d56d9">TestRepeatedInt32</a>.Add(5);</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;                        response.<a class="code" href="class_e_t_hotfix_1_1_g2_c___player_info.html#ae18e523aaab0253544d65f9d334d56d9">TestRepeatedInt32</a>.Add(6);</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;                        response.<a class="code" href="class_e_t_hotfix_1_1_g2_c___player_info.html#a7fb186f214adb2135321e15aa868401e">TestRepeatedInt64</a>.Add(7);</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;                        response.<a class="code" href="class_e_t_hotfix_1_1_g2_c___player_info.html#a7fb186f214adb2135321e15aa868401e">TestRepeatedInt64</a>.Add(8);</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;                        response.<a class="code" href="class_e_t_hotfix_1_1_g2_c___player_info.html#ae1a4accf3b5096a2917da815c108f8ce">TestRepeatedString</a>.Add(<span class="stringliteral">&quot;9&quot;</span>);</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;                        response.<a class="code" href="class_e_t_hotfix_1_1_g2_c___player_info.html#ae1a4accf3b5096a2917da815c108f8ce">TestRepeatedString</a>.Add(<span class="stringliteral">&quot;10&quot;</span>);</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;                        reply();</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;                        await <a class="code" href="struct_e_t_model_1_1_e_t_task.html">ETTask</a>.<a class="code" href="struct_e_t_model_1_1_e_t_task.html#a03218d85e75216a0afe85ad4125cd282">CompletedTask</a>;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;                }</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        }</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;}</div>
+<div class="ttc" id="aclass_e_t_hotfix_1_1_c2_g___player_info_handler_html"><div class="ttname"><a href="class_e_t_hotfix_1_1_c2_g___player_info_handler.html">ETHotfix.C2G_PlayerInfoHandler</a></div><div class="ttdef"><b>Definition:</b> <a href="_c2_g___player_info_handler_8cs_source.html#l00008">C2G_PlayerInfoHandler.cs:9</a></div></div>
+<div class="ttc" id="aclass_e_t_hotfix_1_1_c2_g___player_info_handler_html_ab831a7a13390c67970916256d2a73c29"><div class="ttname"><a href="class_e_t_hotfix_1_1_c2_g___player_info_handler.html#ab831a7a13390c67970916256d2a73c29">ETHotfix.C2G_PlayerInfoHandler.Run</a></div><div class="ttdeci">override async ETTask Run(Session session, C2G_PlayerInfo request, G2C_PlayerInfo response, Action reply)</div><div class="ttdef"><b>Definition:</b> <a href="_c2_g___player_info_handler_8cs_source.html#l00010">C2G_PlayerInfoHandler.cs:10</a></div></div>
+<div class="ttc" id="aclass_e_t_hotfix_1_1_c2_g___player_info_html"><div class="ttname"><a href="class_e_t_hotfix_1_1_c2_g___player_info.html">ETHotfix.C2G_PlayerInfo</a></div><div class="ttdef"><b>Definition:</b> <a href="_hotfix_message_8cs_source.html#l00863">HotfixMessage.cs:863</a></div></div>
+<div class="ttc" id="aclass_e_t_hotfix_1_1_g2_c___player_info_html"><div class="ttname"><a href="class_e_t_hotfix_1_1_g2_c___player_info.html">ETHotfix.G2C_PlayerInfo</a></div><div class="ttdef"><b>Definition:</b> <a href="_hotfix_message_8cs_source.html#l00908">HotfixMessage.cs:908</a></div></div>
+<div class="ttc" id="aclass_e_t_hotfix_1_1_g2_c___player_info_html_a4e8658670b768c926bddb37fd0e915ab"><div class="ttname"><a href="class_e_t_hotfix_1_1_g2_c___player_info.html#a4e8658670b768c926bddb37fd0e915ab">ETHotfix.G2C_PlayerInfo.PlayerInfos</a></div><div class="ttdeci">pbc::RepeatedField&lt; global::ETHotfix.PlayerInfo &gt; PlayerInfos</div><div class="ttdef"><b>Definition:</b> <a href="_hotfix_message_8cs_source.html#l00947">HotfixMessage.cs:947</a></div></div>
+<div class="ttc" id="aclass_e_t_hotfix_1_1_g2_c___player_info_html_a7fb186f214adb2135321e15aa868401e"><div class="ttname"><a href="class_e_t_hotfix_1_1_g2_c___player_info.html#a7fb186f214adb2135321e15aa868401e">ETHotfix.G2C_PlayerInfo.TestRepeatedInt64</a></div><div class="ttdeci">pbc::RepeatedField&lt; long &gt; TestRepeatedInt64</div><div class="ttdef"><b>Definition:</b> <a href="_hotfix_message_8cs_source.html#l00971">HotfixMessage.cs:971</a></div></div>
+<div class="ttc" id="aclass_e_t_hotfix_1_1_g2_c___player_info_html_aa7bcb9ad8e572118f8878e8d3cc65310"><div class="ttname"><a href="class_e_t_hotfix_1_1_g2_c___player_info.html#aa7bcb9ad8e572118f8878e8d3cc65310">ETHotfix.G2C_PlayerInfo.PlayerInfo</a></div><div class="ttdeci">global::ETHotfix.PlayerInfo PlayerInfo</div><div class="ttdef"><b>Definition:</b> <a href="_hotfix_message_8cs_source.html#l00937">HotfixMessage.cs:937</a></div></div>
+<div class="ttc" id="aclass_e_t_hotfix_1_1_g2_c___player_info_html_ae18e523aaab0253544d65f9d334d56d9"><div class="ttname"><a href="class_e_t_hotfix_1_1_g2_c___player_info.html#ae18e523aaab0253544d65f9d334d56d9">ETHotfix.G2C_PlayerInfo.TestRepeatedInt32</a></div><div class="ttdeci">pbc::RepeatedField&lt; int &gt; TestRepeatedInt32</div><div class="ttdef"><b>Definition:</b> <a href="_hotfix_message_8cs_source.html#l00963">HotfixMessage.cs:963</a></div></div>
+<div class="ttc" id="aclass_e_t_hotfix_1_1_g2_c___player_info_html_ae1a4accf3b5096a2917da815c108f8ce"><div class="ttname"><a href="class_e_t_hotfix_1_1_g2_c___player_info.html#ae1a4accf3b5096a2917da815c108f8ce">ETHotfix.G2C_PlayerInfo.TestRepeatedString</a></div><div class="ttdeci">pbc::RepeatedField&lt; string &gt; TestRepeatedString</div><div class="ttdef"><b>Definition:</b> <a href="_hotfix_message_8cs_source.html#l00955">HotfixMessage.cs:955</a></div></div>
+<div class="ttc" id="aclass_e_t_hotfix_1_1_player_info_html"><div class="ttname"><a href="class_e_t_hotfix_1_1_player_info.html">ETHotfix.PlayerInfo</a></div><div class="ttdef"><b>Definition:</b> <a href="_hotfix_message_8cs_source.html#l00818">HotfixMessage.cs:818</a></div></div>
+<div class="ttc" id="aclass_e_t_hotfix_1_1_session_html"><div class="ttname"><a href="class_e_t_hotfix_1_1_session.html">ETHotfix.Session</a></div><div class="ttdoc">用来收发热更层的消息</div><div class="ttdef"><b>Definition:</b> <a href="_hotfix_2_e_t_network_2_module_2_message_2_session_8cs_source.html#l00026">Session.cs:27</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_a_m_rpc_handler_html"><div class="ttname"><a href="class_e_t_model_1_1_a_m_rpc_handler.html">ETModel.AMRpcHandler</a></div><div class="ttdef"><b>Definition:</b> <a href="_a_m_rpc_handler_8cs_source.html#l00005">AMRpcHandler.cs:6</a></div></div>
+<div class="ttc" id="anamespace_e_t_hotfix_html"><div class="ttname"><a href="namespace_e_t_hotfix.html">ETHotfix</a></div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_hotfix_2_e_t_network_2_base_2_event_2_event_id_type_8cs_source.html#l00001">EventIdType.cs:2</a></div></div>
+<div class="ttc" id="anamespace_e_t_model_html"><div class="ttname"><a href="namespace_e_t_model.html">ETModel</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_e_t_task_method_builder_8cs_source.html#l00006">AsyncETTaskMethodBuilder.cs:7</a></div></div>
+<div class="ttc" id="anamespace_e_t_model_html_a8b40abd315470fe22a31bf9b6fb8974b"><div class="ttname"><a href="namespace_e_t_model.html#a8b40abd315470fe22a31bf9b6fb8974b">ETModel.AppType</a></div><div class="ttdeci">AppType</div><div class="ttdef"><b>Definition:</b> <a href="_app_type_8cs_source.html#l00007">AppType.cs:8</a></div></div>
+<div class="ttc" id="anamespace_system_html"><div class="ttname"><a href="namespace_system.html">System</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_method_builder_attribute_8cs_source.html#l00001">AsyncMethodBuilderAttribute.cs:2</a></div></div>
+<div class="ttc" id="astruct_e_t_model_1_1_e_t_task_html"><div class="ttname"><a href="struct_e_t_model_1_1_e_t_task.html">ETModel.ETTask</a></div><div class="ttdoc">Lightweight unity specified task-like object.</div><div class="ttdef"><b>Definition:</b> <a href="_e_t_task_8cs_source.html#l00133">ETTask.cs:134</a></div></div>
+<div class="ttc" id="astruct_e_t_model_1_1_e_t_task_html_a03218d85e75216a0afe85ad4125cd282"><div class="ttname"><a href="struct_e_t_model_1_1_e_t_task.html#a03218d85e75216a0afe85ad4125cd282">ETModel.ETTask.CompletedTask</a></div><div class="ttdeci">static ETTask CompletedTask</div><div class="ttdef"><b>Definition:</b> <a href="_e_t_task_factory_8cs_source.html#l00008">ETTaskFactory.cs:8</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_1e261a42b4a2e33df58a15c412684b10.html">ETServer</a></li><li class="navelem"><a class="el" href="dir_473c270c995194c5ad99131d9c901f09.html">Server</a></li><li class="navelem"><a class="el" href="dir_8ba39ddea26488234058f82da6354cdf.html">Hotfix</a></li><li class="navelem"><a class="el" href="dir_67749320d949448dd164113cfebd1f3a.html">Handler</a></li><li class="navelem"><a class="el" href="_c2_g___player_info_handler_8cs.html">C2G_PlayerInfoHandler.cs</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:24:55 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

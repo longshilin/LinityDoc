@@ -1,0 +1,239 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: Assets/Scripts/Libraries/ET/Module/Message/Network/WebSocket/WService.cs 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_w_service_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">WService.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_w_service_8cs.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>;</div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Collections.Generic;</div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Net;</div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Net.WebSockets;</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_microsoft.html">Microsoft</a>.<a class="code" href="namespace_microsoft_1_1_i_o.html">IO</a>;</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_e_t_model.html">ETModel</a></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;{</div>
+<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="class_e_t_model_1_1_w_service.html">    9</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="class_e_t_model_1_1_w_service.html">WService</a>: <a class="code" href="class_e_t_model_1_1_a_service.html">AService</a></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    {</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;        <span class="keyword">private</span> readonly HttpListener httpListener;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        </div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        <span class="keyword">private</span> readonly Dictionary&lt;long, WChannel&gt; channels = <span class="keyword">new</span> Dictionary&lt;long, WChannel&gt;();</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        </div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="class_e_t_model_1_1_w_service.html#a781b0e14532fc186552e54c0828e9b4f">   15</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream_manager.html">RecyclableMemoryStreamManager</a> <a class="code" href="class_e_t_model_1_1_w_service.html#a781b0e14532fc186552e54c0828e9b4f">MemoryStreamManager</a> = <span class="keyword">new</span> <a class="code" href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream_manager.html">RecyclableMemoryStreamManager</a>();</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="class_e_t_model_1_1_w_service.html#a30bc976cfb44e6b48e135572ebbf2b8b">   17</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_e_t_model_1_1_w_service.html#a30bc976cfb44e6b48e135572ebbf2b8b">WService</a>(IEnumerable&lt;string&gt; prefixs, Action&lt;AChannel&gt; acceptCallback)</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        {</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;            this.<a class="code" href="class_e_t_model_1_1_a_service.html#a03502446d6b98c1099e5e3ad56917ab3">AcceptCallback</a> += acceptCallback;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;            </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;            this.httpListener = <span class="keyword">new</span> HttpListener();</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;            <a class="code" href="class_e_t_model_1_1_w_service.html#ae0f0d548497bcf3c6b38cdd205a69b58">StartAccept</a>(prefixs).<a class="code" href="struct_e_t_model_1_1_e_t_void.html#a32ec7cabfc1072b57cc2e5a2f5d63a19">Coroutine</a>();</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        }</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        </div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="class_e_t_model_1_1_w_service.html#a3654d9f9396fb7019c7033a5a32a4a63">   26</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_e_t_model_1_1_w_service.html#a3654d9f9396fb7019c7033a5a32a4a63">WService</a>()</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        {</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        }</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        </div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="class_e_t_model_1_1_w_service.html#ae6068bbea9ffa6edc250896dbf236de4">   30</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <a class="code" href="class_e_t_model_1_1_a_channel.html">AChannel</a> <a class="code" href="class_e_t_model_1_1_w_service.html#ae6068bbea9ffa6edc250896dbf236de4">GetChannel</a>(<span class="keywordtype">long</span> <span class="keywordtype">id</span>)</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        {</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;            <a class="code" href="class_e_t_model_1_1_w_channel.html">WChannel</a> channel;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;            this.channels.TryGetValue(<span class="keywordtype">id</span>, out channel);</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;            <span class="keywordflow">return</span> channel;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        }</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="class_e_t_model_1_1_w_service.html#a0f0bb0c975c6f75c498c1adbded22bee">   37</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <a class="code" href="class_e_t_model_1_1_a_channel.html">AChannel</a> <a class="code" href="class_e_t_model_1_1_w_service.html#a0f0bb0c975c6f75c498c1adbded22bee">ConnectChannel</a>(IPEndPoint ipEndPoint)</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        {</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;            <span class="keywordflow">throw</span> <span class="keyword">new</span> NotImplementedException();</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        }</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="class_e_t_model_1_1_w_service.html#a53dfcd8460e281394ffc8c2230d93f8e">   42</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <a class="code" href="class_e_t_model_1_1_a_channel.html">AChannel</a> <a class="code" href="class_e_t_model_1_1_w_service.html#a53dfcd8460e281394ffc8c2230d93f8e">ConnectChannel</a>(<span class="keywordtype">string</span> address)</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        {</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                        ClientWebSocket webSocket = <span class="keyword">new</span> ClientWebSocket();</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            <a class="code" href="class_e_t_model_1_1_w_channel.html">WChannel</a> channel = <span class="keyword">new</span> <a class="code" href="class_e_t_model_1_1_w_channel.html">WChannel</a>(webSocket, <span class="keyword">this</span>);</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;            this.channels[channel.<a class="code" href="class_e_t_model_1_1_component_with_id.html#a5e54a3b2e2f21e66b712ea0fe27e0554">Id</a>] = channel;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            channel.<a class="code" href="class_e_t_model_1_1_w_channel.html#a42b6276a8f95bd54bdedb5d99934d958">ConnectAsync</a>(address).<a class="code" href="struct_e_t_model_1_1_e_t_void.html#a32ec7cabfc1072b57cc2e5a2f5d63a19">Coroutine</a>();</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            <span class="keywordflow">return</span> channel;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        }</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="class_e_t_model_1_1_w_service.html#aba473d978c6902b48448b7173b228526">   51</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code" href="class_e_t_model_1_1_w_service.html#aba473d978c6902b48448b7173b228526">Remove</a>(<span class="keywordtype">long</span> <span class="keywordtype">id</span>)</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        {</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            <a class="code" href="class_e_t_model_1_1_w_channel.html">WChannel</a> channel;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            <span class="keywordflow">if</span> (!this.channels.TryGetValue(<span class="keywordtype">id</span>, out channel))</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            {</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            }</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            this.channels.Remove(<span class="keywordtype">id</span>);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;            channel.<a class="code" href="class_e_t_model_1_1_w_channel.html#a6865a5683fb7f439add4719ee2600eb3">Dispose</a>();</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        }</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="class_e_t_model_1_1_w_service.html#aa787eb0546d06f83ec158bc70bd645de">   63</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code" href="class_e_t_model_1_1_w_service.html#aa787eb0546d06f83ec158bc70bd645de">Update</a>()</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        {</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        }</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00068"></a><span class="lineno"><a class="line" href="class_e_t_model_1_1_w_service.html#ae0f0d548497bcf3c6b38cdd205a69b58">   68</a></span>&#160;        <span class="keyword">public</span> async <a class="code" href="struct_e_t_model_1_1_e_t_void.html">ETVoid</a> <a class="code" href="class_e_t_model_1_1_w_service.html#ae0f0d548497bcf3c6b38cdd205a69b58">StartAccept</a>(IEnumerable&lt;string&gt; prefixs)</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        {</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            <span class="keywordflow">try</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            {</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                <span class="keywordflow">foreach</span> (<span class="keywordtype">string</span> prefix <span class="keywordflow">in</span> prefixs)</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                {</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                    this.httpListener.Prefixes.Add(prefix);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                }</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                httpListener.Start();</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                <span class="keywordflow">while</span> (<span class="keyword">true</span>)</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                {</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                    <span class="keywordflow">try</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                    {</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                        HttpListenerContext httpListenerContext = await this.httpListener.GetContextAsync();</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                        HttpListenerWebSocketContext webSocketContext = await httpListenerContext.AcceptWebSocketAsync(<span class="keyword">null</span>);</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                        <a class="code" href="class_e_t_model_1_1_w_channel.html">WChannel</a> channel = <span class="keyword">new</span> <a class="code" href="class_e_t_model_1_1_w_channel.html">WChannel</a>(webSocketContext, <span class="keyword">this</span>);</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                        this.channels[channel.<a class="code" href="class_e_t_model_1_1_component_with_id.html#a5e54a3b2e2f21e66b712ea0fe27e0554">Id</a>] = channel;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                        this.<a class="code" href="class_e_t_model_1_1_a_service.html#a8cc8f32a2803df16a9b39fa93e88f4c6">OnAccept</a>(channel);</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                    }</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                    <span class="keywordflow">catch</span> (Exception e)</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                    {</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                        <a class="code" href="_login_form_8cs.html#a6208db3ac52d7f107a612679d0d8eca3">Log</a>.Error(e);</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                    }</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;                }</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;            }</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;            <span class="keywordflow">catch</span> (HttpListenerException e)</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;            {</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;                <span class="keywordflow">if</span> (e.ErrorCode == 5)</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;                {</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;                    <span class="keywordflow">throw</span> <span class="keyword">new</span> Exception($<span class="stringliteral">&quot;CMD管理员中输入: netsh http add urlacl url=http://*:8080/ user=Everyone&quot;</span>, e);</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;                }</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;                <a class="code" href="_login_form_8cs.html#a6208db3ac52d7f107a612679d0d8eca3">Log</a>.Error(e);</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;            }</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;            <span class="keywordflow">catch</span> (Exception e)</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;            {</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;                <a class="code" href="_login_form_8cs.html#a6208db3ac52d7f107a612679d0d8eca3">Log</a>.Error(e);</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;            }</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        }</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    }</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;}</div>
+<div class="ttc" id="a_login_form_8cs_html_a6208db3ac52d7f107a612679d0d8eca3"><div class="ttname"><a href="_login_form_8cs.html#a6208db3ac52d7f107a612679d0d8eca3">Log</a></div><div class="ttdeci">UnityGameFramework.Runtime.Log Log</div><div class="ttdef"><b>Definition:</b> <a href="_login_form_8cs_source.html#l00007">LoginForm.cs:7</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_a_channel_html"><div class="ttname"><a href="class_e_t_model_1_1_a_channel.html">ETModel.AChannel</a></div><div class="ttdef"><b>Definition:</b> <a href="_a_channel_8cs_source.html#l00013">AChannel.cs:14</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_a_service_html"><div class="ttname"><a href="class_e_t_model_1_1_a_service.html">ETModel.AService</a></div><div class="ttdef"><b>Definition:</b> <a href="_a_service_8cs_source.html#l00013">AService.cs:14</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_a_service_html_a03502446d6b98c1099e5e3ad56917ab3"><div class="ttname"><a href="class_e_t_model_1_1_a_service.html#a03502446d6b98c1099e5e3ad56917ab3">ETModel.AService.AcceptCallback</a></div><div class="ttdeci">Action&lt; AChannel &gt; AcceptCallback</div><div class="ttdef"><b>Definition:</b> <a href="_a_service_8cs_source.html#l00019">AService.cs:20</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_a_service_html_a8cc8f32a2803df16a9b39fa93e88f4c6"><div class="ttname"><a href="class_e_t_model_1_1_a_service.html#a8cc8f32a2803df16a9b39fa93e88f4c6">ETModel.AService.OnAccept</a></div><div class="ttdeci">void OnAccept(AChannel channel)</div><div class="ttdef"><b>Definition:</b> <a href="_a_service_8cs_source.html#l00031">AService.cs:31</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_component_with_id_html_a5e54a3b2e2f21e66b712ea0fe27e0554"><div class="ttname"><a href="class_e_t_model_1_1_component_with_id.html#a5e54a3b2e2f21e66b712ea0fe27e0554">ETModel.ComponentWithId.Id</a></div><div class="ttdeci">long Id</div><div class="ttdef"><b>Definition:</b> <a href="_libraries_2_e_t_2_base_2_object_2_component_with_id_8cs_source.html#l00015">ComponentWithId.cs:15</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_w_channel_html"><div class="ttname"><a href="class_e_t_model_1_1_w_channel.html">ETModel.WChannel</a></div><div class="ttdef"><b>Definition:</b> <a href="_w_channel_8cs_source.html#l00009">WChannel.cs:10</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_w_channel_html_a42b6276a8f95bd54bdedb5d99934d958"><div class="ttname"><a href="class_e_t_model_1_1_w_channel.html#a42b6276a8f95bd54bdedb5d99934d958">ETModel.WChannel.ConnectAsync</a></div><div class="ttdeci">async ETVoid ConnectAsync(string url)</div><div class="ttdef"><b>Definition:</b> <a href="_w_channel_8cs_source.html#l00091">WChannel.cs:91</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_w_channel_html_a6865a5683fb7f439add4719ee2600eb3"><div class="ttname"><a href="class_e_t_model_1_1_w_channel.html#a6865a5683fb7f439add4719ee2600eb3">ETModel.WChannel.Dispose</a></div><div class="ttdeci">override void Dispose()</div><div class="ttdef"><b>Definition:</b> <a href="_w_channel_8cs_source.html#l00049">WChannel.cs:49</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_w_service_html"><div class="ttname"><a href="class_e_t_model_1_1_w_service.html">ETModel.WService</a></div><div class="ttdef"><b>Definition:</b> <a href="_w_service_8cs_source.html#l00009">WService.cs:10</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_w_service_html_a0f0bb0c975c6f75c498c1adbded22bee"><div class="ttname"><a href="class_e_t_model_1_1_w_service.html#a0f0bb0c975c6f75c498c1adbded22bee">ETModel.WService.ConnectChannel</a></div><div class="ttdeci">override AChannel ConnectChannel(IPEndPoint ipEndPoint)</div><div class="ttdef"><b>Definition:</b> <a href="_w_service_8cs_source.html#l00037">WService.cs:37</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_w_service_html_a30bc976cfb44e6b48e135572ebbf2b8b"><div class="ttname"><a href="class_e_t_model_1_1_w_service.html#a30bc976cfb44e6b48e135572ebbf2b8b">ETModel.WService.WService</a></div><div class="ttdeci">WService(IEnumerable&lt; string &gt; prefixs, Action&lt; AChannel &gt; acceptCallback)</div><div class="ttdef"><b>Definition:</b> <a href="_w_service_8cs_source.html#l00017">WService.cs:17</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_w_service_html_a3654d9f9396fb7019c7033a5a32a4a63"><div class="ttname"><a href="class_e_t_model_1_1_w_service.html#a3654d9f9396fb7019c7033a5a32a4a63">ETModel.WService.WService</a></div><div class="ttdeci">WService()</div><div class="ttdef"><b>Definition:</b> <a href="_w_service_8cs_source.html#l00026">WService.cs:26</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_w_service_html_a53dfcd8460e281394ffc8c2230d93f8e"><div class="ttname"><a href="class_e_t_model_1_1_w_service.html#a53dfcd8460e281394ffc8c2230d93f8e">ETModel.WService.ConnectChannel</a></div><div class="ttdeci">override AChannel ConnectChannel(string address)</div><div class="ttdef"><b>Definition:</b> <a href="_w_service_8cs_source.html#l00042">WService.cs:42</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_w_service_html_a781b0e14532fc186552e54c0828e9b4f"><div class="ttname"><a href="class_e_t_model_1_1_w_service.html#a781b0e14532fc186552e54c0828e9b4f">ETModel.WService.MemoryStreamManager</a></div><div class="ttdeci">RecyclableMemoryStreamManager MemoryStreamManager</div><div class="ttdef"><b>Definition:</b> <a href="_w_service_8cs_source.html#l00015">WService.cs:15</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_w_service_html_aa787eb0546d06f83ec158bc70bd645de"><div class="ttname"><a href="class_e_t_model_1_1_w_service.html#aa787eb0546d06f83ec158bc70bd645de">ETModel.WService.Update</a></div><div class="ttdeci">override void Update()</div><div class="ttdef"><b>Definition:</b> <a href="_w_service_8cs_source.html#l00063">WService.cs:63</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_w_service_html_aba473d978c6902b48448b7173b228526"><div class="ttname"><a href="class_e_t_model_1_1_w_service.html#aba473d978c6902b48448b7173b228526">ETModel.WService.Remove</a></div><div class="ttdeci">override void Remove(long id)</div><div class="ttdef"><b>Definition:</b> <a href="_w_service_8cs_source.html#l00051">WService.cs:51</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_w_service_html_ae0f0d548497bcf3c6b38cdd205a69b58"><div class="ttname"><a href="class_e_t_model_1_1_w_service.html#ae0f0d548497bcf3c6b38cdd205a69b58">ETModel.WService.StartAccept</a></div><div class="ttdeci">async ETVoid StartAccept(IEnumerable&lt; string &gt; prefixs)</div><div class="ttdef"><b>Definition:</b> <a href="_w_service_8cs_source.html#l00068">WService.cs:68</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_w_service_html_ae6068bbea9ffa6edc250896dbf236de4"><div class="ttname"><a href="class_e_t_model_1_1_w_service.html#ae6068bbea9ffa6edc250896dbf236de4">ETModel.WService.GetChannel</a></div><div class="ttdeci">override AChannel GetChannel(long id)</div><div class="ttdef"><b>Definition:</b> <a href="_w_service_8cs_source.html#l00030">WService.cs:30</a></div></div>
+<div class="ttc" id="aclass_microsoft_1_1_i_o_1_1_recyclable_memory_stream_manager_html"><div class="ttname"><a href="class_microsoft_1_1_i_o_1_1_recyclable_memory_stream_manager.html">Microsoft.IO.RecyclableMemoryStreamManager</a></div><div class="ttdoc">Manages pools of RecyclableMemoryStream objects.</div><div class="ttdef"><b>Definition:</b> <a href="_events_8cs_source.html#l00028">Events.cs:29</a></div></div>
+<div class="ttc" id="anamespace_e_t_model_html"><div class="ttname"><a href="namespace_e_t_model.html">ETModel</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_e_t_task_method_builder_8cs_source.html#l00006">AsyncETTaskMethodBuilder.cs:7</a></div></div>
+<div class="ttc" id="anamespace_microsoft_1_1_i_o_html"><div class="ttname"><a href="namespace_microsoft_1_1_i_o.html">Microsoft.IO</a></div><div class="ttdef"><b>Definition:</b> <a href="_events_8cs_source.html#l00023">Events.cs:24</a></div></div>
+<div class="ttc" id="anamespace_microsoft_html"><div class="ttname"><a href="namespace_microsoft.html">Microsoft</a></div><div class="ttdef"><b>Definition:</b> <a href="_events_8cs_source.html#l00023">Events.cs:24</a></div></div>
+<div class="ttc" id="anamespace_system_html"><div class="ttname"><a href="namespace_system.html">System</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_method_builder_attribute_8cs_source.html#l00001">AsyncMethodBuilderAttribute.cs:2</a></div></div>
+<div class="ttc" id="astruct_e_t_model_1_1_e_t_void_html"><div class="ttname"><a href="struct_e_t_model_1_1_e_t_void.html">ETModel.ETVoid</a></div><div class="ttdef"><b>Definition:</b> <a href="_e_t_void_8cs_source.html#l00008">ETVoid.cs:9</a></div></div>
+<div class="ttc" id="astruct_e_t_model_1_1_e_t_void_html_a32ec7cabfc1072b57cc2e5a2f5d63a19"><div class="ttname"><a href="struct_e_t_model_1_1_e_t_void.html#a32ec7cabfc1072b57cc2e5a2f5d63a19">ETModel.ETVoid.Coroutine</a></div><div class="ttdeci">void Coroutine()</div><div class="ttdef"><b>Definition:</b> <a href="_e_t_void_8cs_source.html#l00010">ETVoid.cs:10</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_84bbf7b3c7f28a5a18725745e1505219.html">Assets</a></li><li class="navelem"><a class="el" href="dir_f13b41af88cf68434578284aaf699e39.html">Scripts</a></li><li class="navelem"><a class="el" href="dir_46d134a3bf82cf4dc49ca8f728aea58c.html">Libraries</a></li><li class="navelem"><a class="el" href="dir_f6df8f7e58ea5a2220a287b647108730.html">ET</a></li><li class="navelem"><a class="el" href="dir_83296929b1cb48979e134a96af9624b1.html">Module</a></li><li class="navelem"><a class="el" href="dir_294341664f59c46dd79c497dca774bde.html">Message</a></li><li class="navelem"><a class="el" href="dir_687a23efdbeee3ff0a60924af43ee8f5.html">Network</a></li><li class="navelem"><a class="el" href="dir_3a689cb0628ab1f99c5d1ca474cf22df.html">WebSocket</a></li><li class="navelem"><a class="el" href="_w_service_8cs.html">WService.cs</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:24:45 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

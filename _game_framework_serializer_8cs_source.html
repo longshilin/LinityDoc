@@ -1,0 +1,257 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: Assets/Scripts/Libraries/GameFramework/Libraries/GameFramework-2021.05.31/GameFramework/Base/GameFrameworkSerializer.cs 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_game_framework_serializer_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">GameFrameworkSerializer.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_game_framework_serializer_8cs.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">//------------------------------------------------------------</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">// Game Framework</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">// Copyright © 2013-2021 Jiang Yin. All rights reserved.</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">// Homepage: https://gameframework.cn/</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">// Feedback: mailto:ellan@gameframework.cn</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">//------------------------------------------------------------</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Collections.Generic;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.IO;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_game_framework.html">GameFramework</a></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;{</div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="class_game_framework_1_1_game_framework_serializer.html">   17</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">class </span><a class="code" href="class_game_framework_1_1_game_framework_serializer.html">GameFrameworkSerializer</a>&lt;T&gt;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    {</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <span class="keyword">private</span> readonly Dictionary&lt;byte, SerializeCallback&gt; m_SerializeCallbacks;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        <span class="keyword">private</span> readonly Dictionary&lt;byte, DeserializeCallback&gt; m_DeserializeCallbacks;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <span class="keyword">private</span> readonly Dictionary&lt;byte, TryGetValueCallback&gt; m_TryGetValueCallbacks;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">byte</span> m_LatestSerializeCallbackVersion;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="class_game_framework_1_1_game_framework_serializer.html#a770c44624dcd65b3d22e33c30dbddb93">   27</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_game_framework_1_1_game_framework_serializer.html#a770c44624dcd65b3d22e33c30dbddb93">GameFrameworkSerializer</a>()</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        {</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;            m_SerializeCallbacks = <span class="keyword">new</span> Dictionary&lt;byte, SerializeCallback&gt;();</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;            m_DeserializeCallbacks = <span class="keyword">new</span> Dictionary&lt;byte, DeserializeCallback&gt;();</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;            m_TryGetValueCallbacks = <span class="keyword">new</span> Dictionary&lt;byte, TryGetValueCallback&gt;();</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;            m_LatestSerializeCallbackVersion = 0;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        }</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="class_game_framework_1_1_game_framework_serializer.html#a650151868b8ccafec874341371709903">   41</a></span>&#160;        <span class="keyword">public</span> delegate <span class="keywordtype">bool</span> <a class="code" href="class_game_framework_1_1_game_framework_serializer.html#a650151868b8ccafec874341371709903">SerializeCallback</a>(Stream stream, T data);</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="class_game_framework_1_1_game_framework_serializer.html#af2035ca784bba05f5ed7c2d5f86395db">   48</a></span>&#160;        <span class="keyword">public</span> delegate T <a class="code" href="class_game_framework_1_1_game_framework_serializer.html#af2035ca784bba05f5ed7c2d5f86395db">DeserializeCallback</a>(Stream stream);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="class_game_framework_1_1_game_framework_serializer.html#a3820ac137cf85fc48960d6f7ab64876e">   57</a></span>&#160;        <span class="keyword">public</span> delegate <span class="keywordtype">bool</span> <a class="code" href="class_game_framework_1_1_game_framework_serializer.html#a3820ac137cf85fc48960d6f7ab64876e">TryGetValueCallback</a>(Stream stream, <span class="keywordtype">string</span> key, out <span class="keywordtype">object</span> value);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="class_game_framework_1_1_game_framework_serializer.html#ad068c5c596908e79c9c138e0488e20b3">   64</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_game_framework_1_1_game_framework_serializer.html#ad068c5c596908e79c9c138e0488e20b3">RegisterSerializeCallback</a>(<span class="keywordtype">byte</span> version, <a class="code" href="class_game_framework_1_1_game_framework_serializer.html#a650151868b8ccafec874341371709903">SerializeCallback</a> callback)</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        {</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            <span class="keywordflow">if</span> (callback == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            {</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> <a class="code" href="class_game_framework_1_1_game_framework_exception.html">GameFrameworkException</a>(<span class="stringliteral">&quot;Serialize callback is invalid.&quot;</span>);</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            }</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            m_SerializeCallbacks[version] = callback;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;            <span class="keywordflow">if</span> (version &gt; m_LatestSerializeCallbackVersion)</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            {</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                m_LatestSerializeCallbackVersion = version;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            }</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        }</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
+<div class="line"><a name="l00083"></a><span class="lineno"><a class="line" href="class_game_framework_1_1_game_framework_serializer.html#ad141aa871c27ef56b9ffca7b34e1c5f7">   83</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_game_framework_1_1_game_framework_serializer.html#ad141aa871c27ef56b9ffca7b34e1c5f7">RegisterDeserializeCallback</a>(<span class="keywordtype">byte</span> version, <a class="code" href="class_game_framework_1_1_game_framework_serializer.html#af2035ca784bba05f5ed7c2d5f86395db">DeserializeCallback</a> callback)</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        {</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;            <span class="keywordflow">if</span> (callback == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            {</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> <a class="code" href="class_game_framework_1_1_game_framework_exception.html">GameFrameworkException</a>(<span class="stringliteral">&quot;Deserialize callback is invalid.&quot;</span>);</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;            }</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            m_DeserializeCallbacks[version] = callback;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        }</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
+<div class="line"><a name="l00098"></a><span class="lineno"><a class="line" href="class_game_framework_1_1_game_framework_serializer.html#a123934b2ab5651bd855ff1e52c053cee">   98</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_game_framework_1_1_game_framework_serializer.html#a123934b2ab5651bd855ff1e52c053cee">RegisterTryGetValueCallback</a>(<span class="keywordtype">byte</span> version, <a class="code" href="class_game_framework_1_1_game_framework_serializer.html#a3820ac137cf85fc48960d6f7ab64876e">TryGetValueCallback</a> callback)</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        {</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;            <span class="keywordflow">if</span> (callback == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;            {</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> <a class="code" href="class_game_framework_1_1_game_framework_exception.html">GameFrameworkException</a>(<span class="stringliteral">&quot;Try get value callback is invalid.&quot;</span>);</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;            }</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;            m_TryGetValueCallbacks[version] = callback;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        }</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160; </div>
+<div class="line"><a name="l00114"></a><span class="lineno"><a class="line" href="class_game_framework_1_1_game_framework_serializer.html#a3475818f8a99e9ab07383013b85b87b6">  114</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code" href="class_game_framework_1_1_game_framework_serializer.html#a3475818f8a99e9ab07383013b85b87b6">Serialize</a>(Stream stream, T data)</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        {</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;            <span class="keywordflow">if</span> (m_SerializeCallbacks.Count &lt;= 0)</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;            {</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> <a class="code" href="class_game_framework_1_1_game_framework_exception.html">GameFrameworkException</a>(<span class="stringliteral">&quot;No serialize callback registered.&quot;</span>);</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;            }</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160; </div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="class_game_framework_1_1_game_framework_serializer.html#a3475818f8a99e9ab07383013b85b87b6">Serialize</a>(stream, data, m_LatestSerializeCallbackVersion);</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        }</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160; </div>
+<div class="line"><a name="l00131"></a><span class="lineno"><a class="line" href="class_game_framework_1_1_game_framework_serializer.html#af3cc81b8ec8dd539fda1b79535b61e18">  131</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code" href="class_game_framework_1_1_game_framework_serializer.html#af3cc81b8ec8dd539fda1b79535b61e18">Serialize</a>(Stream stream, T data, <span class="keywordtype">byte</span> version)</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        {</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;            <span class="keywordtype">byte</span>[] header = <a class="code" href="class_game_framework_1_1_game_framework_serializer.html#aa5e6239ad799f21b4f52a4589a72dd8f">GetHeader</a>();</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;            stream.WriteByte(header[0]);</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;            stream.WriteByte(header[1]);</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;            stream.WriteByte(header[2]);</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;            stream.WriteByte(version);</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;            <a class="code" href="class_game_framework_1_1_game_framework_serializer.html#a650151868b8ccafec874341371709903">SerializeCallback</a> callback = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;            <span class="keywordflow">if</span> (!m_SerializeCallbacks.TryGetValue(version, out callback))</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;            {</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> <a class="code" href="class_game_framework_1_1_game_framework_exception.html">GameFrameworkException</a>(<a class="code" href="_unity_web_request_download_agent_helper_8cs.html#a9084eedf9b8c1b9c0fb3e425c1f69c1f">Utility</a>.Text.Format(<span class="stringliteral">&quot;Serialize callback &#39;{0}&#39; is not exist.&quot;</span>, version.ToString()));</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;            }</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160; </div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;            <span class="keywordflow">return</span> callback(stream, data);</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;        }</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160; </div>
+<div class="line"><a name="l00152"></a><span class="lineno"><a class="line" href="class_game_framework_1_1_game_framework_serializer.html#ae0e5f0962c71393245238c58b753f514">  152</a></span>&#160;        <span class="keyword">public</span> T <a class="code" href="class_game_framework_1_1_game_framework_serializer.html#ae0e5f0962c71393245238c58b753f514">Deserialize</a>(Stream stream)</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;        {</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;            <span class="keywordtype">byte</span>[] header = <a class="code" href="class_game_framework_1_1_game_framework_serializer.html#aa5e6239ad799f21b4f52a4589a72dd8f">GetHeader</a>();</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;            <span class="keywordtype">byte</span> header0 = (byte)stream.ReadByte();</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;            <span class="keywordtype">byte</span> header1 = (byte)stream.ReadByte();</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;            <span class="keywordtype">byte</span> header2 = (byte)stream.ReadByte();</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;            <span class="keywordflow">if</span> (header0 != header[0] || header1 != header[1] || header2 != header[2])</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;            {</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> <a class="code" href="class_game_framework_1_1_game_framework_exception.html">GameFrameworkException</a>(<a class="code" href="_unity_web_request_download_agent_helper_8cs.html#a9084eedf9b8c1b9c0fb3e425c1f69c1f">Utility</a>.Text.Format(<span class="stringliteral">&quot;Header is invalid, need &#39;{0}{1}{2}&#39;, current &#39;{3}{4}{5}&#39;.&quot;</span>,</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;                    ((<span class="keywordtype">char</span>)header[0]).ToString(), ((<span class="keywordtype">char</span>)header[1]).ToString(), ((<span class="keywordtype">char</span>)header[2]).ToString(),</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;                    ((<span class="keywordtype">char</span>)header0).ToString(), ((<span class="keywordtype">char</span>)header1).ToString(), ((<span class="keywordtype">char</span>)header2).ToString()));</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;            }</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160; </div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;            <span class="keywordtype">byte</span> version = (byte)stream.ReadByte();</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;            <a class="code" href="class_game_framework_1_1_game_framework_serializer.html#af2035ca784bba05f5ed7c2d5f86395db">DeserializeCallback</a> callback = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;            <span class="keywordflow">if</span> (!m_DeserializeCallbacks.TryGetValue(version, out callback))</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;            {</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> <a class="code" href="class_game_framework_1_1_game_framework_exception.html">GameFrameworkException</a>(<a class="code" href="_unity_web_request_download_agent_helper_8cs.html#a9084eedf9b8c1b9c0fb3e425c1f69c1f">Utility</a>.Text.Format(<span class="stringliteral">&quot;Deserialize callback &#39;{0}&#39; is not exist.&quot;</span>, version.ToString()));</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;            }</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160; </div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;            <span class="keywordflow">return</span> callback(stream);</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;        }</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160; </div>
+<div class="line"><a name="l00182"></a><span class="lineno"><a class="line" href="class_game_framework_1_1_game_framework_serializer.html#a3a975ea82778af26fcd319b3ecf52c51">  182</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code" href="class_game_framework_1_1_game_framework_serializer.html#a3a975ea82778af26fcd319b3ecf52c51">TryGetValue</a>(Stream stream, <span class="keywordtype">string</span> key, out <span class="keywordtype">object</span> value)</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;        {</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;            value = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;            <span class="keywordtype">byte</span>[] header = <a class="code" href="class_game_framework_1_1_game_framework_serializer.html#aa5e6239ad799f21b4f52a4589a72dd8f">GetHeader</a>();</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;            <span class="keywordtype">byte</span> header0 = (byte)stream.ReadByte();</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;            <span class="keywordtype">byte</span> header1 = (byte)stream.ReadByte();</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;            <span class="keywordtype">byte</span> header2 = (byte)stream.ReadByte();</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;            <span class="keywordflow">if</span> (header0 != header[0] || header1 != header[1] || header2 != header[2])</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;            {</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;            }</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160; </div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;            <span class="keywordtype">byte</span> version = (byte)stream.ReadByte();</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;            <a class="code" href="class_game_framework_1_1_game_framework_serializer.html#a3820ac137cf85fc48960d6f7ab64876e">TryGetValueCallback</a> callback = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;            <span class="keywordflow">if</span> (!m_TryGetValueCallbacks.TryGetValue(version, out callback))</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;            {</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;            }</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160; </div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;            <span class="keywordflow">return</span> callback(stream, key, out value);</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;        }</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160; </div>
+<div class="line"><a name="l00208"></a><span class="lineno"><a class="line" href="class_game_framework_1_1_game_framework_serializer.html#aa5e6239ad799f21b4f52a4589a72dd8f">  208</a></span>&#160;        <span class="keyword">protected</span> <span class="keyword">abstract</span> <span class="keywordtype">byte</span>[] <a class="code" href="class_game_framework_1_1_game_framework_serializer.html#aa5e6239ad799f21b4f52a4589a72dd8f">GetHeader</a>();</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;    }</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;}</div>
+<div class="ttc" id="a_unity_web_request_download_agent_helper_8cs_html_a9084eedf9b8c1b9c0fb3e425c1f69c1f"><div class="ttname"><a href="_unity_web_request_download_agent_helper_8cs.html#a9084eedf9b8c1b9c0fb3e425c1f69c1f">Utility</a></div><div class="ttdeci">GameFramework.Utility Utility</div><div class="ttdef"><b>Definition:</b> <a href="_unity_web_request_download_agent_helper_8cs_source.html#l00016">UnityWebRequestDownloadAgentHelper.cs:16</a></div></div>
+<div class="ttc" id="aclass_game_framework_1_1_game_framework_exception_html"><div class="ttname"><a href="class_game_framework_1_1_game_framework_exception.html">GameFramework.GameFrameworkException</a></div><div class="ttdoc">游戏框架异常类。</div><div class="ttdef"><b>Definition:</b> <a href="_game_framework_exception_8cs_source.html#l00017">GameFrameworkException.cs:18</a></div></div>
+<div class="ttc" id="aclass_game_framework_1_1_game_framework_serializer_html"><div class="ttname"><a href="class_game_framework_1_1_game_framework_serializer.html">GameFramework.GameFrameworkSerializer</a></div><div class="ttdoc">游戏框架序列化器基类。</div><div class="ttdef"><b>Definition:</b> <a href="_game_framework_serializer_8cs_source.html#l00017">GameFrameworkSerializer.cs:18</a></div></div>
+<div class="ttc" id="aclass_game_framework_1_1_game_framework_serializer_html_a123934b2ab5651bd855ff1e52c053cee"><div class="ttname"><a href="class_game_framework_1_1_game_framework_serializer.html#a123934b2ab5651bd855ff1e52c053cee">GameFramework.GameFrameworkSerializer.RegisterTryGetValueCallback</a></div><div class="ttdeci">void RegisterTryGetValueCallback(byte version, TryGetValueCallback callback)</div><div class="ttdoc">注册尝试从指定流获取指定键的值回调函数。</div><div class="ttdef"><b>Definition:</b> <a href="_game_framework_serializer_8cs_source.html#l00098">GameFrameworkSerializer.cs:98</a></div></div>
+<div class="ttc" id="aclass_game_framework_1_1_game_framework_serializer_html_a3475818f8a99e9ab07383013b85b87b6"><div class="ttname"><a href="class_game_framework_1_1_game_framework_serializer.html#a3475818f8a99e9ab07383013b85b87b6">GameFramework.GameFrameworkSerializer.Serialize</a></div><div class="ttdeci">bool Serialize(Stream stream, T data)</div><div class="ttdoc">序列化数据到目标流中。</div><div class="ttdef"><b>Definition:</b> <a href="_game_framework_serializer_8cs_source.html#l00114">GameFrameworkSerializer.cs:114</a></div></div>
+<div class="ttc" id="aclass_game_framework_1_1_game_framework_serializer_html_a3820ac137cf85fc48960d6f7ab64876e"><div class="ttname"><a href="class_game_framework_1_1_game_framework_serializer.html#a3820ac137cf85fc48960d6f7ab64876e">GameFramework.GameFrameworkSerializer.TryGetValueCallback</a></div><div class="ttdeci">delegate bool TryGetValueCallback(Stream stream, string key, out object value)</div><div class="ttdoc">尝试从指定流获取指定键的值回调函数。</div></div>
+<div class="ttc" id="aclass_game_framework_1_1_game_framework_serializer_html_a3a975ea82778af26fcd319b3ecf52c51"><div class="ttname"><a href="class_game_framework_1_1_game_framework_serializer.html#a3a975ea82778af26fcd319b3ecf52c51">GameFramework.GameFrameworkSerializer.TryGetValue</a></div><div class="ttdeci">bool TryGetValue(Stream stream, string key, out object value)</div><div class="ttdoc">尝试从指定流获取指定键的值。</div><div class="ttdef"><b>Definition:</b> <a href="_game_framework_serializer_8cs_source.html#l00182">GameFrameworkSerializer.cs:182</a></div></div>
+<div class="ttc" id="aclass_game_framework_1_1_game_framework_serializer_html_a650151868b8ccafec874341371709903"><div class="ttname"><a href="class_game_framework_1_1_game_framework_serializer.html#a650151868b8ccafec874341371709903">GameFramework.GameFrameworkSerializer.SerializeCallback</a></div><div class="ttdeci">delegate bool SerializeCallback(Stream stream, T data)</div><div class="ttdoc">序列化回调函数。</div></div>
+<div class="ttc" id="aclass_game_framework_1_1_game_framework_serializer_html_a770c44624dcd65b3d22e33c30dbddb93"><div class="ttname"><a href="class_game_framework_1_1_game_framework_serializer.html#a770c44624dcd65b3d22e33c30dbddb93">GameFramework.GameFrameworkSerializer.GameFrameworkSerializer</a></div><div class="ttdeci">GameFrameworkSerializer()</div><div class="ttdoc">初始化游戏框架序列化器基类的新实例。</div><div class="ttdef"><b>Definition:</b> <a href="_game_framework_serializer_8cs_source.html#l00027">GameFrameworkSerializer.cs:27</a></div></div>
+<div class="ttc" id="aclass_game_framework_1_1_game_framework_serializer_html_aa5e6239ad799f21b4f52a4589a72dd8f"><div class="ttname"><a href="class_game_framework_1_1_game_framework_serializer.html#aa5e6239ad799f21b4f52a4589a72dd8f">GameFramework.GameFrameworkSerializer.GetHeader</a></div><div class="ttdeci">abstract byte[] GetHeader()</div><div class="ttdoc">获取数据头标识。</div></div>
+<div class="ttc" id="aclass_game_framework_1_1_game_framework_serializer_html_ad068c5c596908e79c9c138e0488e20b3"><div class="ttname"><a href="class_game_framework_1_1_game_framework_serializer.html#ad068c5c596908e79c9c138e0488e20b3">GameFramework.GameFrameworkSerializer.RegisterSerializeCallback</a></div><div class="ttdeci">void RegisterSerializeCallback(byte version, SerializeCallback callback)</div><div class="ttdoc">注册序列化回调函数。</div><div class="ttdef"><b>Definition:</b> <a href="_game_framework_serializer_8cs_source.html#l00064">GameFrameworkSerializer.cs:64</a></div></div>
+<div class="ttc" id="aclass_game_framework_1_1_game_framework_serializer_html_ad141aa871c27ef56b9ffca7b34e1c5f7"><div class="ttname"><a href="class_game_framework_1_1_game_framework_serializer.html#ad141aa871c27ef56b9ffca7b34e1c5f7">GameFramework.GameFrameworkSerializer.RegisterDeserializeCallback</a></div><div class="ttdeci">void RegisterDeserializeCallback(byte version, DeserializeCallback callback)</div><div class="ttdoc">注册反序列化回调函数。</div><div class="ttdef"><b>Definition:</b> <a href="_game_framework_serializer_8cs_source.html#l00083">GameFrameworkSerializer.cs:83</a></div></div>
+<div class="ttc" id="aclass_game_framework_1_1_game_framework_serializer_html_ae0e5f0962c71393245238c58b753f514"><div class="ttname"><a href="class_game_framework_1_1_game_framework_serializer.html#ae0e5f0962c71393245238c58b753f514">GameFramework.GameFrameworkSerializer.Deserialize</a></div><div class="ttdeci">T Deserialize(Stream stream)</div><div class="ttdoc">从指定流反序列化数据。</div><div class="ttdef"><b>Definition:</b> <a href="_game_framework_serializer_8cs_source.html#l00152">GameFrameworkSerializer.cs:152</a></div></div>
+<div class="ttc" id="aclass_game_framework_1_1_game_framework_serializer_html_af2035ca784bba05f5ed7c2d5f86395db"><div class="ttname"><a href="class_game_framework_1_1_game_framework_serializer.html#af2035ca784bba05f5ed7c2d5f86395db">GameFramework.GameFrameworkSerializer.DeserializeCallback</a></div><div class="ttdeci">delegate T DeserializeCallback(Stream stream)</div><div class="ttdoc">反序列化回调函数。</div></div>
+<div class="ttc" id="aclass_game_framework_1_1_game_framework_serializer_html_af3cc81b8ec8dd539fda1b79535b61e18"><div class="ttname"><a href="class_game_framework_1_1_game_framework_serializer.html#af3cc81b8ec8dd539fda1b79535b61e18">GameFramework.GameFrameworkSerializer.Serialize</a></div><div class="ttdeci">bool Serialize(Stream stream, T data, byte version)</div><div class="ttdoc">序列化数据到目标流中。</div><div class="ttdef"><b>Definition:</b> <a href="_game_framework_serializer_8cs_source.html#l00131">GameFrameworkSerializer.cs:131</a></div></div>
+<div class="ttc" id="anamespace_game_framework_html"><div class="ttname"><a href="namespace_game_framework.html">GameFramework</a></div><div class="ttdef"><b>Definition:</b> <a href="_data_provider_8cs_source.html#l00011">DataProvider.cs:12</a></div></div>
+<div class="ttc" id="anamespace_system_html"><div class="ttname"><a href="namespace_system.html">System</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_method_builder_attribute_8cs_source.html#l00001">AsyncMethodBuilderAttribute.cs:2</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_84bbf7b3c7f28a5a18725745e1505219.html">Assets</a></li><li class="navelem"><a class="el" href="dir_f13b41af88cf68434578284aaf699e39.html">Scripts</a></li><li class="navelem"><a class="el" href="dir_46d134a3bf82cf4dc49ca8f728aea58c.html">Libraries</a></li><li class="navelem"><a class="el" href="dir_7a6862c303020716b3c311e95823547c.html">GameFramework</a></li><li class="navelem"><a class="el" href="dir_bfc6cd8d089c265c897460523cef6560.html">Libraries</a></li><li class="navelem"><a class="el" href="dir_c1104d2df307bba6f9db4e185ff99743.html">GameFramework-2021.05.31</a></li><li class="navelem"><a class="el" href="dir_fe759fdbe5a0d8b8465ec936ca1014c7.html">GameFramework</a></li><li class="navelem"><a class="el" href="dir_9e9846e36a577dc4464a04eb39b33d8a.html">Base</a></li><li class="navelem"><a class="el" href="_game_framework_serializer_8cs.html">GameFrameworkSerializer.cs</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:24:47 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

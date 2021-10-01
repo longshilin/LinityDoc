@@ -1,0 +1,169 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: Assets/Scripts/Libraries/GameFramework/Scripts/Runtime/Entity/DefaultEntityHelper.cs 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_default_entity_helper_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">DefaultEntityHelper.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_default_entity_helper_8cs.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">//------------------------------------------------------------</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">// Game Framework</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">// Copyright © 2013-2021 Jiang Yin. All rights reserved.</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">// Homepage: https://gameframework.cn/</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">// Feedback: mailto:ellan@gameframework.cn</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">//------------------------------------------------------------</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_game_framework.html">GameFramework</a>.<a class="code" href="namespace_game_framework_1_1_entity.html">Entity</a>;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_unity_engine.html">UnityEngine</a>;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_unity_game_framework_1_1_runtime.html">UnityGameFramework.Runtime</a></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;{</div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="class_unity_game_framework_1_1_runtime_1_1_default_entity_helper.html">   16</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="class_unity_game_framework_1_1_runtime_1_1_default_entity_helper.html">DefaultEntityHelper</a> : <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_entity_helper_base.html">EntityHelperBase</a></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    {</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        <span class="keyword">private</span> <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_resource_component.html">ResourceComponent</a> m_ResourceComponent = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="class_unity_game_framework_1_1_runtime_1_1_default_entity_helper.html#aba76c26e151c38dd2c7c8427913323ba">   25</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">object</span> <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_default_entity_helper.html#aba76c26e151c38dd2c7c8427913323ba">InstantiateEntity</a>(<span class="keywordtype">object</span> entityAsset)</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        {</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;            <span class="keywordflow">return</span> Instantiate((<a class="code" href="_component_auto_bind_tool_inspector_8cs.html#aef19bab18b9814edeef255c43e4f6bbc">Object</a>)entityAsset);</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        }</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="class_unity_game_framework_1_1_runtime_1_1_default_entity_helper.html#af91732bd761818924364c360d648d370">   37</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <a class="code" href="interface_game_framework_1_1_entity_1_1_i_entity.html">IEntity</a> <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_default_entity_helper.html#af91732bd761818924364c360d648d370">CreateEntity</a>(<span class="keywordtype">object</span> entityInstance, <a class="code" href="interface_game_framework_1_1_entity_1_1_i_entity_group.html">IEntityGroup</a> entityGroup, <span class="keywordtype">object</span> userData)</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        {</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;            GameObject gameObject = entityInstance as GameObject;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            <span class="keywordflow">if</span> (gameObject == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            {</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                <a class="code" href="_login_form_8cs.html#a6208db3ac52d7f107a612679d0d8eca3">Log</a>.Error(<span class="stringliteral">&quot;Entity instance is invalid.&quot;</span>);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            }</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;            Transform transform = gameObject.transform;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            transform.SetParent(((MonoBehaviour)entityGroup.<a class="code" href="interface_game_framework_1_1_entity_1_1_i_entity_group.html#a56bea82a2edd72234b5033b13df89883">Helper</a>).transform);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            <span class="keywordflow">return</span> gameObject.GetOrAddComponent&lt;<a class="code" href="class_unity_game_framework_1_1_runtime_1_1_entity.html">Entity</a>&gt;();</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        }</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="class_unity_game_framework_1_1_runtime_1_1_default_entity_helper.html#a657aa4d57b9638a0dc9fb338f34bd16b">   57</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_default_entity_helper.html#a657aa4d57b9638a0dc9fb338f34bd16b">ReleaseEntity</a>(<span class="keywordtype">object</span> entityAsset, <span class="keywordtype">object</span> entityInstance)</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        {</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            m_ResourceComponent.<a class="code" href="class_unity_game_framework_1_1_runtime_1_1_resource_component.html#a3d8b94d52ec4775ec0d8929241d1bcfb">UnloadAsset</a>(entityAsset);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;            Destroy((<a class="code" href="_component_auto_bind_tool_inspector_8cs.html#aef19bab18b9814edeef255c43e4f6bbc">Object</a>)entityInstance);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        }</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> Start()</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        {</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            m_ResourceComponent = GameEntry.GetComponent&lt;<a class="code" href="class_unity_game_framework_1_1_runtime_1_1_resource_component.html">ResourceComponent</a>&gt;();</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            <span class="keywordflow">if</span> (m_ResourceComponent == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            {</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                <a class="code" href="_login_form_8cs.html#a6208db3ac52d7f107a612679d0d8eca3">Log</a>.Fatal(<span class="stringliteral">&quot;Resource component is invalid.&quot;</span>);</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            }</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        }</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    }</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;}</div>
+<div class="ttc" id="a_component_auto_bind_tool_inspector_8cs_html_aef19bab18b9814edeef255c43e4f6bbc"><div class="ttname"><a href="_component_auto_bind_tool_inspector_8cs.html#aef19bab18b9814edeef255c43e4f6bbc">Object</a></div><div class="ttdeci">UnityEngine.Object Object</div><div class="ttdef"><b>Definition:</b> <a href="_component_auto_bind_tool_inspector_8cs_source.html#l00006">ComponentAutoBindToolInspector.cs:6</a></div></div>
+<div class="ttc" id="a_login_form_8cs_html_a6208db3ac52d7f107a612679d0d8eca3"><div class="ttname"><a href="_login_form_8cs.html#a6208db3ac52d7f107a612679d0d8eca3">Log</a></div><div class="ttdeci">UnityGameFramework.Runtime.Log Log</div><div class="ttdef"><b>Definition:</b> <a href="_login_form_8cs_source.html#l00007">LoginForm.cs:7</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_runtime_1_1_default_entity_helper_html"><div class="ttname"><a href="class_unity_game_framework_1_1_runtime_1_1_default_entity_helper.html">UnityGameFramework.Runtime.DefaultEntityHelper</a></div><div class="ttdoc">默认实体辅助器。</div><div class="ttdef"><b>Definition:</b> <a href="_default_entity_helper_8cs_source.html#l00016">DefaultEntityHelper.cs:17</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_runtime_1_1_default_entity_helper_html_a657aa4d57b9638a0dc9fb338f34bd16b"><div class="ttname"><a href="class_unity_game_framework_1_1_runtime_1_1_default_entity_helper.html#a657aa4d57b9638a0dc9fb338f34bd16b">UnityGameFramework.Runtime.DefaultEntityHelper.ReleaseEntity</a></div><div class="ttdeci">override void ReleaseEntity(object entityAsset, object entityInstance)</div><div class="ttdoc">释放实体。</div><div class="ttdef"><b>Definition:</b> <a href="_default_entity_helper_8cs_source.html#l00057">DefaultEntityHelper.cs:57</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_runtime_1_1_default_entity_helper_html_aba76c26e151c38dd2c7c8427913323ba"><div class="ttname"><a href="class_unity_game_framework_1_1_runtime_1_1_default_entity_helper.html#aba76c26e151c38dd2c7c8427913323ba">UnityGameFramework.Runtime.DefaultEntityHelper.InstantiateEntity</a></div><div class="ttdeci">override object InstantiateEntity(object entityAsset)</div><div class="ttdoc">实例化实体。</div><div class="ttdef"><b>Definition:</b> <a href="_default_entity_helper_8cs_source.html#l00025">DefaultEntityHelper.cs:25</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_runtime_1_1_default_entity_helper_html_af91732bd761818924364c360d648d370"><div class="ttname"><a href="class_unity_game_framework_1_1_runtime_1_1_default_entity_helper.html#af91732bd761818924364c360d648d370">UnityGameFramework.Runtime.DefaultEntityHelper.CreateEntity</a></div><div class="ttdeci">override IEntity CreateEntity(object entityInstance, IEntityGroup entityGroup, object userData)</div><div class="ttdoc">创建实体。</div><div class="ttdef"><b>Definition:</b> <a href="_default_entity_helper_8cs_source.html#l00037">DefaultEntityHelper.cs:37</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_runtime_1_1_entity_helper_base_html"><div class="ttname"><a href="class_unity_game_framework_1_1_runtime_1_1_entity_helper_base.html">UnityGameFramework.Runtime.EntityHelperBase</a></div><div class="ttdoc">实体辅助器基类。</div><div class="ttdef"><b>Definition:</b> <a href="_entity_helper_base_8cs_source.html#l00016">EntityHelperBase.cs:17</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_runtime_1_1_entity_html"><div class="ttname"><a href="class_unity_game_framework_1_1_runtime_1_1_entity.html">UnityGameFramework.Runtime.Entity</a></div><div class="ttdoc">实体。</div><div class="ttdef"><b>Definition:</b> <a href="_libraries_2_game_framework_2_scripts_2_runtime_2_entity_2_entity_8cs_source.html#l00018">Entity.cs:19</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_runtime_1_1_resource_component_html"><div class="ttname"><a href="class_unity_game_framework_1_1_runtime_1_1_resource_component.html">UnityGameFramework.Runtime.ResourceComponent</a></div><div class="ttdoc">资源组件。</div><div class="ttdef"><b>Definition:</b> <a href="_resource_component_8cs_source.html#l00024">ResourceComponent.cs:25</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_runtime_1_1_resource_component_html_a3d8b94d52ec4775ec0d8929241d1bcfb"><div class="ttname"><a href="class_unity_game_framework_1_1_runtime_1_1_resource_component.html#a3d8b94d52ec4775ec0d8929241d1bcfb">UnityGameFramework.Runtime.ResourceComponent.UnloadAsset</a></div><div class="ttdeci">void UnloadAsset(object asset)</div><div class="ttdoc">卸载资源。</div><div class="ttdef"><b>Definition:</b> <a href="_resource_component_8cs_source.html#l01034">ResourceComponent.cs:1034</a></div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_entity_1_1_i_entity_group_html"><div class="ttname"><a href="interface_game_framework_1_1_entity_1_1_i_entity_group.html">GameFramework.Entity.IEntityGroup</a></div><div class="ttdoc">实体组接口。</div><div class="ttdef"><b>Definition:</b> <a href="_i_entity_group_8cs_source.html#l00015">IEntityGroup.cs:16</a></div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_entity_1_1_i_entity_group_html_a56bea82a2edd72234b5033b13df89883"><div class="ttname"><a href="interface_game_framework_1_1_entity_1_1_i_entity_group.html#a56bea82a2edd72234b5033b13df89883">GameFramework.Entity.IEntityGroup.Helper</a></div><div class="ttdeci">IEntityGroupHelper Helper</div><div class="ttdoc">获取实体组辅助器。</div><div class="ttdef"><b>Definition:</b> <a href="_i_entity_group_8cs_source.html#l00072">IEntityGroup.cs:73</a></div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_entity_1_1_i_entity_html"><div class="ttname"><a href="interface_game_framework_1_1_entity_1_1_i_entity.html">GameFramework.Entity.IEntity</a></div><div class="ttdoc">实体接口。</div><div class="ttdef"><b>Definition:</b> <a href="_i_entity_8cs_source.html#l00013">IEntity.cs:14</a></div></div>
+<div class="ttc" id="anamespace_game_framework_1_1_entity_html"><div class="ttname"><a href="namespace_game_framework_1_1_entity.html">GameFramework.Entity</a></div><div class="ttdef"><b>Definition:</b> <a href="_entity_manager_8cs_source.html#l00013">EntityManager.cs:14</a></div></div>
+<div class="ttc" id="anamespace_game_framework_html"><div class="ttname"><a href="namespace_game_framework.html">GameFramework</a></div><div class="ttdef"><b>Definition:</b> <a href="_data_provider_8cs_source.html#l00011">DataProvider.cs:12</a></div></div>
+<div class="ttc" id="anamespace_unity_engine_html"><div class="ttname"><a href="namespace_unity_engine.html">UnityEngine</a></div><div class="ttdef"><b>Definition:</b> <a href="_mathf_8cs_source.html#l00003">Mathf.cs:4</a></div></div>
+<div class="ttc" id="anamespace_unity_game_framework_1_1_runtime_html"><div class="ttname"><a href="namespace_unity_game_framework_1_1_runtime.html">UnityGameFramework.Runtime</a></div><div class="ttdef"><b>Definition:</b> <a href="_base_component_8cs_source.html#l00014">BaseComponent.cs:15</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_84bbf7b3c7f28a5a18725745e1505219.html">Assets</a></li><li class="navelem"><a class="el" href="dir_f13b41af88cf68434578284aaf699e39.html">Scripts</a></li><li class="navelem"><a class="el" href="dir_46d134a3bf82cf4dc49ca8f728aea58c.html">Libraries</a></li><li class="navelem"><a class="el" href="dir_7a6862c303020716b3c311e95823547c.html">GameFramework</a></li><li class="navelem"><a class="el" href="dir_1d9b7e2b1e68805cdf4440a735859529.html">Scripts</a></li><li class="navelem"><a class="el" href="dir_e81cefffdbcf8632d0c6357d5d83ba40.html">Runtime</a></li><li class="navelem"><a class="el" href="dir_2c7b942e163d7a171c9595d941f0476e.html">Entity</a></li><li class="navelem"><a class="el" href="_default_entity_helper_8cs.html">DefaultEntityHelper.cs</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:24:49 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

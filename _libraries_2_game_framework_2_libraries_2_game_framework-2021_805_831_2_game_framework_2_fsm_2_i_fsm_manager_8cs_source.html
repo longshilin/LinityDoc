@@ -1,0 +1,171 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: Assets/Scripts/Libraries/GameFramework/Libraries/GameFramework-2021.05.31/GameFramework/Fsm/IFsmManager.cs 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_libraries_2_game_framework_2_libraries_2_game_framework-2021_805_831_2_game_framework_2_fsm_2_i_fsm_manager_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">IFsmManager.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_libraries_2_game_framework_2_libraries_2_game_framework-2021_805_831_2_game_framework_2_fsm_2_i_fsm_manager_8cs.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">//------------------------------------------------------------</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">// Game Framework</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">// Copyright © 2013-2021 Jiang Yin. All rights reserved.</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">// Homepage: https://gameframework.cn/</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">// Feedback: mailto:ellan@gameframework.cn</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">//------------------------------------------------------------</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Collections.Generic;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_game_framework_1_1_fsm.html">GameFramework.Fsm</a></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;{</div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_fsm_1_1_i_fsm_manager.html">   16</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">interface </span><a class="code" href="interface_game_framework_1_1_fsm_1_1_i_fsm_manager.html">IFsmManager</a></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    {</div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_fsm_1_1_i_fsm_manager.html#a83154f7afd61840a22b5e8946bcfe00b">   21</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="interface_game_framework_1_1_fsm_1_1_i_fsm_manager.html#a83154f7afd61840a22b5e8946bcfe00b">Count</a></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        {</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;            <span class="keyword">get</span>;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        }</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_fsm_1_1_i_fsm_manager.html#a8cf6fb5d3e377b52579966850c94c55d">   31</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="interface_game_framework_1_1_fsm_1_1_i_fsm_manager.html#a8cf6fb5d3e377b52579966850c94c55d">HasFsm&lt;T&gt;</a>() where T : class;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_fsm_1_1_i_fsm_manager.html#a07b692a8ac34ed6f73cd466bf86b7b4f">   38</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="interface_game_framework_1_1_fsm_1_1_i_fsm_manager.html#a07b692a8ac34ed6f73cd466bf86b7b4f">HasFsm</a>(Type ownerType);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_fsm_1_1_i_fsm_manager.html#a21cbafd5809b14ff3b7cbf66d1a23330">   46</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="interface_game_framework_1_1_fsm_1_1_i_fsm_manager.html#a07b692a8ac34ed6f73cd466bf86b7b4f">HasFsm</a>&lt;T&gt;(<span class="keywordtype">string</span> name) where T : class;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_fsm_1_1_i_fsm_manager.html#a8d191c1927fb98fe80506e29b4b0764c">   54</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="interface_game_framework_1_1_fsm_1_1_i_fsm_manager.html#a07b692a8ac34ed6f73cd466bf86b7b4f">HasFsm</a>(Type ownerType, <span class="keywordtype">string</span> name);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <a class="code" href="interface_game_framework_1_1_fsm_1_1_i_fsm.html">IFsm</a>&lt;T&gt; <a class="code" href="interface_game_framework_1_1_fsm_1_1_i_fsm_manager.html#a658cef8cd964243f7699565de6e31522">GetFsm</a>&lt;T&gt;() where T : class;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00068"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_fsm_1_1_i_fsm_manager.html#a658cef8cd964243f7699565de6e31522">   68</a></span>&#160;        <a class="code" href="class_game_framework_1_1_fsm_1_1_fsm_base.html">FsmBase</a> <a class="code" href="interface_game_framework_1_1_fsm_1_1_i_fsm_manager.html#a658cef8cd964243f7699565de6e31522">GetFsm</a>(Type ownerType);</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        <a class="code" href="interface_game_framework_1_1_fsm_1_1_i_fsm.html">IFsm</a>&lt;T&gt; <a class="code" href="interface_game_framework_1_1_fsm_1_1_i_fsm_manager.html#a658cef8cd964243f7699565de6e31522">GetFsm</a>&lt;T&gt;(<span class="keywordtype">string</span> name) where T : class;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
+<div class="line"><a name="l00084"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_fsm_1_1_i_fsm_manager.html#a7ac3d6fe7c91e420912bddc18addae3f">   84</a></span>&#160;        <a class="code" href="class_game_framework_1_1_fsm_1_1_fsm_base.html">FsmBase</a> <a class="code" href="interface_game_framework_1_1_fsm_1_1_i_fsm_manager.html#a658cef8cd964243f7699565de6e31522">GetFsm</a>(Type ownerType, <span class="keywordtype">string</span> name);</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
+<div class="line"><a name="l00090"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_fsm_1_1_i_fsm_manager.html#aea8ce4aeb035dfae4653f2e7abad06c0">   90</a></span>&#160;        <a class="code" href="class_game_framework_1_1_fsm_1_1_fsm_base.html">FsmBase</a>[] <a class="code" href="interface_game_framework_1_1_fsm_1_1_i_fsm_manager.html#aea8ce4aeb035dfae4653f2e7abad06c0">GetAllFsms</a>();</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
+<div class="line"><a name="l00096"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_fsm_1_1_i_fsm_manager.html#ab00eb4f2c139382ec3dfc2ee724a0a50">   96</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="interface_game_framework_1_1_fsm_1_1_i_fsm_manager.html#aea8ce4aeb035dfae4653f2e7abad06c0">GetAllFsms</a>(List&lt;<a class="code" href="class_game_framework_1_1_fsm_1_1_fsm_base.html">FsmBase</a>&gt; results);</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        <a class="code" href="interface_game_framework_1_1_fsm_1_1_i_fsm.html">IFsm</a>&lt;T&gt; CreateFsm&lt;T&gt;(T owner, params <a class="code" href="class_game_framework_1_1_fsm_1_1_fsm_state.html">FsmState</a>&lt;T&gt;[] states) where T : class;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        <a class="code" href="interface_game_framework_1_1_fsm_1_1_i_fsm.html">IFsm</a>&lt;T&gt; CreateFsm&lt;T&gt;(<span class="keywordtype">string</span> name, T owner, params <a class="code" href="class_game_framework_1_1_fsm_1_1_fsm_state.html">FsmState</a>&lt;T&gt;[] states) where T : class;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160; </div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        <a class="code" href="interface_game_framework_1_1_fsm_1_1_i_fsm.html">IFsm</a>&lt;T&gt; CreateFsm&lt;T&gt;(T owner, List&lt;<a class="code" href="class_game_framework_1_1_fsm_1_1_fsm_state.html">FsmState</a>&lt;T&gt;&gt; states) where T : class;</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160; </div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        <a class="code" href="interface_game_framework_1_1_fsm_1_1_i_fsm.html">IFsm</a>&lt;T&gt; CreateFsm&lt;T&gt;(<span class="keywordtype">string</span> name, T owner, List&lt;<a class="code" href="class_game_framework_1_1_fsm_1_1_fsm_state.html">FsmState</a>&lt;T&gt;&gt; states) where T : class;</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160; </div>
+<div class="line"><a name="l00141"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_fsm_1_1_i_fsm_manager.html#a5158d6613c82a0d5f22e1135e6f29fb7">  141</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="interface_game_framework_1_1_fsm_1_1_i_fsm_manager.html#a080c9c1e80d1af3e26060317c37505cb">DestroyFsm</a>&lt;T&gt;() where T : class;</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160; </div>
+<div class="line"><a name="l00148"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_fsm_1_1_i_fsm_manager.html#a080c9c1e80d1af3e26060317c37505cb">  148</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="interface_game_framework_1_1_fsm_1_1_i_fsm_manager.html#a080c9c1e80d1af3e26060317c37505cb">DestroyFsm</a>(Type ownerType);</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160; </div>
+<div class="line"><a name="l00156"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_fsm_1_1_i_fsm_manager.html#a7b05e56f33103a051899f431fff98411">  156</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="interface_game_framework_1_1_fsm_1_1_i_fsm_manager.html#a080c9c1e80d1af3e26060317c37505cb">DestroyFsm</a>&lt;T&gt;(<span class="keywordtype">string</span> name) where T : class;</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160; </div>
+<div class="line"><a name="l00164"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_fsm_1_1_i_fsm_manager.html#a5fe498330112628c2421c8e54993b3f1">  164</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="interface_game_framework_1_1_fsm_1_1_i_fsm_manager.html#a080c9c1e80d1af3e26060317c37505cb">DestroyFsm</a>(Type ownerType, <span class="keywordtype">string</span> name);</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160; </div>
+<div class="line"><a name="l00172"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_fsm_1_1_i_fsm_manager.html#ad06e9eb1dc766d4066690e4d1c014c55">  172</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="interface_game_framework_1_1_fsm_1_1_i_fsm_manager.html#a080c9c1e80d1af3e26060317c37505cb">DestroyFsm</a>&lt;T&gt;(<a class="code" href="interface_game_framework_1_1_fsm_1_1_i_fsm.html">IFsm</a>&lt;T&gt; fsm) where T : class;</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160; </div>
+<div class="line"><a name="l00179"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_fsm_1_1_i_fsm_manager.html#ae32a332e592e7b59d3d9913a233197c2">  179</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="interface_game_framework_1_1_fsm_1_1_i_fsm_manager.html#a080c9c1e80d1af3e26060317c37505cb">DestroyFsm</a>(<a class="code" href="class_game_framework_1_1_fsm_1_1_fsm_base.html">FsmBase</a> fsm);</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;    }</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;}</div>
+<div class="ttc" id="aclass_game_framework_1_1_fsm_1_1_fsm_base_html"><div class="ttname"><a href="class_game_framework_1_1_fsm_1_1_fsm_base.html">GameFramework.Fsm.FsmBase</a></div><div class="ttdoc">有限状态机基类。</div><div class="ttdef"><b>Definition:</b> <a href="_libraries_2_game_framework_2_libraries_2_game_framework-2021_805_831_2_game_framework_2_fsm_2_fsm_base_8cs_source.html#l00015">FsmBase.cs:16</a></div></div>
+<div class="ttc" id="aclass_game_framework_1_1_fsm_1_1_fsm_state_html"><div class="ttname"><a href="class_game_framework_1_1_fsm_1_1_fsm_state.html">GameFramework.Fsm.FsmState</a></div><div class="ttdoc">有限状态机状态基类。</div><div class="ttdef"><b>Definition:</b> <a href="_libraries_2_game_framework_2_libraries_2_game_framework-2021_805_831_2_game_framework_2_fsm_2_fsm_state_8cs_source.html#l00016">FsmState.cs:17</a></div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_fsm_1_1_i_fsm_html"><div class="ttname"><a href="interface_game_framework_1_1_fsm_1_1_i_fsm.html">GameFramework.Fsm.IFsm</a></div><div class="ttdoc">有限状态机接口。</div><div class="ttdef"><b>Definition:</b> <a href="_libraries_2_game_framework_2_libraries_2_game_framework-2021_805_831_2_game_framework_2_fsm_2_i_fsm_8cs_source.html#l00017">IFsm.cs:18</a></div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_fsm_1_1_i_fsm_manager_html"><div class="ttname"><a href="interface_game_framework_1_1_fsm_1_1_i_fsm_manager.html">GameFramework.Fsm.IFsmManager</a></div><div class="ttdoc">有限状态机管理器。</div><div class="ttdef"><b>Definition:</b> <a href="_libraries_2_game_framework_2_libraries_2_game_framework-2021_805_831_2_game_framework_2_fsm_2_i_fsm_manager_8cs_source.html#l00016">IFsmManager.cs:17</a></div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_fsm_1_1_i_fsm_manager_html_a07b692a8ac34ed6f73cd466bf86b7b4f"><div class="ttname"><a href="interface_game_framework_1_1_fsm_1_1_i_fsm_manager.html#a07b692a8ac34ed6f73cd466bf86b7b4f">GameFramework.Fsm.IFsmManager.HasFsm</a></div><div class="ttdeci">bool HasFsm(Type ownerType)</div><div class="ttdoc">检查是否存在有限状态机。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_fsm_1_1_i_fsm_manager_html_a080c9c1e80d1af3e26060317c37505cb"><div class="ttname"><a href="interface_game_framework_1_1_fsm_1_1_i_fsm_manager.html#a080c9c1e80d1af3e26060317c37505cb">GameFramework.Fsm.IFsmManager.DestroyFsm</a></div><div class="ttdeci">bool DestroyFsm(Type ownerType)</div><div class="ttdoc">销毁有限状态机。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_fsm_1_1_i_fsm_manager_html_a658cef8cd964243f7699565de6e31522"><div class="ttname"><a href="interface_game_framework_1_1_fsm_1_1_i_fsm_manager.html#a658cef8cd964243f7699565de6e31522">GameFramework.Fsm.IFsmManager.GetFsm</a></div><div class="ttdeci">FsmBase GetFsm(Type ownerType)</div><div class="ttdoc">获取有限状态机。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_fsm_1_1_i_fsm_manager_html_a83154f7afd61840a22b5e8946bcfe00b"><div class="ttname"><a href="interface_game_framework_1_1_fsm_1_1_i_fsm_manager.html#a83154f7afd61840a22b5e8946bcfe00b">GameFramework.Fsm.IFsmManager.Count</a></div><div class="ttdeci">int Count</div><div class="ttdoc">获取有限状态机数量。</div><div class="ttdef"><b>Definition:</b> <a href="_libraries_2_game_framework_2_libraries_2_game_framework-2021_805_831_2_game_framework_2_fsm_2_i_fsm_manager_8cs_source.html#l00021">IFsmManager.cs:22</a></div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_fsm_1_1_i_fsm_manager_html_a8cf6fb5d3e377b52579966850c94c55d"><div class="ttname"><a href="interface_game_framework_1_1_fsm_1_1_i_fsm_manager.html#a8cf6fb5d3e377b52579966850c94c55d">GameFramework.Fsm.IFsmManager.HasFsm&lt; T &gt;</a></div><div class="ttdeci">bool HasFsm&lt; T &gt;()</div><div class="ttdoc">检查是否存在有限状态机。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_fsm_1_1_i_fsm_manager_html_aea8ce4aeb035dfae4653f2e7abad06c0"><div class="ttname"><a href="interface_game_framework_1_1_fsm_1_1_i_fsm_manager.html#aea8ce4aeb035dfae4653f2e7abad06c0">GameFramework.Fsm.IFsmManager.GetAllFsms</a></div><div class="ttdeci">FsmBase[] GetAllFsms()</div><div class="ttdoc">获取所有有限状态机。</div></div>
+<div class="ttc" id="anamespace_game_framework_1_1_fsm_html"><div class="ttname"><a href="namespace_game_framework_1_1_fsm.html">GameFramework.Fsm</a></div><div class="ttdef"><b>Definition:</b> <a href="_libraries_2_game_framework_2_libraries_2_game_framework-2021_805_831_2_game_framework_2_fsm_2_fsm_8cs_source.html#l00011">Fsm.cs:12</a></div></div>
+<div class="ttc" id="anamespace_system_html"><div class="ttname"><a href="namespace_system.html">System</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_method_builder_attribute_8cs_source.html#l00001">AsyncMethodBuilderAttribute.cs:2</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_84bbf7b3c7f28a5a18725745e1505219.html">Assets</a></li><li class="navelem"><a class="el" href="dir_f13b41af88cf68434578284aaf699e39.html">Scripts</a></li><li class="navelem"><a class="el" href="dir_46d134a3bf82cf4dc49ca8f728aea58c.html">Libraries</a></li><li class="navelem"><a class="el" href="dir_7a6862c303020716b3c311e95823547c.html">GameFramework</a></li><li class="navelem"><a class="el" href="dir_bfc6cd8d089c265c897460523cef6560.html">Libraries</a></li><li class="navelem"><a class="el" href="dir_c1104d2df307bba6f9db4e185ff99743.html">GameFramework-2021.05.31</a></li><li class="navelem"><a class="el" href="dir_fe759fdbe5a0d8b8465ec936ca1014c7.html">GameFramework</a></li><li class="navelem"><a class="el" href="dir_9e378d251007be3bf9c0e5bfbcb50c56.html">Fsm</a></li><li class="navelem"><a class="el" href="_libraries_2_game_framework_2_libraries_2_game_framework-2021_805_831_2_game_framework_2_fsm_2_i_fsm_manager_8cs.html">IFsmManager.cs</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:24:45 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

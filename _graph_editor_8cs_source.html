@@ -1,0 +1,264 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: Assets/Scripts/Editor/AstarPathfindingProject/GraphEditors/GraphEditor.cs 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_graph_editor_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">GraphEditor.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_graph_editor_8cs.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_p_f.html">PF</a>;</div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="keyword">using</span> UnityEditor;</div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_unity_engine.html">UnityEngine</a>;</div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_pathfinding.html">Pathfinding</a> {</div>
+<div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="class_pathfinding_1_1_graph_editor.html">    6</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="class_pathfinding_1_1_graph_editor.html">GraphEditor</a> : <a class="code" href="class_pathfinding_1_1_graph_editor_base.html">GraphEditorBase</a> {</div>
+<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="class_pathfinding_1_1_graph_editor.html#a46faec6eb292417313b5b23ec47108d9">    7</a></span>&#160;                <span class="keyword">public</span> <a class="code" href="class_pathfinding_1_1_astar_path_editor.html">AstarPathEditor</a> <a class="code" href="class_pathfinding_1_1_graph_editor.html#a46faec6eb292417313b5b23ec47108d9">editor</a>;</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="class_pathfinding_1_1_graph_editor.html#ab68d4d36905478b2fe1aeb7b2776c5d3">   10</a></span>&#160;                <span class="keyword">public</span> <a class="code" href="class_pathfinding_1_1_fade_area.html">FadeArea</a> <a class="code" href="class_pathfinding_1_1_graph_editor.html#ab68d4d36905478b2fe1aeb7b2776c5d3">fadeArea</a>;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="class_pathfinding_1_1_graph_editor.html#a2fbf3117319bdd9773cfc2281e4b59e0">   13</a></span>&#160;                <span class="keyword">public</span> <a class="code" href="class_pathfinding_1_1_fade_area.html">FadeArea</a> <a class="code" href="class_pathfinding_1_1_graph_editor.html#a2fbf3117319bdd9773cfc2281e4b59e0">infoFadeArea</a>;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="class_pathfinding_1_1_graph_editor.html#ab9cf7d4e7ce289049de50748748b81d6">   17</a></span>&#160;                <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code" href="class_pathfinding_1_1_graph_editor.html#ab9cf7d4e7ce289049de50748748b81d6">AutoScan</a> () {</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;                        <span class="keywordflow">if</span> (!Application.isPlaying &amp;&amp; <a class="code" href="class_astar_path.html">AstarPath</a>.<a class="code" href="class_astar_path.html#a93828f3873280d7b2db847f69392b5fd">active</a> != <span class="keyword">null</span> &amp;&amp; <a class="code" href="class_astar_path.html">AstarPath</a>.<a class="code" href="class_astar_path.html#a93828f3873280d7b2db847f69392b5fd">active</a>.<a class="code" href="class_astar_path.html#aae68bf9b08ca59b4007a1fde94c28ca0">lastScanTime</a> &lt; 0.11F) {</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;                                <a class="code" href="class_astar_path.html">AstarPath</a>.<a class="code" href="class_astar_path.html#a93828f3873280d7b2db847f69392b5fd">active</a>.<a class="code" href="class_astar_path.html#a9751550dc6954212dcb2e03aecafbcf6">Scan</a>();</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;                                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;                        }</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;                        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;                }</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="class_pathfinding_1_1_graph_editor.html#acd7351276889928e6705a42f5d66d24b">   25</a></span>&#160;                <span class="keyword">public</span> <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_pathfinding_1_1_graph_editor.html#acd7351276889928e6705a42f5d66d24b">OnEnable</a> () {</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;                }</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="class_pathfinding_1_1_graph_editor.html#a9ce29f1658e8a38b05318ac896131fcb">   28</a></span>&#160;                <span class="keyword">public</span> <span class="keyword">static</span> <a class="code" href="_component_auto_bind_tool_inspector_8cs.html#aef19bab18b9814edeef255c43e4f6bbc">Object</a> <a class="code" href="class_pathfinding_1_1_graph_editor.html#a9ce29f1658e8a38b05318ac896131fcb">ObjectField</a> (<span class="keywordtype">string</span> label, <a class="code" href="_component_auto_bind_tool_inspector_8cs.html#aef19bab18b9814edeef255c43e4f6bbc">Object</a> obj, <a class="code" href="namespace_system.html">System</a>.Type objType, <span class="keywordtype">bool</span> allowSceneObjects) {</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;                        <span class="keywordflow">return</span> <a class="code" href="class_pathfinding_1_1_graph_editor.html#a9ce29f1658e8a38b05318ac896131fcb">ObjectField</a>(<span class="keyword">new</span> GUIContent(label), obj, objType, allowSceneObjects);</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;                }</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="class_pathfinding_1_1_graph_editor.html#ab9a4e5f8e6d869f59ce8f7b9c7072eb6">   32</a></span>&#160;                <span class="keyword">public</span> <span class="keyword">static</span> <a class="code" href="_component_auto_bind_tool_inspector_8cs.html#aef19bab18b9814edeef255c43e4f6bbc">Object</a> <a class="code" href="class_pathfinding_1_1_graph_editor.html#ab9a4e5f8e6d869f59ce8f7b9c7072eb6">ObjectField</a> (GUIContent label, <a class="code" href="_component_auto_bind_tool_inspector_8cs.html#aef19bab18b9814edeef255c43e4f6bbc">Object</a> obj, <a class="code" href="namespace_system.html">System</a>.Type objType, <span class="keywordtype">bool</span> allowSceneObjects) {</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;                        obj = EditorGUILayout.ObjectField(label, obj, objType, allowSceneObjects);</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;                        <span class="keywordflow">if</span> (obj != <span class="keyword">null</span>) {</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;                                <span class="keywordflow">if</span> (allowSceneObjects &amp;&amp; !EditorUtility.IsPersistent(obj)) {</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;                                        <span class="comment">// Object is in the scene</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;                                        var com = obj as Component;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                                        var go = obj as GameObject;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                                        <span class="keywordflow">if</span> (com != <span class="keyword">null</span>) {</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;                                                go = com.gameObject;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                                        }</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;                                        <span class="keywordflow">if</span> (go != <span class="keyword">null</span> &amp;&amp; go.GetComponent&lt;<a class="code" href="class_pathfinding_1_1_unity_reference_helper.html">UnityReferenceHelper</a>&gt;() == <span class="keyword">null</span>) {</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                                                <span class="keywordflow">if</span> (<a class="code" href="class_pathfinding_1_1_graph_editor.html#a599c4f8b7de85cb0ead7a8692c6e3351">FixLabel</a>(<span class="stringliteral">&quot;Object&#39;s GameObject must have a UnityReferenceHelper component attached&quot;</span>)) {</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                                                        go.AddComponent&lt;<a class="code" href="class_pathfinding_1_1_unity_reference_helper.html">UnityReferenceHelper</a>&gt;();</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                                                }</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                                        }</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                                } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (EditorUtility.IsPersistent(obj)) {</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                                        <span class="keywordtype">string</span> path = AssetDatabase.GetAssetPath(obj).Replace(<span class="stringliteral">&quot;\\&quot;</span>, <span class="stringliteral">&quot;/&quot;</span>);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                                        var rg = <span class="keyword">new</span> <a class="code" href="namespace_system.html">System</a>.Text.RegularExpressions.Regex(<span class="stringliteral">@&quot;Resources/.*$&quot;</span>);</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                                        <span class="keywordflow">if</span> (!rg.IsMatch(path)) {</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                                                <span class="keywordflow">if</span> (<a class="code" href="class_pathfinding_1_1_graph_editor.html#a599c4f8b7de85cb0ead7a8692c6e3351">FixLabel</a>(<span class="stringliteral">&quot;Object must be in the &#39;Resources&#39; folder&quot;</span>)) {</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                                                        <span class="keywordflow">if</span> (!<a class="code" href="namespace_system.html">System</a>.IO.Directory.Exists(Application.dataPath+<span class="stringliteral">&quot;/Resources&quot;</span>)) {</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                                                                <a class="code" href="namespace_system.html">System</a>.IO.Directory.CreateDirectory(Application.dataPath+<span class="stringliteral">&quot;/Resources&quot;</span>);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                                                                AssetDatabase.Refresh();</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                                                        }</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                                                        <span class="keywordtype">string</span> ext = <a class="code" href="namespace_system.html">System</a>.IO.Path.GetExtension(path);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                                                        <span class="keywordtype">string</span> error = AssetDatabase.MoveAsset(path, <span class="stringliteral">&quot;Assets/Resources/&quot;</span>+obj.name+ext);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                                                        <span class="keywordflow">if</span> (error == <span class="stringliteral">&quot;&quot;</span>) {</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                                                                path = AssetDatabase.GetAssetPath(obj);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                                                        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                                                                <a class="code" href="_game_main_2_customs_2_custom_helpers_2_process_helper_8cs.html#a0100be52d45f14348918ea69ec09f959">Debug</a>.LogError(<span class="stringliteral">&quot;Couldn&#39;t move asset - &quot;</span>+error);</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                                                        }</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                                                }</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                                        }</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                                        <span class="keywordflow">if</span> (!AssetDatabase.IsMainAsset(obj) &amp;&amp; obj.name != AssetDatabase.LoadMainAssetAtPath(path).name) {</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                                                <span class="keywordflow">if</span> (<a class="code" href="class_pathfinding_1_1_graph_editor.html#a599c4f8b7de85cb0ead7a8692c6e3351">FixLabel</a>(<span class="stringliteral">&quot;Due to technical reasons, the main asset must\nhave the same name as the referenced asset&quot;</span>)) {</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                                                        <span class="keywordtype">string</span> error = AssetDatabase.RenameAsset(path, obj.name);</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                                                        <span class="keywordflow">if</span> (error != <span class="stringliteral">&quot;&quot;</span>) {</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                                                                <a class="code" href="_game_main_2_customs_2_custom_helpers_2_process_helper_8cs.html#a0100be52d45f14348918ea69ec09f959">Debug</a>.LogError(<span class="stringliteral">&quot;Couldn&#39;t rename asset - &quot;</span>+error);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                                                        }</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                                                }</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                                        }</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                                }</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                        }</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                        <span class="keywordflow">return</span> obj;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                }</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
+<div class="line"><a name="l00085"></a><span class="lineno"><a class="line" href="class_pathfinding_1_1_graph_editor.html#af3bbdf4ed812281b0ed1ec90f487bb60">   85</a></span>&#160;                <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_pathfinding_1_1_graph_editor.html#af3bbdf4ed812281b0ed1ec90f487bb60">OnBaseInspectorGUI</a> (<a class="code" href="class_p_f_1_1_nav_graph.html">NavGraph</a> <a class="code" href="class_pathfinding_1_1_graph_editor_base.html#a37b7ace5b71ec34bd089eae747ec9c29">target</a>) {</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                        <span class="keywordtype">int</span> penalty = EditorGUILayout.IntField(<span class="keyword">new</span> GUIContent(<span class="stringliteral">&quot;Initial Penalty&quot;</span>, <span class="stringliteral">&quot;Initial Penalty for nodes in this graph. Set during Scan.&quot;</span>), (<span class="keywordtype">int</span>)<a class="code" href="class_pathfinding_1_1_graph_editor_base.html#a37b7ace5b71ec34bd089eae747ec9c29">target</a>.<a class="code" href="class_p_f_1_1_nav_graph.html#a07dd3e57e11a4e6f89692d99c186ee86">initialPenalty</a>);</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                        <span class="keywordflow">if</span> (penalty &lt; 0) penalty = 0;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                        <a class="code" href="class_pathfinding_1_1_graph_editor_base.html#a37b7ace5b71ec34bd089eae747ec9c29">target</a>.<a class="code" href="class_p_f_1_1_nav_graph.html#a07dd3e57e11a4e6f89692d99c186ee86">initialPenalty</a> = (uint)penalty;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                }</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
+<div class="line"><a name="l00093"></a><span class="lineno"><a class="line" href="class_pathfinding_1_1_graph_editor.html#a7975b3d1cea1adec98e6719d15aff164">   93</a></span>&#160;                <span class="keyword">public</span> <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_pathfinding_1_1_graph_editor.html#a7975b3d1cea1adec98e6719d15aff164">OnInspectorGUI</a> (<a class="code" href="class_p_f_1_1_nav_graph.html">NavGraph</a> <a class="code" href="class_pathfinding_1_1_graph_editor_base.html#a37b7ace5b71ec34bd089eae747ec9c29">target</a>) {</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                }</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
+<div class="line"><a name="l00097"></a><span class="lineno"><a class="line" href="class_pathfinding_1_1_graph_editor.html#a8218c3b1a50e2368c5f6c4ee6be19e6f">   97</a></span>&#160;                <span class="keyword">public</span> <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_pathfinding_1_1_graph_editor.html#a8218c3b1a50e2368c5f6c4ee6be19e6f">OnSceneGUI</a> (<a class="code" href="class_p_f_1_1_nav_graph.html">NavGraph</a> <a class="code" href="class_pathfinding_1_1_graph_editor_base.html#a37b7ace5b71ec34bd089eae747ec9c29">target</a>) {</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                }</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160; </div>
+<div class="line"><a name="l00101"></a><span class="lineno"><a class="line" href="class_pathfinding_1_1_graph_editor.html#a2af127dd3cad820eef56fa72a6a16641">  101</a></span>&#160;                <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_pathfinding_1_1_graph_editor.html#a2af127dd3cad820eef56fa72a6a16641">Separator</a> () {</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;                        GUIStyle separator = <a class="code" href="class_pathfinding_1_1_astar_path_editor.html">AstarPathEditor</a>.<a class="code" href="class_pathfinding_1_1_astar_path_editor.html#a4701b838ff0eed5ef99e9188b73b360e">astarSkin</a>.FindStyle(<span class="stringliteral">&quot;PixelBox3Separator&quot;</span>) ?? <span class="keyword">new</span> GUIStyle();</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;                        Rect r = GUILayoutUtility.GetRect(<span class="keyword">new</span> GUIContent(), separator);</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;                        <span class="keywordflow">if</span> (Event.current.type == EventType.Repaint) {</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;                                separator.Draw(r, <span class="keyword">false</span>, <span class="keyword">false</span>, <span class="keyword">false</span>, <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;                        }</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;                }</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160; </div>
+<div class="line"><a name="l00112"></a><span class="lineno"><a class="line" href="class_pathfinding_1_1_graph_editor.html#a599c4f8b7de85cb0ead7a8692c6e3351">  112</a></span>&#160;                <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">bool</span> <a class="code" href="class_pathfinding_1_1_graph_editor.html#a599c4f8b7de85cb0ead7a8692c6e3351">FixLabel</a> (<span class="keywordtype">string</span> label, <span class="keywordtype">string</span> buttonLabel = <span class="stringliteral">&quot;Fix&quot;</span>, <span class="keywordtype">int</span> buttonWidth = 40) {</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;                        GUILayout.BeginHorizontal();</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;                        GUILayout.Space(14*EditorGUI.indentLevel);</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;                        GUILayout.BeginHorizontal(<a class="code" href="class_pathfinding_1_1_astar_path_editor.html">AstarPathEditor</a>.<a class="code" href="class_pathfinding_1_1_astar_path_editor.html#a648301d3c1af20d971df0d32470ee61e">helpBox</a>);</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;                        GUILayout.Label(label, EditorGUIUtility.isProSkin ? EditorStyles.whiteMiniLabel : EditorStyles.miniLabel, GUILayout.ExpandWidth(<span class="keyword">true</span>));</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;                        var returnValue = GUILayout.Button(buttonLabel, EditorStyles.miniButton, GUILayout.Width(buttonWidth));</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;                        GUILayout.EndHorizontal();</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;                        GUILayout.EndHorizontal();</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;                        <span class="keywordflow">return</span> returnValue;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;                }</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160; </div>
+<div class="line"><a name="l00124"></a><span class="lineno"><a class="line" href="class_pathfinding_1_1_graph_editor.html#a673ea574ea5ddf873f3b8a5a177faab1">  124</a></span>&#160;                <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code" href="class_pathfinding_1_1_graph_editor.html#a673ea574ea5ddf873f3b8a5a177faab1">ToggleGroup</a> (<span class="keywordtype">string</span> label, <span class="keywordtype">bool</span> value) {</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;                        <span class="keywordflow">return</span> <a class="code" href="class_pathfinding_1_1_graph_editor.html#a673ea574ea5ddf873f3b8a5a177faab1">ToggleGroup</a>(<span class="keyword">new</span> GUIContent(label), value);</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;                }</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160; </div>
+<div class="line"><a name="l00129"></a><span class="lineno"><a class="line" href="class_pathfinding_1_1_graph_editor.html#a7be5b0be13d1bdeaf4b81288b10058d7">  129</a></span>&#160;                <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">bool</span> <a class="code" href="class_pathfinding_1_1_graph_editor.html#a7be5b0be13d1bdeaf4b81288b10058d7">ToggleGroup</a> (GUIContent label, <span class="keywordtype">bool</span> value) {</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;                        GUILayout.BeginHorizontal();</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;                        GUILayout.Space(13*EditorGUI.indentLevel);</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;                        value = GUILayout.Toggle(value, <span class="stringliteral">&quot;&quot;</span>, GUILayout.Width(10));</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;                        GUIStyle boxHeader = <a class="code" href="class_pathfinding_1_1_astar_path_editor.html">AstarPathEditor</a>.<a class="code" href="class_pathfinding_1_1_astar_path_editor.html#a4701b838ff0eed5ef99e9188b73b360e">astarSkin</a>.FindStyle(<span class="stringliteral">&quot;CollisionHeader&quot;</span>);</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;                        <span class="keywordflow">if</span> (GUILayout.Button(label, boxHeader, GUILayout.Width(100))) {</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;                                value = !value;</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;                        }</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160; </div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;                        GUILayout.EndHorizontal();</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;                        <span class="keywordflow">return</span> value;</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;                }</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;        }</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;}</div>
+<div class="ttc" id="a_component_auto_bind_tool_inspector_8cs_html_aef19bab18b9814edeef255c43e4f6bbc"><div class="ttname"><a href="_component_auto_bind_tool_inspector_8cs.html#aef19bab18b9814edeef255c43e4f6bbc">Object</a></div><div class="ttdeci">UnityEngine.Object Object</div><div class="ttdef"><b>Definition:</b> <a href="_component_auto_bind_tool_inspector_8cs_source.html#l00006">ComponentAutoBindToolInspector.cs:6</a></div></div>
+<div class="ttc" id="a_game_main_2_customs_2_custom_helpers_2_process_helper_8cs_html_a0100be52d45f14348918ea69ec09f959"><div class="ttname"><a href="_game_main_2_customs_2_custom_helpers_2_process_helper_8cs.html#a0100be52d45f14348918ea69ec09f959">Debug</a></div><div class="ttdeci">UnityEngine.Debug Debug</div><div class="ttdef"><b>Definition:</b> <a href="_game_main_2_customs_2_custom_helpers_2_process_helper_8cs_source.html#l00004">ProcessHelper.cs:4</a></div></div>
+<div class="ttc" id="aclass_astar_path_html"><div class="ttname"><a href="class_astar_path.html">AstarPath</a></div><div class="ttdef"><b>Definition:</b> <a href="_astar_path_8cs_source.html#l00029">AstarPath.cs:29</a></div></div>
+<div class="ttc" id="aclass_astar_path_html_a93828f3873280d7b2db847f69392b5fd"><div class="ttname"><a href="class_astar_path.html#a93828f3873280d7b2db847f69392b5fd">AstarPath.active</a></div><div class="ttdeci">static AstarPath active</div><div class="ttdef"><b>Definition:</b> <a href="_astar_path_8cs_source.html#l00056">AstarPath.cs:56</a></div></div>
+<div class="ttc" id="aclass_astar_path_html_a9751550dc6954212dcb2e03aecafbcf6"><div class="ttname"><a href="class_astar_path.html#a9751550dc6954212dcb2e03aecafbcf6">AstarPath.Scan</a></div><div class="ttdeci">void Scan(NavGraph graphToScan)</div><div class="ttdef"><b>Definition:</b> <a href="_astar_path_8cs_source.html#l01191">AstarPath.cs:1191</a></div></div>
+<div class="ttc" id="aclass_astar_path_html_aae68bf9b08ca59b4007a1fde94c28ca0"><div class="ttname"><a href="class_astar_path.html#aae68bf9b08ca59b4007a1fde94c28ca0">AstarPath.lastScanTime</a></div><div class="ttdeci">float lastScanTime</div><div class="ttdef"><b>Definition:</b> <a href="_astar_path_8cs_source.html#l00343">AstarPath.cs:343</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_nav_graph_html"><div class="ttname"><a href="class_p_f_1_1_nav_graph.html">PF.NavGraph</a></div><div class="ttdef"><b>Definition:</b> <a href="_nav_graph_8cs_source.html#l00022">NavGraph.cs:22</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_nav_graph_html_a07dd3e57e11a4e6f89692d99c186ee86"><div class="ttname"><a href="class_p_f_1_1_nav_graph.html#a07dd3e57e11a4e6f89692d99c186ee86">PF.NavGraph.initialPenalty</a></div><div class="ttdeci">uint initialPenalty</div><div class="ttdef"><b>Definition:</b> <a href="_nav_graph_8cs_source.html#l00031">NavGraph.cs:31</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_astar_path_editor_html"><div class="ttname"><a href="class_pathfinding_1_1_astar_path_editor.html">Pathfinding.AstarPathEditor</a></div><div class="ttdef"><b>Definition:</b> <a href="_astar_path_editor_8cs_source.html#l00010">AstarPathEditor.cs:10</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_astar_path_editor_html_a4701b838ff0eed5ef99e9188b73b360e"><div class="ttname"><a href="class_pathfinding_1_1_astar_path_editor.html#a4701b838ff0eed5ef99e9188b73b360e">Pathfinding.AstarPathEditor.astarSkin</a></div><div class="ttdeci">static GUISkin astarSkin</div><div class="ttdef"><b>Definition:</b> <a href="_astar_path_editor_8cs_source.html#l00061">AstarPathEditor.cs:61</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_astar_path_editor_html_a648301d3c1af20d971df0d32470ee61e"><div class="ttname"><a href="class_pathfinding_1_1_astar_path_editor.html#a648301d3c1af20d971df0d32470ee61e">Pathfinding.AstarPathEditor.helpBox</a></div><div class="ttdeci">static GUIStyle helpBox</div><div class="ttdef"><b>Definition:</b> <a href="_astar_path_editor_8cs_source.html#l00068">AstarPathEditor.cs:68</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_fade_area_html"><div class="ttname"><a href="class_pathfinding_1_1_fade_area.html">Pathfinding.FadeArea</a></div><div class="ttdef"><b>Definition:</b> <a href="_editor_g_u_ix_8cs_source.html#l00030">EditorGUIx.cs:30</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_graph_editor_base_html"><div class="ttname"><a href="class_pathfinding_1_1_graph_editor_base.html">Pathfinding.GraphEditorBase</a></div><div class="ttdef"><b>Definition:</b> <a href="_graph_editor_base_8cs_source.html#l00006">GraphEditorBase.cs:6</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_graph_editor_base_html_a37b7ace5b71ec34bd089eae747ec9c29"><div class="ttname"><a href="class_pathfinding_1_1_graph_editor_base.html#a37b7ace5b71ec34bd089eae747ec9c29">Pathfinding.GraphEditorBase.target</a></div><div class="ttdeci">NavGraph target</div><div class="ttdef"><b>Definition:</b> <a href="_graph_editor_base_8cs_source.html#l00008">GraphEditorBase.cs:8</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_graph_editor_html"><div class="ttname"><a href="class_pathfinding_1_1_graph_editor.html">Pathfinding.GraphEditor</a></div><div class="ttdef"><b>Definition:</b> <a href="_graph_editor_8cs_source.html#l00006">GraphEditor.cs:6</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_graph_editor_html_a2af127dd3cad820eef56fa72a6a16641"><div class="ttname"><a href="class_pathfinding_1_1_graph_editor.html#a2af127dd3cad820eef56fa72a6a16641">Pathfinding.GraphEditor.Separator</a></div><div class="ttdeci">static void Separator()</div><div class="ttdef"><b>Definition:</b> <a href="_graph_editor_8cs_source.html#l00101">GraphEditor.cs:101</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_graph_editor_html_a2fbf3117319bdd9773cfc2281e4b59e0"><div class="ttname"><a href="class_pathfinding_1_1_graph_editor.html#a2fbf3117319bdd9773cfc2281e4b59e0">Pathfinding.GraphEditor.infoFadeArea</a></div><div class="ttdeci">FadeArea infoFadeArea</div><div class="ttdef"><b>Definition:</b> <a href="_graph_editor_8cs_source.html#l00013">GraphEditor.cs:13</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_graph_editor_html_a46faec6eb292417313b5b23ec47108d9"><div class="ttname"><a href="class_pathfinding_1_1_graph_editor.html#a46faec6eb292417313b5b23ec47108d9">Pathfinding.GraphEditor.editor</a></div><div class="ttdeci">AstarPathEditor editor</div><div class="ttdef"><b>Definition:</b> <a href="_graph_editor_8cs_source.html#l00007">GraphEditor.cs:7</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_graph_editor_html_a599c4f8b7de85cb0ead7a8692c6e3351"><div class="ttname"><a href="class_pathfinding_1_1_graph_editor.html#a599c4f8b7de85cb0ead7a8692c6e3351">Pathfinding.GraphEditor.FixLabel</a></div><div class="ttdeci">static bool FixLabel(string label, string buttonLabel=&quot;Fix&quot;, int buttonWidth=40)</div><div class="ttdef"><b>Definition:</b> <a href="_graph_editor_8cs_source.html#l00112">GraphEditor.cs:112</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_graph_editor_html_a673ea574ea5ddf873f3b8a5a177faab1"><div class="ttname"><a href="class_pathfinding_1_1_graph_editor.html#a673ea574ea5ddf873f3b8a5a177faab1">Pathfinding.GraphEditor.ToggleGroup</a></div><div class="ttdeci">bool ToggleGroup(string label, bool value)</div><div class="ttdef"><b>Definition:</b> <a href="_graph_editor_8cs_source.html#l00124">GraphEditor.cs:124</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_graph_editor_html_a7975b3d1cea1adec98e6719d15aff164"><div class="ttname"><a href="class_pathfinding_1_1_graph_editor.html#a7975b3d1cea1adec98e6719d15aff164">Pathfinding.GraphEditor.OnInspectorGUI</a></div><div class="ttdeci">virtual void OnInspectorGUI(NavGraph target)</div><div class="ttdef"><b>Definition:</b> <a href="_graph_editor_8cs_source.html#l00093">GraphEditor.cs:93</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_graph_editor_html_a7be5b0be13d1bdeaf4b81288b10058d7"><div class="ttname"><a href="class_pathfinding_1_1_graph_editor.html#a7be5b0be13d1bdeaf4b81288b10058d7">Pathfinding.GraphEditor.ToggleGroup</a></div><div class="ttdeci">static bool ToggleGroup(GUIContent label, bool value)</div><div class="ttdef"><b>Definition:</b> <a href="_graph_editor_8cs_source.html#l00129">GraphEditor.cs:129</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_graph_editor_html_a8218c3b1a50e2368c5f6c4ee6be19e6f"><div class="ttname"><a href="class_pathfinding_1_1_graph_editor.html#a8218c3b1a50e2368c5f6c4ee6be19e6f">Pathfinding.GraphEditor.OnSceneGUI</a></div><div class="ttdeci">virtual void OnSceneGUI(NavGraph target)</div><div class="ttdef"><b>Definition:</b> <a href="_graph_editor_8cs_source.html#l00097">GraphEditor.cs:97</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_graph_editor_html_a9ce29f1658e8a38b05318ac896131fcb"><div class="ttname"><a href="class_pathfinding_1_1_graph_editor.html#a9ce29f1658e8a38b05318ac896131fcb">Pathfinding.GraphEditor.ObjectField</a></div><div class="ttdeci">static Object ObjectField(string label, Object obj, System.Type objType, bool allowSceneObjects)</div><div class="ttdef"><b>Definition:</b> <a href="_graph_editor_8cs_source.html#l00028">GraphEditor.cs:28</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_graph_editor_html_ab68d4d36905478b2fe1aeb7b2776c5d3"><div class="ttname"><a href="class_pathfinding_1_1_graph_editor.html#ab68d4d36905478b2fe1aeb7b2776c5d3">Pathfinding.GraphEditor.fadeArea</a></div><div class="ttdeci">FadeArea fadeArea</div><div class="ttdef"><b>Definition:</b> <a href="_graph_editor_8cs_source.html#l00010">GraphEditor.cs:10</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_graph_editor_html_ab9a4e5f8e6d869f59ce8f7b9c7072eb6"><div class="ttname"><a href="class_pathfinding_1_1_graph_editor.html#ab9a4e5f8e6d869f59ce8f7b9c7072eb6">Pathfinding.GraphEditor.ObjectField</a></div><div class="ttdeci">static Object ObjectField(GUIContent label, Object obj, System.Type objType, bool allowSceneObjects)</div><div class="ttdef"><b>Definition:</b> <a href="_graph_editor_8cs_source.html#l00032">GraphEditor.cs:32</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_graph_editor_html_ab9cf7d4e7ce289049de50748748b81d6"><div class="ttname"><a href="class_pathfinding_1_1_graph_editor.html#ab9cf7d4e7ce289049de50748748b81d6">Pathfinding.GraphEditor.AutoScan</a></div><div class="ttdeci">bool AutoScan()</div><div class="ttdef"><b>Definition:</b> <a href="_graph_editor_8cs_source.html#l00017">GraphEditor.cs:17</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_graph_editor_html_acd7351276889928e6705a42f5d66d24b"><div class="ttname"><a href="class_pathfinding_1_1_graph_editor.html#acd7351276889928e6705a42f5d66d24b">Pathfinding.GraphEditor.OnEnable</a></div><div class="ttdeci">virtual void OnEnable()</div><div class="ttdef"><b>Definition:</b> <a href="_graph_editor_8cs_source.html#l00025">GraphEditor.cs:25</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_graph_editor_html_af3bbdf4ed812281b0ed1ec90f487bb60"><div class="ttname"><a href="class_pathfinding_1_1_graph_editor.html#af3bbdf4ed812281b0ed1ec90f487bb60">Pathfinding.GraphEditor.OnBaseInspectorGUI</a></div><div class="ttdeci">void OnBaseInspectorGUI(NavGraph target)</div><div class="ttdef"><b>Definition:</b> <a href="_graph_editor_8cs_source.html#l00085">GraphEditor.cs:85</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_unity_reference_helper_html"><div class="ttname"><a href="class_pathfinding_1_1_unity_reference_helper.html">Pathfinding.UnityReferenceHelper</a></div><div class="ttdef"><b>Definition:</b> <a href="_unity_reference_helper_8cs_source.html#l00010">UnityReferenceHelper.cs:10</a></div></div>
+<div class="ttc" id="anamespace_p_f_html"><div class="ttname"><a href="namespace_p_f.html">PF</a></div><div class="ttdef"><b>Definition:</b> <a href="_array_pool_8cs_source.html#l00009">ArrayPool.cs:9</a></div></div>
+<div class="ttc" id="anamespace_pathfinding_html"><div class="ttname"><a href="namespace_pathfinding.html">Pathfinding</a></div><div class="ttdef"><b>Definition:</b> <a href="_a_i_base_editor_8cs_source.html#l00004">AIBaseEditor.cs:4</a></div></div>
+<div class="ttc" id="anamespace_system_html"><div class="ttname"><a href="namespace_system.html">System</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_method_builder_attribute_8cs_source.html#l00001">AsyncMethodBuilderAttribute.cs:2</a></div></div>
+<div class="ttc" id="anamespace_unity_engine_html"><div class="ttname"><a href="namespace_unity_engine.html">UnityEngine</a></div><div class="ttdef"><b>Definition:</b> <a href="_mathf_8cs_source.html#l00003">Mathf.cs:4</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_84bbf7b3c7f28a5a18725745e1505219.html">Assets</a></li><li class="navelem"><a class="el" href="dir_f13b41af88cf68434578284aaf699e39.html">Scripts</a></li><li class="navelem"><a class="el" href="dir_0261d5286017c38b9af36d6d3ff94a53.html">Editor</a></li><li class="navelem"><a class="el" href="dir_7a4bb4e0c70c032c32d8707a75da2de0.html">AstarPathfindingProject</a></li><li class="navelem"><a class="el" href="dir_39d59a7f822beb64b51427820c77aa47.html">GraphEditors</a></li><li class="navelem"><a class="el" href="_graph_editor_8cs.html">GraphEditor.cs</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:24:42 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

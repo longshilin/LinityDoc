@@ -1,0 +1,224 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: Assets/Scripts/Libraries/GameFramework/Libraries/GameFramework-2021.05.31/GameFramework/FileSystem/IFileSystem.cs 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_i_file_system_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">IFileSystem.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_i_file_system_8cs.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">//------------------------------------------------------------</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">// Game Framework</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">// Copyright © 2013-2021 Jiang Yin. All rights reserved.</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">// Homepage: https://gameframework.cn/</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">// Feedback: mailto:ellan@gameframework.cn</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">//------------------------------------------------------------</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Collections.Generic;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.IO;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_game_framework_1_1_file_system.html">GameFramework.FileSystem</a></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;{</div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_file_system_1_1_i_file_system.html">   16</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">interface </span><a class="code" href="interface_game_framework_1_1_file_system_1_1_i_file_system.html">IFileSystem</a></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    {</div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_file_system_1_1_i_file_system.html#a64488eaad7efb0c4d8f79889cf6cb8a7">   21</a></span>&#160;        <span class="keywordtype">string</span> <a class="code" href="interface_game_framework_1_1_file_system_1_1_i_file_system.html#a64488eaad7efb0c4d8f79889cf6cb8a7">FullPath</a></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        {</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;            <span class="keyword">get</span>;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        }</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_file_system_1_1_i_file_system.html#aad5e609041f2b219ba5d97cfc9645070">   29</a></span>&#160;        <a class="code" href="namespace_game_framework_1_1_file_system.html#a5ee368c10e2ba2cea40f726391addfff">FileSystemAccess</a> <a class="code" href="interface_game_framework_1_1_file_system_1_1_i_file_system.html#aad5e609041f2b219ba5d97cfc9645070">Access</a></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        {</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;            <span class="keyword">get</span>;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        }</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_file_system_1_1_i_file_system.html#a142b1a707c4b867a00bd9851cbad2f58">   37</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="interface_game_framework_1_1_file_system_1_1_i_file_system.html#a142b1a707c4b867a00bd9851cbad2f58">FileCount</a></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        {</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;            <span class="keyword">get</span>;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        }</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_file_system_1_1_i_file_system.html#a009ad0e9e932e580e1b07dc9bc5113e2">   45</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="interface_game_framework_1_1_file_system_1_1_i_file_system.html#a009ad0e9e932e580e1b07dc9bc5113e2">MaxFileCount</a></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        {</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            <span class="keyword">get</span>;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        }</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_file_system_1_1_i_file_system.html#a401a5ba0208e11390a2d0c3434ca7bb0">   55</a></span>&#160;        <a class="code" href="struct_game_framework_1_1_file_system_1_1_file_info.html">FileInfo</a> <a class="code" href="interface_game_framework_1_1_file_system_1_1_i_file_system.html#a401a5ba0208e11390a2d0c3434ca7bb0">GetFileInfo</a>(<span class="keywordtype">string</span> name);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_file_system_1_1_i_file_system.html#acb98c0fba52889b918ba3dbe0ad4b30e">   61</a></span>&#160;        <a class="code" href="struct_game_framework_1_1_file_system_1_1_file_info.html">FileInfo</a>[] <a class="code" href="interface_game_framework_1_1_file_system_1_1_i_file_system.html#acb98c0fba52889b918ba3dbe0ad4b30e">GetAllFileInfos</a>();</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_file_system_1_1_i_file_system.html#ae4c8f2efdc112460815e2895050f4e0d">   67</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="interface_game_framework_1_1_file_system_1_1_i_file_system.html#ae4c8f2efdc112460815e2895050f4e0d">GetAllFileInfos</a>(List&lt;FileInfo&gt; results);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_file_system_1_1_i_file_system.html#ab343ad50dd6eceef867b44044cbd8b05">   74</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="interface_game_framework_1_1_file_system_1_1_i_file_system.html#ab343ad50dd6eceef867b44044cbd8b05">HasFile</a>(<span class="keywordtype">string</span> name);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
+<div class="line"><a name="l00081"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_file_system_1_1_i_file_system.html#a64819740a0fd33936b0b740a6dca4dfe">   81</a></span>&#160;        <span class="keywordtype">byte</span>[] <a class="code" href="interface_game_framework_1_1_file_system_1_1_i_file_system.html#a64819740a0fd33936b0b740a6dca4dfe">ReadFile</a>(<span class="keywordtype">string</span> name);</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+<div class="line"><a name="l00089"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_file_system_1_1_i_file_system.html#aa82b3d9e5ae913c2ad16805f0dab288f">   89</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="interface_game_framework_1_1_file_system_1_1_i_file_system.html#aa82b3d9e5ae913c2ad16805f0dab288f">ReadFile</a>(<span class="keywordtype">string</span> name, <span class="keywordtype">byte</span>[] buffer);</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
+<div class="line"><a name="l00098"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_file_system_1_1_i_file_system.html#a14d06156b9cbabb382e4bc48cbd69c0a">   98</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="interface_game_framework_1_1_file_system_1_1_i_file_system.html#a14d06156b9cbabb382e4bc48cbd69c0a">ReadFile</a>(<span class="keywordtype">string</span> name, <span class="keywordtype">byte</span>[] buffer, <span class="keywordtype">int</span> startIndex);</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160; </div>
+<div class="line"><a name="l00108"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_file_system_1_1_i_file_system.html#ac1411b7272c2d09a6c6d2b71bfd7c0fc">  108</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="interface_game_framework_1_1_file_system_1_1_i_file_system.html#ac1411b7272c2d09a6c6d2b71bfd7c0fc">ReadFile</a>(<span class="keywordtype">string</span> name, <span class="keywordtype">byte</span>[] buffer, <span class="keywordtype">int</span> startIndex, <span class="keywordtype">int</span> length);</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; </div>
+<div class="line"><a name="l00116"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_file_system_1_1_i_file_system.html#a13e1dd8dd490aa1ca0c2f649ff531967">  116</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="interface_game_framework_1_1_file_system_1_1_i_file_system.html#a13e1dd8dd490aa1ca0c2f649ff531967">ReadFile</a>(<span class="keywordtype">string</span> name, Stream stream);</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160; </div>
+<div class="line"><a name="l00124"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_file_system_1_1_i_file_system.html#ae58eb8673b9bcc9ae60f7a9492ba2368">  124</a></span>&#160;        <span class="keywordtype">byte</span>[] <a class="code" href="interface_game_framework_1_1_file_system_1_1_i_file_system.html#ae58eb8673b9bcc9ae60f7a9492ba2368">ReadFileSegment</a>(<span class="keywordtype">string</span> name, <span class="keywordtype">int</span> length);</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160; </div>
+<div class="line"><a name="l00133"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_file_system_1_1_i_file_system.html#a7192e9b4e3027e070c748096c7c2a77d">  133</a></span>&#160;        <span class="keywordtype">byte</span>[] <a class="code" href="interface_game_framework_1_1_file_system_1_1_i_file_system.html#a7192e9b4e3027e070c748096c7c2a77d">ReadFileSegment</a>(<span class="keywordtype">string</span> name, <span class="keywordtype">int</span> offset, <span class="keywordtype">int</span> length);</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160; </div>
+<div class="line"><a name="l00141"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_file_system_1_1_i_file_system.html#aaf0e8f16779d06a2ce0b3a2ddbc92935">  141</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="interface_game_framework_1_1_file_system_1_1_i_file_system.html#aaf0e8f16779d06a2ce0b3a2ddbc92935">ReadFileSegment</a>(<span class="keywordtype">string</span> name, <span class="keywordtype">byte</span>[] buffer);</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160; </div>
+<div class="line"><a name="l00150"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_file_system_1_1_i_file_system.html#aba2fc03588ea33f506f9f7bbd3c14303">  150</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="interface_game_framework_1_1_file_system_1_1_i_file_system.html#aba2fc03588ea33f506f9f7bbd3c14303">ReadFileSegment</a>(<span class="keywordtype">string</span> name, <span class="keywordtype">byte</span>[] buffer, <span class="keywordtype">int</span> length);</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160; </div>
+<div class="line"><a name="l00160"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_file_system_1_1_i_file_system.html#af6dd38ce2daf249fb3778bf64cf160a9">  160</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="interface_game_framework_1_1_file_system_1_1_i_file_system.html#af6dd38ce2daf249fb3778bf64cf160a9">ReadFileSegment</a>(<span class="keywordtype">string</span> name, <span class="keywordtype">byte</span>[] buffer, <span class="keywordtype">int</span> startIndex, <span class="keywordtype">int</span> length);</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160; </div>
+<div class="line"><a name="l00169"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_file_system_1_1_i_file_system.html#a3f4cbfc463a9e941e4f9e9c723f29405">  169</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="interface_game_framework_1_1_file_system_1_1_i_file_system.html#a3f4cbfc463a9e941e4f9e9c723f29405">ReadFileSegment</a>(<span class="keywordtype">string</span> name, <span class="keywordtype">int</span> offset, <span class="keywordtype">byte</span>[] buffer);</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160; </div>
+<div class="line"><a name="l00179"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_file_system_1_1_i_file_system.html#a538a0f29edef28b06dbeaebc1f83f03f">  179</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="interface_game_framework_1_1_file_system_1_1_i_file_system.html#a538a0f29edef28b06dbeaebc1f83f03f">ReadFileSegment</a>(<span class="keywordtype">string</span> name, <span class="keywordtype">int</span> offset, <span class="keywordtype">byte</span>[] buffer, <span class="keywordtype">int</span> length);</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160; </div>
+<div class="line"><a name="l00190"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_file_system_1_1_i_file_system.html#a053168c3449a2c689112b0dbdbd1b2a2">  190</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="interface_game_framework_1_1_file_system_1_1_i_file_system.html#a053168c3449a2c689112b0dbdbd1b2a2">ReadFileSegment</a>(<span class="keywordtype">string</span> name, <span class="keywordtype">int</span> offset, <span class="keywordtype">byte</span>[] buffer, <span class="keywordtype">int</span> startIndex, <span class="keywordtype">int</span> length);</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160; </div>
+<div class="line"><a name="l00199"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_file_system_1_1_i_file_system.html#abbfe3f204bde64226c641a90a9dbaf9c">  199</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="interface_game_framework_1_1_file_system_1_1_i_file_system.html#abbfe3f204bde64226c641a90a9dbaf9c">ReadFileSegment</a>(<span class="keywordtype">string</span> name, Stream stream, <span class="keywordtype">int</span> length);</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160; </div>
+<div class="line"><a name="l00209"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_file_system_1_1_i_file_system.html#a9219d8d4e2eb9b460209e0da681f66b2">  209</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="interface_game_framework_1_1_file_system_1_1_i_file_system.html#a9219d8d4e2eb9b460209e0da681f66b2">ReadFileSegment</a>(<span class="keywordtype">string</span> name, <span class="keywordtype">int</span> offset, Stream stream, <span class="keywordtype">int</span> length);</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160; </div>
+<div class="line"><a name="l00217"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_file_system_1_1_i_file_system.html#a49515c261fe1e27777f87b8719273a1f">  217</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="interface_game_framework_1_1_file_system_1_1_i_file_system.html#a49515c261fe1e27777f87b8719273a1f">WriteFile</a>(<span class="keywordtype">string</span> name, <span class="keywordtype">byte</span>[] buffer);</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160; </div>
+<div class="line"><a name="l00226"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_file_system_1_1_i_file_system.html#a6c348665ee10c864c42a61a227942b85">  226</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="interface_game_framework_1_1_file_system_1_1_i_file_system.html#a6c348665ee10c864c42a61a227942b85">WriteFile</a>(<span class="keywordtype">string</span> name, <span class="keywordtype">byte</span>[] buffer, <span class="keywordtype">int</span> startIndex);</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160; </div>
+<div class="line"><a name="l00236"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_file_system_1_1_i_file_system.html#a20aecefe7669713f26990e2ae4299cf8">  236</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="interface_game_framework_1_1_file_system_1_1_i_file_system.html#a20aecefe7669713f26990e2ae4299cf8">WriteFile</a>(<span class="keywordtype">string</span> name, <span class="keywordtype">byte</span>[] buffer, <span class="keywordtype">int</span> startIndex, <span class="keywordtype">int</span> length);</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160; </div>
+<div class="line"><a name="l00244"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_file_system_1_1_i_file_system.html#a8b8c174022f9128f0990789b51e69146">  244</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="interface_game_framework_1_1_file_system_1_1_i_file_system.html#a8b8c174022f9128f0990789b51e69146">WriteFile</a>(<span class="keywordtype">string</span> name, Stream stream);</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160; </div>
+<div class="line"><a name="l00252"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_file_system_1_1_i_file_system.html#a8697bde9cd82fee7f777a2f91509dd03">  252</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="interface_game_framework_1_1_file_system_1_1_i_file_system.html#a8697bde9cd82fee7f777a2f91509dd03">WriteFile</a>(<span class="keywordtype">string</span> name, <span class="keywordtype">string</span> filePath);</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160; </div>
+<div class="line"><a name="l00260"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_file_system_1_1_i_file_system.html#a3d09d83bf5b860bf69ba7d063f7dfcaf">  260</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="interface_game_framework_1_1_file_system_1_1_i_file_system.html#a3d09d83bf5b860bf69ba7d063f7dfcaf">SaveAsFile</a>(<span class="keywordtype">string</span> name, <span class="keywordtype">string</span> filePath);</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160; </div>
+<div class="line"><a name="l00268"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_file_system_1_1_i_file_system.html#a0e8b49f520a459311a74a7363e05d38a">  268</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="interface_game_framework_1_1_file_system_1_1_i_file_system.html#a0e8b49f520a459311a74a7363e05d38a">RenameFile</a>(<span class="keywordtype">string</span> oldName, <span class="keywordtype">string</span> newName);</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160; </div>
+<div class="line"><a name="l00275"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_file_system_1_1_i_file_system.html#a8ead92076e425e30e26b9a6a7fa9290a">  275</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="interface_game_framework_1_1_file_system_1_1_i_file_system.html#a8ead92076e425e30e26b9a6a7fa9290a">DeleteFile</a>(<span class="keywordtype">string</span> name);</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;    }</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;}</div>
+<div class="ttc" id="ainterface_game_framework_1_1_file_system_1_1_i_file_system_html"><div class="ttname"><a href="interface_game_framework_1_1_file_system_1_1_i_file_system.html">GameFramework.FileSystem.IFileSystem</a></div><div class="ttdoc">文件系统接口。</div><div class="ttdef"><b>Definition:</b> <a href="_i_file_system_8cs_source.html#l00016">IFileSystem.cs:17</a></div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_file_system_1_1_i_file_system_html_a009ad0e9e932e580e1b07dc9bc5113e2"><div class="ttname"><a href="interface_game_framework_1_1_file_system_1_1_i_file_system.html#a009ad0e9e932e580e1b07dc9bc5113e2">GameFramework.FileSystem.IFileSystem.MaxFileCount</a></div><div class="ttdeci">int MaxFileCount</div><div class="ttdoc">获取最大文件数量。</div><div class="ttdef"><b>Definition:</b> <a href="_i_file_system_8cs_source.html#l00045">IFileSystem.cs:46</a></div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_file_system_1_1_i_file_system_html_a053168c3449a2c689112b0dbdbd1b2a2"><div class="ttname"><a href="interface_game_framework_1_1_file_system_1_1_i_file_system.html#a053168c3449a2c689112b0dbdbd1b2a2">GameFramework.FileSystem.IFileSystem.ReadFileSegment</a></div><div class="ttdeci">int ReadFileSegment(string name, int offset, byte[] buffer, int startIndex, int length)</div><div class="ttdoc">读取指定文件的指定片段。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_file_system_1_1_i_file_system_html_a0e8b49f520a459311a74a7363e05d38a"><div class="ttname"><a href="interface_game_framework_1_1_file_system_1_1_i_file_system.html#a0e8b49f520a459311a74a7363e05d38a">GameFramework.FileSystem.IFileSystem.RenameFile</a></div><div class="ttdeci">bool RenameFile(string oldName, string newName)</div><div class="ttdoc">重命名指定文件。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_file_system_1_1_i_file_system_html_a13e1dd8dd490aa1ca0c2f649ff531967"><div class="ttname"><a href="interface_game_framework_1_1_file_system_1_1_i_file_system.html#a13e1dd8dd490aa1ca0c2f649ff531967">GameFramework.FileSystem.IFileSystem.ReadFile</a></div><div class="ttdeci">int ReadFile(string name, Stream stream)</div><div class="ttdoc">读取指定文件。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_file_system_1_1_i_file_system_html_a142b1a707c4b867a00bd9851cbad2f58"><div class="ttname"><a href="interface_game_framework_1_1_file_system_1_1_i_file_system.html#a142b1a707c4b867a00bd9851cbad2f58">GameFramework.FileSystem.IFileSystem.FileCount</a></div><div class="ttdeci">int FileCount</div><div class="ttdoc">获取文件数量。</div><div class="ttdef"><b>Definition:</b> <a href="_i_file_system_8cs_source.html#l00037">IFileSystem.cs:38</a></div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_file_system_1_1_i_file_system_html_a14d06156b9cbabb382e4bc48cbd69c0a"><div class="ttname"><a href="interface_game_framework_1_1_file_system_1_1_i_file_system.html#a14d06156b9cbabb382e4bc48cbd69c0a">GameFramework.FileSystem.IFileSystem.ReadFile</a></div><div class="ttdeci">int ReadFile(string name, byte[] buffer, int startIndex)</div><div class="ttdoc">读取指定文件。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_file_system_1_1_i_file_system_html_a20aecefe7669713f26990e2ae4299cf8"><div class="ttname"><a href="interface_game_framework_1_1_file_system_1_1_i_file_system.html#a20aecefe7669713f26990e2ae4299cf8">GameFramework.FileSystem.IFileSystem.WriteFile</a></div><div class="ttdeci">bool WriteFile(string name, byte[] buffer, int startIndex, int length)</div><div class="ttdoc">写入指定文件。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_file_system_1_1_i_file_system_html_a3d09d83bf5b860bf69ba7d063f7dfcaf"><div class="ttname"><a href="interface_game_framework_1_1_file_system_1_1_i_file_system.html#a3d09d83bf5b860bf69ba7d063f7dfcaf">GameFramework.FileSystem.IFileSystem.SaveAsFile</a></div><div class="ttdeci">bool SaveAsFile(string name, string filePath)</div><div class="ttdoc">将指定文件另存为物理文件。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_file_system_1_1_i_file_system_html_a3f4cbfc463a9e941e4f9e9c723f29405"><div class="ttname"><a href="interface_game_framework_1_1_file_system_1_1_i_file_system.html#a3f4cbfc463a9e941e4f9e9c723f29405">GameFramework.FileSystem.IFileSystem.ReadFileSegment</a></div><div class="ttdeci">int ReadFileSegment(string name, int offset, byte[] buffer)</div><div class="ttdoc">读取指定文件的指定片段。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_file_system_1_1_i_file_system_html_a401a5ba0208e11390a2d0c3434ca7bb0"><div class="ttname"><a href="interface_game_framework_1_1_file_system_1_1_i_file_system.html#a401a5ba0208e11390a2d0c3434ca7bb0">GameFramework.FileSystem.IFileSystem.GetFileInfo</a></div><div class="ttdeci">FileInfo GetFileInfo(string name)</div><div class="ttdoc">获取文件信息。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_file_system_1_1_i_file_system_html_a49515c261fe1e27777f87b8719273a1f"><div class="ttname"><a href="interface_game_framework_1_1_file_system_1_1_i_file_system.html#a49515c261fe1e27777f87b8719273a1f">GameFramework.FileSystem.IFileSystem.WriteFile</a></div><div class="ttdeci">bool WriteFile(string name, byte[] buffer)</div><div class="ttdoc">写入指定文件。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_file_system_1_1_i_file_system_html_a538a0f29edef28b06dbeaebc1f83f03f"><div class="ttname"><a href="interface_game_framework_1_1_file_system_1_1_i_file_system.html#a538a0f29edef28b06dbeaebc1f83f03f">GameFramework.FileSystem.IFileSystem.ReadFileSegment</a></div><div class="ttdeci">int ReadFileSegment(string name, int offset, byte[] buffer, int length)</div><div class="ttdoc">读取指定文件的指定片段。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_file_system_1_1_i_file_system_html_a64488eaad7efb0c4d8f79889cf6cb8a7"><div class="ttname"><a href="interface_game_framework_1_1_file_system_1_1_i_file_system.html#a64488eaad7efb0c4d8f79889cf6cb8a7">GameFramework.FileSystem.IFileSystem.FullPath</a></div><div class="ttdeci">string FullPath</div><div class="ttdoc">获取文件系统完整路径。</div><div class="ttdef"><b>Definition:</b> <a href="_i_file_system_8cs_source.html#l00021">IFileSystem.cs:22</a></div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_file_system_1_1_i_file_system_html_a64819740a0fd33936b0b740a6dca4dfe"><div class="ttname"><a href="interface_game_framework_1_1_file_system_1_1_i_file_system.html#a64819740a0fd33936b0b740a6dca4dfe">GameFramework.FileSystem.IFileSystem.ReadFile</a></div><div class="ttdeci">byte[] ReadFile(string name)</div><div class="ttdoc">读取指定文件。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_file_system_1_1_i_file_system_html_a6c348665ee10c864c42a61a227942b85"><div class="ttname"><a href="interface_game_framework_1_1_file_system_1_1_i_file_system.html#a6c348665ee10c864c42a61a227942b85">GameFramework.FileSystem.IFileSystem.WriteFile</a></div><div class="ttdeci">bool WriteFile(string name, byte[] buffer, int startIndex)</div><div class="ttdoc">写入指定文件。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_file_system_1_1_i_file_system_html_a7192e9b4e3027e070c748096c7c2a77d"><div class="ttname"><a href="interface_game_framework_1_1_file_system_1_1_i_file_system.html#a7192e9b4e3027e070c748096c7c2a77d">GameFramework.FileSystem.IFileSystem.ReadFileSegment</a></div><div class="ttdeci">byte[] ReadFileSegment(string name, int offset, int length)</div><div class="ttdoc">读取指定文件的指定片段。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_file_system_1_1_i_file_system_html_a8697bde9cd82fee7f777a2f91509dd03"><div class="ttname"><a href="interface_game_framework_1_1_file_system_1_1_i_file_system.html#a8697bde9cd82fee7f777a2f91509dd03">GameFramework.FileSystem.IFileSystem.WriteFile</a></div><div class="ttdeci">bool WriteFile(string name, string filePath)</div><div class="ttdoc">写入指定文件。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_file_system_1_1_i_file_system_html_a8b8c174022f9128f0990789b51e69146"><div class="ttname"><a href="interface_game_framework_1_1_file_system_1_1_i_file_system.html#a8b8c174022f9128f0990789b51e69146">GameFramework.FileSystem.IFileSystem.WriteFile</a></div><div class="ttdeci">bool WriteFile(string name, Stream stream)</div><div class="ttdoc">写入指定文件。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_file_system_1_1_i_file_system_html_a8ead92076e425e30e26b9a6a7fa9290a"><div class="ttname"><a href="interface_game_framework_1_1_file_system_1_1_i_file_system.html#a8ead92076e425e30e26b9a6a7fa9290a">GameFramework.FileSystem.IFileSystem.DeleteFile</a></div><div class="ttdeci">bool DeleteFile(string name)</div><div class="ttdoc">删除指定文件。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_file_system_1_1_i_file_system_html_a9219d8d4e2eb9b460209e0da681f66b2"><div class="ttname"><a href="interface_game_framework_1_1_file_system_1_1_i_file_system.html#a9219d8d4e2eb9b460209e0da681f66b2">GameFramework.FileSystem.IFileSystem.ReadFileSegment</a></div><div class="ttdeci">int ReadFileSegment(string name, int offset, Stream stream, int length)</div><div class="ttdoc">读取指定文件的指定片段。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_file_system_1_1_i_file_system_html_aa82b3d9e5ae913c2ad16805f0dab288f"><div class="ttname"><a href="interface_game_framework_1_1_file_system_1_1_i_file_system.html#aa82b3d9e5ae913c2ad16805f0dab288f">GameFramework.FileSystem.IFileSystem.ReadFile</a></div><div class="ttdeci">int ReadFile(string name, byte[] buffer)</div><div class="ttdoc">读取指定文件。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_file_system_1_1_i_file_system_html_aad5e609041f2b219ba5d97cfc9645070"><div class="ttname"><a href="interface_game_framework_1_1_file_system_1_1_i_file_system.html#aad5e609041f2b219ba5d97cfc9645070">GameFramework.FileSystem.IFileSystem.Access</a></div><div class="ttdeci">FileSystemAccess Access</div><div class="ttdoc">获取文件系统访问方式。</div><div class="ttdef"><b>Definition:</b> <a href="_i_file_system_8cs_source.html#l00029">IFileSystem.cs:30</a></div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_file_system_1_1_i_file_system_html_aaf0e8f16779d06a2ce0b3a2ddbc92935"><div class="ttname"><a href="interface_game_framework_1_1_file_system_1_1_i_file_system.html#aaf0e8f16779d06a2ce0b3a2ddbc92935">GameFramework.FileSystem.IFileSystem.ReadFileSegment</a></div><div class="ttdeci">int ReadFileSegment(string name, byte[] buffer)</div><div class="ttdoc">读取指定文件的指定片段。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_file_system_1_1_i_file_system_html_ab343ad50dd6eceef867b44044cbd8b05"><div class="ttname"><a href="interface_game_framework_1_1_file_system_1_1_i_file_system.html#ab343ad50dd6eceef867b44044cbd8b05">GameFramework.FileSystem.IFileSystem.HasFile</a></div><div class="ttdeci">bool HasFile(string name)</div><div class="ttdoc">检查是否存在指定文件。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_file_system_1_1_i_file_system_html_aba2fc03588ea33f506f9f7bbd3c14303"><div class="ttname"><a href="interface_game_framework_1_1_file_system_1_1_i_file_system.html#aba2fc03588ea33f506f9f7bbd3c14303">GameFramework.FileSystem.IFileSystem.ReadFileSegment</a></div><div class="ttdeci">int ReadFileSegment(string name, byte[] buffer, int length)</div><div class="ttdoc">读取指定文件的指定片段。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_file_system_1_1_i_file_system_html_abbfe3f204bde64226c641a90a9dbaf9c"><div class="ttname"><a href="interface_game_framework_1_1_file_system_1_1_i_file_system.html#abbfe3f204bde64226c641a90a9dbaf9c">GameFramework.FileSystem.IFileSystem.ReadFileSegment</a></div><div class="ttdeci">int ReadFileSegment(string name, Stream stream, int length)</div><div class="ttdoc">读取指定文件的指定片段。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_file_system_1_1_i_file_system_html_ac1411b7272c2d09a6c6d2b71bfd7c0fc"><div class="ttname"><a href="interface_game_framework_1_1_file_system_1_1_i_file_system.html#ac1411b7272c2d09a6c6d2b71bfd7c0fc">GameFramework.FileSystem.IFileSystem.ReadFile</a></div><div class="ttdeci">int ReadFile(string name, byte[] buffer, int startIndex, int length)</div><div class="ttdoc">读取指定文件。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_file_system_1_1_i_file_system_html_acb98c0fba52889b918ba3dbe0ad4b30e"><div class="ttname"><a href="interface_game_framework_1_1_file_system_1_1_i_file_system.html#acb98c0fba52889b918ba3dbe0ad4b30e">GameFramework.FileSystem.IFileSystem.GetAllFileInfos</a></div><div class="ttdeci">FileInfo[] GetAllFileInfos()</div><div class="ttdoc">获取所有文件信息。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_file_system_1_1_i_file_system_html_ae4c8f2efdc112460815e2895050f4e0d"><div class="ttname"><a href="interface_game_framework_1_1_file_system_1_1_i_file_system.html#ae4c8f2efdc112460815e2895050f4e0d">GameFramework.FileSystem.IFileSystem.GetAllFileInfos</a></div><div class="ttdeci">void GetAllFileInfos(List&lt; FileInfo &gt; results)</div><div class="ttdoc">获取所有文件信息。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_file_system_1_1_i_file_system_html_ae58eb8673b9bcc9ae60f7a9492ba2368"><div class="ttname"><a href="interface_game_framework_1_1_file_system_1_1_i_file_system.html#ae58eb8673b9bcc9ae60f7a9492ba2368">GameFramework.FileSystem.IFileSystem.ReadFileSegment</a></div><div class="ttdeci">byte[] ReadFileSegment(string name, int length)</div><div class="ttdoc">读取指定文件的指定片段。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_file_system_1_1_i_file_system_html_af6dd38ce2daf249fb3778bf64cf160a9"><div class="ttname"><a href="interface_game_framework_1_1_file_system_1_1_i_file_system.html#af6dd38ce2daf249fb3778bf64cf160a9">GameFramework.FileSystem.IFileSystem.ReadFileSegment</a></div><div class="ttdeci">int ReadFileSegment(string name, byte[] buffer, int startIndex, int length)</div><div class="ttdoc">读取指定文件的指定片段。</div></div>
+<div class="ttc" id="anamespace_game_framework_1_1_file_system_html"><div class="ttname"><a href="namespace_game_framework_1_1_file_system.html">GameFramework.FileSystem</a></div><div class="ttdef"><b>Definition:</b> <a href="_common_file_system_stream_8cs_source.html#l00011">CommonFileSystemStream.cs:12</a></div></div>
+<div class="ttc" id="anamespace_game_framework_1_1_file_system_html_a5ee368c10e2ba2cea40f726391addfff"><div class="ttname"><a href="namespace_game_framework_1_1_file_system.html#a5ee368c10e2ba2cea40f726391addfff">GameFramework.FileSystem.FileSystemAccess</a></div><div class="ttdeci">FileSystemAccess</div><div class="ttdoc">文件系统访问方式。</div><div class="ttdef"><b>Definition:</b> <a href="_file_system_access_8cs_source.html#l00016">FileSystemAccess.cs:17</a></div></div>
+<div class="ttc" id="anamespace_system_html"><div class="ttname"><a href="namespace_system.html">System</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_method_builder_attribute_8cs_source.html#l00001">AsyncMethodBuilderAttribute.cs:2</a></div></div>
+<div class="ttc" id="astruct_game_framework_1_1_file_system_1_1_file_info_html"><div class="ttname"><a href="struct_game_framework_1_1_file_system_1_1_file_info.html">GameFramework.FileSystem.FileInfo</a></div><div class="ttdoc">文件信息。</div><div class="ttdef"><b>Definition:</b> <a href="_file_info_8cs_source.html#l00016">FileInfo.cs:17</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_84bbf7b3c7f28a5a18725745e1505219.html">Assets</a></li><li class="navelem"><a class="el" href="dir_f13b41af88cf68434578284aaf699e39.html">Scripts</a></li><li class="navelem"><a class="el" href="dir_46d134a3bf82cf4dc49ca8f728aea58c.html">Libraries</a></li><li class="navelem"><a class="el" href="dir_7a6862c303020716b3c311e95823547c.html">GameFramework</a></li><li class="navelem"><a class="el" href="dir_bfc6cd8d089c265c897460523cef6560.html">Libraries</a></li><li class="navelem"><a class="el" href="dir_c1104d2df307bba6f9db4e185ff99743.html">GameFramework-2021.05.31</a></li><li class="navelem"><a class="el" href="dir_fe759fdbe5a0d8b8465ec936ca1014c7.html">GameFramework</a></li><li class="navelem"><a class="el" href="dir_45789c1be4d6d82b9e056f71a86bed11.html">FileSystem</a></li><li class="navelem"><a class="el" href="_i_file_system_8cs.html">IFileSystem.cs</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:24:47 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

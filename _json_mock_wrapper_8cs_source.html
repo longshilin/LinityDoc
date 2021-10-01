@@ -1,0 +1,223 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: Assets/Scripts/Libraries/LitJson/JsonMockWrapper.cs 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_json_mock_wrapper_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">JsonMockWrapper.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_json_mock_wrapper_8cs.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#region Header</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#endregion</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Collections;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Collections.Specialized;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_lit_json.html">LitJson</a></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;{</div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="class_lit_json_1_1_json_mock_wrapper.html">   20</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="class_lit_json_1_1_json_mock_wrapper.html">JsonMockWrapper</a> : <a class="code" href="interface_lit_json_1_1_i_json_wrapper.html">IJsonWrapper</a></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    {</div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="class_lit_json_1_1_json_mock_wrapper.html#a150e906c93d489146746bf46a9cba084">   22</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code" href="class_lit_json_1_1_json_mock_wrapper.html#a150e906c93d489146746bf46a9cba084">IsArray</a>   { <span class="keyword">get</span> { <span class="keywordflow">return</span> <span class="keyword">false</span>; } }</div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="class_lit_json_1_1_json_mock_wrapper.html#a253c5a904b578196c1f13a43a1353275">   23</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code" href="class_lit_json_1_1_json_mock_wrapper.html#a253c5a904b578196c1f13a43a1353275">IsBoolean</a> { <span class="keyword">get</span> { <span class="keywordflow">return</span> <span class="keyword">false</span>; } }</div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="class_lit_json_1_1_json_mock_wrapper.html#a7209451ccceeee72dd416f4fc0dd9e5e">   24</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code" href="class_lit_json_1_1_json_mock_wrapper.html#a7209451ccceeee72dd416f4fc0dd9e5e">IsDouble</a>  { <span class="keyword">get</span> { <span class="keywordflow">return</span> <span class="keyword">false</span>; } }</div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="class_lit_json_1_1_json_mock_wrapper.html#a0f0bef561fcbf75d826a277db7828371">   25</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code" href="class_lit_json_1_1_json_mock_wrapper.html#a0f0bef561fcbf75d826a277db7828371">IsInt</a>     { <span class="keyword">get</span> { <span class="keywordflow">return</span> <span class="keyword">false</span>; } }</div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="class_lit_json_1_1_json_mock_wrapper.html#a15fd02e24c6f577346960f380b30c07f">   26</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code" href="class_lit_json_1_1_json_mock_wrapper.html#a15fd02e24c6f577346960f380b30c07f">IsLong</a>    { <span class="keyword">get</span> { <span class="keywordflow">return</span> <span class="keyword">false</span>; } }</div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="class_lit_json_1_1_json_mock_wrapper.html#a0e0ca4781655113b5e0980eed62500b7">   27</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code" href="class_lit_json_1_1_json_mock_wrapper.html#a0e0ca4781655113b5e0980eed62500b7">IsObject</a>  { <span class="keyword">get</span> { <span class="keywordflow">return</span> <span class="keyword">false</span>; } }</div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="class_lit_json_1_1_json_mock_wrapper.html#a3cefed68b82b0a9b6b66ce886d69e623">   28</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code" href="class_lit_json_1_1_json_mock_wrapper.html#a3cefed68b82b0a9b6b66ce886d69e623">IsString</a>  { <span class="keyword">get</span> { <span class="keywordflow">return</span> <span class="keyword">false</span>; } }</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="class_lit_json_1_1_json_mock_wrapper.html#a2385f94c3c883d81243d2253be529d23">   30</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">bool</span>     <a class="code" href="class_lit_json_1_1_json_mock_wrapper.html#a2385f94c3c883d81243d2253be529d23">GetBoolean</a> ()  { <span class="keywordflow">return</span> <span class="keyword">false</span>; }</div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="class_lit_json_1_1_json_mock_wrapper.html#ad4c96aa9b9be61a69fd8c429cfc4a1e5">   31</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">double</span>   <a class="code" href="class_lit_json_1_1_json_mock_wrapper.html#ad4c96aa9b9be61a69fd8c429cfc4a1e5">GetDouble</a> ()   { <span class="keywordflow">return</span> 0.0; }</div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="class_lit_json_1_1_json_mock_wrapper.html#aad18a6ea53502746e56464426c4016fd">   32</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">int</span>      <a class="code" href="class_lit_json_1_1_json_mock_wrapper.html#aad18a6ea53502746e56464426c4016fd">GetInt</a> ()      { <span class="keywordflow">return</span> 0; }</div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="class_lit_json_1_1_json_mock_wrapper.html#a871dccb462dd0fea5e1aec107f457714">   33</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="namespace_lit_json.html#acd123a28f60df4f396dc0fcd8f9c9757">JsonType</a> <a class="code" href="class_lit_json_1_1_json_mock_wrapper.html#a871dccb462dd0fea5e1aec107f457714">GetJsonType</a> () { <span class="keywordflow">return</span> <a class="code" href="namespace_lit_json.html#acd123a28f60df4f396dc0fcd8f9c9757">JsonType</a>.None; }</div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="class_lit_json_1_1_json_mock_wrapper.html#adae5bf6ec1e5b5689ff337c1bbadd365">   34</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">long</span>     <a class="code" href="class_lit_json_1_1_json_mock_wrapper.html#adae5bf6ec1e5b5689ff337c1bbadd365">GetLong</a> ()     { <span class="keywordflow">return</span> 0L; }</div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="class_lit_json_1_1_json_mock_wrapper.html#a21a6cb097704194b65170f8017418d4a">   35</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">string</span>   <a class="code" href="class_lit_json_1_1_json_mock_wrapper.html#a21a6cb097704194b65170f8017418d4a">GetString</a> ()   { <span class="keywordflow">return</span> <span class="stringliteral">&quot;&quot;</span>; }</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="class_lit_json_1_1_json_mock_wrapper.html#adcd91bf768f33358c05876a6418a137a">   37</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_lit_json_1_1_json_mock_wrapper.html#adcd91bf768f33358c05876a6418a137a">SetBoolean</a>  (<span class="keywordtype">bool</span> val)      {}</div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="class_lit_json_1_1_json_mock_wrapper.html#a684096f4136c86dcb0e18c250d7858e5">   38</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_lit_json_1_1_json_mock_wrapper.html#a684096f4136c86dcb0e18c250d7858e5">SetDouble</a>   (<span class="keywordtype">double</span> val)    {}</div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="class_lit_json_1_1_json_mock_wrapper.html#a0fd28120fba46663d91fb5e73cddbe89">   39</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_lit_json_1_1_json_mock_wrapper.html#a0fd28120fba46663d91fb5e73cddbe89">SetInt</a>      (<span class="keywordtype">int</span> val)       {}</div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="class_lit_json_1_1_json_mock_wrapper.html#a3f176aaab41998ba0bc4302ee31189ac">   40</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_lit_json_1_1_json_mock_wrapper.html#a3f176aaab41998ba0bc4302ee31189ac">SetJsonType</a> (<a class="code" href="namespace_lit_json.html#acd123a28f60df4f396dc0fcd8f9c9757">JsonType</a> type) {}</div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="class_lit_json_1_1_json_mock_wrapper.html#aef42273b6b601a61d9bac3f95a51e81e">   41</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_lit_json_1_1_json_mock_wrapper.html#aef42273b6b601a61d9bac3f95a51e81e">SetLong</a>     (<span class="keywordtype">long</span> val)      {}</div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="class_lit_json_1_1_json_mock_wrapper.html#acb55337a4a365e9908a5b0fa339600a7">   42</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_lit_json_1_1_json_mock_wrapper.html#acb55337a4a365e9908a5b0fa339600a7">SetString</a>   (<span class="keywordtype">string</span> val)    {}</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="class_lit_json_1_1_json_mock_wrapper.html#ade44a1bd707a9af1bd4769b00eaf8abc">   44</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">string</span> <a class="code" href="class_lit_json_1_1_json_mock_wrapper.html#ade44a1bd707a9af1bd4769b00eaf8abc">ToJson</a> ()                  { <span class="keywordflow">return</span> <span class="stringliteral">&quot;&quot;</span>; }</div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="class_lit_json_1_1_json_mock_wrapper.html#a405c8000c7f3e9bd5be5bd60cb025744">   45</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span>   <a class="code" href="class_lit_json_1_1_json_mock_wrapper.html#a405c8000c7f3e9bd5be5bd60cb025744">ToJson</a> (<a class="code" href="class_lit_json_1_1_json_writer.html">JsonWriter</a> writer) {}</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <span class="keywordtype">bool</span> IList.IsFixedSize { <span class="keyword">get</span> { <span class="keywordflow">return</span> <span class="keyword">true</span>; } }</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <span class="keywordtype">bool</span> IList.IsReadOnly  { <span class="keyword">get</span> { <span class="keywordflow">return</span> <span class="keyword">true</span>; } }</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <span class="keywordtype">object</span> IList.this[<span class="keywordtype">int</span> index] {</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            <span class="keyword">get</span> { <span class="keywordflow">return</span> <span class="keyword">null</span>; }</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            <span class="keyword">set</span> {}</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        }</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <span class="keywordtype">int</span>  IList.Add (<span class="keywordtype">object</span> value)       { <span class="keywordflow">return</span> 0; }</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <span class="keywordtype">void</span> IList.Clear ()                 {}</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <span class="keywordtype">bool</span> IList.Contains (<span class="keywordtype">object</span> value)  { <span class="keywordflow">return</span> <span class="keyword">false</span>; }</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <span class="keywordtype">int</span>  IList.IndexOf (<span class="keywordtype">object</span> value)   { <span class="keywordflow">return</span> -1; }</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="keywordtype">void</span> IList.Insert (<span class="keywordtype">int</span> i, <span class="keywordtype">object</span> v) {}</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <span class="keywordtype">void</span> IList.Remove (<span class="keywordtype">object</span> value)    {}</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="keywordtype">void</span> IList.RemoveAt (<span class="keywordtype">int</span> index)     {}</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <span class="keywordtype">int</span>    ICollection.Count          { <span class="keyword">get</span> { <span class="keywordflow">return</span> 0; } }</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <span class="keywordtype">bool</span>   ICollection.IsSynchronized { <span class="keyword">get</span> { <span class="keywordflow">return</span> <span class="keyword">false</span>; } }</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <span class="keywordtype">object</span> ICollection.SyncRoot       { <span class="keyword">get</span> { <span class="keywordflow">return</span> <span class="keyword">null</span>; } }</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <span class="keywordtype">void</span> ICollection.CopyTo (Array array, <span class="keywordtype">int</span> index) {}</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        IEnumerator IEnumerable.GetEnumerator () { <span class="keywordflow">return</span> <span class="keyword">null</span>; }</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <span class="keywordtype">bool</span> IDictionary.IsFixedSize { <span class="keyword">get</span> { <span class="keywordflow">return</span> <span class="keyword">true</span>; } }</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        <span class="keywordtype">bool</span> IDictionary.IsReadOnly  { <span class="keyword">get</span> { <span class="keywordflow">return</span> <span class="keyword">true</span>; } }</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        ICollection IDictionary.Keys   { <span class="keyword">get</span> { <span class="keywordflow">return</span> <span class="keyword">null</span>; } }</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        ICollection IDictionary.Values { <span class="keyword">get</span> { <span class="keywordflow">return</span> <span class="keyword">null</span>; } }</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        <span class="keywordtype">object</span> IDictionary.this[<span class="keywordtype">object</span> key] {</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            <span class="keyword">get</span> { <span class="keywordflow">return</span> <span class="keyword">null</span>; }</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;            <span class="keyword">set</span> {}</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        }</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        <span class="keywordtype">void</span> IDictionary.Add (<span class="keywordtype">object</span> k, <span class="keywordtype">object</span> v) {}</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        <span class="keywordtype">void</span> IDictionary.Clear ()                 {}</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        <span class="keywordtype">bool</span> IDictionary.Contains (<span class="keywordtype">object</span> key)    { <span class="keywordflow">return</span> <span class="keyword">false</span>; }</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        <span class="keywordtype">void</span> IDictionary.Remove (<span class="keywordtype">object</span> key)      {}</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        IDictionaryEnumerator IDictionary.GetEnumerator () { <span class="keywordflow">return</span> <span class="keyword">null</span>; }</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        <span class="keywordtype">object</span> IOrderedDictionary.this[<span class="keywordtype">int</span> idx] {</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;            <span class="keyword">get</span> { <span class="keywordflow">return</span> <span class="keyword">null</span>; }</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;            <span class="keyword">set</span> {}</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        }</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        IDictionaryEnumerator IOrderedDictionary.GetEnumerator () {</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        }</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        <span class="keywordtype">void</span> IOrderedDictionary.Insert   (<span class="keywordtype">int</span> i, <span class="keywordtype">object</span> k, <span class="keywordtype">object</span> v) {}</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        <span class="keywordtype">void</span> IOrderedDictionary.RemoveAt (<span class="keywordtype">int</span> i) {}</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    }</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;}</div>
+<div class="ttc" id="aclass_lit_json_1_1_json_mock_wrapper_html"><div class="ttname"><a href="class_lit_json_1_1_json_mock_wrapper.html">LitJson.JsonMockWrapper</a></div><div class="ttdef"><b>Definition:</b> <a href="_json_mock_wrapper_8cs_source.html#l00020">JsonMockWrapper.cs:21</a></div></div>
+<div class="ttc" id="aclass_lit_json_1_1_json_mock_wrapper_html_a0e0ca4781655113b5e0980eed62500b7"><div class="ttname"><a href="class_lit_json_1_1_json_mock_wrapper.html#a0e0ca4781655113b5e0980eed62500b7">LitJson.JsonMockWrapper.IsObject</a></div><div class="ttdeci">bool IsObject</div><div class="ttdef"><b>Definition:</b> <a href="_json_mock_wrapper_8cs_source.html#l00027">JsonMockWrapper.cs:27</a></div></div>
+<div class="ttc" id="aclass_lit_json_1_1_json_mock_wrapper_html_a0f0bef561fcbf75d826a277db7828371"><div class="ttname"><a href="class_lit_json_1_1_json_mock_wrapper.html#a0f0bef561fcbf75d826a277db7828371">LitJson.JsonMockWrapper.IsInt</a></div><div class="ttdeci">bool IsInt</div><div class="ttdef"><b>Definition:</b> <a href="_json_mock_wrapper_8cs_source.html#l00025">JsonMockWrapper.cs:25</a></div></div>
+<div class="ttc" id="aclass_lit_json_1_1_json_mock_wrapper_html_a0fd28120fba46663d91fb5e73cddbe89"><div class="ttname"><a href="class_lit_json_1_1_json_mock_wrapper.html#a0fd28120fba46663d91fb5e73cddbe89">LitJson.JsonMockWrapper.SetInt</a></div><div class="ttdeci">void SetInt(int val)</div><div class="ttdef"><b>Definition:</b> <a href="_json_mock_wrapper_8cs_source.html#l00039">JsonMockWrapper.cs:39</a></div></div>
+<div class="ttc" id="aclass_lit_json_1_1_json_mock_wrapper_html_a150e906c93d489146746bf46a9cba084"><div class="ttname"><a href="class_lit_json_1_1_json_mock_wrapper.html#a150e906c93d489146746bf46a9cba084">LitJson.JsonMockWrapper.IsArray</a></div><div class="ttdeci">bool IsArray</div><div class="ttdef"><b>Definition:</b> <a href="_json_mock_wrapper_8cs_source.html#l00022">JsonMockWrapper.cs:22</a></div></div>
+<div class="ttc" id="aclass_lit_json_1_1_json_mock_wrapper_html_a15fd02e24c6f577346960f380b30c07f"><div class="ttname"><a href="class_lit_json_1_1_json_mock_wrapper.html#a15fd02e24c6f577346960f380b30c07f">LitJson.JsonMockWrapper.IsLong</a></div><div class="ttdeci">bool IsLong</div><div class="ttdef"><b>Definition:</b> <a href="_json_mock_wrapper_8cs_source.html#l00026">JsonMockWrapper.cs:26</a></div></div>
+<div class="ttc" id="aclass_lit_json_1_1_json_mock_wrapper_html_a21a6cb097704194b65170f8017418d4a"><div class="ttname"><a href="class_lit_json_1_1_json_mock_wrapper.html#a21a6cb097704194b65170f8017418d4a">LitJson.JsonMockWrapper.GetString</a></div><div class="ttdeci">string GetString()</div><div class="ttdef"><b>Definition:</b> <a href="_json_mock_wrapper_8cs_source.html#l00035">JsonMockWrapper.cs:35</a></div></div>
+<div class="ttc" id="aclass_lit_json_1_1_json_mock_wrapper_html_a2385f94c3c883d81243d2253be529d23"><div class="ttname"><a href="class_lit_json_1_1_json_mock_wrapper.html#a2385f94c3c883d81243d2253be529d23">LitJson.JsonMockWrapper.GetBoolean</a></div><div class="ttdeci">bool GetBoolean()</div><div class="ttdef"><b>Definition:</b> <a href="_json_mock_wrapper_8cs_source.html#l00030">JsonMockWrapper.cs:30</a></div></div>
+<div class="ttc" id="aclass_lit_json_1_1_json_mock_wrapper_html_a253c5a904b578196c1f13a43a1353275"><div class="ttname"><a href="class_lit_json_1_1_json_mock_wrapper.html#a253c5a904b578196c1f13a43a1353275">LitJson.JsonMockWrapper.IsBoolean</a></div><div class="ttdeci">bool IsBoolean</div><div class="ttdef"><b>Definition:</b> <a href="_json_mock_wrapper_8cs_source.html#l00023">JsonMockWrapper.cs:23</a></div></div>
+<div class="ttc" id="aclass_lit_json_1_1_json_mock_wrapper_html_a3cefed68b82b0a9b6b66ce886d69e623"><div class="ttname"><a href="class_lit_json_1_1_json_mock_wrapper.html#a3cefed68b82b0a9b6b66ce886d69e623">LitJson.JsonMockWrapper.IsString</a></div><div class="ttdeci">bool IsString</div><div class="ttdef"><b>Definition:</b> <a href="_json_mock_wrapper_8cs_source.html#l00028">JsonMockWrapper.cs:28</a></div></div>
+<div class="ttc" id="aclass_lit_json_1_1_json_mock_wrapper_html_a3f176aaab41998ba0bc4302ee31189ac"><div class="ttname"><a href="class_lit_json_1_1_json_mock_wrapper.html#a3f176aaab41998ba0bc4302ee31189ac">LitJson.JsonMockWrapper.SetJsonType</a></div><div class="ttdeci">void SetJsonType(JsonType type)</div><div class="ttdef"><b>Definition:</b> <a href="_json_mock_wrapper_8cs_source.html#l00040">JsonMockWrapper.cs:40</a></div></div>
+<div class="ttc" id="aclass_lit_json_1_1_json_mock_wrapper_html_a405c8000c7f3e9bd5be5bd60cb025744"><div class="ttname"><a href="class_lit_json_1_1_json_mock_wrapper.html#a405c8000c7f3e9bd5be5bd60cb025744">LitJson.JsonMockWrapper.ToJson</a></div><div class="ttdeci">void ToJson(JsonWriter writer)</div><div class="ttdef"><b>Definition:</b> <a href="_json_mock_wrapper_8cs_source.html#l00045">JsonMockWrapper.cs:45</a></div></div>
+<div class="ttc" id="aclass_lit_json_1_1_json_mock_wrapper_html_a684096f4136c86dcb0e18c250d7858e5"><div class="ttname"><a href="class_lit_json_1_1_json_mock_wrapper.html#a684096f4136c86dcb0e18c250d7858e5">LitJson.JsonMockWrapper.SetDouble</a></div><div class="ttdeci">void SetDouble(double val)</div><div class="ttdef"><b>Definition:</b> <a href="_json_mock_wrapper_8cs_source.html#l00038">JsonMockWrapper.cs:38</a></div></div>
+<div class="ttc" id="aclass_lit_json_1_1_json_mock_wrapper_html_a7209451ccceeee72dd416f4fc0dd9e5e"><div class="ttname"><a href="class_lit_json_1_1_json_mock_wrapper.html#a7209451ccceeee72dd416f4fc0dd9e5e">LitJson.JsonMockWrapper.IsDouble</a></div><div class="ttdeci">bool IsDouble</div><div class="ttdef"><b>Definition:</b> <a href="_json_mock_wrapper_8cs_source.html#l00024">JsonMockWrapper.cs:24</a></div></div>
+<div class="ttc" id="aclass_lit_json_1_1_json_mock_wrapper_html_a871dccb462dd0fea5e1aec107f457714"><div class="ttname"><a href="class_lit_json_1_1_json_mock_wrapper.html#a871dccb462dd0fea5e1aec107f457714">LitJson.JsonMockWrapper.GetJsonType</a></div><div class="ttdeci">JsonType GetJsonType()</div><div class="ttdef"><b>Definition:</b> <a href="_json_mock_wrapper_8cs_source.html#l00033">JsonMockWrapper.cs:33</a></div></div>
+<div class="ttc" id="aclass_lit_json_1_1_json_mock_wrapper_html_aad18a6ea53502746e56464426c4016fd"><div class="ttname"><a href="class_lit_json_1_1_json_mock_wrapper.html#aad18a6ea53502746e56464426c4016fd">LitJson.JsonMockWrapper.GetInt</a></div><div class="ttdeci">int GetInt()</div><div class="ttdef"><b>Definition:</b> <a href="_json_mock_wrapper_8cs_source.html#l00032">JsonMockWrapper.cs:32</a></div></div>
+<div class="ttc" id="aclass_lit_json_1_1_json_mock_wrapper_html_acb55337a4a365e9908a5b0fa339600a7"><div class="ttname"><a href="class_lit_json_1_1_json_mock_wrapper.html#acb55337a4a365e9908a5b0fa339600a7">LitJson.JsonMockWrapper.SetString</a></div><div class="ttdeci">void SetString(string val)</div><div class="ttdef"><b>Definition:</b> <a href="_json_mock_wrapper_8cs_source.html#l00042">JsonMockWrapper.cs:42</a></div></div>
+<div class="ttc" id="aclass_lit_json_1_1_json_mock_wrapper_html_ad4c96aa9b9be61a69fd8c429cfc4a1e5"><div class="ttname"><a href="class_lit_json_1_1_json_mock_wrapper.html#ad4c96aa9b9be61a69fd8c429cfc4a1e5">LitJson.JsonMockWrapper.GetDouble</a></div><div class="ttdeci">double GetDouble()</div><div class="ttdef"><b>Definition:</b> <a href="_json_mock_wrapper_8cs_source.html#l00031">JsonMockWrapper.cs:31</a></div></div>
+<div class="ttc" id="aclass_lit_json_1_1_json_mock_wrapper_html_adae5bf6ec1e5b5689ff337c1bbadd365"><div class="ttname"><a href="class_lit_json_1_1_json_mock_wrapper.html#adae5bf6ec1e5b5689ff337c1bbadd365">LitJson.JsonMockWrapper.GetLong</a></div><div class="ttdeci">long GetLong()</div><div class="ttdef"><b>Definition:</b> <a href="_json_mock_wrapper_8cs_source.html#l00034">JsonMockWrapper.cs:34</a></div></div>
+<div class="ttc" id="aclass_lit_json_1_1_json_mock_wrapper_html_adcd91bf768f33358c05876a6418a137a"><div class="ttname"><a href="class_lit_json_1_1_json_mock_wrapper.html#adcd91bf768f33358c05876a6418a137a">LitJson.JsonMockWrapper.SetBoolean</a></div><div class="ttdeci">void SetBoolean(bool val)</div><div class="ttdef"><b>Definition:</b> <a href="_json_mock_wrapper_8cs_source.html#l00037">JsonMockWrapper.cs:37</a></div></div>
+<div class="ttc" id="aclass_lit_json_1_1_json_mock_wrapper_html_ade44a1bd707a9af1bd4769b00eaf8abc"><div class="ttname"><a href="class_lit_json_1_1_json_mock_wrapper.html#ade44a1bd707a9af1bd4769b00eaf8abc">LitJson.JsonMockWrapper.ToJson</a></div><div class="ttdeci">string ToJson()</div><div class="ttdef"><b>Definition:</b> <a href="_json_mock_wrapper_8cs_source.html#l00044">JsonMockWrapper.cs:44</a></div></div>
+<div class="ttc" id="aclass_lit_json_1_1_json_mock_wrapper_html_aef42273b6b601a61d9bac3f95a51e81e"><div class="ttname"><a href="class_lit_json_1_1_json_mock_wrapper.html#aef42273b6b601a61d9bac3f95a51e81e">LitJson.JsonMockWrapper.SetLong</a></div><div class="ttdeci">void SetLong(long val)</div><div class="ttdef"><b>Definition:</b> <a href="_json_mock_wrapper_8cs_source.html#l00041">JsonMockWrapper.cs:41</a></div></div>
+<div class="ttc" id="aclass_lit_json_1_1_json_writer_html"><div class="ttname"><a href="class_lit_json_1_1_json_writer.html">LitJson.JsonWriter</a></div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_lit_json_2_json_writer_8cs_source.html#l00039">JsonWriter.cs:40</a></div></div>
+<div class="ttc" id="ainterface_lit_json_1_1_i_json_wrapper_html"><div class="ttname"><a href="interface_lit_json_1_1_i_json_wrapper.html">LitJson.IJsonWrapper</a></div><div class="ttdef"><b>Definition:</b> <a href="_i_json_wrapper_8cs_source.html#l00033">IJsonWrapper.cs:34</a></div></div>
+<div class="ttc" id="anamespace_lit_json_html"><div class="ttname"><a href="namespace_lit_json.html">LitJson</a></div><div class="ttdef"><b>Definition:</b> <a href="_i_json_wrapper_8cs_source.html#l00018">IJsonWrapper.cs:19</a></div></div>
+<div class="ttc" id="anamespace_lit_json_html_acd123a28f60df4f396dc0fcd8f9c9757"><div class="ttname"><a href="namespace_lit_json.html#acd123a28f60df4f396dc0fcd8f9c9757">LitJson.JsonType</a></div><div class="ttdeci">JsonType</div><div class="ttdef"><b>Definition:</b> <a href="_i_json_wrapper_8cs_source.html#l00020">IJsonWrapper.cs:21</a></div></div>
+<div class="ttc" id="anamespace_system_html"><div class="ttname"><a href="namespace_system.html">System</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_method_builder_attribute_8cs_source.html#l00001">AsyncMethodBuilderAttribute.cs:2</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_84bbf7b3c7f28a5a18725745e1505219.html">Assets</a></li><li class="navelem"><a class="el" href="dir_f13b41af88cf68434578284aaf699e39.html">Scripts</a></li><li class="navelem"><a class="el" href="dir_46d134a3bf82cf4dc49ca8f728aea58c.html">Libraries</a></li><li class="navelem"><a class="el" href="dir_12f13940be7a487363a26283de1ac312.html">LitJson</a></li><li class="navelem"><a class="el" href="_json_mock_wrapper_8cs.html">JsonMockWrapper.cs</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:24:50 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

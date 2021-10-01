@@ -1,0 +1,828 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: MongoDB.Driver.GridFS.DelegatingStream类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('class_mongo_d_b_1_1_driver_1_1_grid_f_s_1_1_delegating_stream.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pro-methods">Protected 成员函数</a> &#124;
+<a href="#properties">属性</a>  </div>
+  <div class="headertitle">
+<div class="title">MongoDB.Driver.GridFS.DelegatingStream类 参考</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Represents a Stream that delegates all of its operations to a wrapped Stream.  
+ <a href="class_mongo_d_b_1_1_driver_1_1_grid_f_s_1_1_delegating_stream.html#details">更多...</a></p>
+<div class="dynheader">
+类 MongoDB.Driver.GridFS.DelegatingStream 继承关系图:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="class_mongo_d_b_1_1_driver_1_1_grid_f_s_1_1_delegating_stream.png" usemap="#MongoDB.Driver.GridFS.DelegatingStream_map" alt=""/>
+  <map id="MongoDB.Driver.GridFS.DelegatingStream_map" name="MongoDB.Driver.GridFS.DelegatingStream_map">
+<area href="class_mongo_d_b_1_1_driver_1_1_grid_f_s_1_1_grid_f_s_download_stream.html" alt="MongoDB.Driver.GridFS.GridFSDownloadStream&lt; BsonValue &gt;" shape="rect" coords="0,112,376,136"/>
+<area href="class_mongo_d_b_1_1_driver_1_1_grid_f_s_1_1_grid_f_s_upload_stream.html" alt="MongoDB.Driver.GridFS.GridFSUploadStream&lt; ObjectId &gt;" shape="rect" coords="386,112,762,136"/>
+<area href="class_mongo_d_b_1_1_driver_1_1_grid_f_s_1_1_grid_f_s_download_stream.html" title="Represents a Stream used by the application to read data from a GridFS file." alt="MongoDB.Driver.GridFS.GridFSDownloadStream&lt; TFileId &gt;" shape="rect" coords="772,112,1148,136"/>
+<area href="class_mongo_d_b_1_1_driver_1_1_grid_f_s_1_1_grid_f_s_upload_stream.html" title="Represents a Stream used by the application to write data to a GridFS file." alt="MongoDB.Driver.GridFS.GridFSUploadStream&lt; TFileId &gt;" shape="rect" coords="1158,112,1534,136"/>
+  </map>
+</div></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:aea5a25b778f0c4ac6292974f14a3336f"><td class="memItemLeft" align="right" valign="top">override Task&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mongo_d_b_1_1_driver_1_1_grid_f_s_1_1_delegating_stream.html#aea5a25b778f0c4ac6292974f14a3336f">CopyToAsync</a> (Stream destination, int bufferSize, CancellationToken cancellationToken)</td></tr>
+<tr class="separator:aea5a25b778f0c4ac6292974f14a3336f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a008c48d1573f83834e8f7ab2b3760fb3"><td class="memItemLeft" align="right" valign="top">override bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mongo_d_b_1_1_driver_1_1_grid_f_s_1_1_delegating_stream.html#a008c48d1573f83834e8f7ab2b3760fb3">Equals</a> (object obj)</td></tr>
+<tr class="separator:a008c48d1573f83834e8f7ab2b3760fb3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a20409082b131ed6d3173b33e90168d89"><td class="memItemLeft" align="right" valign="top">override void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mongo_d_b_1_1_driver_1_1_grid_f_s_1_1_delegating_stream.html#a20409082b131ed6d3173b33e90168d89">Flush</a> ()</td></tr>
+<tr class="separator:a20409082b131ed6d3173b33e90168d89"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab07f8dbe29b677660ea237084ddd3d77"><td class="memItemLeft" align="right" valign="top">override Task&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mongo_d_b_1_1_driver_1_1_grid_f_s_1_1_delegating_stream.html#ab07f8dbe29b677660ea237084ddd3d77">FlushAsync</a> (CancellationToken cancellationToken)</td></tr>
+<tr class="separator:ab07f8dbe29b677660ea237084ddd3d77"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a09fa85e90f62ecca5ad3c36625c0a00e"><td class="memItemLeft" align="right" valign="top">override int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mongo_d_b_1_1_driver_1_1_grid_f_s_1_1_delegating_stream.html#a09fa85e90f62ecca5ad3c36625c0a00e">GetHashCode</a> ()</td></tr>
+<tr class="separator:a09fa85e90f62ecca5ad3c36625c0a00e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad73d05c82976180f2ccae7ffab90f7d7"><td class="memItemLeft" align="right" valign="top">override int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mongo_d_b_1_1_driver_1_1_grid_f_s_1_1_delegating_stream.html#ad73d05c82976180f2ccae7ffab90f7d7">Read</a> (byte[] buffer, int offset, int count)</td></tr>
+<tr class="separator:ad73d05c82976180f2ccae7ffab90f7d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afabc942ea73d011afb0dc0d84ccbfdec"><td class="memItemLeft" align="right" valign="top">override Task&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mongo_d_b_1_1_driver_1_1_grid_f_s_1_1_delegating_stream.html#afabc942ea73d011afb0dc0d84ccbfdec">ReadAsync</a> (byte[] buffer, int offset, int count, CancellationToken cancellationToken)</td></tr>
+<tr class="separator:afabc942ea73d011afb0dc0d84ccbfdec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8fd9c85d124750f97751f8c5c4f3afb5"><td class="memItemLeft" align="right" valign="top">override int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mongo_d_b_1_1_driver_1_1_grid_f_s_1_1_delegating_stream.html#a8fd9c85d124750f97751f8c5c4f3afb5">ReadByte</a> ()</td></tr>
+<tr class="separator:a8fd9c85d124750f97751f8c5c4f3afb5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af5c91c202d5271c1a64a3b3f537f4e3e"><td class="memItemLeft" align="right" valign="top">override long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mongo_d_b_1_1_driver_1_1_grid_f_s_1_1_delegating_stream.html#af5c91c202d5271c1a64a3b3f537f4e3e">Seek</a> (long offset, SeekOrigin origin)</td></tr>
+<tr class="separator:af5c91c202d5271c1a64a3b3f537f4e3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac40b1834ea8e4676a20e4830b02db051"><td class="memItemLeft" align="right" valign="top">override void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mongo_d_b_1_1_driver_1_1_grid_f_s_1_1_delegating_stream.html#ac40b1834ea8e4676a20e4830b02db051">SetLength</a> (long value)</td></tr>
+<tr class="separator:ac40b1834ea8e4676a20e4830b02db051"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7814cc0284bdaf61425fac3b4fc4b7de"><td class="memItemLeft" align="right" valign="top">override string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mongo_d_b_1_1_driver_1_1_grid_f_s_1_1_delegating_stream.html#a7814cc0284bdaf61425fac3b4fc4b7de">ToString</a> ()</td></tr>
+<tr class="separator:a7814cc0284bdaf61425fac3b4fc4b7de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a44669c4220e71ab8cb4d874bde674530"><td class="memItemLeft" align="right" valign="top">override void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mongo_d_b_1_1_driver_1_1_grid_f_s_1_1_delegating_stream.html#a44669c4220e71ab8cb4d874bde674530">Write</a> (byte[] buffer, int offset, int count)</td></tr>
+<tr class="separator:a44669c4220e71ab8cb4d874bde674530"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9d39662595579619c21ef0d7883ed6ff"><td class="memItemLeft" align="right" valign="top">override Task&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mongo_d_b_1_1_driver_1_1_grid_f_s_1_1_delegating_stream.html#a9d39662595579619c21ef0d7883ed6ff">WriteAsync</a> (byte[] buffer, int offset, int count, CancellationToken cancellationToken)</td></tr>
+<tr class="separator:a9d39662595579619c21ef0d7883ed6ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a92044854150015d4f5100e5c9a301c9d"><td class="memItemLeft" align="right" valign="top">override void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mongo_d_b_1_1_driver_1_1_grid_f_s_1_1_delegating_stream.html#a92044854150015d4f5100e5c9a301c9d">WriteByte</a> (byte value)</td></tr>
+<tr class="separator:a92044854150015d4f5100e5c9a301c9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
+Protected 成员函数</h2></td></tr>
+<tr class="memitem:a147dcaaa4fd4df8cd12ca772b37401e3"><td class="memItemLeft" align="right" valign="top">override void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mongo_d_b_1_1_driver_1_1_grid_f_s_1_1_delegating_stream.html#a147dcaaa4fd4df8cd12ca772b37401e3">Dispose</a> (bool disposing)</td></tr>
+<tr class="separator:a147dcaaa4fd4df8cd12ca772b37401e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
+属性</h2></td></tr>
+<tr class="memitem:a06b9ab455b829cf2fd29d30f1c5c67de"><td class="memItemLeft" align="right" valign="top">override bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mongo_d_b_1_1_driver_1_1_grid_f_s_1_1_delegating_stream.html#a06b9ab455b829cf2fd29d30f1c5c67de">CanRead</a><code> [get]</code></td></tr>
+<tr class="separator:a06b9ab455b829cf2fd29d30f1c5c67de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa53786452311a31b1a85bf56975f714e"><td class="memItemLeft" align="right" valign="top">override bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mongo_d_b_1_1_driver_1_1_grid_f_s_1_1_delegating_stream.html#aa53786452311a31b1a85bf56975f714e">CanSeek</a><code> [get]</code></td></tr>
+<tr class="separator:aa53786452311a31b1a85bf56975f714e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac38a42ff934857b3c9ff13adb691cb41"><td class="memItemLeft" align="right" valign="top">override bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mongo_d_b_1_1_driver_1_1_grid_f_s_1_1_delegating_stream.html#ac38a42ff934857b3c9ff13adb691cb41">CanTimeout</a><code> [get]</code></td></tr>
+<tr class="separator:ac38a42ff934857b3c9ff13adb691cb41"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab243c78876ed1848ade885f01a7c627d"><td class="memItemLeft" align="right" valign="top">override bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mongo_d_b_1_1_driver_1_1_grid_f_s_1_1_delegating_stream.html#ab243c78876ed1848ade885f01a7c627d">CanWrite</a><code> [get]</code></td></tr>
+<tr class="separator:ab243c78876ed1848ade885f01a7c627d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1c6bc235049aa2707db6a06e34533678"><td class="memItemLeft" align="right" valign="top">override long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mongo_d_b_1_1_driver_1_1_grid_f_s_1_1_delegating_stream.html#a1c6bc235049aa2707db6a06e34533678">Length</a><code> [get]</code></td></tr>
+<tr class="separator:a1c6bc235049aa2707db6a06e34533678"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4a81f4e31848432923da334b17e3aedf"><td class="memItemLeft" align="right" valign="top">override long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mongo_d_b_1_1_driver_1_1_grid_f_s_1_1_delegating_stream.html#a4a81f4e31848432923da334b17e3aedf">Position</a><code> [get, set]</code></td></tr>
+<tr class="separator:a4a81f4e31848432923da334b17e3aedf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea855d14b3ccdf7037958fb798161022"><td class="memItemLeft" align="right" valign="top">override int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mongo_d_b_1_1_driver_1_1_grid_f_s_1_1_delegating_stream.html#aea855d14b3ccdf7037958fb798161022">ReadTimeout</a><code> [get, set]</code></td></tr>
+<tr class="separator:aea855d14b3ccdf7037958fb798161022"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a49bb5d6499489a096a86d464ab3dfc9d"><td class="memItemLeft" align="right" valign="top">override int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mongo_d_b_1_1_driver_1_1_grid_f_s_1_1_delegating_stream.html#a49bb5d6499489a096a86d464ab3dfc9d">WriteTimeout</a><code> [get, set]</code></td></tr>
+<tr class="separator:a49bb5d6499489a096a86d464ab3dfc9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>Represents a Stream that delegates all of its operations to a wrapped Stream. </p>
+<dl class="section see"><dt>参见</dt><dd>System.IO.Stream</dd></dl>
+
+<p class="definition">在文件 <a class="el" href="_delegating_stream_8cs_source.html">DelegatingStream.cs</a> 第 <a class="el" href="_delegating_stream_8cs_source.html#l00030">30</a> 行定义.</p>
+</div><h2 class="groupheader">成员函数说明</h2>
+<a id="aea5a25b778f0c4ac6292974f14a3336f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aea5a25b778f0c4ac6292974f14a3336f">&#9670;&nbsp;</a></span>CopyToAsync()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">override Task MongoDB.Driver.GridFS.DelegatingStream.CopyToAsync </td>
+          <td>(</td>
+          <td class="paramtype">Stream&#160;</td>
+          <td class="paramname"><em>destination</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>bufferSize</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">CancellationToken&#160;</td>
+          <td class="paramname"><em>cancellationToken</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p></p>
+
+<p class="definition">在文件 <a class="el" href="_delegating_stream_8cs_source.html">DelegatingStream.cs</a> 第 <a class="el" href="_delegating_stream_8cs_source.html#l00123">123</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a147dcaaa4fd4df8cd12ca772b37401e3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a147dcaaa4fd4df8cd12ca772b37401e3">&#9670;&nbsp;</a></span>Dispose()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">override void MongoDB.Driver.GridFS.DelegatingStream.Dispose </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>disposing</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p></p>
+
+<p class="definition">在文件 <a class="el" href="_delegating_stream_8cs_source.html">DelegatingStream.cs</a> 第 <a class="el" href="_delegating_stream_8cs_source.html#l00146">146</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a008c48d1573f83834e8f7ab2b3760fb3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a008c48d1573f83834e8f7ab2b3760fb3">&#9670;&nbsp;</a></span>Equals()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">override bool MongoDB.Driver.GridFS.DelegatingStream.Equals </td>
+          <td>(</td>
+          <td class="paramtype">object&#160;</td>
+          <td class="paramname"><em>obj</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p></p>
+
+<p class="definition">在文件 <a class="el" href="_delegating_stream_8cs_source.html">DelegatingStream.cs</a> 第 <a class="el" href="_delegating_stream_8cs_source.html#l00171">171</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a20409082b131ed6d3173b33e90168d89"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a20409082b131ed6d3173b33e90168d89">&#9670;&nbsp;</a></span>Flush()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">override void MongoDB.Driver.GridFS.DelegatingStream.Flush </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p></p>
+
+<p class="definition">在文件 <a class="el" href="_delegating_stream_8cs_source.html">DelegatingStream.cs</a> 第 <a class="el" href="_delegating_stream_8cs_source.html#l00177">177</a> 行定义.</p>
+
+</div>
+</div>
+<a id="ab07f8dbe29b677660ea237084ddd3d77"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab07f8dbe29b677660ea237084ddd3d77">&#9670;&nbsp;</a></span>FlushAsync()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">override Task MongoDB.Driver.GridFS.DelegatingStream.FlushAsync </td>
+          <td>(</td>
+          <td class="paramtype">CancellationToken&#160;</td>
+          <td class="paramname"><em>cancellationToken</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p></p>
+
+<p class="definition">在文件 <a class="el" href="_delegating_stream_8cs_source.html">DelegatingStream.cs</a> 第 <a class="el" href="_delegating_stream_8cs_source.html#l00183">183</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a09fa85e90f62ecca5ad3c36625c0a00e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a09fa85e90f62ecca5ad3c36625c0a00e">&#9670;&nbsp;</a></span>GetHashCode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">override int MongoDB.Driver.GridFS.DelegatingStream.GetHashCode </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p></p>
+
+<p class="definition">在文件 <a class="el" href="_delegating_stream_8cs_source.html">DelegatingStream.cs</a> 第 <a class="el" href="_delegating_stream_8cs_source.html#l00189">189</a> 行定义.</p>
+
+</div>
+</div>
+<a id="ad73d05c82976180f2ccae7ffab90f7d7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad73d05c82976180f2ccae7ffab90f7d7">&#9670;&nbsp;</a></span>Read()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">override int MongoDB.Driver.GridFS.DelegatingStream.Read </td>
+          <td>(</td>
+          <td class="paramtype">byte[]&#160;</td>
+          <td class="paramname"><em>buffer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>offset</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>count</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p></p>
+
+<p class="definition">在文件 <a class="el" href="_delegating_stream_8cs_source.html">DelegatingStream.cs</a> 第 <a class="el" href="_delegating_stream_8cs_source.html#l00212">212</a> 行定义.</p>
+
+</div>
+</div>
+<a id="afabc942ea73d011afb0dc0d84ccbfdec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afabc942ea73d011afb0dc0d84ccbfdec">&#9670;&nbsp;</a></span>ReadAsync()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">override Task&lt;int&gt; MongoDB.Driver.GridFS.DelegatingStream.ReadAsync </td>
+          <td>(</td>
+          <td class="paramtype">byte[]&#160;</td>
+          <td class="paramname"><em>buffer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>offset</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>count</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">CancellationToken&#160;</td>
+          <td class="paramname"><em>cancellationToken</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p></p>
+
+<p class="definition">在文件 <a class="el" href="_delegating_stream_8cs_source.html">DelegatingStream.cs</a> 第 <a class="el" href="_delegating_stream_8cs_source.html#l00219">219</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a8fd9c85d124750f97751f8c5c4f3afb5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8fd9c85d124750f97751f8c5c4f3afb5">&#9670;&nbsp;</a></span>ReadByte()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">override int MongoDB.Driver.GridFS.DelegatingStream.ReadByte </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p></p>
+
+<p class="definition">在文件 <a class="el" href="_delegating_stream_8cs_source.html">DelegatingStream.cs</a> 第 <a class="el" href="_delegating_stream_8cs_source.html#l00225">225</a> 行定义.</p>
+
+</div>
+</div>
+<a id="af5c91c202d5271c1a64a3b3f537f4e3e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af5c91c202d5271c1a64a3b3f537f4e3e">&#9670;&nbsp;</a></span>Seek()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">override long MongoDB.Driver.GridFS.DelegatingStream.Seek </td>
+          <td>(</td>
+          <td class="paramtype">long&#160;</td>
+          <td class="paramname"><em>offset</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SeekOrigin&#160;</td>
+          <td class="paramname"><em>origin</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p></p>
+
+<p class="definition">在文件 <a class="el" href="_delegating_stream_8cs_source.html">DelegatingStream.cs</a> 第 <a class="el" href="_delegating_stream_8cs_source.html#l00231">231</a> 行定义.</p>
+
+</div>
+</div>
+<a id="ac40b1834ea8e4676a20e4830b02db051"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac40b1834ea8e4676a20e4830b02db051">&#9670;&nbsp;</a></span>SetLength()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">override void MongoDB.Driver.GridFS.DelegatingStream.SetLength </td>
+          <td>(</td>
+          <td class="paramtype">long&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p></p>
+
+<p class="definition">在文件 <a class="el" href="_delegating_stream_8cs_source.html">DelegatingStream.cs</a> 第 <a class="el" href="_delegating_stream_8cs_source.html#l00237">237</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a7814cc0284bdaf61425fac3b4fc4b7de"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7814cc0284bdaf61425fac3b4fc4b7de">&#9670;&nbsp;</a></span>ToString()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">override string MongoDB.Driver.GridFS.DelegatingStream.ToString </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p></p>
+
+<p class="definition">在文件 <a class="el" href="_delegating_stream_8cs_source.html">DelegatingStream.cs</a> 第 <a class="el" href="_delegating_stream_8cs_source.html#l00243">243</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a44669c4220e71ab8cb4d874bde674530"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a44669c4220e71ab8cb4d874bde674530">&#9670;&nbsp;</a></span>Write()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">override void MongoDB.Driver.GridFS.DelegatingStream.Write </td>
+          <td>(</td>
+          <td class="paramtype">byte[]&#160;</td>
+          <td class="paramname"><em>buffer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>offset</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>count</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p></p>
+
+<p class="definition">在文件 <a class="el" href="_delegating_stream_8cs_source.html">DelegatingStream.cs</a> 第 <a class="el" href="_delegating_stream_8cs_source.html#l00249">249</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a9d39662595579619c21ef0d7883ed6ff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9d39662595579619c21ef0d7883ed6ff">&#9670;&nbsp;</a></span>WriteAsync()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">override Task MongoDB.Driver.GridFS.DelegatingStream.WriteAsync </td>
+          <td>(</td>
+          <td class="paramtype">byte[]&#160;</td>
+          <td class="paramname"><em>buffer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>offset</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>count</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">CancellationToken&#160;</td>
+          <td class="paramname"><em>cancellationToken</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p></p>
+
+<p class="definition">在文件 <a class="el" href="_delegating_stream_8cs_source.html">DelegatingStream.cs</a> 第 <a class="el" href="_delegating_stream_8cs_source.html#l00255">255</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a92044854150015d4f5100e5c9a301c9d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a92044854150015d4f5100e5c9a301c9d">&#9670;&nbsp;</a></span>WriteByte()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">override void MongoDB.Driver.GridFS.DelegatingStream.WriteByte </td>
+          <td>(</td>
+          <td class="paramtype">byte&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p></p>
+
+<p class="definition">在文件 <a class="el" href="_delegating_stream_8cs_source.html">DelegatingStream.cs</a> 第 <a class="el" href="_delegating_stream_8cs_source.html#l00261">261</a> 行定义.</p>
+
+</div>
+</div>
+<h2 class="groupheader">属性说明</h2>
+<a id="a06b9ab455b829cf2fd29d30f1c5c67de"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a06b9ab455b829cf2fd29d30f1c5c67de">&#9670;&nbsp;</a></span>CanRead</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">override bool MongoDB.Driver.GridFS.DelegatingStream.CanRead</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p></p>
+
+<p class="definition">在文件 <a class="el" href="_delegating_stream_8cs_source.html">DelegatingStream.cs</a> 第 <a class="el" href="_delegating_stream_8cs_source.html#l00047">47</a> 行定义.</p>
+
+</div>
+</div>
+<a id="aa53786452311a31b1a85bf56975f714e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa53786452311a31b1a85bf56975f714e">&#9670;&nbsp;</a></span>CanSeek</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">override bool MongoDB.Driver.GridFS.DelegatingStream.CanSeek</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p></p>
+
+<p class="definition">在文件 <a class="el" href="_delegating_stream_8cs_source.html">DelegatingStream.cs</a> 第 <a class="el" href="_delegating_stream_8cs_source.html#l00053">53</a> 行定义.</p>
+
+</div>
+</div>
+<a id="ac38a42ff934857b3c9ff13adb691cb41"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac38a42ff934857b3c9ff13adb691cb41">&#9670;&nbsp;</a></span>CanTimeout</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">override bool MongoDB.Driver.GridFS.DelegatingStream.CanTimeout</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p></p>
+
+<p class="definition">在文件 <a class="el" href="_delegating_stream_8cs_source.html">DelegatingStream.cs</a> 第 <a class="el" href="_delegating_stream_8cs_source.html#l00059">59</a> 行定义.</p>
+
+</div>
+</div>
+<a id="ab243c78876ed1848ade885f01a7c627d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab243c78876ed1848ade885f01a7c627d">&#9670;&nbsp;</a></span>CanWrite</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">override bool MongoDB.Driver.GridFS.DelegatingStream.CanWrite</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p></p>
+
+<p class="definition">在文件 <a class="el" href="_delegating_stream_8cs_source.html">DelegatingStream.cs</a> 第 <a class="el" href="_delegating_stream_8cs_source.html#l00065">65</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a1c6bc235049aa2707db6a06e34533678"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1c6bc235049aa2707db6a06e34533678">&#9670;&nbsp;</a></span>Length</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">override long MongoDB.Driver.GridFS.DelegatingStream.Length</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p></p>
+
+<p class="definition">在文件 <a class="el" href="_delegating_stream_8cs_source.html">DelegatingStream.cs</a> 第 <a class="el" href="_delegating_stream_8cs_source.html#l00071">71</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a4a81f4e31848432923da334b17e3aedf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4a81f4e31848432923da334b17e3aedf">&#9670;&nbsp;</a></span>Position</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">override long MongoDB.Driver.GridFS.DelegatingStream.Position</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p></p>
+
+<p class="definition">在文件 <a class="el" href="_delegating_stream_8cs_source.html">DelegatingStream.cs</a> 第 <a class="el" href="_delegating_stream_8cs_source.html#l00077">77</a> 行定义.</p>
+
+</div>
+</div>
+<a id="aea855d14b3ccdf7037958fb798161022"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aea855d14b3ccdf7037958fb798161022">&#9670;&nbsp;</a></span>ReadTimeout</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">override int MongoDB.Driver.GridFS.DelegatingStream.ReadTimeout</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p></p>
+
+<p class="definition">在文件 <a class="el" href="_delegating_stream_8cs_source.html">DelegatingStream.cs</a> 第 <a class="el" href="_delegating_stream_8cs_source.html#l00084">84</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a49bb5d6499489a096a86d464ab3dfc9d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a49bb5d6499489a096a86d464ab3dfc9d">&#9670;&nbsp;</a></span>WriteTimeout</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">override int MongoDB.Driver.GridFS.DelegatingStream.WriteTimeout</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p></p>
+
+<p class="definition">在文件 <a class="el" href="_delegating_stream_8cs_source.html">DelegatingStream.cs</a> 第 <a class="el" href="_delegating_stream_8cs_source.html#l00091">91</a> 行定义.</p>
+
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>ETServer/Server/ThirdParty/MongoDBDriver/MongoDB.Driver.GridFS/<a class="el" href="_delegating_stream_8cs_source.html">DelegatingStream.cs</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespace_mongo_d_b.html">MongoDB</a></li><li class="navelem"><a class="el" href="namespace_mongo_d_b_1_1_driver.html">Driver</a></li><li class="navelem"><a class="el" href="namespace_mongo_d_b_1_1_driver_1_1_grid_f_s.html">GridFS</a></li><li class="navelem"><a class="el" href="class_mongo_d_b_1_1_driver_1_1_grid_f_s_1_1_delegating_stream.html">DelegatingStream</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:25:23 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

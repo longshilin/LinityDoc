@@ -1,0 +1,265 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: Assets/Scripts/Libraries/Google.Protobuf/MessageParser.cs 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_message_parser_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">MessageParser.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_message_parser_8cs.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#region Copyright notice and license</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">// Protocol Buffers - Google&#39;s data interchange format</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">// Copyright 2015 Google Inc.  All rights reserved.</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">// https://developers.google.com/protocol-buffers/</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">// Redistribution and use in source and binary forms, with or without</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">// modification, are permitted provided that the following conditions are</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">// met:</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">//     * Redistributions of source code must retain the above copyright</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">// notice, this list of conditions and the following disclaimer.</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">//     * Redistributions in binary form must reproduce the above</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">// copyright notice, this list of conditions and the following disclaimer</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">// in the documentation and/or other materials provided with the</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">// distribution.</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">//     * Neither the name of Google Inc. nor the names of its</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">// contributors may be used to endorse or promote products derived from</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">// this software without specific prior written permission.</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">// &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">// LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">// A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">// OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">// SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">// LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">// DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">// THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">// (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment">// OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#endregion</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.IO;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_google_1_1_protobuf.html">Google.Protobuf</a></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;{</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keyword">public</span> <span class="keyword">class </span>MessageParser</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    {</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="keyword">private</span> Func&lt;IMessage&gt; factory;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <span class="keyword">internal</span> MessageParser(Func&lt;IMessage&gt; factory)</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        {</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            this.factory = factory;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        }</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <span class="keyword">internal</span> <a class="code" href="_i_message_adaptor_8cs.html#a84a5152ebb061c683c23daf848a6a7f9">IMessage</a> CreateTemplate()</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        {</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            <span class="keywordflow">return</span> factory();</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        }</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_message_parser.html#a108975ce5287facfcac6ac1cb87ea4bf">   65</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="interface_google_1_1_protobuf_1_1_i_message.html">IMessage</a> <a class="code" href="class_google_1_1_protobuf_1_1_message_parser.html#a108975ce5287facfcac6ac1cb87ea4bf">ParseFrom</a>(<span class="keywordtype">byte</span>[] data)</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        {</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            ProtoPreconditions.CheckNotNull(data, <span class="stringliteral">&quot;data&quot;</span>);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            <a class="code" href="interface_google_1_1_protobuf_1_1_i_message.html">IMessage</a> message = factory();</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            message.<a class="code" href="interface_google_1_1_protobuf_1_1_i_message.html#a5a53cdb6719805a597f396b4a8c713c3">MergeFrom</a>(data);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            <span class="keywordflow">return</span> message;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        }</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
+<div class="line"><a name="l00078"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_message_parser.html#a3e41935617d922fe1d80a714cbd6b571">   78</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="interface_google_1_1_protobuf_1_1_i_message.html">IMessage</a> <a class="code" href="class_google_1_1_protobuf_1_1_message_parser.html#a3e41935617d922fe1d80a714cbd6b571">ParseFrom</a>(<a class="code" href="class_google_1_1_protobuf_1_1_byte_string.html">ByteString</a> data)</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        {</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            ProtoPreconditions.CheckNotNull(data, <span class="stringliteral">&quot;data&quot;</span>);</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            <a class="code" href="interface_google_1_1_protobuf_1_1_i_message.html">IMessage</a> message = factory();</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            message.<a class="code" href="interface_google_1_1_protobuf_1_1_i_message.html#a5a53cdb6719805a597f396b4a8c713c3">MergeFrom</a>(data);</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;            <span class="keywordflow">return</span> message;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        }</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
+<div class="line"><a name="l00091"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_message_parser.html#a6a1953e385c9a70b0cb0b327c24142b8">   91</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="interface_google_1_1_protobuf_1_1_i_message.html">IMessage</a> <a class="code" href="class_google_1_1_protobuf_1_1_message_parser.html#a6a1953e385c9a70b0cb0b327c24142b8">ParseFrom</a>(Stream input)</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        {</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;            <a class="code" href="interface_google_1_1_protobuf_1_1_i_message.html">IMessage</a> message = factory();</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;            message.<a class="code" href="interface_google_1_1_protobuf_1_1_i_message.html#a5a53cdb6719805a597f396b4a8c713c3">MergeFrom</a>(input);</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;            <span class="keywordflow">return</span> message;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        }</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
+<div class="line"><a name="l00107"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_message_parser.html#a9fa1e58ef0a932534b53873bb6f7ad60">  107</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="interface_google_1_1_protobuf_1_1_i_message.html">IMessage</a> <a class="code" href="class_google_1_1_protobuf_1_1_message_parser.html#a9fa1e58ef0a932534b53873bb6f7ad60">ParseDelimitedFrom</a>(Stream input)</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        {</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;            <a class="code" href="interface_google_1_1_protobuf_1_1_i_message.html">IMessage</a> message = factory();</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;            message.MergeDelimitedFrom(input);</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;            <span class="keywordflow">return</span> message;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        }</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160; </div>
+<div class="line"><a name="l00119"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_message_parser.html#a425cdb8b2284170016d404d883ad707c">  119</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="interface_google_1_1_protobuf_1_1_i_message.html">IMessage</a> <a class="code" href="class_google_1_1_protobuf_1_1_message_parser.html#a425cdb8b2284170016d404d883ad707c">ParseFrom</a>(<a class="code" href="class_google_1_1_protobuf_1_1_coded_input_stream.html">CodedInputStream</a> input)</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        {</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;            <a class="code" href="interface_google_1_1_protobuf_1_1_i_message.html">IMessage</a> message = factory();</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;            message.<a class="code" href="interface_google_1_1_protobuf_1_1_i_message.html#a5a53cdb6719805a597f396b4a8c713c3">MergeFrom</a>(input);</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;            <span class="keywordflow">return</span> message;</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        }</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160; </div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    }</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160; </div>
+<div class="line"><a name="l00144"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_message_parser.html">  144</a></span>&#160;    <span class="keyword">public</span> sealed <span class="keyword">class </span><a class="code" href="class_google_1_1_protobuf_1_1_message_parser.html">MessageParser</a>&lt;T&gt; : <a class="code" href="class_google_1_1_protobuf_1_1_message_parser.html">MessageParser</a> where T : <a class="code" href="interface_google_1_1_protobuf_1_1_i_message.html">IMessage</a></div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;    {</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;        <span class="comment">// Implementation note: all the methods here *could* just delegate up to the base class and cast the result.</span></div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;        <span class="comment">// The current implementation avoids a virtual method call and a cast, which *may* be significant in some cases.</span></div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;        <span class="comment">// Benchmarking work is required to measure the significance - but it&#39;s only a few lines of code in any case.</span></div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        <span class="comment">// The API wouldn&#39;t change anyway - just the implementation - so this work can be deferred.</span></div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;        <span class="keyword">private</span> readonly Func&lt;T&gt; factory; </div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160; </div>
+<div class="line"><a name="l00160"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_message_parser.html#a8a797fbd57eb483c543f012b0f2e15dd">  160</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_google_1_1_protobuf_1_1_message_parser.html#a8a797fbd57eb483c543f012b0f2e15dd">MessageParser</a>(Func&lt;T&gt; factory) : base(() =&gt; factory())</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;        {</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;            this.factory = factory;</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;        }</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160; </div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;        <span class="keyword">internal</span> <span class="keyword">new</span> T CreateTemplate()</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;        {</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;            <span class="keywordflow">return</span> factory();</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;        }</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160; </div>
+<div class="line"><a name="l00179"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_message_parser.html#a20689a9a63b507fd766c9f3b62a99f0f">  179</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">new</span> T <a class="code" href="class_google_1_1_protobuf_1_1_message_parser.html#a20689a9a63b507fd766c9f3b62a99f0f">ParseFrom</a>(<span class="keywordtype">byte</span>[] data)</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;        {</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;            ProtoPreconditions.CheckNotNull(data, <span class="stringliteral">&quot;data&quot;</span>);</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;            T message = factory();</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;            message.MergeFrom(data);</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;            <span class="keywordflow">return</span> message;</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;        }</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160; </div>
+<div class="line"><a name="l00192"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_message_parser.html#a877072e80cebc9976d548cac2172b048">  192</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">new</span> T <a class="code" href="class_google_1_1_protobuf_1_1_message_parser.html#a877072e80cebc9976d548cac2172b048">ParseFrom</a>(<a class="code" href="class_google_1_1_protobuf_1_1_byte_string.html">ByteString</a> data)</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;        {</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;            ProtoPreconditions.CheckNotNull(data, <span class="stringliteral">&quot;data&quot;</span>);</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;            T message = factory();</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;            message.MergeFrom(data);</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;            <span class="keywordflow">return</span> message;</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;        }</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160; </div>
+<div class="line"><a name="l00205"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_message_parser.html#a73044cb49ca095b0323a45d5b7f02076">  205</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">new</span> T <a class="code" href="class_google_1_1_protobuf_1_1_message_parser.html#a73044cb49ca095b0323a45d5b7f02076">ParseFrom</a>(Stream input)</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;        {</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;            T message = factory();</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;            message.MergeFrom(input);</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;            <span class="keywordflow">return</span> message;</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;        }</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160; </div>
+<div class="line"><a name="l00221"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_message_parser.html#a4de4899d9b5b8fd09587cccf59a0100c">  221</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">new</span> T <a class="code" href="class_google_1_1_protobuf_1_1_message_parser.html#a4de4899d9b5b8fd09587cccf59a0100c">ParseDelimitedFrom</a>(Stream input)</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;        {</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;            T message = factory();</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;            message.MergeDelimitedFrom(input);</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;            <span class="keywordflow">return</span> message;</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;        }</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160; </div>
+<div class="line"><a name="l00233"></a><span class="lineno"><a class="line" href="class_google_1_1_protobuf_1_1_message_parser.html#a46ef46763292650144c9a72ef916be20">  233</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">new</span> T <a class="code" href="class_google_1_1_protobuf_1_1_message_parser.html#a46ef46763292650144c9a72ef916be20">ParseFrom</a>(<a class="code" href="class_google_1_1_protobuf_1_1_coded_input_stream.html">CodedInputStream</a> input)</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;        {</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;            T message = factory();</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;            message.MergeFrom(input);</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;            <span class="keywordflow">return</span> message;</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;        }</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160; </div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;    }</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;}</div>
+<div class="ttc" id="a_i_message_adaptor_8cs_html_a84a5152ebb061c683c23daf848a6a7f9"><div class="ttname"><a href="_i_message_adaptor_8cs.html#a84a5152ebb061c683c23daf848a6a7f9">IMessage</a></div><div class="ttdeci">Google.Protobuf.IMessage IMessage</div><div class="ttdef"><b>Definition:</b> <a href="_i_message_adaptor_8cs_source.html#l00008">IMessageAdaptor.cs:8</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_byte_string_html"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_byte_string.html">Google.Protobuf.ByteString</a></div><div class="ttdoc">Immutable array of bytes.</div><div class="ttdef"><b>Definition:</b> <a href="_byte_string_8cs_source.html#l00047">ByteString.cs:48</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_coded_input_stream_html"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_coded_input_stream.html">Google.Protobuf.CodedInputStream</a></div><div class="ttdoc">Reads and decodes protocol message fields.</div><div class="ttdef"><b>Definition:</b> <a href="_coded_input_stream_8cs_source.html#l00054">CodedInputStream.cs:55</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_message_parser_html"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_message_parser.html">Google.Protobuf.MessageParser</a></div><div class="ttdoc">A general message parser, typically used by reflection-based code as all the methods return simple IM...</div><div class="ttdef"><b>Definition:</b> <a href="_message_parser_8cs_source.html#l00144">MessageParser.cs:145</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_message_parser_html_a108975ce5287facfcac6ac1cb87ea4bf"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_message_parser.html#a108975ce5287facfcac6ac1cb87ea4bf">Google.Protobuf.MessageParser.ParseFrom</a></div><div class="ttdeci">IMessage ParseFrom(byte[] data)</div><div class="ttdoc">Parses a message from a byte array.</div><div class="ttdef"><b>Definition:</b> <a href="_message_parser_8cs_source.html#l00065">MessageParser.cs:65</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_message_parser_html_a20689a9a63b507fd766c9f3b62a99f0f"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_message_parser.html#a20689a9a63b507fd766c9f3b62a99f0f">Google.Protobuf.MessageParser.ParseFrom</a></div><div class="ttdeci">new T ParseFrom(byte[] data)</div><div class="ttdoc">Parses a message from a byte array.</div><div class="ttdef"><b>Definition:</b> <a href="_message_parser_8cs_source.html#l00179">MessageParser.cs:179</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_message_parser_html_a3e41935617d922fe1d80a714cbd6b571"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_message_parser.html#a3e41935617d922fe1d80a714cbd6b571">Google.Protobuf.MessageParser.ParseFrom</a></div><div class="ttdeci">IMessage ParseFrom(ByteString data)</div><div class="ttdoc">Parses a message from the given byte string.</div><div class="ttdef"><b>Definition:</b> <a href="_message_parser_8cs_source.html#l00078">MessageParser.cs:78</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_message_parser_html_a425cdb8b2284170016d404d883ad707c"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_message_parser.html#a425cdb8b2284170016d404d883ad707c">Google.Protobuf.MessageParser.ParseFrom</a></div><div class="ttdeci">IMessage ParseFrom(CodedInputStream input)</div><div class="ttdoc">Parses a message from the given coded input stream.</div><div class="ttdef"><b>Definition:</b> <a href="_message_parser_8cs_source.html#l00119">MessageParser.cs:119</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_message_parser_html_a46ef46763292650144c9a72ef916be20"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_message_parser.html#a46ef46763292650144c9a72ef916be20">Google.Protobuf.MessageParser.ParseFrom</a></div><div class="ttdeci">new T ParseFrom(CodedInputStream input)</div><div class="ttdoc">Parses a message from the given coded input stream.</div><div class="ttdef"><b>Definition:</b> <a href="_message_parser_8cs_source.html#l00233">MessageParser.cs:233</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_message_parser_html_a4de4899d9b5b8fd09587cccf59a0100c"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_message_parser.html#a4de4899d9b5b8fd09587cccf59a0100c">Google.Protobuf.MessageParser.ParseDelimitedFrom</a></div><div class="ttdeci">new T ParseDelimitedFrom(Stream input)</div><div class="ttdoc">Parses a length-delimited message from the given stream.</div><div class="ttdef"><b>Definition:</b> <a href="_message_parser_8cs_source.html#l00221">MessageParser.cs:221</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_message_parser_html_a6a1953e385c9a70b0cb0b327c24142b8"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_message_parser.html#a6a1953e385c9a70b0cb0b327c24142b8">Google.Protobuf.MessageParser.ParseFrom</a></div><div class="ttdeci">IMessage ParseFrom(Stream input)</div><div class="ttdoc">Parses a message from the given stream.</div><div class="ttdef"><b>Definition:</b> <a href="_message_parser_8cs_source.html#l00091">MessageParser.cs:91</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_message_parser_html_a73044cb49ca095b0323a45d5b7f02076"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_message_parser.html#a73044cb49ca095b0323a45d5b7f02076">Google.Protobuf.MessageParser.ParseFrom</a></div><div class="ttdeci">new T ParseFrom(Stream input)</div><div class="ttdoc">Parses a message from the given stream.</div><div class="ttdef"><b>Definition:</b> <a href="_message_parser_8cs_source.html#l00205">MessageParser.cs:205</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_message_parser_html_a877072e80cebc9976d548cac2172b048"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_message_parser.html#a877072e80cebc9976d548cac2172b048">Google.Protobuf.MessageParser.ParseFrom</a></div><div class="ttdeci">new T ParseFrom(ByteString data)</div><div class="ttdoc">Parses a message from the given byte string.</div><div class="ttdef"><b>Definition:</b> <a href="_message_parser_8cs_source.html#l00192">MessageParser.cs:192</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_message_parser_html_a8a797fbd57eb483c543f012b0f2e15dd"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_message_parser.html#a8a797fbd57eb483c543f012b0f2e15dd">Google.Protobuf.MessageParser.MessageParser</a></div><div class="ttdeci">MessageParser(Func&lt; T &gt; factory)</div><div class="ttdoc">Creates a new parser.</div><div class="ttdef"><b>Definition:</b> <a href="_message_parser_8cs_source.html#l00160">MessageParser.cs:160</a></div></div>
+<div class="ttc" id="aclass_google_1_1_protobuf_1_1_message_parser_html_a9fa1e58ef0a932534b53873bb6f7ad60"><div class="ttname"><a href="class_google_1_1_protobuf_1_1_message_parser.html#a9fa1e58ef0a932534b53873bb6f7ad60">Google.Protobuf.MessageParser.ParseDelimitedFrom</a></div><div class="ttdeci">IMessage ParseDelimitedFrom(Stream input)</div><div class="ttdoc">Parses a length-delimited message from the given stream.</div><div class="ttdef"><b>Definition:</b> <a href="_message_parser_8cs_source.html#l00107">MessageParser.cs:107</a></div></div>
+<div class="ttc" id="ainterface_google_1_1_protobuf_1_1_i_message_html"><div class="ttname"><a href="interface_google_1_1_protobuf_1_1_i_message.html">Google.Protobuf.IMessage</a></div><div class="ttdoc">Interface for a Protocol Buffers message, supporting basic operations required for serialization.</div><div class="ttdef"><b>Definition:</b> <a href="_libraries_2_google_8_protobuf_2_i_message_8cs_source.html#l00040">IMessage.cs:41</a></div></div>
+<div class="ttc" id="ainterface_google_1_1_protobuf_1_1_i_message_html_a5a53cdb6719805a597f396b4a8c713c3"><div class="ttname"><a href="interface_google_1_1_protobuf_1_1_i_message.html#a5a53cdb6719805a597f396b4a8c713c3">Google.Protobuf.IMessage.MergeFrom</a></div><div class="ttdeci">void MergeFrom(CodedInputStream input)</div><div class="ttdoc">Merges the data from the specified coded input stream with the current message.</div></div>
+<div class="ttc" id="anamespace_google_1_1_protobuf_html"><div class="ttname"><a href="namespace_google_1_1_protobuf.html">Google.Protobuf</a></div><div class="ttdef"><b>Definition:</b> <a href="_i_message_adaptor_8cs_source.html#l00010">IMessageAdaptor.cs:11</a></div></div>
+<div class="ttc" id="anamespace_system_html"><div class="ttname"><a href="namespace_system.html">System</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_method_builder_attribute_8cs_source.html#l00001">AsyncMethodBuilderAttribute.cs:2</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_84bbf7b3c7f28a5a18725745e1505219.html">Assets</a></li><li class="navelem"><a class="el" href="dir_f13b41af88cf68434578284aaf699e39.html">Scripts</a></li><li class="navelem"><a class="el" href="dir_46d134a3bf82cf4dc49ca8f728aea58c.html">Libraries</a></li><li class="navelem"><a class="el" href="dir_ee874eb5685beecfc37035b4fc9dfc0c.html">Google.Protobuf</a></li><li class="navelem"><a class="el" href="_message_parser_8cs.html">MessageParser.cs</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:24:50 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

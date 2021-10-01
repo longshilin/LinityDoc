@@ -1,0 +1,311 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: ETServer/Server/ThirdParty/MongoDBDriver/MongoDB.Driver/FilterDefinition.cs 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_filter_definition_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">FilterDefinition.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_filter_definition_8cs.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/* Copyright 2010-present MongoDB Inc.</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">* Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">* you may not use this file except in compliance with the License.</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">* You may obtain a copy of the License at</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">* http://www.apache.org/licenses/LICENSE-2.0</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">* Unless required by applicable law or agreed to in writing, software</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">* distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">* See the License for the specific language governing permissions and</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">* limitations under the License.</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Linq.Expressions;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_mongo_d_b.html">MongoDB</a>.<a class="code" href="namespace_mongo_d_b_1_1_bson.html">Bson</a>;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_mongo_d_b.html">MongoDB</a>.<a class="code" href="namespace_mongo_d_b_1_1_bson.html">Bson</a>.<a class="code" href="namespace_mongo_d_b_1_1_bson_1_1_serialization.html">Serialization</a>;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_mongo_d_b.html">MongoDB</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver.html">Driver</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core.html">Core</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_misc.html">Misc</a>;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_mongo_d_b.html">MongoDB</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver.html">Driver</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_linq.html">Linq</a>;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_mongo_d_b.html">MongoDB</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver.html">Driver</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_linq.html">Linq</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_linq_1_1_expressions.html">Expressions</a>;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_mongo_d_b.html">MongoDB</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver.html">Driver</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_linq.html">Linq</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_linq_1_1_processors.html">Processors</a>;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_mongo_d_b.html">MongoDB</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver.html">Driver</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_linq.html">Linq</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_linq_1_1_translators.html">Translators</a>;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_mongo_d_b_1_1_driver.html">MongoDB.Driver</a></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;{</div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_filter_definition.html">   32</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">class </span><a class="code" href="class_mongo_d_b_1_1_driver_1_1_filter_definition.html">FilterDefinition</a>&lt;TDocument&gt;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    {</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> readonly <a class="code" href="class_mongo_d_b_1_1_driver_1_1_filter_definition.html">FilterDefinition&lt;TDocument&gt;</a> __empty = <span class="keyword">new</span> EmptyFilterDefinition&lt;TDocument&gt;();</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_filter_definition.html#a8c7958a4ed29a94d50e7efe652c110bc">   39</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_filter_definition.html">FilterDefinition&lt;TDocument&gt;</a> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_filter_definition.html#a8c7958a4ed29a94d50e7efe652c110bc">Empty</a></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        {</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            <span class="keyword">get</span> { <span class="keywordflow">return</span> __empty; }</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        }</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_filter_definition.html#aa56b8ed845b866ecc31fe12b98975256">   50</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">abstract</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_document.html">BsonDocument</a> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_filter_definition.html#aa56b8ed845b866ecc31fe12b98975256">Render</a>(<a class="code" href="interface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_serializer.html">IBsonSerializer&lt;TDocument&gt;</a> documentSerializer, <a class="code" href="interface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_serializer_registry.html">IBsonSerializerRegistry</a> serializerRegistry);</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_filter_definition.html#a4da387ceef437902822676e395c840af">   59</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> implicit <span class="keyword">operator</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_filter_definition.html">FilterDefinition&lt;TDocument&gt;</a>(<a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_document.html">BsonDocument</a> document)</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        {</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            <span class="keywordflow">if</span> (document == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            {</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            }</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_bson_document_filter_definition.html">BsonDocumentFilterDefinition&lt;TDocument&gt;</a>(document);</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        }</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00076"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_filter_definition.html#a2798e979e91d02a3f5ae87a02973b2f5">   76</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> implicit <span class="keyword">operator</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_filter_definition.html">FilterDefinition&lt;TDocument&gt;</a>(Expression&lt;Func&lt;TDocument, bool&gt;&gt; predicate)</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        {</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            <span class="keywordflow">if</span> (predicate == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;            {</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            }</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_expression_filter_definition.html">ExpressionFilterDefinition&lt;TDocument&gt;</a>(predicate);</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        }</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
+<div class="line"><a name="l00093"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_filter_definition.html#ac9252ee27770f5809be1d6ff6b17ba56">   93</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> implicit <span class="keyword">operator</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_filter_definition.html">FilterDefinition&lt;TDocument&gt;</a>(<span class="keywordtype">string</span> json)</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        {</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;            <span class="keywordflow">if</span> (json == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;            {</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;            }</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160; </div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_json_filter_definition.html">JsonFilterDefinition&lt;TDocument&gt;</a>(json);</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        }</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
+<div class="line"><a name="l00111"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_filter_definition.html#a4ddfcd1a47adc312c47b8ef04719248a">  111</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_filter_definition.html">FilterDefinition&lt;TDocument&gt;</a> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_filter_definition.html#a4ddfcd1a47adc312c47b8ef04719248a">operator &amp;</a>(<a class="code" href="class_mongo_d_b_1_1_driver_1_1_filter_definition.html">FilterDefinition&lt;TDocument&gt;</a> lhs, <a class="code" href="class_mongo_d_b_1_1_driver_1_1_filter_definition.html">FilterDefinition&lt;TDocument&gt;</a> rhs)</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        {</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> AndFilterDefinition&lt;TDocument&gt;(<span class="keyword">new</span>[] { lhs, rhs });</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        }</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160; </div>
+<div class="line"><a name="l00124"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_filter_definition.html#a5cbbb151dd7443c8b4ec6af3e9c5fcff">  124</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_filter_definition.html">FilterDefinition&lt;TDocument&gt;</a> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_filter_definition.html#a5cbbb151dd7443c8b4ec6af3e9c5fcff">operator |</a>(<a class="code" href="class_mongo_d_b_1_1_driver_1_1_filter_definition.html">FilterDefinition&lt;TDocument&gt;</a> lhs, <a class="code" href="class_mongo_d_b_1_1_driver_1_1_filter_definition.html">FilterDefinition&lt;TDocument&gt;</a> rhs)</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        {</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> OrFilterDefinition&lt;TDocument&gt;(<span class="keyword">new</span>[] { lhs, rhs });</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;        }</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160; </div>
+<div class="line"><a name="l00136"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_filter_definition.html#ab8e70c8282b9c1e490a3055fd2f04c11">  136</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_filter_definition.html">FilterDefinition&lt;TDocument&gt;</a> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_filter_definition.html#ab8e70c8282b9c1e490a3055fd2f04c11">operator !</a>(<a class="code" href="class_mongo_d_b_1_1_driver_1_1_filter_definition.html">FilterDefinition&lt;TDocument&gt;</a> op)</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;        {</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> NotFilterDefinition&lt;TDocument&gt;(op);</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;        }</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    }</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160; </div>
+<div class="line"><a name="l00146"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_bson_document_filter_definition.html">  146</a></span>&#160;    <span class="keyword">public</span> sealed <span class="keyword">class </span><a class="code" href="class_mongo_d_b_1_1_driver_1_1_bson_document_filter_definition.html">BsonDocumentFilterDefinition</a>&lt;TDocument&gt; : <a class="code" href="class_mongo_d_b_1_1_driver_1_1_filter_definition.html">FilterDefinition</a>&lt;TDocument&gt;</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    {</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;        <span class="keyword">private</span> readonly <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_document.html">BsonDocument</a> _document;</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160; </div>
+<div class="line"><a name="l00154"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_bson_document_filter_definition.html#a2e76ffaac6b9fa212103ffaaae005393">  154</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_bson_document_filter_definition.html#a2e76ffaac6b9fa212103ffaaae005393">BsonDocumentFilterDefinition</a>(<a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_document.html">BsonDocument</a> document)</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;        {</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;            _document = Ensure.IsNotNull(document, nameof(document));</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;        }</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160; </div>
+<div class="line"><a name="l00162"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_bson_document_filter_definition.html#a61719a168eea306667bcba9239d31bec">  162</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_document.html">BsonDocument</a> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_bson_document_filter_definition.html#a61719a168eea306667bcba9239d31bec">Document</a></div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;        {</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;            <span class="keyword">get</span> { <span class="keywordflow">return</span> _document; }</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;        }</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160; </div>
+<div class="line"><a name="l00168"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_bson_document_filter_definition.html#af2743423b693c295e4e9e612818c2501">  168</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_document.html">BsonDocument</a> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_bson_document_filter_definition.html#af2743423b693c295e4e9e612818c2501">Render</a>(<a class="code" href="interface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_serializer.html">IBsonSerializer&lt;TDocument&gt;</a> documentSerializer, <a class="code" href="interface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_serializer_registry.html">IBsonSerializerRegistry</a> serializerRegistry)</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;        {</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;            <span class="keywordflow">return</span> _document;</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;        }</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    }</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160; </div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    <span class="keyword">internal</span> sealed <span class="keyword">class </span>EmptyFilterDefinition&lt;TDocument&gt; : FilterDefinition&lt;TDocument&gt;</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    {</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_document.html">BsonDocument</a> Render(<a class="code" href="interface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_serializer.html">IBsonSerializer&lt;TDocument&gt;</a> documentSerializer, <a class="code" href="interface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_serializer_registry.html">IBsonSerializerRegistry</a> serializerRegistry)</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;        {</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_document.html">BsonDocument</a>();</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;        }</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;    }</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160; </div>
+<div class="line"><a name="l00187"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_expression_filter_definition.html">  187</a></span>&#160;    <span class="keyword">public</span> sealed <span class="keyword">class </span><a class="code" href="class_mongo_d_b_1_1_driver_1_1_expression_filter_definition.html">ExpressionFilterDefinition</a>&lt;TDocument&gt; : <a class="code" href="class_mongo_d_b_1_1_driver_1_1_filter_definition.html">FilterDefinition</a>&lt;TDocument&gt;</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;    {</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;        <span class="keyword">private</span> readonly Expression&lt;Func&lt;TDocument, bool&gt;&gt; _expression;</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160; </div>
+<div class="line"><a name="l00195"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_expression_filter_definition.html#a4010b04294c41989e246d58432e1b6bc">  195</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_expression_filter_definition.html#a4010b04294c41989e246d58432e1b6bc">ExpressionFilterDefinition</a>(<a class="code" href="class_mongo_d_b_1_1_driver_1_1_expression_filter_definition.html#aeaf18ff034109ae2b1c4006d839264ba">Expression</a>&lt;Func&lt;TDocument, bool&gt;&gt; expression)</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;        {</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;            _expression = Ensure.IsNotNull(expression, nameof(expression));</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;        }</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160; </div>
+<div class="line"><a name="l00203"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_expression_filter_definition.html#aeaf18ff034109ae2b1c4006d839264ba">  203</a></span>&#160;        <span class="keyword">public</span> Expression&lt;Func&lt;TDocument, bool&gt;&gt; <a class="code" href="class_mongo_d_b_1_1_driver_1_1_expression_filter_definition.html#aeaf18ff034109ae2b1c4006d839264ba">Expression</a></div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;        {</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;            <span class="keyword">get</span> { <span class="keywordflow">return</span> _expression; }</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;        }</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160; </div>
+<div class="line"><a name="l00209"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_expression_filter_definition.html#a66be05ef9674772af290a9235395aa14">  209</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_document.html">BsonDocument</a> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_expression_filter_definition.html#a66be05ef9674772af290a9235395aa14">Render</a>(<a class="code" href="interface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_serializer.html">IBsonSerializer&lt;TDocument&gt;</a> documentSerializer, <a class="code" href="interface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_serializer_registry.html">IBsonSerializerRegistry</a> serializerRegistry)</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;        {</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;            <span class="keywordflow">return</span> PredicateTranslator.Translate&lt;TDocument&gt;(_expression, documentSerializer, serializerRegistry);</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;        }</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;    }</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160; </div>
+<div class="line"><a name="l00219"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_json_filter_definition.html">  219</a></span>&#160;    <span class="keyword">public</span> sealed <span class="keyword">class </span><a class="code" href="class_mongo_d_b_1_1_driver_1_1_json_filter_definition.html">JsonFilterDefinition</a>&lt;TDocument&gt; : <a class="code" href="class_mongo_d_b_1_1_driver_1_1_filter_definition.html">FilterDefinition</a>&lt;TDocument&gt;</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;    {</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;        <span class="keyword">private</span> readonly <span class="keywordtype">string</span> _json;</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160; </div>
+<div class="line"><a name="l00227"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_json_filter_definition.html#a89452030f3ce97f24ad0bbda6f9fa134">  227</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_json_filter_definition.html#a89452030f3ce97f24ad0bbda6f9fa134">JsonFilterDefinition</a>(<span class="keywordtype">string</span> json)</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;        {</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;            _json = Ensure.IsNotNullOrEmpty(json, nameof(json));</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;        }</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160; </div>
+<div class="line"><a name="l00235"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_json_filter_definition.html#abda731ebb3aecd7470eb5b1d706af725">  235</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">string</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_json_filter_definition.html#abda731ebb3aecd7470eb5b1d706af725">Json</a></div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;        {</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;            <span class="keyword">get</span> { <span class="keywordflow">return</span> _json; }</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;        }</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160; </div>
+<div class="line"><a name="l00241"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_json_filter_definition.html#a3d74df955ade79f3af4520641510f1fd">  241</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_document.html">BsonDocument</a> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_json_filter_definition.html#a3d74df955ade79f3af4520641510f1fd">Render</a>(<a class="code" href="interface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_serializer.html">IBsonSerializer&lt;TDocument&gt;</a> documentSerializer, <a class="code" href="interface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_serializer_registry.html">IBsonSerializerRegistry</a> serializerRegistry)</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;        {</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_document.html">BsonDocument</a>.<a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_document.html#a64fe51bc59591b8f67c19095b71b0f0d">Parse</a>(_json);</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;        }</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;    }</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160; </div>
+<div class="line"><a name="l00251"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_object_filter_definition.html">  251</a></span>&#160;    <span class="keyword">public</span> sealed <span class="keyword">class </span><a class="code" href="class_mongo_d_b_1_1_driver_1_1_object_filter_definition.html">ObjectFilterDefinition</a>&lt;TDocument&gt; : <a class="code" href="class_mongo_d_b_1_1_driver_1_1_filter_definition.html">FilterDefinition</a>&lt;TDocument&gt;</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;    {</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;        <span class="keyword">private</span> readonly <span class="keywordtype">object</span> _obj;</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160; </div>
+<div class="line"><a name="l00259"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_object_filter_definition.html#a86e58fda6449de87e23902b99132cd75">  259</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_object_filter_definition.html#a86e58fda6449de87e23902b99132cd75">ObjectFilterDefinition</a>(<span class="keywordtype">object</span> obj)</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;        {</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;            _obj = Ensure.IsNotNull(obj, nameof(obj));</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;        }</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160; </div>
+<div class="line"><a name="l00267"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_object_filter_definition.html#abf876fa86d733ab88216107fd80180a1">  267</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">object</span> <a class="code" href="_component_auto_bind_tool_inspector_8cs.html#aef19bab18b9814edeef255c43e4f6bbc">Object</a></div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;        {</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;            <span class="keyword">get</span> { <span class="keywordflow">return</span> _obj; }</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;        }</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160; </div>
+<div class="line"><a name="l00273"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_object_filter_definition.html#af124cdcbb0c11aa345244d19a995428d">  273</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_document.html">BsonDocument</a> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_object_filter_definition.html#af124cdcbb0c11aa345244d19a995428d">Render</a>(<a class="code" href="interface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_serializer.html">IBsonSerializer&lt;TDocument&gt;</a> documentSerializer, <a class="code" href="interface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_serializer_registry.html">IBsonSerializerRegistry</a> serializerRegistry)</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;        {</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;            var serializer = serializerRegistry.<a class="code" href="interface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_serializer_registry.html#a4ddc2cee371d4523983b2489419cce3b">GetSerializer</a>(_obj.GetType());</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_document_wrapper.html">BsonDocumentWrapper</a>(_obj, serializer);</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;        }</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;    }</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;}</div>
+<div class="ttc" id="a_component_auto_bind_tool_inspector_8cs_html_aef19bab18b9814edeef255c43e4f6bbc"><div class="ttname"><a href="_component_auto_bind_tool_inspector_8cs.html#aef19bab18b9814edeef255c43e4f6bbc">Object</a></div><div class="ttdeci">UnityEngine.Object Object</div><div class="ttdef"><b>Definition:</b> <a href="_component_auto_bind_tool_inspector_8cs_source.html#l00006">ComponentAutoBindToolInspector.cs:6</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_bson_document_html"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_bson_document.html">MongoDB.Bson.BsonDocument</a></div><div class="ttdoc">Represents a BSON document.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_document_8cs_source.html#l00034">BsonDocument.cs:35</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_bson_document_html_a64fe51bc59591b8f67c19095b71b0f0d"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_bson_document.html#a64fe51bc59591b8f67c19095b71b0f0d">MongoDB.Bson.BsonDocument.Parse</a></div><div class="ttdeci">static BsonDocument Parse(string json)</div><div class="ttdoc">Parses a JSON string and returns a BsonDocument.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_document_8cs_source.html#l00375">BsonDocument.cs:375</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_bson_document_wrapper_html"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_bson_document_wrapper.html">MongoDB.Bson.BsonDocumentWrapper</a></div><div class="ttdoc">Represents a BsonDocument wrapper.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_document_wrapper_8cs_source.html#l00035">BsonDocumentWrapper.cs:36</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_bson_document_filter_definition_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_bson_document_filter_definition.html">MongoDB.Driver.BsonDocumentFilterDefinition</a></div><div class="ttdoc">A BsonDocument based filter.</div><div class="ttdef"><b>Definition:</b> <a href="_filter_definition_8cs_source.html#l00146">FilterDefinition.cs:147</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_bson_document_filter_definition_html_a2e76ffaac6b9fa212103ffaaae005393"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_bson_document_filter_definition.html#a2e76ffaac6b9fa212103ffaaae005393">MongoDB.Driver.BsonDocumentFilterDefinition.BsonDocumentFilterDefinition</a></div><div class="ttdeci">BsonDocumentFilterDefinition(BsonDocument document)</div><div class="ttdoc">Initializes a new instance of the BsonDocumentFilterDefinition&lt;TDocument&gt; class.</div><div class="ttdef"><b>Definition:</b> <a href="_filter_definition_8cs_source.html#l00154">FilterDefinition.cs:154</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_bson_document_filter_definition_html_a61719a168eea306667bcba9239d31bec"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_bson_document_filter_definition.html#a61719a168eea306667bcba9239d31bec">MongoDB.Driver.BsonDocumentFilterDefinition.Document</a></div><div class="ttdeci">BsonDocument Document</div><div class="ttdoc">Gets the document.</div><div class="ttdef"><b>Definition:</b> <a href="_filter_definition_8cs_source.html#l00162">FilterDefinition.cs:163</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_bson_document_filter_definition_html_af2743423b693c295e4e9e612818c2501"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_bson_document_filter_definition.html#af2743423b693c295e4e9e612818c2501">MongoDB.Driver.BsonDocumentFilterDefinition.Render</a></div><div class="ttdeci">override BsonDocument Render(IBsonSerializer&lt; TDocument &gt; documentSerializer, IBsonSerializerRegistry serializerRegistry)</div><div class="ttdoc">Renders the filter to a BsonDocument.</div><div class="ttdef"><b>Definition:</b> <a href="_filter_definition_8cs_source.html#l00168">FilterDefinition.cs:168</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_expression_filter_definition_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_expression_filter_definition.html">MongoDB.Driver.ExpressionFilterDefinition</a></div><div class="ttdoc">An Expression based filter.</div><div class="ttdef"><b>Definition:</b> <a href="_filter_definition_8cs_source.html#l00187">FilterDefinition.cs:188</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_expression_filter_definition_html_a4010b04294c41989e246d58432e1b6bc"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_expression_filter_definition.html#a4010b04294c41989e246d58432e1b6bc">MongoDB.Driver.ExpressionFilterDefinition.ExpressionFilterDefinition</a></div><div class="ttdeci">ExpressionFilterDefinition(Expression&lt; Func&lt; TDocument, bool &gt;&gt; expression)</div><div class="ttdoc">Initializes a new instance of the ExpressionFilterDefinition&lt;TDocument&gt; class.</div><div class="ttdef"><b>Definition:</b> <a href="_filter_definition_8cs_source.html#l00195">FilterDefinition.cs:195</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_expression_filter_definition_html_a66be05ef9674772af290a9235395aa14"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_expression_filter_definition.html#a66be05ef9674772af290a9235395aa14">MongoDB.Driver.ExpressionFilterDefinition.Render</a></div><div class="ttdeci">override BsonDocument Render(IBsonSerializer&lt; TDocument &gt; documentSerializer, IBsonSerializerRegistry serializerRegistry)</div><div class="ttdoc">Renders the filter to a BsonDocument.</div><div class="ttdef"><b>Definition:</b> <a href="_filter_definition_8cs_source.html#l00209">FilterDefinition.cs:209</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_expression_filter_definition_html_aeaf18ff034109ae2b1c4006d839264ba"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_expression_filter_definition.html#aeaf18ff034109ae2b1c4006d839264ba">MongoDB.Driver.ExpressionFilterDefinition.Expression</a></div><div class="ttdeci">Expression&lt; Func&lt; TDocument, bool &gt; &gt; Expression</div><div class="ttdoc">Gets the expression.</div><div class="ttdef"><b>Definition:</b> <a href="_filter_definition_8cs_source.html#l00203">FilterDefinition.cs:204</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_filter_definition_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_filter_definition.html">MongoDB.Driver.FilterDefinition</a></div><div class="ttdoc">Base class for filters.</div><div class="ttdef"><b>Definition:</b> <a href="_filter_definition_8cs_source.html#l00032">FilterDefinition.cs:33</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_filter_definition_html_a4ddfcd1a47adc312c47b8ef04719248a"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_filter_definition.html#a4ddfcd1a47adc312c47b8ef04719248a">MongoDB.Driver.FilterDefinition.operator&amp;</a></div><div class="ttdeci">static FilterDefinition&lt; TDocument &gt; operator&amp;(FilterDefinition&lt; TDocument &gt; lhs, FilterDefinition&lt; TDocument &gt; rhs)</div><div class="ttdoc">Implements the operator &amp;.</div><div class="ttdef"><b>Definition:</b> <a href="_filter_definition_8cs_source.html#l00111">FilterDefinition.cs:111</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_filter_definition_html_a5cbbb151dd7443c8b4ec6af3e9c5fcff"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_filter_definition.html#a5cbbb151dd7443c8b4ec6af3e9c5fcff">MongoDB.Driver.FilterDefinition.operator|</a></div><div class="ttdeci">static FilterDefinition&lt; TDocument &gt; operator|(FilterDefinition&lt; TDocument &gt; lhs, FilterDefinition&lt; TDocument &gt; rhs)</div><div class="ttdoc">Implements the operator |.</div><div class="ttdef"><b>Definition:</b> <a href="_filter_definition_8cs_source.html#l00124">FilterDefinition.cs:124</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_filter_definition_html_a8c7958a4ed29a94d50e7efe652c110bc"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_filter_definition.html#a8c7958a4ed29a94d50e7efe652c110bc">MongoDB.Driver.FilterDefinition.Empty</a></div><div class="ttdeci">static FilterDefinition&lt; TDocument &gt; Empty</div><div class="ttdoc">Gets an empty filter. An empty filter matches everything.</div><div class="ttdef"><b>Definition:</b> <a href="_filter_definition_8cs_source.html#l00039">FilterDefinition.cs:40</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_filter_definition_html_aa56b8ed845b866ecc31fe12b98975256"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_filter_definition.html#aa56b8ed845b866ecc31fe12b98975256">MongoDB.Driver.FilterDefinition.Render</a></div><div class="ttdeci">abstract BsonDocument Render(IBsonSerializer&lt; TDocument &gt; documentSerializer, IBsonSerializerRegistry serializerRegistry)</div><div class="ttdoc">Renders the filter to a BsonDocument.</div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_filter_definition_html_ab8e70c8282b9c1e490a3055fd2f04c11"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_filter_definition.html#ab8e70c8282b9c1e490a3055fd2f04c11">MongoDB.Driver.FilterDefinition.operator!</a></div><div class="ttdeci">static FilterDefinition&lt; TDocument &gt; operator!(FilterDefinition&lt; TDocument &gt; op)</div><div class="ttdoc">Implements the operator !.</div><div class="ttdef"><b>Definition:</b> <a href="_filter_definition_8cs_source.html#l00136">FilterDefinition.cs:136</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_json_filter_definition_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_json_filter_definition.html">MongoDB.Driver.JsonFilterDefinition</a></div><div class="ttdoc">A JSON String based filter.</div><div class="ttdef"><b>Definition:</b> <a href="_filter_definition_8cs_source.html#l00219">FilterDefinition.cs:220</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_json_filter_definition_html_a3d74df955ade79f3af4520641510f1fd"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_json_filter_definition.html#a3d74df955ade79f3af4520641510f1fd">MongoDB.Driver.JsonFilterDefinition.Render</a></div><div class="ttdeci">override BsonDocument Render(IBsonSerializer&lt; TDocument &gt; documentSerializer, IBsonSerializerRegistry serializerRegistry)</div><div class="ttdoc">Renders the filter to a BsonDocument.</div><div class="ttdef"><b>Definition:</b> <a href="_filter_definition_8cs_source.html#l00241">FilterDefinition.cs:241</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_json_filter_definition_html_a89452030f3ce97f24ad0bbda6f9fa134"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_json_filter_definition.html#a89452030f3ce97f24ad0bbda6f9fa134">MongoDB.Driver.JsonFilterDefinition.JsonFilterDefinition</a></div><div class="ttdeci">JsonFilterDefinition(string json)</div><div class="ttdoc">Initializes a new instance of the JsonFilterDefinition&lt;TDocument&gt; class.</div><div class="ttdef"><b>Definition:</b> <a href="_filter_definition_8cs_source.html#l00227">FilterDefinition.cs:227</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_json_filter_definition_html_abda731ebb3aecd7470eb5b1d706af725"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_json_filter_definition.html#abda731ebb3aecd7470eb5b1d706af725">MongoDB.Driver.JsonFilterDefinition.Json</a></div><div class="ttdeci">string Json</div><div class="ttdoc">Gets the json.</div><div class="ttdef"><b>Definition:</b> <a href="_filter_definition_8cs_source.html#l00235">FilterDefinition.cs:236</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_object_filter_definition_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_object_filter_definition.html">MongoDB.Driver.ObjectFilterDefinition</a></div><div class="ttdoc">An Object based filter.</div><div class="ttdef"><b>Definition:</b> <a href="_filter_definition_8cs_source.html#l00251">FilterDefinition.cs:252</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_object_filter_definition_html_a86e58fda6449de87e23902b99132cd75"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_object_filter_definition.html#a86e58fda6449de87e23902b99132cd75">MongoDB.Driver.ObjectFilterDefinition.ObjectFilterDefinition</a></div><div class="ttdeci">ObjectFilterDefinition(object obj)</div><div class="ttdoc">Initializes a new instance of the ObjectFilterDefinition&lt;TDocument&gt; class.</div><div class="ttdef"><b>Definition:</b> <a href="_filter_definition_8cs_source.html#l00259">FilterDefinition.cs:259</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_object_filter_definition_html_af124cdcbb0c11aa345244d19a995428d"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_object_filter_definition.html#af124cdcbb0c11aa345244d19a995428d">MongoDB.Driver.ObjectFilterDefinition.Render</a></div><div class="ttdeci">override BsonDocument Render(IBsonSerializer&lt; TDocument &gt; documentSerializer, IBsonSerializerRegistry serializerRegistry)</div><div class="ttdoc">Renders the filter to a BsonDocument.</div><div class="ttdef"><b>Definition:</b> <a href="_filter_definition_8cs_source.html#l00273">FilterDefinition.cs:273</a></div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_serializer_html"><div class="ttname"><a href="interface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_serializer.html">MongoDB.Bson.Serialization.IBsonSerializer&lt; TDocument &gt;</a></div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_serializer_registry_html"><div class="ttname"><a href="interface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_serializer_registry.html">MongoDB.Bson.Serialization.IBsonSerializerRegistry</a></div><div class="ttdoc">A serializer registry.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_serialization_2_i_bson_serializer_registry_8cs_source.html#l00023">IBsonSerializerRegistry.cs:24</a></div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_serializer_registry_html_a4ddc2cee371d4523983b2489419cce3b"><div class="ttname"><a href="interface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_serializer_registry.html#a4ddc2cee371d4523983b2489419cce3b">MongoDB.Bson.Serialization.IBsonSerializerRegistry.GetSerializer</a></div><div class="ttdeci">IBsonSerializer GetSerializer(Type type)</div><div class="ttdoc">Gets the serializer for the specified type .</div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_bson_1_1_serialization_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_bson_1_1_serialization.html">MongoDB.Bson.Serialization</a></div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_serialization_2_attributed_serialization_provider_8cs_source.html#l00021">AttributedSerializationProvider.cs:22</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_bson_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_bson.html">MongoDB.Bson</a></div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_bson_constants_8cs_source.html#l00018">BsonConstants.cs:19</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_driver_1_1_core_1_1_misc_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_misc.html">MongoDB.Driver.Core.Misc</a></div><div class="ttdef"><b>Definition:</b> <a href="_array_filters_feature_8cs_source.html#l00020">ArrayFiltersFeature.cs:21</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_driver_1_1_core_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_driver_1_1_core.html">MongoDB.Driver.Core</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_queue_8cs_source.html#l00023">AsyncQueue.cs:24</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_driver_1_1_linq_1_1_expressions_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_driver_1_1_linq_1_1_expressions.html">MongoDB.Driver.Linq.Expressions</a></div><div class="ttdef"><b>Definition:</b> <a href="_accumulator_expression_8cs_source.html#l00021">AccumulatorExpression.cs:22</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_driver_1_1_linq_1_1_processors_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_driver_1_1_linq_1_1_processors.html">MongoDB.Driver.Linq.Processors</a></div><div class="ttdef"><b>Definition:</b> <a href="_accumulator_binder_8cs_source.html#l00022">AccumulatorBinder.cs:23</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_driver_1_1_linq_1_1_translators_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_driver_1_1_linq_1_1_translators.html">MongoDB.Driver.Linq.Translators</a></div><div class="ttdef"><b>Definition:</b> <a href="_aggregate_expression_translator_8cs_source.html#l00024">AggregateExpressionTranslator.cs:25</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_driver_1_1_linq_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_driver_1_1_linq.html">MongoDB.Driver.Linq</a></div><div class="ttdef"><b>Definition:</b> <a href="_aggregate_queryable_execution_model_8cs_source.html#l00026">AggregateQueryableExecutionModel.cs:27</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_driver_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_driver.html">MongoDB.Driver</a></div><div class="ttdef"><b>Definition:</b> <a href="_aggregate_bucket_auto_granularity_8cs_source.html#l00018">AggregateBucketAutoGranularity.cs:19</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_html"><div class="ttname"><a href="namespace_mongo_d_b.html">MongoDB</a></div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_bson_constants_8cs_source.html#l00018">BsonConstants.cs:19</a></div></div>
+<div class="ttc" id="anamespace_system_html"><div class="ttname"><a href="namespace_system.html">System</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_method_builder_attribute_8cs_source.html#l00001">AsyncMethodBuilderAttribute.cs:2</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_1e261a42b4a2e33df58a15c412684b10.html">ETServer</a></li><li class="navelem"><a class="el" href="dir_473c270c995194c5ad99131d9c901f09.html">Server</a></li><li class="navelem"><a class="el" href="dir_ce426efcf63311ff42488fb2654bd4b4.html">ThirdParty</a></li><li class="navelem"><a class="el" href="dir_a37b2b5f9c8890cc9f6f8392fb0cdff3.html">MongoDBDriver</a></li><li class="navelem"><a class="el" href="dir_42d569251c6b173c0060c74ec4fd3ce0.html">MongoDB.Driver</a></li><li class="navelem"><a class="el" href="_filter_definition_8cs.html">FilterDefinition.cs</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:24:59 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,219 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: ETServer/Server/Model/Component/AppManagerComponent.cs 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_app_manager_component_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">AppManagerComponent.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_app_manager_component_8cs.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>;</div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Collections.Generic;</div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Diagnostics;</div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Linq;</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.<a class="code" href="namespace_system_1_1_runtime.html">Runtime</a>.InteropServices;</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_e_t_model.html">ETModel</a></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;{</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;        [ObjectSystem]</div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="class_e_t_model_1_1_app_manager_component_awake_system.html">   10</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="class_e_t_model_1_1_app_manager_component_awake_system.html">AppManagerComponentAwakeSystem</a> : <a class="code" href="class_e_t_model_1_1_awake_system.html">AwakeSystem</a>&lt;AppManagerComponent&gt;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;        {</div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="class_e_t_model_1_1_app_manager_component_awake_system.html#ab3ddcdf8f7a6e1ef0fe96a13d13988d3">   12</a></span>&#160;                <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code" href="class_e_t_model_1_1_app_manager_component_awake_system.html#ab3ddcdf8f7a6e1ef0fe96a13d13988d3">Awake</a>(<a class="code" href="class_e_t_model_1_1_app_manager_component.html">AppManagerComponent</a> <span class="keyword">self</span>)</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;                {</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;                        <span class="keyword">self</span>.Awake();</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;                }</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        }</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="class_e_t_model_1_1_app_manager_component.html">   18</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="class_e_t_model_1_1_app_manager_component.html">AppManagerComponent</a>: <a class="code" href="class_e_t_model_1_1_component.html">Component</a></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        {</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;                <span class="keyword">private</span> readonly Dictionary&lt;int, Process&gt; processes = <span class="keyword">new</span> Dictionary&lt;int, Process&gt;();</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="class_e_t_model_1_1_app_manager_component.html#ac10614a80a566800151d4ea8690c97f5">   22</a></span>&#160;                <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_e_t_model_1_1_app_manager_component.html#ac10614a80a566800151d4ea8690c97f5">Awake</a>()</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;                {</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;                        <span class="keywordtype">string</span>[] ips = NetHelper.GetAddressIPs();</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;                        <a class="code" href="class_e_t_model_1_1_start_config.html">StartConfig</a>[] startConfigs = <a class="code" href="class_e_t_model_1_1_start_config_component.html">StartConfigComponent</a>.<a class="code" href="class_e_t_model_1_1_start_config_component.html#ad77b5bcbeb1b27a49bc11ca76ff34c32">Instance</a>.<a class="code" href="class_e_t_model_1_1_start_config_component.html#a117360be522948d0b84ddfaa3fe40d49">GetAll</a>();</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;                        </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;                        <span class="keywordflow">foreach</span> (<a class="code" href="class_e_t_model_1_1_start_config.html">StartConfig</a> startConfig <span class="keywordflow">in</span> startConfigs)</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;                        {</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;                                Game.Scene.<a class="code" href="class_e_t_model_1_1_entity.html#a063b14c2158cb5ec98d927aa6b283860">GetComponent</a>&lt;<a class="code" href="class_e_t_model_1_1_timer_component.html">TimerComponent</a>&gt;().WaitAsync(100);</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;                                </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;                                <span class="keywordflow">if</span> (!ips.Contains(startConfig.<a class="code" href="class_e_t_model_1_1_start_config.html#a1629bf91a2b47c5c6fceae98e9d9c143">ServerIP</a>) &amp;&amp; startConfig.<a class="code" href="class_e_t_model_1_1_start_config.html#a1629bf91a2b47c5c6fceae98e9d9c143">ServerIP</a> != <span class="stringliteral">&quot;*&quot;</span>)</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;                                {</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;                                        <span class="keywordflow">continue</span>;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;                                }</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;                                <span class="keywordflow">if</span> (startConfig.<a class="code" href="class_e_t_model_1_1_start_config.html#a9ede590a6c0d05172f581f2c67cdf002">AppType</a>.Is(<a class="code" href="namespace_e_t_model.html#a8b40abd315470fe22a31bf9b6fb8974b">AppType</a>.Manager))</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;                                {</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;                                        <span class="keywordflow">continue</span>;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                                }</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;                                StartProcess(startConfig.<a class="code" href="class_e_t_model_1_1_start_config.html#ae4870d3d567e53384fa755a442de8d39">AppId</a>);</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                        }</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                        this.WatchProcessAsync().<a class="code" href="struct_e_t_model_1_1_e_t_void.html#a32ec7cabfc1072b57cc2e5a2f5d63a19">Coroutine</a>();</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                }</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                <span class="keyword">private</span> <span class="keywordtype">void</span> StartProcess(<span class="keywordtype">int</span> appId)</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                {</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                        <a class="code" href="class_e_t_model_1_1_option_component.html">OptionComponent</a> optionComponent = Game.Scene.GetComponent&lt;<a class="code" href="class_e_t_model_1_1_option_component.html">OptionComponent</a>&gt;();</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                        <a class="code" href="class_e_t_model_1_1_start_config_component.html">StartConfigComponent</a> startConfigComponent = <a class="code" href="class_e_t_model_1_1_start_config_component.html">StartConfigComponent</a>.<a class="code" href="class_e_t_model_1_1_start_config_component.html#ad77b5bcbeb1b27a49bc11ca76ff34c32">Instance</a>;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                        <span class="keywordtype">string</span> configFile = optionComponent.<a class="code" href="class_e_t_model_1_1_option_component.html#af2866368073fce70401d3eedb9479490">Options</a>.<a class="code" href="class_e_t_model_1_1_options.html#a6c203ac69e21391eb02e35b6f9c50e75">Config</a>;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                        <a class="code" href="class_e_t_model_1_1_start_config.html">StartConfig</a> startConfig = startConfigComponent.Get(appId);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                        <span class="keyword">const</span> <span class="keywordtype">string</span> exe = <span class="stringliteral">&quot;dotnet&quot;</span>;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                        <span class="keywordtype">string</span> arguments = $<span class="stringliteral">&quot;App.dll --appId={startConfig.AppId} --appType={startConfig.AppType} --config={configFile}&quot;</span>;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                        <a class="code" href="_login_form_8cs.html#a6208db3ac52d7f107a612679d0d8eca3">Log</a>.Info($<span class="stringliteral">&quot;{exe} {arguments}&quot;</span>);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                        <span class="keywordflow">try</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;                        {</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                                Process process = ProcessHelper.Run(exe, arguments);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                                this.processes.Add(startConfig.<a class="code" href="class_e_t_model_1_1_start_config.html#ae4870d3d567e53384fa755a442de8d39">AppId</a>, process);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                        }</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                        <span class="keywordflow">catch</span> (Exception e)</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                        {</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                                <a class="code" href="_login_form_8cs.html#a6208db3ac52d7f107a612679d0d8eca3">Log</a>.Error(e);</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                        }</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                }</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                <span class="keyword">private</span> async ETVoid WatchProcessAsync()</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                {</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                        <span class="keywordtype">long</span> instanceId = this.<a class="code" href="class_e_t_model_1_1_component.html#a7dca4c332bc4425f88de656a70d23110">InstanceId</a>;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                        </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                        <span class="keywordflow">while</span> (<span class="keyword">true</span>)</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                        {</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                                await Game.Scene.GetComponent&lt;TimerComponent&gt;().WaitAsync(5000);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                                <span class="keywordflow">if</span> (this.<a class="code" href="class_e_t_model_1_1_component.html#a7dca4c332bc4425f88de656a70d23110">InstanceId</a> != instanceId)</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                                {</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                                        <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                                }</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                                <span class="keywordflow">foreach</span> (<span class="keywordtype">int</span> appId <span class="keywordflow">in</span> this.processes.Keys.ToArray())</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                                {</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                                        Process process = this.processes[appId];</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                                        <span class="keywordflow">if</span> (!process.HasExited)</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                                        {</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                                                <span class="keywordflow">continue</span>;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                                        }</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                                        this.processes.Remove(appId);</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                                        process.Dispose();</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                                        this.StartProcess(appId);</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                                }</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                        }</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                }</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        }</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;}</div>
+<div class="ttc" id="a_login_form_8cs_html_a6208db3ac52d7f107a612679d0d8eca3"><div class="ttname"><a href="_login_form_8cs.html#a6208db3ac52d7f107a612679d0d8eca3">Log</a></div><div class="ttdeci">UnityGameFramework.Runtime.Log Log</div><div class="ttdef"><b>Definition:</b> <a href="_login_form_8cs_source.html#l00007">LoginForm.cs:7</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_app_manager_component_awake_system_html"><div class="ttname"><a href="class_e_t_model_1_1_app_manager_component_awake_system.html">ETModel.AppManagerComponentAwakeSystem</a></div><div class="ttdef"><b>Definition:</b> <a href="_app_manager_component_8cs_source.html#l00010">AppManagerComponent.cs:11</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_app_manager_component_awake_system_html_ab3ddcdf8f7a6e1ef0fe96a13d13988d3"><div class="ttname"><a href="class_e_t_model_1_1_app_manager_component_awake_system.html#ab3ddcdf8f7a6e1ef0fe96a13d13988d3">ETModel.AppManagerComponentAwakeSystem.Awake</a></div><div class="ttdeci">override void Awake(AppManagerComponent self)</div><div class="ttdef"><b>Definition:</b> <a href="_app_manager_component_8cs_source.html#l00012">AppManagerComponent.cs:12</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_app_manager_component_html"><div class="ttname"><a href="class_e_t_model_1_1_app_manager_component.html">ETModel.AppManagerComponent</a></div><div class="ttdef"><b>Definition:</b> <a href="_app_manager_component_8cs_source.html#l00018">AppManagerComponent.cs:19</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_app_manager_component_html_ac10614a80a566800151d4ea8690c97f5"><div class="ttname"><a href="class_e_t_model_1_1_app_manager_component.html#ac10614a80a566800151d4ea8690c97f5">ETModel.AppManagerComponent.Awake</a></div><div class="ttdeci">void Awake()</div><div class="ttdef"><b>Definition:</b> <a href="_app_manager_component_8cs_source.html#l00022">AppManagerComponent.cs:22</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_awake_system_html"><div class="ttname"><a href="class_e_t_model_1_1_awake_system.html">ETModel.AwakeSystem</a></div><div class="ttdef"><b>Definition:</b> <a href="_libraries_2_e_t_2_base_2_object_2_i_awake_system_8cs_source.html#l00075">IAwakeSystem.cs:76</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_component_html"><div class="ttname"><a href="class_e_t_model_1_1_component.html">ETModel.Component</a></div><div class="ttdef"><b>Definition:</b> <a href="_libraries_2_e_t_2_base_2_object_2_component_8cs_source.html#l00011">Component.cs:12</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_component_html_a7dca4c332bc4425f88de656a70d23110"><div class="ttname"><a href="class_e_t_model_1_1_component.html#a7dca4c332bc4425f88de656a70d23110">ETModel.Component.InstanceId</a></div><div class="ttdeci">long InstanceId</div><div class="ttdef"><b>Definition:</b> <a href="_libraries_2_e_t_2_base_2_object_2_component_8cs_source.html#l00014">Component.cs:14</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_entity_html_a063b14c2158cb5ec98d927aa6b283860"><div class="ttname"><a href="class_e_t_model_1_1_entity.html#a063b14c2158cb5ec98d927aa6b283860">ETModel.Entity.GetComponent</a></div><div class="ttdeci">Component GetComponent(Type type)</div><div class="ttdef"><b>Definition:</b> <a href="_libraries_2_e_t_2_base_2_object_2_entity_8cs_source.html#l00217">Entity.cs:217</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_option_component_html"><div class="ttname"><a href="class_e_t_model_1_1_option_component.html">ETModel.OptionComponent</a></div><div class="ttdef"><b>Definition:</b> <a href="_option_component_8cs_source.html#l00015">OptionComponent.cs:16</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_option_component_html_af2866368073fce70401d3eedb9479490"><div class="ttname"><a href="class_e_t_model_1_1_option_component.html#af2866368073fce70401d3eedb9479490">ETModel.OptionComponent.Options</a></div><div class="ttdeci">Options Options</div><div class="ttdef"><b>Definition:</b> <a href="_option_component_8cs_source.html#l00017">OptionComponent.cs:17</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_options_html_a6c203ac69e21391eb02e35b6f9c50e75"><div class="ttname"><a href="class_e_t_model_1_1_options.html#a6c203ac69e21391eb02e35b6f9c50e75">ETModel.Options.Config</a></div><div class="ttdeci">string Config</div><div class="ttdef"><b>Definition:</b> <a href="_options_8cs_source.html#l00017">Options.cs:17</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_start_config_component_html"><div class="ttname"><a href="class_e_t_model_1_1_start_config_component.html">ETModel.StartConfigComponent</a></div><div class="ttdef"><b>Definition:</b> <a href="_start_config_component_8cs_source.html#l00018">StartConfigComponent.cs:19</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_start_config_component_html_a117360be522948d0b84ddfaa3fe40d49"><div class="ttname"><a href="class_e_t_model_1_1_start_config_component.html#a117360be522948d0b84ddfaa3fe40d49">ETModel.StartConfigComponent.GetAll</a></div><div class="ttdeci">StartConfig[] GetAll()</div><div class="ttdef"><b>Definition:</b> <a href="_start_config_component_8cs_source.html#l00134">StartConfigComponent.cs:134</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_start_config_component_html_ad77b5bcbeb1b27a49bc11ca76ff34c32"><div class="ttname"><a href="class_e_t_model_1_1_start_config_component.html#ad77b5bcbeb1b27a49bc11ca76ff34c32">ETModel.StartConfigComponent.Instance</a></div><div class="ttdeci">static StartConfigComponent Instance</div><div class="ttdef"><b>Definition:</b> <a href="_start_config_component_8cs_source.html#l00020">StartConfigComponent.cs:20</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_start_config_html"><div class="ttname"><a href="class_e_t_model_1_1_start_config.html">ETModel.StartConfig</a></div><div class="ttdef"><b>Definition:</b> <a href="_start_config_8cs_source.html#l00012">StartConfig.cs:13</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_start_config_html_a1629bf91a2b47c5c6fceae98e9d9c143"><div class="ttname"><a href="class_e_t_model_1_1_start_config.html#a1629bf91a2b47c5c6fceae98e9d9c143">ETModel.StartConfig.ServerIP</a></div><div class="ttdeci">string ServerIP</div><div class="ttdef"><b>Definition:</b> <a href="_start_config_8cs_source.html#l00019">StartConfig.cs:19</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_start_config_html_a9ede590a6c0d05172f581f2c67cdf002"><div class="ttname"><a href="class_e_t_model_1_1_start_config.html#a9ede590a6c0d05172f581f2c67cdf002">ETModel.StartConfig.AppType</a></div><div class="ttdeci">AppType AppType</div><div class="ttdef"><b>Definition:</b> <a href="_start_config_8cs_source.html#l00017">StartConfig.cs:17</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_start_config_html_ae4870d3d567e53384fa755a442de8d39"><div class="ttname"><a href="class_e_t_model_1_1_start_config.html#ae4870d3d567e53384fa755a442de8d39">ETModel.StartConfig.AppId</a></div><div class="ttdeci">int AppId</div><div class="ttdef"><b>Definition:</b> <a href="_start_config_8cs_source.html#l00014">StartConfig.cs:14</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_timer_component_html"><div class="ttname"><a href="class_e_t_model_1_1_timer_component.html">ETModel.TimerComponent</a></div><div class="ttdef"><b>Definition:</b> <a href="_timer_component_8cs_source.html#l00022">TimerComponent.cs:23</a></div></div>
+<div class="ttc" id="anamespace_e_t_model_html"><div class="ttname"><a href="namespace_e_t_model.html">ETModel</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_e_t_task_method_builder_8cs_source.html#l00006">AsyncETTaskMethodBuilder.cs:7</a></div></div>
+<div class="ttc" id="anamespace_e_t_model_html_a8b40abd315470fe22a31bf9b6fb8974b"><div class="ttname"><a href="namespace_e_t_model.html#a8b40abd315470fe22a31bf9b6fb8974b">ETModel.AppType</a></div><div class="ttdeci">AppType</div><div class="ttdef"><b>Definition:</b> <a href="_app_type_8cs_source.html#l00007">AppType.cs:8</a></div></div>
+<div class="ttc" id="anamespace_system_1_1_runtime_html"><div class="ttname"><a href="namespace_system_1_1_runtime.html">System.Runtime</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_method_builder_attribute_8cs_source.html#l00001">AsyncMethodBuilderAttribute.cs:2</a></div></div>
+<div class="ttc" id="anamespace_system_html"><div class="ttname"><a href="namespace_system.html">System</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_method_builder_attribute_8cs_source.html#l00001">AsyncMethodBuilderAttribute.cs:2</a></div></div>
+<div class="ttc" id="astruct_e_t_model_1_1_e_t_void_html_a32ec7cabfc1072b57cc2e5a2f5d63a19"><div class="ttname"><a href="struct_e_t_model_1_1_e_t_void.html#a32ec7cabfc1072b57cc2e5a2f5d63a19">ETModel.ETVoid.Coroutine</a></div><div class="ttdeci">void Coroutine()</div><div class="ttdef"><b>Definition:</b> <a href="_e_t_void_8cs_source.html#l00010">ETVoid.cs:10</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_1e261a42b4a2e33df58a15c412684b10.html">ETServer</a></li><li class="navelem"><a class="el" href="dir_473c270c995194c5ad99131d9c901f09.html">Server</a></li><li class="navelem"><a class="el" href="dir_b41cc7e5ac70cc182b8ab814a5a3f866.html">Model</a></li><li class="navelem"><a class="el" href="dir_2d46c343d2de563feae9ac2ca6300d4b.html">Component</a></li><li class="navelem"><a class="el" href="_app_manager_component_8cs.html">AppManagerComponent.cs</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:24:56 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

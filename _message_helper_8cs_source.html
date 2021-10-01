@@ -1,0 +1,135 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: ETServer/Server/Hotfix/Module/Demo/MessageHelper.cs 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_message_helper_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">MessageHelper.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_message_helper_8cs.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_e_t_model.html">ETModel</a>;</div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_e_t_hotfix.html">ETHotfix</a></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;{</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">class </span>MessageHelper</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;        {</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;                <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> Broadcast(<a class="code" href="interface_e_t_model_1_1_i_actor_message.html">IActorMessage</a> message)</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;                {</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;                        <a class="code" href="class_e_t_model_1_1_unit.html">Unit</a>[] units = Game.Scene.<a class="code" href="class_e_t_model_1_1_entity.html#a063b14c2158cb5ec98d927aa6b283860">GetComponent</a>&lt;<a class="code" href="class_e_t_model_1_1_unit_component.html">UnitComponent</a>&gt;().GetAll();</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;                        <a class="code" href="class_e_t_model_1_1_actor_message_sender_component.html">ActorMessageSenderComponent</a> actorLocationSenderComponent = Game.Scene.GetComponent&lt;<a class="code" href="class_e_t_model_1_1_actor_message_sender_component.html">ActorMessageSenderComponent</a>&gt;();</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;                        <span class="keywordflow">foreach</span> (<a class="code" href="class_e_t_model_1_1_unit.html">Unit</a> unit <span class="keywordflow">in</span> units)</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;                        {</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;                                <a class="code" href="class_e_t_model_1_1_unit_gate_component.html">UnitGateComponent</a> unitGateComponent = unit.<a class="code" href="class_e_t_model_1_1_entity.html#a063b14c2158cb5ec98d927aa6b283860">GetComponent</a>&lt;<a class="code" href="class_e_t_model_1_1_unit_gate_component.html">UnitGateComponent</a>&gt;();</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;                                <span class="keywordflow">if</span> (unitGateComponent.<a class="code" href="class_e_t_model_1_1_unit_gate_component.html#a74efc63761f839860cdd7d302d8a39b3">IsDisconnect</a>)</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;                                {</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;                                        <span class="keywordflow">continue</span>;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;                                }</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;                                <a class="code" href="struct_e_t_model_1_1_actor_message_sender.html">ActorMessageSender</a> actorMessageSender = actorLocationSenderComponent.<a class="code" href="class_e_t_model_1_1_actor_message_sender_component.html#a930c97b0f512cabd0a6d01c4e5117332">Get</a>(unitGateComponent.<a class="code" href="class_e_t_model_1_1_unit_gate_component.html#a397266a266dc57b98d78665fade5b574">GateSessionActorId</a>);</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;                                actorMessageSender.Send(message);</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;                        }</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;                }</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        }</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;}</div>
+<div class="ttc" id="aclass_e_t_model_1_1_actor_message_sender_component_html"><div class="ttname"><a href="class_e_t_model_1_1_actor_message_sender_component.html">ETModel.ActorMessageSenderComponent</a></div><div class="ttdef"><b>Definition:</b> <a href="_actor_message_sender_component_8cs_source.html#l00006">ActorMessageSenderComponent.cs:7</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_actor_message_sender_component_html_a930c97b0f512cabd0a6d01c4e5117332"><div class="ttname"><a href="class_e_t_model_1_1_actor_message_sender_component.html#a930c97b0f512cabd0a6d01c4e5117332">ETModel.ActorMessageSenderComponent.Get</a></div><div class="ttdeci">ActorMessageSender Get(long actorId)</div><div class="ttdef"><b>Definition:</b> <a href="_actor_message_sender_component_8cs_source.html#l00008">ActorMessageSenderComponent.cs:8</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_entity_html_a063b14c2158cb5ec98d927aa6b283860"><div class="ttname"><a href="class_e_t_model_1_1_entity.html#a063b14c2158cb5ec98d927aa6b283860">ETModel.Entity.GetComponent</a></div><div class="ttdeci">Component GetComponent(Type type)</div><div class="ttdef"><b>Definition:</b> <a href="_libraries_2_e_t_2_base_2_object_2_entity_8cs_source.html#l00217">Entity.cs:217</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_unit_component_html"><div class="ttname"><a href="class_e_t_model_1_1_unit_component.html">ETModel.UnitComponent</a></div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_e_t_2_module_2_demo_2_unit_component_8cs_source.html#l00015">UnitComponent.cs:16</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_unit_gate_component_html"><div class="ttname"><a href="class_e_t_model_1_1_unit_gate_component.html">ETModel.UnitGateComponent</a></div><div class="ttdef"><b>Definition:</b> <a href="_unit_gate_component_8cs_source.html#l00012">UnitGateComponent.cs:13</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_unit_gate_component_html_a397266a266dc57b98d78665fade5b574"><div class="ttname"><a href="class_e_t_model_1_1_unit_gate_component.html#a397266a266dc57b98d78665fade5b574">ETModel.UnitGateComponent.GateSessionActorId</a></div><div class="ttdeci">long GateSessionActorId</div><div class="ttdef"><b>Definition:</b> <a href="_unit_gate_component_8cs_source.html#l00014">UnitGateComponent.cs:14</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_unit_gate_component_html_a74efc63761f839860cdd7d302d8a39b3"><div class="ttname"><a href="class_e_t_model_1_1_unit_gate_component.html#a74efc63761f839860cdd7d302d8a39b3">ETModel.UnitGateComponent.IsDisconnect</a></div><div class="ttdeci">bool IsDisconnect</div><div class="ttdef"><b>Definition:</b> <a href="_unit_gate_component_8cs_source.html#l00016">UnitGateComponent.cs:16</a></div></div>
+<div class="ttc" id="aclass_e_t_model_1_1_unit_html"><div class="ttname"><a href="class_e_t_model_1_1_unit.html">ETModel.Unit</a></div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_e_t_2_module_2_demo_2_unit_8cs_source.html#l00018">Unit.cs:19</a></div></div>
+<div class="ttc" id="ainterface_e_t_model_1_1_i_actor_message_html"><div class="ttname"><a href="interface_e_t_model_1_1_i_actor_message.html">ETModel.IActorMessage</a></div><div class="ttdef"><b>Definition:</b> <a href="_libraries_2_e_t_2_module_2_actor_2_i_actor_message_8cs_source.html#l00004">IActorMessage.cs:5</a></div></div>
+<div class="ttc" id="anamespace_e_t_hotfix_html"><div class="ttname"><a href="namespace_e_t_hotfix.html">ETHotfix</a></div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_hotfix_2_e_t_network_2_base_2_event_2_event_id_type_8cs_source.html#l00001">EventIdType.cs:2</a></div></div>
+<div class="ttc" id="anamespace_e_t_model_html"><div class="ttname"><a href="namespace_e_t_model.html">ETModel</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_e_t_task_method_builder_8cs_source.html#l00006">AsyncETTaskMethodBuilder.cs:7</a></div></div>
+<div class="ttc" id="astruct_e_t_model_1_1_actor_message_sender_html"><div class="ttname"><a href="struct_e_t_model_1_1_actor_message_sender.html">ETModel.ActorMessageSender</a></div><div class="ttdef"><b>Definition:</b> <a href="_actor_message_sender_8cs_source.html#l00006">ActorMessageSender.cs:7</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_1e261a42b4a2e33df58a15c412684b10.html">ETServer</a></li><li class="navelem"><a class="el" href="dir_473c270c995194c5ad99131d9c901f09.html">Server</a></li><li class="navelem"><a class="el" href="dir_8ba39ddea26488234058f82da6354cdf.html">Hotfix</a></li><li class="navelem"><a class="el" href="dir_2f5801fa7375f68003eb278d004d6f6f.html">Module</a></li><li class="navelem"><a class="el" href="dir_f2e71a3aa240560a684710cd2f55aff6.html">Demo</a></li><li class="navelem"><a class="el" href="_message_helper_8cs.html">MessageHelper.cs</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:24:55 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

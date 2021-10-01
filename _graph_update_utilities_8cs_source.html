@@ -1,0 +1,160 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: Assets/Scripts/Libraries/ET/Module/Pathfinding/AstarPathfindingProject/Utilities/GraphUpdateUtilities.cs 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_graph_update_utilities_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">GraphUpdateUtilities.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_graph_update_utilities_8cs.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Collections.Generic;</div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_pathfinding.html">Pathfinding</a>.<a class="code" href="namespace_pathfinding_1_1_util.html">Util</a>;</div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_p_f.html">PF</a>;</div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_pathfinding.html">Pathfinding</a> {</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">class </span>GraphUpdateUtilities {</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;                <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">bool</span> UpdateGraphsNoBlock (GraphUpdateObject guo, <a class="code" href="class_p_f_1_1_graph_node.html">GraphNode</a> node1, <a class="code" href="class_p_f_1_1_graph_node.html">GraphNode</a> node2, <span class="keywordtype">bool</span> alwaysRevert = <span class="keyword">false</span>) {</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;                        List&lt;GraphNode&gt; buffer = ListPool&lt;GraphNode&gt;.Claim();</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;                        buffer.Add(node1);</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;                        buffer.Add(node2);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                        <span class="keywordtype">bool</span> worked = UpdateGraphsNoBlock(guo, buffer, alwaysRevert);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;                        ListPool&lt;GraphNode&gt;.Release(ref buffer);</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                        <span class="keywordflow">return</span> worked;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;                }</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">bool</span> UpdateGraphsNoBlock (GraphUpdateObject guo, List&lt;GraphNode&gt; nodes, <span class="keywordtype">bool</span> alwaysRevert = <span class="keyword">false</span>) {</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                        <span class="comment">// Make sure all nodes are walkable</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; nodes.Count; i++) <span class="keywordflow">if</span> (!nodes[i].Walkable) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                        <span class="comment">// Track changed nodes to enable reversion of the guo</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                        guo.trackChangedNodes = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                        <span class="keywordtype">bool</span> worked;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                        <span class="comment">// Pause pathfinding while modifying the graphs</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                        var graphLock = <a class="code" href="class_astar_path.html">AstarPath</a>.<a class="code" href="class_astar_path.html#a93828f3873280d7b2db847f69392b5fd">active</a>.<a class="code" href="class_astar_path.html#a5eb2769ea83a0171c9cd0161544b211e">PausePathfinding</a>();</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                        <span class="keywordflow">try</span> {</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                                <span class="comment">// Update the graphs immediately</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                                <a class="code" href="class_astar_path.html">AstarPath</a>.<a class="code" href="class_astar_path.html#a93828f3873280d7b2db847f69392b5fd">active</a>.<a class="code" href="class_astar_path.html#af1c57d0189ace1df1057118032c47223">FlushGraphUpdates</a>();</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                                <span class="comment">// Check if all nodes are in the same area and that they are walkable, i.e that there are paths between all of them</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                                worked = PathUtilities.IsPathPossible(nodes);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                                <span class="comment">// If it did not work, revert the GUO</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                                <span class="keywordflow">if</span> (!worked || alwaysRevert) {</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                                        guo.RevertFromBackup();</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                                        <span class="comment">// The revert operation does not revert ALL nodes&#39; area values, so we must flood fill again</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                                        <a class="code" href="class_astar_path.html">AstarPath</a>.<a class="code" href="class_astar_path.html#a93828f3873280d7b2db847f69392b5fd">active</a>.<a class="code" href="class_astar_path.html#a6c076ccc313073944406e29bcc83cd91">FloodFill</a>();</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                                }</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                        } <span class="keywordflow">finally</span> {</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                                graphLock.Release();</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                        }</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                        <span class="comment">// Disable tracking nodes, not strictly necessary, but will slightly reduce the cance that some user causes errors</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                        guo.trackChangedNodes = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                        <span class="keywordflow">return</span> worked;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                }</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        }</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;}</div>
+<div class="ttc" id="aclass_astar_path_html"><div class="ttname"><a href="class_astar_path.html">AstarPath</a></div><div class="ttdef"><b>Definition:</b> <a href="_astar_path_8cs_source.html#l00029">AstarPath.cs:29</a></div></div>
+<div class="ttc" id="aclass_astar_path_html_a5eb2769ea83a0171c9cd0161544b211e"><div class="ttname"><a href="class_astar_path.html#a5eb2769ea83a0171c9cd0161544b211e">AstarPath.PausePathfinding</a></div><div class="ttdeci">PathProcessor.GraphUpdateLock PausePathfinding()</div><div class="ttdef"><b>Definition:</b> <a href="_astar_path_8cs_source.html#l01172">AstarPath.cs:1172</a></div></div>
+<div class="ttc" id="aclass_astar_path_html_a6c076ccc313073944406e29bcc83cd91"><div class="ttname"><a href="class_astar_path.html#a6c076ccc313073944406e29bcc83cd91">AstarPath.FloodFill</a></div><div class="ttdeci">void FloodFill(GraphNode seed)</div><div class="ttdef"><b>Definition:</b> <a href="_astar_path_8cs_source.html#l01123">AstarPath.cs:1123</a></div></div>
+<div class="ttc" id="aclass_astar_path_html_a93828f3873280d7b2db847f69392b5fd"><div class="ttname"><a href="class_astar_path.html#a93828f3873280d7b2db847f69392b5fd">AstarPath.active</a></div><div class="ttdeci">static AstarPath active</div><div class="ttdef"><b>Definition:</b> <a href="_astar_path_8cs_source.html#l00056">AstarPath.cs:56</a></div></div>
+<div class="ttc" id="aclass_astar_path_html_af1c57d0189ace1df1057118032c47223"><div class="ttname"><a href="class_astar_path.html#af1c57d0189ace1df1057118032c47223">AstarPath.FlushGraphUpdates</a></div><div class="ttdeci">void FlushGraphUpdates()</div><div class="ttdef"><b>Definition:</b> <a href="_astar_path_8cs_source.html#l00813">AstarPath.cs:813</a></div></div>
+<div class="ttc" id="aclass_p_f_1_1_graph_node_html"><div class="ttname"><a href="class_p_f_1_1_graph_node.html">PF.GraphNode</a></div><div class="ttdef"><b>Definition:</b> <a href="_graph_node_8cs_source.html#l00048">GraphNode.cs:48</a></div></div>
+<div class="ttc" id="anamespace_p_f_html"><div class="ttname"><a href="namespace_p_f.html">PF</a></div><div class="ttdef"><b>Definition:</b> <a href="_array_pool_8cs_source.html#l00009">ArrayPool.cs:9</a></div></div>
+<div class="ttc" id="anamespace_pathfinding_1_1_util_html"><div class="ttname"><a href="namespace_pathfinding_1_1_util.html">Pathfinding.Util</a></div><div class="ttdef"><b>Definition:</b> <a href="_draw_8cs_source.html#l00008">Draw.cs:8</a></div></div>
+<div class="ttc" id="anamespace_pathfinding_html"><div class="ttname"><a href="namespace_pathfinding.html">Pathfinding</a></div><div class="ttdef"><b>Definition:</b> <a href="_a_i_base_editor_8cs_source.html#l00004">AIBaseEditor.cs:4</a></div></div>
+<div class="ttc" id="anamespace_system_html"><div class="ttname"><a href="namespace_system.html">System</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_method_builder_attribute_8cs_source.html#l00001">AsyncMethodBuilderAttribute.cs:2</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_84bbf7b3c7f28a5a18725745e1505219.html">Assets</a></li><li class="navelem"><a class="el" href="dir_f13b41af88cf68434578284aaf699e39.html">Scripts</a></li><li class="navelem"><a class="el" href="dir_46d134a3bf82cf4dc49ca8f728aea58c.html">Libraries</a></li><li class="navelem"><a class="el" href="dir_f6df8f7e58ea5a2220a287b647108730.html">ET</a></li><li class="navelem"><a class="el" href="dir_83296929b1cb48979e134a96af9624b1.html">Module</a></li><li class="navelem"><a class="el" href="dir_7e04bdad0240fbb16a4f5f805ce44f49.html">Pathfinding</a></li><li class="navelem"><a class="el" href="dir_12c2f59e7be642934a5bea5c58ae8c1b.html">AstarPathfindingProject</a></li><li class="navelem"><a class="el" href="dir_9968e666b37cc5b5bd1c459131722812.html">Utilities</a></li><li class="navelem"><a class="el" href="_graph_update_utilities_8cs.html">GraphUpdateUtilities.cs</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:24:46 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

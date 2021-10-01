@@ -1,0 +1,207 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: Assets/Scripts/Libraries/GameFramework/Libraries/GameFramework-2021.05.31/GameFramework/DataTable/IDataTable.cs 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_i_data_table_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">IDataTable.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_i_data_table_8cs.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">//------------------------------------------------------------</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">// Game Framework</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">// Copyright © 2013-2021 Jiang Yin. All rights reserved.</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">// Homepage: https://gameframework.cn/</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">// Feedback: mailto:ellan@gameframework.cn</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">//------------------------------------------------------------</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Collections.Generic;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_game_framework_1_1_data_table.html">GameFramework.DataTable</a></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;{</div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_data_table_1_1_i_data_table.html">   17</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">interface </span><a class="code" href="interface_game_framework_1_1_data_table_1_1_i_data_table.html">IDataTable</a>&lt;T&gt; : IEnumerable&lt;T&gt; where T : <a class="code" href="interface_game_framework_1_1_data_table_1_1_i_data_row.html">IDataRow</a></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    {</div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_data_table_1_1_i_data_table.html#a9d1232d678b51c93a9d90ec54ef42c4e">   22</a></span>&#160;        <span class="keywordtype">string</span> <a class="code" href="interface_game_framework_1_1_data_table_1_1_i_data_table.html#a9d1232d678b51c93a9d90ec54ef42c4e">Name</a></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        {</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;            <span class="keyword">get</span>;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        }</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_data_table_1_1_i_data_table.html#a62958a133b33e5d6a6eb5e9c56632dd0">   30</a></span>&#160;        <span class="keywordtype">string</span> <a class="code" href="interface_game_framework_1_1_data_table_1_1_i_data_table.html#a62958a133b33e5d6a6eb5e9c56632dd0">FullName</a></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        {</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;            <span class="keyword">get</span>;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        }</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_data_table_1_1_i_data_table.html#a25660a86c47641ea2584a9669451e6b2">   38</a></span>&#160;        <a class="code" href="interface_game_framework_1_1_data_table_1_1_i_data_table.html#a25660a86c47641ea2584a9669451e6b2">Type</a> <a class="code" href="interface_game_framework_1_1_data_table_1_1_i_data_table.html#a25660a86c47641ea2584a9669451e6b2">Type</a></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        {</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            <span class="keyword">get</span>;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        }</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_data_table_1_1_i_data_table.html#a743c96401ac4df5e0624c942d80d22df">   46</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="interface_game_framework_1_1_data_table_1_1_i_data_table.html#a743c96401ac4df5e0624c942d80d22df">Count</a></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        {</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            <span class="keyword">get</span>;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        }</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_data_table_1_1_i_data_table.html#ac57382090fd03ab88f20b00873415b06">   56</a></span>&#160;        T <span class="keyword">this</span>[<span class="keywordtype">int</span> id]</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        {</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            <span class="keyword">get</span>;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        }</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_data_table_1_1_i_data_table.html#ab7b8ae7b245946e63752a99e85539e49">   64</a></span>&#160;        T <a class="code" href="interface_game_framework_1_1_data_table_1_1_i_data_table.html#ab7b8ae7b245946e63752a99e85539e49">MinIdDataRow</a></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        {</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            <span class="keyword">get</span>;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        }</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_data_table_1_1_i_data_table.html#a8736b871f4b538ab3e39bb2269405b29">   72</a></span>&#160;        T <a class="code" href="interface_game_framework_1_1_data_table_1_1_i_data_table.html#a8736b871f4b538ab3e39bb2269405b29">MaxIdDataRow</a></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        {</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            <span class="keyword">get</span>;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        }</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00082"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_data_table_1_1_i_data_table.html#a6376c88f8248266f2cc5aae08a377d01">   82</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="interface_game_framework_1_1_data_table_1_1_i_data_table.html#a6376c88f8248266f2cc5aae08a377d01">HasDataRow</a>(<span class="keywordtype">int</span> <span class="keywordtype">id</span>);</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
+<div class="line"><a name="l00089"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_data_table_1_1_i_data_table.html#a5ad56dbd3b3bd701a09073dd6ea88264">   89</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="interface_game_framework_1_1_data_table_1_1_i_data_table.html#a5ad56dbd3b3bd701a09073dd6ea88264">HasDataRow</a>(Predicate&lt;T&gt; condition);</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
+<div class="line"><a name="l00096"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_data_table_1_1_i_data_table.html#ade806cb3ab1f99f71da4ce5bc917c910">   96</a></span>&#160;        T <a class="code" href="interface_game_framework_1_1_data_table_1_1_i_data_table.html#ade806cb3ab1f99f71da4ce5bc917c910">GetDataRow</a>(<span class="keywordtype">int</span> <span class="keywordtype">id</span>);</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
+<div class="line"><a name="l00104"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_data_table_1_1_i_data_table.html#a6f3ab19ab61e97c8559852716971ccd0">  104</a></span>&#160;        T <a class="code" href="interface_game_framework_1_1_data_table_1_1_i_data_table.html#a6f3ab19ab61e97c8559852716971ccd0">GetDataRow</a>(Predicate&lt;T&gt; condition);</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
+<div class="line"><a name="l00111"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_data_table_1_1_i_data_table.html#aec2faf181c49e062451d5b998b3f10d8">  111</a></span>&#160;        T[] <a class="code" href="interface_game_framework_1_1_data_table_1_1_i_data_table.html#aec2faf181c49e062451d5b998b3f10d8">GetDataRows</a>(Predicate&lt;T&gt; condition);</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160; </div>
+<div class="line"><a name="l00118"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_data_table_1_1_i_data_table.html#afa9c290e8f3310929f8f8db18bbd5d7d">  118</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="interface_game_framework_1_1_data_table_1_1_i_data_table.html#afa9c290e8f3310929f8f8db18bbd5d7d">GetDataRows</a>(Predicate&lt;T&gt; condition, List&lt;T&gt; results);</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160; </div>
+<div class="line"><a name="l00125"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_data_table_1_1_i_data_table.html#a3437a2fa8242b8e4edb5d01c0e58a7a9">  125</a></span>&#160;        T[] <a class="code" href="interface_game_framework_1_1_data_table_1_1_i_data_table.html#a3437a2fa8242b8e4edb5d01c0e58a7a9">GetDataRows</a>(Comparison&lt;T&gt; comparison);</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160; </div>
+<div class="line"><a name="l00132"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_data_table_1_1_i_data_table.html#a87d793fa877ca2d937f36364d52525a8">  132</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="interface_game_framework_1_1_data_table_1_1_i_data_table.html#a87d793fa877ca2d937f36364d52525a8">GetDataRows</a>(Comparison&lt;T&gt; comparison, List&lt;T&gt; results);</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160; </div>
+<div class="line"><a name="l00140"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_data_table_1_1_i_data_table.html#a5c168ca622d80c7e3a391bdbfdcb7cc9">  140</a></span>&#160;        T[] <a class="code" href="interface_game_framework_1_1_data_table_1_1_i_data_table.html#a5c168ca622d80c7e3a391bdbfdcb7cc9">GetDataRows</a>(Predicate&lt;T&gt; condition, Comparison&lt;T&gt; comparison);</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160; </div>
+<div class="line"><a name="l00148"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_data_table_1_1_i_data_table.html#a312b82ac9044359fa84b3981472ad775">  148</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="interface_game_framework_1_1_data_table_1_1_i_data_table.html#a312b82ac9044359fa84b3981472ad775">GetDataRows</a>(Predicate&lt;T&gt; condition, Comparison&lt;T&gt; comparison, List&lt;T&gt; results);</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160; </div>
+<div class="line"><a name="l00154"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_data_table_1_1_i_data_table.html#a105ca5a4e7d967901647238086a07630">  154</a></span>&#160;        T[] <a class="code" href="interface_game_framework_1_1_data_table_1_1_i_data_table.html#a105ca5a4e7d967901647238086a07630">GetAllDataRows</a>();</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160; </div>
+<div class="line"><a name="l00160"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_data_table_1_1_i_data_table.html#ac04d63deccca414572eb64f5f5773532">  160</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="interface_game_framework_1_1_data_table_1_1_i_data_table.html#ac04d63deccca414572eb64f5f5773532">GetAllDataRows</a>(List&lt;T&gt; results);</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160; </div>
+<div class="line"><a name="l00168"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_data_table_1_1_i_data_table.html#aabc9db06563bf8a959a017d844393a1a">  168</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="interface_game_framework_1_1_data_table_1_1_i_data_table.html#aabc9db06563bf8a959a017d844393a1a">AddDataRow</a>(<span class="keywordtype">string</span> dataRowString, <span class="keywordtype">object</span> userData);</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160; </div>
+<div class="line"><a name="l00178"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_data_table_1_1_i_data_table.html#abd85576bd1e5f43ab57d72c2ccda3d68">  178</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="interface_game_framework_1_1_data_table_1_1_i_data_table.html#abd85576bd1e5f43ab57d72c2ccda3d68">AddDataRow</a>(<span class="keywordtype">byte</span>[] dataRowBytes, <span class="keywordtype">int</span> startIndex, <span class="keywordtype">int</span> length, <span class="keywordtype">object</span> userData);</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160; </div>
+<div class="line"><a name="l00185"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_data_table_1_1_i_data_table.html#a6017785eceb697f0e08b8e46af79a714">  185</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="interface_game_framework_1_1_data_table_1_1_i_data_table.html#a6017785eceb697f0e08b8e46af79a714">RemoveDataRow</a>(<span class="keywordtype">int</span> <span class="keywordtype">id</span>);</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160; </div>
+<div class="line"><a name="l00190"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_data_table_1_1_i_data_table.html#a5d9f088a9d346657101d21106dc289f8">  190</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="interface_game_framework_1_1_data_table_1_1_i_data_table.html#a5d9f088a9d346657101d21106dc289f8">RemoveAllDataRows</a>();</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;    }</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;}</div>
+<div class="ttc" id="ainterface_game_framework_1_1_data_table_1_1_i_data_row_html"><div class="ttname"><a href="interface_game_framework_1_1_data_table_1_1_i_data_row.html">GameFramework.DataTable.IDataRow</a></div><div class="ttdoc">数据表行接口。</div><div class="ttdef"><b>Definition:</b> <a href="_i_data_row_8cs_source.html#l00013">IDataRow.cs:14</a></div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_data_table_1_1_i_data_table_html"><div class="ttname"><a href="interface_game_framework_1_1_data_table_1_1_i_data_table.html">GameFramework.DataTable.IDataTable</a></div><div class="ttdoc">数据表接口。</div><div class="ttdef"><b>Definition:</b> <a href="_i_data_table_8cs_source.html#l00017">IDataTable.cs:18</a></div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_data_table_1_1_i_data_table_html_a105ca5a4e7d967901647238086a07630"><div class="ttname"><a href="interface_game_framework_1_1_data_table_1_1_i_data_table.html#a105ca5a4e7d967901647238086a07630">GameFramework.DataTable.IDataTable.GetAllDataRows</a></div><div class="ttdeci">T[] GetAllDataRows()</div><div class="ttdoc">获取所有数据表行。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_data_table_1_1_i_data_table_html_a25660a86c47641ea2584a9669451e6b2"><div class="ttname"><a href="interface_game_framework_1_1_data_table_1_1_i_data_table.html#a25660a86c47641ea2584a9669451e6b2">GameFramework.DataTable.IDataTable.Type</a></div><div class="ttdeci">Type Type</div><div class="ttdoc">获取数据表行的类型。</div><div class="ttdef"><b>Definition:</b> <a href="_i_data_table_8cs_source.html#l00038">IDataTable.cs:39</a></div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_data_table_1_1_i_data_table_html_a312b82ac9044359fa84b3981472ad775"><div class="ttname"><a href="interface_game_framework_1_1_data_table_1_1_i_data_table.html#a312b82ac9044359fa84b3981472ad775">GameFramework.DataTable.IDataTable.GetDataRows</a></div><div class="ttdeci">void GetDataRows(Predicate&lt; T &gt; condition, Comparison&lt; T &gt; comparison, List&lt; T &gt; results)</div><div class="ttdoc">获取排序后的符合条件的数据表行。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_data_table_1_1_i_data_table_html_a3437a2fa8242b8e4edb5d01c0e58a7a9"><div class="ttname"><a href="interface_game_framework_1_1_data_table_1_1_i_data_table.html#a3437a2fa8242b8e4edb5d01c0e58a7a9">GameFramework.DataTable.IDataTable.GetDataRows</a></div><div class="ttdeci">T[] GetDataRows(Comparison&lt; T &gt; comparison)</div><div class="ttdoc">获取排序后的数据表行。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_data_table_1_1_i_data_table_html_a5ad56dbd3b3bd701a09073dd6ea88264"><div class="ttname"><a href="interface_game_framework_1_1_data_table_1_1_i_data_table.html#a5ad56dbd3b3bd701a09073dd6ea88264">GameFramework.DataTable.IDataTable.HasDataRow</a></div><div class="ttdeci">bool HasDataRow(Predicate&lt; T &gt; condition)</div><div class="ttdoc">检查是否存在数据表行。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_data_table_1_1_i_data_table_html_a5c168ca622d80c7e3a391bdbfdcb7cc9"><div class="ttname"><a href="interface_game_framework_1_1_data_table_1_1_i_data_table.html#a5c168ca622d80c7e3a391bdbfdcb7cc9">GameFramework.DataTable.IDataTable.GetDataRows</a></div><div class="ttdeci">T[] GetDataRows(Predicate&lt; T &gt; condition, Comparison&lt; T &gt; comparison)</div><div class="ttdoc">获取排序后的符合条件的数据表行。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_data_table_1_1_i_data_table_html_a5d9f088a9d346657101d21106dc289f8"><div class="ttname"><a href="interface_game_framework_1_1_data_table_1_1_i_data_table.html#a5d9f088a9d346657101d21106dc289f8">GameFramework.DataTable.IDataTable.RemoveAllDataRows</a></div><div class="ttdeci">void RemoveAllDataRows()</div><div class="ttdoc">清空所有数据表行。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_data_table_1_1_i_data_table_html_a6017785eceb697f0e08b8e46af79a714"><div class="ttname"><a href="interface_game_framework_1_1_data_table_1_1_i_data_table.html#a6017785eceb697f0e08b8e46af79a714">GameFramework.DataTable.IDataTable.RemoveDataRow</a></div><div class="ttdeci">bool RemoveDataRow(int id)</div><div class="ttdoc">移除指定数据表行。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_data_table_1_1_i_data_table_html_a62958a133b33e5d6a6eb5e9c56632dd0"><div class="ttname"><a href="interface_game_framework_1_1_data_table_1_1_i_data_table.html#a62958a133b33e5d6a6eb5e9c56632dd0">GameFramework.DataTable.IDataTable.FullName</a></div><div class="ttdeci">string FullName</div><div class="ttdoc">获取数据表完整名称。</div><div class="ttdef"><b>Definition:</b> <a href="_i_data_table_8cs_source.html#l00030">IDataTable.cs:31</a></div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_data_table_1_1_i_data_table_html_a6376c88f8248266f2cc5aae08a377d01"><div class="ttname"><a href="interface_game_framework_1_1_data_table_1_1_i_data_table.html#a6376c88f8248266f2cc5aae08a377d01">GameFramework.DataTable.IDataTable.HasDataRow</a></div><div class="ttdeci">bool HasDataRow(int id)</div><div class="ttdoc">检查是否存在数据表行。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_data_table_1_1_i_data_table_html_a6f3ab19ab61e97c8559852716971ccd0"><div class="ttname"><a href="interface_game_framework_1_1_data_table_1_1_i_data_table.html#a6f3ab19ab61e97c8559852716971ccd0">GameFramework.DataTable.IDataTable.GetDataRow</a></div><div class="ttdeci">T GetDataRow(Predicate&lt; T &gt; condition)</div><div class="ttdoc">获取符合条件的数据表行。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_data_table_1_1_i_data_table_html_a743c96401ac4df5e0624c942d80d22df"><div class="ttname"><a href="interface_game_framework_1_1_data_table_1_1_i_data_table.html#a743c96401ac4df5e0624c942d80d22df">GameFramework.DataTable.IDataTable.Count</a></div><div class="ttdeci">int Count</div><div class="ttdoc">获取数据表行数。</div><div class="ttdef"><b>Definition:</b> <a href="_i_data_table_8cs_source.html#l00046">IDataTable.cs:47</a></div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_data_table_1_1_i_data_table_html_a8736b871f4b538ab3e39bb2269405b29"><div class="ttname"><a href="interface_game_framework_1_1_data_table_1_1_i_data_table.html#a8736b871f4b538ab3e39bb2269405b29">GameFramework.DataTable.IDataTable.MaxIdDataRow</a></div><div class="ttdeci">T MaxIdDataRow</div><div class="ttdoc">获取编号最大的数据表行。</div><div class="ttdef"><b>Definition:</b> <a href="_i_data_table_8cs_source.html#l00072">IDataTable.cs:73</a></div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_data_table_1_1_i_data_table_html_a87d793fa877ca2d937f36364d52525a8"><div class="ttname"><a href="interface_game_framework_1_1_data_table_1_1_i_data_table.html#a87d793fa877ca2d937f36364d52525a8">GameFramework.DataTable.IDataTable.GetDataRows</a></div><div class="ttdeci">void GetDataRows(Comparison&lt; T &gt; comparison, List&lt; T &gt; results)</div><div class="ttdoc">获取排序后的数据表行。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_data_table_1_1_i_data_table_html_a9d1232d678b51c93a9d90ec54ef42c4e"><div class="ttname"><a href="interface_game_framework_1_1_data_table_1_1_i_data_table.html#a9d1232d678b51c93a9d90ec54ef42c4e">GameFramework.DataTable.IDataTable.Name</a></div><div class="ttdeci">string Name</div><div class="ttdoc">获取数据表名称。</div><div class="ttdef"><b>Definition:</b> <a href="_i_data_table_8cs_source.html#l00022">IDataTable.cs:23</a></div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_data_table_1_1_i_data_table_html_aabc9db06563bf8a959a017d844393a1a"><div class="ttname"><a href="interface_game_framework_1_1_data_table_1_1_i_data_table.html#aabc9db06563bf8a959a017d844393a1a">GameFramework.DataTable.IDataTable.AddDataRow</a></div><div class="ttdeci">bool AddDataRow(string dataRowString, object userData)</div><div class="ttdoc">增加数据表行。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_data_table_1_1_i_data_table_html_ab7b8ae7b245946e63752a99e85539e49"><div class="ttname"><a href="interface_game_framework_1_1_data_table_1_1_i_data_table.html#ab7b8ae7b245946e63752a99e85539e49">GameFramework.DataTable.IDataTable.MinIdDataRow</a></div><div class="ttdeci">T MinIdDataRow</div><div class="ttdoc">获取编号最小的数据表行。</div><div class="ttdef"><b>Definition:</b> <a href="_i_data_table_8cs_source.html#l00064">IDataTable.cs:65</a></div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_data_table_1_1_i_data_table_html_abd85576bd1e5f43ab57d72c2ccda3d68"><div class="ttname"><a href="interface_game_framework_1_1_data_table_1_1_i_data_table.html#abd85576bd1e5f43ab57d72c2ccda3d68">GameFramework.DataTable.IDataTable.AddDataRow</a></div><div class="ttdeci">bool AddDataRow(byte[] dataRowBytes, int startIndex, int length, object userData)</div><div class="ttdoc">增加数据表行。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_data_table_1_1_i_data_table_html_ac04d63deccca414572eb64f5f5773532"><div class="ttname"><a href="interface_game_framework_1_1_data_table_1_1_i_data_table.html#ac04d63deccca414572eb64f5f5773532">GameFramework.DataTable.IDataTable.GetAllDataRows</a></div><div class="ttdeci">void GetAllDataRows(List&lt; T &gt; results)</div><div class="ttdoc">获取所有数据表行。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_data_table_1_1_i_data_table_html_ade806cb3ab1f99f71da4ce5bc917c910"><div class="ttname"><a href="interface_game_framework_1_1_data_table_1_1_i_data_table.html#ade806cb3ab1f99f71da4ce5bc917c910">GameFramework.DataTable.IDataTable.GetDataRow</a></div><div class="ttdeci">T GetDataRow(int id)</div><div class="ttdoc">获取数据表行。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_data_table_1_1_i_data_table_html_aec2faf181c49e062451d5b998b3f10d8"><div class="ttname"><a href="interface_game_framework_1_1_data_table_1_1_i_data_table.html#aec2faf181c49e062451d5b998b3f10d8">GameFramework.DataTable.IDataTable.GetDataRows</a></div><div class="ttdeci">T[] GetDataRows(Predicate&lt; T &gt; condition)</div><div class="ttdoc">获取符合条件的数据表行。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_data_table_1_1_i_data_table_html_afa9c290e8f3310929f8f8db18bbd5d7d"><div class="ttname"><a href="interface_game_framework_1_1_data_table_1_1_i_data_table.html#afa9c290e8f3310929f8f8db18bbd5d7d">GameFramework.DataTable.IDataTable.GetDataRows</a></div><div class="ttdeci">void GetDataRows(Predicate&lt; T &gt; condition, List&lt; T &gt; results)</div><div class="ttdoc">获取符合条件的数据表行。</div></div>
+<div class="ttc" id="anamespace_game_framework_1_1_data_table_html"><div class="ttname"><a href="namespace_game_framework_1_1_data_table.html">GameFramework.DataTable</a></div><div class="ttdef"><b>Definition:</b> <a href="_data_table_base_8cs_source.html#l00011">DataTableBase.cs:12</a></div></div>
+<div class="ttc" id="anamespace_system_html"><div class="ttname"><a href="namespace_system.html">System</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_method_builder_attribute_8cs_source.html#l00001">AsyncMethodBuilderAttribute.cs:2</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_84bbf7b3c7f28a5a18725745e1505219.html">Assets</a></li><li class="navelem"><a class="el" href="dir_f13b41af88cf68434578284aaf699e39.html">Scripts</a></li><li class="navelem"><a class="el" href="dir_46d134a3bf82cf4dc49ca8f728aea58c.html">Libraries</a></li><li class="navelem"><a class="el" href="dir_7a6862c303020716b3c311e95823547c.html">GameFramework</a></li><li class="navelem"><a class="el" href="dir_bfc6cd8d089c265c897460523cef6560.html">Libraries</a></li><li class="navelem"><a class="el" href="dir_c1104d2df307bba6f9db4e185ff99743.html">GameFramework-2021.05.31</a></li><li class="navelem"><a class="el" href="dir_fe759fdbe5a0d8b8465ec936ca1014c7.html">GameFramework</a></li><li class="navelem"><a class="el" href="dir_f8ba9363e85ef5a69c64915a4d3c7acc.html">DataTable</a></li><li class="navelem"><a class="el" href="_i_data_table_8cs.html">IDataTable.cs</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:24:47 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

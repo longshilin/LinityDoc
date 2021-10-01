@@ -1,0 +1,191 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: Assets/Scripts/Libraries/GameFramework/Libraries/GameFramework-2021.05.31/GameFramework/Localization/ILocalizationManager.cs 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_i_localization_manager_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">ILocalizationManager.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_i_localization_manager_8cs.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">//------------------------------------------------------------</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">// Game Framework</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">// Copyright © 2013-2021 Jiang Yin. All rights reserved.</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">// Homepage: https://gameframework.cn/</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">// Feedback: mailto:ellan@gameframework.cn</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">//------------------------------------------------------------</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_game_framework.html">GameFramework</a>.<a class="code" href="namespace_game_framework_1_1_resource.html">Resource</a>;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_game_framework_1_1_localization.html">GameFramework.Localization</a></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;{</div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_localization_1_1_i_localization_manager.html">   15</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">interface </span><a class="code" href="interface_game_framework_1_1_localization_1_1_i_localization_manager.html">ILocalizationManager</a> : <a class="code" href="interface_game_framework_1_1_i_data_provider.html">IDataProvider</a>&lt;ILocalizationManager&gt;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    {</div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_localization_1_1_i_localization_manager.html#ac8841004ac6984d6a1919c0ddea227ca">   20</a></span>&#160;        <a class="code" href="namespace_game_framework_1_1_localization.html#ad3cfd4367154c84f04c26389b0f811ac">Language</a> <a class="code" href="namespace_game_framework_1_1_localization.html#ad3cfd4367154c84f04c26389b0f811ac">Language</a></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        {</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;            <span class="keyword">get</span>;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;            <span class="keyword">set</span>;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        }</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_localization_1_1_i_localization_manager.html#a65da46f7611012fde459e7e6eb806193">   29</a></span>&#160;        <a class="code" href="namespace_game_framework_1_1_localization.html#ad3cfd4367154c84f04c26389b0f811ac">Language</a> <a class="code" href="interface_game_framework_1_1_localization_1_1_i_localization_manager.html#a65da46f7611012fde459e7e6eb806193">SystemLanguage</a></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        {</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;            <span class="keyword">get</span>;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        }</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_localization_1_1_i_localization_manager.html#a1990d29e8e8c4e77fcf900fd2b896639">   37</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="interface_game_framework_1_1_localization_1_1_i_localization_manager.html#a1990d29e8e8c4e77fcf900fd2b896639">DictionaryCount</a></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        {</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;            <span class="keyword">get</span>;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        }</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_localization_1_1_i_localization_manager.html#a31894ac7a97065614add5727b987ace1">   45</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="interface_game_framework_1_1_localization_1_1_i_localization_manager.html#a31894ac7a97065614add5727b987ace1">CachedBytesSize</a></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        {</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            <span class="keyword">get</span>;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        }</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_localization_1_1_i_localization_manager.html#acce1f1a524af2a86755eba4fa5d3028d">   54</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="interface_game_framework_1_1_localization_1_1_i_localization_manager.html#acce1f1a524af2a86755eba4fa5d3028d">SetResourceManager</a>(<a class="code" href="interface_game_framework_1_1_resource_1_1_i_resource_manager.html">IResourceManager</a> resourceManager);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_localization_1_1_i_localization_manager.html#a7f005645ddaf531094680d18993de3c0">   60</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="interface_game_framework_1_1_localization_1_1_i_localization_manager.html#a7f005645ddaf531094680d18993de3c0">SetDataProviderHelper</a>(<a class="code" href="interface_game_framework_1_1_i_data_provider_helper.html">IDataProviderHelper&lt;ILocalizationManager&gt;</a> dataProviderHelper);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_localization_1_1_i_localization_manager.html#a91b7e7e66d2b7c7c5ee08a1c67c192d7">   66</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="interface_game_framework_1_1_localization_1_1_i_localization_manager.html#a91b7e7e66d2b7c7c5ee08a1c67c192d7">SetLocalizationHelper</a>(<a class="code" href="interface_game_framework_1_1_localization_1_1_i_localization_helper.html">ILocalizationHelper</a> localizationHelper);</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_localization_1_1_i_localization_manager.html#abcbaaa2ccf0d4ec802c5755081526086">   72</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="interface_game_framework_1_1_localization_1_1_i_localization_manager.html#abcbaaa2ccf0d4ec802c5755081526086">EnsureCachedBytesSize</a>(<span class="keywordtype">int</span> ensureSize);</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
+<div class="line"><a name="l00077"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_localization_1_1_i_localization_manager.html#a34b9e0344dd3bf5eb21b008a3eee6175">   77</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="interface_game_framework_1_1_localization_1_1_i_localization_manager.html#a34b9e0344dd3bf5eb21b008a3eee6175">FreeCachedBytes</a>();</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
+<div class="line"><a name="l00084"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_localization_1_1_i_localization_manager.html#a0365eab69e43b40d35d76d5ab1e4c44f">   84</a></span>&#160;        <span class="keywordtype">string</span> <a class="code" href="interface_game_framework_1_1_localization_1_1_i_localization_manager.html#a0365eab69e43b40d35d76d5ab1e4c44f">GetString</a>(<span class="keywordtype">string</span> key);</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
+<div class="line"><a name="l00092"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_localization_1_1_i_localization_manager.html#ac9ac7392156084aa10daaac7ad10b88a">   92</a></span>&#160;        <span class="keywordtype">string</span> <a class="code" href="interface_game_framework_1_1_localization_1_1_i_localization_manager.html#ac9ac7392156084aa10daaac7ad10b88a">GetString</a>(<span class="keywordtype">string</span> key, <span class="keywordtype">object</span> arg0);</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
+<div class="line"><a name="l00101"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_localization_1_1_i_localization_manager.html#a778920815b823db8ddd4b6e84b75f579">  101</a></span>&#160;        <span class="keywordtype">string</span> <a class="code" href="interface_game_framework_1_1_localization_1_1_i_localization_manager.html#a778920815b823db8ddd4b6e84b75f579">GetString</a>(<span class="keywordtype">string</span> key, <span class="keywordtype">object</span> arg0, <span class="keywordtype">object</span> arg1);</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
+<div class="line"><a name="l00111"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_localization_1_1_i_localization_manager.html#ab4b74dce8dffe6693d2a1d8225c7beea">  111</a></span>&#160;        <span class="keywordtype">string</span> <a class="code" href="interface_game_framework_1_1_localization_1_1_i_localization_manager.html#ab4b74dce8dffe6693d2a1d8225c7beea">GetString</a>(<span class="keywordtype">string</span> key, <span class="keywordtype">object</span> arg0, <span class="keywordtype">object</span> arg1, <span class="keywordtype">object</span> arg2);</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160; </div>
+<div class="line"><a name="l00119"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_localization_1_1_i_localization_manager.html#affe3f5e0a75888462c1efbb0f962fac3">  119</a></span>&#160;        <span class="keywordtype">string</span> <a class="code" href="interface_game_framework_1_1_localization_1_1_i_localization_manager.html#affe3f5e0a75888462c1efbb0f962fac3">GetString</a>(<span class="keywordtype">string</span> key, params <span class="keywordtype">object</span>[] args);</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160; </div>
+<div class="line"><a name="l00126"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_localization_1_1_i_localization_manager.html#a6919e07ae7178f769c5fa8a38093cdd2">  126</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="interface_game_framework_1_1_localization_1_1_i_localization_manager.html#a6919e07ae7178f769c5fa8a38093cdd2">HasRawString</a>(<span class="keywordtype">string</span> key);</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160; </div>
+<div class="line"><a name="l00133"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_localization_1_1_i_localization_manager.html#a7af7a62d5fca1407462517d6609024b7">  133</a></span>&#160;        <span class="keywordtype">string</span> <a class="code" href="interface_game_framework_1_1_localization_1_1_i_localization_manager.html#a7af7a62d5fca1407462517d6609024b7">GetRawString</a>(<span class="keywordtype">string</span> key);</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160; </div>
+<div class="line"><a name="l00141"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_localization_1_1_i_localization_manager.html#a672b6692e8f3b02e9b2c6a8773e2dd59">  141</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="interface_game_framework_1_1_localization_1_1_i_localization_manager.html#a672b6692e8f3b02e9b2c6a8773e2dd59">AddRawString</a>(<span class="keywordtype">string</span> key, <span class="keywordtype">string</span> value);</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160; </div>
+<div class="line"><a name="l00148"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_localization_1_1_i_localization_manager.html#a08b2f23bac8324b9506643c29d563534">  148</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="interface_game_framework_1_1_localization_1_1_i_localization_manager.html#a08b2f23bac8324b9506643c29d563534">RemoveRawString</a>(<span class="keywordtype">string</span> key);</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160; </div>
+<div class="line"><a name="l00153"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_localization_1_1_i_localization_manager.html#a408039efd5a0fa779b02e52c368f863b">  153</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="interface_game_framework_1_1_localization_1_1_i_localization_manager.html#a408039efd5a0fa779b02e52c368f863b">RemoveAllRawStrings</a>();</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    }</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;}</div>
+<div class="ttc" id="ainterface_game_framework_1_1_i_data_provider_helper_html"><div class="ttname"><a href="interface_game_framework_1_1_i_data_provider_helper.html">GameFramework.IDataProviderHelper&lt; ILocalizationManager &gt;</a></div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_i_data_provider_html"><div class="ttname"><a href="interface_game_framework_1_1_i_data_provider.html">GameFramework.IDataProvider</a></div><div class="ttdoc">数据提供者接口。</div><div class="ttdef"><b>Definition:</b> <a href="_i_data_provider_8cs_source.html#l00016">IDataProvider.cs:17</a></div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_localization_1_1_i_localization_helper_html"><div class="ttname"><a href="interface_game_framework_1_1_localization_1_1_i_localization_helper.html">GameFramework.Localization.ILocalizationHelper</a></div><div class="ttdoc">本地化辅助器接口。</div><div class="ttdef"><b>Definition:</b> <a href="_i_localization_helper_8cs_source.html#l00013">ILocalizationHelper.cs:14</a></div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_localization_1_1_i_localization_manager_html"><div class="ttname"><a href="interface_game_framework_1_1_localization_1_1_i_localization_manager.html">GameFramework.Localization.ILocalizationManager</a></div><div class="ttdoc">本地化管理器接口。</div><div class="ttdef"><b>Definition:</b> <a href="_i_localization_manager_8cs_source.html#l00015">ILocalizationManager.cs:16</a></div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_localization_1_1_i_localization_manager_html_a0365eab69e43b40d35d76d5ab1e4c44f"><div class="ttname"><a href="interface_game_framework_1_1_localization_1_1_i_localization_manager.html#a0365eab69e43b40d35d76d5ab1e4c44f">GameFramework.Localization.ILocalizationManager.GetString</a></div><div class="ttdeci">string GetString(string key)</div><div class="ttdoc">根据字典主键获取字典内容字符串。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_localization_1_1_i_localization_manager_html_a08b2f23bac8324b9506643c29d563534"><div class="ttname"><a href="interface_game_framework_1_1_localization_1_1_i_localization_manager.html#a08b2f23bac8324b9506643c29d563534">GameFramework.Localization.ILocalizationManager.RemoveRawString</a></div><div class="ttdeci">bool RemoveRawString(string key)</div><div class="ttdoc">移除字典。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_localization_1_1_i_localization_manager_html_a1990d29e8e8c4e77fcf900fd2b896639"><div class="ttname"><a href="interface_game_framework_1_1_localization_1_1_i_localization_manager.html#a1990d29e8e8c4e77fcf900fd2b896639">GameFramework.Localization.ILocalizationManager.DictionaryCount</a></div><div class="ttdeci">int DictionaryCount</div><div class="ttdoc">获取字典数量。</div><div class="ttdef"><b>Definition:</b> <a href="_i_localization_manager_8cs_source.html#l00037">ILocalizationManager.cs:38</a></div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_localization_1_1_i_localization_manager_html_a31894ac7a97065614add5727b987ace1"><div class="ttname"><a href="interface_game_framework_1_1_localization_1_1_i_localization_manager.html#a31894ac7a97065614add5727b987ace1">GameFramework.Localization.ILocalizationManager.CachedBytesSize</a></div><div class="ttdeci">int CachedBytesSize</div><div class="ttdoc">获取缓冲二进制流的大小。</div><div class="ttdef"><b>Definition:</b> <a href="_i_localization_manager_8cs_source.html#l00045">ILocalizationManager.cs:46</a></div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_localization_1_1_i_localization_manager_html_a34b9e0344dd3bf5eb21b008a3eee6175"><div class="ttname"><a href="interface_game_framework_1_1_localization_1_1_i_localization_manager.html#a34b9e0344dd3bf5eb21b008a3eee6175">GameFramework.Localization.ILocalizationManager.FreeCachedBytes</a></div><div class="ttdeci">void FreeCachedBytes()</div><div class="ttdoc">释放缓存的二进制流。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_localization_1_1_i_localization_manager_html_a408039efd5a0fa779b02e52c368f863b"><div class="ttname"><a href="interface_game_framework_1_1_localization_1_1_i_localization_manager.html#a408039efd5a0fa779b02e52c368f863b">GameFramework.Localization.ILocalizationManager.RemoveAllRawStrings</a></div><div class="ttdeci">void RemoveAllRawStrings()</div><div class="ttdoc">清空所有字典。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_localization_1_1_i_localization_manager_html_a65da46f7611012fde459e7e6eb806193"><div class="ttname"><a href="interface_game_framework_1_1_localization_1_1_i_localization_manager.html#a65da46f7611012fde459e7e6eb806193">GameFramework.Localization.ILocalizationManager.SystemLanguage</a></div><div class="ttdeci">Language SystemLanguage</div><div class="ttdoc">获取系统语言。</div><div class="ttdef"><b>Definition:</b> <a href="_i_localization_manager_8cs_source.html#l00029">ILocalizationManager.cs:30</a></div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_localization_1_1_i_localization_manager_html_a672b6692e8f3b02e9b2c6a8773e2dd59"><div class="ttname"><a href="interface_game_framework_1_1_localization_1_1_i_localization_manager.html#a672b6692e8f3b02e9b2c6a8773e2dd59">GameFramework.Localization.ILocalizationManager.AddRawString</a></div><div class="ttdeci">bool AddRawString(string key, string value)</div><div class="ttdoc">增加字典。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_localization_1_1_i_localization_manager_html_a6919e07ae7178f769c5fa8a38093cdd2"><div class="ttname"><a href="interface_game_framework_1_1_localization_1_1_i_localization_manager.html#a6919e07ae7178f769c5fa8a38093cdd2">GameFramework.Localization.ILocalizationManager.HasRawString</a></div><div class="ttdeci">bool HasRawString(string key)</div><div class="ttdoc">是否存在字典。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_localization_1_1_i_localization_manager_html_a778920815b823db8ddd4b6e84b75f579"><div class="ttname"><a href="interface_game_framework_1_1_localization_1_1_i_localization_manager.html#a778920815b823db8ddd4b6e84b75f579">GameFramework.Localization.ILocalizationManager.GetString</a></div><div class="ttdeci">string GetString(string key, object arg0, object arg1)</div><div class="ttdoc">根据字典主键获取字典内容字符串。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_localization_1_1_i_localization_manager_html_a7af7a62d5fca1407462517d6609024b7"><div class="ttname"><a href="interface_game_framework_1_1_localization_1_1_i_localization_manager.html#a7af7a62d5fca1407462517d6609024b7">GameFramework.Localization.ILocalizationManager.GetRawString</a></div><div class="ttdeci">string GetRawString(string key)</div><div class="ttdoc">根据字典主键获取字典值。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_localization_1_1_i_localization_manager_html_a7f005645ddaf531094680d18993de3c0"><div class="ttname"><a href="interface_game_framework_1_1_localization_1_1_i_localization_manager.html#a7f005645ddaf531094680d18993de3c0">GameFramework.Localization.ILocalizationManager.SetDataProviderHelper</a></div><div class="ttdeci">void SetDataProviderHelper(IDataProviderHelper&lt; ILocalizationManager &gt; dataProviderHelper)</div><div class="ttdoc">设置本地化数据提供者辅助器。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_localization_1_1_i_localization_manager_html_a91b7e7e66d2b7c7c5ee08a1c67c192d7"><div class="ttname"><a href="interface_game_framework_1_1_localization_1_1_i_localization_manager.html#a91b7e7e66d2b7c7c5ee08a1c67c192d7">GameFramework.Localization.ILocalizationManager.SetLocalizationHelper</a></div><div class="ttdeci">void SetLocalizationHelper(ILocalizationHelper localizationHelper)</div><div class="ttdoc">设置本地化辅助器。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_localization_1_1_i_localization_manager_html_ab4b74dce8dffe6693d2a1d8225c7beea"><div class="ttname"><a href="interface_game_framework_1_1_localization_1_1_i_localization_manager.html#ab4b74dce8dffe6693d2a1d8225c7beea">GameFramework.Localization.ILocalizationManager.GetString</a></div><div class="ttdeci">string GetString(string key, object arg0, object arg1, object arg2)</div><div class="ttdoc">根据字典主键获取字典内容字符串。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_localization_1_1_i_localization_manager_html_abcbaaa2ccf0d4ec802c5755081526086"><div class="ttname"><a href="interface_game_framework_1_1_localization_1_1_i_localization_manager.html#abcbaaa2ccf0d4ec802c5755081526086">GameFramework.Localization.ILocalizationManager.EnsureCachedBytesSize</a></div><div class="ttdeci">void EnsureCachedBytesSize(int ensureSize)</div><div class="ttdoc">确保二进制流缓存分配足够大小的内存并缓存。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_localization_1_1_i_localization_manager_html_ac9ac7392156084aa10daaac7ad10b88a"><div class="ttname"><a href="interface_game_framework_1_1_localization_1_1_i_localization_manager.html#ac9ac7392156084aa10daaac7ad10b88a">GameFramework.Localization.ILocalizationManager.GetString</a></div><div class="ttdeci">string GetString(string key, object arg0)</div><div class="ttdoc">根据字典主键获取字典内容字符串。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_localization_1_1_i_localization_manager_html_acce1f1a524af2a86755eba4fa5d3028d"><div class="ttname"><a href="interface_game_framework_1_1_localization_1_1_i_localization_manager.html#acce1f1a524af2a86755eba4fa5d3028d">GameFramework.Localization.ILocalizationManager.SetResourceManager</a></div><div class="ttdeci">void SetResourceManager(IResourceManager resourceManager)</div><div class="ttdoc">设置资源管理器。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_localization_1_1_i_localization_manager_html_affe3f5e0a75888462c1efbb0f962fac3"><div class="ttname"><a href="interface_game_framework_1_1_localization_1_1_i_localization_manager.html#affe3f5e0a75888462c1efbb0f962fac3">GameFramework.Localization.ILocalizationManager.GetString</a></div><div class="ttdeci">string GetString(string key, params object[] args)</div><div class="ttdoc">根据字典主键获取字典内容字符串。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_resource_1_1_i_resource_manager_html"><div class="ttname"><a href="interface_game_framework_1_1_resource_1_1_i_resource_manager.html">GameFramework.Resource.IResourceManager</a></div><div class="ttdoc">资源管理器接口。</div><div class="ttdef"><b>Definition:</b> <a href="_i_resource_manager_8cs_source.html#l00019">IResourceManager.cs:20</a></div></div>
+<div class="ttc" id="anamespace_game_framework_1_1_localization_html"><div class="ttname"><a href="namespace_game_framework_1_1_localization.html">GameFramework.Localization</a></div><div class="ttdef"><b>Definition:</b> <a href="_i_localization_helper_8cs_source.html#l00008">ILocalizationHelper.cs:9</a></div></div>
+<div class="ttc" id="anamespace_game_framework_1_1_localization_html_ad3cfd4367154c84f04c26389b0f811ac"><div class="ttname"><a href="namespace_game_framework_1_1_localization.html#ad3cfd4367154c84f04c26389b0f811ac">GameFramework.Localization.Language</a></div><div class="ttdeci">Language</div><div class="ttdoc">本地化语言。</div><div class="ttdef"><b>Definition:</b> <a href="_language_8cs_source.html#l00013">Language.cs:14</a></div></div>
+<div class="ttc" id="anamespace_game_framework_1_1_resource_html"><div class="ttname"><a href="namespace_game_framework_1_1_resource.html">GameFramework.Resource</a></div><div class="ttdef"><b>Definition:</b> <a href="_apply_resources_complete_callback_8cs_source.html#l00008">ApplyResourcesCompleteCallback.cs:9</a></div></div>
+<div class="ttc" id="anamespace_game_framework_html"><div class="ttname"><a href="namespace_game_framework.html">GameFramework</a></div><div class="ttdef"><b>Definition:</b> <a href="_data_provider_8cs_source.html#l00011">DataProvider.cs:12</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_84bbf7b3c7f28a5a18725745e1505219.html">Assets</a></li><li class="navelem"><a class="el" href="dir_f13b41af88cf68434578284aaf699e39.html">Scripts</a></li><li class="navelem"><a class="el" href="dir_46d134a3bf82cf4dc49ca8f728aea58c.html">Libraries</a></li><li class="navelem"><a class="el" href="dir_7a6862c303020716b3c311e95823547c.html">GameFramework</a></li><li class="navelem"><a class="el" href="dir_bfc6cd8d089c265c897460523cef6560.html">Libraries</a></li><li class="navelem"><a class="el" href="dir_c1104d2df307bba6f9db4e185ff99743.html">GameFramework-2021.05.31</a></li><li class="navelem"><a class="el" href="dir_fe759fdbe5a0d8b8465ec936ca1014c7.html">GameFramework</a></li><li class="navelem"><a class="el" href="dir_c5f91d6c85fa7f69bcba5ed30c344d73.html">Localization</a></li><li class="navelem"><a class="el" href="_i_localization_manager_8cs.html">ILocalizationManager.cs</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:24:47 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

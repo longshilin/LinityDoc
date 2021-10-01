@@ -1,0 +1,153 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: Assets/Scripts/Hotfix/Procedure/Base/ProcedureBase.cs 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_hotfix_2_procedure_2_base_2_procedure_base_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">ProcedureBase.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_hotfix_2_procedure_2_base_2_procedure_base_8cs.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">//------------------------------------------------------------</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">// Game Framework</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">// Copyright © 2013-2021 Jiang Yin. All rights reserved.</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">// Homepage: https://gameframework.cn/</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">// Feedback: mailto:ellan@gameframework.cn</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">//------------------------------------------------------------</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="_hotfix_2_procedure_2_base_2_procedure_base_8cs.html#a07927af13ecf1c60cb771922a732eea6">    8</a></span>&#160;<span class="keyword">using</span> <a class="code" href="_game_main_2_procedure_2_procedure_change_scene_8cs.html#a2485a0c5748e557be16e49a4d2c679f9">ProcedureOwner</a> = <a class="code" href="namespace_linity.html">Linity</a>.<a class="code" href="namespace_linity_1_1_hotfix.html">Hotfix</a>.<a class="code" href="interface_linity_1_1_hotfix_1_1_i_fsm.html">IFsm</a>&lt;<a class="code" href="namespace_linity.html">Linity</a>.<a class="code" href="namespace_linity_1_1_hotfix.html">Hotfix</a>.<a class="code" href="interface_linity_1_1_hotfix_1_1_i_procedure_manager.html">IProcedureManager</a>&gt;;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_linity_1_1_hotfix.html">Linity.Hotfix</a></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;{</div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="class_linity_1_1_hotfix_1_1_procedure_base.html">   15</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">class </span><a class="code" href="class_linity_1_1_hotfix_1_1_procedure_base.html">ProcedureBase</a> : <a class="code" href="class_linity_1_1_hotfix_1_1_fsm_state.html">FsmState</a>&lt;IProcedureManager&gt;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    {</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        <span class="comment">// 获取流程是否使用原生对话框</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        <span class="comment">// 在一些特殊的流程（如游戏逻辑对话框资源更新完成前的流程）中，可以考虑调用原生对话框进行消息提示行为</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="class_linity_1_1_hotfix_1_1_procedure_base.html#a6a186c6c0542175df8c7617b06aa861a">   19</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keywordtype">bool</span> <a class="code" href="class_linity_1_1_hotfix_1_1_procedure_base.html#a6a186c6c0542175df8c7617b06aa861a">UseNativeDialog</a></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        {</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;            <span class="keyword">get</span>;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        }</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <span class="keyword">protected</span> <span class="keyword">internal</span> <span class="keyword">override</span> <span class="keywordtype">void</span> OnInit(<a class="code" href="_game_main_2_procedure_2_procedure_change_scene_8cs.html#a2485a0c5748e557be16e49a4d2c679f9">ProcedureOwner</a> procedureOwner)</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        {</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;            base.OnInit(procedureOwner);</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        }</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <span class="keyword">protected</span> <span class="keyword">internal</span> <span class="keyword">override</span> <span class="keywordtype">void</span> OnEnter(<a class="code" href="_game_main_2_procedure_2_procedure_change_scene_8cs.html#a2485a0c5748e557be16e49a4d2c679f9">ProcedureOwner</a> procedureOwner)</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        {</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;            base.OnEnter(procedureOwner);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        }</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <span class="keyword">protected</span> <span class="keyword">internal</span> <span class="keyword">override</span> <span class="keywordtype">void</span> OnUpdate(<a class="code" href="_game_main_2_procedure_2_procedure_change_scene_8cs.html#a2485a0c5748e557be16e49a4d2c679f9">ProcedureOwner</a> procedureOwner, <span class="keywordtype">float</span> elapseSeconds, <span class="keywordtype">float</span> realElapseSeconds)</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        {</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;            base.OnUpdate(procedureOwner, elapseSeconds, realElapseSeconds);</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        }</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <span class="keyword">protected</span> <span class="keyword">internal</span> <span class="keyword">override</span> <span class="keywordtype">void</span> OnLeave(<a class="code" href="_game_main_2_procedure_2_procedure_change_scene_8cs.html#a2485a0c5748e557be16e49a4d2c679f9">ProcedureOwner</a> procedureOwner, <span class="keywordtype">bool</span> isShutdown)</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        {</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;            base.OnLeave(procedureOwner, isShutdown);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        }</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <span class="keyword">protected</span> <span class="keyword">internal</span> <span class="keyword">override</span> <span class="keywordtype">void</span> OnDestroy(<a class="code" href="_game_main_2_procedure_2_procedure_change_scene_8cs.html#a2485a0c5748e557be16e49a4d2c679f9">ProcedureOwner</a> procedureOwner)</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        {</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            base.OnDestroy(procedureOwner);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        }</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    }</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;}</div>
+<div class="ttc" id="a_game_main_2_procedure_2_procedure_change_scene_8cs_html_a2485a0c5748e557be16e49a4d2c679f9"><div class="ttname"><a href="_game_main_2_procedure_2_procedure_change_scene_8cs.html#a2485a0c5748e557be16e49a4d2c679f9">ProcedureOwner</a></div><div class="ttdeci">GameFramework.Fsm.IFsm&lt; GameFramework.Procedure.IProcedureManager &gt; ProcedureOwner</div><div class="ttdef"><b>Definition:</b> <a href="_game_main_2_procedure_2_procedure_change_scene_8cs_source.html#l00011">ProcedureChangeScene.cs:11</a></div></div>
+<div class="ttc" id="aclass_linity_1_1_hotfix_1_1_fsm_state_html"><div class="ttname"><a href="class_linity_1_1_hotfix_1_1_fsm_state.html">Linity.Hotfix.FsmState</a></div><div class="ttdoc">有限状态机状态基类。</div><div class="ttdef"><b>Definition:</b> <a href="_hotfix_2_fsm_2_fsm_state_8cs_source.html#l00017">FsmState.cs:18</a></div></div>
+<div class="ttc" id="aclass_linity_1_1_hotfix_1_1_procedure_base_html"><div class="ttname"><a href="class_linity_1_1_hotfix_1_1_procedure_base.html">Linity.Hotfix.ProcedureBase</a></div><div class="ttdoc">流程基类。</div><div class="ttdef"><b>Definition:</b> <a href="_hotfix_2_procedure_2_base_2_procedure_base_8cs_source.html#l00015">ProcedureBase.cs:16</a></div></div>
+<div class="ttc" id="aclass_linity_1_1_hotfix_1_1_procedure_base_html_a6a186c6c0542175df8c7617b06aa861a"><div class="ttname"><a href="class_linity_1_1_hotfix_1_1_procedure_base.html#a6a186c6c0542175df8c7617b06aa861a">Linity.Hotfix.ProcedureBase.UseNativeDialog</a></div><div class="ttdeci">abstract bool UseNativeDialog</div><div class="ttdef"><b>Definition:</b> <a href="_hotfix_2_procedure_2_base_2_procedure_base_8cs_source.html#l00019">ProcedureBase.cs:20</a></div></div>
+<div class="ttc" id="ainterface_linity_1_1_hotfix_1_1_i_fsm_html"><div class="ttname"><a href="interface_linity_1_1_hotfix_1_1_i_fsm.html">Linity.Hotfix.IFsm</a></div><div class="ttdoc">有限状态机接口。</div><div class="ttdef"><b>Definition:</b> <a href="_hotfix_2_fsm_2_i_fsm_8cs_source.html#l00017">IFsm.cs:18</a></div></div>
+<div class="ttc" id="ainterface_linity_1_1_hotfix_1_1_i_procedure_manager_html"><div class="ttname"><a href="interface_linity_1_1_hotfix_1_1_i_procedure_manager.html">Linity.Hotfix.IProcedureManager</a></div><div class="ttdoc">流程管理器接口。</div><div class="ttdef"><b>Definition:</b> <a href="_hotfix_2_procedure_2_base_2_i_procedure_manager_8cs_source.html#l00015">IProcedureManager.cs:16</a></div></div>
+<div class="ttc" id="anamespace_linity_1_1_hotfix_html"><div class="ttname"><a href="namespace_linity_1_1_hotfix.html">Linity.Hotfix</a></div><div class="ttdef"><b>Definition:</b> <a href="_hotfix_2_base_2_variable_2_base_2_generic_variable_8cs_source.html#l00010">GenericVariable.cs:11</a></div></div>
+<div class="ttc" id="anamespace_linity_html"><div class="ttname"><a href="namespace_linity.html">Linity</a></div><div class="ttdef"><b>Definition:</b> <a href="_entity_and_u_i_form_code_generator_8cs_source.html#l00008">EntityAndUIFormCodeGenerator.cs:9</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_84bbf7b3c7f28a5a18725745e1505219.html">Assets</a></li><li class="navelem"><a class="el" href="dir_f13b41af88cf68434578284aaf699e39.html">Scripts</a></li><li class="navelem"><a class="el" href="dir_75935e138bec93c4cadb3fa5f697868b.html">Hotfix</a></li><li class="navelem"><a class="el" href="dir_0b6b6f8bb0a4af857e8c13d2c52e7c1d.html">Procedure</a></li><li class="navelem"><a class="el" href="dir_a8050d5617560c241ef33ff1244cdc3c.html">Base</a></li><li class="navelem"><a class="el" href="_hotfix_2_procedure_2_base_2_procedure_base_8cs.html">ProcedureBase.cs</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:24:44 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

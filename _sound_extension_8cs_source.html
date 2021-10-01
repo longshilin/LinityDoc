@@ -1,0 +1,292 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: Assets/Scripts/GameMain/Customs/CustomExtensions/Sound/SoundExtension.cs 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_sound_extension_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">SoundExtension.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_sound_extension_8cs.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">//------------------------------------------------------------</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">// Game Framework</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">// Copyright © 2013-2021 Jiang Yin. All rights reserved.</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">// Homepage: https://gameframework.cn/</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">// Feedback: mailto:ellan@gameframework.cn</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">//------------------------------------------------------------</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_game_framework.html">GameFramework</a>;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_game_framework.html">GameFramework</a>.<a class="code" href="namespace_game_framework_1_1_data_table.html">DataTable</a>;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_game_framework.html">GameFramework</a>.<a class="code" href="namespace_game_framework_1_1_sound.html">Sound</a>;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_unity_game_framework.html">UnityGameFramework</a>.<a class="code" href="namespace_unity_game_framework_1_1_runtime.html">Runtime</a>;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_linity.html">Linity</a></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;{</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">class </span>SoundExtension</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    {</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        <span class="keyword">private</span> <span class="keyword">const</span> <span class="keywordtype">float</span> FadeVolumeDuration = 1f;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keywordtype">int</span>? s_MusicSerialId = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">int</span>? PlayMusic(<span class="keyword">this</span> <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_sound_component.html">SoundComponent</a> soundComponent, <span class="keywordtype">int</span> musicId, <span class="keywordtype">object</span> userData = <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        {</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;            soundComponent.StopMusic();</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;            <a class="code" href="interface_game_framework_1_1_data_table_1_1_i_data_table.html">IDataTable&lt;DRMusic&gt;</a> dtMusic = GameEntry.DataTable.GetDataTable&lt;DRMusic&gt;();</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;            DRMusic drMusic = dtMusic.<a class="code" href="interface_game_framework_1_1_data_table_1_1_i_data_table.html#ade806cb3ab1f99f71da4ce5bc917c910">GetDataRow</a>(musicId);</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;            <span class="keywordflow">if</span> (drMusic == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;            {</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;                <a class="code" href="_login_form_8cs.html#a6208db3ac52d7f107a612679d0d8eca3">Log</a>.Warning(<span class="stringliteral">&quot;Can not load music &#39;{0}&#39; from data table.&quot;</span>, musicId.ToString());</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;            }</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;            <a class="code" href="class_game_framework_1_1_sound_1_1_play_sound_params.html">PlaySoundParams</a> playSoundParams = <a class="code" href="class_game_framework_1_1_sound_1_1_play_sound_params.html">PlaySoundParams</a>.<a class="code" href="class_game_framework_1_1_sound_1_1_play_sound_params.html#a52ed40a23b4a21e26fe41a4204c1c223">Create</a>();</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;            playSoundParams.<a class="code" href="class_game_framework_1_1_sound_1_1_play_sound_params.html#a78b9f4eee6e771148d1f24c1cf8d822a">Priority</a> = 64;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;            playSoundParams.<a class="code" href="class_game_framework_1_1_sound_1_1_play_sound_params.html#af797f65948f716e4eb459f50a34d92ef">Loop</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;            playSoundParams.<a class="code" href="class_game_framework_1_1_sound_1_1_play_sound_params.html#a2e087cafeb7212e8817e8c22c7e1191d">VolumeInSoundGroup</a> = 1f;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;            playSoundParams.<a class="code" href="class_game_framework_1_1_sound_1_1_play_sound_params.html#ae5f355a0a5d80888c7aec7e3b2595491">FadeInSeconds</a> = FadeVolumeDuration;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;            playSoundParams.<a class="code" href="class_game_framework_1_1_sound_1_1_play_sound_params.html#ac8c9864b29603b1b4856d5df0855288b">SpatialBlend</a> = 0f;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;            s_MusicSerialId = soundComponent.<a class="code" href="class_unity_game_framework_1_1_runtime_1_1_sound_component.html#a9b16df63d863cfd8a120357d9b13dd8d">PlaySound</a>(AssetUtility.GetMusicAsset(drMusic.AssetName), <span class="stringliteral">&quot;Music&quot;</span>, Constant.AssetPriority.MusicAsset, playSoundParams, <span class="keyword">null</span>, userData);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;            <span class="keywordflow">return</span> s_MusicSerialId;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        }</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> StopMusic(<span class="keyword">this</span> <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_sound_component.html">SoundComponent</a> soundComponent)</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        {</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            <span class="keywordflow">if</span> (!s_MusicSerialId.HasValue)</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            {</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            }</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            soundComponent.<a class="code" href="class_unity_game_framework_1_1_runtime_1_1_sound_component.html#afb773c618ca2ccf893d1e390d1f58e58">StopSound</a>(s_MusicSerialId.Value, FadeVolumeDuration);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;            s_MusicSerialId = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        }</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">int</span>? PlaySound(<span class="keyword">this</span> <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_sound_component.html">SoundComponent</a> soundComponent, <span class="keywordtype">int</span> soundId, <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_entity.html">Entity</a> bindingEntity = <span class="keyword">null</span>, <span class="keywordtype">object</span> userData = <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        {</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            <a class="code" href="interface_game_framework_1_1_data_table_1_1_i_data_table.html">IDataTable&lt;DRSound&gt;</a> dtSound = GameEntry.DataTable.GetDataTable&lt;DRSound&gt;();</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            DRSound drSound = dtSound.<a class="code" href="interface_game_framework_1_1_data_table_1_1_i_data_table.html#ade806cb3ab1f99f71da4ce5bc917c910">GetDataRow</a>(soundId);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            <span class="keywordflow">if</span> (drSound == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            {</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                <a class="code" href="_login_form_8cs.html#a6208db3ac52d7f107a612679d0d8eca3">Log</a>.Warning(<span class="stringliteral">&quot;Can not load sound &#39;{0}&#39; from data table.&quot;</span>, soundId.ToString());</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            }</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;            <a class="code" href="class_game_framework_1_1_sound_1_1_play_sound_params.html">PlaySoundParams</a> playSoundParams = <a class="code" href="class_game_framework_1_1_sound_1_1_play_sound_params.html">PlaySoundParams</a>.<a class="code" href="class_game_framework_1_1_sound_1_1_play_sound_params.html#a52ed40a23b4a21e26fe41a4204c1c223">Create</a>();</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            playSoundParams.<a class="code" href="class_game_framework_1_1_sound_1_1_play_sound_params.html#a78b9f4eee6e771148d1f24c1cf8d822a">Priority</a> = drSound.Priority;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            playSoundParams.<a class="code" href="class_game_framework_1_1_sound_1_1_play_sound_params.html#af797f65948f716e4eb459f50a34d92ef">Loop</a> = drSound.Loop;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            playSoundParams.<a class="code" href="class_game_framework_1_1_sound_1_1_play_sound_params.html#a2e087cafeb7212e8817e8c22c7e1191d">VolumeInSoundGroup</a> = drSound.Volume;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            playSoundParams.<a class="code" href="class_game_framework_1_1_sound_1_1_play_sound_params.html#ac8c9864b29603b1b4856d5df0855288b">SpatialBlend</a> = drSound.SpatialBlend;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            <span class="keywordflow">return</span> soundComponent.<a class="code" href="class_unity_game_framework_1_1_runtime_1_1_sound_component.html#a9b16df63d863cfd8a120357d9b13dd8d">PlaySound</a>(AssetUtility.GetSoundAsset(drSound.AssetName), <span class="stringliteral">&quot;Sound&quot;</span>, Constant.AssetPriority.SoundAsset, playSoundParams, bindingEntity != <span class="keyword">null</span> ? bindingEntity.Entity : <span class="keyword">null</span>, userData);</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        }</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">int</span>? PlayUISound(<span class="keyword">this</span> <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_sound_component.html">SoundComponent</a> soundComponent, <span class="keywordtype">int</span> uiSoundId, <span class="keywordtype">object</span> userData = <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        {</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            <a class="code" href="interface_game_framework_1_1_data_table_1_1_i_data_table.html">IDataTable&lt;DRUISound&gt;</a> dtUISound = GameEntry.DataTable.GetDataTable&lt;DRUISound&gt;();</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            DRUISound drUISound = dtUISound.<a class="code" href="interface_game_framework_1_1_data_table_1_1_i_data_table.html#ade806cb3ab1f99f71da4ce5bc917c910">GetDataRow</a>(uiSoundId);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            <span class="keywordflow">if</span> (drUISound == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            {</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                <a class="code" href="_login_form_8cs.html#a6208db3ac52d7f107a612679d0d8eca3">Log</a>.Warning(<span class="stringliteral">&quot;Can not load UI sound &#39;{0}&#39; from data table.&quot;</span>, uiSoundId.ToString());</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;            }</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            <a class="code" href="class_game_framework_1_1_sound_1_1_play_sound_params.html">PlaySoundParams</a> playSoundParams = <a class="code" href="class_game_framework_1_1_sound_1_1_play_sound_params.html">PlaySoundParams</a>.<a class="code" href="class_game_framework_1_1_sound_1_1_play_sound_params.html#a52ed40a23b4a21e26fe41a4204c1c223">Create</a>();</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            playSoundParams.<a class="code" href="class_game_framework_1_1_sound_1_1_play_sound_params.html#a78b9f4eee6e771148d1f24c1cf8d822a">Priority</a> = drUISound.Priority;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;            playSoundParams.<a class="code" href="class_game_framework_1_1_sound_1_1_play_sound_params.html#af797f65948f716e4eb459f50a34d92ef">Loop</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;            playSoundParams.<a class="code" href="class_game_framework_1_1_sound_1_1_play_sound_params.html#a2e087cafeb7212e8817e8c22c7e1191d">VolumeInSoundGroup</a> = drUISound.Volume;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;            playSoundParams.<a class="code" href="class_game_framework_1_1_sound_1_1_play_sound_params.html#ac8c9864b29603b1b4856d5df0855288b">SpatialBlend</a> = 0f;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            <span class="keywordflow">return</span> soundComponent.<a class="code" href="class_unity_game_framework_1_1_runtime_1_1_sound_component.html#a9b16df63d863cfd8a120357d9b13dd8d">PlaySound</a>(AssetUtility.GetUISoundAsset(drUISound.AssetName), <span class="stringliteral">&quot;UISound&quot;</span>, Constant.AssetPriority.UISoundAsset, playSoundParams, userData);</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        }</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">bool</span> IsMuted(<span class="keyword">this</span> <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_sound_component.html">SoundComponent</a> soundComponent, <span class="keywordtype">string</span> soundGroupName)</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        {</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;            <span class="keywordflow">if</span> (<span class="keywordtype">string</span>.IsNullOrEmpty(soundGroupName))</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;            {</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                <a class="code" href="_login_form_8cs.html#a6208db3ac52d7f107a612679d0d8eca3">Log</a>.Warning(<span class="stringliteral">&quot;Sound group is invalid.&quot;</span>);</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;            }</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;            <a class="code" href="interface_game_framework_1_1_sound_1_1_i_sound_group.html">ISoundGroup</a> soundGroup = soundComponent.<a class="code" href="class_unity_game_framework_1_1_runtime_1_1_sound_component.html#af33246e051213549c454a34c35a202d6">GetSoundGroup</a>(soundGroupName);</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;            <span class="keywordflow">if</span> (soundGroup == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;            {</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;                <a class="code" href="_login_form_8cs.html#a6208db3ac52d7f107a612679d0d8eca3">Log</a>.Warning(<span class="stringliteral">&quot;Sound group &#39;{0}&#39; is invalid.&quot;</span>, soundGroupName);</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;            }</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;            <span class="keywordflow">return</span> soundGroup.<a class="code" href="interface_game_framework_1_1_sound_1_1_i_sound_group.html#a803b1417ff93b3082aceb17c7f35c46a">Mute</a>;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        }</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> Mute(<span class="keyword">this</span> <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_sound_component.html">SoundComponent</a> soundComponent, <span class="keywordtype">string</span> soundGroupName, <span class="keywordtype">bool</span> mute)</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        {</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;            <span class="keywordflow">if</span> (<span class="keywordtype">string</span>.IsNullOrEmpty(soundGroupName))</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;            {</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;                <a class="code" href="_login_form_8cs.html#a6208db3ac52d7f107a612679d0d8eca3">Log</a>.Warning(<span class="stringliteral">&quot;Sound group is invalid.&quot;</span>);</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;                <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;            }</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160; </div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;            <a class="code" href="interface_game_framework_1_1_sound_1_1_i_sound_group.html">ISoundGroup</a> soundGroup = soundComponent.<a class="code" href="class_unity_game_framework_1_1_runtime_1_1_sound_component.html#af33246e051213549c454a34c35a202d6">GetSoundGroup</a>(soundGroupName);</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;            <span class="keywordflow">if</span> (soundGroup == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;            {</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;                <a class="code" href="_login_form_8cs.html#a6208db3ac52d7f107a612679d0d8eca3">Log</a>.Warning(<span class="stringliteral">&quot;Sound group &#39;{0}&#39; is invalid.&quot;</span>, soundGroupName);</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;                <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;            }</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160; </div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;            soundGroup.<a class="code" href="interface_game_framework_1_1_sound_1_1_i_sound_group.html#a803b1417ff93b3082aceb17c7f35c46a">Mute</a> = mute;</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160; </div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;            GameEntry.Setting.SetBool(<a class="code" href="namespace_game_framework.html">GameFramework</a>.<a class="code" href="class_game_framework_1_1_utility.html">Utility</a>.<a class="code" href="class_game_framework_1_1_utility_1_1_text.html">Text</a>.Format(Constant.Setting.SoundGroupMuted, soundGroupName), mute);</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;            GameEntry.Setting.Save();</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;        }</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160; </div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">float</span> GetVolume(<span class="keyword">this</span> <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_sound_component.html">SoundComponent</a> soundComponent, <span class="keywordtype">string</span> soundGroupName)</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        {</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;            <span class="keywordflow">if</span> (<span class="keywordtype">string</span>.IsNullOrEmpty(soundGroupName))</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;            {</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;                <a class="code" href="_login_form_8cs.html#a6208db3ac52d7f107a612679d0d8eca3">Log</a>.Warning(<span class="stringliteral">&quot;Sound group is invalid.&quot;</span>);</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;                <span class="keywordflow">return</span> 0f;</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;            }</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160; </div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;            <a class="code" href="interface_game_framework_1_1_sound_1_1_i_sound_group.html">ISoundGroup</a> soundGroup = soundComponent.<a class="code" href="class_unity_game_framework_1_1_runtime_1_1_sound_component.html#af33246e051213549c454a34c35a202d6">GetSoundGroup</a>(soundGroupName);</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;            <span class="keywordflow">if</span> (soundGroup == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;            {</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;                <a class="code" href="_login_form_8cs.html#a6208db3ac52d7f107a612679d0d8eca3">Log</a>.Warning(<span class="stringliteral">&quot;Sound group &#39;{0}&#39; is invalid.&quot;</span>, soundGroupName);</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;                <span class="keywordflow">return</span> 0f;</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;            }</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160; </div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;            <span class="keywordflow">return</span> soundGroup.<a class="code" href="interface_game_framework_1_1_sound_1_1_i_sound_group.html#a8445cefc7812eeaeaada49c49414219d">Volume</a>;</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;        }</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160; </div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> SetVolume(<span class="keyword">this</span> <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_sound_component.html">SoundComponent</a> soundComponent, <span class="keywordtype">string</span> soundGroupName, <span class="keywordtype">float</span> volume)</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;        {</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;            <span class="keywordflow">if</span> (<span class="keywordtype">string</span>.IsNullOrEmpty(soundGroupName))</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;            {</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;                <a class="code" href="_login_form_8cs.html#a6208db3ac52d7f107a612679d0d8eca3">Log</a>.Warning(<span class="stringliteral">&quot;Sound group is invalid.&quot;</span>);</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;                <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;            }</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160; </div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;            <a class="code" href="interface_game_framework_1_1_sound_1_1_i_sound_group.html">ISoundGroup</a> soundGroup = soundComponent.<a class="code" href="class_unity_game_framework_1_1_runtime_1_1_sound_component.html#af33246e051213549c454a34c35a202d6">GetSoundGroup</a>(soundGroupName);</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;            <span class="keywordflow">if</span> (soundGroup == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;            {</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;                <a class="code" href="_login_form_8cs.html#a6208db3ac52d7f107a612679d0d8eca3">Log</a>.Warning(<span class="stringliteral">&quot;Sound group &#39;{0}&#39; is invalid.&quot;</span>, soundGroupName);</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;                <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;            }</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160; </div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;            soundGroup.<a class="code" href="interface_game_framework_1_1_sound_1_1_i_sound_group.html#a8445cefc7812eeaeaada49c49414219d">Volume</a> = volume;</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160; </div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;            GameEntry.Setting.SetFloat(<a class="code" href="namespace_game_framework.html">GameFramework</a>.<a class="code" href="class_game_framework_1_1_utility.html">Utility</a>.<a class="code" href="class_game_framework_1_1_utility_1_1_text.html">Text</a>.Format(Constant.Setting.SoundGroupVolume, soundGroupName), volume);</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;            GameEntry.Setting.Save();</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;        }</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    }</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;}</div>
+<div class="ttc" id="a_login_form_8cs_html_a6208db3ac52d7f107a612679d0d8eca3"><div class="ttname"><a href="_login_form_8cs.html#a6208db3ac52d7f107a612679d0d8eca3">Log</a></div><div class="ttdeci">UnityGameFramework.Runtime.Log Log</div><div class="ttdef"><b>Definition:</b> <a href="_login_form_8cs_source.html#l00007">LoginForm.cs:7</a></div></div>
+<div class="ttc" id="aclass_game_framework_1_1_sound_1_1_play_sound_params_html"><div class="ttname"><a href="class_game_framework_1_1_sound_1_1_play_sound_params.html">GameFramework.Sound.PlaySoundParams</a></div><div class="ttdoc">播放声音参数。</div><div class="ttdef"><b>Definition:</b> <a href="_play_sound_params_8cs_source.html#l00013">PlaySoundParams.cs:14</a></div></div>
+<div class="ttc" id="aclass_game_framework_1_1_sound_1_1_play_sound_params_html_a2e087cafeb7212e8817e8c22c7e1191d"><div class="ttname"><a href="class_game_framework_1_1_sound_1_1_play_sound_params.html#a2e087cafeb7212e8817e8c22c7e1191d">GameFramework.Sound.PlaySoundParams.VolumeInSoundGroup</a></div><div class="ttdeci">float VolumeInSoundGroup</div><div class="ttdoc">获取或设置在声音组内音量大小。</div><div class="ttdef"><b>Definition:</b> <a href="_play_sound_params_8cs_source.html#l00110">PlaySoundParams.cs:111</a></div></div>
+<div class="ttc" id="aclass_game_framework_1_1_sound_1_1_play_sound_params_html_a52ed40a23b4a21e26fe41a4204c1c223"><div class="ttname"><a href="class_game_framework_1_1_sound_1_1_play_sound_params.html#a52ed40a23b4a21e26fe41a4204c1c223">GameFramework.Sound.PlaySoundParams.Create</a></div><div class="ttdeci">static PlaySoundParams Create()</div><div class="ttdoc">创建播放声音参数。</div><div class="ttdef"><b>Definition:</b> <a href="_play_sound_params_8cs_source.html#l00224">PlaySoundParams.cs:224</a></div></div>
+<div class="ttc" id="aclass_game_framework_1_1_sound_1_1_play_sound_params_html_a78b9f4eee6e771148d1f24c1cf8d822a"><div class="ttname"><a href="class_game_framework_1_1_sound_1_1_play_sound_params.html#a78b9f4eee6e771148d1f24c1cf8d822a">GameFramework.Sound.PlaySoundParams.Priority</a></div><div class="ttdeci">int Priority</div><div class="ttdoc">获取或设置声音优先级。</div><div class="ttdef"><b>Definition:</b> <a href="_play_sound_params_8cs_source.html#l00095">PlaySoundParams.cs:96</a></div></div>
+<div class="ttc" id="aclass_game_framework_1_1_sound_1_1_play_sound_params_html_ac8c9864b29603b1b4856d5df0855288b"><div class="ttname"><a href="class_game_framework_1_1_sound_1_1_play_sound_params.html#ac8c9864b29603b1b4856d5df0855288b">GameFramework.Sound.PlaySoundParams.SpatialBlend</a></div><div class="ttdeci">float SpatialBlend</div><div class="ttdoc">获取或设置声音空间混合量。</div><div class="ttdef"><b>Definition:</b> <a href="_play_sound_params_8cs_source.html#l00170">PlaySoundParams.cs:171</a></div></div>
+<div class="ttc" id="aclass_game_framework_1_1_sound_1_1_play_sound_params_html_ae5f355a0a5d80888c7aec7e3b2595491"><div class="ttname"><a href="class_game_framework_1_1_sound_1_1_play_sound_params.html#ae5f355a0a5d80888c7aec7e3b2595491">GameFramework.Sound.PlaySoundParams.FadeInSeconds</a></div><div class="ttdeci">float FadeInSeconds</div><div class="ttdoc">获取或设置声音淡入时间，以秒为单位。</div><div class="ttdef"><b>Definition:</b> <a href="_play_sound_params_8cs_source.html#l00125">PlaySoundParams.cs:126</a></div></div>
+<div class="ttc" id="aclass_game_framework_1_1_sound_1_1_play_sound_params_html_af797f65948f716e4eb459f50a34d92ef"><div class="ttname"><a href="class_game_framework_1_1_sound_1_1_play_sound_params.html#af797f65948f716e4eb459f50a34d92ef">GameFramework.Sound.PlaySoundParams.Loop</a></div><div class="ttdeci">bool Loop</div><div class="ttdoc">获取或设置是否循环播放。</div><div class="ttdef"><b>Definition:</b> <a href="_play_sound_params_8cs_source.html#l00080">PlaySoundParams.cs:81</a></div></div>
+<div class="ttc" id="aclass_game_framework_1_1_utility_1_1_text_html"><div class="ttname"><a href="class_game_framework_1_1_utility_1_1_text.html">GameFramework.Utility.Text</a></div><div class="ttdef"><b>Definition:</b> <a href="_utility_8_text_8cs_source.html#l00018">Utility.Text.cs:19</a></div></div>
+<div class="ttc" id="aclass_game_framework_1_1_utility_html"><div class="ttname"><a href="class_game_framework_1_1_utility.html">GameFramework.Utility</a></div><div class="ttdef"><b>Definition:</b> <a href="_utility_8_assembly_8cs_source.html#l00013">Utility.Assembly.cs:14</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_runtime_1_1_entity_html"><div class="ttname"><a href="class_unity_game_framework_1_1_runtime_1_1_entity.html">UnityGameFramework.Runtime.Entity</a></div><div class="ttdoc">实体。</div><div class="ttdef"><b>Definition:</b> <a href="_libraries_2_game_framework_2_scripts_2_runtime_2_entity_2_entity_8cs_source.html#l00018">Entity.cs:19</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_runtime_1_1_sound_component_html"><div class="ttname"><a href="class_unity_game_framework_1_1_runtime_1_1_sound_component.html">UnityGameFramework.Runtime.SoundComponent</a></div><div class="ttdoc">声音组件。</div><div class="ttdef"><b>Definition:</b> <a href="_sound_component_8cs_source.html#l00026">SoundComponent.cs:27</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_runtime_1_1_sound_component_html_a9b16df63d863cfd8a120357d9b13dd8d"><div class="ttname"><a href="class_unity_game_framework_1_1_runtime_1_1_sound_component.html#a9b16df63d863cfd8a120357d9b13dd8d">UnityGameFramework.Runtime.SoundComponent.PlaySound</a></div><div class="ttdeci">int PlaySound(string soundAssetName, string soundGroupName)</div><div class="ttdoc">播放声音。</div><div class="ttdef"><b>Definition:</b> <a href="_sound_component_8cs_source.html#l00340">SoundComponent.cs:340</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_runtime_1_1_sound_component_html_af33246e051213549c454a34c35a202d6"><div class="ttname"><a href="class_unity_game_framework_1_1_runtime_1_1_sound_component.html#af33246e051213549c454a34c35a202d6">UnityGameFramework.Runtime.SoundComponent.GetSoundGroup</a></div><div class="ttdeci">ISoundGroup GetSoundGroup(string soundGroupName)</div><div class="ttdoc">获取指定声音组。</div><div class="ttdef"><b>Definition:</b> <a href="_sound_component_8cs_source.html#l00215">SoundComponent.cs:215</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_runtime_1_1_sound_component_html_afb773c618ca2ccf893d1e390d1f58e58"><div class="ttname"><a href="class_unity_game_framework_1_1_runtime_1_1_sound_component.html#afb773c618ca2ccf893d1e390d1f58e58">UnityGameFramework.Runtime.SoundComponent.StopSound</a></div><div class="ttdeci">bool StopSound(int serialId)</div><div class="ttdoc">停止播放声音。</div><div class="ttdef"><b>Definition:</b> <a href="_sound_component_8cs_source.html#l00495">SoundComponent.cs:495</a></div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_data_table_1_1_i_data_table_html"><div class="ttname"><a href="interface_game_framework_1_1_data_table_1_1_i_data_table.html">GameFramework.DataTable.IDataTable</a></div><div class="ttdoc">数据表接口。</div><div class="ttdef"><b>Definition:</b> <a href="_i_data_table_8cs_source.html#l00017">IDataTable.cs:18</a></div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_data_table_1_1_i_data_table_html_ade806cb3ab1f99f71da4ce5bc917c910"><div class="ttname"><a href="interface_game_framework_1_1_data_table_1_1_i_data_table.html#ade806cb3ab1f99f71da4ce5bc917c910">GameFramework.DataTable.IDataTable.GetDataRow</a></div><div class="ttdeci">T GetDataRow(int id)</div><div class="ttdoc">获取数据表行。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_sound_1_1_i_sound_group_html"><div class="ttname"><a href="interface_game_framework_1_1_sound_1_1_i_sound_group.html">GameFramework.Sound.ISoundGroup</a></div><div class="ttdoc">声音组接口。</div><div class="ttdef"><b>Definition:</b> <a href="_i_sound_group_8cs_source.html#l00013">ISoundGroup.cs:14</a></div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_sound_1_1_i_sound_group_html_a803b1417ff93b3082aceb17c7f35c46a"><div class="ttname"><a href="interface_game_framework_1_1_sound_1_1_i_sound_group.html#a803b1417ff93b3082aceb17c7f35c46a">GameFramework.Sound.ISoundGroup.Mute</a></div><div class="ttdeci">bool Mute</div><div class="ttdoc">获取或设置声音组静音。</div><div class="ttdef"><b>Definition:</b> <a href="_i_sound_group_8cs_source.html#l00043">ISoundGroup.cs:44</a></div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_sound_1_1_i_sound_group_html_a8445cefc7812eeaeaada49c49414219d"><div class="ttname"><a href="interface_game_framework_1_1_sound_1_1_i_sound_group.html#a8445cefc7812eeaeaada49c49414219d">GameFramework.Sound.ISoundGroup.Volume</a></div><div class="ttdeci">float Volume</div><div class="ttdoc">获取或设置声音组音量。</div><div class="ttdef"><b>Definition:</b> <a href="_i_sound_group_8cs_source.html#l00052">ISoundGroup.cs:53</a></div></div>
+<div class="ttc" id="anamespace_game_framework_1_1_data_table_html"><div class="ttname"><a href="namespace_game_framework_1_1_data_table.html">GameFramework.DataTable</a></div><div class="ttdef"><b>Definition:</b> <a href="_data_table_base_8cs_source.html#l00011">DataTableBase.cs:12</a></div></div>
+<div class="ttc" id="anamespace_game_framework_1_1_sound_html"><div class="ttname"><a href="namespace_game_framework_1_1_sound.html">GameFramework.Sound</a></div><div class="ttdef"><b>Definition:</b> <a href="_sound_2_constant_8cs_source.html#l00008">Constant.cs:9</a></div></div>
+<div class="ttc" id="anamespace_game_framework_html"><div class="ttname"><a href="namespace_game_framework.html">GameFramework</a></div><div class="ttdef"><b>Definition:</b> <a href="_data_provider_8cs_source.html#l00011">DataProvider.cs:12</a></div></div>
+<div class="ttc" id="anamespace_linity_html"><div class="ttname"><a href="namespace_linity.html">Linity</a></div><div class="ttdef"><b>Definition:</b> <a href="_entity_and_u_i_form_code_generator_8cs_source.html#l00008">EntityAndUIFormCodeGenerator.cs:9</a></div></div>
+<div class="ttc" id="anamespace_unity_game_framework_1_1_runtime_html"><div class="ttname"><a href="namespace_unity_game_framework_1_1_runtime.html">UnityGameFramework.Runtime</a></div><div class="ttdef"><b>Definition:</b> <a href="_base_component_8cs_source.html#l00014">BaseComponent.cs:15</a></div></div>
+<div class="ttc" id="anamespace_unity_game_framework_html"><div class="ttname"><a href="namespace_unity_game_framework.html">UnityGameFramework</a></div><div class="ttdef"><b>Definition:</b> <a href="_base_component_inspector_8cs_source.html#l00014">BaseComponentInspector.cs:15</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_84bbf7b3c7f28a5a18725745e1505219.html">Assets</a></li><li class="navelem"><a class="el" href="dir_f13b41af88cf68434578284aaf699e39.html">Scripts</a></li><li class="navelem"><a class="el" href="dir_8274910eb5bb242a7532823db7176570.html">GameMain</a></li><li class="navelem"><a class="el" href="dir_ae46e2b6b15a3a0d246738adaf31955f.html">Customs</a></li><li class="navelem"><a class="el" href="dir_7607c85a251ffbd61fc4f63e57e27c58.html">CustomExtensions</a></li><li class="navelem"><a class="el" href="dir_1e2841e3066778f4e024592053377c5a.html">Sound</a></li><li class="navelem"><a class="el" href="_sound_extension_8cs.html">SoundExtension.cs</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:24:44 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

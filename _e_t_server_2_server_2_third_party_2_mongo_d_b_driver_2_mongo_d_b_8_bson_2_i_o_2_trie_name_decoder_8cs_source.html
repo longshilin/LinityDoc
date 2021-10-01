@@ -1,0 +1,188 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: ETServer/Server/ThirdParty/MongoDBDriver/MongoDB.Bson/IO/TrieNameDecoder.cs 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_e_t_server_2_server_2_third_party_2_mongo_d_b_driver_2_mongo_d_b_8_bson_2_i_o_2_trie_name_decoder_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">TrieNameDecoder.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_e_t_server_2_server_2_third_party_2_mongo_d_b_driver_2_mongo_d_b_8_bson_2_i_o_2_trie_name_decoder_8cs.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/* Copyright 2010-present MongoDB Inc.</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">* Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">* you may not use this file except in compliance with the License.</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">* You may obtain a copy of the License at</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">* http://www.apache.org/licenses/LICENSE-2.0</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">* Unless required by applicable law or agreed to in writing, software</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">* distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">* See the License for the specific language governing permissions and</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">* limitations under the License.</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Collections.Generic;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.IO;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Linq;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Text;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_mongo_d_b_1_1_bson_1_1_i_o.html">MongoDB.Bson.IO</a></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;{</div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_trie_name_decoder.html">   28</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_trie_name_decoder.html">TrieNameDecoder</a>&lt;TValue&gt; : <a class="code" href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_name_decoder.html">INameDecoder</a></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    {</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <span class="comment">// private fields</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">bool</span> _found;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <span class="keyword">private</span> readonly <a class="code" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_trie.html">BsonTrie&lt;TValue&gt;</a> _trie;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <span class="keyword">private</span> TValue _value;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <span class="comment">// constructors</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_trie_name_decoder.html#a2de223a0707d819426d10ab81a58fa1a">   40</a></span>&#160;<span class="comment"></span>        <span class="keyword">public</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_trie_name_decoder.html#a2de223a0707d819426d10ab81a58fa1a">TrieNameDecoder</a>(<a class="code" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_trie.html">BsonTrie&lt;TValue&gt;</a> trie)</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        {</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;            _trie = trie;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        }</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <span class="comment">// public properties</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="comment"></span>        <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_trie_name_decoder.html#a52f3c9da23a815dbc085843dd2b101a2">Found</a></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        {</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            <span class="keyword">get</span> { <span class="keywordflow">return</span> _found; }</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        }</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <span class="keyword">public</span> TValue <a class="code" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_trie_name_decoder.html#aa2873c9a76f7057ccfacaee24cfe3a4c">Value</a></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        {</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            <span class="keyword">get</span> { <span class="keywordflow">return</span> _value; }</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        }</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <span class="comment">// public methods</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_trie_name_decoder.html#a01709d97c7770ede0d86dd9f9563ecc6">   77</a></span>&#160;<span class="comment"></span>        <span class="keyword">public</span> <span class="keywordtype">string</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_trie_name_decoder.html#a01709d97c7770ede0d86dd9f9563ecc6">Decode</a>(<a class="code" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream.html">BsonStream</a> stream, UTF8Encoding encoding)</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        {</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;            <a class="code" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_trie_node.html">BsonTrieNode&lt;TValue&gt;</a> node;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            var oldPosition = stream.Position;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            <span class="keywordflow">if</span> (_trie.TryGetNode(stream, out node))</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            {</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                <span class="keywordflow">if</span> (node.<a class="code" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_trie_node.html#a4e03bd529f1eb3ceaf32555507e8d0c7">HasValue</a>)</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                {</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                    _found = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                    _value = node.<a class="code" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_trie_node.html#ab571edcb1e2ebd0e4eed5d059b428a1e">Value</a>;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                    <span class="keywordflow">return</span> node.<a class="code" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_trie_node.html#a6ace22a84f5fa5aa1d358fd2c1c0e287">ElementName</a>;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                }</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                stream.Position = oldPosition;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;            }</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;            <span class="keywordflow">return</span> stream.<a class="code" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream.html#a250f46d335fa4adc07bb24edd67b1532">ReadCString</a>(encoding);</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        }</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
+<div class="line"><a name="l00100"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_trie_name_decoder.html#a794e5ee7675550797e0395dbe429b714">  100</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_trie_name_decoder.html#a794e5ee7675550797e0395dbe429b714">Inform</a>(<span class="keywordtype">string</span> name)</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        {</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;            _found = _trie.TryGetValue(name, out _value);</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        }</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    }</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;}</div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_html"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream.html">MongoDB.Bson.IO.BsonStream</a></div><div class="ttdoc">Represents a Stream has additional methods to suport reading and writing BSON values.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_i_o_2_bson_stream_8cs_source.html#l00028">BsonStream.cs:29</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream_html_a250f46d335fa4adc07bb24edd67b1532"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_stream.html#a250f46d335fa4adc07bb24edd67b1532">MongoDB.Bson.IO.BsonStream.ReadCString</a></div><div class="ttdeci">abstract string ReadCString(UTF8Encoding encoding)</div><div class="ttdoc">Reads a BSON CString from the stream.</div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_trie_html"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_trie.html">MongoDB.Bson.IO.BsonTrie</a></div><div class="ttdoc">Represents a mapping from a set of UTF8 encoded strings to a set of elementName/value pairs,...</div><div class="ttdef"><b>Definition:</b> <a href="_e_t_server_2_server_2_third_party_2_mongo_d_b_driver_2_mongo_d_b_8_bson_2_i_o_2_bson_trie_8cs_source.html#l00026">BsonTrie.cs:27</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_trie_node_html"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_trie_node.html">MongoDB.Bson.IO.BsonTrieNode</a></div><div class="ttdoc">Represents a node in a BsonTrie.</div><div class="ttdef"><b>Definition:</b> <a href="_e_t_server_2_server_2_third_party_2_mongo_d_b_driver_2_mongo_d_b_8_bson_2_i_o_2_bson_trie_8cs_source.html#l00165">BsonTrie.cs:166</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_trie_node_html_a4e03bd529f1eb3ceaf32555507e8d0c7"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_trie_node.html#a4e03bd529f1eb3ceaf32555507e8d0c7">MongoDB.Bson.IO.BsonTrieNode.HasValue</a></div><div class="ttdeci">bool HasValue</div><div class="ttdoc">Gets whether this node has a value.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_i_o_2_bson_trie_8cs_source.html#l00185">BsonTrie.cs:186</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_trie_node_html_a6ace22a84f5fa5aa1d358fd2c1c0e287"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_trie_node.html#a6ace22a84f5fa5aa1d358fd2c1c0e287">MongoDB.Bson.IO.BsonTrieNode.ElementName</a></div><div class="ttdeci">string ElementName</div><div class="ttdoc">Gets the element name for this node.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_i_o_2_bson_trie_8cs_source.html#l00196">BsonTrie.cs:197</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_trie_node_html_ab571edcb1e2ebd0e4eed5d059b428a1e"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_bson_trie_node.html#ab571edcb1e2ebd0e4eed5d059b428a1e">MongoDB.Bson.IO.BsonTrieNode.Value</a></div><div class="ttdeci">TValue Value</div><div class="ttdoc">Gets the value for this node.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_i_o_2_bson_trie_8cs_source.html#l00212">BsonTrie.cs:213</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_i_o_1_1_trie_name_decoder_html"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_trie_name_decoder.html">MongoDB.Bson.IO.TrieNameDecoder</a></div><div class="ttdoc">Represents a Trie-based name decoder that also provides a value.</div><div class="ttdef"><b>Definition:</b> <a href="_e_t_server_2_server_2_third_party_2_mongo_d_b_driver_2_mongo_d_b_8_bson_2_i_o_2_trie_name_decoder_8cs_source.html#l00028">TrieNameDecoder.cs:29</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_i_o_1_1_trie_name_decoder_html_a01709d97c7770ede0d86dd9f9563ecc6"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_trie_name_decoder.html#a01709d97c7770ede0d86dd9f9563ecc6">MongoDB.Bson.IO.TrieNameDecoder.Decode</a></div><div class="ttdeci">string Decode(BsonStream stream, UTF8Encoding encoding)</div><div class="ttdoc">Reads the name.</div><div class="ttdef"><b>Definition:</b> <a href="_e_t_server_2_server_2_third_party_2_mongo_d_b_driver_2_mongo_d_b_8_bson_2_i_o_2_trie_name_decoder_8cs_source.html#l00077">TrieNameDecoder.cs:77</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_i_o_1_1_trie_name_decoder_html_a2de223a0707d819426d10ab81a58fa1a"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_trie_name_decoder.html#a2de223a0707d819426d10ab81a58fa1a">MongoDB.Bson.IO.TrieNameDecoder.TrieNameDecoder</a></div><div class="ttdeci">TrieNameDecoder(BsonTrie&lt; TValue &gt; trie)</div><div class="ttdoc">Initializes a new instance of the TrieNameDecoder&lt;TValue&gt; class.</div><div class="ttdef"><b>Definition:</b> <a href="_e_t_server_2_server_2_third_party_2_mongo_d_b_driver_2_mongo_d_b_8_bson_2_i_o_2_trie_name_decoder_8cs_source.html#l00040">TrieNameDecoder.cs:40</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_i_o_1_1_trie_name_decoder_html_a52f3c9da23a815dbc085843dd2b101a2"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_trie_name_decoder.html#a52f3c9da23a815dbc085843dd2b101a2">MongoDB.Bson.IO.TrieNameDecoder.Found</a></div><div class="ttdeci">bool Found</div><div class="ttdoc">Gets a value indicating whether this TrieNameDecoder&lt;TValue&gt; is found.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_i_o_2_trie_name_decoder_8cs_source.html#l00052">TrieNameDecoder.cs:53</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_i_o_1_1_trie_name_decoder_html_a794e5ee7675550797e0395dbe429b714"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_trie_name_decoder.html#a794e5ee7675550797e0395dbe429b714">MongoDB.Bson.IO.TrieNameDecoder.Inform</a></div><div class="ttdeci">void Inform(string name)</div><div class="ttdoc">Informs the decoder of an already decoded name (so the decoder can change state if necessary).</div><div class="ttdef"><b>Definition:</b> <a href="_e_t_server_2_server_2_third_party_2_mongo_d_b_driver_2_mongo_d_b_8_bson_2_i_o_2_trie_name_decoder_8cs_source.html#l00100">TrieNameDecoder.cs:100</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_i_o_1_1_trie_name_decoder_html_aa2873c9a76f7057ccfacaee24cfe3a4c"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_i_o_1_1_trie_name_decoder.html#aa2873c9a76f7057ccfacaee24cfe3a4c">MongoDB.Bson.IO.TrieNameDecoder.Value</a></div><div class="ttdeci">TValue Value</div><div class="ttdoc">Gets the value.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_i_o_2_trie_name_decoder_8cs_source.html#l00063">TrieNameDecoder.cs:64</a></div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_name_decoder_html"><div class="ttname"><a href="interface_mongo_d_b_1_1_bson_1_1_i_o_1_1_i_name_decoder.html">MongoDB.Bson.IO.INameDecoder</a></div><div class="ttdoc">Represents a name decoder.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_i_o_2_i_name_decoder_8cs_source.html#l00025">INameDecoder.cs:26</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_bson_1_1_i_o_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_bson_1_1_i_o.html">MongoDB.Bson.IO</a></div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_i_o_2_array_element_name_accelerator_8cs_source.html#l00018">ArrayElementNameAccelerator.cs:19</a></div></div>
+<div class="ttc" id="anamespace_system_html"><div class="ttname"><a href="namespace_system.html">System</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_method_builder_attribute_8cs_source.html#l00001">AsyncMethodBuilderAttribute.cs:2</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_1e261a42b4a2e33df58a15c412684b10.html">ETServer</a></li><li class="navelem"><a class="el" href="dir_473c270c995194c5ad99131d9c901f09.html">Server</a></li><li class="navelem"><a class="el" href="dir_ce426efcf63311ff42488fb2654bd4b4.html">ThirdParty</a></li><li class="navelem"><a class="el" href="dir_a37b2b5f9c8890cc9f6f8392fb0cdff3.html">MongoDBDriver</a></li><li class="navelem"><a class="el" href="dir_198f7ac7ec0ecfbede324c1e9484bef2.html">MongoDB.Bson</a></li><li class="navelem"><a class="el" href="dir_3cc01dcb0be15a140418b879df7a61ac.html">IO</a></li><li class="navelem"><a class="el" href="_e_t_server_2_server_2_third_party_2_mongo_d_b_driver_2_mongo_d_b_8_bson_2_i_o_2_trie_name_decoder_8cs.html">TrieNameDecoder.cs</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:24:51 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

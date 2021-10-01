@@ -1,0 +1,366 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: Assets/Scripts/Libraries/ET/Module/Pathfinding/AstarPathfindingProject/RVO/RVOObstacle.cs 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_r_v_o_obstacle_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">RVOObstacle.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_r_v_o_obstacle_8cs.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_unity_engine.html">UnityEngine</a>;</div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Collections.Generic;</div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_p_f.html">PF</a>;</div>
+<div class="line"><a name="l00004"></a><span class="lineno"><a class="line" href="_r_v_o_obstacle_8cs.html#aad11e35d84aa6675d06baccb15a02028">    4</a></span>&#160;<span class="keyword">using</span> <a class="code" href="struct_unity_engine_1_1_matrix4x4.html">Matrix4x4</a> = <a class="code" href="namespace_unity_engine.html">UnityEngine</a>.<a class="code" href="struct_unity_engine_1_1_matrix4x4.html">Matrix4x4</a>;</div>
+<div class="line"><a name="l00005"></a><span class="lineno"><a class="line" href="_r_v_o_obstacle_8cs.html#af3326292fdd04d2b384b6d781d9594f6">    5</a></span>&#160;<span class="keyword">using</span> <a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a> = <a class="code" href="namespace_unity_engine.html">UnityEngine</a>.<a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a>;</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_pathfinding_1_1_r_v_o.html">Pathfinding.RVO</a> {</div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle.html">   20</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">class </span><a class="code" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle.html">RVOObstacle</a> : <a class="code" href="class_pathfinding_1_1_versioned_mono_behaviour.html">VersionedMonoBehaviour</a> {</div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle.html#a16092b262f4e7eddb646f9849fba0f94">   23</a></span>&#160;                <span class="keyword">public</span> <a class="code" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle.html#ad8af24c8e88cbc117f9d67d001d07ae8">ObstacleVertexWinding</a> <a class="code" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle.html#a16092b262f4e7eddb646f9849fba0f94">obstacleMode</a>;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle.html#aa0ea161ce9e7a21c4d7cfb97f429047c">   25</a></span>&#160;                <span class="keyword">public</span> <a class="code" href="namespace_pathfinding_1_1_r_v_o.html#aaf1aeb01d4988f7dfc02a9c2130d31ee">RVOLayer</a> <a class="code" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle.html#aa0ea161ce9e7a21c4d7cfb97f429047c">layer</a> = <a class="code" href="namespace_pathfinding_1_1_r_v_o.html#aaf1aeb01d4988f7dfc02a9c2130d31ee">RVOLayer</a>.DefaultObstacle;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle.html#ad8af24c8e88cbc117f9d67d001d07ae8">   29</a></span>&#160;                <span class="keyword">public</span> <span class="keyword">enum</span> <a class="code" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle.html#ad8af24c8e88cbc117f9d67d001d07ae8">ObstacleVertexWinding</a> {</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;                        KeepOut,</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;                        KeepIn,</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;                }</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle.html#af026fef1620f190f989c585ab5bf9ddf">   37</a></span>&#160;                <span class="keyword">protected</span> <a class="code" href="namespace_pathfinding.html">Pathfinding</a>.<a class="code" href="namespace_pathfinding_1_1_r_v_o.html">RVO</a>.<a class="code" href="class_pathfinding_1_1_r_v_o_1_1_simulator.html">Simulator</a> <a class="code" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle.html#af026fef1620f190f989c585ab5bf9ddf">sim</a>;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                <span class="keyword">private</span> List&lt;ObstacleVertex&gt; addedObstacles;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;                <span class="keyword">private</span> List&lt;Vector3[]&gt; sourceObstacles;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle.html#a592c49b50806cd88f2b91a04766f7408">   51</a></span>&#160;                <span class="keyword">protected</span> <span class="keyword">abstract</span> <span class="keywordtype">void</span> <a class="code" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle.html#a592c49b50806cd88f2b91a04766f7408">CreateObstacles</a> ();</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle.html#a60a4e2d5888ae93a2e97b8f4f29d3769">   57</a></span>&#160;                <span class="keyword">protected</span> <span class="keyword">abstract</span> <span class="keywordtype">bool</span> <a class="code" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle.html#a60a4e2d5888ae93a2e97b8f4f29d3769">ExecuteInEditor</a> { <span class="keyword">get</span>; }</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle.html#a6a243aba15c3e89681a45879afdc2ccd">   61</a></span>&#160;                <span class="keyword">protected</span> <span class="keyword">abstract</span> <span class="keywordtype">bool</span> <a class="code" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle.html#a6a243aba15c3e89681a45879afdc2ccd">LocalCoordinates</a> { <span class="keyword">get</span>; }</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle.html#aeed20aabca4faf68c34952d1fdd48878">   67</a></span>&#160;                <span class="keyword">protected</span> <span class="keyword">abstract</span> <span class="keywordtype">bool</span> <a class="code" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle.html#aeed20aabca4faf68c34952d1fdd48878">StaticObstacle</a> { <span class="keyword">get</span>; }</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno"><a class="line" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle.html#ac5687a6b906bd7d8685297bfa60f0e77">   69</a></span>&#160;                <span class="keyword">protected</span> <span class="keyword">abstract</span> <span class="keywordtype">float</span> <a class="code" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle.html#ac5687a6b906bd7d8685297bfa60f0e77">Height</a> { <span class="keyword">get</span>; }</div>
+<div class="line"><a name="l00074"></a><span class="lineno"><a class="line" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle.html#a9570101d1f58e0fde61d2b8ab56c9c03">   74</a></span>&#160;                <span class="keyword">protected</span> <span class="keyword">abstract</span> <span class="keywordtype">bool</span> <a class="code" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle.html#a9570101d1f58e0fde61d2b8ab56c9c03">AreGizmosDirty</a> ();</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                <span class="keyword">private</span> <span class="keywordtype">bool</span> gizmoDrawing = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                <span class="keyword">private</span> List&lt;Vector3[]&gt; gizmoVerts;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                <span class="keyword">private</span> <a class="code" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle.html#ad8af24c8e88cbc117f9d67d001d07ae8">ObstacleVertexWinding</a> _obstacleMode;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                <span class="keyword">private</span> <a class="code" href="struct_unity_engine_1_1_matrix4x4.html">Matrix4x4</a> prevUpdateMatrix;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
+<div class="line"><a name="l00092"></a><span class="lineno"><a class="line" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle.html#a27d39a3bd9263fb54a29098945471a0d">   92</a></span>&#160;                <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle.html#a27d39a3bd9263fb54a29098945471a0d">OnDrawGizmos</a> () {</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                        <a class="code" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle.html#a27d39a3bd9263fb54a29098945471a0d">OnDrawGizmos</a>(<span class="keyword">false</span>);</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                }</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
+<div class="line"><a name="l00097"></a><span class="lineno"><a class="line" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle.html#a9b85e691451088f542cce56654530004">   97</a></span>&#160;                <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle.html#a9b85e691451088f542cce56654530004">OnDrawGizmosSelected</a> () {</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                        <a class="code" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle.html#a27d39a3bd9263fb54a29098945471a0d">OnDrawGizmos</a>(<span class="keyword">true</span>);</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                }</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
+<div class="line"><a name="l00102"></a><span class="lineno"><a class="line" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle.html#a709205d02b43eb5042c9783b8ad906c2">  102</a></span>&#160;                <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle.html#a709205d02b43eb5042c9783b8ad906c2">OnDrawGizmos</a> (<span class="keywordtype">bool</span> selected) {</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;                        gizmoDrawing = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;                        Gizmos.color = <span class="keyword">new</span> Color(0.615f, 1, 0.06f, selected ? 1.0f : 0.7f);</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;                        var movementPlane = <a class="code" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_simulator.html">RVOSimulator</a>.<a class="code" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_simulator.html#a766acfdb073620134a64afc79677f08d">active</a> != <span class="keyword">null</span> ? <a class="code" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_simulator.html">RVOSimulator</a>.<a class="code" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_simulator.html#a766acfdb073620134a64afc79677f08d">active</a>.<a class="code" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_simulator.html#a699c3301a77c7d554e03f04d7a9a59ad">movementPlane</a> : <a class="code" href="namespace_pathfinding_1_1_r_v_o.html#a0bd1c94470dd200c3b9cb72f827e9e79">MovementPlane</a>.XZ;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;                        var up = movementPlane == <a class="code" href="namespace_pathfinding_1_1_r_v_o.html#a0bd1c94470dd200c3b9cb72f827e9e79">MovementPlane</a>.XZ ? <a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a>.<a class="code" href="struct_unity_engine_1_1_vector3.html#ac922c88e8328a73b2d01ec8ef15e8bb8">up</a> : -<a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a>.<a class="code" href="struct_unity_engine_1_1_vector3.html#acd01c55d3ff3bf00dfa650374f803907">forward</a>;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;                        <span class="keywordflow">if</span> (gizmoVerts == <span class="keyword">null</span> || <a class="code" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle.html#a9570101d1f58e0fde61d2b8ab56c9c03">AreGizmosDirty</a>() || _obstacleMode != <a class="code" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle.html#a16092b262f4e7eddb646f9849fba0f94">obstacleMode</a>) {</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;                                _obstacleMode = <a class="code" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle.html#a16092b262f4e7eddb646f9849fba0f94">obstacleMode</a>;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; </div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;                                <span class="keywordflow">if</span> (gizmoVerts == <span class="keyword">null</span>) gizmoVerts = <span class="keyword">new</span> List&lt;Vector3[]&gt;();</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;                                <span class="keywordflow">else</span> gizmoVerts.Clear();</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160; </div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;                                <a class="code" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle.html#a592c49b50806cd88f2b91a04766f7408">CreateObstacles</a>();</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;                        }</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160; </div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;                        <a class="code" href="struct_unity_engine_1_1_matrix4x4.html">Matrix4x4</a> m = <a class="code" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle.html#aa40c15f4a33ad87ef201c698ca9d9edc">GetMatrix</a>();</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160; </div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;                        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; gizmoVerts.Count; i++) {</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;                                <a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a>[] verts = gizmoVerts[i];</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;                                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j = 0, q = verts.<a class="code" href="struct_unity_engine_1_1_vector3.html#a99bb830cb4b9b86032742e6b94c1144a">Length</a>-1; j &lt; verts.<a class="code" href="struct_unity_engine_1_1_vector3.html#a99bb830cb4b9b86032742e6b94c1144a">Length</a>; q = j++) {</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;                                        Gizmos.DrawLine(m.<a class="code" href="struct_unity_engine_1_1_matrix4x4.html#ad9785759f3dfe00f8eea91a2a7a0c302">MultiplyPoint3x4</a>(verts[j]), m.<a class="code" href="struct_unity_engine_1_1_matrix4x4.html#ad9785759f3dfe00f8eea91a2a7a0c302">MultiplyPoint3x4</a>(verts[q]));</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;                                }</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160; </div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;                                <span class="keywordflow">if</span> (selected) {</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;                                        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j = 0, q = verts.<a class="code" href="struct_unity_engine_1_1_vector3.html#a99bb830cb4b9b86032742e6b94c1144a">Length</a>-1; j &lt; verts.<a class="code" href="struct_unity_engine_1_1_vector3.html#a99bb830cb4b9b86032742e6b94c1144a">Length</a>; q = j++) {</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;                                                <a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a> a = m.<a class="code" href="struct_unity_engine_1_1_matrix4x4.html#ad9785759f3dfe00f8eea91a2a7a0c302">MultiplyPoint3x4</a>(verts[q]);</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;                                                <a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a> b = m.<a class="code" href="struct_unity_engine_1_1_matrix4x4.html#ad9785759f3dfe00f8eea91a2a7a0c302">MultiplyPoint3x4</a>(verts[j]);</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160; </div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;                                                <span class="keywordflow">if</span> (movementPlane != <a class="code" href="namespace_pathfinding_1_1_r_v_o.html#a0bd1c94470dd200c3b9cb72f827e9e79">MovementPlane</a>.XY) {</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;                                                        Gizmos.DrawLine(a + up*<a class="code" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle.html#ac5687a6b906bd7d8685297bfa60f0e77">Height</a>, b + up*<a class="code" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle.html#ac5687a6b906bd7d8685297bfa60f0e77">Height</a>);</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;                                                        Gizmos.DrawLine(a, a + up*<a class="code" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle.html#ac5687a6b906bd7d8685297bfa60f0e77">Height</a>);</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;                                                }</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160; </div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;                                                <a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a> avg = (a + b) * 0.5f;</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;                                                <a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a> tang = (b - a).normalized;</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;                                                <span class="keywordflow">if</span> (tang == <a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a>.<a class="code" href="struct_unity_engine_1_1_vector3.html#a5ee4172032dfc66b99c27713f0122eaa">zero</a>) <span class="keywordflow">continue</span>;</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160; </div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;                                                <a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a> normal = <a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a>.<a class="code" href="struct_unity_engine_1_1_vector3.html#a505e04777a5cb2edb3f8f727177d9a5d">Cross</a>(up, tang);</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160; </div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;                                                Gizmos.DrawLine(avg, avg+normal);</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;                                                Gizmos.DrawLine(avg+normal, avg+normal*0.5f+tang*0.5f);</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;                                                Gizmos.DrawLine(avg+normal, avg+normal*0.5f-tang*0.5f);</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;                                        }</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;                                }</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;                        }</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160; </div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;                        gizmoDrawing = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;                }</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160; </div>
+<div class="line"><a name="l00156"></a><span class="lineno"><a class="line" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle.html#aa40c15f4a33ad87ef201c698ca9d9edc">  156</a></span>&#160;                <span class="keyword">protected</span> <span class="keyword">virtual</span> <a class="code" href="struct_unity_engine_1_1_matrix4x4.html">Matrix4x4</a> <a class="code" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle.html#aa40c15f4a33ad87ef201c698ca9d9edc">GetMatrix</a> () {</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;                        <span class="keywordflow">return</span> <a class="code" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle.html#a6a243aba15c3e89681a45879afdc2ccd">LocalCoordinates</a> ? transform.localToWorldMatrix : <a class="code" href="struct_unity_engine_1_1_matrix4x4.html">Matrix4x4</a>.<a class="code" href="struct_unity_engine_1_1_matrix4x4.html#aac8c1357f13d264ab54ce7164a8f0a75">identity</a>;</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;                }</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160; </div>
+<div class="line"><a name="l00163"></a><span class="lineno"><a class="line" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle.html#a4651f2aaf3859791dc5564ad54ada8df">  163</a></span>&#160;                <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle.html#a4651f2aaf3859791dc5564ad54ada8df">OnDisable</a> () {</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;                        <span class="keywordflow">if</span> (addedObstacles != <span class="keyword">null</span>) {</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;                                <span class="keywordflow">if</span> (<a class="code" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle.html#af026fef1620f190f989c585ab5bf9ddf">sim</a> == <span class="keyword">null</span>) <span class="keywordflow">throw</span> <span class="keyword">new</span> <a class="code" href="namespace_system.html">System</a>.Exception(<span class="stringliteral">&quot;This should not happen! Make sure you are not overriding the OnEnable function&quot;</span>);</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160; </div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;                                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; addedObstacles.Count; i++) {</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;                                        <a class="code" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle.html#af026fef1620f190f989c585ab5bf9ddf">sim</a>.<a class="code" href="class_pathfinding_1_1_r_v_o_1_1_simulator.html#ac866b80a1172ebad09c7c1b5316a4061">RemoveObstacle</a>(addedObstacles[i]);</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;                                }</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;                        }</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;                }</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160; </div>
+<div class="line"><a name="l00176"></a><span class="lineno"><a class="line" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle.html#ac2293352b8b30ac114627c0f539538c7">  176</a></span>&#160;                <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle.html#ac2293352b8b30ac114627c0f539538c7">OnEnable</a> () {</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;                        <span class="keywordflow">if</span> (addedObstacles != <span class="keyword">null</span>) {</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;                                <span class="keywordflow">if</span> (<a class="code" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle.html#af026fef1620f190f989c585ab5bf9ddf">sim</a> == <span class="keyword">null</span>) <span class="keywordflow">throw</span> <span class="keyword">new</span> <a class="code" href="namespace_system.html">System</a>.Exception(<span class="stringliteral">&quot;This should not happen! Make sure you are not overriding the OnDisable function&quot;</span>);</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160; </div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;                                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; addedObstacles.Count; i++) {</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;                                        <span class="comment">// Update height and layer</span></div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;                                        var vertex = addedObstacles[i];</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;                                        var start = vertex;</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;                                        <span class="keywordflow">do</span> {</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;                                                vertex.layer = <a class="code" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle.html#aa0ea161ce9e7a21c4d7cfb97f429047c">layer</a>;</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;                                                vertex = vertex.next;</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;                                        } <span class="keywordflow">while</span> (vertex != start);</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160; </div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;                                        <a class="code" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle.html#af026fef1620f190f989c585ab5bf9ddf">sim</a>.<a class="code" href="class_pathfinding_1_1_r_v_o_1_1_simulator.html#a4faa34a2e3b74365f431c9296cfaf939">AddObstacle</a>(addedObstacles[i]);</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;                                }</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;                        }</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;                }</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160; </div>
+<div class="line"><a name="l00195"></a><span class="lineno"><a class="line" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle.html#aa6f9768e2c8641809d7716849d795947">  195</a></span>&#160;                <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle.html#aa6f9768e2c8641809d7716849d795947">Start</a> () {</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;                        addedObstacles = <span class="keyword">new</span> List&lt;ObstacleVertex&gt;();</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;                        sourceObstacles = <span class="keyword">new</span> List&lt;Vector3[]&gt;();</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;                        prevUpdateMatrix = <a class="code" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle.html#aa40c15f4a33ad87ef201c698ca9d9edc">GetMatrix</a>();</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;                        <a class="code" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle.html#a592c49b50806cd88f2b91a04766f7408">CreateObstacles</a>();</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;                }</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160; </div>
+<div class="line"><a name="l00204"></a><span class="lineno"><a class="line" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle.html#a1791ae7ba75d3592b90939c10f9e3d3c">  204</a></span>&#160;                <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle.html#a1791ae7ba75d3592b90939c10f9e3d3c">Update</a> () {</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;                        <a class="code" href="struct_unity_engine_1_1_matrix4x4.html">Matrix4x4</a> m = <a class="code" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle.html#aa40c15f4a33ad87ef201c698ca9d9edc">GetMatrix</a>();</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160; </div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;                        <span class="keywordflow">if</span> (m != prevUpdateMatrix) {</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;                                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; addedObstacles.Count; i++) {</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;                                        <a class="code" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle.html#af026fef1620f190f989c585ab5bf9ddf">sim</a>.<a class="code" href="class_pathfinding_1_1_r_v_o_1_1_simulator.html#a55eb8d780f9c9d47845c64a34abc33c0">UpdateObstacle</a>(addedObstacles[i], sourceObstacles[i], m);</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;                                }</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;                                prevUpdateMatrix = m;</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;                        }</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;                }</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160; </div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160; </div>
+<div class="line"><a name="l00222"></a><span class="lineno"><a class="line" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle.html#a06a40d8ed1fd0a303a79bee2ce8ce1de">  222</a></span>&#160;                <span class="keyword">protected</span> <span class="keywordtype">void</span> <a class="code" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle.html#a06a40d8ed1fd0a303a79bee2ce8ce1de">FindSimulator</a> () {</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;                        <span class="keywordflow">if</span> (<a class="code" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_simulator.html">RVOSimulator</a>.<a class="code" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_simulator.html#a766acfdb073620134a64afc79677f08d">active</a> == <span class="keyword">null</span>) <span class="keywordflow">throw</span> <span class="keyword">new</span> <a class="code" href="namespace_system.html">System</a>.InvalidOperationException(<span class="stringliteral">&quot;No RVOSimulator could be found in the scene. Please add one to any GameObject&quot;</span>);</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;                        <a class="code" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle.html#af026fef1620f190f989c585ab5bf9ddf">sim</a> = <a class="code" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_simulator.html">RVOSimulator</a>.<a class="code" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_simulator.html#a766acfdb073620134a64afc79677f08d">active</a>.<a class="code" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_simulator.html#a2dda5c8ff9473eacf269917dda5aa181">GetSimulator</a>();</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;                }</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160; </div>
+<div class="line"><a name="l00229"></a><span class="lineno"><a class="line" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle.html#a00e2fc889dfa3fda0fd8d88334b93643">  229</a></span>&#160;                <span class="keyword">protected</span> <span class="keywordtype">void</span> <a class="code" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle.html#a00e2fc889dfa3fda0fd8d88334b93643">AddObstacle</a> (<a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a>[] vertices, <span class="keywordtype">float</span> height) {</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;                        <span class="keywordflow">if</span> (vertices == <span class="keyword">null</span>) <span class="keywordflow">throw</span> <span class="keyword">new</span> <a class="code" href="namespace_system.html">System</a>.ArgumentNullException(<span class="stringliteral">&quot;Vertices Must Not Be Null&quot;</span>);</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;                        <span class="keywordflow">if</span> (height &lt; 0) <span class="keywordflow">throw</span> <span class="keyword">new</span> <a class="code" href="namespace_system.html">System</a>.ArgumentOutOfRangeException(<span class="stringliteral">&quot;Height must be non-negative&quot;</span>);</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;                        <span class="keywordflow">if</span> (vertices.<a class="code" href="struct_unity_engine_1_1_vector3.html#a99bb830cb4b9b86032742e6b94c1144a">Length</a> &lt; 2) <span class="keywordflow">throw</span> <span class="keyword">new</span> <a class="code" href="namespace_system.html">System</a>.ArgumentException(<span class="stringliteral">&quot;An obstacle must have at least two vertices&quot;</span>);</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;                        <span class="keywordflow">if</span> (<a class="code" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle.html#af026fef1620f190f989c585ab5bf9ddf">sim</a> == <span class="keyword">null</span>) <a class="code" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle.html#a06a40d8ed1fd0a303a79bee2ce8ce1de">FindSimulator</a>();</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160; </div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;                        <span class="keywordflow">if</span> (gizmoDrawing) {</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;                                var v = <span class="keyword">new</span> <a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a>[vertices.<a class="code" href="struct_unity_engine_1_1_vector3.html#a99bb830cb4b9b86032742e6b94c1144a">Length</a>];</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;                                WindCorrectly(vertices);</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;                                <a class="code" href="namespace_system.html">System</a>.Array.Copy(vertices, v, vertices.<a class="code" href="struct_unity_engine_1_1_vector3.html#a99bb830cb4b9b86032742e6b94c1144a">Length</a>);</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;                                gizmoVerts.Add(v);</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;                                <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;                        }</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160; </div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160; </div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;                        <span class="keywordflow">if</span> (vertices.<a class="code" href="struct_unity_engine_1_1_vector3.html#a99bb830cb4b9b86032742e6b94c1144a">Length</a> == 2) {</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;                                AddObstacleInternal(vertices, height);</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;                                <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;                        }</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160; </div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;                        WindCorrectly(vertices);</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;                        AddObstacleInternal(vertices, height);</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;                }</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160; </div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;                <span class="keyword">private</span> <span class="keywordtype">void</span> AddObstacleInternal (<a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a>[] vertices, <span class="keywordtype">float</span> height) {</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;                        addedObstacles.Add(<a class="code" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle.html#af026fef1620f190f989c585ab5bf9ddf">sim</a>.<a class="code" href="class_pathfinding_1_1_r_v_o_1_1_simulator.html#a4faa34a2e3b74365f431c9296cfaf939">AddObstacle</a>(vertices, height, <a class="code" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle.html#aa40c15f4a33ad87ef201c698ca9d9edc">GetMatrix</a>(), <a class="code" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle.html#aa0ea161ce9e7a21c4d7cfb97f429047c">layer</a>));</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;                        sourceObstacles.Add(vertices);</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;                }</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160; </div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;                <span class="keyword">private</span> <span class="keywordtype">void</span> WindCorrectly (<a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a>[] vertices) {</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;                        <span class="keywordtype">int</span> leftmost = 0;</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;                        <span class="keywordtype">float</span> leftmostX = <span class="keywordtype">float</span>.PositiveInfinity;</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160; </div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;                        var matrix = <a class="code" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle.html#aa40c15f4a33ad87ef201c698ca9d9edc">GetMatrix</a>();</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160; </div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;                        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; vertices.<a class="code" href="struct_unity_engine_1_1_vector3.html#a99bb830cb4b9b86032742e6b94c1144a">Length</a>; i++) {</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;                                var x = matrix.MultiplyPoint3x4(vertices[i]).x;</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;                                <span class="keywordflow">if</span> (x &lt; leftmostX) {</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;                                        leftmost = i;</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;                                        leftmostX = x;</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;                                }</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;                        }</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160; </div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;                        var p1 = matrix.MultiplyPoint3x4(vertices[(leftmost-1 + vertices.<a class="code" href="struct_unity_engine_1_1_vector3.html#a99bb830cb4b9b86032742e6b94c1144a">Length</a>) % vertices.<a class="code" href="struct_unity_engine_1_1_vector3.html#a99bb830cb4b9b86032742e6b94c1144a">Length</a>]);</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;                        var p2 = matrix.MultiplyPoint3x4(vertices[leftmost]);</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;                        var p3 = matrix.MultiplyPoint3x4(vertices[(leftmost+1) % vertices.<a class="code" href="struct_unity_engine_1_1_vector3.html#a99bb830cb4b9b86032742e6b94c1144a">Length</a>]);</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160; </div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;                        <a class="code" href="namespace_pathfinding_1_1_r_v_o.html#a0bd1c94470dd200c3b9cb72f827e9e79">MovementPlane</a> movementPlane;</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;                        <span class="keywordflow">if</span> (<a class="code" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle.html#af026fef1620f190f989c585ab5bf9ddf">sim</a> != <span class="keyword">null</span>) movementPlane = <a class="code" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle.html#af026fef1620f190f989c585ab5bf9ddf">sim</a>.<a class="code" href="class_pathfinding_1_1_r_v_o_1_1_simulator.html#a4cf9a326388f56afaec5bd7a0a943d50">movementPlane</a>;</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;                        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (RVOSimulator.active) movementPlane = RVOSimulator.active.movementPlane;</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;                        <span class="keywordflow">else</span> movementPlane = <a class="code" href="namespace_pathfinding_1_1_r_v_o.html#a0bd1c94470dd200c3b9cb72f827e9e79">MovementPlane</a>.XZ;</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160; </div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;                        <span class="keywordflow">if</span> (movementPlane == <a class="code" href="namespace_pathfinding_1_1_r_v_o.html#a0bd1c94470dd200c3b9cb72f827e9e79">MovementPlane</a>.XY) {</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;                                p1.z = p1.y;</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;                                p2.z = p2.y;</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;                                p3.z = p3.y;</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;                        }</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160; </div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;                        <span class="keywordflow">if</span> (VectorMath.IsClockwiseXZ(p1, p2, p3) != (<a class="code" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle.html#a16092b262f4e7eddb646f9849fba0f94">obstacleMode</a> == <a class="code" href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle.html#ad8af24c8e88cbc117f9d67d001d07ae8">ObstacleVertexWinding</a>.KeepIn)) {</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;                                <a class="code" href="namespace_system.html">System</a>.Array.Reverse(vertices);</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;                        }</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;                }</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;        }</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;}</div>
+<div class="ttc" id="aclass_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle_html"><div class="ttname"><a href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle.html">Pathfinding.RVO.RVOObstacle</a></div><div class="ttdef"><b>Definition:</b> <a href="_r_v_o_obstacle_8cs_source.html#l00020">RVOObstacle.cs:20</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle_html_a00e2fc889dfa3fda0fd8d88334b93643"><div class="ttname"><a href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle.html#a00e2fc889dfa3fda0fd8d88334b93643">Pathfinding.RVO.RVOObstacle.AddObstacle</a></div><div class="ttdeci">void AddObstacle(Vector3[] vertices, float height)</div><div class="ttdef"><b>Definition:</b> <a href="_r_v_o_obstacle_8cs_source.html#l00229">RVOObstacle.cs:229</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle_html_a06a40d8ed1fd0a303a79bee2ce8ce1de"><div class="ttname"><a href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle.html#a06a40d8ed1fd0a303a79bee2ce8ce1de">Pathfinding.RVO.RVOObstacle.FindSimulator</a></div><div class="ttdeci">void FindSimulator()</div><div class="ttdef"><b>Definition:</b> <a href="_r_v_o_obstacle_8cs_source.html#l00222">RVOObstacle.cs:222</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle_html_a16092b262f4e7eddb646f9849fba0f94"><div class="ttname"><a href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle.html#a16092b262f4e7eddb646f9849fba0f94">Pathfinding.RVO.RVOObstacle.obstacleMode</a></div><div class="ttdeci">ObstacleVertexWinding obstacleMode</div><div class="ttdef"><b>Definition:</b> <a href="_r_v_o_obstacle_8cs_source.html#l00023">RVOObstacle.cs:23</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle_html_a1791ae7ba75d3592b90939c10f9e3d3c"><div class="ttname"><a href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle.html#a1791ae7ba75d3592b90939c10f9e3d3c">Pathfinding.RVO.RVOObstacle.Update</a></div><div class="ttdeci">void Update()</div><div class="ttdef"><b>Definition:</b> <a href="_r_v_o_obstacle_8cs_source.html#l00204">RVOObstacle.cs:204</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle_html_a27d39a3bd9263fb54a29098945471a0d"><div class="ttname"><a href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle.html#a27d39a3bd9263fb54a29098945471a0d">Pathfinding.RVO.RVOObstacle.OnDrawGizmos</a></div><div class="ttdeci">void OnDrawGizmos()</div><div class="ttdef"><b>Definition:</b> <a href="_r_v_o_obstacle_8cs_source.html#l00092">RVOObstacle.cs:92</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle_html_a4651f2aaf3859791dc5564ad54ada8df"><div class="ttname"><a href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle.html#a4651f2aaf3859791dc5564ad54ada8df">Pathfinding.RVO.RVOObstacle.OnDisable</a></div><div class="ttdeci">void OnDisable()</div><div class="ttdef"><b>Definition:</b> <a href="_r_v_o_obstacle_8cs_source.html#l00163">RVOObstacle.cs:163</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle_html_a592c49b50806cd88f2b91a04766f7408"><div class="ttname"><a href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle.html#a592c49b50806cd88f2b91a04766f7408">Pathfinding.RVO.RVOObstacle.CreateObstacles</a></div><div class="ttdeci">abstract void CreateObstacles()</div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle_html_a60a4e2d5888ae93a2e97b8f4f29d3769"><div class="ttname"><a href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle.html#a60a4e2d5888ae93a2e97b8f4f29d3769">Pathfinding.RVO.RVOObstacle.ExecuteInEditor</a></div><div class="ttdeci">abstract bool ExecuteInEditor</div><div class="ttdef"><b>Definition:</b> <a href="_r_v_o_obstacle_8cs_source.html#l00057">RVOObstacle.cs:57</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle_html_a6a243aba15c3e89681a45879afdc2ccd"><div class="ttname"><a href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle.html#a6a243aba15c3e89681a45879afdc2ccd">Pathfinding.RVO.RVOObstacle.LocalCoordinates</a></div><div class="ttdeci">abstract bool LocalCoordinates</div><div class="ttdef"><b>Definition:</b> <a href="_r_v_o_obstacle_8cs_source.html#l00061">RVOObstacle.cs:61</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle_html_a709205d02b43eb5042c9783b8ad906c2"><div class="ttname"><a href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle.html#a709205d02b43eb5042c9783b8ad906c2">Pathfinding.RVO.RVOObstacle.OnDrawGizmos</a></div><div class="ttdeci">void OnDrawGizmos(bool selected)</div><div class="ttdef"><b>Definition:</b> <a href="_r_v_o_obstacle_8cs_source.html#l00102">RVOObstacle.cs:102</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle_html_a9570101d1f58e0fde61d2b8ab56c9c03"><div class="ttname"><a href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle.html#a9570101d1f58e0fde61d2b8ab56c9c03">Pathfinding.RVO.RVOObstacle.AreGizmosDirty</a></div><div class="ttdeci">abstract bool AreGizmosDirty()</div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle_html_a9b85e691451088f542cce56654530004"><div class="ttname"><a href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle.html#a9b85e691451088f542cce56654530004">Pathfinding.RVO.RVOObstacle.OnDrawGizmosSelected</a></div><div class="ttdeci">void OnDrawGizmosSelected()</div><div class="ttdef"><b>Definition:</b> <a href="_r_v_o_obstacle_8cs_source.html#l00097">RVOObstacle.cs:97</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle_html_aa0ea161ce9e7a21c4d7cfb97f429047c"><div class="ttname"><a href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle.html#aa0ea161ce9e7a21c4d7cfb97f429047c">Pathfinding.RVO.RVOObstacle.layer</a></div><div class="ttdeci">RVOLayer layer</div><div class="ttdef"><b>Definition:</b> <a href="_r_v_o_obstacle_8cs_source.html#l00025">RVOObstacle.cs:25</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle_html_aa40c15f4a33ad87ef201c698ca9d9edc"><div class="ttname"><a href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle.html#aa40c15f4a33ad87ef201c698ca9d9edc">Pathfinding.RVO.RVOObstacle.GetMatrix</a></div><div class="ttdeci">virtual Matrix4x4 GetMatrix()</div><div class="ttdef"><b>Definition:</b> <a href="_r_v_o_obstacle_8cs_source.html#l00156">RVOObstacle.cs:156</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle_html_aa6f9768e2c8641809d7716849d795947"><div class="ttname"><a href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle.html#aa6f9768e2c8641809d7716849d795947">Pathfinding.RVO.RVOObstacle.Start</a></div><div class="ttdeci">void Start()</div><div class="ttdef"><b>Definition:</b> <a href="_r_v_o_obstacle_8cs_source.html#l00195">RVOObstacle.cs:195</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle_html_ac2293352b8b30ac114627c0f539538c7"><div class="ttname"><a href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle.html#ac2293352b8b30ac114627c0f539538c7">Pathfinding.RVO.RVOObstacle.OnEnable</a></div><div class="ttdeci">void OnEnable()</div><div class="ttdef"><b>Definition:</b> <a href="_r_v_o_obstacle_8cs_source.html#l00176">RVOObstacle.cs:176</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle_html_ac5687a6b906bd7d8685297bfa60f0e77"><div class="ttname"><a href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle.html#ac5687a6b906bd7d8685297bfa60f0e77">Pathfinding.RVO.RVOObstacle.Height</a></div><div class="ttdeci">abstract float Height</div><div class="ttdef"><b>Definition:</b> <a href="_r_v_o_obstacle_8cs_source.html#l00069">RVOObstacle.cs:69</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle_html_ad8af24c8e88cbc117f9d67d001d07ae8"><div class="ttname"><a href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle.html#ad8af24c8e88cbc117f9d67d001d07ae8">Pathfinding.RVO.RVOObstacle.ObstacleVertexWinding</a></div><div class="ttdeci">ObstacleVertexWinding</div><div class="ttdef"><b>Definition:</b> <a href="_r_v_o_obstacle_8cs_source.html#l00029">RVOObstacle.cs:29</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle_html_aeed20aabca4faf68c34952d1fdd48878"><div class="ttname"><a href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle.html#aeed20aabca4faf68c34952d1fdd48878">Pathfinding.RVO.RVOObstacle.StaticObstacle</a></div><div class="ttdeci">abstract bool StaticObstacle</div><div class="ttdef"><b>Definition:</b> <a href="_r_v_o_obstacle_8cs_source.html#l00067">RVOObstacle.cs:67</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle_html_af026fef1620f190f989c585ab5bf9ddf"><div class="ttname"><a href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_obstacle.html#af026fef1620f190f989c585ab5bf9ddf">Pathfinding.RVO.RVOObstacle.sim</a></div><div class="ttdeci">Pathfinding.RVO.Simulator sim</div><div class="ttdef"><b>Definition:</b> <a href="_r_v_o_obstacle_8cs_source.html#l00037">RVOObstacle.cs:37</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_r_v_o_1_1_r_v_o_simulator_html"><div class="ttname"><a href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_simulator.html">Pathfinding.RVO.RVOSimulator</a></div><div class="ttdef"><b>Definition:</b> <a href="_r_v_o_simulator_8cs_source.html#l00030">RVOSimulator.cs:30</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_r_v_o_1_1_r_v_o_simulator_html_a2dda5c8ff9473eacf269917dda5aa181"><div class="ttname"><a href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_simulator.html#a2dda5c8ff9473eacf269917dda5aa181">Pathfinding.RVO.RVOSimulator.GetSimulator</a></div><div class="ttdeci">Simulator GetSimulator()</div><div class="ttdef"><b>Definition:</b> <a href="_r_v_o_simulator_8cs_source.html#l00092">RVOSimulator.cs:92</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_r_v_o_1_1_r_v_o_simulator_html_a699c3301a77c7d554e03f04d7a9a59ad"><div class="ttname"><a href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_simulator.html#a699c3301a77c7d554e03f04d7a9a59ad">Pathfinding.RVO.RVOSimulator.movementPlane</a></div><div class="ttdeci">MovementPlane movementPlane</div><div class="ttdef"><b>Definition:</b> <a href="_r_v_o_simulator_8cs_source.html#l00077">RVOSimulator.cs:77</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_r_v_o_1_1_r_v_o_simulator_html_a766acfdb073620134a64afc79677f08d"><div class="ttname"><a href="class_pathfinding_1_1_r_v_o_1_1_r_v_o_simulator.html#a766acfdb073620134a64afc79677f08d">Pathfinding.RVO.RVOSimulator.active</a></div><div class="ttdeci">static RVOSimulator active</div><div class="ttdef"><b>Definition:</b> <a href="_r_v_o_simulator_8cs_source.html#l00032">RVOSimulator.cs:32</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_r_v_o_1_1_simulator_html"><div class="ttname"><a href="class_pathfinding_1_1_r_v_o_1_1_simulator.html">Pathfinding.RVO.Simulator</a></div><div class="ttdef"><b>Definition:</b> <a href="_r_v_o_core_simulator_8cs_source.html#l00266">RVOCoreSimulator.cs:266</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_r_v_o_1_1_simulator_html_a4cf9a326388f56afaec5bd7a0a943d50"><div class="ttname"><a href="class_pathfinding_1_1_r_v_o_1_1_simulator.html#a4cf9a326388f56afaec5bd7a0a943d50">Pathfinding.RVO.Simulator.movementPlane</a></div><div class="ttdeci">readonly MovementPlane movementPlane</div><div class="ttdef"><b>Definition:</b> <a href="_r_v_o_core_simulator_8cs_source.html#l00324">RVOCoreSimulator.cs:324</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_r_v_o_1_1_simulator_html_a4faa34a2e3b74365f431c9296cfaf939"><div class="ttname"><a href="class_pathfinding_1_1_r_v_o_1_1_simulator.html#a4faa34a2e3b74365f431c9296cfaf939">Pathfinding.RVO.Simulator.AddObstacle</a></div><div class="ttdeci">ObstacleVertex AddObstacle(ObstacleVertex v)</div><div class="ttdef"><b>Definition:</b> <a href="_r_v_o_core_simulator_8cs_source.html#l00481">RVOCoreSimulator.cs:481</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_r_v_o_1_1_simulator_html_a55eb8d780f9c9d47845c64a34abc33c0"><div class="ttname"><a href="class_pathfinding_1_1_r_v_o_1_1_simulator.html#a55eb8d780f9c9d47845c64a34abc33c0">Pathfinding.RVO.Simulator.UpdateObstacle</a></div><div class="ttdeci">void UpdateObstacle(ObstacleVertex obstacle, Vector3[] vertices, Matrix4x4 matrix)</div><div class="ttdef"><b>Definition:</b> <a href="_r_v_o_core_simulator_8cs_source.html#l00579">RVOCoreSimulator.cs:579</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_r_v_o_1_1_simulator_html_ac866b80a1172ebad09c7c1b5316a4061"><div class="ttname"><a href="class_pathfinding_1_1_r_v_o_1_1_simulator.html#ac866b80a1172ebad09c7c1b5316a4061">Pathfinding.RVO.Simulator.RemoveObstacle</a></div><div class="ttdeci">void RemoveObstacle(ObstacleVertex v)</div><div class="ttdef"><b>Definition:</b> <a href="_r_v_o_core_simulator_8cs_source.html#l00634">RVOCoreSimulator.cs:634</a></div></div>
+<div class="ttc" id="aclass_pathfinding_1_1_versioned_mono_behaviour_html"><div class="ttname"><a href="class_pathfinding_1_1_versioned_mono_behaviour.html">Pathfinding.VersionedMonoBehaviour</a></div><div class="ttdef"><b>Definition:</b> <a href="_versioned_mono_behaviour_8cs_source.html#l00010">VersionedMonoBehaviour.cs:10</a></div></div>
+<div class="ttc" id="anamespace_p_f_html"><div class="ttname"><a href="namespace_p_f.html">PF</a></div><div class="ttdef"><b>Definition:</b> <a href="_array_pool_8cs_source.html#l00009">ArrayPool.cs:9</a></div></div>
+<div class="ttc" id="anamespace_pathfinding_1_1_r_v_o_html"><div class="ttname"><a href="namespace_pathfinding_1_1_r_v_o.html">Pathfinding.RVO</a></div><div class="ttdef"><b>Definition:</b> <a href="_r_v_o_controller_editor_8cs_source.html#l00004">RVOControllerEditor.cs:4</a></div></div>
+<div class="ttc" id="anamespace_pathfinding_1_1_r_v_o_html_a0bd1c94470dd200c3b9cb72f827e9e79"><div class="ttname"><a href="namespace_pathfinding_1_1_r_v_o.html#a0bd1c94470dd200c3b9cb72f827e9e79">Pathfinding.RVO.MovementPlane</a></div><div class="ttdeci">MovementPlane</div><div class="ttdef"><b>Definition:</b> <a href="_r_v_o_core_simulator_8cs_source.html#l00206">RVOCoreSimulator.cs:206</a></div></div>
+<div class="ttc" id="anamespace_pathfinding_1_1_r_v_o_html_aaf1aeb01d4988f7dfc02a9c2130d31ee"><div class="ttname"><a href="namespace_pathfinding_1_1_r_v_o.html#aaf1aeb01d4988f7dfc02a9c2130d31ee">Pathfinding.RVO.RVOLayer</a></div><div class="ttdeci">RVOLayer</div><div class="ttdef"><b>Definition:</b> <a href="_r_v_o_core_simulator_8cs_source.html#l00214">RVOCoreSimulator.cs:214</a></div></div>
+<div class="ttc" id="anamespace_pathfinding_html"><div class="ttname"><a href="namespace_pathfinding.html">Pathfinding</a></div><div class="ttdef"><b>Definition:</b> <a href="_a_i_base_editor_8cs_source.html#l00004">AIBaseEditor.cs:4</a></div></div>
+<div class="ttc" id="anamespace_system_html"><div class="ttname"><a href="namespace_system.html">System</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_method_builder_attribute_8cs_source.html#l00001">AsyncMethodBuilderAttribute.cs:2</a></div></div>
+<div class="ttc" id="anamespace_unity_engine_html"><div class="ttname"><a href="namespace_unity_engine.html">UnityEngine</a></div><div class="ttdef"><b>Definition:</b> <a href="_mathf_8cs_source.html#l00003">Mathf.cs:4</a></div></div>
+<div class="ttc" id="astruct_unity_engine_1_1_matrix4x4_html"><div class="ttname"><a href="struct_unity_engine_1_1_matrix4x4.html">UnityEngine.Matrix4x4</a></div><div class="ttdef"><b>Definition:</b> <a href="_matrix4x4_8cs_source.html#l00007">Matrix4x4.cs:8</a></div></div>
+<div class="ttc" id="astruct_unity_engine_1_1_matrix4x4_html_aac8c1357f13d264ab54ce7164a8f0a75"><div class="ttname"><a href="struct_unity_engine_1_1_matrix4x4.html#aac8c1357f13d264ab54ce7164a8f0a75">UnityEngine.Matrix4x4.identity</a></div><div class="ttdeci">static readonly Matrix4x4 identity</div><div class="ttdef"><b>Definition:</b> <a href="_matrix4x4_8cs_source.html#l00009">Matrix4x4.cs:9</a></div></div>
+<div class="ttc" id="astruct_unity_engine_1_1_matrix4x4_html_ad9785759f3dfe00f8eea91a2a7a0c302"><div class="ttname"><a href="struct_unity_engine_1_1_matrix4x4.html#ad9785759f3dfe00f8eea91a2a7a0c302">UnityEngine.Matrix4x4.MultiplyPoint3x4</a></div><div class="ttdeci">Vector3 MultiplyPoint3x4(Vector3 point)</div><div class="ttdef"><b>Definition:</b> <a href="_matrix4x4_8cs_source.html#l01242">Matrix4x4.cs:1242</a></div></div>
+<div class="ttc" id="astruct_unity_engine_1_1_vector3_html"><div class="ttname"><a href="struct_unity_engine_1_1_vector3.html">UnityEngine.Vector3</a></div><div class="ttdef"><b>Definition:</b> <a href="_vector3_8cs_source.html#l00007">Vector3.cs:8</a></div></div>
+<div class="ttc" id="astruct_unity_engine_1_1_vector3_html_a505e04777a5cb2edb3f8f727177d9a5d"><div class="ttname"><a href="struct_unity_engine_1_1_vector3.html#a505e04777a5cb2edb3f8f727177d9a5d">UnityEngine.Vector3.Cross</a></div><div class="ttdeci">static Vector3 Cross(Vector3 vector1, Vector3 vector2)</div><div class="ttdef"><b>Definition:</b> <a href="_vector3_8cs_source.html#l00189">Vector3.cs:189</a></div></div>
+<div class="ttc" id="astruct_unity_engine_1_1_vector3_html_a5ee4172032dfc66b99c27713f0122eaa"><div class="ttname"><a href="struct_unity_engine_1_1_vector3.html#a5ee4172032dfc66b99c27713f0122eaa">UnityEngine.Vector3.zero</a></div><div class="ttdeci">static readonly Vector3 zero</div><div class="ttdef"><b>Definition:</b> <a href="_vector3_8cs_source.html#l00011">Vector3.cs:11</a></div></div>
+<div class="ttc" id="astruct_unity_engine_1_1_vector3_html_a99bb830cb4b9b86032742e6b94c1144a"><div class="ttname"><a href="struct_unity_engine_1_1_vector3.html#a99bb830cb4b9b86032742e6b94c1144a">UnityEngine.Vector3.Length</a></div><div class="ttdeci">float Length()</div><div class="ttdef"><b>Definition:</b> <a href="_vector3_8cs_source.html#l00070">Vector3.cs:70</a></div></div>
+<div class="ttc" id="astruct_unity_engine_1_1_vector3_html_ac922c88e8328a73b2d01ec8ef15e8bb8"><div class="ttname"><a href="struct_unity_engine_1_1_vector3.html#ac922c88e8328a73b2d01ec8ef15e8bb8">UnityEngine.Vector3.up</a></div><div class="ttdeci">static readonly Vector3 up</div><div class="ttdef"><b>Definition:</b> <a href="_vector3_8cs_source.html#l00013">Vector3.cs:13</a></div></div>
+<div class="ttc" id="astruct_unity_engine_1_1_vector3_html_acd01c55d3ff3bf00dfa650374f803907"><div class="ttname"><a href="struct_unity_engine_1_1_vector3.html#acd01c55d3ff3bf00dfa650374f803907">UnityEngine.Vector3.forward</a></div><div class="ttdeci">static readonly Vector3 forward</div><div class="ttdef"><b>Definition:</b> <a href="_vector3_8cs_source.html#l00017">Vector3.cs:17</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_84bbf7b3c7f28a5a18725745e1505219.html">Assets</a></li><li class="navelem"><a class="el" href="dir_f13b41af88cf68434578284aaf699e39.html">Scripts</a></li><li class="navelem"><a class="el" href="dir_46d134a3bf82cf4dc49ca8f728aea58c.html">Libraries</a></li><li class="navelem"><a class="el" href="dir_f6df8f7e58ea5a2220a287b647108730.html">ET</a></li><li class="navelem"><a class="el" href="dir_83296929b1cb48979e134a96af9624b1.html">Module</a></li><li class="navelem"><a class="el" href="dir_7e04bdad0240fbb16a4f5f805ce44f49.html">Pathfinding</a></li><li class="navelem"><a class="el" href="dir_12c2f59e7be642934a5bea5c58ae8c1b.html">AstarPathfindingProject</a></li><li class="navelem"><a class="el" href="dir_c2bdcf3c2497bf600243a1b41485c576.html">RVO</a></li><li class="navelem"><a class="el" href="_r_v_o_obstacle_8cs.html">RVOObstacle.cs</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:24:46 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

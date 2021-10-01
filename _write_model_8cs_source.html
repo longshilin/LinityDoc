@@ -1,0 +1,301 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: ETServer/Server/ThirdParty/MongoDBDriver/MongoDB.Driver/WriteModel.cs 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_write_model_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">WriteModel.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_write_model_8cs.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/* Copyright 2010-present MongoDB Inc.</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">* Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">* you may not use this file except in compliance with the License.</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">* You may obtain a copy of the License at</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">* http://www.apache.org/licenses/LICENSE-2.0</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">* Unless required by applicable law or agreed to in writing, software</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">* distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">* See the License for the specific language governing permissions and</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">* limitations under the License.</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_mongo_d_b.html">MongoDB</a>.<a class="code" href="namespace_mongo_d_b_1_1_bson.html">Bson</a>;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_mongo_d_b.html">MongoDB</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver.html">Driver</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core.html">Core</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_operations.html">Operations</a>;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Collections.Generic;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Linq;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_mongo_d_b_1_1_driver.html">MongoDB.Driver</a></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;{</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#if NET452</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    [Serializable]</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_write_model.html">   31</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">class </span><a class="code" href="class_mongo_d_b_1_1_driver_1_1_write_model.html">WriteModel</a>&lt;TDocument&gt;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    {</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <span class="comment">// static methods</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="comment">// These static methods are only called from the Legacy</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <span class="comment">// API, so there is type safety in how they got allowed</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <span class="comment">// into the system, meaning that even though</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <span class="comment">// some things below seem unsafe, they are in a roundabout</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <span class="comment">// way. In addition, we know that there will always </span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <span class="comment">// be one level of BsonDocumentWrapper for everything, even</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <span class="comment">// when the type is already a BsonDocument :(.</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <span class="keyword">internal</span> <span class="keyword">static</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_write_model.html">WriteModel&lt;TDocument&gt;</a> FromCore(<a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_write_request.html">WriteRequest</a> request)</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        {</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;            <span class="keywordflow">switch</span> (request.<a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_write_request.html#afca9c1b47ab8134d3e631035fe59c3f1">RequestType</a>)</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            {</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                <span class="keywordflow">case</span> <a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_operations.html#ac89f076be78311e6423215638aea19f5">WriteRequestType</a>.Delete:</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                    <span class="keywordflow">return</span> ConvertDeleteRequest((<a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_delete_request.html">DeleteRequest</a>)request);</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                <span class="keywordflow">case</span> <a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_operations.html#ac89f076be78311e6423215638aea19f5">WriteRequestType</a>.Insert:</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                    <span class="keywordflow">return</span> ConvertInsertRequest((<a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_insert_request.html">InsertRequest</a>)request);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                <span class="keywordflow">case</span> <a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_operations.html#ac89f076be78311e6423215638aea19f5">WriteRequestType</a>.Update:</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                    <span class="keywordflow">return</span> ConvertUpdateRequest((<a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_update_request.html">UpdateRequest</a>)request);</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                <span class="keywordflow">default</span>:</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                    <span class="keywordflow">throw</span> <span class="keyword">new</span> NotSupportedException();</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            }</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        }</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_write_model.html">WriteModel&lt;TDocument&gt;</a> ConvertDeleteRequest(<a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_delete_request.html">DeleteRequest</a> request)</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        {</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            <span class="keywordflow">if</span> (request.<a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_delete_request.html#a8aec5e796bc56207853c19fcad04ec10">Limit</a> == 1)</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            {</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_delete_one_model.html">DeleteOneModel&lt;TDocument&gt;</a>(UnwrapFilter(request.<a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_delete_request.html#a2b2ea9775157f4738904919d33ad3380">Filter</a>))</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                {</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                    <a class="code" href="class_mongo_d_b_1_1_driver_1_1_collation.html">Collation</a> = request.<a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_delete_request.html#acfbeaaec50e54eeecb40418cf6265c95">Collation</a></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                };</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            }</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_delete_many_model.html">DeleteManyModel&lt;TDocument&gt;</a>(UnwrapFilter(request.<a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_delete_request.html#a2b2ea9775157f4738904919d33ad3380">Filter</a>))</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            {</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                <a class="code" href="class_mongo_d_b_1_1_driver_1_1_collation.html">Collation</a> = request.<a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_delete_request.html#acfbeaaec50e54eeecb40418cf6265c95">Collation</a></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            };</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        }</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_write_model.html">WriteModel&lt;TDocument&gt;</a> ConvertInsertRequest(<a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_insert_request.html">InsertRequest</a> request)</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        {</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            var document = (TDocument)Unwrap(request.<a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_insert_request.html#a34598c3415f18acdaf01705726d37896">Document</a>);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_insert_one_model.html">InsertOneModel&lt;TDocument&gt;</a>(document);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        }</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_write_model.html">WriteModel&lt;TDocument&gt;</a> ConvertUpdateRequest(<a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_update_request.html">UpdateRequest</a> request)</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        {</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            <span class="keywordflow">if</span> (request.<a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_update_request.html#a48bed595f15a6e2280950a3042e153a9">IsMulti</a>)</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            {</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_update_many_model.html">UpdateManyModel&lt;TDocument&gt;</a>(UnwrapFilter(request.<a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_update_request.html#af85062ba9822a9c649fb549c06f31ec1">Filter</a>), UnwrapUpdate(request.<a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_update_request.html#a6d8060481d187ce5221d93f9d4dec9cc">Update</a>))</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                {</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                    ArrayFilters = request.<a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_update_request.html#a8189dddb26c8a0ba8ea6c3e74cf20927">ArrayFilters</a> == <span class="keyword">null</span> ? null : <span class="keyword">new</span> List&lt;ArrayFilterDefinition&gt;(request.<a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_update_request.html#a8189dddb26c8a0ba8ea6c3e74cf20927">ArrayFilters</a>.Select(f =&gt; <span class="keyword">new</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_bson_document_array_filter_definition.html">BsonDocumentArrayFilterDefinition&lt;BsonValue&gt;</a>(f))),</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                    <a class="code" href="class_mongo_d_b_1_1_driver_1_1_collation.html">Collation</a> = request.<a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_update_request.html#ab6a8a30ce059cca1a5e11a87812f4a3d">Collation</a>,</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                    IsUpsert = request.<a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_update_request.html#aad5ab90939b7a1c7cdf1e6d463042752">IsUpsert</a></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                };</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;            }</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            var firstElement = request.<a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_update_request.html#a6d8060481d187ce5221d93f9d4dec9cc">Update</a>.<a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_document.html#a13cc654618518cbf512880aae2e5c564">GetElement</a>(0).<a class="code" href="struct_mongo_d_b_1_1_bson_1_1_bson_element.html#a067bc72738ff01f904e98cb919398142">Name</a>;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;            <span class="keywordflow">if</span> (firstElement.StartsWith(<span class="stringliteral">&quot;$&quot;</span>))</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;            {</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_update_one_model.html">UpdateOneModel&lt;TDocument&gt;</a>(UnwrapFilter(request.<a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_update_request.html#af85062ba9822a9c649fb549c06f31ec1">Filter</a>), UnwrapUpdate(request.<a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_update_request.html#a6d8060481d187ce5221d93f9d4dec9cc">Update</a>))</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                {</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                    ArrayFilters = request.<a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_update_request.html#a8189dddb26c8a0ba8ea6c3e74cf20927">ArrayFilters</a> == <span class="keyword">null</span> ? null : <span class="keyword">new</span> List&lt;ArrayFilterDefinition&gt;(request.<a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_update_request.html#a8189dddb26c8a0ba8ea6c3e74cf20927">ArrayFilters</a>.Select(f =&gt; <span class="keyword">new</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_bson_document_array_filter_definition.html">BsonDocumentArrayFilterDefinition&lt;BsonValue&gt;</a>(f))),</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                    <a class="code" href="class_mongo_d_b_1_1_driver_1_1_collation.html">Collation</a> = request.<a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_update_request.html#ab6a8a30ce059cca1a5e11a87812f4a3d">Collation</a>,</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;                    IsUpsert = request.<a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_update_request.html#aad5ab90939b7a1c7cdf1e6d463042752">IsUpsert</a></div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                };</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;            }</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;            <span class="keywordflow">return</span> ConvertToReplaceOne(request);</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        }</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_write_model.html">WriteModel&lt;TDocument&gt;</a> ConvertToReplaceOne(<a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_update_request.html">UpdateRequest</a> request)</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        {</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;            var document = (TDocument)Unwrap(request.<a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_update_request.html#a6d8060481d187ce5221d93f9d4dec9cc">Update</a>);</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;            <span class="keywordflow">if</span> (request.<a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_update_request.html#a8189dddb26c8a0ba8ea6c3e74cf20927">ArrayFilters</a> != <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;            {</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;                <span class="keywordflow">throw</span> <span class="keyword">new</span> ArgumentException(<span class="stringliteral">&quot;ReplaceOne does not support arrayFilters.&quot;</span>, nameof(request));</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;            }</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; </div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_replace_one_model.html">ReplaceOneModel&lt;TDocument&gt;</a>(UnwrapFilter(request.<a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_update_request.html#af85062ba9822a9c649fb549c06f31ec1">Filter</a>), document)</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;            {</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;                <a class="code" href="class_mongo_d_b_1_1_driver_1_1_collation.html">Collation</a> = request.<a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_update_request.html#ab6a8a30ce059cca1a5e11a87812f4a3d">Collation</a>,</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;                IsUpsert = request.<a class="code" href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_update_request.html#aad5ab90939b7a1c7cdf1e6d463042752">IsUpsert</a></div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;            };</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        }</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160; </div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_filter_definition.html">FilterDefinition&lt;TDocument&gt;</a> UnwrapFilter(<a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_document.html">BsonDocument</a> filter)</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        {</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;            var wrapper = filter as <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_document_wrapper.html">BsonDocumentWrapper</a>;</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;            <span class="keywordflow">if</span> (wrapper != <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;            {</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;                <span class="keywordflow">if</span> (wrapper.Wrapped is <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_document.html">BsonDocument</a>)</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;                {</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;                    <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_bson_document_filter_definition.html">BsonDocumentFilterDefinition&lt;TDocument&gt;</a>((<a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_document.html">BsonDocument</a>)wrapper.Wrapped);</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;                }</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_object_filter_definition.html">ObjectFilterDefinition&lt;TDocument&gt;</a>(wrapper.Wrapped);</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;            }</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160; </div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_bson_document_filter_definition.html">BsonDocumentFilterDefinition&lt;TDocument&gt;</a>(filter);</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        }</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160; </div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_update_definition.html">UpdateDefinition&lt;TDocument&gt;</a> UnwrapUpdate(<a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_document.html">BsonDocument</a> update)</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;        {</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;            var wrapper = update as <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_document_wrapper.html">BsonDocumentWrapper</a>;</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;            <span class="keywordflow">if</span> (wrapper != <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;            {</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;                <span class="keywordflow">if</span> (wrapper.Wrapped is <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_document.html">BsonDocument</a>)</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;                {</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;                    <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_bson_document_update_definition.html">BsonDocumentUpdateDefinition&lt;TDocument&gt;</a>((<a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_document.html">BsonDocument</a>)wrapper.Wrapped);</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;                }</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_object_update_definition.html">ObjectUpdateDefinition&lt;TDocument&gt;</a>(wrapper.Wrapped);</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;            }</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160; </div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_bson_document_update_definition.html">BsonDocumentUpdateDefinition&lt;TDocument&gt;</a>(update);</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;        }</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160; </div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keywordtype">object</span> Unwrap(<a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_document.html">BsonDocument</a> wrapper)</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;        {</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;            <span class="keywordflow">return</span> ((<a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_document_wrapper.html">BsonDocumentWrapper</a>)wrapper).Wrapped;</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;        }</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160; </div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;        <span class="comment">// constructors</span></div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;        <span class="comment">// only MongoDB can define new write models.</span></div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;        <span class="keyword">internal</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_write_model.html">WriteModel</a>()</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;        {</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;        }</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160; </div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;        <span class="comment">// properties</span></div>
+<div class="line"><a name="l00164"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_write_model.html#a78ce8ebd6da5277ef72d0425ec249e89">  164</a></span>&#160;<span class="comment"></span>        <span class="keyword">public</span> <span class="keyword">abstract</span> <a class="code" href="namespace_mongo_d_b_1_1_driver.html#a8fce9416dc94042fc4bfa998d59ac183">WriteModelType</a> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_write_model.html#a78ce8ebd6da5277ef72d0425ec249e89">ModelType</a> { <span class="keyword">get</span>; }</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    }</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;}</div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_bson_document_html"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_bson_document.html">MongoDB.Bson.BsonDocument</a></div><div class="ttdoc">Represents a BSON document.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_document_8cs_source.html#l00034">BsonDocument.cs:35</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_bson_document_html_a13cc654618518cbf512880aae2e5c564"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_bson_document.html#a13cc654618518cbf512880aae2e5c564">MongoDB.Bson.BsonDocument.GetElement</a></div><div class="ttdeci">virtual BsonElement GetElement(int index)</div><div class="ttdoc">Gets an element of this document.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_document_8cs_source.html#l00861">BsonDocument.cs:861</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_bson_document_wrapper_html"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_bson_document_wrapper.html">MongoDB.Bson.BsonDocumentWrapper</a></div><div class="ttdoc">Represents a BsonDocument wrapper.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_document_wrapper_8cs_source.html#l00035">BsonDocumentWrapper.cs:36</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_bson_document_array_filter_definition_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_bson_document_array_filter_definition.html">MongoDB.Driver.BsonDocumentArrayFilterDefinition</a></div><div class="ttdoc">A BsonDocument based array filter.</div><div class="ttdef"><b>Definition:</b> <a href="_array_filter_definition_8cs_source.html#l00110">ArrayFilterDefinition.cs:111</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_bson_document_filter_definition_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_bson_document_filter_definition.html">MongoDB.Driver.BsonDocumentFilterDefinition</a></div><div class="ttdoc">A BsonDocument based filter.</div><div class="ttdef"><b>Definition:</b> <a href="_filter_definition_8cs_source.html#l00146">FilterDefinition.cs:147</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_bson_document_update_definition_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_bson_document_update_definition.html">MongoDB.Driver.BsonDocumentUpdateDefinition</a></div><div class="ttdoc">A BsonDocument based update.</div><div class="ttdef"><b>Definition:</b> <a href="_update_definition_8cs_source.html#l00075">UpdateDefinition.cs:76</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_collation_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_collation.html">MongoDB.Driver.Collation</a></div><div class="ttdoc">Represents a MongoDB collation.</div><div class="ttdef"><b>Definition:</b> <a href="_collation_8cs_source.html#l00102">Collation.cs:103</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_delete_request_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_delete_request.html">MongoDB.Driver.Core.Operations.DeleteRequest</a></div><div class="ttdoc">Represents a request to delete one or more documents.</div><div class="ttdef"><b>Definition:</b> <a href="_delete_request_8cs_source.html#l00025">DeleteRequest.cs:26</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_delete_request_html_a2b2ea9775157f4738904919d33ad3380"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_delete_request.html#a2b2ea9775157f4738904919d33ad3380">MongoDB.Driver.Core.Operations.DeleteRequest.Filter</a></div><div class="ttdeci">BsonDocument Filter</div><div class="ttdoc">Gets or sets the filter.</div><div class="ttdef"><b>Definition:</b> <a href="_delete_request_8cs_source.html#l00057">DeleteRequest.cs:58</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_delete_request_html_a8aec5e796bc56207853c19fcad04ec10"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_delete_request.html#a8aec5e796bc56207853c19fcad04ec10">MongoDB.Driver.Core.Operations.DeleteRequest.Limit</a></div><div class="ttdeci">int Limit</div><div class="ttdoc">Gets or sets a limit on the number of documents that should be deleted.</div><div class="ttdef"><b>Definition:</b> <a href="_delete_request_8cs_source.html#l00071">DeleteRequest.cs:72</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_delete_request_html_acfbeaaec50e54eeecb40418cf6265c95"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_delete_request.html#acfbeaaec50e54eeecb40418cf6265c95">MongoDB.Driver.Core.Operations.DeleteRequest.Collation</a></div><div class="ttdeci">Collation Collation</div><div class="ttdoc">Gets or sets the collation.</div><div class="ttdef"><b>Definition:</b> <a href="_delete_request_8cs_source.html#l00048">DeleteRequest.cs:49</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_insert_request_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_insert_request.html">MongoDB.Driver.Core.Operations.InsertRequest</a></div><div class="ttdoc">Represents a request to insert a document.</div><div class="ttdef"><b>Definition:</b> <a href="_insert_request_8cs_source.html#l00027">InsertRequest.cs:28</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_insert_request_html_a34598c3415f18acdaf01705726d37896"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_insert_request.html#a34598c3415f18acdaf01705726d37896">MongoDB.Driver.Core.Operations.InsertRequest.Document</a></div><div class="ttdeci">BsonDocument Document</div><div class="ttdoc">Gets or sets the document.</div><div class="ttdef"><b>Definition:</b> <a href="_insert_request_8cs_source.html#l00050">InsertRequest.cs:51</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_update_request_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_update_request.html">MongoDB.Driver.Core.Operations.UpdateRequest</a></div><div class="ttdoc">Represents a request to update one or more documents.</div><div class="ttdef"><b>Definition:</b> <a href="_update_request_8cs_source.html#l00027">UpdateRequest.cs:28</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_update_request_html_a48bed595f15a6e2280950a3042e153a9"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_update_request.html#a48bed595f15a6e2280950a3042e153a9">MongoDB.Driver.Core.Operations.UpdateRequest.IsMulti</a></div><div class="ttdeci">bool IsMulti</div><div class="ttdoc">Gets or sets a value indicating whether this update should affect all matching documents.</div><div class="ttdef"><b>Definition:</b> <a href="_update_request_8cs_source.html#l00093">UpdateRequest.cs:94</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_update_request_html_a6d8060481d187ce5221d93f9d4dec9cc"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_update_request.html#a6d8060481d187ce5221d93f9d4dec9cc">MongoDB.Driver.Core.Operations.UpdateRequest.Update</a></div><div class="ttdeci">BsonDocument Update</div><div class="ttdoc">Gets the update specification.</div><div class="ttdef"><b>Definition:</b> <a href="_update_request_8cs_source.html#l00114">UpdateRequest.cs:115</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_update_request_html_a8189dddb26c8a0ba8ea6c3e74cf20927"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_update_request.html#a8189dddb26c8a0ba8ea6c3e74cf20927">MongoDB.Driver.Core.Operations.UpdateRequest.ArrayFilters</a></div><div class="ttdeci">IEnumerable&lt; BsonDocument &gt; ArrayFilters</div><div class="ttdoc">Gets or sets the array filters.</div><div class="ttdef"><b>Definition:</b> <a href="_update_request_8cs_source.html#l00064">UpdateRequest.cs:65</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_update_request_html_aad5ab90939b7a1c7cdf1e6d463042752"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_update_request.html#aad5ab90939b7a1c7cdf1e6d463042752">MongoDB.Driver.Core.Operations.UpdateRequest.IsUpsert</a></div><div class="ttdeci">bool IsUpsert</div><div class="ttdoc">Gets or sets a value indicating whether a document should be inserted if no matching document is foun...</div><div class="ttdef"><b>Definition:</b> <a href="_update_request_8cs_source.html#l00105">UpdateRequest.cs:106</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_update_request_html_ab6a8a30ce059cca1a5e11a87812f4a3d"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_update_request.html#ab6a8a30ce059cca1a5e11a87812f4a3d">MongoDB.Driver.Core.Operations.UpdateRequest.Collation</a></div><div class="ttdeci">Collation Collation</div><div class="ttdoc">Gets or sets the collation.</div><div class="ttdef"><b>Definition:</b> <a href="_update_request_8cs_source.html#l00073">UpdateRequest.cs:74</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_update_request_html_af85062ba9822a9c649fb549c06f31ec1"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_update_request.html#af85062ba9822a9c649fb549c06f31ec1">MongoDB.Driver.Core.Operations.UpdateRequest.Filter</a></div><div class="ttdeci">BsonDocument Filter</div><div class="ttdoc">Gets the filter.</div><div class="ttdef"><b>Definition:</b> <a href="_update_request_8cs_source.html#l00082">UpdateRequest.cs:83</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_write_request_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_write_request.html">MongoDB.Driver.Core.Operations.WriteRequest</a></div><div class="ttdoc">Represents a request to write something to the database.</div><div class="ttdef"><b>Definition:</b> <a href="_write_request_8cs_source.html#l00027">WriteRequest.cs:28</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_write_request_html_afca9c1b47ab8134d3e631035fe59c3f1"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_core_1_1_operations_1_1_write_request.html#afca9c1b47ab8134d3e631035fe59c3f1">MongoDB.Driver.Core.Operations.WriteRequest.RequestType</a></div><div class="ttdeci">WriteRequestType RequestType</div><div class="ttdoc">Gets the request type.</div><div class="ttdef"><b>Definition:</b> <a href="_write_request_8cs_source.html#l00059">WriteRequest.cs:60</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_delete_many_model_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_delete_many_model.html">MongoDB.Driver.DeleteManyModel</a></div><div class="ttdoc">Model for deleting many documents.</div><div class="ttdef"><b>Definition:</b> <a href="_delete_many_model_8cs_source.html#l00033">DeleteManyModel.cs:34</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_delete_one_model_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_delete_one_model.html">MongoDB.Driver.DeleteOneModel</a></div><div class="ttdoc">Model for deleting a single document.</div><div class="ttdef"><b>Definition:</b> <a href="_delete_one_model_8cs_source.html#l00033">DeleteOneModel.cs:34</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_filter_definition_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_filter_definition.html">MongoDB.Driver.FilterDefinition</a></div><div class="ttdoc">Base class for filters.</div><div class="ttdef"><b>Definition:</b> <a href="_filter_definition_8cs_source.html#l00032">FilterDefinition.cs:33</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_insert_one_model_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_insert_one_model.html">MongoDB.Driver.InsertOneModel</a></div><div class="ttdoc">Model for inserting a single document.</div><div class="ttdef"><b>Definition:</b> <a href="_insert_one_model_8cs_source.html#l00032">InsertOneModel.cs:33</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_object_filter_definition_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_object_filter_definition.html">MongoDB.Driver.ObjectFilterDefinition</a></div><div class="ttdoc">An Object based filter.</div><div class="ttdef"><b>Definition:</b> <a href="_filter_definition_8cs_source.html#l00251">FilterDefinition.cs:252</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_object_update_definition_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_object_update_definition.html">MongoDB.Driver.ObjectUpdateDefinition</a></div><div class="ttdoc">An Object based update.</div><div class="ttdef"><b>Definition:</b> <a href="_update_definition_8cs_source.html#l00139">UpdateDefinition.cs:140</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_replace_one_model_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_replace_one_model.html">MongoDB.Driver.ReplaceOneModel</a></div><div class="ttdoc">Model for replacing a single document.</div><div class="ttdef"><b>Definition:</b> <a href="_replace_one_model_8cs_source.html#l00033">ReplaceOneModel.cs:34</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_update_definition_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_update_definition.html">MongoDB.Driver.UpdateDefinition</a></div><div class="ttdoc">Base class for updates.</div><div class="ttdef"><b>Definition:</b> <a href="_update_definition_8cs_source.html#l00027">UpdateDefinition.cs:28</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_update_many_model_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_update_many_model.html">MongoDB.Driver.UpdateManyModel</a></div><div class="ttdoc">Model for updating many documents.</div><div class="ttdef"><b>Definition:</b> <a href="_update_many_model_8cs_source.html#l00029">UpdateManyModel.cs:30</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_update_one_model_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_update_one_model.html">MongoDB.Driver.UpdateOneModel</a></div><div class="ttdoc">Model for updating a single document.</div><div class="ttdef"><b>Definition:</b> <a href="_update_one_model_8cs_source.html#l00029">UpdateOneModel.cs:30</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_write_model_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_write_model.html">MongoDB.Driver.WriteModel</a></div><div class="ttdoc">Base class for a write model.</div><div class="ttdef"><b>Definition:</b> <a href="_write_model_8cs_source.html#l00031">WriteModel.cs:32</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_write_model_html_a78ce8ebd6da5277ef72d0425ec249e89"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_write_model.html#a78ce8ebd6da5277ef72d0425ec249e89">MongoDB.Driver.WriteModel.ModelType</a></div><div class="ttdeci">abstract WriteModelType ModelType</div><div class="ttdoc">Gets the type of the model.</div><div class="ttdef"><b>Definition:</b> <a href="_write_model_8cs_source.html#l00164">WriteModel.cs:164</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_bson_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_bson.html">MongoDB.Bson</a></div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_bson_constants_8cs_source.html#l00018">BsonConstants.cs:19</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_driver_1_1_core_1_1_operations_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_operations.html">MongoDB.Driver.Core.Operations</a></div><div class="ttdef"><b>Definition:</b> <a href="_aggregate_explain_operation_8cs_source.html#l00028">AggregateExplainOperation.cs:29</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_driver_1_1_core_1_1_operations_html_ac89f076be78311e6423215638aea19f5"><div class="ttname"><a href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_operations.html#ac89f076be78311e6423215638aea19f5">MongoDB.Driver.Core.Operations.WriteRequestType</a></div><div class="ttdeci">WriteRequestType</div><div class="ttdoc">Represents the type of a write request.</div><div class="ttdef"><b>Definition:</b> <a href="_write_request_type_8cs_source.html#l00021">WriteRequestType.cs:22</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_driver_1_1_core_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_driver_1_1_core.html">MongoDB.Driver.Core</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_queue_8cs_source.html#l00023">AsyncQueue.cs:24</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_driver_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_driver.html">MongoDB.Driver</a></div><div class="ttdef"><b>Definition:</b> <a href="_aggregate_bucket_auto_granularity_8cs_source.html#l00018">AggregateBucketAutoGranularity.cs:19</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_driver_html_a8fce9416dc94042fc4bfa998d59ac183"><div class="ttname"><a href="namespace_mongo_d_b_1_1_driver.html#a8fce9416dc94042fc4bfa998d59ac183">MongoDB.Driver.WriteModelType</a></div><div class="ttdeci">WriteModelType</div><div class="ttdoc">The type of a write model.</div><div class="ttdef"><b>Definition:</b> <a href="_write_model_type_8cs_source.html#l00026">WriteModelType.cs:27</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_html"><div class="ttname"><a href="namespace_mongo_d_b.html">MongoDB</a></div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_bson_constants_8cs_source.html#l00018">BsonConstants.cs:19</a></div></div>
+<div class="ttc" id="anamespace_system_html"><div class="ttname"><a href="namespace_system.html">System</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_method_builder_attribute_8cs_source.html#l00001">AsyncMethodBuilderAttribute.cs:2</a></div></div>
+<div class="ttc" id="astruct_mongo_d_b_1_1_bson_1_1_bson_element_html_a067bc72738ff01f904e98cb919398142"><div class="ttname"><a href="struct_mongo_d_b_1_1_bson_1_1_bson_element.html#a067bc72738ff01f904e98cb919398142">MongoDB.Bson.BsonElement.Name</a></div><div class="ttdeci">string Name</div><div class="ttdoc">Gets the name of the element.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_element_8cs_source.html#l00059">BsonElement.cs:60</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_1e261a42b4a2e33df58a15c412684b10.html">ETServer</a></li><li class="navelem"><a class="el" href="dir_473c270c995194c5ad99131d9c901f09.html">Server</a></li><li class="navelem"><a class="el" href="dir_ce426efcf63311ff42488fb2654bd4b4.html">ThirdParty</a></li><li class="navelem"><a class="el" href="dir_a37b2b5f9c8890cc9f6f8392fb0cdff3.html">MongoDBDriver</a></li><li class="navelem"><a class="el" href="dir_42d569251c6b173c0060c74ec4fd3ce0.html">MongoDB.Driver</a></li><li class="navelem"><a class="el" href="_write_model_8cs.html">WriteModel.cs</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:25:00 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

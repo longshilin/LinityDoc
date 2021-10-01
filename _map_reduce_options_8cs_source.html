@@ -1,0 +1,322 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: ETServer/Server/ThirdParty/MongoDBDriver/MongoDB.Driver/MapReduceOptions.cs 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_map_reduce_options_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">MapReduceOptions.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_map_reduce_options_8cs.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/* Copyright 2010-present MongoDB Inc.</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">* Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">* you may not use this file except in compliance with the License.</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">* You may obtain a copy of the License at</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">* http://www.apache.org/licenses/LICENSE-2.0</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">* Unless required by applicable law or agreed to in writing, software</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">* distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">* See the License for the specific language governing permissions and</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">* limitations under the License.</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_mongo_d_b.html">MongoDB</a>.<a class="code" href="namespace_mongo_d_b_1_1_bson.html">Bson</a>;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_mongo_d_b.html">MongoDB</a>.<a class="code" href="namespace_mongo_d_b_1_1_bson.html">Bson</a>.<a class="code" href="namespace_mongo_d_b_1_1_bson_1_1_serialization.html">Serialization</a>;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_mongo_d_b.html">MongoDB</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver.html">Driver</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core.html">Core</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_misc.html">Misc</a>;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_mongo_d_b_1_1_driver.html">MongoDB.Driver</a></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;{</div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_map_reduce_options.html">   28</a></span>&#160;    <span class="keyword">public</span> sealed <span class="keyword">class </span><a class="code" href="class_mongo_d_b_1_1_driver_1_1_map_reduce_options.html">MapReduceOptions</a>&lt;TDocument, TResult&gt;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    {</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <span class="comment">// fields</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">bool</span>? _bypassDocumentValidation;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <span class="keyword">private</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_collation.html">Collation</a> _collation;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <span class="keyword">private</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_filter_definition.html">FilterDefinition&lt;TDocument&gt;</a> _filter;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="keyword">private</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_java_script.html">BsonJavaScript</a> _finalize;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">bool</span>? _javaScriptMode;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">long</span>? _limit;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <span class="keyword">private</span> TimeSpan? _maxTime;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <span class="keyword">private</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_map_reduce_output_options.html">MapReduceOutputOptions</a> _outputOptions;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <span class="keyword">private</span> <a class="code" href="interface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_serializer.html">IBsonSerializer&lt;TResult&gt;</a> _resultSerializer;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <span class="keyword">private</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_document.html">BsonDocument</a> _scope;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <span class="keyword">private</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_sort_definition.html">SortDefinition&lt;TDocument&gt;</a> _sort;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <span class="keyword">private</span> <span class="keywordtype">bool</span>? _verbose;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="comment">// properties</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_map_reduce_options.html#ae6ae5d624854ef6eaae0a27c0efe2a1e">   48</a></span>&#160;<span class="comment"></span>        <span class="keyword">public</span> <span class="keywordtype">bool</span>? <a class="code" href="class_mongo_d_b_1_1_driver_1_1_map_reduce_options.html#ae6ae5d624854ef6eaae0a27c0efe2a1e">BypassDocumentValidation</a></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        {</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;            <span class="keyword">get</span> { <span class="keywordflow">return</span> _bypassDocumentValidation; }</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            <span class="keyword">set</span> { _bypassDocumentValidation = value; }</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        }</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_map_reduce_options.html#af279ac122a52ce91cba113b39e3502c9">   57</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_collation.html">Collation</a> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_collation.html">Collation</a></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        {</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            <span class="keyword">get</span> { <span class="keywordflow">return</span> _collation; }</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;            <span class="keyword">set</span> { _collation = value; }</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        }</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_map_reduce_options.html#a1f3be77e6bb817c3d28b13992389d2dc">   66</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_filter_definition.html">FilterDefinition&lt;TDocument&gt;</a> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_map_reduce_options.html#a1f3be77e6bb817c3d28b13992389d2dc">Filter</a></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        {</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            <span class="keyword">get</span> { <span class="keywordflow">return</span> _filter; }</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            <span class="keyword">set</span> { _filter = value; }</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        }</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
+<div class="line"><a name="l00075"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_map_reduce_options.html#a6a652891a53bd83d4645c3a686652edb">   75</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_java_script.html">BsonJavaScript</a> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_map_reduce_options.html#a6a652891a53bd83d4645c3a686652edb">Finalize</a></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        {</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            <span class="keyword">get</span> { <span class="keywordflow">return</span> _finalize; }</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            <span class="keyword">set</span> { _finalize = value; }</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        }</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
+<div class="line"><a name="l00084"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_map_reduce_options.html#a69e1427eae11f66e60848bf5fa08bb36">   84</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">bool</span>? <a class="code" href="class_mongo_d_b_1_1_driver_1_1_map_reduce_options.html#a69e1427eae11f66e60848bf5fa08bb36">JavaScriptMode</a></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        {</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            <span class="keyword">get</span> { <span class="keywordflow">return</span> _javaScriptMode; }</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;            <span class="keyword">set</span> { _javaScriptMode = value; }</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        }</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
+<div class="line"><a name="l00093"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_map_reduce_options.html#adc759ead2fcff4030c805b6dbdddc962">   93</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">long</span>? <a class="code" href="class_mongo_d_b_1_1_driver_1_1_map_reduce_options.html#adc759ead2fcff4030c805b6dbdddc962">Limit</a></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        {</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;            <span class="keyword">get</span> { <span class="keywordflow">return</span> _limit; }</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;            <span class="keyword">set</span> { _limit = value; }</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        }</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
+<div class="line"><a name="l00102"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_map_reduce_options.html#a11a0e0305a731bae9239d944852b52cc">  102</a></span>&#160;        <span class="keyword">public</span> TimeSpan? <a class="code" href="class_mongo_d_b_1_1_driver_1_1_map_reduce_options.html#a11a0e0305a731bae9239d944852b52cc">MaxTime</a></div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        {</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;            <span class="keyword">get</span> { <span class="keywordflow">return</span> _maxTime; }</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;            <span class="keyword">set</span> { _maxTime = Ensure.IsNullOrInfiniteOrGreaterThanOrEqualToZero(value, nameof(value)); }</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        }</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160; </div>
+<div class="line"><a name="l00111"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_map_reduce_options.html#ae2389e5b8efd9c33afb7058796e85b17">  111</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_map_reduce_output_options.html">MapReduceOutputOptions</a> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_map_reduce_options.html#ae2389e5b8efd9c33afb7058796e85b17">OutputOptions</a></div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        {</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;            <span class="keyword">get</span> { <span class="keywordflow">return</span> _outputOptions; }</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;            <span class="keyword">set</span> { _outputOptions = value; }</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        }</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160; </div>
+<div class="line"><a name="l00120"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_map_reduce_options.html#aa367e3fab065352958773ed63960419d">  120</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="interface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_serializer.html">IBsonSerializer&lt;TResult&gt;</a> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_map_reduce_options.html#aa367e3fab065352958773ed63960419d">ResultSerializer</a></div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        {</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;            <span class="keyword">get</span> { <span class="keywordflow">return</span> _resultSerializer; }</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;            <span class="keyword">set</span> { _resultSerializer = value; }</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        }</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160; </div>
+<div class="line"><a name="l00129"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_map_reduce_options.html#a136795b244b18324995c5fb122b2f0db">  129</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_mongo_d_b_1_1_bson_1_1_bson_document.html">BsonDocument</a> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_map_reduce_options.html#a136795b244b18324995c5fb122b2f0db">Scope</a></div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        {</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;            <span class="keyword">get</span> { <span class="keywordflow">return</span> _scope; }</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;            <span class="keyword">set</span> { _scope = value; }</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        }</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160; </div>
+<div class="line"><a name="l00138"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_map_reduce_options.html#afdf9b15156e3b424a34028dad454e0ca">  138</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_sort_definition.html">SortDefinition&lt;TDocument&gt;</a> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_map_reduce_options.html#afdf9b15156e3b424a34028dad454e0ca">Sort</a></div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;        {</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;            <span class="keyword">get</span> { <span class="keywordflow">return</span> _sort; }</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;            <span class="keyword">set</span> { _sort = value; }</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;        }</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160; </div>
+<div class="line"><a name="l00147"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_map_reduce_options.html#a3c8ed3c06c6689784d6d25baf267259a">  147</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">bool</span>? <a class="code" href="class_mongo_d_b_1_1_driver_1_1_map_reduce_options.html#a3c8ed3c06c6689784d6d25baf267259a">Verbose</a></div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;        {</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;            <span class="keyword">get</span> { <span class="keywordflow">return</span> _verbose; }</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;            <span class="keyword">set</span> { _verbose = value; }</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;        }</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    }</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160; </div>
+<div class="line"><a name="l00157"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_map_reduce_output_options.html">  157</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">class </span><a class="code" href="class_mongo_d_b_1_1_driver_1_1_map_reduce_output_options.html">MapReduceOutputOptions</a></div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    {</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_map_reduce_output_options.html">MapReduceOutputOptions</a> __inline = <span class="keyword">new</span> InlineOutput();</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160; </div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;        <span class="keyword">private</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_map_reduce_output_options.html">MapReduceOutputOptions</a>()</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;        { }</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160; </div>
+<div class="line"><a name="l00167"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_map_reduce_output_options.html#ae65ccd0689bc5a1fff164081e0e9f28b">  167</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_map_reduce_output_options.html">MapReduceOutputOptions</a> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_map_reduce_output_options.html#ae65ccd0689bc5a1fff164081e0e9f28b">Inline</a></div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;        {</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;            <span class="keyword">get</span> { <span class="keywordflow">return</span> __inline; }</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;        }</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160; </div>
+<div class="line"><a name="l00180"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_map_reduce_output_options.html#ad61961c958986fff219def60f740a46c">  180</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_map_reduce_output_options.html">MapReduceOutputOptions</a> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_map_reduce_output_options.html#ad61961c958986fff219def60f740a46c">Merge</a>(<span class="keywordtype">string</span> collectionName, <span class="keywordtype">string</span> databaseName = <span class="keyword">null</span>, <span class="keywordtype">bool</span>? sharded = <span class="keyword">null</span>, <span class="keywordtype">bool</span>? nonAtomic = <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;        {</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;            Ensure.IsNotNull(collectionName, nameof(collectionName));</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> CollectionOutput(collectionName, Core.Operations.MapReduceOutputMode.Merge, databaseName, sharded, nonAtomic);</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;        }</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160; </div>
+<div class="line"><a name="l00194"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_map_reduce_output_options.html#ac534b60319be7def8e338f275d7d002b">  194</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_map_reduce_output_options.html">MapReduceOutputOptions</a> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_map_reduce_output_options.html#ac534b60319be7def8e338f275d7d002b">Reduce</a>(<span class="keywordtype">string</span> collectionName, <span class="keywordtype">string</span> databaseName = <span class="keyword">null</span>, <span class="keywordtype">bool</span>? sharded = <span class="keyword">null</span>, <span class="keywordtype">bool</span>? nonAtomic = <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;        {</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;            Ensure.IsNotNull(collectionName, nameof(collectionName));</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> CollectionOutput(collectionName, Core.Operations.MapReduceOutputMode.Reduce, databaseName, sharded, nonAtomic);</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;        }</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160; </div>
+<div class="line"><a name="l00207"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_map_reduce_output_options.html#a1aa65cb3fcc94bc97477ec88145d6ee3">  207</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_map_reduce_output_options.html">MapReduceOutputOptions</a> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_map_reduce_output_options.html#a1aa65cb3fcc94bc97477ec88145d6ee3">Replace</a>(<span class="keywordtype">string</span> collectionName, <span class="keywordtype">string</span> databaseName = <span class="keyword">null</span>, <span class="keywordtype">bool</span>? sharded = <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;        {</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;            Ensure.IsNotNull(collectionName, nameof(collectionName));</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> CollectionOutput(collectionName, Core.Operations.MapReduceOutputMode.Replace, databaseName, sharded, <span class="keyword">null</span>);</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;        }</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160; </div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;        <span class="keyword">internal</span> sealed <span class="keyword">class </span>InlineOutput : <a class="code" href="class_mongo_d_b_1_1_driver_1_1_map_reduce_output_options.html">MapReduceOutputOptions</a></div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;        {</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;            <span class="keyword">internal</span> InlineOutput()</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;            { }</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;        }</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160; </div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;        <span class="keyword">internal</span> sealed <span class="keyword">class </span>CollectionOutput : MapReduceOutputOptions</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;        {</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;            <span class="keyword">private</span> readonly <span class="keywordtype">string</span> _collectionName;</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;            <span class="keyword">private</span> readonly <span class="keywordtype">string</span> _databaseName;</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;            <span class="keyword">private</span> readonly <span class="keywordtype">bool</span>? _nonAtomic;</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;            <span class="keyword">private</span> readonly Core.Operations.MapReduceOutputMode _outputMode;</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;            <span class="keyword">private</span> readonly <span class="keywordtype">bool</span>? _sharded;</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160; </div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;            <span class="keyword">internal</span> CollectionOutput(<span class="keywordtype">string</span> collectionName, Core.Operations.MapReduceOutputMode outputMode, <span class="keywordtype">string</span> databaseName = <span class="keyword">null</span>, <span class="keywordtype">bool</span>? sharded = <span class="keyword">null</span>, <span class="keywordtype">bool</span>? nonAtomic = <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;            {</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;                _collectionName = collectionName;</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;                _outputMode = outputMode;</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;                _databaseName = databaseName;</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;                _sharded = sharded;</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;                _nonAtomic = nonAtomic;</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;            }</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160; </div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;            <span class="keyword">public</span> <span class="keywordtype">string</span> CollectionName</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;            {</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;                <span class="keyword">get</span> { <span class="keywordflow">return</span> _collectionName; }</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;            }</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160; </div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;            <span class="keyword">public</span> <span class="keywordtype">string</span> DatabaseName</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;            {</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;                <span class="keyword">get</span> { <span class="keywordflow">return</span> _databaseName; }</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;            }</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160; </div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;            <span class="keyword">public</span> <span class="keywordtype">bool</span>? NonAtomic</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;            {</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;                <span class="keyword">get</span> { <span class="keywordflow">return</span> _nonAtomic; }</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;            }</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160; </div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;            <span class="keyword">public</span> Core.Operations.MapReduceOutputMode OutputMode</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;            {</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;                <span class="keyword">get</span> { <span class="keywordflow">return</span> _outputMode; }</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;            }</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160; </div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;            <span class="keyword">public</span> <span class="keywordtype">bool</span>? <a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_clusters.html#a516671ce2cd18eff6d8755893afb1aa0a5bfe9ae63c44635c7ec171285fc7dbac">Sharded</a></div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;            {</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;                <span class="keyword">get</span> { <span class="keywordflow">return</span> _sharded; }</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;            }</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;        }</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;    }</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;}</div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_bson_document_html"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_bson_document.html">MongoDB.Bson.BsonDocument</a></div><div class="ttdoc">Represents a BSON document.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_document_8cs_source.html#l00034">BsonDocument.cs:35</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_bson_1_1_bson_java_script_html"><div class="ttname"><a href="class_mongo_d_b_1_1_bson_1_1_bson_java_script.html">MongoDB.Bson.BsonJavaScript</a></div><div class="ttdoc">Represents a BSON JavaScript value.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_object_model_2_bson_java_script_8cs_source.html#l00026">BsonJavaScript.cs:27</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_collation_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_collation.html">MongoDB.Driver.Collation</a></div><div class="ttdoc">Represents a MongoDB collation.</div><div class="ttdef"><b>Definition:</b> <a href="_collation_8cs_source.html#l00102">Collation.cs:103</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_filter_definition_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_filter_definition.html">MongoDB.Driver.FilterDefinition</a></div><div class="ttdoc">Base class for filters.</div><div class="ttdef"><b>Definition:</b> <a href="_filter_definition_8cs_source.html#l00032">FilterDefinition.cs:33</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_map_reduce_options_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_map_reduce_options.html">MongoDB.Driver.MapReduceOptions</a></div><div class="ttdoc">Represents the options for a map-reduce operation.</div><div class="ttdef"><b>Definition:</b> <a href="_map_reduce_options_8cs_source.html#l00028">MapReduceOptions.cs:29</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_map_reduce_options_html_a11a0e0305a731bae9239d944852b52cc"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_map_reduce_options.html#a11a0e0305a731bae9239d944852b52cc">MongoDB.Driver.MapReduceOptions.MaxTime</a></div><div class="ttdeci">TimeSpan? MaxTime</div><div class="ttdoc">Gets or sets the maximum time.</div><div class="ttdef"><b>Definition:</b> <a href="_map_reduce_options_8cs_source.html#l00102">MapReduceOptions.cs:103</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_map_reduce_options_html_a136795b244b18324995c5fb122b2f0db"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_map_reduce_options.html#a136795b244b18324995c5fb122b2f0db">MongoDB.Driver.MapReduceOptions.Scope</a></div><div class="ttdeci">BsonDocument Scope</div><div class="ttdoc">Gets or sets the scope.</div><div class="ttdef"><b>Definition:</b> <a href="_map_reduce_options_8cs_source.html#l00129">MapReduceOptions.cs:130</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_map_reduce_options_html_a1f3be77e6bb817c3d28b13992389d2dc"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_map_reduce_options.html#a1f3be77e6bb817c3d28b13992389d2dc">MongoDB.Driver.MapReduceOptions.Filter</a></div><div class="ttdeci">FilterDefinition&lt; TDocument &gt; Filter</div><div class="ttdoc">Gets or sets the filter.</div><div class="ttdef"><b>Definition:</b> <a href="_map_reduce_options_8cs_source.html#l00066">MapReduceOptions.cs:67</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_map_reduce_options_html_a3c8ed3c06c6689784d6d25baf267259a"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_map_reduce_options.html#a3c8ed3c06c6689784d6d25baf267259a">MongoDB.Driver.MapReduceOptions.Verbose</a></div><div class="ttdeci">bool? Verbose</div><div class="ttdoc">Gets or sets whether to include timing information.</div><div class="ttdef"><b>Definition:</b> <a href="_map_reduce_options_8cs_source.html#l00147">MapReduceOptions.cs:148</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_map_reduce_options_html_a69e1427eae11f66e60848bf5fa08bb36"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_map_reduce_options.html#a69e1427eae11f66e60848bf5fa08bb36">MongoDB.Driver.MapReduceOptions.JavaScriptMode</a></div><div class="ttdeci">bool? JavaScriptMode</div><div class="ttdoc">Gets or sets the java script mode.</div><div class="ttdef"><b>Definition:</b> <a href="_map_reduce_options_8cs_source.html#l00084">MapReduceOptions.cs:85</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_map_reduce_options_html_a6a652891a53bd83d4645c3a686652edb"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_map_reduce_options.html#a6a652891a53bd83d4645c3a686652edb">MongoDB.Driver.MapReduceOptions.Finalize</a></div><div class="ttdeci">BsonJavaScript Finalize</div><div class="ttdoc">Gets or sets the finalize function.</div><div class="ttdef"><b>Definition:</b> <a href="_map_reduce_options_8cs_source.html#l00075">MapReduceOptions.cs:76</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_map_reduce_options_html_aa367e3fab065352958773ed63960419d"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_map_reduce_options.html#aa367e3fab065352958773ed63960419d">MongoDB.Driver.MapReduceOptions.ResultSerializer</a></div><div class="ttdeci">IBsonSerializer&lt; TResult &gt; ResultSerializer</div><div class="ttdoc">Gets or sets the result serializer.</div><div class="ttdef"><b>Definition:</b> <a href="_map_reduce_options_8cs_source.html#l00120">MapReduceOptions.cs:121</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_map_reduce_options_html_adc759ead2fcff4030c805b6dbdddc962"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_map_reduce_options.html#adc759ead2fcff4030c805b6dbdddc962">MongoDB.Driver.MapReduceOptions.Limit</a></div><div class="ttdeci">long? Limit</div><div class="ttdoc">Gets or sets the limit.</div><div class="ttdef"><b>Definition:</b> <a href="_map_reduce_options_8cs_source.html#l00093">MapReduceOptions.cs:94</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_map_reduce_options_html_ae2389e5b8efd9c33afb7058796e85b17"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_map_reduce_options.html#ae2389e5b8efd9c33afb7058796e85b17">MongoDB.Driver.MapReduceOptions.OutputOptions</a></div><div class="ttdeci">MapReduceOutputOptions OutputOptions</div><div class="ttdoc">Gets or sets the output options.</div><div class="ttdef"><b>Definition:</b> <a href="_map_reduce_options_8cs_source.html#l00111">MapReduceOptions.cs:112</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_map_reduce_options_html_ae6ae5d624854ef6eaae0a27c0efe2a1e"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_map_reduce_options.html#ae6ae5d624854ef6eaae0a27c0efe2a1e">MongoDB.Driver.MapReduceOptions.BypassDocumentValidation</a></div><div class="ttdeci">bool? BypassDocumentValidation</div><div class="ttdoc">Gets or sets a value indicating whether to bypass document validation.</div><div class="ttdef"><b>Definition:</b> <a href="_map_reduce_options_8cs_source.html#l00048">MapReduceOptions.cs:49</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_map_reduce_options_html_afdf9b15156e3b424a34028dad454e0ca"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_map_reduce_options.html#afdf9b15156e3b424a34028dad454e0ca">MongoDB.Driver.MapReduceOptions.Sort</a></div><div class="ttdeci">SortDefinition&lt; TDocument &gt; Sort</div><div class="ttdoc">Gets or sets the sort.</div><div class="ttdef"><b>Definition:</b> <a href="_map_reduce_options_8cs_source.html#l00138">MapReduceOptions.cs:139</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_map_reduce_output_options_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_map_reduce_output_options.html">MongoDB.Driver.MapReduceOutputOptions</a></div><div class="ttdoc">Represents the output options for a map-reduce operation.</div><div class="ttdef"><b>Definition:</b> <a href="_map_reduce_options_8cs_source.html#l00157">MapReduceOptions.cs:158</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_map_reduce_output_options_html_a1aa65cb3fcc94bc97477ec88145d6ee3"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_map_reduce_output_options.html#a1aa65cb3fcc94bc97477ec88145d6ee3">MongoDB.Driver.MapReduceOutputOptions.Replace</a></div><div class="ttdeci">static MapReduceOutputOptions Replace(string collectionName, string databaseName=null, bool? sharded=null)</div><div class="ttdoc">A replace map-reduce output options.</div><div class="ttdef"><b>Definition:</b> <a href="_map_reduce_options_8cs_source.html#l00207">MapReduceOptions.cs:207</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_map_reduce_output_options_html_ac534b60319be7def8e338f275d7d002b"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_map_reduce_output_options.html#ac534b60319be7def8e338f275d7d002b">MongoDB.Driver.MapReduceOutputOptions.Reduce</a></div><div class="ttdeci">static MapReduceOutputOptions Reduce(string collectionName, string databaseName=null, bool? sharded=null, bool? nonAtomic=null)</div><div class="ttdoc">A reduce map-reduce output options.</div><div class="ttdef"><b>Definition:</b> <a href="_map_reduce_options_8cs_source.html#l00194">MapReduceOptions.cs:194</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_map_reduce_output_options_html_ad61961c958986fff219def60f740a46c"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_map_reduce_output_options.html#ad61961c958986fff219def60f740a46c">MongoDB.Driver.MapReduceOutputOptions.Merge</a></div><div class="ttdeci">static MapReduceOutputOptions Merge(string collectionName, string databaseName=null, bool? sharded=null, bool? nonAtomic=null)</div><div class="ttdoc">A merge map-reduce output options.</div><div class="ttdef"><b>Definition:</b> <a href="_map_reduce_options_8cs_source.html#l00180">MapReduceOptions.cs:180</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_map_reduce_output_options_html_ae65ccd0689bc5a1fff164081e0e9f28b"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_map_reduce_output_options.html#ae65ccd0689bc5a1fff164081e0e9f28b">MongoDB.Driver.MapReduceOutputOptions.Inline</a></div><div class="ttdeci">static MapReduceOutputOptions Inline</div><div class="ttdoc">An inline map-reduce output options.</div><div class="ttdef"><b>Definition:</b> <a href="_map_reduce_options_8cs_source.html#l00167">MapReduceOptions.cs:168</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_sort_definition_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_sort_definition.html">MongoDB.Driver.SortDefinition</a></div><div class="ttdoc">Base class for sorts.</div><div class="ttdef"><b>Definition:</b> <a href="_sort_definition_8cs_source.html#l00043">SortDefinition.cs:44</a></div></div>
+<div class="ttc" id="ainterface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_serializer_html"><div class="ttname"><a href="interface_mongo_d_b_1_1_bson_1_1_serialization_1_1_i_bson_serializer.html">MongoDB.Bson.Serialization.IBsonSerializer&lt; TResult &gt;</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_bson_1_1_serialization_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_bson_1_1_serialization.html">MongoDB.Bson.Serialization</a></div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_serialization_2_attributed_serialization_provider_8cs_source.html#l00021">AttributedSerializationProvider.cs:22</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_bson_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_bson.html">MongoDB.Bson</a></div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_bson_constants_8cs_source.html#l00018">BsonConstants.cs:19</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_driver_1_1_core_1_1_clusters_html_a516671ce2cd18eff6d8755893afb1aa0a5bfe9ae63c44635c7ec171285fc7dbac"><div class="ttname"><a href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_clusters.html#a516671ce2cd18eff6d8755893afb1aa0a5bfe9ae63c44635c7ec171285fc7dbac">MongoDB.Driver.Core.Clusters.ClusterConnectionMode.Sharded</a></div><div class="ttdeci">@ Sharded</div><div class="ttdoc">Connect to one or more shard routers.</div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_driver_1_1_core_1_1_misc_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_misc.html">MongoDB.Driver.Core.Misc</a></div><div class="ttdef"><b>Definition:</b> <a href="_array_filters_feature_8cs_source.html#l00020">ArrayFiltersFeature.cs:21</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_driver_1_1_core_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_driver_1_1_core.html">MongoDB.Driver.Core</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_queue_8cs_source.html#l00023">AsyncQueue.cs:24</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_driver_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_driver.html">MongoDB.Driver</a></div><div class="ttdef"><b>Definition:</b> <a href="_aggregate_bucket_auto_granularity_8cs_source.html#l00018">AggregateBucketAutoGranularity.cs:19</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_html"><div class="ttname"><a href="namespace_mongo_d_b.html">MongoDB</a></div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_bson_constants_8cs_source.html#l00018">BsonConstants.cs:19</a></div></div>
+<div class="ttc" id="anamespace_system_html"><div class="ttname"><a href="namespace_system.html">System</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_method_builder_attribute_8cs_source.html#l00001">AsyncMethodBuilderAttribute.cs:2</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_1e261a42b4a2e33df58a15c412684b10.html">ETServer</a></li><li class="navelem"><a class="el" href="dir_473c270c995194c5ad99131d9c901f09.html">Server</a></li><li class="navelem"><a class="el" href="dir_ce426efcf63311ff42488fb2654bd4b4.html">ThirdParty</a></li><li class="navelem"><a class="el" href="dir_a37b2b5f9c8890cc9f6f8392fb0cdff3.html">MongoDBDriver</a></li><li class="navelem"><a class="el" href="dir_42d569251c6b173c0060c74ec4fd3ce0.html">MongoDB.Driver</a></li><li class="navelem"><a class="el" href="_map_reduce_options_8cs.html">MapReduceOptions.cs</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:25:00 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

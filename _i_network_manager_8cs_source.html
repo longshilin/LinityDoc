@@ -1,0 +1,159 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: Assets/Scripts/Libraries/GameFramework/Libraries/GameFramework-2021.05.31/GameFramework/Network/INetworkManager.cs 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_i_network_manager_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">INetworkManager.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_i_network_manager_8cs.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">//------------------------------------------------------------</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">// Game Framework</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">// Copyright © 2013-2021 Jiang Yin. All rights reserved.</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">// Homepage: https://gameframework.cn/</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">// Feedback: mailto:ellan@gameframework.cn</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">//------------------------------------------------------------</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Collections.Generic;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_game_framework_1_1_network.html">GameFramework.Network</a></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;{</div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_network_1_1_i_network_manager.html">   16</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">interface </span><a class="code" href="interface_game_framework_1_1_network_1_1_i_network_manager.html">INetworkManager</a></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    {</div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_network_1_1_i_network_manager.html#a46a906bc033b171c28387697d1e10729">   21</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="interface_game_framework_1_1_network_1_1_i_network_manager.html#a46a906bc033b171c28387697d1e10729">NetworkChannelCount</a></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        {</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;            <span class="keyword">get</span>;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        }</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_network_1_1_i_network_manager.html#a93f4219767a45a121fa4f75dc63dea67">   29</a></span>&#160;        <span class="keyword">event</span> EventHandler&lt;NetworkConnectedEventArgs&gt; <a class="code" href="interface_game_framework_1_1_network_1_1_i_network_manager.html#a93f4219767a45a121fa4f75dc63dea67">NetworkConnected</a>;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_network_1_1_i_network_manager.html#a1909fe73ac588e1ea3d90577d4d86e9c">   34</a></span>&#160;        <span class="keyword">event</span> EventHandler&lt;NetworkClosedEventArgs&gt; <a class="code" href="interface_game_framework_1_1_network_1_1_i_network_manager.html#a1909fe73ac588e1ea3d90577d4d86e9c">NetworkClosed</a>;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_network_1_1_i_network_manager.html#ad0875d8eb6fc3158c6f8000cc3a2d956">   39</a></span>&#160;        <span class="keyword">event</span> EventHandler&lt;NetworkMissHeartBeatEventArgs&gt; <a class="code" href="interface_game_framework_1_1_network_1_1_i_network_manager.html#ad0875d8eb6fc3158c6f8000cc3a2d956">NetworkMissHeartBeat</a>;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_network_1_1_i_network_manager.html#ae9f8b008c287eb9b12a7654a305e496f">   44</a></span>&#160;        <span class="keyword">event</span> EventHandler&lt;NetworkErrorEventArgs&gt; <a class="code" href="interface_game_framework_1_1_network_1_1_i_network_manager.html#ae9f8b008c287eb9b12a7654a305e496f">NetworkError</a>;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_network_1_1_i_network_manager.html#a9accfce903a99a0df27f1c254ee5ad4d">   49</a></span>&#160;        <span class="keyword">event</span> EventHandler&lt;NetworkCustomErrorEventArgs&gt; <a class="code" href="interface_game_framework_1_1_network_1_1_i_network_manager.html#a9accfce903a99a0df27f1c254ee5ad4d">NetworkCustomError</a>;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_network_1_1_i_network_manager.html#ad181ab094cdf8e4404f5211816496145">   56</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="interface_game_framework_1_1_network_1_1_i_network_manager.html#ad181ab094cdf8e4404f5211816496145">HasNetworkChannel</a>(<span class="keywordtype">string</span> name);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_network_1_1_i_network_manager.html#ad1a063b890b854480f8c5fe5205048fd">   63</a></span>&#160;        <a class="code" href="interface_game_framework_1_1_network_1_1_i_network_channel.html">INetworkChannel</a> <a class="code" href="interface_game_framework_1_1_network_1_1_i_network_manager.html#ad1a063b890b854480f8c5fe5205048fd">GetNetworkChannel</a>(<span class="keywordtype">string</span> name);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_network_1_1_i_network_manager.html#ac5c48017024b5942d04bf6a4ac4684ed">   69</a></span>&#160;        <a class="code" href="interface_game_framework_1_1_network_1_1_i_network_channel.html">INetworkChannel</a>[] <a class="code" href="interface_game_framework_1_1_network_1_1_i_network_manager.html#ac5c48017024b5942d04bf6a4ac4684ed">GetAllNetworkChannels</a>();</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
+<div class="line"><a name="l00075"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_network_1_1_i_network_manager.html#a7cd5331097c39dbe4879fefbc5334309">   75</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="interface_game_framework_1_1_network_1_1_i_network_manager.html#a7cd5331097c39dbe4879fefbc5334309">GetAllNetworkChannels</a>(List&lt;INetworkChannel&gt; results);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00084"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_network_1_1_i_network_manager.html#a1193eb3d101ef11542cea30459577df0">   84</a></span>&#160;        <a class="code" href="interface_game_framework_1_1_network_1_1_i_network_channel.html">INetworkChannel</a> <a class="code" href="interface_game_framework_1_1_network_1_1_i_network_manager.html#a1193eb3d101ef11542cea30459577df0">CreateNetworkChannel</a>(<span class="keywordtype">string</span> name, <a class="code" href="namespace_game_framework_1_1_network.html#a31948eb1ec32add66777f3fb7a9b792e">ServiceType</a> serviceType, <a class="code" href="interface_game_framework_1_1_network_1_1_i_network_channel_helper.html">INetworkChannelHelper</a> networkChannelHelper);</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
+<div class="line"><a name="l00091"></a><span class="lineno"><a class="line" href="interface_game_framework_1_1_network_1_1_i_network_manager.html#aad596f86207f6ed0f6bcb146fc977563">   91</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="interface_game_framework_1_1_network_1_1_i_network_manager.html#aad596f86207f6ed0f6bcb146fc977563">DestroyNetworkChannel</a>(<span class="keywordtype">string</span> name);</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    }</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;}</div>
+<div class="ttc" id="ainterface_game_framework_1_1_network_1_1_i_network_channel_helper_html"><div class="ttname"><a href="interface_game_framework_1_1_network_1_1_i_network_channel_helper.html">GameFramework.Network.INetworkChannelHelper</a></div><div class="ttdoc">网络频道辅助器接口。</div><div class="ttdef"><b>Definition:</b> <a href="_i_network_channel_helper_8cs_source.html#l00015">INetworkChannelHelper.cs:16</a></div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_network_1_1_i_network_channel_html"><div class="ttname"><a href="interface_game_framework_1_1_network_1_1_i_network_channel.html">GameFramework.Network.INetworkChannel</a></div><div class="ttdoc">网络频道接口。</div><div class="ttdef"><b>Definition:</b> <a href="_i_network_channel_8cs_source.html#l00017">INetworkChannel.cs:18</a></div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_network_1_1_i_network_manager_html"><div class="ttname"><a href="interface_game_framework_1_1_network_1_1_i_network_manager.html">GameFramework.Network.INetworkManager</a></div><div class="ttdoc">网络管理器接口。</div><div class="ttdef"><b>Definition:</b> <a href="_i_network_manager_8cs_source.html#l00016">INetworkManager.cs:17</a></div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_network_1_1_i_network_manager_html_a1193eb3d101ef11542cea30459577df0"><div class="ttname"><a href="interface_game_framework_1_1_network_1_1_i_network_manager.html#a1193eb3d101ef11542cea30459577df0">GameFramework.Network.INetworkManager.CreateNetworkChannel</a></div><div class="ttdeci">INetworkChannel CreateNetworkChannel(string name, ServiceType serviceType, INetworkChannelHelper networkChannelHelper)</div><div class="ttdoc">创建网络频道。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_network_1_1_i_network_manager_html_a1909fe73ac588e1ea3d90577d4d86e9c"><div class="ttname"><a href="interface_game_framework_1_1_network_1_1_i_network_manager.html#a1909fe73ac588e1ea3d90577d4d86e9c">GameFramework.Network.INetworkManager.NetworkClosed</a></div><div class="ttdeci">EventHandler&lt; NetworkClosedEventArgs &gt; NetworkClosed</div><div class="ttdoc">网络连接关闭事件。</div><div class="ttdef"><b>Definition:</b> <a href="_i_network_manager_8cs_source.html#l00034">INetworkManager.cs:34</a></div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_network_1_1_i_network_manager_html_a46a906bc033b171c28387697d1e10729"><div class="ttname"><a href="interface_game_framework_1_1_network_1_1_i_network_manager.html#a46a906bc033b171c28387697d1e10729">GameFramework.Network.INetworkManager.NetworkChannelCount</a></div><div class="ttdeci">int NetworkChannelCount</div><div class="ttdoc">获取网络频道数量。</div><div class="ttdef"><b>Definition:</b> <a href="_i_network_manager_8cs_source.html#l00021">INetworkManager.cs:22</a></div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_network_1_1_i_network_manager_html_a7cd5331097c39dbe4879fefbc5334309"><div class="ttname"><a href="interface_game_framework_1_1_network_1_1_i_network_manager.html#a7cd5331097c39dbe4879fefbc5334309">GameFramework.Network.INetworkManager.GetAllNetworkChannels</a></div><div class="ttdeci">void GetAllNetworkChannels(List&lt; INetworkChannel &gt; results)</div><div class="ttdoc">获取所有网络频道。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_network_1_1_i_network_manager_html_a93f4219767a45a121fa4f75dc63dea67"><div class="ttname"><a href="interface_game_framework_1_1_network_1_1_i_network_manager.html#a93f4219767a45a121fa4f75dc63dea67">GameFramework.Network.INetworkManager.NetworkConnected</a></div><div class="ttdeci">EventHandler&lt; NetworkConnectedEventArgs &gt; NetworkConnected</div><div class="ttdoc">网络连接成功事件。</div><div class="ttdef"><b>Definition:</b> <a href="_i_network_manager_8cs_source.html#l00029">INetworkManager.cs:29</a></div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_network_1_1_i_network_manager_html_a9accfce903a99a0df27f1c254ee5ad4d"><div class="ttname"><a href="interface_game_framework_1_1_network_1_1_i_network_manager.html#a9accfce903a99a0df27f1c254ee5ad4d">GameFramework.Network.INetworkManager.NetworkCustomError</a></div><div class="ttdeci">EventHandler&lt; NetworkCustomErrorEventArgs &gt; NetworkCustomError</div><div class="ttdoc">用户自定义网络错误事件。</div><div class="ttdef"><b>Definition:</b> <a href="_i_network_manager_8cs_source.html#l00049">INetworkManager.cs:49</a></div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_network_1_1_i_network_manager_html_aad596f86207f6ed0f6bcb146fc977563"><div class="ttname"><a href="interface_game_framework_1_1_network_1_1_i_network_manager.html#aad596f86207f6ed0f6bcb146fc977563">GameFramework.Network.INetworkManager.DestroyNetworkChannel</a></div><div class="ttdeci">bool DestroyNetworkChannel(string name)</div><div class="ttdoc">销毁网络频道。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_network_1_1_i_network_manager_html_ac5c48017024b5942d04bf6a4ac4684ed"><div class="ttname"><a href="interface_game_framework_1_1_network_1_1_i_network_manager.html#ac5c48017024b5942d04bf6a4ac4684ed">GameFramework.Network.INetworkManager.GetAllNetworkChannels</a></div><div class="ttdeci">INetworkChannel[] GetAllNetworkChannels()</div><div class="ttdoc">获取所有网络频道。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_network_1_1_i_network_manager_html_ad0875d8eb6fc3158c6f8000cc3a2d956"><div class="ttname"><a href="interface_game_framework_1_1_network_1_1_i_network_manager.html#ad0875d8eb6fc3158c6f8000cc3a2d956">GameFramework.Network.INetworkManager.NetworkMissHeartBeat</a></div><div class="ttdeci">EventHandler&lt; NetworkMissHeartBeatEventArgs &gt; NetworkMissHeartBeat</div><div class="ttdoc">网络心跳包丢失事件。</div><div class="ttdef"><b>Definition:</b> <a href="_i_network_manager_8cs_source.html#l00039">INetworkManager.cs:39</a></div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_network_1_1_i_network_manager_html_ad181ab094cdf8e4404f5211816496145"><div class="ttname"><a href="interface_game_framework_1_1_network_1_1_i_network_manager.html#ad181ab094cdf8e4404f5211816496145">GameFramework.Network.INetworkManager.HasNetworkChannel</a></div><div class="ttdeci">bool HasNetworkChannel(string name)</div><div class="ttdoc">检查是否存在网络频道。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_network_1_1_i_network_manager_html_ad1a063b890b854480f8c5fe5205048fd"><div class="ttname"><a href="interface_game_framework_1_1_network_1_1_i_network_manager.html#ad1a063b890b854480f8c5fe5205048fd">GameFramework.Network.INetworkManager.GetNetworkChannel</a></div><div class="ttdeci">INetworkChannel GetNetworkChannel(string name)</div><div class="ttdoc">获取网络频道。</div></div>
+<div class="ttc" id="ainterface_game_framework_1_1_network_1_1_i_network_manager_html_ae9f8b008c287eb9b12a7654a305e496f"><div class="ttname"><a href="interface_game_framework_1_1_network_1_1_i_network_manager.html#ae9f8b008c287eb9b12a7654a305e496f">GameFramework.Network.INetworkManager.NetworkError</a></div><div class="ttdeci">EventHandler&lt; NetworkErrorEventArgs &gt; NetworkError</div><div class="ttdoc">网络错误事件。</div><div class="ttdef"><b>Definition:</b> <a href="_i_network_manager_8cs_source.html#l00044">INetworkManager.cs:44</a></div></div>
+<div class="ttc" id="anamespace_game_framework_1_1_network_html"><div class="ttname"><a href="namespace_game_framework_1_1_network.html">GameFramework.Network</a></div><div class="ttdef"><b>Definition:</b> <a href="_address_family_8cs_source.html#l00008">AddressFamily.cs:9</a></div></div>
+<div class="ttc" id="anamespace_game_framework_1_1_network_html_a31948eb1ec32add66777f3fb7a9b792e"><div class="ttname"><a href="namespace_game_framework_1_1_network.html#a31948eb1ec32add66777f3fb7a9b792e">GameFramework.Network.ServiceType</a></div><div class="ttdeci">ServiceType</div><div class="ttdoc">网络服务类型。</div><div class="ttdef"><b>Definition:</b> <a href="_service_type_8cs_source.html#l00013">ServiceType.cs:14</a></div></div>
+<div class="ttc" id="anamespace_system_html"><div class="ttname"><a href="namespace_system.html">System</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_method_builder_attribute_8cs_source.html#l00001">AsyncMethodBuilderAttribute.cs:2</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_84bbf7b3c7f28a5a18725745e1505219.html">Assets</a></li><li class="navelem"><a class="el" href="dir_f13b41af88cf68434578284aaf699e39.html">Scripts</a></li><li class="navelem"><a class="el" href="dir_46d134a3bf82cf4dc49ca8f728aea58c.html">Libraries</a></li><li class="navelem"><a class="el" href="dir_7a6862c303020716b3c311e95823547c.html">GameFramework</a></li><li class="navelem"><a class="el" href="dir_bfc6cd8d089c265c897460523cef6560.html">Libraries</a></li><li class="navelem"><a class="el" href="dir_c1104d2df307bba6f9db4e185ff99743.html">GameFramework-2021.05.31</a></li><li class="navelem"><a class="el" href="dir_fe759fdbe5a0d8b8465ec936ca1014c7.html">GameFramework</a></li><li class="navelem"><a class="el" href="dir_3ab36864985e01bc0b0e2c5602c784d8.html">Network</a></li><li class="navelem"><a class="el" href="_i_network_manager_8cs.html">INetworkManager.cs</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:24:47 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

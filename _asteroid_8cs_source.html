@@ -1,0 +1,202 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: Assets/Scripts/GameMain/Entity/EntityLogic/Asteroid.cs 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_asteroid_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">Asteroid.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_asteroid_8cs.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">//------------------------------------------------------------</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">// Game Framework</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">// Copyright © 2013-2021 Jiang Yin. All rights reserved.</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">// Homepage: https://gameframework.cn/</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">// Feedback: mailto:ellan@gameframework.cn</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">//------------------------------------------------------------</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_unity_engine.html">UnityEngine</a>;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_unity_game_framework.html">UnityGameFramework</a>.<a class="code" href="namespace_unity_game_framework_1_1_runtime.html">Runtime</a>;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_linity.html">Linity</a></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;{</div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="class_linity_1_1_asteroid.html">   16</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="class_linity_1_1_asteroid.html">Asteroid</a> : <a class="code" href="class_linity_1_1_targetable_object.html">TargetableObject</a></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    {</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        [SerializeField]</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <span class="keyword">private</span> <a class="code" href="class_linity_1_1_asteroid_data.html">AsteroidData</a> m_AsteroidData = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <span class="keyword">private</span> <a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a> m_RotateSphere = <a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a>.<a class="code" href="struct_unity_engine_1_1_vector3.html#a5ee4172032dfc66b99c27713f0122eaa">zero</a>;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#if UNITY_2017_3_OR_NEWER</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <span class="keyword">protected</span> <span class="keyword">override</span> <span class="keywordtype">void</span> OnInit(<span class="keywordtype">object</span> userData)</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <span class="keyword">protected</span> <span class="keyword">internal</span> <span class="keyword">override</span> <span class="keywordtype">void</span> OnInit(<span class="keywordtype">object</span> userData)</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        {</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;            base.OnInit(userData);</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        }</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#if UNITY_2017_3_OR_NEWER</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <span class="keyword">protected</span> <span class="keyword">override</span> <span class="keywordtype">void</span> OnShow(<span class="keywordtype">object</span> userData)</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <span class="keyword">protected</span> <span class="keyword">internal</span> <span class="keyword">override</span> <span class="keywordtype">void</span> OnShow(<span class="keywordtype">object</span> userData)</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        {</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;            base.OnShow(userData);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            m_AsteroidData = userData as <a class="code" href="class_linity_1_1_asteroid_data.html">AsteroidData</a>;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            <span class="keywordflow">if</span> (m_AsteroidData == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;            {</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;                <a class="code" href="_login_form_8cs.html#a6208db3ac52d7f107a612679d0d8eca3">Log</a>.Error(<span class="stringliteral">&quot;Asteroid data is invalid.&quot;</span>);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            }</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            m_RotateSphere = Random.insideUnitSphere;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        }</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor">#if UNITY_2017_3_OR_NEWER</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <span class="keyword">protected</span> <span class="keyword">override</span> <span class="keywordtype">void</span> OnUpdate(<span class="keywordtype">float</span> elapseSeconds, <span class="keywordtype">float</span> realElapseSeconds)</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <span class="keyword">protected</span> <span class="keyword">internal</span> <span class="keyword">override</span> <span class="keywordtype">void</span> OnUpdate(<span class="keywordtype">float</span> elapseSeconds, <span class="keywordtype">float</span> realElapseSeconds)</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        {</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            base.OnUpdate(elapseSeconds, realElapseSeconds);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_entity_logic.html#a6ecaada7d2284ccfd742fe77dfae1ec3">CachedTransform</a>.Translate(<a class="code" href="struct_unity_engine_1_1_vector3.html">Vector3</a>.<a class="code" href="struct_unity_engine_1_1_vector3.html#a7f3b016c2acf2e63060dce2a4415abf5">back</a> * m_AsteroidData.<a class="code" href="class_linity_1_1_asteroid_data.html#a7fc6966c581678710eb865f2ed3e8cec">Speed</a> * elapseSeconds, Space.World);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            <a class="code" href="class_unity_game_framework_1_1_runtime_1_1_entity_logic.html#a6ecaada7d2284ccfd742fe77dfae1ec3">CachedTransform</a>.Rotate(m_RotateSphere * m_AsteroidData.<a class="code" href="class_linity_1_1_asteroid_data.html#a80793d98ad134fbb1a18e799a165bdd3">AngularSpeed</a> * elapseSeconds, Space.Self);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        }</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="class_linity_1_1_asteroid.html#a4a7b447c6c26e7c49a3e62b293db8e05">   62</a></span>&#160;        <span class="keyword">protected</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code" href="class_linity_1_1_asteroid.html#a4a7b447c6c26e7c49a3e62b293db8e05">OnDead</a>(<a class="code" href="class_linity_1_1_entity.html">Entity</a> attacker)</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        {</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            base.OnDead(attacker);</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            <a class="code" href="class_linity_1_1_game_entry.html">GameEntry</a>.<a class="code" href="class_linity_1_1_game_entry.html#a2b753b5604a6f850414b3e4b583c31ea">Entity</a>.ShowEffect(<span class="keyword">new</span> <a class="code" href="class_linity_1_1_effect_data.html">EffectData</a>(<a class="code" href="class_linity_1_1_game_entry.html">GameEntry</a>.<a class="code" href="class_linity_1_1_game_entry.html#a2b753b5604a6f850414b3e4b583c31ea">Entity</a>.GenerateSerialId(), m_AsteroidData.<a class="code" href="class_linity_1_1_asteroid_data.html#a621116377692a638d3102cfdaaa1a4bc">DeadEffectId</a>)</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            {</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                Position = CachedTransform.localPosition,</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            });</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            <a class="code" href="class_linity_1_1_game_entry.html">GameEntry</a>.<a class="code" href="class_linity_1_1_game_entry.html#ab66cf6c6feb634c4e2198330a585a02a">Sound</a>.<a class="code" href="class_unity_game_framework_1_1_runtime_1_1_sound_component.html#a9b16df63d863cfd8a120357d9b13dd8d">PlaySound</a>(m_AsteroidData.<a class="code" href="class_linity_1_1_asteroid_data.html#a0bbbb62aedaeeb6d01d4b2b5b67ba98b">DeadSoundId</a>);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        }</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
+<div class="line"><a name="l00073"></a><span class="lineno"><a class="line" href="class_linity_1_1_asteroid.html#acf65b8441fdeed2f5abde2f7d74107b3">   73</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <a class="code" href="struct_linity_1_1_impact_data.html">ImpactData</a> <a class="code" href="class_linity_1_1_asteroid.html#acf65b8441fdeed2f5abde2f7d74107b3">GetImpactData</a>()</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        {</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="struct_linity_1_1_impact_data.html">ImpactData</a>(m_AsteroidData.<a class="code" href="class_linity_1_1_targetable_object_data.html#a9f064a4df39832e9f4cf4810a2de66ed">Camp</a>, m_AsteroidData.<a class="code" href="class_linity_1_1_targetable_object_data.html#a83e67c669930825f319a632f9158d82c">HP</a>, m_AsteroidData.<a class="code" href="class_linity_1_1_asteroid_data.html#a27cf9ef6e04010b32ea903e9eaea989f">Attack</a>, 0);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        }</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    }</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;}</div>
+<div class="ttc" id="a_login_form_8cs_html_a6208db3ac52d7f107a612679d0d8eca3"><div class="ttname"><a href="_login_form_8cs.html#a6208db3ac52d7f107a612679d0d8eca3">Log</a></div><div class="ttdeci">UnityGameFramework.Runtime.Log Log</div><div class="ttdef"><b>Definition:</b> <a href="_login_form_8cs_source.html#l00007">LoginForm.cs:7</a></div></div>
+<div class="ttc" id="aclass_linity_1_1_asteroid_data_html"><div class="ttname"><a href="class_linity_1_1_asteroid_data.html">Linity.AsteroidData</a></div><div class="ttdef"><b>Definition:</b> <a href="_asteroid_data_8cs_source.html#l00015">AsteroidData.cs:16</a></div></div>
+<div class="ttc" id="aclass_linity_1_1_asteroid_data_html_a0bbbb62aedaeeb6d01d4b2b5b67ba98b"><div class="ttname"><a href="class_linity_1_1_asteroid_data.html#a0bbbb62aedaeeb6d01d4b2b5b67ba98b">Linity.AsteroidData.DeadSoundId</a></div><div class="ttdeci">int DeadSoundId</div><div class="ttdef"><b>Definition:</b> <a href="_asteroid_data_8cs_source.html#l00093">AsteroidData.cs:94</a></div></div>
+<div class="ttc" id="aclass_linity_1_1_asteroid_data_html_a27cf9ef6e04010b32ea903e9eaea989f"><div class="ttname"><a href="class_linity_1_1_asteroid_data.html#a27cf9ef6e04010b32ea903e9eaea989f">Linity.AsteroidData.Attack</a></div><div class="ttdeci">int Attack</div><div class="ttdef"><b>Definition:</b> <a href="_asteroid_data_8cs_source.html#l00061">AsteroidData.cs:62</a></div></div>
+<div class="ttc" id="aclass_linity_1_1_asteroid_data_html_a621116377692a638d3102cfdaaa1a4bc"><div class="ttname"><a href="class_linity_1_1_asteroid_data.html#a621116377692a638d3102cfdaaa1a4bc">Linity.AsteroidData.DeadEffectId</a></div><div class="ttdeci">int DeadEffectId</div><div class="ttdef"><b>Definition:</b> <a href="_asteroid_data_8cs_source.html#l00085">AsteroidData.cs:86</a></div></div>
+<div class="ttc" id="aclass_linity_1_1_asteroid_data_html_a7fc6966c581678710eb865f2ed3e8cec"><div class="ttname"><a href="class_linity_1_1_asteroid_data.html#a7fc6966c581678710eb865f2ed3e8cec">Linity.AsteroidData.Speed</a></div><div class="ttdeci">float Speed</div><div class="ttdef"><b>Definition:</b> <a href="_asteroid_data_8cs_source.html#l00069">AsteroidData.cs:70</a></div></div>
+<div class="ttc" id="aclass_linity_1_1_asteroid_data_html_a80793d98ad134fbb1a18e799a165bdd3"><div class="ttname"><a href="class_linity_1_1_asteroid_data.html#a80793d98ad134fbb1a18e799a165bdd3">Linity.AsteroidData.AngularSpeed</a></div><div class="ttdeci">float AngularSpeed</div><div class="ttdef"><b>Definition:</b> <a href="_asteroid_data_8cs_source.html#l00077">AsteroidData.cs:78</a></div></div>
+<div class="ttc" id="aclass_linity_1_1_asteroid_html"><div class="ttname"><a href="class_linity_1_1_asteroid.html">Linity.Asteroid</a></div><div class="ttdoc">小行星类。</div><div class="ttdef"><b>Definition:</b> <a href="_asteroid_8cs_source.html#l00016">Asteroid.cs:17</a></div></div>
+<div class="ttc" id="aclass_linity_1_1_asteroid_html_a4a7b447c6c26e7c49a3e62b293db8e05"><div class="ttname"><a href="class_linity_1_1_asteroid.html#a4a7b447c6c26e7c49a3e62b293db8e05">Linity.Asteroid.OnDead</a></div><div class="ttdeci">override void OnDead(Entity attacker)</div><div class="ttdef"><b>Definition:</b> <a href="_asteroid_8cs_source.html#l00062">Asteroid.cs:62</a></div></div>
+<div class="ttc" id="aclass_linity_1_1_asteroid_html_acf65b8441fdeed2f5abde2f7d74107b3"><div class="ttname"><a href="class_linity_1_1_asteroid.html#acf65b8441fdeed2f5abde2f7d74107b3">Linity.Asteroid.GetImpactData</a></div><div class="ttdeci">override ImpactData GetImpactData()</div><div class="ttdef"><b>Definition:</b> <a href="_asteroid_8cs_source.html#l00073">Asteroid.cs:73</a></div></div>
+<div class="ttc" id="aclass_linity_1_1_effect_data_html"><div class="ttname"><a href="class_linity_1_1_effect_data.html">Linity.EffectData</a></div><div class="ttdef"><b>Definition:</b> <a href="_effect_data_8cs_source.html#l00014">EffectData.cs:15</a></div></div>
+<div class="ttc" id="aclass_linity_1_1_entity_html"><div class="ttname"><a href="class_linity_1_1_entity.html">Linity.Entity</a></div><div class="ttdef"><b>Definition:</b> <a href="_game_main_2_entity_2_base_2_entity_logic_2_entity_8cs_source.html#l00014">Entity.cs:15</a></div></div>
+<div class="ttc" id="aclass_linity_1_1_game_entry_html"><div class="ttname"><a href="class_linity_1_1_game_entry.html">Linity.GameEntry</a></div><div class="ttdoc">游戏入口。</div><div class="ttdef"><b>Definition:</b> <a href="_game_entry_8_builtin_8cs_source.html#l00016">GameEntry.Builtin.cs:17</a></div></div>
+<div class="ttc" id="aclass_linity_1_1_game_entry_html_a2b753b5604a6f850414b3e4b583c31ea"><div class="ttname"><a href="class_linity_1_1_game_entry.html#a2b753b5604a6f850414b3e4b583c31ea">Linity.GameEntry.Entity</a></div><div class="ttdeci">static EntityComponent Entity</div><div class="ttdoc">获取实体组件。</div><div class="ttdef"><b>Definition:</b> <a href="_game_entry_8_builtin_8cs_source.html#l00075">GameEntry.Builtin.cs:76</a></div></div>
+<div class="ttc" id="aclass_linity_1_1_game_entry_html_ab66cf6c6feb634c4e2198330a585a02a"><div class="ttname"><a href="class_linity_1_1_game_entry.html#ab66cf6c6feb634c4e2198330a585a02a">Linity.GameEntry.Sound</a></div><div class="ttdeci">static SoundComponent Sound</div><div class="ttdoc">获取声音组件。</div><div class="ttdef"><b>Definition:</b> <a href="_game_entry_8_builtin_8cs_source.html#l00174">GameEntry.Builtin.cs:175</a></div></div>
+<div class="ttc" id="aclass_linity_1_1_targetable_object_data_html_a83e67c669930825f319a632f9158d82c"><div class="ttname"><a href="class_linity_1_1_targetable_object_data.html#a83e67c669930825f319a632f9158d82c">Linity.TargetableObjectData.HP</a></div><div class="ttdeci">int HP</div><div class="ttdoc">当前生命。</div><div class="ttdef"><b>Definition:</b> <a href="_targetable_object_data_8cs_source.html#l00043">TargetableObjectData.cs:44</a></div></div>
+<div class="ttc" id="aclass_linity_1_1_targetable_object_data_html_a9f064a4df39832e9f4cf4810a2de66ed"><div class="ttname"><a href="class_linity_1_1_targetable_object_data.html#a9f064a4df39832e9f4cf4810a2de66ed">Linity.TargetableObjectData.Camp</a></div><div class="ttdeci">CampType Camp</div><div class="ttdoc">角色阵营。</div><div class="ttdef"><b>Definition:</b> <a href="_targetable_object_data_8cs_source.html#l00032">TargetableObjectData.cs:33</a></div></div>
+<div class="ttc" id="aclass_linity_1_1_targetable_object_html"><div class="ttname"><a href="class_linity_1_1_targetable_object.html">Linity.TargetableObject</a></div><div class="ttdoc">可作为目标的实体类。</div><div class="ttdef"><b>Definition:</b> <a href="_targetable_object_8cs_source.html#l00016">TargetableObject.cs:17</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_runtime_1_1_entity_logic_html_a6ecaada7d2284ccfd742fe77dfae1ec3"><div class="ttname"><a href="class_unity_game_framework_1_1_runtime_1_1_entity_logic.html#a6ecaada7d2284ccfd742fe77dfae1ec3">UnityGameFramework.Runtime.EntityLogic.CachedTransform</a></div><div class="ttdeci">Transform CachedTransform</div><div class="ttdoc">获取已缓存的 Transform。</div><div class="ttdef"><b>Definition:</b> <a href="_entity_logic_8cs_source.html#l00091">EntityLogic.cs:92</a></div></div>
+<div class="ttc" id="aclass_unity_game_framework_1_1_runtime_1_1_sound_component_html_a9b16df63d863cfd8a120357d9b13dd8d"><div class="ttname"><a href="class_unity_game_framework_1_1_runtime_1_1_sound_component.html#a9b16df63d863cfd8a120357d9b13dd8d">UnityGameFramework.Runtime.SoundComponent.PlaySound</a></div><div class="ttdeci">int PlaySound(string soundAssetName, string soundGroupName)</div><div class="ttdoc">播放声音。</div><div class="ttdef"><b>Definition:</b> <a href="_sound_component_8cs_source.html#l00340">SoundComponent.cs:340</a></div></div>
+<div class="ttc" id="anamespace_linity_html"><div class="ttname"><a href="namespace_linity.html">Linity</a></div><div class="ttdef"><b>Definition:</b> <a href="_entity_and_u_i_form_code_generator_8cs_source.html#l00008">EntityAndUIFormCodeGenerator.cs:9</a></div></div>
+<div class="ttc" id="anamespace_unity_engine_html"><div class="ttname"><a href="namespace_unity_engine.html">UnityEngine</a></div><div class="ttdef"><b>Definition:</b> <a href="_mathf_8cs_source.html#l00003">Mathf.cs:4</a></div></div>
+<div class="ttc" id="anamespace_unity_game_framework_1_1_runtime_html"><div class="ttname"><a href="namespace_unity_game_framework_1_1_runtime.html">UnityGameFramework.Runtime</a></div><div class="ttdef"><b>Definition:</b> <a href="_base_component_8cs_source.html#l00014">BaseComponent.cs:15</a></div></div>
+<div class="ttc" id="anamespace_unity_game_framework_html"><div class="ttname"><a href="namespace_unity_game_framework.html">UnityGameFramework</a></div><div class="ttdef"><b>Definition:</b> <a href="_base_component_inspector_8cs_source.html#l00014">BaseComponentInspector.cs:15</a></div></div>
+<div class="ttc" id="astruct_linity_1_1_impact_data_html"><div class="ttname"><a href="struct_linity_1_1_impact_data.html">Linity.ImpactData</a></div><div class="ttdef"><b>Definition:</b> <a href="_impact_data_8cs_source.html#l00013">ImpactData.cs:14</a></div></div>
+<div class="ttc" id="astruct_unity_engine_1_1_vector3_html"><div class="ttname"><a href="struct_unity_engine_1_1_vector3.html">UnityEngine.Vector3</a></div><div class="ttdef"><b>Definition:</b> <a href="_vector3_8cs_source.html#l00007">Vector3.cs:8</a></div></div>
+<div class="ttc" id="astruct_unity_engine_1_1_vector3_html_a5ee4172032dfc66b99c27713f0122eaa"><div class="ttname"><a href="struct_unity_engine_1_1_vector3.html#a5ee4172032dfc66b99c27713f0122eaa">UnityEngine.Vector3.zero</a></div><div class="ttdeci">static readonly Vector3 zero</div><div class="ttdef"><b>Definition:</b> <a href="_vector3_8cs_source.html#l00011">Vector3.cs:11</a></div></div>
+<div class="ttc" id="astruct_unity_engine_1_1_vector3_html_a7f3b016c2acf2e63060dce2a4415abf5"><div class="ttname"><a href="struct_unity_engine_1_1_vector3.html#a7f3b016c2acf2e63060dce2a4415abf5">UnityEngine.Vector3.back</a></div><div class="ttdeci">static readonly Vector3 back</div><div class="ttdef"><b>Definition:</b> <a href="_vector3_8cs_source.html#l00018">Vector3.cs:18</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_84bbf7b3c7f28a5a18725745e1505219.html">Assets</a></li><li class="navelem"><a class="el" href="dir_f13b41af88cf68434578284aaf699e39.html">Scripts</a></li><li class="navelem"><a class="el" href="dir_8274910eb5bb242a7532823db7176570.html">GameMain</a></li><li class="navelem"><a class="el" href="dir_cfca2b41e3122feb7eff9c1c763102ac.html">Entity</a></li><li class="navelem"><a class="el" href="dir_d815337ac26fe92a13170d42ad01aef6.html">EntityLogic</a></li><li class="navelem"><a class="el" href="_asteroid_8cs.html">Asteroid.cs</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:24:44 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

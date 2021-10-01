@@ -1,0 +1,213 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: Assets/Scripts/Libraries/GameFramework/Scripts/Runtime/Debugger/DebuggerComponent.ObjectPoolInformationWindow.cs 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_debugger_component_8_object_pool_information_window_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">DebuggerComponent.ObjectPoolInformationWindow.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_debugger_component_8_object_pool_information_window_8cs.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">//------------------------------------------------------------</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">// Game Framework</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">// Copyright © 2013-2021 Jiang Yin. All rights reserved.</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">// Homepage: https://gameframework.cn/</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">// Feedback: mailto:ellan@gameframework.cn</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">//------------------------------------------------------------</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_game_framework.html">GameFramework</a>;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_game_framework.html">GameFramework</a>.<a class="code" href="namespace_game_framework_1_1_object_pool.html">ObjectPool</a>;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_unity_engine.html">UnityEngine</a>;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_unity_game_framework_1_1_runtime.html">UnityGameFramework.Runtime</a></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;{</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keyword">public</span> sealed <span class="keyword">partial class </span>DebuggerComponent : GameFrameworkComponent</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    {</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        <span class="keyword">private</span> sealed <span class="keyword">class </span>ObjectPoolInformationWindow : ScrollableDebuggerWindowBase</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        {</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;            <span class="keyword">private</span> ObjectPoolComponent m_ObjectPoolComponent = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;            <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> Initialize(params <span class="keywordtype">object</span>[] args)</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;            {</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;                m_ObjectPoolComponent = GameEntry.GetComponent&lt;ObjectPoolComponent&gt;();</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;                <span class="keywordflow">if</span> (m_ObjectPoolComponent == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;                {</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;                    <a class="code" href="_login_form_8cs.html#a6208db3ac52d7f107a612679d0d8eca3">Log</a>.Fatal(<span class="stringliteral">&quot;Object pool component is invalid.&quot;</span>);</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;                    <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;                }</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;            }</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;            <span class="keyword">protected</span> <span class="keyword">override</span> <span class="keywordtype">void</span> OnDrawScrollableWindow()</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;            {</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;                GUILayout.Label(<span class="stringliteral">&quot;&lt;b&gt;Object Pool Information&lt;/b&gt;&quot;</span>);</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;                GUILayout.BeginVertical(<span class="stringliteral">&quot;box&quot;</span>);</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;                {</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;                    DrawItem(<span class="stringliteral">&quot;Object Pool Count&quot;</span>, m_ObjectPoolComponent.Count.ToString());</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;                }</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;                GUILayout.EndVertical();</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;                <a class="code" href="class_game_framework_1_1_object_pool_1_1_object_pool_base.html">ObjectPoolBase</a>[] objectPools = m_ObjectPoolComponent.GetAllObjectPools(<span class="keyword">true</span>);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; objectPools.Length; i++)</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                {</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;                    DrawObjectPool(objectPools[i]);</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                }</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;            }</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            <span class="keyword">private</span> <span class="keywordtype">void</span> DrawObjectPool(<a class="code" href="class_game_framework_1_1_object_pool_1_1_object_pool_base.html">ObjectPoolBase</a> objectPool)</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;            {</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                GUILayout.Label(<a class="code" href="_unity_web_request_download_agent_helper_8cs.html#a9084eedf9b8c1b9c0fb3e425c1f69c1f">Utility</a>.Text.Format(<span class="stringliteral">&quot;&lt;b&gt;Object Pool: {0}&lt;/b&gt;&quot;</span>, objectPool.<a class="code" href="class_game_framework_1_1_object_pool_1_1_object_pool_base.html#a1bac67133c6df0eba365fba71ad9dc8c">FullName</a>));</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                GUILayout.BeginVertical(<span class="stringliteral">&quot;box&quot;</span>);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                {</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                    DrawItem(<span class="stringliteral">&quot;Name&quot;</span>, objectPool.<a class="code" href="class_game_framework_1_1_object_pool_1_1_object_pool_base.html#a95e2f7cbf9e435dfefd24dbcf69c73bf">Name</a>);</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                    DrawItem(<span class="stringliteral">&quot;Type&quot;</span>, objectPool.<a class="code" href="class_game_framework_1_1_object_pool_1_1_object_pool_base.html#ac97b4d5997e304d39a5f1eb893ad6098">ObjectType</a>.FullName);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                    DrawItem(<span class="stringliteral">&quot;Auto Release Interval&quot;</span>, objectPool.<a class="code" href="class_game_framework_1_1_object_pool_1_1_object_pool_base.html#a50ca75e19d020cf885b3fefd7860a0ea">AutoReleaseInterval</a>.ToString());</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                    DrawItem(<span class="stringliteral">&quot;Capacity&quot;</span>, objectPool.<a class="code" href="class_game_framework_1_1_object_pool_1_1_object_pool_base.html#af8f3a1f30eaf64f2746057db2f10323d">Capacity</a>.ToString());</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                    DrawItem(<span class="stringliteral">&quot;Used Count&quot;</span>, objectPool.<a class="code" href="class_game_framework_1_1_object_pool_1_1_object_pool_base.html#aeeb6c9bdf7c9b532167f0a4db3a49715">Count</a>.ToString());</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                    DrawItem(<span class="stringliteral">&quot;Can Release Count&quot;</span>, objectPool.<a class="code" href="class_game_framework_1_1_object_pool_1_1_object_pool_base.html#aafa0c3d17e0dd0bba7a6e33f8dc5dff2">CanReleaseCount</a>.ToString());</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                    DrawItem(<span class="stringliteral">&quot;Expire Time&quot;</span>, objectPool.<a class="code" href="class_game_framework_1_1_object_pool_1_1_object_pool_base.html#a35c5824d8608746d6f440e5081af3f6e">ExpireTime</a>.ToString());</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                    DrawItem(<span class="stringliteral">&quot;Priority&quot;</span>, objectPool.<a class="code" href="class_game_framework_1_1_object_pool_1_1_object_pool_base.html#a8fdaa2c464df77ce74e612d1803634d1">Priority</a>.ToString());</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;                    <a class="code" href="struct_game_framework_1_1_object_pool_1_1_object_info.html">ObjectInfo</a>[] objectInfos = objectPool.<a class="code" href="class_game_framework_1_1_object_pool_1_1_object_pool_base.html#a626bcce1c226679ca7148053574f5da6">GetAllObjectInfos</a>();</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                    GUILayout.BeginHorizontal();</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                    {</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                        GUILayout.Label(<span class="stringliteral">&quot;&lt;b&gt;Name&lt;/b&gt;&quot;</span>);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                        GUILayout.Label(<span class="stringliteral">&quot;&lt;b&gt;Locked&lt;/b&gt;&quot;</span>, GUILayout.Width(60f));</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                        GUILayout.Label(objectPool.<a class="code" href="class_game_framework_1_1_object_pool_1_1_object_pool_base.html#a2c0df3146fe7335ead506d7d0eca7dcc">AllowMultiSpawn</a> ? <span class="stringliteral">&quot;&lt;b&gt;Count&lt;/b&gt;&quot;</span> : <span class="stringliteral">&quot;&lt;b&gt;In Use&lt;/b&gt;&quot;</span>, GUILayout.Width(60f));</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                        GUILayout.Label(<span class="stringliteral">&quot;&lt;b&gt;Flag&lt;/b&gt;&quot;</span>, GUILayout.Width(60f));</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                        GUILayout.Label(<span class="stringliteral">&quot;&lt;b&gt;Priority&lt;/b&gt;&quot;</span>, GUILayout.Width(60f));</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                        GUILayout.Label(<span class="stringliteral">&quot;&lt;b&gt;Last Use Time&lt;/b&gt;&quot;</span>, GUILayout.Width(120f));</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                    }</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                    GUILayout.EndHorizontal();</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                    <span class="keywordflow">if</span> (objectInfos.Length &gt; 0)</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                    {</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; objectInfos.Length; i++)</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                        {</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                            GUILayout.BeginHorizontal();</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                            {</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                                GUILayout.Label(<span class="keywordtype">string</span>.IsNullOrEmpty(objectInfos[i].Name) ? <span class="stringliteral">&quot;&lt;None&gt;&quot;</span> : objectInfos[i].Name);</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                                GUILayout.Label(objectInfos[i].Locked.ToString(), GUILayout.Width(60f));</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                                GUILayout.Label(objectPool.<a class="code" href="class_game_framework_1_1_object_pool_1_1_object_pool_base.html#a2c0df3146fe7335ead506d7d0eca7dcc">AllowMultiSpawn</a> ? objectInfos[i].SpawnCount.ToString() : objectInfos[i].IsInUse.ToString(), GUILayout.Width(60f));</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                                GUILayout.Label(objectInfos[i].CustomCanReleaseFlag.ToString(), GUILayout.Width(60f));</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                                GUILayout.Label(objectInfos[i].Priority.ToString(), GUILayout.Width(60f));</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                                GUILayout.Label(objectInfos[i].LastUseTime.ToLocalTime().ToString(<span class="stringliteral">&quot;yyyy-MM-dd HH:mm:ss&quot;</span>), GUILayout.Width(120f));</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                            }</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                            GUILayout.EndHorizontal();</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                        }</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                    }</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                    {</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                        GUILayout.Label(<span class="stringliteral">&quot;&lt;i&gt;Object Pool is Empty ...&lt;/i&gt;&quot;</span>);</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                    }</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                }</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                GUILayout.EndVertical();</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;            }</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        }</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    }</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;}</div>
+<div class="ttc" id="a_login_form_8cs_html_a6208db3ac52d7f107a612679d0d8eca3"><div class="ttname"><a href="_login_form_8cs.html#a6208db3ac52d7f107a612679d0d8eca3">Log</a></div><div class="ttdeci">UnityGameFramework.Runtime.Log Log</div><div class="ttdef"><b>Definition:</b> <a href="_login_form_8cs_source.html#l00007">LoginForm.cs:7</a></div></div>
+<div class="ttc" id="a_unity_web_request_download_agent_helper_8cs_html_a9084eedf9b8c1b9c0fb3e425c1f69c1f"><div class="ttname"><a href="_unity_web_request_download_agent_helper_8cs.html#a9084eedf9b8c1b9c0fb3e425c1f69c1f">Utility</a></div><div class="ttdeci">GameFramework.Utility Utility</div><div class="ttdef"><b>Definition:</b> <a href="_unity_web_request_download_agent_helper_8cs_source.html#l00016">UnityWebRequestDownloadAgentHelper.cs:16</a></div></div>
+<div class="ttc" id="aclass_game_framework_1_1_object_pool_1_1_object_pool_base_html"><div class="ttname"><a href="class_game_framework_1_1_object_pool_1_1_object_pool_base.html">GameFramework.ObjectPool.ObjectPoolBase</a></div><div class="ttdoc">对象池基类。</div><div class="ttdef"><b>Definition:</b> <a href="_object_pool_base_8cs_source.html#l00015">ObjectPoolBase.cs:16</a></div></div>
+<div class="ttc" id="aclass_game_framework_1_1_object_pool_1_1_object_pool_base_html_a1bac67133c6df0eba365fba71ad9dc8c"><div class="ttname"><a href="class_game_framework_1_1_object_pool_1_1_object_pool_base.html#a1bac67133c6df0eba365fba71ad9dc8c">GameFramework.ObjectPool.ObjectPoolBase.FullName</a></div><div class="ttdeci">string FullName</div><div class="ttdoc">获取对象池完整名称。</div><div class="ttdef"><b>Definition:</b> <a href="_object_pool_base_8cs_source.html#l00050">ObjectPoolBase.cs:51</a></div></div>
+<div class="ttc" id="aclass_game_framework_1_1_object_pool_1_1_object_pool_base_html_a2c0df3146fe7335ead506d7d0eca7dcc"><div class="ttname"><a href="class_game_framework_1_1_object_pool_1_1_object_pool_base.html#a2c0df3146fe7335ead506d7d0eca7dcc">GameFramework.ObjectPool.ObjectPoolBase.AllowMultiSpawn</a></div><div class="ttdeci">abstract bool AllowMultiSpawn</div><div class="ttdoc">获取是否允许对象被多次获取。</div><div class="ttdef"><b>Definition:</b> <a href="_object_pool_base_8cs_source.html#l00085">ObjectPoolBase.cs:86</a></div></div>
+<div class="ttc" id="aclass_game_framework_1_1_object_pool_1_1_object_pool_base_html_a35c5824d8608746d6f440e5081af3f6e"><div class="ttname"><a href="class_game_framework_1_1_object_pool_1_1_object_pool_base.html#a35c5824d8608746d6f440e5081af3f6e">GameFramework.ObjectPool.ObjectPoolBase.ExpireTime</a></div><div class="ttdeci">abstract float ExpireTime</div><div class="ttdoc">获取或设置对象池对象过期秒数。</div><div class="ttdef"><b>Definition:</b> <a href="_object_pool_base_8cs_source.html#l00111">ObjectPoolBase.cs:112</a></div></div>
+<div class="ttc" id="aclass_game_framework_1_1_object_pool_1_1_object_pool_base_html_a50ca75e19d020cf885b3fefd7860a0ea"><div class="ttname"><a href="class_game_framework_1_1_object_pool_1_1_object_pool_base.html#a50ca75e19d020cf885b3fefd7860a0ea">GameFramework.ObjectPool.ObjectPoolBase.AutoReleaseInterval</a></div><div class="ttdeci">abstract float AutoReleaseInterval</div><div class="ttdoc">获取或设置对象池自动释放可释放对象的间隔秒数。</div><div class="ttdef"><b>Definition:</b> <a href="_object_pool_base_8cs_source.html#l00093">ObjectPoolBase.cs:94</a></div></div>
+<div class="ttc" id="aclass_game_framework_1_1_object_pool_1_1_object_pool_base_html_a626bcce1c226679ca7148053574f5da6"><div class="ttname"><a href="class_game_framework_1_1_object_pool_1_1_object_pool_base.html#a626bcce1c226679ca7148053574f5da6">GameFramework.ObjectPool.ObjectPoolBase.GetAllObjectInfos</a></div><div class="ttdeci">abstract ObjectInfo[] GetAllObjectInfos()</div><div class="ttdoc">获取所有对象信息。</div></div>
+<div class="ttc" id="aclass_game_framework_1_1_object_pool_1_1_object_pool_base_html_a8fdaa2c464df77ce74e612d1803634d1"><div class="ttname"><a href="class_game_framework_1_1_object_pool_1_1_object_pool_base.html#a8fdaa2c464df77ce74e612d1803634d1">GameFramework.ObjectPool.ObjectPoolBase.Priority</a></div><div class="ttdeci">abstract int Priority</div><div class="ttdoc">获取或设置对象池的优先级。</div><div class="ttdef"><b>Definition:</b> <a href="_object_pool_base_8cs_source.html#l00120">ObjectPoolBase.cs:121</a></div></div>
+<div class="ttc" id="aclass_game_framework_1_1_object_pool_1_1_object_pool_base_html_a95e2f7cbf9e435dfefd24dbcf69c73bf"><div class="ttname"><a href="class_game_framework_1_1_object_pool_1_1_object_pool_base.html#a95e2f7cbf9e435dfefd24dbcf69c73bf">GameFramework.ObjectPool.ObjectPoolBase.Name</a></div><div class="ttdeci">string Name</div><div class="ttdoc">获取对象池名称。</div><div class="ttdef"><b>Definition:</b> <a href="_object_pool_base_8cs_source.html#l00039">ObjectPoolBase.cs:40</a></div></div>
+<div class="ttc" id="aclass_game_framework_1_1_object_pool_1_1_object_pool_base_html_aafa0c3d17e0dd0bba7a6e33f8dc5dff2"><div class="ttname"><a href="class_game_framework_1_1_object_pool_1_1_object_pool_base.html#aafa0c3d17e0dd0bba7a6e33f8dc5dff2">GameFramework.ObjectPool.ObjectPoolBase.CanReleaseCount</a></div><div class="ttdeci">abstract int CanReleaseCount</div><div class="ttdoc">获取对象池中能被释放的对象的数量。</div><div class="ttdef"><b>Definition:</b> <a href="_object_pool_base_8cs_source.html#l00077">ObjectPoolBase.cs:78</a></div></div>
+<div class="ttc" id="aclass_game_framework_1_1_object_pool_1_1_object_pool_base_html_ac97b4d5997e304d39a5f1eb893ad6098"><div class="ttname"><a href="class_game_framework_1_1_object_pool_1_1_object_pool_base.html#ac97b4d5997e304d39a5f1eb893ad6098">GameFramework.ObjectPool.ObjectPoolBase.ObjectType</a></div><div class="ttdeci">abstract Type ObjectType</div><div class="ttdoc">获取对象池对象类型。</div><div class="ttdef"><b>Definition:</b> <a href="_object_pool_base_8cs_source.html#l00061">ObjectPoolBase.cs:62</a></div></div>
+<div class="ttc" id="aclass_game_framework_1_1_object_pool_1_1_object_pool_base_html_aeeb6c9bdf7c9b532167f0a4db3a49715"><div class="ttname"><a href="class_game_framework_1_1_object_pool_1_1_object_pool_base.html#aeeb6c9bdf7c9b532167f0a4db3a49715">GameFramework.ObjectPool.ObjectPoolBase.Count</a></div><div class="ttdeci">abstract int Count</div><div class="ttdoc">获取对象池中对象的数量。</div><div class="ttdef"><b>Definition:</b> <a href="_object_pool_base_8cs_source.html#l00069">ObjectPoolBase.cs:70</a></div></div>
+<div class="ttc" id="aclass_game_framework_1_1_object_pool_1_1_object_pool_base_html_af8f3a1f30eaf64f2746057db2f10323d"><div class="ttname"><a href="class_game_framework_1_1_object_pool_1_1_object_pool_base.html#af8f3a1f30eaf64f2746057db2f10323d">GameFramework.ObjectPool.ObjectPoolBase.Capacity</a></div><div class="ttdeci">abstract int Capacity</div><div class="ttdoc">获取或设置对象池的容量。</div><div class="ttdef"><b>Definition:</b> <a href="_object_pool_base_8cs_source.html#l00102">ObjectPoolBase.cs:103</a></div></div>
+<div class="ttc" id="anamespace_game_framework_1_1_object_pool_html"><div class="ttname"><a href="namespace_game_framework_1_1_object_pool.html">GameFramework.ObjectPool</a></div><div class="ttdef"><b>Definition:</b> <a href="_i_object_pool_8cs_source.html#l00010">IObjectPool.cs:11</a></div></div>
+<div class="ttc" id="anamespace_game_framework_html"><div class="ttname"><a href="namespace_game_framework.html">GameFramework</a></div><div class="ttdef"><b>Definition:</b> <a href="_data_provider_8cs_source.html#l00011">DataProvider.cs:12</a></div></div>
+<div class="ttc" id="anamespace_unity_engine_html"><div class="ttname"><a href="namespace_unity_engine.html">UnityEngine</a></div><div class="ttdef"><b>Definition:</b> <a href="_mathf_8cs_source.html#l00003">Mathf.cs:4</a></div></div>
+<div class="ttc" id="anamespace_unity_game_framework_1_1_runtime_html"><div class="ttname"><a href="namespace_unity_game_framework_1_1_runtime.html">UnityGameFramework.Runtime</a></div><div class="ttdef"><b>Definition:</b> <a href="_base_component_8cs_source.html#l00014">BaseComponent.cs:15</a></div></div>
+<div class="ttc" id="astruct_game_framework_1_1_object_pool_1_1_object_info_html"><div class="ttname"><a href="struct_game_framework_1_1_object_pool_1_1_object_info.html">GameFramework.ObjectPool.ObjectInfo</a></div><div class="ttdoc">对象信息。</div><div class="ttdef"><b>Definition:</b> <a href="_object_info_8cs_source.html#l00017">ObjectInfo.cs:18</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_84bbf7b3c7f28a5a18725745e1505219.html">Assets</a></li><li class="navelem"><a class="el" href="dir_f13b41af88cf68434578284aaf699e39.html">Scripts</a></li><li class="navelem"><a class="el" href="dir_46d134a3bf82cf4dc49ca8f728aea58c.html">Libraries</a></li><li class="navelem"><a class="el" href="dir_7a6862c303020716b3c311e95823547c.html">GameFramework</a></li><li class="navelem"><a class="el" href="dir_1d9b7e2b1e68805cdf4440a735859529.html">Scripts</a></li><li class="navelem"><a class="el" href="dir_e81cefffdbcf8632d0c6357d5d83ba40.html">Runtime</a></li><li class="navelem"><a class="el" href="dir_11ae6ffd40e6d3728c4f8ffb1153126b.html">Debugger</a></li><li class="navelem"><a class="el" href="_debugger_component_8_object_pool_information_window_8cs.html">DebuggerComponent.ObjectPoolInformationWindow.cs</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:24:49 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

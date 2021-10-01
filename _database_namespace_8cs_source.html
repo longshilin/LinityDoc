@@ -1,0 +1,215 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Linity: ETServer/Server/ThirdParty/MongoDBDriver/MongoDB.Driver.Core/DatabaseNamespace.cs 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Linity
+   &#160;<span id="projectnumber">1.0 Beta</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_database_namespace_8cs_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">DatabaseNamespace.cs</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_database_namespace_8cs.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/* Copyright 2010-present MongoDB Inc.</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">* Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">* you may not use this file except in compliance with the License.</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">* You may obtain a copy of the License at</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">* http://www.apache.org/licenses/LICENSE-2.0</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">* Unless required by applicable law or agreed to in writing, software</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">* distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">* See the License for the specific language governing permissions and</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">* limitations under the License.</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">using</span> <a class="code" href="namespace_mongo_d_b.html">MongoDB</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver.html">Driver</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core.html">Core</a>.<a class="code" href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_misc.html">Misc</a>;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_mongo_d_b_1_1_driver.html">MongoDB.Driver</a></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;{</div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_database_namespace.html">   24</a></span>&#160;    <span class="keyword">public</span> sealed <span class="keyword">class </span><a class="code" href="class_mongo_d_b_1_1_driver_1_1_database_namespace.html">DatabaseNamespace</a> : IEquatable&lt;DatabaseNamespace&gt;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    {</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <span class="comment">// static fields</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> readonly <a class="code" href="class_mongo_d_b_1_1_driver_1_1_database_namespace.html">DatabaseNamespace</a> __admin = <span class="keyword">new</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_database_namespace.html#ada9da1e495f30aa17d30f1d6bc69d067">DatabaseNamespace</a>(<span class="stringliteral">&quot;admin&quot;</span>);</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <span class="comment">// static properties</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_database_namespace.html#a4faad11418f71e7f3d0fc6aa1298c902">   36</a></span>&#160;<span class="comment"></span>        <span class="keyword">public</span> <span class="keyword">static</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_database_namespace.html">DatabaseNamespace</a> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_database_namespace.html#a4faad11418f71e7f3d0fc6aa1298c902">Admin</a></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        {</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;            <span class="keyword">get</span> { <span class="keywordflow">return</span> __admin; }</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        }</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <span class="comment">// static methods</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_database_namespace.html#a697e6927ff2409fcae521ead5813620d">   47</a></span>&#160;<span class="comment"></span>        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">bool</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_database_namespace.html#a697e6927ff2409fcae521ead5813620d">IsValid</a>(<span class="keywordtype">string</span> name)</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        {</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            <span class="keywordflow">if</span> (<span class="keywordtype">string</span>.IsNullOrWhiteSpace(name))</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;            {</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            }</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            var index = name.IndexOfAny(<span class="keyword">new</span>[] { <span class="charliteral">&#39;\0&#39;</span>, <span class="charliteral">&#39;.&#39;</span> });</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            <span class="keywordflow">return</span> index == -1;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        }</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <span class="comment">// fields</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <span class="keyword">private</span> readonly <span class="keywordtype">string</span> _databaseName;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <span class="comment">// constructors</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_database_namespace.html#ada9da1e495f30aa17d30f1d6bc69d067">   66</a></span>&#160;<span class="comment"></span>        <span class="keyword">public</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_database_namespace.html#ada9da1e495f30aa17d30f1d6bc69d067">DatabaseNamespace</a>(<span class="keywordtype">string</span> databaseName)</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        {</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            Ensure.IsNotNull(databaseName, nameof(databaseName));</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            _databaseName = Ensure.That(databaseName, <a class="code" href="class_mongo_d_b_1_1_driver_1_1_database_namespace.html#a697e6927ff2409fcae521ead5813620d">IsValid</a>, nameof(databaseName), <span class="stringliteral">&quot;Database names must be non-empty and not contain &#39;.&#39; or the null character.&quot;</span>);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        }</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <span class="comment">// properties</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <span class="keyword">internal</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_collection_namespace.html">CollectionNamespace</a> CommandCollection</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        {</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            <span class="keyword">get</span> { <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_collection_namespace.html">CollectionNamespace</a>(<span class="keyword">this</span>, <span class="stringliteral">&quot;$cmd&quot;</span>); }</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        }</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
+<div class="line"><a name="l00084"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_database_namespace.html#a78635c0bfb6e91b7f3b0a58b9753a5c2">   84</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">string</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_database_namespace.html#a78635c0bfb6e91b7f3b0a58b9753a5c2">DatabaseName</a></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        {</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            <span class="keyword">get</span> { <span class="keywordflow">return</span> _databaseName; }</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        }</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        <span class="keyword">internal</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_collection_namespace.html">CollectionNamespace</a> SystemIndexesCollection</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        {</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;            <span class="keyword">get</span> { <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_collection_namespace.html">CollectionNamespace</a>(<span class="keyword">this</span>, <span class="stringliteral">&quot;system.indexes&quot;</span>); }</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        }</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        <span class="keyword">internal</span> CollectionNamespace SystemNamespacesCollection</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        {</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;            <span class="keyword">get</span> { <span class="keywordflow">return</span> <span class="keyword">new</span> CollectionNamespace(<span class="keyword">this</span>, <span class="stringliteral">&quot;system.namespaces&quot;</span>); }</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        }</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        <span class="comment">// methods</span></div>
+<div class="line"><a name="l00101"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_database_namespace.html#a1e3043758fbf80136047c023b53207ce">  101</a></span>&#160;<span class="comment"></span>        <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_database_namespace.html#a1e3043758fbf80136047c023b53207ce">Equals</a>(<a class="code" href="class_mongo_d_b_1_1_driver_1_1_database_namespace.html">DatabaseNamespace</a> other)</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        {</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;            <span class="keywordflow">if</span> (other == <span class="keyword">null</span>)</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;            {</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;            }</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160; </div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;            <span class="keywordflow">return</span> _databaseName == other._databaseName;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        }</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160; </div>
+<div class="line"><a name="l00112"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_database_namespace.html#aa64f59235edadf13e6ca3c70a2d61cdc">  112</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">bool</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_database_namespace.html#aa64f59235edadf13e6ca3c70a2d61cdc">Equals</a>(<span class="keywordtype">object</span> obj)</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        {</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_database_namespace.html#a1e3043758fbf80136047c023b53207ce">Equals</a>(obj as <a class="code" href="class_mongo_d_b_1_1_driver_1_1_database_namespace.html">DatabaseNamespace</a>);</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        }</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160; </div>
+<div class="line"><a name="l00118"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_database_namespace.html#a23ab6e1724dce7e44b52348df3ff8fe3">  118</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">int</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_database_namespace.html#a23ab6e1724dce7e44b52348df3ff8fe3">GetHashCode</a>()</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        {</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;            <span class="keywordflow">return</span> _databaseName.GetHashCode();</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        }</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160; </div>
+<div class="line"><a name="l00124"></a><span class="lineno"><a class="line" href="class_mongo_d_b_1_1_driver_1_1_database_namespace.html#aae4b77d2130ae2aa85aa01404aa82dfb">  124</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">string</span> <a class="code" href="class_mongo_d_b_1_1_driver_1_1_database_namespace.html#aae4b77d2130ae2aa85aa01404aa82dfb">ToString</a>()</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        {</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;            <span class="keywordflow">return</span> _databaseName;</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;        }</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    }</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;}</div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_collection_namespace_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_collection_namespace.html">MongoDB.Driver.CollectionNamespace</a></div><div class="ttdoc">Represents a collection namespace.</div><div class="ttdef"><b>Definition:</b> <a href="_collection_namespace_8cs_source.html#l00029">CollectionNamespace.cs:30</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_database_namespace_html"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_database_namespace.html">MongoDB.Driver.DatabaseNamespace</a></div><div class="ttdoc">Represents a database namespace.</div><div class="ttdef"><b>Definition:</b> <a href="_database_namespace_8cs_source.html#l00024">DatabaseNamespace.cs:25</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_database_namespace_html_a1e3043758fbf80136047c023b53207ce"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_database_namespace.html#a1e3043758fbf80136047c023b53207ce">MongoDB.Driver.DatabaseNamespace.Equals</a></div><div class="ttdeci">bool Equals(DatabaseNamespace other)</div><div class="ttdef"><b>Definition:</b> <a href="_database_namespace_8cs_source.html#l00101">DatabaseNamespace.cs:101</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_database_namespace_html_a23ab6e1724dce7e44b52348df3ff8fe3"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_database_namespace.html#a23ab6e1724dce7e44b52348df3ff8fe3">MongoDB.Driver.DatabaseNamespace.GetHashCode</a></div><div class="ttdeci">override int GetHashCode()</div><div class="ttdef"><b>Definition:</b> <a href="_database_namespace_8cs_source.html#l00118">DatabaseNamespace.cs:118</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_database_namespace_html_a4faad11418f71e7f3d0fc6aa1298c902"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_database_namespace.html#a4faad11418f71e7f3d0fc6aa1298c902">MongoDB.Driver.DatabaseNamespace.Admin</a></div><div class="ttdeci">static DatabaseNamespace Admin</div><div class="ttdoc">Gets the admin database namespace.</div><div class="ttdef"><b>Definition:</b> <a href="_database_namespace_8cs_source.html#l00036">DatabaseNamespace.cs:37</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_database_namespace_html_a697e6927ff2409fcae521ead5813620d"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_database_namespace.html#a697e6927ff2409fcae521ead5813620d">MongoDB.Driver.DatabaseNamespace.IsValid</a></div><div class="ttdeci">static bool IsValid(string name)</div><div class="ttdoc">Determines whether the specified database name is valid.</div><div class="ttdef"><b>Definition:</b> <a href="_database_namespace_8cs_source.html#l00047">DatabaseNamespace.cs:47</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_database_namespace_html_a78635c0bfb6e91b7f3b0a58b9753a5c2"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_database_namespace.html#a78635c0bfb6e91b7f3b0a58b9753a5c2">MongoDB.Driver.DatabaseNamespace.DatabaseName</a></div><div class="ttdeci">string DatabaseName</div><div class="ttdoc">Gets the name of the database.</div><div class="ttdef"><b>Definition:</b> <a href="_database_namespace_8cs_source.html#l00084">DatabaseNamespace.cs:85</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_database_namespace_html_aa64f59235edadf13e6ca3c70a2d61cdc"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_database_namespace.html#aa64f59235edadf13e6ca3c70a2d61cdc">MongoDB.Driver.DatabaseNamespace.Equals</a></div><div class="ttdeci">override bool Equals(object obj)</div><div class="ttdef"><b>Definition:</b> <a href="_database_namespace_8cs_source.html#l00112">DatabaseNamespace.cs:112</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_database_namespace_html_aae4b77d2130ae2aa85aa01404aa82dfb"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_database_namespace.html#aae4b77d2130ae2aa85aa01404aa82dfb">MongoDB.Driver.DatabaseNamespace.ToString</a></div><div class="ttdeci">override string ToString()</div><div class="ttdef"><b>Definition:</b> <a href="_database_namespace_8cs_source.html#l00124">DatabaseNamespace.cs:124</a></div></div>
+<div class="ttc" id="aclass_mongo_d_b_1_1_driver_1_1_database_namespace_html_ada9da1e495f30aa17d30f1d6bc69d067"><div class="ttname"><a href="class_mongo_d_b_1_1_driver_1_1_database_namespace.html#ada9da1e495f30aa17d30f1d6bc69d067">MongoDB.Driver.DatabaseNamespace.DatabaseNamespace</a></div><div class="ttdeci">DatabaseNamespace(string databaseName)</div><div class="ttdoc">Initializes a new instance of the DatabaseNamespace class.</div><div class="ttdef"><b>Definition:</b> <a href="_database_namespace_8cs_source.html#l00066">DatabaseNamespace.cs:66</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_driver_1_1_core_1_1_misc_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_driver_1_1_core_1_1_misc.html">MongoDB.Driver.Core.Misc</a></div><div class="ttdef"><b>Definition:</b> <a href="_array_filters_feature_8cs_source.html#l00020">ArrayFiltersFeature.cs:21</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_driver_1_1_core_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_driver_1_1_core.html">MongoDB.Driver.Core</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_queue_8cs_source.html#l00023">AsyncQueue.cs:24</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_1_1_driver_html"><div class="ttname"><a href="namespace_mongo_d_b_1_1_driver.html">MongoDB.Driver</a></div><div class="ttdef"><b>Definition:</b> <a href="_aggregate_bucket_auto_granularity_8cs_source.html#l00018">AggregateBucketAutoGranularity.cs:19</a></div></div>
+<div class="ttc" id="anamespace_mongo_d_b_html"><div class="ttname"><a href="namespace_mongo_d_b.html">MongoDB</a></div><div class="ttdef"><b>Definition:</b> <a href="_assets_2_scripts_2_libraries_2_mongo_d_b_2_mongo_d_b_8_bson_2_bson_constants_8cs_source.html#l00018">BsonConstants.cs:19</a></div></div>
+<div class="ttc" id="anamespace_system_html"><div class="ttname"><a href="namespace_system.html">System</a></div><div class="ttdef"><b>Definition:</b> <a href="_async_method_builder_attribute_8cs_source.html#l00001">AsyncMethodBuilderAttribute.cs:2</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_1e261a42b4a2e33df58a15c412684b10.html">ETServer</a></li><li class="navelem"><a class="el" href="dir_473c270c995194c5ad99131d9c901f09.html">Server</a></li><li class="navelem"><a class="el" href="dir_ce426efcf63311ff42488fb2654bd4b4.html">ThirdParty</a></li><li class="navelem"><a class="el" href="dir_a37b2b5f9c8890cc9f6f8392fb0cdff3.html">MongoDBDriver</a></li><li class="navelem"><a class="el" href="dir_3c55113864d48cf4713f3b3197e2f720.html">MongoDB.Driver.Core</a></li><li class="navelem"><a class="el" href="_database_namespace_8cs.html">DatabaseNamespace.cs</a></li>
+    <li class="footer">生成于 2021年 十月 1日 星期五 07:24:58 , 为 Linity使用  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>
